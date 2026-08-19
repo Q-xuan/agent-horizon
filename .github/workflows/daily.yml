@@ -5,6 +5,11 @@ on:
     # 23:00 UTC = 07:00 Asia/Shanghai
     - cron: "0 23 * * *"
   workflow_dispatch:
+    inputs:
+      hours:
+        description: Lookback window in hours
+        required: false
+        default: "24"
 
 jobs:
   daily-summary:
@@ -53,7 +58,7 @@ jobs:
           GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
           HORIZON_WEBHOOK_URL: ${{ secrets.HORIZON_WEBHOOK_URL }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: uv run horizon --hours 24
+        run: uv run horizon --hours ${{ github.event.inputs.hours || '24' }}
 
       - name: Set current date
         run: echo "DATE=$(TZ=Asia/Shanghai date +'%Y-%m-%d')" >> "$GITHUB_ENV"
