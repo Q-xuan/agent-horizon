@@ -60,6 +60,11 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: uv run horizon --hours ${{ github.event.inputs.hours || '24' }}
 
+      - name: Patch Pages baseurl and homepage
+        run: |
+          cp overlay/pages/_config.yml horizon/docs/_config.yml
+          cp overlay/pages/index.md horizon/docs/index.md
+
       - name: Set current date
         run: echo "DATE=$(TZ=Asia/Shanghai date +'%Y-%m-%d')" >> "$GITHUB_ENV"
 

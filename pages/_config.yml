@@ -1,0 +1,22 @@
+theme: jekyll-theme-cayman
+title: Agent Horizon
+description: Daily digest for AI agent engineers and harness architecture
+baseurl: "/agent-horizon"
+url: "https://q-xuan.github.io"
+
+markdown: kramdown
+future: true
+plugins:
+  - jekyll-feed
+feed:
+  path: feed.xml
+exclude:
+  - ".github"
+  - "node_modules"
+
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "default"
