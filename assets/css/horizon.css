@@ -1,157 +1,191 @@
-/* ===== Horizon Custom Styles ===== */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700&display=swap");
 
-/* --- CSS Variables & Dark Mode (Horizon Dawn) --- */
-/* Palette derived from horizon-header.svg sunrise:
-   #312e81 deep indigo · #be185d rose · #f97316 orange · #fbbf24 gold
-   #4c1d95 mountain purple · #701a75 distant purple                  */
 :root {
-  --hz-bg: #faf8f5;          /* warm parchment white */
-  --hz-surface: #f3f0eb;     /* slightly warm gray */
-  --hz-border: #e0dbd3;      /* warm border */
-  --hz-text: #2d2a3e;        /* deep indigo-ink */
-  --hz-text-muted: #7c7891;  /* muted lavender gray */
-  --hz-link: #6d4aaa;        /* mountain purple, lighter */
-  --hz-code-bg: #f0ede7;     /* warm code bg */
-  --hz-accent: #e0652e;      /* sunrise orange, toned down */
+  --hz-bg: #ffffff;
+  --hz-surface: #f5f5f5;
+  --hz-border: #e6e6e6;
+  --hz-text: #111111;
+  --hz-text-muted: #5c5c5c;
+  --hz-link: #111111;
+  --hz-code-bg: #f5f5f5;
+  --hz-accent: #111111;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --hz-bg: #1a1726;        /* pre-dawn deep purple-black */
-    --hz-surface: #231f33;   /* night sky surface */
-    --hz-border: #342f4a;    /* indigo border */
-    --hz-text: #e8e4f0;      /* moonlight white-lavender */
-    --hz-text-muted: #8c86a0; /* muted twilight */
-    --hz-link: #f0a848;      /* dawn gold */
-    --hz-code-bg: #211d30;   /* deep code bg */
-    --hz-accent: #e87040;    /* sunrise orange-coral */
+    --hz-bg: #111111;
+    --hz-surface: #1c1c1c;
+    --hz-border: #2a2a2a;
+    --hz-text: #f2f2f2;
+    --hz-text-muted: #9a9a9a;
+    --hz-link: #f2f2f2;
+    --hz-code-bg: #1c1c1c;
+    --hz-accent: #f2f2f2;
   }
 }
 
-/* Apply variables to base elements */
-body {
-  background-color: var(--hz-bg) !important;
+html, body {
+  background: var(--hz-bg) !important;
   color: var(--hz-text) !important;
+  font-family: Inter, "Noto Sans SC", "PingFang SC", sans-serif !important;
+  letter-spacing: -0.011em;
 }
 
-a {
-  color: var(--hz-link) !important;
+.main-content,
+.main-content h1, .main-content h2, .main-content h3,
+.main-content h4, .main-content h5, .main-content h6 {
+  max-width: 720px;
+  font-family: Inter, "Noto Sans SC", "PingFang SC", sans-serif !important;
+  font-weight: 600 !important;
+  color: var(--hz-text) !important;
+  letter-spacing: -0.03em;
 }
+
+.main-content {
+  font-weight: 400 !important;
+  letter-spacing: -0.011em !important;
+  line-height: 1.65 !important;
+  padding-top: 32px !important;
+}
+
+.main-content h1 { font-size: 36px !important; font-weight: 600 !important; }
+.main-content h2 { font-size: 20px !important; margin-top: 2.2em !important; }
+.main-content h3 { font-size: 17px !important; }
+
+a { color: var(--hz-link) !important; text-underline-offset: 3px; }
 
 code {
-  background-color: var(--hz-code-bg) !important;
+  background: var(--hz-code-bg) !important;
   color: var(--hz-text) !important;
+  border-radius: 0 !important;
 }
 
 pre {
-  background-color: var(--hz-code-bg) !important;
+  background: var(--hz-code-bg) !important;
   color: var(--hz-text) !important;
   border: 1px solid var(--hz-border) !important;
+  border-radius: 0 !important;
 }
 
-hr {
-  border-color: var(--hz-border) !important;
-}
+hr { border-color: var(--hz-border) !important; }
 
-h1, h2, h3, h4, h5, h6 {
-  color: var(--hz-text) !important;
-  font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", "Helvetica Neue", Arial, sans-serif !important;
-  font-weight: 800 !important;
-}
-
-/* Override Cayman header gradient — Horizon sunrise from SVG */
 .page-header {
-  background: linear-gradient(120deg, #312e81, #be185d, #f97316) !important;
+  background: var(--hz-bg) !important;
+  color: var(--hz-text) !important;
+  padding: 36px 16px 20px !important;
+  border-bottom: 1px solid var(--hz-text) !important;
 }
 
 .page-header h1,
 .page-header h2,
 .page-header .project-tagline,
-.page-header a {
-  color: #fff !important;
+.page-header a,
+.page-header .btn {
+  color: var(--hz-text) !important;
 }
 
-/* --- Score Badge --- */
+.page-header h1 {
+  font-family: Inter, "Noto Sans SC", sans-serif !important;
+  font-size: 28px !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.04em !important;
+  margin: 0 0 8px !important;
+}
+
+.page-header .project-tagline {
+  opacity: 1 !important;
+  color: var(--hz-text-muted) !important;
+  font-weight: 400 !important;
+  font-size: 14px !important;
+}
+
+.page-header .btn {
+  background: transparent !important;
+  border: 1px solid var(--hz-text) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+.page-header .btn:hover {
+  background: var(--hz-text) !important;
+  color: var(--hz-bg) !important;
+}
+
+.main-content > ol {
+  border-top: 1px solid var(--hz-text);
+  border-bottom: 1px solid var(--hz-text);
+  border-left: none;
+  border-right: none;
+  border-radius: 0;
+  padding: 16px 0 16px 1.3em;
+  background: transparent;
+  list-style: none;
+  padding-left: 0;
+}
+
+.main-content > ol > li {
+  padding: 0.25em 0;
+  font-weight: 500;
+}
+
+.main-content > blockquote:first-of-type {
+  border-left: none;
+  padding-left: 0;
+  color: var(--hz-text-muted);
+  font-style: normal;
+}
+
 .score-badge {
   display: inline-block;
-  padding: 0.1em 0.5em;
-  border-radius: 3px;
-  font-family: monospace;
-  font-size: 0.75em;
-  font-weight: 700;
-  color: #fff;
+  padding: 0 0.4em;
+  border-radius: 0;
+  font-family: Inter, monospace;
+  font-size: 0.72em;
+  font-weight: 600;
+  color: var(--hz-text);
+  background: var(--hz-surface);
   margin-left: 0.4em;
   vertical-align: middle;
-}
-
-.score-badge[data-tier="high"] { background: #be185d; } /* rose — from SVG */
-.score-badge[data-tier="good"] { background: #e0652e; } /* sunrise orange */
-.score-badge[data-tier="mid"]  { background: #d4a017; } /* warm gold */
-.score-badge[data-tier="low"]  { background: #7c7891; } /* muted lavender */
-
-/* --- Tag Pills --- */
-.tag-line code {
-  border-radius: 3px;
-  padding: 0.1em 0.5em;
-  font-size: 0.8em;
-  background: var(--hz-accent) !important;
-  color: #fff !important;
-}
-
-@media (prefers-color-scheme: dark) {
-  .tag-line code {
-    background: #342f4a !important;   /* indigo border */
-    color: #f0a848 !important;        /* dawn gold */
-  }
-}
-
-/* --- Source Line --- */
-.source-line {
-  font-size: 0.85em;
-  color: var(--hz-text-muted);
-  border-left: 2px solid var(--hz-accent);
-  padding-left: 0.6em;
-}
-
-/* --- Collapsible References --- */
-.main-content details {
   border: 1px solid var(--hz-border);
-  border-radius: 4px;
+}
+
+.score-badge[data-tier="high"],
+.score-badge[data-tier="good"],
+.score-badge[data-tier="mid"],
+.score-badge[data-tier="low"] {
+  background: var(--hz-surface);
+  color: var(--hz-text);
+}
+
+.tag-line code {
+  border-radius: 0;
+  padding: 0.1em 0.45em;
+  font-size: 0.78em;
+  background: var(--hz-surface) !important;
+  color: var(--hz-text) !important;
+}
+
+.source-line {
+  font-size: 0.82em;
+  color: var(--hz-text-muted);
+  border-left: none;
+  padding-left: 0;
+}
+
+.main-content details {
+  border: none;
+  border-top: 1px solid var(--hz-border);
+  border-radius: 0;
   margin: 0.8em 0;
 }
 
 .main-content details summary {
   cursor: pointer;
-  padding: 0.4em 0.8em;
-  font-weight: 600;
+  padding: 0.4em 0;
+  font-weight: 500;
   color: var(--hz-text-muted);
 }
 
-.main-content details > ul {
-  padding: 0.4em 0.8em 0.4em 2em;
-  margin: 0;
-}
-
-/* --- TOC Ordered List --- */
-.main-content > ol {
-  border: 1px solid var(--hz-border);
-  border-radius: 4px;
-  padding: 0.8em 0.8em 0.8em 2em;
-  background: var(--hz-surface);
-}
-
-.main-content > ol > li {
-  padding: 0.3em 0;
-}
-
-/* --- Summary Blockquote --- */
-.main-content > blockquote:first-of-type {
-  border-left-color: var(--hz-accent);
-  color: var(--hz-text-muted);
-  font-style: normal;
-}
-
-/* --- Language Toggle (fixed top-right) --- */
 .lang-toggle {
   position: fixed;
   top: 12px;
@@ -162,30 +196,26 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .lang-toggle button {
-  padding: 0.3em 1em;
-  border: 1px solid rgba(255,255,255,0.4);
-  background: rgba(0,0,0,0.15);
-  color: #fff;
-  font-size: 0.8em;
+  padding: 0.3em 0.9em;
+  border: 1px solid var(--hz-text);
+  background: var(--hz-bg);
+  color: var(--hz-text);
+  font-size: 0.75em;
   cursor: pointer;
-  backdrop-filter: blur(4px);
-}
-
-.lang-toggle button:first-child {
-  border-radius: 3px 0 0 3px;
-}
-
-.lang-toggle button:last-child {
-  border-radius: 0 3px 3px 0;
-  border-left: none;
+  border-radius: 0;
 }
 
 .lang-toggle button.active {
-  background: var(--hz-accent);
-  color: #fff;
-  border-color: var(--hz-accent);
+  background: var(--hz-text);
+  color: var(--hz-bg);
 }
 
-.lang-section.hidden {
-  display: none;
+.lang-section.hidden { display: none; }
+
+.site-footer {
+  border-top: 1px solid var(--hz-border) !important;
+  color: var(--hz-text-muted) !important;
 }
+
+.rss-icon { opacity: 0.55; color: inherit; margin-left: 10px; }
+.rss-icon:hover { opacity: 1; }
