@@ -15,12 +15,10 @@
     });
   }
 
-  function mount() {
-    if (document.querySelector(".theme-toggle")) {
-      apply(current());
-      return;
-    }
-    var toggle = document.createElement("div");
+  function ensureToggle() {
+    var toggle = document.querySelector(".theme-toggle");
+    if (toggle) return toggle;
+    toggle = document.createElement("div");
     toggle.className = "theme-toggle";
     [
       ["light", "白"],
@@ -35,12 +33,16 @@
       });
       toggle.appendChild(btn);
     });
+    document.body.appendChild(toggle);
+    return toggle;
+  }
+
+  function mount() {
+    var toggle = ensureToggle();
     var lang = document.querySelector(".lang-toggle");
-    if (lang) {
+    if (lang && toggle.parentNode !== lang) {
       lang.classList.add("site-controls");
       lang.appendChild(toggle);
-    } else {
-      document.body.insertBefore(toggle, document.body.firstChild);
     }
     apply(current());
   }
@@ -67,4 +69,6 @@
     mount();
   }
   window.addEventListener("load", mount);
+  setTimeout(mount, 50);
+  setTimeout(mount, 300);
 })();

@@ -291,6 +291,13 @@ hr {
   align-items: center;
 }
 
+body > .theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 24px;
+  z-index: 60;
+}
+
 .theme-toggle button {
   padding: 0;
   border: none;
