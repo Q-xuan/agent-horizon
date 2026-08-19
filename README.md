@@ -64,3 +64,8 @@ uv run horizon --hours 24
 ## 许可
 
 配置和 profile 属于本仓库。运行时引擎是 Horizon，[MIT](https://github.com/Thysrael/Horizon/blob/main/LICENSE)。
+
+
+## 公众号
+
+日报是原料。选出几条，补上疑问和判断，再推进草稿箱。见 [wechat/README.md](wechat/README.md)。
