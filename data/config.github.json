@@ -230,6 +230,94 @@
         "enabled": true,
         "category": "agent-news",
         "profile": "agent-engineer"
+      },
+      {
+        "type": "repo_releases",
+        "owner": "google-gemini",
+        "repo": "gemini-cli",
+        "enabled": true,
+        "category": "harness",
+        "profile": "harness-arch"
+      },
+      {
+        "type": "repo_releases",
+        "owner": "anomalyco",
+        "repo": "opencode",
+        "enabled": true,
+        "category": "harness",
+        "profile": "harness-arch"
+      },
+      {
+        "type": "repo_releases",
+        "owner": "huggingface",
+        "repo": "smolagents",
+        "enabled": true,
+        "category": "coding-agent",
+        "profile": "harness-arch"
+      },
+      {
+        "type": "repo_releases",
+        "owner": "mastra-ai",
+        "repo": "mastra",
+        "enabled": true,
+        "category": "coding-agent",
+        "profile": "harness-arch"
+      },
+      {
+        "type": "repo_releases",
+        "owner": "openai",
+        "repo": "openai-agents-js",
+        "enabled": true,
+        "category": "coding-agent",
+        "profile": "harness-arch"
+      },
+      {
+        "type": "repo_releases",
+        "owner": "microsoft",
+        "repo": "semantic-kernel",
+        "enabled": true,
+        "category": "coding-agent",
+        "profile": "harness-arch"
+      },
+      {
+        "type": "repo_releases",
+        "owner": "langchain-ai",
+        "repo": "langchain",
+        "enabled": true,
+        "category": "coding-agent",
+        "profile": "harness-arch"
+      },
+      {
+        "type": "repo_releases",
+        "owner": "567-labs",
+        "repo": "instructor",
+        "enabled": true,
+        "category": "coding-agent",
+        "profile": "harness-arch"
+      },
+      {
+        "type": "repo_releases",
+        "owner": "modelcontextprotocol",
+        "repo": "typescript-sdk",
+        "enabled": true,
+        "category": "mcp",
+        "profile": "harness-arch"
+      },
+      {
+        "type": "repo_releases",
+        "owner": "mem0ai",
+        "repo": "mem0",
+        "enabled": true,
+        "category": "coding-agent",
+        "profile": "harness-arch"
+      },
+      {
+        "type": "repo_releases",
+        "owner": "getzep",
+        "repo": "graphiti",
+        "enabled": true,
+        "category": "coding-agent",
+        "profile": "harness-arch"
       }
     ],
     "hackernews": {
@@ -321,20 +409,82 @@
       {
         "name": "GitHub Trending Daily",
         "url": "https://mshibanami.github.io/GitHubTrendingRSS/daily/all.xml",
-        "enabled": true,
+        "enabled": false,
         "category": "github-trending",
         "profile": "agent-engineer"
       },
       {
         "name": "量子位",
         "url": "https://wechat2rss.xlab.app/feed/7131b577c61365cb47e81000738c10d872685908.xml",
-        "enabled": true,
+        "enabled": false,
         "category": "industry",
         "profile": "agent-engineer"
       },
       {
         "name": "新智元",
         "url": "https://wechat2rss.xlab.app/feed/ede30346413ea70dbef5d485ea5cbb95cca446e7.xml",
+        "enabled": false,
+        "category": "industry",
+        "profile": "agent-engineer"
+      },
+      {
+        "name": "Lil'Log",
+        "url": "https://lilianweng.github.io/index.xml",
+        "enabled": true,
+        "category": "papers",
+        "profile": "agent-engineer",
+        "content_extractor": "trafilatura"
+      },
+      {
+        "name": "Eugene Yan",
+        "url": "https://eugeneyan.com/rss/",
+        "enabled": true,
+        "category": "papers",
+        "profile": "agent-engineer",
+        "content_extractor": "trafilatura"
+      },
+      {
+        "name": "Chip Huyen",
+        "url": "https://huyenchip.com/feed.xml",
+        "enabled": true,
+        "category": "papers",
+        "profile": "agent-engineer",
+        "content_extractor": "trafilatura"
+      },
+      {
+        "name": "Hamel Husain",
+        "url": "https://hamel.dev/index.xml",
+        "enabled": true,
+        "category": "ai-tools",
+        "profile": "agent-engineer",
+        "content_extractor": "trafilatura"
+      },
+      {
+        "name": "Thorsten Ball",
+        "url": "https://registerspill.thorstenball.com/feed",
+        "enabled": true,
+        "category": "harness",
+        "profile": "harness-arch",
+        "content_extractor": "trafilatura"
+      },
+      {
+        "name": "Cloudflare AI",
+        "url": "https://blog.cloudflare.com/tag/ai/rss",
+        "enabled": true,
+        "category": "coding-agent",
+        "profile": "harness-arch",
+        "content_extractor": "trafilatura"
+      },
+      {
+        "name": "Google DeepMind",
+        "url": "https://deepmind.google/blog/feed/basic/",
+        "enabled": true,
+        "category": "papers",
+        "profile": "agent-engineer"
+      },
+      {
+        "name": "OpenAI News",
+        "url": "https://openai.com/news/rss.xml",
         "enabled": true,
         "category": "industry",
         "profile": "agent-engineer"

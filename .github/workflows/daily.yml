@@ -67,9 +67,10 @@ jobs:
         run: |
           cp overlay/pages/_config.yml horizon/docs/_config.yml
           cp overlay/pages/index.md horizon/docs/index.md
-          mkdir -p horizon/docs/assets/css horizon/docs/_includes
+          mkdir -p horizon/docs/assets/css horizon/docs/assets/js horizon/docs/_includes
           cp overlay/pages/assets/css/horizon.css horizon/docs/assets/css/horizon.css
           cp overlay/pages/_includes/head-custom.html horizon/docs/_includes/head-custom.html
+          cp overlay/pages/assets/js/theme.js horizon/docs/assets/js/theme.js
 
       - name: Set current date
         run: echo "DATE=$(TZ=Asia/Shanghai date +'%Y-%m-%d')" >> "$GITHUB_ENV"
