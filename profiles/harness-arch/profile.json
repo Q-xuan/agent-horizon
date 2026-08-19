@@ -1,0 +1,16 @@
+{
+  "id": "harness-arch",
+  "name": "Agent Harness Architecture",
+  "display_names": {"zh": "Harness 架构"},
+  "match": "match.md",
+  "analysis": "analysis.md",
+  "enrichment": {
+    "prompt": "enrichment.md",
+    "blocks": [
+      {"id": "summary", "type": "section", "tools": [], "primary": true},
+      {"id": "architecture_note", "type": "section", "tools": [], "optional": true},
+      {"id": "what_changed", "type": "section", "tools": [], "optional": true},
+      {"id": "community_discussion", "type": "section", "tools": [], "optional": true}
+    ]
+  }
+}

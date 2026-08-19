@@ -1,0 +1,16 @@
+{
+  "id": "agent-engineer",
+  "name": "AI Agent Engineer",
+  "display_names": {"zh": "Agent 工程师日报"},
+  "match": "match.md",
+  "analysis": "analysis.md",
+  "enrichment": {
+    "prompt": "enrichment.md",
+    "blocks": [
+      {"id": "summary", "type": "section", "tools": [], "primary": true},
+      {"id": "why_it_matters", "type": "section", "tools": [], "optional": true},
+      {"id": "engineer_takeaway", "type": "section", "tools": [], "optional": true},
+      {"id": "community_discussion", "type": "section", "tools": [], "optional": true}
+    ]
+  }
+}

@@ -1,0 +1,499 @@
+{
+  "ai": {
+    "provider": "deepseek",
+    "model": "deepseek-v4-flash",
+    "base_url": "https://api.deepseek.com",
+    "api_key_env": "DEEPSEEK_API_KEY",
+    "temperature": 0.3,
+    "max_tokens": 8192,
+    "throttle_sec": 1,
+    "languages": [
+      "zh",
+      "en"
+    ],
+    "analysis_concurrency": 5,
+    "enrichment_concurrency": 5
+  },
+  "processing": {
+    "profiles_dir": "profiles",
+    "default_profile": "agent-engineer",
+    "profile_settings": {
+      "agent-engineer": {
+        "threshold": 6.5,
+        "topic_dedup": true
+      },
+      "harness-arch": {
+        "threshold": 5.5,
+        "topic_dedup": true
+      }
+    }
+  },
+  "display": {
+    "icon_style": "emoji"
+  },
+  "sources": {
+    "github": [
+      {
+        "type": "repo_releases",
+        "owner": "anthropics",
+        "repo": "claude-code",
+        "enabled": true,
+        "category": "harness",
+        "profile": "harness-arch"
+      },
+      {
+        "type": "repo_releases",
+        "owner": "openai",
+        "repo": "codex",
+        "enabled": true,
+        "category": "harness",
+        "profile": "harness-arch"
+      },
+      {
+        "type": "repo_releases",
+        "owner": "cline",
+        "repo": "cline",
+        "enabled": true,
+        "category": "harness",
+        "profile": "harness-arch"
+      },
+      {
+        "type": "repo_releases",
+        "owner": "RooCodeInc",
+        "repo": "Roo-Code",
+        "enabled": true,
+        "category": "harness",
+        "profile": "harness-arch"
+      },
+      {
+        "type": "repo_releases",
+        "owner": "Aider-AI",
+        "repo": "aider",
+        "enabled": true,
+        "category": "harness",
+        "profile": "harness-arch"
+      },
+      {
+        "type": "repo_releases",
+        "owner": "All-Hands-AI",
+        "repo": "OpenHands",
+        "enabled": true,
+        "category": "harness",
+        "profile": "harness-arch"
+      },
+      {
+        "type": "repo_releases",
+        "owner": "block",
+        "repo": "goose",
+        "enabled": true,
+        "category": "harness",
+        "profile": "harness-arch"
+      },
+      {
+        "type": "repo_releases",
+        "owner": "continuedev",
+        "repo": "continue",
+        "enabled": true,
+        "category": "harness",
+        "profile": "harness-arch"
+      },
+      {
+        "type": "repo_releases",
+        "owner": "SWE-agent",
+        "repo": "SWE-agent",
+        "enabled": true,
+        "category": "harness",
+        "profile": "harness-arch"
+      },
+      {
+        "type": "repo_releases",
+        "owner": "pydantic",
+        "repo": "pydantic-ai",
+        "enabled": true,
+        "category": "coding-agent",
+        "profile": "harness-arch"
+      },
+      {
+        "type": "repo_releases",
+        "owner": "langchain-ai",
+        "repo": "langgraph",
+        "enabled": true,
+        "category": "coding-agent",
+        "profile": "harness-arch"
+      },
+      {
+        "type": "repo_releases",
+        "owner": "openai",
+        "repo": "openai-agents-python",
+        "enabled": true,
+        "category": "coding-agent",
+        "profile": "harness-arch"
+      },
+      {
+        "type": "repo_releases",
+        "owner": "microsoft",
+        "repo": "autogen",
+        "enabled": true,
+        "category": "coding-agent",
+        "profile": "harness-arch"
+      },
+      {
+        "type": "repo_releases",
+        "owner": "crewAIInc",
+        "repo": "crewAI",
+        "enabled": true,
+        "category": "coding-agent",
+        "profile": "harness-arch"
+      },
+      {
+        "type": "repo_releases",
+        "owner": "browser-use",
+        "repo": "browser-use",
+        "enabled": true,
+        "category": "coding-agent",
+        "profile": "harness-arch"
+      },
+      {
+        "type": "repo_releases",
+        "owner": "modelcontextprotocol",
+        "repo": "python-sdk",
+        "enabled": true,
+        "category": "mcp",
+        "profile": "harness-arch"
+      },
+      {
+        "type": "repo_releases",
+        "owner": "modelcontextprotocol",
+        "repo": "specification",
+        "enabled": true,
+        "category": "mcp",
+        "profile": "harness-arch"
+      },
+      {
+        "type": "repo_releases",
+        "owner": "jlowin",
+        "repo": "fastmcp",
+        "enabled": true,
+        "category": "mcp",
+        "profile": "harness-arch"
+      },
+      {
+        "type": "repo_releases",
+        "owner": "lastmile-ai",
+        "repo": "mcp-agent",
+        "enabled": true,
+        "category": "mcp",
+        "profile": "harness-arch"
+      },
+      {
+        "type": "repo_releases",
+        "owner": "cloudflare",
+        "repo": "agents",
+        "enabled": true,
+        "category": "coding-agent",
+        "profile": "harness-arch"
+      },
+      {
+        "type": "repo_releases",
+        "owner": "vercel",
+        "repo": "ai",
+        "enabled": true,
+        "category": "coding-agent",
+        "profile": "harness-arch"
+      },
+      {
+        "type": "repo_releases",
+        "owner": "google",
+        "repo": "adk-python",
+        "enabled": true,
+        "category": "coding-agent",
+        "profile": "harness-arch"
+      },
+      {
+        "type": "repo_releases",
+        "owner": "letta-ai",
+        "repo": "letta",
+        "enabled": true,
+        "category": "coding-agent",
+        "profile": "harness-arch"
+      },
+      {
+        "type": "user_events",
+        "username": "karpathy",
+        "enabled": true,
+        "category": "agent-news",
+        "profile": "agent-engineer"
+      },
+      {
+        "type": "user_events",
+        "username": "simonw",
+        "enabled": true,
+        "category": "agent-news",
+        "profile": "agent-engineer"
+      }
+    ],
+    "hackernews": {
+      "enabled": true,
+      "fetch_top_stories": 40,
+      "min_score": 80,
+      "profile": "agent-engineer"
+    },
+    "rss": [
+      {
+        "name": "Simon Willison",
+        "url": "https://simonwillison.net/atom/everything/",
+        "enabled": true,
+        "category": "ai-tools",
+        "profile": "agent-engineer"
+      },
+      {
+        "name": "Latent Space",
+        "url": "https://www.latent.space/feed",
+        "enabled": true,
+        "category": "agent-news",
+        "profile": "agent-engineer"
+      },
+      {
+        "name": "Interconnects",
+        "url": "https://www.interconnects.ai/feed",
+        "enabled": true,
+        "category": "papers",
+        "profile": "agent-engineer"
+      },
+      {
+        "name": "Hugging Face Blog",
+        "url": "https://huggingface.co/blog/feed.xml",
+        "enabled": true,
+        "category": "agent-news",
+        "profile": "agent-engineer",
+        "content_extractor": "trafilatura"
+      },
+      {
+        "name": "LangChain Blog",
+        "url": "https://blog.langchain.com/rss/",
+        "enabled": true,
+        "category": "coding-agent",
+        "profile": "harness-arch",
+        "content_extractor": "trafilatura"
+      },
+      {
+        "name": "OpenAI Blog",
+        "url": "https://openai.com/blog/rss.xml",
+        "enabled": true,
+        "category": "industry",
+        "profile": "agent-engineer"
+      },
+      {
+        "name": "Import AI",
+        "url": "https://importai.substack.com/feed",
+        "enabled": true,
+        "category": "agent-news",
+        "profile": "agent-engineer"
+      },
+      {
+        "name": "The Batch",
+        "url": "https://www.deeplearning.ai/the-batch/feed/",
+        "enabled": true,
+        "category": "industry",
+        "profile": "agent-engineer"
+      },
+      {
+        "name": "Aider Blog",
+        "url": "https://aider.chat/feed.xml",
+        "enabled": true,
+        "category": "harness",
+        "profile": "harness-arch"
+      },
+      {
+        "name": "Pydantic Blog",
+        "url": "https://blog.pydantic.dev/rss.xml",
+        "enabled": true,
+        "category": "coding-agent",
+        "profile": "harness-arch"
+      },
+      {
+        "name": "Langfuse Blog",
+        "url": "https://langfuse.com/blog/rss.xml",
+        "enabled": true,
+        "category": "ai-tools",
+        "profile": "agent-engineer"
+      },
+      {
+        "name": "GitHub Trending Daily",
+        "url": "https://mshibanami.github.io/GitHubTrendingRSS/daily/all.xml",
+        "enabled": true,
+        "category": "github-trending",
+        "profile": "agent-engineer"
+      },
+      {
+        "name": "量子位",
+        "url": "https://wechat2rss.xlab.app/feed/7131b577c61365cb47e81000738c10d872685908.xml",
+        "enabled": true,
+        "category": "industry",
+        "profile": "agent-engineer"
+      },
+      {
+        "name": "新智元",
+        "url": "https://wechat2rss.xlab.app/feed/ede30346413ea70dbef5d485ea5cbb95cca446e7.xml",
+        "enabled": true,
+        "category": "industry",
+        "profile": "agent-engineer"
+      }
+    ],
+    "reddit": {
+      "enabled": true,
+      "subreddits": [
+        {
+          "subreddit": "LocalLLaMA",
+          "enabled": true,
+          "sort": "hot",
+          "time_filter": "day",
+          "fetch_limit": 12,
+          "min_score": 40,
+          "profile": "agent-engineer",
+          "category": "reddit"
+        },
+        {
+          "subreddit": "ClaudeAI",
+          "enabled": true,
+          "sort": "hot",
+          "time_filter": "day",
+          "fetch_limit": 12,
+          "min_score": 30,
+          "profile": "agent-engineer",
+          "category": "reddit"
+        },
+        {
+          "subreddit": "MachineLearning",
+          "enabled": true,
+          "sort": "hot",
+          "time_filter": "day",
+          "fetch_limit": 10,
+          "min_score": 50,
+          "profile": "agent-engineer",
+          "category": "papers"
+        },
+        {
+          "subreddit": "LangChain",
+          "enabled": true,
+          "sort": "hot",
+          "time_filter": "day",
+          "fetch_limit": 8,
+          "min_score": 15,
+          "profile": "harness-arch",
+          "category": "coding-agent"
+        },
+        {
+          "subreddit": "ChatGPTCoding",
+          "enabled": true,
+          "sort": "hot",
+          "time_filter": "day",
+          "fetch_limit": 10,
+          "min_score": 25,
+          "profile": "harness-arch",
+          "category": "harness"
+        }
+      ],
+      "users": [],
+      "fetch_comments": 8
+    },
+    "ossinsight": {
+      "enabled": true,
+      "period": "past_24_hours",
+      "languages": [
+        "All",
+        "Python",
+        "TypeScript"
+      ],
+      "keywords": [
+        "agent",
+        "harness",
+        "mcp",
+        "claude-code",
+        "codex",
+        "openhands"
+      ],
+      "min_stars": 20,
+      "max_items": 25,
+      "category": "github-trending",
+      "profile": "harness-arch"
+    },
+    "google_news": {
+      "enabled": true,
+      "query": "AI agent OR coding agent OR agent harness OR Claude Code OR OpenAI Codex",
+      "language": "en",
+      "country": "US",
+      "ceid": null,
+      "max_results": 40,
+      "category": "agent-news",
+      "profile": "agent-engineer"
+    },
+    "twitter": {
+      "enabled": false,
+      "users": [],
+      "fetch_limit": 10,
+      "profile": "agent-engineer"
+    },
+    "telegram": {
+      "enabled": false,
+      "channels": []
+    },
+    "openbb": {
+      "enabled": false
+    }
+  },
+  "collection": {
+    "time_window_hours": 24
+  },
+  "digest": {
+    "max_items": 24,
+    "profile_order": [
+      "harness-arch",
+      "agent-engineer"
+    ],
+    "category_groups": {
+      "harness": {
+        "limit": 7,
+        "categories": [
+          "harness",
+          "coding-agent",
+          "mcp"
+        ]
+      },
+      "news": {
+        "limit": 8,
+        "categories": [
+          "agent-news",
+          "ai-tools",
+          "industry"
+        ]
+      },
+      "research": {
+        "limit": 4,
+        "categories": [
+          "papers",
+          "research"
+        ]
+      },
+      "community": {
+        "limit": 4,
+        "categories": [
+          "github-trending",
+          "reddit"
+        ]
+      }
+    },
+    "default_group": "other",
+    "default_group_limit": 3
+  },
+  "webhook": {
+    "enabled": false,
+    "url_env": "HORIZON_WEBHOOK_URL",
+    "delivery": "summary",
+    "platform": "generic",
+    "layout": "markdown",
+    "languages": [
+      "zh"
+    ]
+  }
+}
