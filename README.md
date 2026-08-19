@@ -26,7 +26,7 @@ cp data/config.json /tmp/horizon/data/config.json
 
 # 2. 密钥
 cp .env.example /tmp/horizon/.env
-# 至少填一个：DEEPSEEK_API_KEY / OPENAI_API_KEY / ANTHROPIC_API_KEY / GOOGLE_API_KEY
+# 填 OPENAI_API_KEY（当前模型 grok-4.6，接口见 config.json 的 ai.base_url）
 
 # 3. 跑
 cd /tmp/horizon
@@ -40,11 +40,11 @@ uv run horizon --hours 24
 
 仓库里的 `.github/workflows/daily.yml` 会 checkout 本仓库 + Horizon，套上这份配置后跑，再把 `docs/` 推到 `gh-pages`。
 
-需要在仓库 Settings → Secrets 里加 **一个** 模型密钥，和 `data/config.github.json` 里的 `api_key_env` 对上。默认用 DeepSeek：
+需要在仓库 Settings → Secrets 里加 **一个** 模型密钥，和 `data/config.github.json` 里的 `api_key_env` 对上。当前用 OpenAI 兼容网关 + `grok-4.6`：
 
-- `DEEPSEEK_API_KEY`
+- `OPENAI_API_KEY`
 
-也可以改成 OpenAI / Anthropic / Gemini，同步改 `data/config.github.json` 的 `ai` 段。
+接口地址在 `ai.base_url`，默认 `https://ai.aruyx.com/v1`。
 
 然后：
 
