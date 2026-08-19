@@ -19,10 +19,14 @@
     "default_profile": "agent-engineer",
     "profile_settings": {
       "agent-engineer": {
-        "threshold": 6.5,
+        "threshold": 5.5,
         "topic_dedup": true
       },
       "harness-arch": {
+        "threshold": 5.0,
+        "topic_dedup": true
+      },
+      "ai-daily": {
         "threshold": 5.5,
         "topic_dedup": true
       }
@@ -197,7 +201,7 @@
         "type": "repo_releases",
         "owner": "vercel",
         "repo": "ai",
-        "enabled": true,
+        "enabled": false,
         "category": "coding-agent",
         "profile": "harness-arch"
       },
@@ -401,21 +405,21 @@
         "url": "https://openai.com/blog/rss.xml",
         "enabled": true,
         "category": "industry",
-        "profile": "agent-engineer"
+        "profile": "ai-daily"
       },
       {
         "name": "Import AI",
         "url": "https://importai.substack.com/feed",
         "enabled": true,
         "category": "agent-news",
-        "profile": "agent-engineer"
+        "profile": "ai-daily"
       },
       {
         "name": "The Batch",
         "url": "https://www.deeplearning.ai/the-batch/feed/",
         "enabled": true,
         "category": "industry",
-        "profile": "agent-engineer"
+        "profile": "ai-daily"
       },
       {
         "name": "Aider Blog",
@@ -443,21 +447,21 @@
         "url": "https://mshibanami.github.io/GitHubTrendingRSS/daily/all.xml",
         "enabled": true,
         "category": "github-trending",
-        "profile": "agent-engineer"
+        "profile": "ai-daily"
       },
       {
         "name": "量子位",
         "url": "https://wechat2rss.xlab.app/feed/7131b577c61365cb47e81000738c10d872685908.xml",
         "enabled": true,
         "category": "industry",
-        "profile": "agent-engineer"
+        "profile": "ai-daily"
       },
       {
         "name": "新智元",
         "url": "https://wechat2rss.xlab.app/feed/ede30346413ea70dbef5d485ea5cbb95cca446e7.xml",
         "enabled": true,
         "category": "industry",
-        "profile": "agent-engineer"
+        "profile": "ai-daily"
       },
       {
         "name": "Lil'Log",
@@ -519,7 +523,7 @@
         "url": "https://openai.com/news/rss.xml",
         "enabled": true,
         "category": "industry",
-        "profile": "agent-engineer"
+        "profile": "ai-daily"
       },
       {
         "name": "Sebastian Raschka",
@@ -565,7 +569,7 @@
         "url": "https://thegradient.pub/rss/",
         "enabled": true,
         "category": "papers",
-        "profile": "agent-engineer",
+        "profile": "ai-daily",
         "content_extractor": "trafilatura"
       },
       {
@@ -580,7 +584,7 @@
         "url": "https://txt.cohere.com/rss/",
         "enabled": true,
         "category": "papers",
-        "profile": "agent-engineer",
+        "profile": "ai-daily",
         "content_extractor": "trafilatura"
       },
       {
@@ -588,7 +592,7 @@
         "url": "https://www.oneusefulthing.org/feed",
         "enabled": true,
         "category": "agent-news",
-        "profile": "agent-engineer",
+        "profile": "ai-daily",
         "content_extractor": "trafilatura"
       },
       {
@@ -596,7 +600,7 @@
         "url": "https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_anthropic_news.xml",
         "enabled": true,
         "category": "agent-news",
-        "profile": "agent-engineer",
+        "profile": "ai-daily",
         "content_extractor": "trafilatura"
       },
       {
@@ -674,7 +678,7 @@
         "url": "https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_claude.xml",
         "enabled": true,
         "category": "agent-news",
-        "profile": "agent-engineer",
+        "profile": "ai-daily",
         "content_extractor": "trafilatura"
       },
       {
@@ -682,7 +686,7 @@
         "url": "https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_meta_ai.xml",
         "enabled": true,
         "category": "agent-news",
-        "profile": "agent-engineer",
+        "profile": "ai-daily",
         "content_extractor": "trafilatura"
       },
       {
@@ -690,7 +694,7 @@
         "url": "https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_google_ai.xml",
         "enabled": true,
         "category": "agent-news",
-        "profile": "agent-engineer",
+        "profile": "ai-daily",
         "content_extractor": "trafilatura"
       },
       {
@@ -698,7 +702,7 @@
         "url": "https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_ollama.xml",
         "enabled": true,
         "category": "agent-news",
-        "profile": "agent-engineer",
+        "profile": "ai-daily",
         "content_extractor": "trafilatura"
       },
       {
@@ -722,21 +726,21 @@
         "url": "https://wechat2rss.xlab.app/feed/51e92aad2728acdd1fda7314be32b16639353001.xml",
         "enabled": true,
         "category": "industry",
-        "profile": "agent-engineer"
+        "profile": "ai-daily"
       },
       {
         "name": "夕小瑶科技说",
         "url": "https://wechat2rss.xlab.app/feed/a1cd365aa14ed7d64cabfc8aa086da40ecaba34d.xml",
         "enabled": true,
         "category": "industry",
-        "profile": "agent-engineer"
+        "profile": "ai-daily"
       },
       {
         "name": "PaperWeekly",
         "url": "https://wechat2rss.xlab.app/feed/3be891c2f4e526629ab055a297cc2cd6c1f0a563.xml",
         "enabled": true,
         "category": "papers",
-        "profile": "agent-engineer"
+        "profile": "ai-daily"
       }
     ],
     "reddit": {
@@ -829,13 +833,13 @@
     },
     "google_news": {
       "enabled": true,
-      "query": "AI agent OR coding agent OR agent harness OR Claude Code OR OpenAI Codex",
+      "query": "AI OR LLM OR Claude OR GPT OR Gemini OR \"coding agent\" OR \"foundation model\"",
       "language": "en",
       "country": "US",
       "ceid": null,
       "max_results": 40,
-      "category": "agent-news",
-      "profile": "agent-engineer"
+      "category": "industry",
+      "profile": "ai-daily"
     },
     "twitter": {
       "enabled": false,
@@ -858,7 +862,8 @@
     "max_items": 24,
     "profile_order": [
       "harness-arch",
-      "agent-engineer"
+      "agent-engineer",
+      "ai-daily"
     ],
     "category_groups": {
       "harness": {

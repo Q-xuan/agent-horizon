@@ -1,0 +1,16 @@
+{
+  "id": "ai-daily",
+  "name": "AI Daily",
+  "display_names": {"zh": "AI 日报"},
+  "match": "match.md",
+  "analysis": "analysis.md",
+  "enrichment": {
+    "prompt": "enrichment.md",
+    "blocks": [
+      {"id": "summary", "type": "section", "tools": [], "primary": true},
+      {"id": "why_it_matters", "type": "section", "tools": [], "optional": true},
+      {"id": "engineer_takeaway", "type": "section", "tools": [], "optional": true},
+      {"id": "community_discussion", "type": "section", "tools": [], "optional": true}
+    ]
+  }
+}

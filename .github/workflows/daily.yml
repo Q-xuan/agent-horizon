@@ -31,11 +31,13 @@ jobs:
       - name: Overlay config and profiles
         run: |
           cp overlay/data/config.github.json horizon/data/config.json
-          rm -rf horizon/profiles/agent-engineer horizon/profiles/harness-arch
+          rm -rf horizon/profiles/agent-engineer horizon/profiles/harness-arch horizon/profiles/ai-daily
           cp -R overlay/profiles/agent-engineer horizon/profiles/agent-engineer
           cp -R overlay/profiles/harness-arch horizon/profiles/harness-arch
+          cp -R overlay/profiles/ai-daily horizon/profiles/ai-daily
           cat overlay/profiles/STYLE.md >> horizon/profiles/agent-engineer/enrichment.md
           cat overlay/profiles/STYLE.md >> horizon/profiles/harness-arch/enrichment.md
+          cat overlay/profiles/STYLE.md >> horizon/profiles/ai-daily/enrichment.md
           python3 overlay/patches/grok_reasoning_effort.py horizon/src/ai/client.py
 
       - name: Set up Python
