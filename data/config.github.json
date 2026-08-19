@@ -318,6 +318,38 @@
         "enabled": true,
         "category": "coding-agent",
         "profile": "harness-arch"
+      },
+      {
+        "type": "repo_releases",
+        "owner": "stanfordnlp",
+        "repo": "dspy",
+        "enabled": true,
+        "category": "coding-agent",
+        "profile": "harness-arch"
+      },
+      {
+        "type": "repo_releases",
+        "owner": "microsoft",
+        "repo": "agent-framework",
+        "enabled": true,
+        "category": "coding-agent",
+        "profile": "harness-arch"
+      },
+      {
+        "type": "repo_releases",
+        "owner": "google",
+        "repo": "adk-go",
+        "enabled": true,
+        "category": "coding-agent",
+        "profile": "harness-arch"
+      },
+      {
+        "type": "repo_releases",
+        "owner": "e2b-dev",
+        "repo": "e2b",
+        "enabled": true,
+        "category": "coding-agent",
+        "profile": "harness-arch"
       }
     ],
     "hackernews": {
@@ -604,6 +636,85 @@
         "enabled": true,
         "category": "agent-news",
         "profile": "agent-engineer",
+        "content_extractor": "trafilatura"
+      },
+      {
+        "name": "Claude Code Changelog",
+        "url": "https://code.claude.com/docs/en/changelog/rss.xml",
+        "enabled": true,
+        "category": "harness",
+        "profile": "harness-arch"
+      },
+      {
+        "name": "OpenAI Engineering",
+        "url": "https://openai.com/news/engineering/rss.xml",
+        "enabled": true,
+        "category": "harness",
+        "profile": "harness-arch",
+        "content_extractor": "trafilatura"
+      },
+      {
+        "name": "OpenAI Developer",
+        "url": "https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_openai_developer.xml",
+        "enabled": true,
+        "category": "harness",
+        "profile": "harness-arch",
+        "content_extractor": "trafilatura"
+      },
+      {
+        "name": "Thinking Machines",
+        "url": "https://thinkingmachines.ai/blog/index.xml",
+        "enabled": true,
+        "category": "papers",
+        "profile": "agent-engineer",
+        "content_extractor": "trafilatura"
+      },
+      {
+        "name": "Claude Blog",
+        "url": "https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_claude.xml",
+        "enabled": true,
+        "category": "agent-news",
+        "profile": "agent-engineer",
+        "content_extractor": "trafilatura"
+      },
+      {
+        "name": "Meta AI",
+        "url": "https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_meta_ai.xml",
+        "enabled": true,
+        "category": "agent-news",
+        "profile": "agent-engineer",
+        "content_extractor": "trafilatura"
+      },
+      {
+        "name": "Google Developers AI",
+        "url": "https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_google_ai.xml",
+        "enabled": true,
+        "category": "agent-news",
+        "profile": "agent-engineer",
+        "content_extractor": "trafilatura"
+      },
+      {
+        "name": "Ollama Blog",
+        "url": "https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_ollama.xml",
+        "enabled": true,
+        "category": "agent-news",
+        "profile": "agent-engineer",
+        "content_extractor": "trafilatura"
+      },
+      {
+        "name": "Sourcegraph Blog",
+        "url": "https://sourcegraph.com/blog/rss.xml",
+        "enabled": true,
+        "category": "harness",
+        "profile": "harness-arch",
+        "content_extractor": "trafilatura"
+      },
+      {
+        "name": "Zed Blog",
+        "url": "https://zed.dev/blog.rss",
+        "enabled": true,
+        "category": "harness",
+        "profile": "harness-arch",
         "content_extractor": "trafilatura"
       }
     ],
