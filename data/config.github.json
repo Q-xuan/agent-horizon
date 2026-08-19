@@ -488,6 +488,76 @@
         "enabled": true,
         "category": "industry",
         "profile": "agent-engineer"
+      },
+      {
+        "name": "Sebastian Raschka",
+        "url": "https://magazine.sebastianraschka.com/feed",
+        "enabled": true,
+        "category": "papers",
+        "profile": "agent-engineer",
+        "content_extractor": "trafilatura"
+      },
+      {
+        "name": "Jason Wei",
+        "url": "https://www.jasonwei.net/blog?format=rss",
+        "enabled": true,
+        "category": "papers",
+        "profile": "agent-engineer",
+        "content_extractor": "trafilatura"
+      },
+      {
+        "name": "Andrej Karpathy",
+        "url": "https://karpathy.github.io/feed.xml",
+        "enabled": true,
+        "category": "papers",
+        "profile": "agent-engineer",
+        "content_extractor": "trafilatura"
+      },
+      {
+        "name": "BAIR",
+        "url": "https://bair.berkeley.edu/blog/feed.xml",
+        "enabled": true,
+        "category": "papers",
+        "profile": "agent-engineer",
+        "content_extractor": "trafilatura"
+      },
+      {
+        "name": "Google Research",
+        "url": "https://blog.research.google/feeds/posts/default",
+        "enabled": true,
+        "category": "papers",
+        "profile": "agent-engineer"
+      },
+      {
+        "name": "The Gradient",
+        "url": "https://thegradient.pub/rss/",
+        "enabled": true,
+        "category": "papers",
+        "profile": "agent-engineer",
+        "content_extractor": "trafilatura"
+      },
+      {
+        "name": "Allen AI",
+        "url": "https://allenai.org/rss.xml",
+        "enabled": true,
+        "category": "papers",
+        "profile": "agent-engineer"
+      },
+      {
+        "name": "Cohere",
+        "url": "https://txt.cohere.com/rss/",
+        "enabled": true,
+        "category": "papers",
+        "profile": "agent-engineer",
+        "content_extractor": "trafilatura"
+      },
+      {
+        "name": "One Useful Thing",
+        "url": "https://www.oneusefulthing.org/feed",
+        "enabled": true,
+        "category": "agent-news",
+        "profile": "agent-engineer",
+        "content_extractor": "trafilatura"
       }
     ],
     "reddit": {
