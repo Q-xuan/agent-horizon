@@ -45,14 +45,19 @@
     apply(current());
   }
 
+  var fromQuery = null;
+  try {
+    fromQuery = new URLSearchParams(window.location.search).get("theme");
+  } catch (e) {}
   apply(
-    (function () {
-      try {
-        return localStorage.getItem(KEY);
-      } catch (e) {
-        return null;
-      }
-    })() ||
+    (fromQuery === "dark" || fromQuery === "light" ? fromQuery : null) ||
+      (function () {
+        try {
+          return localStorage.getItem(KEY);
+        } catch (e) {
+          return null;
+        }
+      })() ||
       (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light")
   );
 
