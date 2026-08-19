@@ -1,3 +1,14 @@
+<script>
+(function () {
+  try {
+    var t = localStorage.getItem("ah-theme");
+    if (!t) t = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    document.documentElement.setAttribute("data-theme", t);
+  } catch (e) {
+    document.documentElement.setAttribute("data-theme", "light");
+  }
+})();
+</script>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2218%22 fill=%22%23111111%22/></svg>">
 <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2218%22 fill=%22%23111111%22/></svg>">
 <link rel="shortcut icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2218%22 fill=%22%23111111%22/></svg>">
@@ -11,3 +22,4 @@
 .rss-icon svg{width:0.9em;height:0.9em;display:inline-block}
 </style>
 <script src="{{ '/assets/js/horizon.js' | relative_url }}" defer></script>
+<script src="{{ '/assets/js/theme.js' | relative_url }}" defer></script>
