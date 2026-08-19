@@ -558,6 +558,53 @@
         "category": "agent-news",
         "profile": "agent-engineer",
         "content_extractor": "trafilatura"
+      },
+      {
+        "name": "Anthropic News",
+        "url": "https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_anthropic_news.xml",
+        "enabled": true,
+        "category": "agent-news",
+        "profile": "agent-engineer",
+        "content_extractor": "trafilatura"
+      },
+      {
+        "name": "Anthropic Engineering",
+        "url": "https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_anthropic_engineering.xml",
+        "enabled": true,
+        "category": "harness",
+        "profile": "harness-arch",
+        "content_extractor": "trafilatura"
+      },
+      {
+        "name": "Anthropic Research",
+        "url": "https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_anthropic_research.xml",
+        "enabled": true,
+        "category": "papers",
+        "profile": "agent-engineer",
+        "content_extractor": "trafilatura"
+      },
+      {
+        "name": "Cursor Blog",
+        "url": "https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_cursor.xml",
+        "enabled": true,
+        "category": "harness",
+        "profile": "harness-arch",
+        "content_extractor": "trafilatura"
+      },
+      {
+        "name": "Cursor Changelog",
+        "url": "http://127.0.0.1:8766/cursor-changelog.xml",
+        "enabled": true,
+        "category": "harness",
+        "profile": "harness-arch"
+      },
+      {
+        "name": "Cognition Blog",
+        "url": "http://127.0.0.1:8766/cognition-blog.xml",
+        "enabled": true,
+        "category": "agent-news",
+        "profile": "agent-engineer",
+        "content_extractor": "trafilatura"
       }
     ],
     "reddit": {

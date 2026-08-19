@@ -52,6 +52,16 @@ jobs:
         working-directory: horizon
         run: uv sync
 
+      - name: Scrape sites without official RSS
+        run: |
+          mkdir -p scraped-feeds
+          python3 overlay/scripts/scrape_no_rss.py --out scraped-feeds
+          python3 -m http.server 8766 --directory scraped-feeds --bind 127.0.0.1 &
+          echo $! > /tmp/scraped-feeds.pid
+          sleep 1
+          curl -sf http://127.0.0.1:8766/cursor-changelog.xml >/dev/null
+          curl -sf http://127.0.0.1:8766/cognition-blog.xml >/dev/null
+
       - name: Run Horizon
         working-directory: horizon
         env:
