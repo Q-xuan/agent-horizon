@@ -378,3 +378,20 @@ body > .theme-toggle {
   text-decoration: none !important;
 }
 .rss-icon:hover { opacity: 1; color: inherit !important; }
+
+.page-header .site-home {
+  flex: 0 0 auto !important;
+  margin: 0 16px 0 0 !important;
+  font-family: Inter, "Noto Sans SC", sans-serif !important;
+  font-size: 15px !important;
+  font-weight: 500 !important;
+  color: var(--nano-heading) !important;
+  text-decoration: none !important;
+  white-space: nowrap !important;
+}
+
+.page-header .site-home:hover {
+  color: var(--nano-heading) !important;
+  text-decoration: underline !important;
+  text-decoration-color: var(--nano-link-line-hover) !important;
+}
