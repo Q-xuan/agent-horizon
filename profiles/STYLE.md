@@ -8,12 +8,14 @@
 
 | 区块 | 中文小标题 | 不要写成 |
 | --- | --- | --- |
-| `summary` | （主文，不要小标题） | 摘要、概述 |
+| `summary` | 摘要 | 空标题、概述 |
 | `why_it_matters` | 为什么重要 | 价值、意义、值得关注 |
 | `engineer_takeaway` | 可关注 | 工程师洞见、Takeaway、启示 |
 | `architecture_note` | 设计要点 | 架构说明、架构洞察 |
 | `what_changed` | 改了什么 | 变更、Release Notes |
 | `community_discussion` | 评论 | 社区声音、热议 |
+
+JSON 里每个区块的 `title` 都不能为空，主文必须写 `摘要`（页面上不会显示这个小标题）。整篇的 `title` 也必须是非空中文条目标题。
 
 渲染时写成 `**可关注** 正文`，不要加书名号「」。
 
