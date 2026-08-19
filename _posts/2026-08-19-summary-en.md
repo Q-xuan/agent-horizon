@@ -5,94 +5,96 @@ date: 2026-08-19
 lang: en
 ---
 
-> From 95 items, 6 important content pieces were selected
+> From 95 items, 5 important content pieces were selected
 
 ---
 
 **Agent Harness Architecture**
-1. [cloudflare/agents @cloudflare/voice@0.3.6](#item-harness-arch-1) ⭐️ 7.0/10
-2. [cloudflare/agents released @cloudflare/think@0.16.0](#item-harness-arch-2) ⭐️ 7.0/10
-3. [cloudflare/agents released @cloudflare/ai-chat@0.10.2](#item-harness-arch-3) ⭐️ 7.0/10
-4. [pydantic-ai v2.32.0](#item-harness-arch-4) ⭐️ 6.0/10
+1. [Codex rust-v0.148.0 发布](#item-harness-arch-1) ⭐️ 7.0/10
+2. [Pydantic AI v2.32.0 Released](#item-harness-arch-2) ⭐️ 7.0/10
+3. [Cloudflare Agents @cloudflare/ai-chat@0.10.2 Patch Release](#item-harness-arch-3) ⭐️ 7.0/10
+4. [Cline desktop-v0.0.14 发布](#item-harness-arch-4) ⭐️ 6.0/10
 
 **AI Agent Engineer**
-1. [Turbovec – Google&\#x27;s TurboQuant for vector search in Rust](#item-agent-engineer-1) ⭐️ 7.0/10
-2. [Running DeepSeek V4 Flash Q4\_K\_XL at ~100 tok/s prompt processing on 4× RTX 3060 12GB](#item-agent-engineer-2) ⭐️ 7.0/10
+1. [How Much Memory Does Your Agent Actually Need?](#item-agent-engineer-1) ⭐️ 7.0/10
 
 ---
 
 ## Agent Harness Architecture
 
 <a id="item-harness-arch-1"></a>
-### [cloudflare/agents @cloudflare/voice@0.3.6](https://github.com/cloudflare/agents/releases/tag/%40cloudflare/voice%400.3.6) ⭐️ 7.0/10
+### [Codex rust-v0.148.0 发布](https://github.com/openai/codex/releases/tag/rust-v0.148.0) ⭐️ 7.0/10
 
-Cloudflare agents voice library v0.3.6 patch updates context.messages handling for text/audio turns to avoid LLM duplicate messages. This defines VoiceTurnContext.messages as completed history before the current transcript for both text and audio turns. Existing onTurn\(\) implementations must append transcript exactly once if passing context.messages directly as LLM input. Direct getConversationHistory\(\) calls continue to include the current transcript.
+Codex rust-v0.148.0 has been released. It adds support for exporting complete TUI conversations to Markdown using the /export command. Session forking is now available via \`codex exec fork\`, along with archiving and restoring sessions from the resume picker. Amazon Bedrock is integrated as a provider, and hooks support asynchronous execution with MCP tools.
 
-github · github-actions\[bot\] · Aug 18, 09:08
+github · github-actions\[bot\] · Aug 18, 22:26
 
-**「Design points」** The runtime change sets VoiceTurnContext.messages as the history before the current transcript in both text and audio turns. This affects memory model and onTurn\(\) integration to avoid LLM duplicates.
+**「设计要点」** Sandbox restrictions now fail closed for denied or unreadable paths across Linux and Windows. Session restoration preserves persisted working directories and approval policies.
 
-**「What changed」** @cloudflare/voice@0.3.6 changes VoiceTurnContext.messages to completed history before the current transcript for text and audio turns, preventing duplicate user messages. It passes the full keyterms array to Workers AI Flux and Nova-3 STT instead of the first term only. Text stream segments separated by tool calls now preserve spacing using updated joining logic from agents/chat. Upgrade to agents@0.21.0 is required when installing @cloudflare/think@0.16.0 or @cloudflare/voice@0.3.6, with agents &gt;=0.20.2.
+**「改了什么」** This version introduces TUI Markdown exports, session forking and archiving, Bedrock provider support, and async MCP tool hooks. It also fixes model switching and session restoration issues, with sandbox restrictions now failing closed.
 
-**Tags**: `#runtime`, `#memory`, `#context`, `#voice`
+**Tags**: `#runtime`, `#tools`, `#mcp`, `#memory`, `#permissions`
 
 ---
 
 <a id="item-harness-arch-2"></a>
-### [cloudflare/agents released @cloudflare/think@0.16.0](https://github.com/cloudflare/agents/releases/tag/%40cloudflare/think%400.16.0) ⭐️ 7.0/10
+### [Pydantic AI v2.32.0 Released](https://github.com/pydantic/pydantic-ai/releases/tag/v2.32.0) ⭐️ 7.0/10
 
-Cloudflare Agents @cloudflare/think@0.16.0 removes the Think framework abstraction and related tooling, retaining it only as an explicit runtime.
+Pydantic AI v2.32.0 updates the agent harness runtime instrumentation to version 6, emitting tool results under role: &\#x27;tool&\#x27;. It runs sync hooks in a thread pool and enforces timeout= for blocking sync tools and hooks. The release also supports xAI attachment search lifecycle and surfaces OpenRouter web-search sources in provider\_details\[&quot;annotations&quot;\]. It suggests known model names for invalid identifiers.
 
-github · github-actions\[bot\] · Aug 18, 09:08
+github · dsfaccini · Aug 19, 03:51
 
-**Tags**: `#runtime`, `#tools`, `#framework`
+**「Architecture Note」** Instrumentation version 6 is a key runtime change for harness engineers, allowing tool results under role &\#x27;tool&\#x27;. Sync hooks are handled via thread pools with timeout enforcement to manage blocking operations.
+
+**「What Changed」** This release changes tool result emission to use role: &\#x27;tool&\#x27; in instrumentation v6, implements thread-pool sync hooks with timeout enforcement, adds xAI provider support for attachment search, and surfaces OpenRouter web-search sources in annotations. Bug fixes improve handling of sync hooks, RunContext.cancel from setup hooks, empty text responses, tool retry messages, and Bedrock compatibility.
+
+**Tags**: `#runtime`, `#tools`, `#instrumentation`, `#hooks`
 
 ---
 
 <a id="item-harness-arch-3"></a>
-### [cloudflare/agents released @cloudflare/ai-chat@0.10.2](https://github.com/cloudflare/agents/releases/tag/%40cloudflare/ai-chat%400.10.2) ⭐️ 7.0/10
+### [Cloudflare Agents @cloudflare/ai-chat@0.10.2 Patch Release](https://github.com/cloudflare/agents/releases/tag/%40cloudflare/ai-chat%400.10.2) ⭐️ 7.0/10
 
-@cloudflare/ai-chat 0.10.2 released with updates to observer error handling and transport exposure in the agents framework.
+Cloudflare agents framework patch update for @cloudflare/ai-chat@0.10.2. Treats useAgentChat observer error frames as terminal responses, no longer parsing plain-text error bodies as stream chunks or merging into empty assistant messages. Error frames now clear observer streaming, replay, recovery, and tool-continuation state even when they omit done. Exposes WebSocketChatTransport from the framework-neutral agents/chat/transport entry point.
 
 github · github-actions\[bot\] · Aug 18, 09:08
 
-**Tags**: `#runtime`, `#memory`, `#tools`
+**「Design Note」** Observer error frames are treated as terminal responses and clear streaming, replay, recovery, and tool-continuation state to match transport-owned stream behavior. WebSocketChatTransport is exposed from agents/chat/transport, making React peers optional for framework-neutral clients and servers.
+
+**「Changed」** Exposed WebSocketChatTransport and its connection types from agents/chat/transport. Updated useAgentChat to treat observer errors as terminal responses and clear state accordingly. Accepted AI SDK flexible schemas in agentTool.
+
+**Tags**: `#runtime`, `#memory`, `#streaming`, `#transport`
 
 ---
 
 <a id="item-harness-arch-4"></a>
-### [pydantic-ai v2.32.0](https://github.com/pydantic/pydantic-ai/releases/tag/v2.32.0) ⭐️ 6.0/10
+### [Cline desktop-v0.0.14 发布](https://github.com/cline/cline/releases/tag/desktop-v0.0.14) ⭐️ 6.0/10
 
-Pydantic AI v2.32.0 is released. The release updates instrumentation to version 6, emitting tool results under role: &\#x27;tool&\#x27;. It runs sync hooks in a thread pool and enforces timeout for blocking sync tools and hooks. Additional changes include handling RunContext.cancel from setup-phase hooks and sorting tool results ahead of availability announcements for Bedrock compatibility.
+Cline desktop-v0.0.14 streams command output into the transcript with terminal colors, lets you send a long-running command to the background with &quot;Proceed while running&quot;, and collapses a finished run into an expandable &quot;Worked for … and made N tool calls&quot; summary. Voice input transcribes into the composer using the configured provider and model; models that support image generation can produce images that render inline. Native macOS notifications fire when a task finishes or needs input \(Settings → Notifications\).
 
-github · dsfaccini · Aug 19, 03:51
+github · github-actions\[bot\] · Aug 19, 06:18
 
-**「What Changed」** Sync hooks are now executed in a thread pool with timeout enforcement for blocking tools. RunContext.cancel is recorded from setup-phase hooks instead of raising UserError, tool results are sorted ahead of announcements for Bedrock compatibility, and native tool calls are dropped if the replayed payload has no result block.
+**「设计要点」** Auto-approval is now an independent tool policy and no longer changes the advertised mode, so Act-mode sessions no longer receive the Yolo-mode system prompt. \`/skill\` and \`/workflow\` keep the typed command as the user message and load instructions through the skills tool; command output streams live, and the transcript reconciles against saved history as soon as the turn ends.
 
-**Tags**: `#runtime`, `#tools`, `#hooks`, `#instrumentation`
+**「改了什么」** Relative to desktop-v0.0.13, command output streams instead of appearing at exit, finished runs collapse, and the app adds voice dictation, inline image generation, macOS notifications, and a side-by-side &quot;Cline Code Beta&quot; build. Auto-approve is decoupled from mode; skill/workflow commands no longer dump the skill body into chat; Gemini custom base URLs, LiteLLM-reported input token limits \(no longer replaced with a 128K default\), checkpoint transcript trimming, and command lines that contain spaces \(previously ENOENT\) are fixed.
+
+**Tags**: `#runtime`, `#tools`, `#permissions`, `#memory`
 
 ---
 
 ## AI Agent Engineer
 
 <a id="item-agent-engineer-1"></a>
-### [Turbovec – Google&\#x27;s TurboQuant for vector search in Rust](https://github.com/RyanCodrai/turbovec) ⭐️ 7.0/10
+### [How Much Memory Does Your Agent Actually Need?](https://huggingface.co/blog/ibm-research/altk-evolve-hmm) ⭐️ 7.0/10
 
-Hacker News discussion on Turbovec, a Rust port of Google&\#x27;s TurboQuant for efficient vector search, with performance notes and integration ideas relevant to AI agent memory and toolchains.
+IBM Research&\#x27;s ALTK-Evolve distills reusable guidelines from an agent&\#x27;s past trajectories and injects them at inference time, enabling dose-dependent performance gains without weight updates or human annotation. Across eight models from 30B dense to frontier systems, strong models with headroom benefit from the full guideline set, weaker models perform best with a compact core plus task-specific retrieval, and saturated models show no measurable improvement. On AppWorld&\#x27;s 585 multi-step tasks, gpt-oss-120b achieved +16.1pp task goal completion with curated retrieval at only +5% token overhead.
 
-hackernews · fittingopposite · Aug 18, 18:07 · [Discussion](https://news.ycombinator.com/item?id=49349898)
+rss · Hugging Face Blog · Aug 18, 18:09
 
-**Tags**: `#memory`, `#harness`, `#eval`, `#orchestration`, `#coding-agent`
+**「Why It Matters」** The right memory dose varies by model tier, allowing calibration that improves task completion while keeping inference costs low through prompt caching.
 
----
+**「Key Takeaway」** Observable: Memory dosage must be calibrated to model capability, with curated retrieval delivering the best accuracy-cost trade-off for weaker models.
 
-<a id="item-agent-engineer-2"></a>
-### [Running DeepSeek V4 Flash Q4\_K\_XL at ~100 tok/s prompt processing on 4× RTX 3060 12GB](https://www.reddit.com/r/LocalLLaMA/comments/1vrqf4f/running_deepseek_v4_flash_q4_k_xl_at_100_toks/) ⭐️ 7.0/10
-
-User shares optimized llama-server command achieving ~100 tok/s prompt processing for 368k-context DeepSeek-V4-Flash Q4 on 4x RTX 3060 while maintaining low VRAM usage.
-
-reddit · r/LocalLLaMA · /u/syscomua · Aug 18, 14:15
-
-**Tags**: `#harness`, `#memory`, `#orchestration`, `#coding-agent`, `#eval`
+**Tags**: `#memory`, `#eval`, `#orchestration`, `#retrieval`
 
 ---
