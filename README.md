@@ -70,4 +70,4 @@ uv run horizon --hours 24
 
 ## 公众号
 
-日报是原料。选出几条，补上疑问和判断，再推进草稿箱。见 [wechat/README.md](wechat/README.md)。
+日报是原料。GitHub Actions 只出日报。成稿按 [wechat/STYLE.md](wechat/STYLE.md) 写，先给人看，再在固定 IP 的机器上推草稿箱。见 [wechat/README.md](wechat/README.md)。
