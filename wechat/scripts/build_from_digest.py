@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
-"""Extract Horizon digest items. Next step is a rewrite with wechat/STYLE.md."""
+"""Extract Horizon digest items. Next step is a rewrite with wechat/STYLE.md.
+
+Sourced items must include 原文：[title](https://...). No empty 我的疑问.
+"""
 
 from __future__ import annotations
 

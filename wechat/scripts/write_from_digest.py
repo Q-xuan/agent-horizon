@@ -89,7 +89,10 @@ def build_messages(style: str, materials: str) -> list[dict[str, str]]:
                 "按下面这份写法，把日报原料写成一篇公众号成稿。"
                 "只输出成稿 markdown，不要解释过程。"
                 "不要编造原料里没有的数字、版本、人名。"
-                "不要写「我的疑问」「我的判断」。\n\n"
+                "不要写「我的疑问」「我的判断」。"
+                "每条有出处的结尾必须是一行：原文：[标题](https://...)。"
+                "不要只写裸 URL。不要手写裸 <a href>。"
+                "frontmatter 加 source:，填第一条 https 原文，供阅读原文使用。\n\n"
                 f"{style}"
             ),
         },
@@ -97,7 +100,8 @@ def build_messages(style: str, materials: str) -> list[dict[str, str]]:
             "role": "user",
             "content": (
                 "原料如下。选出 4–6 条能写成四拍的，写成一篇。"
-                "标题不超过 22 个字。开头两三句只说今天发生了什么。\n\n"
+                "标题不超过 22 个字。开头两三句只说今天发生了什么。"
+                "每条结尾保留 原文：[标题](https://...) 这一行。\n\n"
                 f"{materials}"
             ),
         },

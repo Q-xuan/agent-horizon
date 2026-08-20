@@ -4,9 +4,31 @@
 
 正式群发还是你在后台点。
 
+## 链接为什么会丢
+
+推草稿时正文已经是 HTML，不是 markdown。微信发布时会洗掉普通 `<a href="https://...">文字</a>`，所以之前那种「markdown 链转成裸 `<a>`」的稿，发布后链接全没了。
+
+`scripts/push_draft.py` 必须把 `[文字](https://...)` 收成编辑器形态：
+
+```html
+<a target="_blank" href="https://..." textvalue="..." data-linktype="2">
+```
+
+只允许 `https://` 进 `href`。标签和 URL 都要转义。不要改回裸 `<a href>`。
+
+订阅号上最稳的外链是文末「阅读原文」。脚本会写进草稿字段 `content_source_url`：
+
+1. frontmatter 的 `source:`（必须是 `https://`）
+2. 否则正文第一条 `原文：[标题](https://...)`
+3. 再否则正文第一条 `https://`
+
+有出处的条目结尾必须写成 `原文：[标题](https://...)`，不要裸 URL，不要空的「我的疑问」。详见 [STYLE.md](STYLE.md)。
+
+不要把 `WECHAT_SECRET` 写进仓库。不要在 GitHub Actions 里调微信接口（出口 IP 会变，也不该把密钥交给 CI）。改渲染器或写新脚本时，先跑 `python3 wechat/scripts/test_wechat_links.py`。
+
 ## 流程
 
-1. Actions 跑出当天中文日报（`gh-pages` 的 `_posts/YYYY-MM-DD-summary-zh.md`，或本地 Horizon 的 `data/summaries/`）。路径也会写在 Pages 的 `wechat-latest.md`。
+1. Actions 跑出当天中文日报（`gh-pages` 的 `_posts/YYYY-MM-DD-summary-zh.md`，或本地 Horizon 的 `data/summaries/`）。路径也会写在 Pages 的 `wechat-latest.md`。日期按 Asia/Shanghai，不是 UTC。
 2. 按 [STYLE.md](STYLE.md) 写成稿。人写，或：
 
    ```bash
@@ -20,6 +42,7 @@
    # 或：python3 wechat/scripts/polish_post.py --digest <日报.md>
    ```
 
+   抽条目和成稿都必须带 `原文：[标题](https://...)`，不要裸 URL。
 3. 打开 `wechat/posts/YYYY-MM-DD.md`，先看这篇。不要补「我的疑问」。
 4. 看过之后，在**固定公网 IP** 的机器上：
 
@@ -58,3 +81,5 @@ WECHAT_SECRET=...
 # 本地用 write_from_digest.py 时，跟日报同一把网关密钥
 OPENAI_API_KEY=...
 ```
+
+推草稿前先 `set -a; . wechat/.env.local; set +a`，或自行 export。脚本只读环境变量，不把密钥写进 git。

@@ -33,11 +33,45 @@ HEADING_RE = re.compile(
 )
 
 NEXT_STEP = """下一步：按 wechat/STYLE.md 写成稿。不要补「我的疑问」。
+每条有出处的结尾必须是 原文：[标题](https://...)，不要裸 URL。
 人写：把成稿存到 wechat/posts/YYYY-MM-DD.md
 或：python3 wechat/scripts/write_from_digest.py --digest <日报.md>
 
 先打开成稿看一遍。再在固定 IP 机器上推草稿。不要在 GitHub Actions 上推微信。
 """
+
+
+MD_LINK_RE = re.compile(r"\[([^\]]+)\]\((https://[^)]+)\)")
+HTTPS_RE = re.compile(r"https://[^\s)>\]]+")
+
+
+def https_only(url: str) -> str:
+    url = (url or "").strip()
+    if url.startswith("https://") and len(url) > len("https://"):
+        return url
+    return ""
+
+
+def item_source_url(item: dict[str, str]) -> str:
+    """First https source: heading url, then a markdown link, then a bare https."""
+    url = https_only(item.get("url", ""))
+    if url:
+        return url
+    blob = f"{item.get('title', '')}\n{item.get('body', '')}"
+    m = MD_LINK_RE.search(blob)
+    if m:
+        return https_only(m.group(2))
+    m = HTTPS_RE.search(blob)
+    return https_only(m.group(0)) if m else ""
+
+
+def yuanywen_line(title: str, url: str) -> str:
+    """Sourced items must end with 原文：[title](https://...). Never a bare URL."""
+    href = https_only(url)
+    if not href:
+        return ""
+    label = (title or href).strip()
+    return f"原文：[{label}]({href})"
 
 
 def load_dotenv(path: Path) -> None:
@@ -132,15 +166,19 @@ def render_materials(items: list[dict[str, str]], date: str, digest_path: str) -
         f"写法：{STYLE_PATH.relative_to(REPO_ROOT) if STYLE_PATH.is_relative_to(REPO_ROOT) else STYLE_PATH}",
         "",
     ]
+    first_source = next((item_source_url(it) for it in items if item_source_url(it)), "")
+    if first_source:
+        blocks += [f"source: {first_source}", ""]
     for i, item in enumerate(items, 1):
         blocks += [f"## {i}. {item['title']}", ""]
-        if item.get("url"):
-            blocks.append(f"原文：{item['url']}")
+        extra = yuanywen_line(item["title"], item_source_url(item))
+        if extra:
+            blocks.append(extra)
         if item.get("score"):
             blocks.append(f"分数：{item['score']}/10")
-        if item.get("url") or item.get("score"):
+        if extra or item.get("score"):
             blocks.append("")
-        snippet = item["body"].strip() or "（原文摘要待补）"
+        snippet = item["body"].strip() or "（摘要待补）"
         blocks += [snippet, "", ""]
     return "\n".join(blocks).rstrip() + "\n"
 

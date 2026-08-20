@@ -50,6 +50,8 @@ def test_extract_fixture() -> None:
     assert_true("### 我的判断" not in materials, "materials must not add 我的判断 sections")
     assert_true("wechat/STYLE.md" in materials, "next step must point at STYLE.md")
     assert_true("write_from_digest.py" in materials, "next step must point at writer")
+    assert_true("原文：[Codex rust-v0.148.0 发布](https://" in materials, materials)
+    assert_true("原文：https://" not in materials, "原文 must be a markdown link, not a bare URL")
 
 
 def test_cli_list_and_polish() -> None:
@@ -66,6 +68,8 @@ def test_cli_list_and_polish() -> None:
         text=True,
     )
     assert_true("从前怎样" in dry, "dry-run must load STYLE.md")
+    assert_true("data-linktype" in dry, "dry-run must load the WeChat link rule")
+    assert_true("原文：[标题](https://" in dry, dry)
     assert_true("Codex rust-v0.148.0 发布" in dry, dry)
 
 
