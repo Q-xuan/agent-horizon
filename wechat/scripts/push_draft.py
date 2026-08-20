@@ -18,61 +18,81 @@ import urllib.request
 from pathlib import Path
 
 
+SERIF = 'Georgia, "Songti SC", "Noto Serif SC", "Times New Roman", serif'
+SANS = 'Inter, "PingFang SC", "Noto Sans SC", Helvetica, sans-serif'
+INK = "#111111"
+MUTED = "rgba(0,0,0,0.5)"
+LINE = "rgba(0,0,0,0.08)"
+LINK = "rgba(0,0,0,0.18)"
+
+
 def md_to_html(md: str) -> str:
-    """WeChat-safe HTML: lead, numbered sections, inline styles only."""
+    """Astro Nano on WeChat: stone, serif body, thin rules, underlined links."""
     md = re.sub(r"^---\n.*?\n---\n", "", md, count=1, flags=re.S)
     out: list[str] = []
     buf: list[str] = []
-    first_p = True
 
     def flush_p() -> None:
-        nonlocal first_p
         if not buf:
             return
         text = inline(" ".join(x.strip() for x in buf))
-        if first_p:
-            out.append(
-                '<section style="margin:0 0 22px;padding:14px 16px;background:#f6f4f0;border-left:3px solid #111;">'
-                f'<p style="font-size:15px;line-height:1.8;margin:0;color:#333;">{text}</p></section>'
-            )
-            first_p = False
-        else:
-            out.append(
-                f'<p style="font-size:16px;line-height:1.85;margin:0 0 14px;color:#1f1f1f;">{text}</p>'
-            )
+        out.append(
+            f'<p style="font-family:{SERIF};font-size:16px;line-height:1.85;'
+            f'margin:0 0 1.15em;color:{MUTED};">{text}</p>'
+        )
         buf.clear()
 
     def inline(text: str) -> str:
-        text = re.sub(r"\[([^\]]+)\]\(([^)]+)\)", r'<a href="\2">\1</a>', text)
-        text = re.sub(r"`([^`]+)`", r'<code>\1</code>', text)
-        text = re.sub(r"\*\*([^*]+)\*\*", r"<strong>\1</strong>", text)
+        text = re.sub(
+            r"\[([^\]]+)\]\(([^)]+)\)",
+            rf'<a href="\2" style="font-family:{SANS};color:inherit;'
+            rf'text-decoration:underline;text-underline-offset:3px;'
+            rf'text-decoration-color:{LINK};">\1</a>',
+            text,
+        )
+        text = re.sub(
+            r"`([^`]+)`",
+            rf'<code style="font-family:{SANS};font-size:0.86em;background:#e7e5e4;'
+            rf'color:{INK};padding:0.1em 0.35em;border-radius:3px;">\1</code>',
+            text,
+        )
+        text = re.sub(
+            r"\*\*([^*]+)\*\*",
+            rf'<strong style="color:{INK};font-weight:600;">\1</strong>',
+            text,
+        )
         return text
 
     for line in md.splitlines():
         if line.startswith("## "):
             flush_p()
             out.append(
-                f'<h2 style="font-size:17px;margin:28px 0 12px;padding:0 0 8px;border-bottom:1px solid #eee;color:#111;">{inline(line[3:])}</h2>'
+                f'<h2 style="font-family:{SANS};font-size:15px;font-weight:600;'
+                f'letter-spacing:-0.02em;line-height:1.35;margin:2.2em 0 0.7em;'
+                f'padding:0 0 0.45em;border-bottom:1px solid {LINE};color:{INK};">{inline(line[3:])}</h2>'
             )
         elif line.startswith("### "):
             flush_p()
             out.append(
-                f'<h3 style="font-size:16px;margin:20px 0 8px;color:#333;">{inline(line[4:])}</h3>'
+                f'<h3 style="font-family:{SANS};font-size:14px;font-weight:600;'
+                f'margin:1.6em 0 0.5em;color:{INK};">{inline(line[4:])}</h3>'
             )
         elif line.startswith("# "):
             flush_p()
         elif line.startswith("> "):
             flush_p()
             out.append(
-                f'<p style="font-size:14px;line-height:1.7;margin:0 0 16px;color:#666;">{inline(line[2:])}</p>'
+                f'<p style="font-family:{SERIF};font-size:15px;line-height:1.8;'
+                f'margin:0 0 1.2em;color:{MUTED};">{inline(line[2:])}</p>'
             )
         elif line.strip() == "---":
             flush_p()
-            out.append('<hr style="border:none;border-top:1px solid #eee;margin:24px 0;" />')
+            out.append(f'<hr style="border:none;border-top:1px solid {LINE};margin:2em 0;" />')
         elif line.startswith("- "):
             flush_p()
             out.append(
-                f'<p style="font-size:16px;line-height:1.8;margin:0 0 8px;color:#1f1f1f;">• {inline(line[2:])}</p>'
+                f'<p style="font-family:{SERIF};font-size:16px;line-height:1.85;'
+                f'margin:0 0 0.4em;color:{MUTED};">· {inline(line[2:])}</p>'
             )
         elif not line.strip():
             flush_p()
