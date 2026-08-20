@@ -17,6 +17,10 @@ import urllib.parse
 import urllib.request
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+
+from digest_items import load_local_env
+
 
 # WeChat keeps a CSS whitelist. Inter/Georgia/rgba/text-underline-offset get dropped.
 # Nano, mapped to fonts the editor actually paints: 宋体 body, 苹方 headings, stone colors.
@@ -187,10 +191,11 @@ def main() -> None:
     parser.add_argument("--cover", required=True)
     args = parser.parse_args()
 
+    load_local_env()
     appid = os.environ.get("WECHAT_APPID", "").strip()
     secret = os.environ.get("WECHAT_SECRET", "").strip()
     if not appid or not secret:
-        raise SystemExit("Set WECHAT_APPID and WECHAT_SECRET first.")
+        raise SystemExit("Set WECHAT_APPID and WECHAT_SECRET in the environment or wechat/.env.local. Do not put them in git.")
 
     text = Path(args.markdown).read_text(encoding="utf-8")
     meta, body = parse_frontmatter(text)

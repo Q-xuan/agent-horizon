@@ -1,5 +1,9 @@
 name: Daily Agent Digest
 
+# Digest only. Do not call WeChat draft APIs here:
+# the IP whitelist is a fixed machine, not Actions egress.
+# Local: wechat/README.md → write_from_digest.py → review → push_draft.py
+
 on:
   schedule:
     # 23:00 UTC = 07:00 Asia/Shanghai
@@ -86,6 +90,25 @@ jobs:
 
       - name: Set current date
         run: echo "DATE=$(TZ=Asia/Shanghai date +'%Y-%m-%d')" >> "$GITHUB_ENV"
+
+      - name: Note today's Chinese digest for local WeChat writing
+        run: |
+          ZH="_posts/${DATE}-summary-zh.md"
+          {
+            echo "# 今日公众号原料"
+            echo
+            echo "GitHub Actions 只出日报，不推微信草稿箱。"
+            echo
+            echo "- 中文日报：\`${ZH}\`"
+            echo "- 写法：[wechat/STYLE.md](https://github.com/Q-xuan/agent-horizon/blob/main/wechat/STYLE.md)"
+            echo "- 本地成稿：\`python3 wechat/scripts/write_from_digest.py --digest <日报.md>\`"
+            echo "- 先看成稿。再在固定 IP 机器上：\`python3 wechat/scripts/push_draft.py wechat/posts/YYYY-MM-DD.md --cover wechat/cover.png\`"
+          } > horizon/docs/wechat-latest.md
+          if [ -f "horizon/${ZH}" ] || [ -f "horizon/docs/${ZH}" ]; then
+            echo "Noted ${ZH}"
+          else
+            echo "Digest file not in the usual place yet; still wrote wechat-latest.md"
+          fi
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
