@@ -7,3 +7,4 @@ data/state/
 wechat/.env
 wechat/.env.local
 wechat/.env.*
+wechat/posts/

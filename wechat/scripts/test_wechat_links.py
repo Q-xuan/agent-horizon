@@ -12,7 +12,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-import build_from_digest as digest  # noqa: E402
+import digest_items as digest  # noqa: E402
 import push_draft as push  # noqa: E402
 
 
@@ -76,20 +76,24 @@ class DigestEmitTests(unittest.TestCase):
     def test_emits_yuanywen_and_source_not_empty_questions(self) -> None:
         items = [
             {
-                "title": "[Mastra 1.60](https://github.com/mastra-ai/mastra) ⭐️ 8.0/10",
+                "title": "Mastra 1.60",
+                "url": "https://github.com/mastra-ai/mastra",
+                "score": "8.0",
                 "body": "durable agents。",
             },
             {
                 "title": "无链接小节",
+                "url": "",
+                "score": "",
                 "body": "没有出处。",
             },
         ]
-        post = digest.render_post(items, "2026-08-20")
+        post = digest.render_materials(items, "2026-08-20", "digest.md")
         self.assertIn("source: https://github.com/mastra-ai/mastra", post)
         self.assertIn("原文：[Mastra 1.60](https://github.com/mastra-ai/mastra)", post)
-        self.assertNotIn("我的疑问", post)
-        self.assertNotIn("我的判断", post)
-        self.assertNotRegex(post, r"(?m)^https://")
+        self.assertNotIn("原文：https://", post)
+        self.assertNotIn("### 我的疑问", post)
+        self.assertNotIn("### 我的判断", post)
 
 
 class ProcessDocsTests(unittest.TestCase):
@@ -99,12 +103,18 @@ class ProcessDocsTests(unittest.TestCase):
         style = (root / "STYLE.md").read_text(encoding="utf-8")
         readme = (root / "README.md").read_text(encoding="utf-8")
         self.assertIn("原文：[标题](https://", template)
+        self.assertIn("从前怎样", template)
         self.assertNotIn("### 我的疑问", template)
         self.assertIn("data-linktype", style)
         self.assertIn("阅读原文", style)
+        self.assertIn("从前怎样", style)
+        self.assertIn("所以怎样", style)
+        self.assertIn("这次改了什么", style)
         self.assertIn("普通 `<a href", readme)
-        self.assertNotIn("polish_post.py", readme)
-        self.assertNotIn("WECHAT_SECRET=", (root.parent / ".github" / "workflows" / "daily.yml").read_text(encoding="utf-8"))
+        self.assertIn("write_from_digest.py", readme)
+        daily = (root.parent / ".github" / "workflows" / "daily.yml").read_text(encoding="utf-8")
+        self.assertIn("shanghai_digest_date.py", daily)
+        self.assertNotIn("WECHAT_SECRET=", daily)
 
 
 if __name__ == "__main__":
