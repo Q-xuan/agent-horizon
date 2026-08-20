@@ -18,16 +18,19 @@ import urllib.request
 from pathlib import Path
 
 
-SERIF = 'Georgia, "Songti SC", "Noto Serif SC", "Times New Roman", serif'
-SANS = 'Inter, "PingFang SC", "Noto Sans SC", Helvetica, sans-serif'
+# WeChat keeps a CSS whitelist. Inter/Georgia/rgba/text-underline-offset get dropped.
+# Nano, mapped to fonts the editor actually paints: 宋体 body, 苹方 headings, stone colors.
+SANS = "PingFang SC, Hiragino Sans GB, Microsoft YaHei, Helvetica, sans-serif"
+SERIF = "Optima, Georgia, Songti SC, STSong, serif"
 INK = "#111111"
-MUTED = "rgba(0,0,0,0.5)"
-LINE = "rgba(0,0,0,0.08)"
-LINK = "rgba(0,0,0,0.18)"
+MUTED = "#78716c"
+LINE = "#e7e5e4"
+CHIP = "#e7e5e4"
+STONE = "#f5f5f4"
 
 
 def md_to_html(md: str) -> str:
-    """Astro Nano on WeChat: stone, serif body, thin rules, underlined links."""
+    """Astro Nano colors/type, written for WeChat's inline-style whitelist."""
     md = re.sub(r"^---\n.*?\n---\n", "", md, count=1, flags=re.S)
     out: list[str] = []
     buf: list[str] = []
@@ -37,28 +40,30 @@ def md_to_html(md: str) -> str:
             return
         text = inline(" ".join(x.strip() for x in buf))
         out.append(
-            f'<p style="font-family:{SERIF};font-size:16px;line-height:1.85;'
-            f'margin:0 0 1.15em;color:{MUTED};">{text}</p>'
+            f'<p style="font-family:{SERIF} !important;font-size:16px !important;'
+            f'line-height:1.85 !important;letter-spacing:0.5px !important;'
+            f'margin:0 0 18px !important;color:{MUTED} !important;">{text}</p>'
         )
         buf.clear()
 
     def inline(text: str) -> str:
         text = re.sub(
             r"\[([^\]]+)\]\(([^)]+)\)",
-            rf'<a href="\2" style="font-family:{SANS};color:inherit;'
-            rf'text-decoration:underline;text-underline-offset:3px;'
-            rf'text-decoration-color:{LINK};">\1</a>',
+            rf'<a href="\2" style="font-family:{SANS} !important;color:{INK} !important;'
+            rf'text-decoration:underline !important;'
+            rf'text-decoration-color:{LINE} !important;">\1</a>',
             text,
         )
         text = re.sub(
             r"`([^`]+)`",
-            rf'<code style="font-family:{SANS};font-size:0.86em;background:#e7e5e4;'
-            rf'color:{INK};padding:0.1em 0.35em;border-radius:3px;">\1</code>',
+            rf'<span style="font-family:{SANS} !important;font-size:14px !important;'
+            rf'background-color:{CHIP} !important;color:{INK} !important;'
+            rf'padding:1px 6px !important;">{chr(92)}1</span>'.replace(chr(92)+"1", r"\1"),
             text,
         )
         text = re.sub(
             r"\*\*([^*]+)\*\*",
-            rf'<strong style="color:{INK};font-weight:600;">\1</strong>',
+            rf'<strong style="color:{INK} !important;font-weight:600 !important;">\1</strong>',
             text,
         )
         return text
@@ -67,39 +72,51 @@ def md_to_html(md: str) -> str:
         if line.startswith("## "):
             flush_p()
             out.append(
-                f'<h2 style="font-family:{SANS};font-size:15px;font-weight:600;'
-                f'letter-spacing:-0.02em;line-height:1.35;margin:2.2em 0 0.7em;'
-                f'padding:0 0 0.45em;border-bottom:1px solid {LINE};color:{INK};">{inline(line[3:])}</h2>'
+                f'<h2 style="font-family:{SANS} !important;font-size:16px !important;'
+                f'font-weight:600 !important;line-height:1.4 !important;'
+                f'margin:36px 0 12px !important;padding:0 0 8px !important;'
+                f'border-bottom:1px solid {LINE} !important;color:{INK} !important;">'
+                f'{inline(line[3:])}</h2>'
             )
         elif line.startswith("### "):
             flush_p()
             out.append(
-                f'<h3 style="font-family:{SANS};font-size:14px;font-weight:600;'
-                f'margin:1.6em 0 0.5em;color:{INK};">{inline(line[4:])}</h3>'
+                f'<h3 style="font-family:{SANS} !important;font-size:15px !important;'
+                f'font-weight:600 !important;margin:24px 0 8px !important;'
+                f'color:{INK} !important;">{inline(line[4:])}</h3>'
             )
         elif line.startswith("# "):
             flush_p()
         elif line.startswith("> "):
             flush_p()
             out.append(
-                f'<p style="font-family:{SERIF};font-size:15px;line-height:1.8;'
-                f'margin:0 0 1.2em;color:{MUTED};">{inline(line[2:])}</p>'
+                f'<p style="font-family:{SERIF} !important;font-size:15px !important;'
+                f'line-height:1.8 !important;margin:0 0 18px !important;'
+                f'color:{MUTED} !important;">{inline(line[2:])}</p>'
             )
         elif line.strip() == "---":
             flush_p()
-            out.append(f'<hr style="border:none;border-top:1px solid {LINE};margin:2em 0;" />')
+            out.append(
+                f'<p style="border-top:1px solid {LINE} !important;margin:28px 0 !important;'
+                f'font-size:0 !important;line-height:0 !important;">&nbsp;</p>'
+            )
         elif line.startswith("- "):
             flush_p()
             out.append(
-                f'<p style="font-family:{SERIF};font-size:16px;line-height:1.85;'
-                f'margin:0 0 0.4em;color:{MUTED};">· {inline(line[2:])}</p>'
+                f'<p style="font-family:{SERIF} !important;font-size:16px !important;'
+                f'line-height:1.85 !important;margin:0 0 6px !important;'
+                f'color:{MUTED} !important;">· {inline(line[2:])}</p>'
             )
         elif not line.strip():
             flush_p()
         else:
             buf.append(line)
     flush_p()
-    return "\n".join(out)
+    inner = "\n".join(out)
+    return (
+        f'<section style="background-color:{STONE} !important;padding:12px 4px !important;">'
+        f"{inner}</section>"
+    )
 
 
 def parse_frontmatter(text: str) -> tuple[dict[str, str], str]:
