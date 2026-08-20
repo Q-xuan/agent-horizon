@@ -19,18 +19,27 @@ from pathlib import Path
 
 
 def md_to_html(md: str) -> str:
-    """Small WeChat-safe converter: headings, quotes, lists, paragraphs, links."""
+    """WeChat-safe HTML: lead, numbered sections, inline styles only."""
     md = re.sub(r"^---\n.*?\n---\n", "", md, count=1, flags=re.S)
     out: list[str] = []
     buf: list[str] = []
+    first_p = True
 
     def flush_p() -> None:
+        nonlocal first_p
         if not buf:
             return
         text = inline(" ".join(x.strip() for x in buf))
-        out.append(
-            f'<p style="font-size:16px;line-height:1.8;margin:0 0 16px;color:#1f1f1f;">{text}</p>'
-        )
+        if first_p:
+            out.append(
+                '<section style="margin:0 0 22px;padding:14px 16px;background:#f6f4f0;border-left:3px solid #111;">'
+                f'<p style="font-size:15px;line-height:1.8;margin:0;color:#333;">{text}</p></section>'
+            )
+            first_p = False
+        else:
+            out.append(
+                f'<p style="font-size:16px;line-height:1.85;margin:0 0 14px;color:#1f1f1f;">{text}</p>'
+            )
         buf.clear()
 
     def inline(text: str) -> str:
@@ -43,7 +52,7 @@ def md_to_html(md: str) -> str:
         if line.startswith("## "):
             flush_p()
             out.append(
-                f'<h2 style="font-size:18px;margin:28px 0 12px;color:#111;">{inline(line[3:])}</h2>'
+                f'<h2 style="font-size:17px;margin:28px 0 12px;padding:0 0 8px;border-bottom:1px solid #eee;color:#111;">{inline(line[3:])}</h2>'
             )
         elif line.startswith("### "):
             flush_p()
@@ -55,7 +64,7 @@ def md_to_html(md: str) -> str:
         elif line.startswith("> "):
             flush_p()
             out.append(
-                f'<blockquote style="border-left:3px solid #ddd;margin:0 0 16px;padding:0 0 0 12px;color:#555;">{inline(line[2:])}</blockquote>'
+                f'<p style="font-size:14px;line-height:1.7;margin:0 0 16px;color:#666;">{inline(line[2:])}</p>'
             )
         elif line.strip() == "---":
             flush_p()
