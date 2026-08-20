@@ -4,6 +4,22 @@
 
 参考：[WangZengqi-Writing-Style](https://github.com/chengjialu8888/WangZengqi-Writing-Style)
 
+## 链接（发布后才会在，写稿时必须遵守）
+
+这不是 markdown 问题。推上去的是 HTML。微信会把普通 `<a href="...">` 洗掉，发布后正文链接就没了。
+
+`push_draft.py` 会把 `[文字](https://...)` 收成编辑器那种标签：`<a target="_blank" href="https://..." textvalue="..." data-linktype="2">`。只收 `https://`。不要手写裸 `<a href>`，不要只丢一行裸 URL。
+
+每条有出处的稿，结尾必须是：
+
+```markdown
+原文：[标题](https://...)
+```
+
+frontmatter 的 `source:` 若是 `https://`，就是文末「阅读原文」。没有 `source:` 时，用正文里第一条 `原文：[…](https://…)`；再没有，才用正文第一条 `https://`。订阅号上「阅读原文」是最稳的外链，不要省。
+
+「我的疑问」没写就不要印出来。不要留空的「我的疑问 / 我的判断」小节。
+
 ## 汉化
 
 - 专有名词不译：OpenRouter、Stripe、Claude、Mastra、MCP。
@@ -16,7 +32,6 @@
 - 短句为主，偶用长句回味。句与句要接得上。
 - 先摆一件具体的事，再轻轻说一句看法。不喊情绪。
 - 少用意味着、标志着、赋能、闭环、生态。
-- 「我的疑问」没写就不要印出来。
 - 结尾煞住即可，不要「总之」。
 
 ## 前因后果

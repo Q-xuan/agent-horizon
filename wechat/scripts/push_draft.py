@@ -8,6 +8,7 @@ Creates a draft only. Does not mass-send.
 from __future__ import annotations
 
 import argparse
+import html
 import json
 import os
 import re
@@ -28,6 +29,51 @@ LINE = "#e7e5e4"
 CHIP = "#e7e5e4"
 STONE = "#f5f5f4"
 
+# Plain <a href> is stripped after publish. Editor-shaped tags survive.
+MD_LINK_RE = re.compile(r"\[([^\]]+)\]\(([^)]+)\)")
+YUANYWEN_RE = re.compile(r"原文[：:]\s*\[[^\]]*\]\((https://[^)\s]+)\)")
+HTTPS_RE = re.compile(r"https://[^\s)>\]]+")
+
+
+def https_only(url: str) -> str:
+    """Return url if it is https://, else empty. Never emit http/javascript hrefs."""
+    url = (url or "").strip()
+    if url.startswith("https://") and len(url) > len("https://"):
+        return url
+    return ""
+
+
+def wechat_anchor(label: str, url: str) -> str:
+    """WeChat-editor <a> that survives publish sanitizer. https href only."""
+    safe_label = html.escape(label, quote=True)
+    href = https_only(url)
+    if not href:
+        return safe_label
+    safe_href = html.escape(href, quote=True)
+    return (
+        f'<a target="_blank" href="{safe_href}" textvalue="{safe_label}" '
+        f'data-linktype="2" style="font-family:{SANS} !important;color:{INK} !important;'
+        f'text-decoration:underline !important;'
+        f'text-decoration-color:{LINE} !important;">{safe_label}</a>'
+    )
+
+
+def first_https_url(text: str) -> str:
+    """First https:// URL in markdown, preferring a 原文：[title](url) line."""
+    m = YUANYWEN_RE.search(text)
+    if m:
+        return https_only(m.group(1))
+    m = HTTPS_RE.search(text)
+    return https_only(m.group(0)) if m else ""
+
+
+def content_source_url(meta: dict[str, str], body: str) -> str:
+    """阅读原文 URL: frontmatter source: if https, else first https in the body."""
+    source = https_only(meta.get("source", ""))
+    if source:
+        return source
+    return first_https_url(body)
+
 
 def md_to_html(md: str) -> str:
     """Astro Nano colors/type, written for WeChat's inline-style whitelist."""
@@ -47,13 +93,7 @@ def md_to_html(md: str) -> str:
         buf.clear()
 
     def inline(text: str) -> str:
-        text = re.sub(
-            r"\[([^\]]+)\]\(([^)]+)\)",
-            rf'<a href="\2" style="font-family:{SANS} !important;color:{INK} !important;'
-            rf'text-decoration:underline !important;'
-            rf'text-decoration-color:{LINE} !important;">\1</a>',
-            text,
-        )
+        text = MD_LINK_RE.sub(lambda m: wechat_anchor(m.group(1), m.group(2)), text)
         text = re.sub(
             r"`([^`]+)`",
             rf'<span style="font-family:{SANS} !important;font-size:14px !important;'
@@ -194,21 +234,22 @@ def main() -> None:
 
     text = Path(args.markdown).read_text(encoding="utf-8")
     meta, body = parse_frontmatter(text)
-    html = md_to_html(body)
+    article_html = md_to_html(body)
+    source_url = content_source_url(meta, body)
     tok = token(appid, secret)
     thumb = upload_cover(tok, Path(args.cover))
-    result = add_draft(
-        tok,
-        {
-            "title": meta.get("title") or Path(args.markdown).stem,
-            "author": meta.get("author") or "pengyu",
-            "digest": meta.get("digest") or "",
-            "content": html,
-            "thumb_media_id": thumb,
-            "need_open_comment": 1,
-            "only_fans_can_comment": 0,
-        },
-    )
+    article = {
+        "title": meta.get("title") or Path(args.markdown).stem,
+        "author": meta.get("author") or "pengyu",
+        "digest": meta.get("digest") or "",
+        "content": article_html,
+        "thumb_media_id": thumb,
+        "need_open_comment": 1,
+        "only_fans_can_comment": 0,
+    }
+    if source_url:
+        article["content_source_url"] = source_url
+    result = add_draft(tok, article)
     print(json.dumps(result, ensure_ascii=False, indent=2))
     if result.get("errcode") not in (None, 0) and "media_id" not in result:
         sys.exit(1)

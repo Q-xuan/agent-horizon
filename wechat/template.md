@@ -1,7 +1,8 @@
 ---
 title: 今日 Agent 笔记
 author: pengyu
-digest: 从每日雷达里挑出的几条，加上我的疑问和判断。
+digest: 从每日雷达里挑出的几条。
+source: https://q-xuan.github.io/agent-horizon/
 ---
 
 # 今日 Agent 笔记
@@ -16,17 +17,9 @@ digest: 从每日雷达里挑出的几条，加上我的疑问和判断。
 
 ## 1. 标题
 
-来源：
+（先写从哪来，再写改了什么。）
 
-摘要：
-
-### 我的疑问
-
--
-
-### 我的判断
-
--
+原文：[标题](https://example.com/item)
 
 ---
 

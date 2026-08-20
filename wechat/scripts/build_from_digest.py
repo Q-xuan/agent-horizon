@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
-"""Turn selected digest items into a WeChat draft markdown with thought placeholders."""
+"""Turn selected digest items into WeChat draft markdown.
+
+Each sourced item ends with 原文：[title](https://...). No empty 我的疑问 sections.
+"""
 
 from __future__ import annotations
 
@@ -13,6 +16,32 @@ ITEM_RE = re.compile(
     r"^#{2,3}\s+(?P<title>.+?)\s*$",
     re.MULTILINE,
 )
+MD_LINK_RE = re.compile(r"\[([^\]]+)\]\((https://[^)]+)\)")
+HTTPS_RE = re.compile(r"https://[^\s)>\]]+")
+SCORE_RE = re.compile(r"\s*⭐️?\s*\d+(?:\.\d+)?/10\s*$")
+
+
+def item_title_and_url(item: dict[str, str]) -> tuple[str, str]:
+    """Display title plus first https source (heading link, then body)."""
+    raw = SCORE_RE.sub("", item["title"]).strip()
+    m = MD_LINK_RE.search(raw)
+    if m:
+        return m.group(1).strip(), m.group(2).strip()
+    title = raw
+    blob = f"{raw}\n{item.get('body', '')}"
+    m = MD_LINK_RE.search(blob)
+    if m:
+        return title, m.group(2).strip()
+    m = HTTPS_RE.search(blob)
+    return title, (m.group(0) if m else "")
+
+
+def yuanywen_line(title: str, url: str) -> str:
+    """Sourced items must end with 原文：[title](https://...). Never a bare URL."""
+    if not url.startswith("https://"):
+        return ""
+    label = title or url
+    return f"原文：[{label}]({url})"
 
 
 def split_items(text: str) -> list[dict[str, str]]:
@@ -69,11 +98,17 @@ def pick_items(items: list[dict[str, str]], pick: str) -> list[dict[str, str]]:
 
 
 def render_post(items: list[dict[str, str]], date: str) -> str:
+    sourced = [item_title_and_url(it) for it in items]
+    first_source = next((url for _, url in sourced if url.startswith("https://")), "")
     blocks = [
         "---",
         f"title: {date} Agent 笔记",
         "author: pengyu",
-        "digest: 从每日雷达里挑出的几条，加上我的疑问和判断。",
+        "digest: 从每日雷达里挑出的几条。",
+    ]
+    if first_source:
+        blocks.append(f"source: {first_source}")
+    blocks += [
         "---",
         "",
         f"# {date} Agent 笔记",
@@ -85,26 +120,21 @@ def render_post(items: list[dict[str, str]], date: str) -> str:
         "（用两三句说清楚：今天被什么卡住，或想验证什么。）",
         "",
     ]
-    for i, item in enumerate(items, 1):
+    for i, (item, (title, url)) in enumerate(zip(items, sourced), 1):
         snippet = item["body"].strip()
         if len(snippet) > 500:
             snippet = snippet[:500].rstrip() + "…"
         blocks += [
             "---",
             "",
-            f"## {i}. {item['title']}",
+            f"## {i}. {title}",
             "",
-            snippet or "（原文摘要待补）",
-            "",
-            "### 我的疑问",
-            "",
-            "-",
-            "",
-            "### 我的判断",
-            "",
-            "-",
+            snippet or "（摘要待补）",
             "",
         ]
+        extra = yuanywen_line(title, url)
+        if extra:
+            blocks += [extra, ""]
     blocks += [
         "---",
         "",

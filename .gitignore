@@ -4,3 +4,6 @@ __pycache__/
 data/summaries/
 data/state/
 *.pyc
+wechat/.env
+wechat/.env.local
+wechat/.env.*
