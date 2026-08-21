@@ -1,6 +1,6 @@
 ---
 title: （不超过 22 字，一件真事）
-author: pengyu
+author: yuseus
 digest: （开头两三句里抽出的摘要）
 source: https://example.com/first-item
 ---

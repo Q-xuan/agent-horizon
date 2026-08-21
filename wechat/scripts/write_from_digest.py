@@ -92,7 +92,7 @@ def build_messages(style: str, materials: str) -> list[dict[str, str]]:
                 "不要写「我的疑问」「我的判断」。"
                 "每条有出处的结尾必须是一行：原文：[标题](https://...)。"
                 "不要只写裸 URL。不要手写裸 <a href>。"
-                "frontmatter 加 source:，填第一条 https 原文，供阅读原文使用。\n\n"
+                "frontmatter 加 author: yuseus，以及 source:，填第一条 https 原文，供阅读原文使用。\n\n"
                 f"{style}"
             ),
         },
