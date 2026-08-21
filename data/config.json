@@ -27,7 +27,11 @@
         "topic_dedup": true
       },
       "ai-daily": {
-        "threshold": 5.5,
+        "threshold": 5.0,
+        "topic_dedup": true
+      },
+      "ai-deals": {
+        "threshold": 4.5,
         "topic_dedup": true
       }
     }
@@ -741,6 +745,48 @@
         "enabled": true,
         "category": "papers",
         "profile": "ai-daily"
+      },
+      {
+        "name": "少数派",
+        "url": "https://sspai.com/feed",
+        "enabled": true,
+        "category": "deals",
+        "profile": "ai-deals"
+      },
+      {
+        "name": "小众软件",
+        "url": "https://feeds.appinn.com/appinns/",
+        "enabled": true,
+        "category": "deals",
+        "profile": "ai-deals"
+      },
+      {
+        "name": "V2EX Hot",
+        "url": "https://www.v2ex.com/feed/tab/hot.xml",
+        "enabled": true,
+        "category": "deals",
+        "profile": "ai-deals"
+      },
+      {
+        "name": "Product Hunt",
+        "url": "https://www.producthunt.com/feed",
+        "enabled": true,
+        "category": "deals",
+        "profile": "ai-deals"
+      },
+      {
+        "name": "爱范儿",
+        "url": "https://www.ifanr.com/feed",
+        "enabled": true,
+        "category": "deals",
+        "profile": "ai-deals"
+      },
+      {
+        "name": "HN Free API / Credits",
+        "url": "https://hnrss.org/newest?q=free+API+OR+credits+OR+OpenRouter",
+        "enabled": true,
+        "category": "deals",
+        "profile": "ai-deals"
       }
     ],
     "reddit": {
@@ -833,7 +879,7 @@
     },
     "google_news": {
       "enabled": true,
-      "query": "AI OR LLM OR Claude OR GPT OR Gemini OR \"coding agent\" OR \"foundation model\"",
+      "query": "AI OR LLM OR Claude OR GPT OR Gemini OR \"coding agent\" OR \"foundation model\" OR 羊毛 OR 免费额度 OR \"free credits\" OR \"API credits\"",
       "language": "en",
       "country": "US",
       "ceid": null,
@@ -863,7 +909,8 @@
     "profile_order": [
       "harness-arch",
       "agent-engineer",
-      "ai-daily"
+      "ai-daily",
+      "ai-deals"
     ],
     "category_groups": {
       "harness": {
@@ -894,6 +941,12 @@
         "categories": [
           "github-trending",
           "reddit"
+        ]
+      },
+      "deals": {
+        "limit": 3,
+        "categories": [
+          "deals"
         ]
       }
     },
