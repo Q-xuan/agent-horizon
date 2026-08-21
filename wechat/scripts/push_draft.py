@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Push a local markdown post to the WeChat official-account draft box.
 
-Requires WECHAT_APPID / WECHAT_SECRET and a cover image.
+Requires WECHAT_APPID / WECHAT_SECRET and a cover image when pushing.
 Creates a draft only. Does not mass-send.
+Use --html-out to write the typeset HTML and exit without pushing.
 """
 
 from __future__ import annotations
@@ -23,20 +24,16 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from digest_items import load_local_env
 
 
-# WeChat keeps a CSS whitelist. Inter/Georgia/rgba/text-underline-offset get dropped.
-# Nano, mapped to fonts the editor actually paints: 宋体 body, 苹方 headings, stone colors.
-SANS = "PingFang SC, Hiragino Sans GB, Microsoft YaHei, Helvetica, sans-serif"
-SERIF = "Optima, Georgia, Songti SC, STSong, serif"
-INK = "#111111"
-MUTED = "#78716c"
-LINE = "#e7e5e4"
-CHIP = "#e7e5e4"
-STONE = "#f5f5f4"
+# WeChat keeps a CSS whitelist. No theme hex, no media queries, no dark/light vars.
+# Nano-on-WeChat: PingFang / Hiragino / YaHei only. currentColor for lines.
+FONT = "PingFang SC, Hiragino Sans GB, Microsoft YaHei"
 
 # Plain <a href> is stripped after publish. Editor-shaped tags survive.
 MD_LINK_RE = re.compile(r"\[([^\]]+)\]\(([^)]+)\)")
 YUANYWEN_RE = re.compile(r"原文[：:]\s*\[[^\]]*\]\((https://[^)\s]+)\)")
+YUANYWEN_LINE_RE = re.compile(r"^原文[：:]")
 HTTPS_RE = re.compile(r"https://[^\s)>\]]+")
+H2_NUM_RE = re.compile(r"^(\d+)\.\s+(.*)$")
 
 
 def https_only(url: str) -> str:
@@ -56,9 +53,10 @@ def wechat_anchor(label: str, url: str) -> str:
     safe_href = html.escape(href, quote=True)
     return (
         f'<a target="_blank" href="{safe_href}" textvalue="{safe_label}" '
-        f'data-linktype="2" style="font-family:{SANS} !important;color:{INK} !important;'
+        f'data-linktype="2" style="font-family:{FONT} !important;'
         f'text-decoration:underline !important;'
-        f'text-decoration-color:{LINE} !important;">{safe_label}</a>'
+        f'text-underline-offset:3px !important;'
+        f'word-break:break-word !important;">{safe_label}</a>'
     )
 
 
@@ -79,88 +77,173 @@ def content_source_url(meta: dict[str, str], body: str) -> str:
     return first_https_url(body)
 
 
+def is_cjk(ch: str) -> bool:
+    """True for CJK letters and punctuation so wrapped Chinese is not spaced."""
+    if not ch:
+        return False
+    cp = ord(ch)
+    return (
+        0x2E80 <= cp <= 0x2EFF
+        or 0x2F00 <= cp <= 0x2FDF
+        or 0x3000 <= cp <= 0x303F
+        or 0x3040 <= cp <= 0x30FF
+        or 0x3400 <= cp <= 0x4DBF
+        or 0x4E00 <= cp <= 0x9FFF
+        or 0xF900 <= cp <= 0xFAFF
+        or 0xFF00 <= cp <= 0xFFEF
+        or 0x20000 <= cp <= 0x2A6DF
+    )
+
+
+def join_wrapped_lines(lines: list[str]) -> str:
+    """Join hard-wrapped source lines. No English space between CJK and CJK."""
+    parts = [x.strip() for x in lines if x.strip()]
+    if not parts:
+        return ""
+    out = parts[0]
+    for nxt in parts[1:]:
+        if is_cjk(out[-1]) and is_cjk(nxt[0]):
+            out += nxt
+        else:
+            out += " " + nxt
+    return out
+
+
+def hairline() -> str:
+    """1px currentColor rule, thinned with scaleY(~0.45). Used after lede and for ---."""
+    return (
+        '<p style="margin:20px 0 !important;font-size:0 !important;'
+        "line-height:0 !important;border-top:1px solid currentColor !important;"
+        'transform:scaleY(0.45) !important;transform-origin:center center !important;">'
+        "&nbsp;</p>"
+    )
+
+
+def _font_style() -> str:
+    return f"font-family:{FONT} !important;"
+
+
 def md_to_html(md: str) -> str:
-    """Astro Nano colors/type, written for WeChat's inline-style whitelist."""
+    """Nano-on-WeChat type: lede / hairline / footnote / CJK join. No theme colors."""
     md = re.sub(r"^---\n.*?\n---\n", "", md, count=1, flags=re.S)
     out: list[str] = []
     buf: list[str] = []
-
-    def flush_p() -> None:
-        if not buf:
-            return
-        text = inline(" ".join(x.strip() for x in buf))
-        out.append(
-            f'<p style="font-family:{SERIF} !important;font-size:16px !important;'
-            f'line-height:1.85 !important;letter-spacing:0.5px !important;'
-            f'margin:0 0 18px !important;color:{MUTED} !important;">{text}</p>'
-        )
-        buf.clear()
+    lede_emitted = False
+    h2_count = 0
 
     def inline(text: str) -> str:
         text = MD_LINK_RE.sub(lambda m: wechat_anchor(m.group(1), m.group(2)), text)
         text = re.sub(
             r"`([^`]+)`",
-            rf'<span style="font-family:{SANS} !important;font-size:14px !important;'
-            rf'background-color:{CHIP} !important;color:{INK} !important;'
-            rf'padding:1px 6px !important;">{chr(92)}1</span>'.replace(chr(92)+"1", r"\1"),
+            lambda m: (
+                f'<span style="{_font_style()}font-size:13px !important;'
+                f"border:1px solid currentColor !important;"
+                f'padding:1px 6px !important;">{m.group(1)}</span>'
+            ),
             text,
         )
         text = re.sub(
             r"\*\*([^*]+)\*\*",
-            rf'<strong style="color:{INK} !important;font-weight:600 !important;">\1</strong>',
+            r'<strong style="font-weight:600 !important;">\1</strong>',
             text,
         )
         return text
 
+    def format_h2_title(title: str) -> str:
+        m = H2_NUM_RE.match(title)
+        if not m:
+            return inline(title)
+        return (
+            f'<span style="font-size:13px !important;letter-spacing:0.18em !important;'
+            f'font-weight:600 !important;">{m.group(1)}.</span> {inline(m.group(2))}'
+        )
+
+    def emit_p(text: str, kind: str) -> None:
+        if kind == "lede":
+            style = (
+                f"{_font_style()}font-size:17px !important;"
+                f"line-height:1.95 !important;letter-spacing:0.14em !important;"
+                f"margin:0 0 10px !important;"
+            )
+        elif kind == "footnote":
+            style = (
+                f"{_font_style()}font-size:14px !important;"
+                f"line-height:1.7 !important;letter-spacing:0.04em !important;"
+                f"margin:0 0 10px !important;"
+            )
+        else:
+            style = (
+                f"{_font_style()}font-size:16px !important;"
+                f"line-height:1.9 !important;letter-spacing:0.12em !important;"
+                f"margin:0 0 18px !important;"
+            )
+        out.append(f'<p style="{style}">{text}</p>')
+
+    def flush_p() -> None:
+        nonlocal lede_emitted
+        if not buf:
+            return
+        text = inline(join_wrapped_lines(buf))
+        raw = join_wrapped_lines(buf)
+        buf.clear()
+        if YUANYWEN_LINE_RE.match(raw):
+            emit_p(text, "footnote")
+            return
+        if not lede_emitted:
+            emit_p(text, "lede")
+            out.append(hairline())
+            lede_emitted = True
+            return
+        emit_p(text, "body")
+
     for line in md.splitlines():
         if line.startswith("## "):
             flush_p()
+            h2_count += 1
+            top = 28 if h2_count == 1 else 44
             out.append(
-                f'<h2 style="font-family:{SANS} !important;font-size:16px !important;'
-                f'font-weight:600 !important;line-height:1.4 !important;'
-                f'margin:36px 0 12px !important;padding:0 0 8px !important;'
-                f'border-bottom:1px solid {LINE} !important;color:{INK} !important;">'
-                f'{inline(line[3:])}</h2>'
+                f'<h2 style="{_font_style()}font-size:16px !important;'
+                f"font-weight:600 !important;letter-spacing:0.08em !important;"
+                f"line-height:1.5 !important;margin:{top}px 0 12px !important;"
+                f'padding:0 0 8px !important;border-bottom:1px solid currentColor !important;">'
+                f"{format_h2_title(line[3:].strip())}</h2>"
             )
         elif line.startswith("### "):
             flush_p()
             out.append(
-                f'<h3 style="font-family:{SANS} !important;font-size:15px !important;'
-                f'font-weight:600 !important;margin:24px 0 8px !important;'
-                f'color:{INK} !important;">{inline(line[4:])}</h3>'
+                f'<h3 style="{_font_style()}font-size:15px !important;'
+                f'font-weight:600 !important;margin:24px 0 8px !important;">'
+                f"{inline(line[4:])}</h3>"
             )
         elif line.startswith("# "):
             flush_p()
         elif line.startswith("> "):
             flush_p()
             out.append(
-                f'<p style="font-family:{SERIF} !important;font-size:15px !important;'
-                f'line-height:1.8 !important;margin:0 0 18px !important;'
-                f'color:{MUTED} !important;">{inline(line[2:])}</p>'
+                f'<p style="{_font_style()}font-size:16px !important;'
+                f"line-height:1.9 !important;letter-spacing:0.12em !important;"
+                f"margin:0 0 18px !important;padding:0 0 0 12px !important;"
+                f'border-left:2px solid currentColor !important;">{inline(line[2:])}</p>'
             )
         elif line.strip() == "---":
             flush_p()
-            out.append(
-                f'<p style="border-top:1px solid {LINE} !important;margin:28px 0 !important;'
-                f'font-size:0 !important;line-height:0 !important;">&nbsp;</p>'
-            )
+            out.append(hairline())
+        elif YUANYWEN_LINE_RE.match(line.strip()):
+            flush_p()
+            emit_p(inline(line.strip()), "footnote")
         elif line.startswith("- "):
             flush_p()
             out.append(
-                f'<p style="font-family:{SERIF} !important;font-size:16px !important;'
-                f'line-height:1.85 !important;margin:0 0 6px !important;'
-                f'color:{MUTED} !important;">· {inline(line[2:])}</p>'
+                f'<p style="{_font_style()}font-size:16px !important;'
+                f"line-height:1.9 !important;letter-spacing:0.12em !important;"
+                f'margin:0 0 6px !important;">· {inline(line[2:])}</p>'
             )
         elif not line.strip():
             flush_p()
         else:
             buf.append(line)
     flush_p()
-    inner = "\n".join(out)
-    return (
-        f'<section style="background-color:{STONE} !important;padding:12px 4px !important;">'
-        f"{inner}</section>"
-    )
+    return f"<section>{chr(10).join(out)}</section>"
 
 
 def parse_frontmatter(text: str) -> tuple[dict[str, str], str]:
@@ -228,8 +311,21 @@ def add_draft(tok: str, article: dict) -> dict:
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("markdown")
-    parser.add_argument("--cover", required=True)
+    parser.add_argument("--cover", help="Cover image. Required only when pushing a draft.")
+    parser.add_argument("--html-out", help="Write typeset HTML and exit. Does not push.")
     args = parser.parse_args()
+
+    text = Path(args.markdown).read_text(encoding="utf-8")
+    meta, body = parse_frontmatter(text)
+    article_html = md_to_html(body)
+
+    if args.html_out:
+        Path(args.html_out).write_text(article_html, encoding="utf-8")
+        print(f"Wrote {args.html_out}")
+        return
+
+    if not args.cover:
+        raise SystemExit("--cover is required when pushing a draft")
 
     load_local_env()
     appid = os.environ.get("WECHAT_APPID", "").strip()
@@ -237,9 +333,6 @@ def main() -> None:
     if not appid or not secret:
         raise SystemExit("Set WECHAT_APPID and WECHAT_SECRET in the environment or wechat/.env.local. Do not put them in git.")
 
-    text = Path(args.markdown).read_text(encoding="utf-8")
-    meta, body = parse_frontmatter(text)
-    article_html = md_to_html(body)
     source_url = content_source_url(meta, body)
     tok = token(appid, secret)
     thumb = upload_cover(tok, Path(args.cover))
