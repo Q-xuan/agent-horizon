@@ -20,7 +20,7 @@
 
 frontmatter 的 `source:` 若是 `https://`，就是文末「阅读原文」。没有 `source:` 时，用正文里第一条 `原文：[…](https://…)`；再没有，才用正文第一条 `https://`。订阅号上「阅读原文」是最稳的外链，不要省。
 
-排版由 `push_draft.py` 收成微信还能留下的 HTML。导语、发丝线、原文脚注、中文折行不加空格，借自 [doocs/md](https://github.com/doocs/md) 和 [文颜 wenyan](https://github.com/caol64/wenyan) 的结构想法；不借它们的彩色 H2 胶囊、主题色，也不借 Mac 代码窗。
+排版由 `push_draft.py` 收成微信还能留下的 HTML。导语、发丝线、原文脚注、中文折行不加空格，借自 [doocs/md](https://github.com/doocs/md) 和 [文颜 wenyan](https://github.com/caol64/wenyan) 的结构想法；不借它们的彩色 H2 胶囊、主题色，也不借 Mac 代码窗。二级标题不加通栏线，篇首只留导语下的发丝线。
 
 不要「我的疑问」「我的判断」这种空栏。
 

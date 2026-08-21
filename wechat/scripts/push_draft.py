@@ -112,7 +112,7 @@ def join_wrapped_lines(lines: list[str]) -> str:
 def hairline() -> str:
     """1px currentColor rule, thinned with scaleY(~0.45). Used after lede and for ---."""
     return (
-        '<p style="margin:20px 0 !important;font-size:0 !important;'
+        '<p style="margin:18px 0 6px !important;font-size:0 !important;'
         "line-height:0 !important;border-top:1px solid currentColor !important;"
         'transform:scaleY(0.45) !important;transform-origin:center center !important;">'
         "&nbsp;</p>"
@@ -154,7 +154,7 @@ def md_to_html(md: str) -> str:
         if not m:
             return inline(title)
         return (
-            f'<span style="font-size:13px !important;letter-spacing:0.18em !important;'
+            f'<span style="font-size:13px !important;letter-spacing:0.06em !important;'
             f'font-weight:600 !important;">{m.group(1)}.</span> {inline(m.group(2))}'
         )
 
@@ -162,20 +162,20 @@ def md_to_html(md: str) -> str:
         if kind == "lede":
             style = (
                 f"{_font_style()}font-size:17px !important;"
-                f"line-height:1.95 !important;letter-spacing:0.14em !important;"
+                f"line-height:1.95 !important;letter-spacing:0.10em !important;"
                 f"margin:0 0 10px !important;"
             )
         elif kind == "footnote":
             style = (
                 f"{_font_style()}font-size:14px !important;"
                 f"line-height:1.7 !important;letter-spacing:0.04em !important;"
-                f"margin:0 0 10px !important;"
+                f"margin:14px 0 28px !important;"
             )
         else:
             style = (
                 f"{_font_style()}font-size:16px !important;"
-                f"line-height:1.9 !important;letter-spacing:0.12em !important;"
-                f"margin:0 0 18px !important;"
+                f"line-height:1.9 !important;letter-spacing:0.08em !important;"
+                f"margin:0 0 20px !important;"
             )
         out.append(f'<p style="{style}">{text}</p>')
 
@@ -200,12 +200,11 @@ def md_to_html(md: str) -> str:
         if line.startswith("## "):
             flush_p()
             h2_count += 1
-            top = 28 if h2_count == 1 else 44
+            top = 18 if h2_count == 1 else 52
             out.append(
                 f'<h2 style="{_font_style()}font-size:16px !important;'
-                f"font-weight:600 !important;letter-spacing:0.08em !important;"
-                f"line-height:1.5 !important;margin:{top}px 0 12px !important;"
-                f'padding:0 0 8px !important;border-bottom:1px solid currentColor !important;">'
+                f"font-weight:600 !important;letter-spacing:0.04em !important;"
+                f'line-height:1.5 !important;margin:{top}px 0 12px !important;">'
                 f"{format_h2_title(line[3:].strip())}</h2>"
             )
         elif line.startswith("### "):
@@ -221,7 +220,7 @@ def md_to_html(md: str) -> str:
             flush_p()
             out.append(
                 f'<p style="{_font_style()}font-size:16px !important;'
-                f"line-height:1.9 !important;letter-spacing:0.12em !important;"
+                f"line-height:1.9 !important;letter-spacing:0.08em !important;"
                 f"margin:0 0 18px !important;padding:0 0 0 12px !important;"
                 f'border-left:2px solid currentColor !important;">{inline(line[2:])}</p>'
             )
@@ -235,7 +234,7 @@ def md_to_html(md: str) -> str:
             flush_p()
             out.append(
                 f'<p style="{_font_style()}font-size:16px !important;'
-                f"line-height:1.9 !important;letter-spacing:0.12em !important;"
+                f"line-height:1.9 !important;letter-spacing:0.08em !important;"
                 f'margin:0 0 6px !important;">· {inline(line[2:])}</p>'
             )
         elif not line.strip():
