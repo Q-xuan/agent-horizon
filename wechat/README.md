@@ -24,6 +24,8 @@
 
 有出处的条目结尾必须写成 `原文：[标题](https://...)`，不要裸 URL，不要空的「我的疑问」。详见 [STYLE.md](STYLE.md)。
 
+排版是 Nano-on-WeChat：导语、发丝线、原文脚注、中文折行拼接，字体只用苹方 / 冬青黑体 / 微软雅黑，不写死主题色。
+
 不要把 `WECHAT_SECRET` 写进仓库。不要在 GitHub Actions 里调微信接口（出口 IP 会变，也不该把密钥交给 CI）。改渲染器或写新脚本时，先跑 `python3 wechat/scripts/test_wechat_links.py`。
 
 ## 流程
