@@ -888,10 +888,26 @@
       "profile": "ai-daily"
     },
     "twitter": {
-      "enabled": false,
-      "users": [],
-      "fetch_limit": 10,
-      "profile": "agent-engineer"
+      "enabled": true,
+      "users": [
+        "karpathy",
+        "simonw",
+        "swyx",
+        "rasbt",
+        "AnthropicAI",
+        "cursor_ai",
+        "OpenAI",
+        "steipete",
+        "hwchase17",
+        "jasonwei_",
+        "DrJimFan",
+        "thdxr",
+        "dexhorthy"
+      ],
+      "fetch_limit": 100,
+      "category": "social",
+      "profile": "auto",
+      "fetch_reply_text": false
     },
     "telegram": {
       "enabled": false,
@@ -940,7 +956,8 @@
         "limit": 4,
         "categories": [
           "github-trending",
-          "reddit"
+          "reddit",
+          "social"
         ]
       },
       "deals": {
