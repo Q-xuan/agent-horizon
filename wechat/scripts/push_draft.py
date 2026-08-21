@@ -337,7 +337,7 @@ def main() -> None:
     thumb = upload_cover(tok, Path(args.cover))
     article = {
         "title": meta.get("title") or Path(args.markdown).stem,
-        "author": meta.get("author") or "pengyu",
+        "author": meta.get("author") or "yuseus",
         "digest": meta.get("digest") or "",
         "content": article_html,
         "thumb_media_id": thumb,
