@@ -56,6 +56,8 @@ uv run horizon --hours 24
 
 编辑 `data/config.json`（本地）和 `data/config.github.json`（Actions）。两边建议保持同源。
 
+X 用 Horizon 自带 Apify 抓指定账号；需要仓库 secret APIFY_TOKEN；打分过滤。
+
 中文小标题和用词见 [`profiles/STYLE.md`](profiles/STYLE.md)。
 
 打分阈值在 `processing.profile_settings`：
