@@ -5,7 +5,7 @@
 每天早上（北京时间约 7 点）GitHub Actions 会：
 
 1. 抓 HN、RSS、Reddit、GitHub Release、OSSInsight、Google News
-2. 去重，用 `agent-engineer` / `harness-arch` 两个 profile 打分过滤
+2. 去重，用 profile 打分；再按 [来源权威分层](docs/source-tiers.md) 上调官方源、压掉无一手链接的二手/社区稿
 3. 生成中英双语日报，发布到 GitHub Pages
 
 ## 日报看什么
@@ -23,6 +23,11 @@
 git clone --depth 1 https://github.com/Thysrael/Horizon.git /tmp/horizon
 cp -R data profiles /tmp/horizon/
 cp data/config.json /tmp/horizon/data/config.json
+cp data/source_tiers.json /tmp/horizon/data/source_tiers.json
+cp scripts/apply_source_tiers.py /tmp/horizon/src/apply_source_tiers.py
+python3 patches/grok_reasoning_effort.py /tmp/horizon/src/ai/client.py
+python3 patches/shanghai_digest_date.py /tmp/horizon/src/orchestrator.py
+python3 patches/apply_source_tiers.py /tmp/horizon/src/orchestrator.py
 
 # 2. 密钥
 cp .env.example /tmp/horizon/.env
@@ -60,10 +65,18 @@ X 用 Horizon 自带 Apify 抓指定账号；需要仓库 secret APIFY_TOKEN；�
 
 中文小标题和用词见 [`profiles/STYLE.md`](profiles/STYLE.md)。
 
-打分阈值在 `processing.profile_settings`：
+打分阈值在 `processing.profile_settings`（`config.json` 与 `config.github.json` 保持一致）：
 
-- `agent-engineer.threshold`：默认 6.5，偏「今天该不该看」
-- `harness-arch.threshold`：默认 5.5，Release 和架构文稍松一点
+- `harness-arch.threshold`：`5.0`
+- `agent-engineer.threshold`：`5.5`
+- `ai-daily.threshold`：`5.0`
+- `ai-deals.threshold`：`4.5`
+
+谁能留下，主要看来源权威，不靠再抬这些阈值。旋钮在 `data/source_tiers.json`，说明见 [`docs/source-tiers.md`](docs/source-tiers.md)：
+
+- `official_boost`：官方 GitHub Release / 公司工程博客 `+0.5`
+- `secondary_without_primary`：Google News、微信科技媒体等没有官方一手 URL 时，封顶 `5.5` 且默认直接丢弃
+- `community_without_primary`：Reddit / X / HN 讨论同样；正文若链到官方 Release 或公司博客则不卡
 
 ## 许可
 
