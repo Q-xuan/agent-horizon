@@ -8,4 +8,6 @@
 - coding agent 产品与开源 Release
 - MCP、工具协议、评测、可落地的论文
 
+选稿按来源权威：官方 Release / 公司工程博客优先；无一手链接的二手媒体和社区帖默认不占版面。
+
 站点由 GitHub Actions 每天更新。

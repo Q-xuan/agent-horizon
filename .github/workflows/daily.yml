@@ -44,8 +44,11 @@ jobs:
           cat overlay/profiles/STYLE.md >> horizon/profiles/harness-arch/enrichment.md
           cat overlay/profiles/STYLE.md >> horizon/profiles/ai-daily/enrichment.md
           cat overlay/profiles/STYLE.md >> horizon/profiles/ai-deals/enrichment.md
+          cp overlay/data/source_tiers.json horizon/data/source_tiers.json
+          cp overlay/scripts/apply_source_tiers.py horizon/src/apply_source_tiers.py
           python3 overlay/patches/grok_reasoning_effort.py horizon/src/ai/client.py
           python3 overlay/patches/shanghai_digest_date.py horizon/src/orchestrator.py
+          python3 overlay/patches/apply_source_tiers.py horizon/src/orchestrator.py
 
       - name: Set up Python
         uses: actions/setup-python@v5
