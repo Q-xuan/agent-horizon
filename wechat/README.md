@@ -58,14 +58,12 @@ GitHub Actions 不推微信。出口 IP 会变，过不了白名单。
 
 ## 微信侧怎么开权限
 
-认证过的公众号即可调草稿箱接口。要放行的是**实际发请求这台机器**的公网 IP，不是 GitHub Actions。
-
-现在这台机器的出口 IP：`104.30.175.37`
+认证过的公众号即可调草稿箱接口。白名单要加的是**实际跑 `push_draft.py` 那台机器的公网 IP**，不是 GitHub Actions。
 
 1. 打开 [微信开发者平台](https://developers.weixin.qq.com/platform/) ，扫码登录
-2. 我的业务 → 公众号 → 基础信息 → 开发信息
-3. 把 `104.30.175.37` 加进 **API IP 白名单**
-4. 同一页确认 AppID / AppSecret（AppID 已是 `wxf44969be51cccc30`）
+2. 我的业务 → 公众号 → 基础信息 → 开发信息 → **API IP 白名单**
+3. 在那台机器上查当前出口 IP（例如 `curl ifconfig.me`），把查到的地址贴进控制台。不要把具体 IP 写进仓库。
+4. 同一页复制 AppID / AppSecret，写进本机的 `wechat/.env.local`（已 gitignore）。
 
 旧后台路径也行：mp.weixin.qq.com → 开发 → 基本配置 → IP 白名单。
 
@@ -78,7 +76,7 @@ GitHub Actions 不推微信。出口 IP 会变，过不了白名单。
 写在 `wechat/.env.local`（已 gitignore），不要进仓库：
 
 ```bash
-WECHAT_APPID=wxf44969be51cccc30
+WECHAT_APPID=...
 WECHAT_SECRET=...
 # 本地用 write_from_digest.py 时，跟日报同一把网关密钥
 OPENAI_API_KEY=...
