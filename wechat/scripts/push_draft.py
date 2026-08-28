@@ -25,8 +25,9 @@ from digest_items import load_local_env
 
 
 # WeChat keeps a CSS whitelist. No theme hex, no media queries, no dark/light vars.
-# Nano-on-WeChat: PingFang / Hiragino / YaHei only. currentColor for lines.
-FONT = "PingFang SC, Hiragino Sans GB, Microsoft YaHei"
+# Clean Astro Nano on WeChat: PingFang / Hiragino / YaHei + Monospace.
+FONT = "-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif"
+CODE_FONT = "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Courier New', monospace"
 
 # Plain <a href> is stripped after publish. Editor-shaped tags survive.
 MD_LINK_RE = re.compile(r"\[([^\]]+)\]\(([^)]+)\)")
@@ -124,7 +125,7 @@ def _font_style() -> str:
 
 
 def md_to_html(md: str) -> str:
-    """Nano-on-WeChat type: lede / hairline / footnote / CJK join. No theme colors."""
+    """Clean Astro Nano type: lede / hairline / footnote / CJK join. No theme colors."""
     md = re.sub(r"^---\n.*?\n---\n", "", md, count=1, flags=re.S)
     out: list[str] = []
     buf: list[str] = []
@@ -136,16 +137,14 @@ def md_to_html(md: str) -> str:
         text = re.sub(
             r"`([^`]+)`",
             lambda m: (
-                f'<span style="{_font_style()}font-size:13px !important;'
-                f"border:1px solid currentColor !important;"
-                f"border-radius:2px !important;"
-                f'padding:1px 6px !important;">{m.group(1)}</span>'
+                f'<span style="font-family:{CODE_FONT} !important;font-size:14px !important;'
+                f'font-weight:600 !important;word-break:break-all !important;">{m.group(1)}</span>'
             ),
             text,
         )
         text = re.sub(
             r"\*\*([^*]+)\*\*",
-            r'<strong style="font-weight:600 !important;">\1</strong>',
+            r'<strong style="font-weight:700 !important;">\1</strong>',
             text,
         )
         return text
@@ -155,28 +154,33 @@ def md_to_html(md: str) -> str:
         if not m:
             return inline(title)
         return (
-            f'<span style="font-size:13px !important;letter-spacing:0.06em !important;'
-            f'font-weight:600 !important;">{m.group(1)}.</span> {inline(m.group(2))}'
+            f'<span style="font-size:14px !important;font-family:{CODE_FONT} !important;'
+            f'font-weight:700 !important;opacity:0.6 !important;">{m.group(1)}.</span> {inline(m.group(2))}'
         )
 
     def emit_p(text: str, kind: str) -> None:
         if kind == "lede":
             style = (
-                f"{_font_style()}font-size:17px !important;"
-                f"line-height:1.95 !important;letter-spacing:0.10em !important;"
-                f"margin:0 0 10px !important;"
+                f"{_font_style()}font-size:16.5px !important;"
+                f"line-height:1.8 !important;"
+                f"margin:0 0 12px !important;"
             )
         elif kind == "footnote":
             style = (
                 f"{_font_style()}font-size:14px !important;"
-                f"line-height:1.7 !important;letter-spacing:0.04em !important;"
-                f"margin:14px 0 28px !important;"
+                f"line-height:1.6 !important;"
+                f"margin:10px 0 24px !important;opacity:0.75 !important;"
+            )
+        elif kind == "badge":
+            style = (
+                f"font-family:{CODE_FONT} !important;font-size:12.5px !important;"
+                f"line-height:1.5 !important;margin:0 0 10px !important;opacity:0.65 !important;"
             )
         else:
             style = (
                 f"{_font_style()}font-size:16px !important;"
-                f"line-height:1.9 !important;letter-spacing:0.08em !important;"
-                f"margin:0 0 20px !important;"
+                f"line-height:1.8 !important;"
+                f"margin:0 0 16px !important;"
             )
         out.append(f'<p style="{style}">{text}</p>')
 
@@ -184,8 +188,8 @@ def md_to_html(md: str) -> str:
         nonlocal lede_emitted
         if not buf:
             return
-        text = inline(join_wrapped_lines(buf))
         raw = join_wrapped_lines(buf)
+        text = inline(raw)
         buf.clear()
         if YUANYWEN_LINE_RE.match(raw):
             emit_p(text, "footnote")
@@ -195,24 +199,27 @@ def md_to_html(md: str) -> str:
             out.append(hairline())
             lede_emitted = True
             return
+        if raw.startswith("`") and ("·" in raw or "/" in raw) and len(raw) < 80:
+            emit_p(text, "badge")
+            return
         emit_p(text, "body")
 
     for line in md.splitlines():
         if line.startswith("## "):
             flush_p()
             h2_count += 1
-            top = 18 if h2_count == 1 else 52
+            top = 20 if h2_count == 1 else 38
             out.append(
-                f'<h2 style="{_font_style()}font-size:16px !important;'
-                f"font-weight:600 !important;letter-spacing:0.04em !important;"
-                f'line-height:1.5 !important;margin:{top}px 0 12px !important;">'
+                f'<h2 style="{_font_style()}font-size:17px !important;'
+                f"font-weight:700 !important;"
+                f'line-height:1.45 !important;margin:{top}px 0 8px !important;">'
                 f"{format_h2_title(line[3:].strip())}</h2>"
             )
         elif line.startswith("### "):
             flush_p()
             out.append(
-                f'<h3 style="{_font_style()}font-size:15px !important;'
-                f'font-weight:600 !important;margin:24px 0 8px !important;">'
+                f'<h3 style="{_font_style()}font-size:15.5px !important;'
+                f'font-weight:600 !important;margin:20px 0 6px !important;">'
                 f"{inline(line[4:])}</h3>"
             )
         elif line.startswith("# "):
@@ -220,10 +227,10 @@ def md_to_html(md: str) -> str:
         elif line.startswith("> "):
             flush_p()
             out.append(
-                f'<p style="{_font_style()}font-size:16px !important;'
-                f"line-height:1.9 !important;letter-spacing:0.08em !important;"
-                f"margin:0 0 18px !important;padding:0 0 0 12px !important;"
-                f'border-left:2px solid currentColor !important;">{inline(line[2:])}</p>'
+                f'<p style="{_font_style()}font-size:15px !important;'
+                f"line-height:1.75 !important;"
+                f"margin:0 0 16px !important;padding:0 0 0 10px !important;"
+                f'border-left:2px solid currentColor !important;opacity:0.85 !important;">{inline(line[2:])}</p>'
             )
         elif line.strip() == "---":
             flush_p()
@@ -235,7 +242,7 @@ def md_to_html(md: str) -> str:
             flush_p()
             out.append(
                 f'<p style="{_font_style()}font-size:16px !important;'
-                f"line-height:1.9 !important;letter-spacing:0.08em !important;"
+                f"line-height:1.8 !important;"
                 f'margin:0 0 6px !important;">· {inline(line[2:])}</p>'
             )
         elif not line.strip():

@@ -90,16 +90,13 @@ class MdToHtmlTests(unittest.TestCase):
         html = push.md_to_html(
             "开头两三句。\n\n后段继续。\n\n原文：[标题](https://example.com/a)\n"
         )
-        self.assertIn("font-size:17px", html)
-        self.assertIn("line-height:1.95", html)
-        self.assertIn("letter-spacing:0.10em", html)
+        self.assertIn("font-size:16.5px", html)
+        self.assertIn("line-height:1.8", html)
         self.assertIn("font-size:16px", html)
-        self.assertIn("line-height:1.9", html)
-        self.assertIn("letter-spacing:0.08em", html)
-        self.assertIn("margin:0 0 20px", html)
+        self.assertIn("margin:0 0 16px", html)
         self.assertIn("font-size:14px", html)
-        self.assertIn("letter-spacing:0.04em", html)
-        self.assertIn("margin:14px 0 28px", html)
+        self.assertIn("line-height:1.6", html)
+        self.assertIn("margin:10px 0 24px", html)
         self.assertIn("margin:18px 0 6px", html)
         self.assertIn("scaleY(0.45)", html)
         self.assertIn("1px solid currentColor", html)
@@ -111,11 +108,9 @@ class MdToHtmlTests(unittest.TestCase):
 
     def test_h2_number_shrink_and_margins(self) -> None:
         html = push.md_to_html("导语。\n\n## 1. 第一条\n\n## 2. 第二条\n")
-        self.assertIn("margin:18px 0 12px", html)
-        self.assertIn("margin:52px 0 12px", html)
-        self.assertIn("letter-spacing:0.04em", html)
-        self.assertIn("font-size:13px", html)
-        self.assertIn("letter-spacing:0.06em", html)
+        self.assertIn("margin:20px 0 8px", html)
+        self.assertIn("margin:38px 0 8px", html)
+        self.assertIn("font-size:14px", html)
         self.assertIn("1.</span>", html)
         self.assertNotIn("border-bottom", html)
         self.assertNotIn("padding:0 0 8px", html)
@@ -123,8 +118,7 @@ class MdToHtmlTests(unittest.TestCase):
     def test_blockquote_and_inline_code_have_no_fill(self) -> None:
         html = push.md_to_html("导语。\n\n> 引用一句\n\n见 `fork`。\n")
         self.assertIn("border-left:2px solid currentColor", html)
-        self.assertIn("border:1px solid currentColor", html)
-        self.assertIn("font-size:13px", html)
+        self.assertIn("font-size:14px", html)
         self.assertNotIn("background", html.lower())
         self.assertNotIn("background-color", html.lower())
 
@@ -223,7 +217,7 @@ class HtmlOutTests(unittest.TestCase):
                 env=env,
             )
             html = dest.read_text(encoding="utf-8")
-            self.assertIn("font-size:17px", html)
+            self.assertIn("font-size:16.5px", html)
             self.assertIn("scaleY(0.45)", html)
             self.assertTrue(dest.is_file())
 
