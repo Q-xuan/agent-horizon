@@ -18,13 +18,13 @@
 
 订阅号上最稳的外链是文末「阅读原文」。脚本会写进草稿字段 `content_source_url`：
 
-1. frontmatter 的 `source:`（必须是 `https://`）
-2. 否则正文第一条 `原文：[标题](https://...)`
+1. 成稿文件名是 `YYYY-MM-DD.md` 时，当天中文日报：`https://q-xuan.github.io/agent-horizon/YYYY/MM/DD/summary-zh.html`（压过下面两条）
+2. 否则 frontmatter 的 `source:`（必须是 `https://`）
 3. 再否则正文第一条 `https://`
 
-有出处的条目结尾必须写成 `原文：[标题](https://...)`，不要裸 URL，不要空的「我的疑问」。详见 [STYLE.md](STYLE.md)。
+不要在正文打印「原文：」。订阅号会洗掉正文链。不要空的「我的疑问」。详见 [STYLE.md](STYLE.md)。
 
-排版是 Nano-on-WeChat：导语、发丝线、原文脚注、中文折行拼接，字体只用苹方 / 冬青黑体 / 微软雅黑，不写死主题色。
+排版是 Nano-on-WeChat：导语、发丝线、中文折行拼接，字体只用苹方 / 冬青黑体 / 微软雅黑，不写死主题色。
 
 不要把 `WECHAT_SECRET` 写进仓库。不要在 GitHub Actions 里调微信接口（出口 IP 会变，也不该把密钥交给 CI）。改渲染器或写新脚本时，先跑 `python3 wechat/scripts/test_wechat_links.py`。
 
@@ -44,7 +44,7 @@
    # 或：python3 wechat/scripts/polish_post.py --digest <日报.md>
    ```
 
-   抽条目和成稿都必须带 `原文：[标题](https://...)`，不要裸 URL。
+   不要在成稿正文打印「原文：」。日报成稿的「阅读原文」由日期文件名指向当天中文日报。
 3. 打开 `wechat/posts/YYYY-MM-DD.md`，先看这篇。不要补「我的疑问」。
 4. 看过之后，在**固定公网 IP** 的机器上：
 

@@ -93,9 +93,11 @@ def build_messages(style: str, materials: str) -> list[dict[str, str]]:
                 "动词主导，短句利落，严禁翻译腔（如「这就意味着」「值得一提的是」「在……方面」）与公文套话。"
                 "中英文与数字之间保留空格（盘古之白）。"
                 "不要写「我的疑问」「我的判断」，不要在正文输出字面「停」字。"
-                "每条有出处的结尾必须是一行：原文：[标题](https://...)。"
+                "不要在正文打印「原文：」。"
+                "日报成稿的「阅读原文」由文件名 YYYY-MM-DD 指向当天中文日报，不要用第一条新闻当阅读原文。"
                 "不要只写裸 URL。不要手写裸 <a href>。"
-                "frontmatter 加 author: yuseus，以及 source:，填第一条 https 原文，供阅读原文使用。\n\n"
+                "frontmatter 加 author: yuseus。"
+                "非日期文件名的长文才写 source:，填 https 原文。\n\n"
                 f"{style}"
             ),
         },
@@ -104,7 +106,7 @@ def build_messages(style: str, materials: str) -> list[dict[str, str]]:
             "content": (
                 "原料如下。选出 4–6 条写成 Astro Nano 卡片篇章。"
                 "标题不超过 22 个字。开头两三句只说今天发生了什么。"
-                "每条格式为：## 序号. 标题、下一行为徽标行（如 `01 · HARNESS` · `openai/codex`）、正文（2~3句四拍事实）、结尾 原文：[标题](https://...)。\n\n"
+                "每条格式为：## 序号. 标题、下一行为徽标行（如 `01 · HARNESS` · `openai/codex`）、正文（2~3句四拍事实）。不要在每条结尾写 原文：。\n\n"
                 f"{materials}"
             ),
         },

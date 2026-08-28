@@ -18,16 +18,18 @@
    - 专有名词、命令与版本号使用反引号 \`code\` 包裹，渲染为等宽冷感微框（`border: 1px solid currentColor`），自适应深浅色模式。
 4. **引用块（Blockquote）**：
    - 使用 `> ` 渲染为 `2px solid currentColor` 细左边线，通透克制，无背景脏色。
-5. **外链下划线（Footnote）**：
-   - 微信会洗掉普通 `<a href="...">`。`push_draft.py` 会把 `[文字](https://...)` 收成编辑器标准标签：`<a target="_blank" href="https://..." textvalue="..." data-linktype="2">`。只收 `https://`。不要手写裸 `<a href>`，不要只丢一行裸 URL。
+5. **外链下划线**：
+   - 微信会洗掉普通 `<a href="...">`。`push_draft.py` 会把 `[文字](https://...)` 收成编辑器标准标签：`<a target="_blank" href="https://..." textvalue="..." data-linktype="2">`。只收 `https://`。不要手写裸 `<a href>`，不要只丢一行裸 URL。订阅号正文链仍可能被洗掉，不要靠正文里的「原文：」当外链。
 
-每条有出处的稿，结尾必须是一行极简脚注：
+订阅号上「阅读原文」是最稳的外链。日报成稿文件名是 `YYYY-MM-DD.md` 时，脚本把 `content_source_url` 指到当天中文日报，压过 frontmatter 的 `source:` 和正文第一条 `https://`：
 
-```markdown
-原文：[标题](https://...)
+```
+https://q-xuan.github.io/agent-horizon/YYYY/MM/DD/summary-zh.html
 ```
 
-frontmatter 的 `source:` 若是 `https://`，就是文末「阅读原文」。没有 `source:` 时，用正文里第一条 `原文：[…](https://…)`；再没有，才用正文第一条 `https://`。订阅号上「阅读原文」是最稳的外链，不要省。
+不要在正文打印「原文：」。
+
+非日期文件名的长文，才用 frontmatter 的 `source:`（必须是 `https://`）；没有 `source:` 时，用正文第一条 `https://`。
 
 不要「我的疑问」「我的判断」这种空栏。
 
@@ -51,7 +53,8 @@ frontmatter 的 `source:` 若是 `https://`，就是文末「阅读原文」。�
    - 2. 所以怎样（点出改的人、来源）
    - 3. 这次改了什么（谁说的、数字、版本、机理）
    - 4. 停。自然煞住收尾，不要把「停」字输出到正文中。如果只是打算，就写打算。不要写「往后会碰到」。不要写「记下即可」。
-4. `原文：[标题](https://...)`（极简外链脚注）
+
+不要在卡片结尾打印「原文：」。当天日报的「阅读原文」由文件名日期指向中文 digest，不靠正文脚注。
 
 ## 不要写
 
