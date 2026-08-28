@@ -64,6 +64,33 @@ class ContentSourceUrlTests(unittest.TestCase):
     def test_http_source_is_ignored(self) -> None:
         self.assertEqual(push.content_source_url({"source": "http://nope"}, ""), "")
 
+    def test_dated_daily_post_opens_that_days_digest(self) -> None:
+        body = "原文：[二](https://example.com/second)\nhttps://example.com/third"
+        url = push.content_source_url(
+            {"source": "https://example.com/first"},
+            body,
+            "wechat/posts/2026-08-28.md",
+        )
+        self.assertEqual(
+            url,
+            "https://q-xuan.github.io/agent-horizon/2026/08/28/summary-zh.html",
+        )
+
+    def test_non_dated_stem_keeps_source_then_first_https(self) -> None:
+        body = "原文：[二](https://example.com/second)"
+        self.assertEqual(
+            push.content_source_url(
+                {"source": "https://example.com/first"},
+                body,
+                "wechat/posts/long-form.md",
+            ),
+            "https://example.com/first",
+        )
+        self.assertEqual(
+            push.content_source_url({}, body, "essay.md"),
+            "https://example.com/second",
+        )
+
 
 class MdToHtmlTests(unittest.TestCase):
     def test_markdown_link_becomes_editor_tag(self) -> None:
@@ -175,7 +202,7 @@ class ProcessDocsTests(unittest.TestCase):
         template = (root / "template.md").read_text(encoding="utf-8")
         style = (root / "STYLE.md").read_text(encoding="utf-8")
         readme = (root / "README.md").read_text(encoding="utf-8")
-        self.assertIn("原文：[标题](https://", template)
+        self.assertNotIn("原文：", template)
         self.assertIn("从前怎样", template)
         self.assertIn("author: yuseus", template)
         self.assertNotIn("author: pengyu", template)
@@ -186,8 +213,15 @@ class ProcessDocsTests(unittest.TestCase):
         self.assertNotIn("pengyu", push_src)
         self.assertIn("author: yuseus", write_src)
         self.assertNotIn("pengyu", write_src)
+        self.assertIn("不要在正文打印「原文：」", write_src)
+        self.assertNotIn("每条有出处的结尾必须是一行：原文：", write_src)
+        self.assertIn("q-xuan.github.io/agent-horizon", push_src)
+        self.assertIn("summary-zh.html", push_src)
         self.assertIn("data-linktype", style)
         self.assertIn("阅读原文", style)
+        self.assertIn("q-xuan.github.io/agent-horizon", style)
+        self.assertIn("summary-zh.html", style)
+        self.assertIn("不要在正文打印「原文：」", style)
         self.assertIn("从前怎样", style)
         self.assertIn("所以怎样", style)
         self.assertIn("这次改了什么", style)
@@ -197,6 +231,7 @@ class ProcessDocsTests(unittest.TestCase):
         self.assertIn("Mac 代码窗", style)
         self.assertIn("通栏线", style)
         self.assertIn("普通 `<a href", readme)
+        self.assertIn("q-xuan.github.io/agent-horizon/YYYY/MM/DD/summary-zh.html", readme)
         self.assertIn("write_from_digest.py", readme)
         self.assertIn("Nano-on-WeChat", readme)
         daily = (root.parent / ".github" / "workflows" / "daily.yml").read_text(encoding="utf-8")

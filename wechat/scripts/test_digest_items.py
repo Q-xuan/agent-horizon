@@ -69,7 +69,8 @@ def test_cli_list_and_polish() -> None:
     )
     assert_true("从前怎样" in dry, "dry-run must load STYLE.md")
     assert_true("data-linktype" in dry, "dry-run must load the WeChat link rule")
-    assert_true("原文：[标题](https://" in dry, dry)
+    assert_true("不要在正文打印「原文：」" in dry, dry)
+    assert_true("原文：[标题](https://" not in dry, "writer prompt must not require a 原文 line")
     assert_true("Codex rust-v0.148.0 发布" in dry, dry)
 
 

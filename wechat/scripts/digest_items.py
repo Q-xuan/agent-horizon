@@ -33,7 +33,7 @@ HEADING_RE = re.compile(
 )
 
 NEXT_STEP = """下一步：按 wechat/STYLE.md 写成稿。不要补「我的疑问」。
-每条有出处的结尾必须是 原文：[标题](https://...)，不要裸 URL。
+不要在正文打印「原文：」。日报成稿存成 wechat/posts/YYYY-MM-DD.md，「阅读原文」会指向当天中文日报。
 人写：把成稿存到 wechat/posts/YYYY-MM-DD.md
 或：python3 wechat/scripts/write_from_digest.py --digest <日报.md>
 

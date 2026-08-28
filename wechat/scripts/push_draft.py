@@ -34,6 +34,10 @@ YUANYWEN_RE = re.compile(r"原文[：:]\s*\[[^\]]*\]\((https://[^)\s]+)\)")
 YUANYWEN_LINE_RE = re.compile(r"^原文[：:]")
 HTTPS_RE = re.compile(r"https://[^\s)>\]]+")
 H2_NUM_RE = re.compile(r"^(\d+)\.\s+(.*)$")
+DATE_STEM_RE = re.compile(r"^(\d{4})-(\d{2})-(\d{2})$")
+HORIZON_DIGEST_URL = (
+    "https://q-xuan.github.io/agent-horizon/{year}/{month}/{day}/summary-zh.html"
+)
 
 
 def https_only(url: str) -> str:
@@ -69,8 +73,29 @@ def first_https_url(text: str) -> str:
     return https_only(m.group(0)) if m else ""
 
 
-def content_source_url(meta: dict[str, str], body: str) -> str:
-    """阅读原文 URL: frontmatter source: if https, else first https in the body."""
+def dated_digest_url(stem: str) -> str:
+    """If stem is YYYY-MM-DD, return that day's Chinese Horizon digest URL."""
+    m = DATE_STEM_RE.fullmatch((stem or "").strip())
+    if not m:
+        return ""
+    return HORIZON_DIGEST_URL.format(year=m.group(1), month=m.group(2), day=m.group(3))
+
+
+def content_source_url(
+    meta: dict[str, str],
+    body: str,
+    path: str | Path | None = None,
+) -> str:
+    """阅读原文 URL.
+
+    Dated daily posts (filename stem YYYY-MM-DD) open that day's Chinese digest.
+    That wins over frontmatter source: and the first https in the body.
+    Non-dated posts keep source: then first https.
+    """
+    stem = Path(path).stem if path else ""
+    digest = dated_digest_url(stem)
+    if digest:
+        return digest
     source = https_only(meta.get("source", ""))
     if source:
         return source
@@ -333,7 +358,7 @@ def main() -> None:
     if not appid or not secret:
         raise SystemExit("Set WECHAT_APPID and WECHAT_SECRET in the environment or wechat/.env.local. Do not put them in git.")
 
-    source_url = content_source_url(meta, body)
+    source_url = content_source_url(meta, body, args.markdown)
     tok = token(appid, secret)
     thumb = upload_cover(tok, Path(args.cover))
     article = {
