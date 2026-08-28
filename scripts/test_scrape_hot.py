@@ -40,6 +40,28 @@ def test_github_keyword_guard() -> None:
     assert_true(not matches_github_hot("Please continue reading the tutorial"), "continue is not a keyword")
 
 
+def test_github_ignores_mcp_buried_in_readme() -> None:
+    xml = """<?xml version="1.0"?>
+    <rss version="2.0"><channel>
+      <item>
+        <title>OpenCut-app/OpenCut</title>
+        <link>https://github.com/OpenCut-app/OpenCut</link>
+        <description>The open-source CapCut alternative. A free video editor for web and desktop.
+        """ + ("padding " * 40) + """Later the README mentions an MCP server for AI agents.</description>
+      </item>
+      <item>
+        <title>owner/mcp-agent-kit</title>
+        <link>https://github.com/owner/mcp-agent-kit</link>
+        <description>MCP toolkit for coding agents.</description>
+      </item>
+    </channel></rss>
+    """
+    kept = filter_github_hot(parse_github_trending_rss(xml, published=NOW))
+    links = [item["link"] for item in kept]
+    assert_true(any("mcp-agent-kit" in link for link in links), kept)
+    assert_true(not any("OpenCut" in link for link in links), kept)
+
+
 def test_github_trending_rss_stamps_date_and_filters() -> None:
     xml = """<?xml version="1.0"?>
     <rss version="2.0"><channel>
@@ -98,6 +120,17 @@ def test_hf_paper_and_model_caps() -> None:
     assert_true(paper is not None, "paper parsed")
     assert_true(paper["link"] == "https://huggingface.co/papers/2608.23552", paper)
     assert_true(paper["published"].day == 28, paper["published"])
+    stale = hf_paper_item(
+        {
+            "title": "Old classic",
+            "paper": {
+                "id": "2309.06180",
+                "submittedOnDailyAt": "2023-09-01T00:00:00.000Z",
+            },
+        },
+        NOW,
+    )
+    assert_true(stale is not None and stale["published"] == NOW, "old arXiv date must not miss the 24h window")
     assert_true(paper["title"].startswith("HF daily paper:"), paper["title"])
 
     model = hf_model_item(
@@ -120,6 +153,26 @@ def test_hf_paper_and_model_caps() -> None:
         NOW,
     )
     assert_true(image is None, "image models are not a datasets-style firehose but still skipped")
+    junk = hf_model_item(
+        {
+            "id": "someone/Qwen-Uncensored",
+            "pipeline_tag": "text-generation",
+            "likes": 999,
+            "trendingScore": 999,
+        },
+        NOW,
+    )
+    assert_true(junk is None, "uncensored fine-tunes are skipped")
+    junk2 = hf_model_item(
+        {
+            "id": "huihui-ai/Huihui-Qwen3.8-27B-abliterated-GGUF",
+            "pipeline_tag": "text-generation",
+            "likes": 50,
+            "trendingScore": 50,
+        },
+        NOW,
+    )
+    assert_true(junk2 is None, "abliterated fine-tunes are skipped")
     assert_true(HF_PAPERS_MAX <= 25, HF_PAPERS_MAX)
     assert_true(HF_MODELS_MAX <= 15, HF_MODELS_MAX)
     assert_true(HF_PAPERS_MAX + HF_MODELS_MAX <= 25, "HF family cap")
@@ -183,6 +236,7 @@ def test_x_hot_popularity_and_no_replies() -> None:
 
 def main() -> None:
     test_github_keyword_guard()
+    test_github_ignores_mcp_buried_in_readme()
     test_github_trending_rss_stamps_date_and_filters()
     test_github_hot_cap()
     test_hf_paper_and_model_caps()

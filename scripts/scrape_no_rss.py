@@ -277,7 +277,7 @@ def parse_github_trending_rss(xml_text: str, published: datetime | None = None) 
                 "link": link,
                 "description": desc[:500],
                 "published": published,
-                "haystack": f"{title} {desc[:500]}",
+                "haystack": f"{title} {desc[:180]}",
             }
         )
     return items
@@ -290,7 +290,9 @@ def filter_github_hot(items: list[dict], max_items: int = GITHUB_HOT_MAX) -> lis
         link = item["link"].rstrip("/")
         if link in seen:
             continue
-        if not matches_github_hot(item.get("haystack") or f"{item['title']} {item.get('description', '')}"):
+        if not matches_github_hot(
+            item.get("haystack") or f"{item['title']} {(item.get('description') or '')[:180]}"
+        ):
             continue
         seen.add(link)
         kept.append(
@@ -335,7 +337,7 @@ def scrape_github_com_trending() -> list[dict]:
                 "link": link,
                 "description": desc[:500],
                 "published": published,
-                "haystack": f"{title} {desc[:500]}",
+                "haystack": f"{title} {desc[:180]}",
             }
         )
     return items
@@ -363,12 +365,10 @@ def hf_paper_item(row: dict, fallback_published: datetime) -> dict | None:
     if not arxiv_id or not title:
         return None
     summary = (row.get("summary") or paper.get("summary") or paper.get("ai_summary") or "").strip()
-    published = (
-        parse_iso(str(paper.get("submittedOnDailyAt") or ""))
-        or parse_iso(str(row.get("publishedAt") or ""))
-        or parse_iso(str(paper.get("publishedAt") or ""))
-        or fallback_published
-    )
+    # Stamp "on the daily list now", not arXiv publishedAt. Trending-sort
+    # classics (2023–2024 papers) would otherwise miss the 24h window.
+    submitted = parse_iso(str(paper.get("submittedOnDailyAt") or ""))
+    published = submitted if submitted and submitted >= fallback_published - timedelta(hours=24) else fallback_published
     upvotes = paper.get("upvotes") if paper.get("upvotes") is not None else row.get("upvotes")
     desc_parts = [summary[:800] if summary else title]
     if upvotes is not None:
@@ -383,17 +383,21 @@ def hf_paper_item(row: dict, fallback_published: datetime) -> dict | None:
 
 def scrape_hf_daily_papers() -> list[dict]:
     published = now_utc()
-    data = fetch_json(
-        "https://huggingface.co/api/daily_papers?"
-        + urlencode({"limit": str(HF_PAPERS_MAX), "sort": "trending"})
-    )
-    if not isinstance(data, list):
-        return []
+    today = published.date().isoformat()
+    yesterday = (published - timedelta(days=1)).date().isoformat()
+    rows: list[dict] = []
+    for day in (today, yesterday):
+        data = fetch_json(
+            "https://huggingface.co/api/daily_papers?"
+            + urlencode({"limit": str(HF_PAPERS_MAX), "sort": "publishedAt", "date": day})
+        )
+        if isinstance(data, list):
+            rows.extend(row for row in data if isinstance(row, dict))
+        if len(rows) >= 8:
+            break
     items: list[dict] = []
     seen: set[str] = set()
-    for row in data:
-        if not isinstance(row, dict):
-            continue
+    for row in rows:
         item = hf_paper_item(row, published)
         if item is None or item["link"] in seen:
             continue
@@ -407,6 +411,8 @@ def scrape_hf_daily_papers() -> list[dict]:
 def hf_model_item(row: dict, fallback_published: datetime) -> dict | None:
     model_id = str(row.get("id") or row.get("modelId") or "").strip()
     if not model_id or "/" not in model_id:
+        return None
+    if re.search(r"(?i)(uncensored|obliterat|abliterat|nsfw)", model_id):
         return None
     pipeline = str(row.get("pipeline_tag") or "").strip()
     if pipeline and pipeline not in HF_MODEL_PIPELINE_ALLOW:
