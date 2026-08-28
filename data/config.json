@@ -448,9 +448,114 @@
       },
       {
         "name": "GitHub Trending Daily",
-        "url": "https://mshibanami.github.io/GitHubTrendingRSS/daily/all.xml",
+        "url": "http://127.0.0.1:8766/github-trending.xml",
         "enabled": true,
         "category": "github-trending",
+        "profile": "harness-arch"
+      },
+      {
+        "name": "Hugging Face Daily Papers",
+        "url": "http://127.0.0.1:8766/hf-daily-papers.xml",
+        "enabled": true,
+        "category": "papers",
+        "profile": "agent-engineer"
+      },
+      {
+        "name": "Hugging Face Trending Models",
+        "url": "http://127.0.0.1:8766/hf-trending-models.xml",
+        "enabled": true,
+        "category": "agent-news",
+        "profile": "agent-engineer"
+      },
+      {
+        "name": "X Hot",
+        "url": "http://127.0.0.1:8766/x-hot.xml",
+        "enabled": true,
+        "category": "social",
+        "profile": "agent-engineer"
+      },
+      {
+        "name": "Martin Fowler",
+        "url": "https://martinfowler.com/feed.atom",
+        "enabled": true,
+        "category": "ai-tools",
+        "profile": "agent-engineer"
+      },
+      {
+        "name": "The Pragmatic Engineer",
+        "url": "https://blog.pragmaticengineer.com/feed/",
+        "enabled": true,
+        "category": "ai-tools",
+        "profile": "agent-engineer"
+      },
+      {
+        "name": "Lobsters",
+        "url": "http://127.0.0.1:8766/lobsters.xml",
+        "enabled": true,
+        "category": "lobsters",
+        "profile": "agent-engineer"
+      },
+      {
+        "name": "GitHub Blog",
+        "url": "https://github.blog/feed/",
+        "enabled": true,
+        "category": "industry",
+        "profile": "ai-daily"
+      },
+      {
+        "name": "Netflix TechBlog",
+        "url": "https://netflixtechblog.com/feed",
+        "enabled": true,
+        "category": "industry",
+        "profile": "ai-daily"
+      },
+      {
+        "name": "Engineering at Meta",
+        "url": "https://engineering.fb.com/feed/",
+        "enabled": true,
+        "category": "industry",
+        "profile": "ai-daily"
+      },
+      {
+        "name": "Node.js Blog",
+        "url": "https://nodejs.org/en/feed/blog.xml",
+        "enabled": true,
+        "category": "ai-tools",
+        "profile": "agent-engineer"
+      },
+      {
+        "name": "Python Insider",
+        "url": "https://blog.python.org/feeds/posts/default",
+        "enabled": true,
+        "category": "ai-tools",
+        "profile": "agent-engineer"
+      },
+      {
+        "name": "Apple Machine Learning Research",
+        "url": "https://machinelearning.apple.com/rss.xml",
+        "enabled": true,
+        "category": "papers",
+        "profile": "agent-engineer"
+      },
+      {
+        "name": "Last Week in AI",
+        "url": "https://lastweekin.ai/feed",
+        "enabled": true,
+        "category": "industry",
+        "profile": "ai-daily"
+      },
+      {
+        "name": "阮一峰",
+        "url": "https://www.ruanyifeng.com/blog/atom.xml",
+        "enabled": true,
+        "category": "industry",
+        "profile": "ai-daily"
+      },
+      {
+        "name": "DeepSeek",
+        "url": "https://wechat2rss.bestblogs.dev/feed/1709da4f538d4ce4fb6d7a8ba1a5a1c297919601.xml",
+        "enabled": true,
+        "category": "industry",
         "profile": "ai-daily"
       },
       {
@@ -869,11 +974,17 @@
         "harness",
         "mcp",
         "claude-code",
+        "claude",
         "codex",
-        "openhands"
+        "openhands",
+        "aider",
+        "cline",
+        "opencode",
+        "goose",
+        "coding agent"
       ],
-      "min_stars": 20,
-      "max_items": 25,
+      "min_stars": 8,
+      "max_items": 15,
       "category": "github-trending",
       "profile": "harness-arch"
     },
@@ -957,7 +1068,8 @@
         "categories": [
           "github-trending",
           "reddit",
-          "social"
+          "social",
+          "lobsters"
         ]
       },
       "deals": {

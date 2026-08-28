@@ -40,7 +40,14 @@
     "Google Research",
     "Allen AI",
     "Cohere",
-    "BAIR"
+    "BAIR",
+    "GitHub Blog",
+    "Netflix TechBlog",
+    "Engineering at Meta",
+    "Node.js Blog",
+    "Python Insider",
+    "Apple Machine Learning Research",
+    "DeepSeek"
   ],
   "practitioner_rss_names": [
     "Simon Willison",
@@ -57,7 +64,11 @@
     "Jason Wei",
     "Andrej Karpathy",
     "The Gradient",
-    "One Useful Thing"
+    "One Useful Thing",
+    "Martin Fowler",
+    "The Pragmatic Engineer",
+    "Last Week in AI",
+    "阮一峰"
   ],
   "secondary_rss_names": [
     "量子位",
@@ -67,7 +78,11 @@
     "PaperWeekly"
   ],
   "community_rss_names": [
-    "GitHub Trending Daily"
+    "GitHub Trending Daily",
+    "Hugging Face Daily Papers",
+    "Hugging Face Trending Models",
+    "X Hot",
+    "Lobsters"
   ],
   "deals_rss_names": [
     "少数派",
@@ -138,7 +153,14 @@
     "txt.cohere.com",
     "bair.berkeley.edu",
     "cognition.ai",
-    "blog.langchain.dev"
+    "blog.langchain.dev",
+    "github.blog",
+    "netflixtechblog.com",
+    "engineering.fb.com",
+    "nodejs.org",
+    "blog.python.org",
+    "machinelearning.apple.com",
+    "deepseek.com"
   ],
   "never_official_hosts": [
     "news.google.com",
@@ -154,6 +176,7 @@
     "v2ex.com",
     "sspai.com",
     "appinn.com",
-    "ifanr.com"
+    "ifanr.com",
+    "lobste.rs"
   ]
 }

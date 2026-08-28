@@ -11,7 +11,7 @@ Horizon 的 `data/config.json` 禁止未知字段（`extra=forbid`），所以�
 | `official` | GitHub `repo_releases`；公司/实验室/工程博客 RSS | `score + official_boost`（默认 +0.5，上限 10） |
 | `practitioner` | 个人技术博客、The Batch / Import AI 等 | 不调 |
 | `deals` | 少数派 / 小众软件 / V2EX / Product Hunt / 爱范儿 / HN credits | 不调（羊毛栏单独走 `ai-deals`） |
-| `community` | Reddit、X、HN 讨论、OSSInsight、GitHub Trending | 没有官方一手 URL 时封顶并可能丢弃 |
+| `community` | Reddit、X follow-list / X Hot、HN / Lobsters、OSSInsight、GitHub Trending、HF Daily Papers / Trending Models | 没有官方一手 URL 时封顶并可能丢弃 |
 | `secondary` | Google News；量子位 / 新智元 / 机器之心 / 夕小瑶 / PaperWeekly | 没有官方一手 URL 时封顶并可能丢弃 |
 
 「官方一手 URL」：条目链接或正文里出现公司/实验室域名，或 `github.com/<已跟踪 owner>/...`。Google News、Reddit、微信 `mp.weixin.qq.com`、HN 本身不算一手。
@@ -37,7 +37,9 @@ Horizon 的 `data/config.json` 禁止未知字段（`extra=forbid`），所以�
 
 ```bash
 python3 scripts/test_source_tiers.py
+python3 scripts/test_scrape_hot.py
 python3 scripts/apply_source_tiers.py --policy data/source_tiers.json
+python3 scripts/scrape_no_rss.py --out /tmp/scraped-feeds --print-items
 ```
 
 Actions 在 `daily.yml` 里把 `source_tiers.json` 和脚本拷进 Horizon，再打 orchestrator 补丁。本地跑也要同样做一遍，见仓库 README。
