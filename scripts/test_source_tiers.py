@@ -171,7 +171,7 @@ def test_adjustments() -> None:
     )
     decision = apply_item(official, policy)
     assert_true(decision["action"] == "boost", decision)
-    assert_true(official.processing.analysis.score == 7.5, official.processing.analysis.score)
+    assert_true(official.processing.analysis.score == 7.8, official.processing.analysis.score)
 
     rumor = item(
         source_type="google_news",
@@ -233,7 +233,7 @@ def test_adjustments() -> None:
     )
     decision = apply_item(blog, policy)
     assert_true(decision["tier"] == "official", decision)
-    assert_true(blog.processing.analysis.score == 8.5, blog.processing.analysis.score)
+    assert_true(blog.processing.analysis.score == 8.8, blog.processing.analysis.score)
 
 
 def test_config_rss_names_are_classified() -> None:
@@ -270,7 +270,7 @@ def test_batch_and_policy_file() -> None:
     ]
     logs: list[str] = []
     apply_source_tiers(items, printer=logs.append)
-    assert_true(items[0].processing.analysis.score == 6.5, items[0].processing.analysis.score)
+    assert_true(items[0].processing.analysis.score == 6.8, items[0].processing.analysis.score)
     assert_true(items[1].processing.analysis.score == 0.0, items[1].processing.analysis.score)
     assert_true(logs and "boost=1" in logs[0] and "drop=1" in logs[0], logs)
 

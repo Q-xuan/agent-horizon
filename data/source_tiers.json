@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "official_boost": 0.5,
+  "official_boost": 0.8,
   "score_min": 0.0,
   "score_max": 10.0,
   "secondary_without_primary": {
@@ -47,7 +47,14 @@
     "Node.js Blog",
     "Python Insider",
     "Apple Machine Learning Research",
-    "DeepSeek"
+    "DeepSeek",
+    "Qwen Blog",
+    "Cloudflare Engineering",
+    "Discord Engineering",
+    "Uber Engineering",
+    "美团技术团队",
+    "腾讯技术工程",
+    "字节跳动技术团队"
   ],
   "practitioner_rss_names": [
     "Simon Willison",
@@ -68,7 +75,9 @@
     "Martin Fowler",
     "The Pragmatic Engineer",
     "Last Week in AI",
-    "阮一峰"
+    "阮一峰",
+    "Dan Shipper",
+    "Mitchell Hashimoto"
   ],
   "secondary_rss_names": [
     "量子位",
@@ -121,7 +130,14 @@
     "getzep",
     "stanfordnlp",
     "e2b-dev",
-    "letta-ai"
+    "letta-ai",
+    "vllm-project",
+    "sgl-project",
+    "UKGovernmentBEIS",
+    "princeton-nlp",
+    "QwenLM",
+    "deepseek-ai",
+    "THUDM"
   ],
   "official_hosts": [
     "openai.com",
@@ -160,7 +176,16 @@
     "nodejs.org",
     "blog.python.org",
     "machinelearning.apple.com",
-    "deepseek.com"
+    "deepseek.com",
+    "qwenlm.github.io",
+    "tech.meituan.com",
+    "discord.com",
+    "uber.com",
+    "mitchellh.com",
+    "every.to",
+    "zhipuai.cn",
+    "moonshot.cn",
+    "kimi.ai"
   ],
   "never_official_hosts": [
     "news.google.com",
