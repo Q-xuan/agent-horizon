@@ -448,10 +448,31 @@
       },
       {
         "name": "GitHub Trending Daily",
-        "url": "https://mshibanami.github.io/GitHubTrendingRSS/daily/all.xml",
+        "url": "http://127.0.0.1:8766/github-trending.xml",
         "enabled": true,
         "category": "github-trending",
-        "profile": "ai-daily"
+        "profile": "harness-arch"
+      },
+      {
+        "name": "Hugging Face Daily Papers",
+        "url": "http://127.0.0.1:8766/hf-daily-papers.xml",
+        "enabled": true,
+        "category": "papers",
+        "profile": "agent-engineer"
+      },
+      {
+        "name": "Hugging Face Trending Models",
+        "url": "http://127.0.0.1:8766/hf-trending-models.xml",
+        "enabled": true,
+        "category": "agent-news",
+        "profile": "agent-engineer"
+      },
+      {
+        "name": "X Hot",
+        "url": "http://127.0.0.1:8766/x-hot.xml",
+        "enabled": true,
+        "category": "social",
+        "profile": "agent-engineer"
       },
       {
         "name": "量子位",
@@ -869,11 +890,17 @@
         "harness",
         "mcp",
         "claude-code",
+        "claude",
         "codex",
-        "openhands"
+        "openhands",
+        "aider",
+        "cline",
+        "opencode",
+        "goose",
+        "coding agent"
       ],
-      "min_stars": 20,
-      "max_items": 25,
+      "min_stars": 8,
+      "max_items": 15,
       "category": "github-trending",
       "profile": "harness-arch"
     },

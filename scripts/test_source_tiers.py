@@ -100,6 +100,47 @@ def test_classify_and_official_url() -> None:
     gn = item(source_type="google_news", score=6.8, url="https://www.theverge.com/ai")
     assert_true(classify_tier(gn, policy) == "secondary", "google news is secondary")
 
+    for feed in (
+        "GitHub Trending Daily",
+        "Hugging Face Daily Papers",
+        "Hugging Face Trending Models",
+        "X Hot",
+    ):
+        hot = item(
+            source_type="rss",
+            score=7.5,
+            feed_name=feed,
+            url="https://example.com/hot",
+        )
+        assert_true(classify_tier(hot, policy) == "community", f"{feed} is community")
+
+    hf_blog = item(
+        source_type="rss",
+        score=8.0,
+        feed_name="Hugging Face Blog",
+        url="https://huggingface.co/blog/agents",
+    )
+    assert_true(classify_tier(hf_blog, policy) == "official", "HF blog stays official")
+
+    hf_paper = item(
+        source_type="rss",
+        score=7.4,
+        feed_name="Hugging Face Daily Papers",
+        url="https://huggingface.co/papers/2608.23552",
+        content="Prime Agent harness https://huggingface.co/papers/2608.23552",
+    )
+    assert_true(classify_tier(hf_paper, policy) == "community", "HF papers are 热点 not official news")
+    decision = apply_item(hf_paper, policy)
+    assert_true(decision["action"] == "unchanged", decision)
+    assert_true(hf_paper.processing.analysis.score == 7.4, "HF paper URL is primary, so no community drop")
+
+    tweet = item(
+        source_type="twitter",
+        score=8.0,
+        url="https://x.com/karpathy/status/1",
+    )
+    assert_true(classify_tier(tweet, policy) == "community", "follow-list tweets stay community")
+
 
 def test_adjustments() -> None:
     policy = load_policy()

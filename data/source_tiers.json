@@ -67,7 +67,10 @@
     "PaperWeekly"
   ],
   "community_rss_names": [
-    "GitHub Trending Daily"
+    "GitHub Trending Daily",
+    "Hugging Face Daily Papers",
+    "Hugging Face Trending Models",
+    "X Hot"
   ],
   "deals_rss_names": [
     "少数派",

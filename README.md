@@ -4,7 +4,7 @@
 
 每天早上（北京时间约 7 点）GitHub Actions 会：
 
-1. 抓 HN、RSS、Reddit、GitHub Release、OSSInsight、Google News
+1. 抓 HN、RSS、Reddit、GitHub Release、OSSInsight、Google News，以及 GitHub / Hugging Face / X 热点
 2. 去重，用 profile 打分；再按 [来源权威分层](docs/source-tiers.md) 上调官方源、压掉无一手链接的二手/社区稿
 3. 生成中英双语日报，发布到 GitHub Pages
 
@@ -29,9 +29,15 @@ python3 patches/grok_reasoning_effort.py /tmp/horizon/src/ai/client.py
 python3 patches/shanghai_digest_date.py /tmp/horizon/src/orchestrator.py
 python3 patches/apply_source_tiers.py /tmp/horizon/src/orchestrator.py
 
+# 1b. 无官方 RSS 的源（Cursor changelog / Cognition / GitHub·HF·X 热点）
+mkdir -p /tmp/scraped-feeds
+python3 scripts/scrape_no_rss.py --out /tmp/scraped-feeds --print-items
+python3 -m http.server 8766 --directory /tmp/scraped-feeds --bind 127.0.0.1 &
+
 # 2. 密钥
 cp .env.example /tmp/horizon/.env
 # 填 OPENAI_API_KEY（当前模型 grok-4.6，reasoning_effort=xhigh，接口见 config.json 的 ai.base_url）
+# X 热点搜索和 follow-list 都要 APIFY_TOKEN；没有则 x-hot.xml 为空，follow-list 也会跳过
 
 # 3. 跑
 cd /tmp/horizon
@@ -61,7 +67,11 @@ uv run horizon --hours 24
 
 编辑 `data/config.json`（本地）和 `data/config.github.json`（Actions）。两边建议保持同源。
 
-X 用 Horizon 自带 Apify 抓指定账号；需要仓库 secret APIFY_TOKEN；打分过滤。
+X follow-list 用 Horizon 自带 Apify 抓指定账号；X 热点是另一条搜索路径（`scripts/scrape_no_rss.py` → `x-hot.xml`），不是加账号。两者都要仓库 secret `APIFY_TOKEN`。Nitter / RSSHub 搜索源已经不可用。没有 token 时热点 feed 会写成空文件，不会让整次采集失败。
+
+GitHub 热点不走 mshibanami `all.xml` 原饲料：那份 RSS 没有条目 `<pubDate>`，Horizon 会在 24h 窗口里整表丢掉。采集器先读 python / typescript / jupyter / all，用 agent/harness 关键词收窄，盖上当天日期，最多 20 条。OSSInsight 仍是第二条 GitHub 热榜（24h、关键词、`min_stars` 8、最多 15 条）。
+
+Hugging Face 官方博客仍是 official。Daily Papers（最多 15）和 trending models（最多 10，跳过生图）是 community 热点。
 
 中文小标题和用词见 [`profiles/STYLE.md`](profiles/STYLE.md)。
 

@@ -74,14 +74,20 @@ jobs:
         run: uv sync
 
       - name: Scrape sites without official RSS
+        env:
+          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
         run: |
           mkdir -p scraped-feeds
-          python3 overlay/scripts/scrape_no_rss.py --out scraped-feeds
+          python3 overlay/scripts/scrape_no_rss.py --out scraped-feeds --print-items
           python3 -m http.server 8766 --directory scraped-feeds --bind 127.0.0.1 &
           echo $! > /tmp/scraped-feeds.pid
           sleep 1
           curl -sf http://127.0.0.1:8766/cursor-changelog.xml >/dev/null
           curl -sf http://127.0.0.1:8766/cognition-blog.xml >/dev/null
+          curl -sf http://127.0.0.1:8766/github-trending.xml >/dev/null
+          curl -sf http://127.0.0.1:8766/hf-daily-papers.xml >/dev/null
+          curl -sf http://127.0.0.1:8766/hf-trending-models.xml >/dev/null
+          curl -sf http://127.0.0.1:8766/x-hot.xml >/dev/null
 
       - name: Run Horizon
         working-directory: horizon
