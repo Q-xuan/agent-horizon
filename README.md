@@ -55,7 +55,7 @@ uv run horizon --hours 24
 
 1. Settings → Pages → Source 选 `gh-pages` 分支
 2. Actions 里手动跑一次 **Daily Agent Digest**，确认通了
-3. 之后每天 UTC 23:00（北京时间次日 7:00）自动出报
+3. 之后每天 UTC 23:00（北京时间次日 7:00）自动出报；23:30 再试一次（GitHub 可能因 main 空闲跳过定时，gh-pages 提交保不了 main）
 
 ## 改源
 

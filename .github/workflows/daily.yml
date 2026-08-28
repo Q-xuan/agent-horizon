@@ -6,14 +6,23 @@ name: Daily Agent Digest
 
 on:
   schedule:
-    # 23:00 UTC = 07:00 Asia/Shanghai
-    - cron: "0 23 * * *"
+    # Two crons: GitHub may delay or skip scheduled workflows when the
+    # default branch looks idle. Digest commits land on gh-pages, so
+    # main can sit still and the 23:00 tick is more likely to be skipped.
+    # 23:30 is a same-morning retry (07:30 Asia/Shanghai).
+    - cron: "0 23 * * *"   # 07:00 Asia/Shanghai
+    - cron: "30 23 * * *"  # 07:30 Asia/Shanghai
   workflow_dispatch:
     inputs:
       hours:
         description: Lookback window in hours
         required: false
         default: "24"
+
+# If 23:00 is still scraping, 23:30 waits instead of starting a second Horizon run.
+concurrency:
+  group: daily-digest
+  cancel-in-progress: false
 
 jobs:
   daily-summary:
