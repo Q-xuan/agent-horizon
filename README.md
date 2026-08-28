@@ -73,6 +73,8 @@ GitHub 热点不走 mshibanami `all.xml` 原饲料：那份 RSS 没有条目 `<p
 
 Hugging Face 官方博客仍是 official。Daily Papers（最多 15）和 trending models（最多 10，跳过生图）是 community 热点。
 
+另外补了一小撮程序员 RSS（Fowler / Pragmatic Engineer / Lobsters / GitHub Blog / Netflix / Meta Eng / Node / Python Insider / Apple ML / Last Week in AI / 阮一峰 / DeepSeek）。不是 Tidings 大表。Lobsters 经本地 feed 封顶 15 条。GitHub Changelog 太吵，没加。
+
 中文小标题和用词见 [`profiles/STYLE.md`](profiles/STYLE.md)。
 
 打分阈值在 `processing.profile_settings`（`config.json` 与 `config.github.json` 保持一致）：

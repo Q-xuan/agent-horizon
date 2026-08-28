@@ -88,6 +88,7 @@ jobs:
           curl -sf http://127.0.0.1:8766/hf-daily-papers.xml >/dev/null
           curl -sf http://127.0.0.1:8766/hf-trending-models.xml >/dev/null
           curl -sf http://127.0.0.1:8766/x-hot.xml >/dev/null
+          curl -sf http://127.0.0.1:8766/lobsters.xml >/dev/null
 
       - name: Run Horizon
         working-directory: horizon

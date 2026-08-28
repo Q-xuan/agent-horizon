@@ -21,7 +21,7 @@ import re
 import sys
 import time
 from datetime import datetime, timedelta, timezone
-from email.utils import format_datetime
+from email.utils import format_datetime, parsedate_to_datetime
 from pathlib import Path
 from typing import Callable
 from urllib.error import HTTPError, URLError
@@ -100,6 +100,7 @@ APIFY_POLL = 3.0
 GITHUB_HOT_MAX = 20
 HF_PAPERS_MAX = 15
 HF_MODELS_MAX = 10
+LOBSTERS_MAX = 15
 
 
 def now_utc() -> datetime:
@@ -254,6 +255,69 @@ def scrape_cognition() -> list[dict]:
             }
         )
     return items[:12]
+
+
+def _local_tag(tag: str) -> str:
+    return tag.split("}", 1)[-1] if "}" in tag else tag
+
+
+def parse_feed_datetime(text: str) -> datetime | None:
+    text = (text or "").strip()
+    if not text:
+        return None
+    try:
+        return parsedate_to_datetime(text).astimezone(timezone.utc)
+    except (TypeError, ValueError, OverflowError):
+        return parse_iso(text)
+
+
+def parse_rss_or_atom(xml_text: str) -> list[dict]:
+    """Read a public RSS/Atom feed, keeping each item's own pubDate."""
+    try:
+        root = ET.fromstring(xml_text)
+    except ET.ParseError:
+        return []
+    items: list[dict] = []
+    for el in root.iter():
+        if _local_tag(el.tag) not in {"item", "entry"}:
+            continue
+        title = ""
+        link = ""
+        desc = ""
+        published = None
+        for child in list(el):
+            name = _local_tag(child.tag)
+            if name == "title" and not title:
+                title = strip_html(child.text or "")
+            elif name == "link":
+                href = (child.get("href") or child.text or "").strip()
+                if href and not link:
+                    link = href
+            elif name in {"description", "summary", "content"} and not desc:
+                desc = strip_html("".join(child.itertext()))
+            elif name in {"pubDate", "updated", "published"} and published is None:
+                published = parse_feed_datetime(child.text or "")
+        if not title or not link:
+            continue
+        items.append(
+            {
+                "title": title,
+                "link": link,
+                "description": (desc or title)[:500],
+                "published": published or now_utc(),
+            }
+        )
+    return items
+
+
+def scrape_lobsters() -> list[dict]:
+    xml_text = fetch(
+        "https://lobste.rs/rss",
+        accept="application/rss+xml, application/xml, text/xml",
+    )
+    items = parse_rss_or_atom(xml_text)
+    items.sort(key=lambda x: x["published"], reverse=True)
+    return items[:LOBSTERS_MAX]
 
 
 def parse_github_trending_rss(xml_text: str, published: datetime | None = None) -> list[dict]:
@@ -635,6 +699,7 @@ def main() -> int:
             scrape_hf_trending_models,
         ),
         ("x-hot.xml", "X Hot", "https://x.com/search", scrape_x_hot),
+        ("lobsters.xml", "Lobsters", "https://lobste.rs", scrape_lobsters),
     ]
     failed = 0
     for filename, title, home, fn in jobs:

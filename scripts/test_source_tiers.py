@@ -105,6 +105,7 @@ def test_classify_and_official_url() -> None:
         "Hugging Face Daily Papers",
         "Hugging Face Trending Models",
         "X Hot",
+        "Lobsters",
     ):
         hot = item(
             source_type="rss",
@@ -133,6 +134,23 @@ def test_classify_and_official_url() -> None:
     decision = apply_item(hf_paper, policy)
     assert_true(decision["action"] == "unchanged", decision)
     assert_true(hf_paper.processing.analysis.score == 7.4, "HF paper URL is primary, so no community drop")
+
+    fowler = item(
+        source_type="rss",
+        score=7.0,
+        feed_name="Martin Fowler",
+        url="https://martinfowler.com/articles/agentic-ai.html",
+    )
+    assert_true(classify_tier(fowler, policy) == "practitioner", "Fowler is practitioner")
+
+    gh_blog = item(
+        source_type="rss",
+        score=7.0,
+        feed_name="GitHub Blog",
+        url="https://github.blog/ai/something",
+    )
+    assert_true(classify_tier(gh_blog, policy) == "official", "GitHub Blog is official")
+    assert_true(has_primary_official_url(gh_blog, policy), "github.blog is an official host")
 
     tweet = item(
         source_type="twitter",

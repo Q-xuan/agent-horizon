@@ -13,6 +13,7 @@ from scrape_no_rss import (
     GITHUB_HOT_MAX,
     HF_MODELS_MAX,
     HF_PAPERS_MAX,
+    LOBSTERS_MAX,
     X_HOT_MAX_ITEMS,
     X_HOT_MIN_LIKES,
     filter_github_hot,
@@ -20,6 +21,7 @@ from scrape_no_rss import (
     hf_paper_item,
     matches_github_hot,
     parse_github_trending_rss,
+    parse_rss_or_atom,
     x_hot_item,
 )
 
@@ -178,6 +180,27 @@ def test_hf_paper_and_model_caps() -> None:
     assert_true(HF_PAPERS_MAX + HF_MODELS_MAX <= 25, "HF family cap")
 
 
+def test_lobsters_keeps_dates_and_cap() -> None:
+    xml = """<?xml version="1.0"?>
+    <rss version="2.0"><channel>
+      <title>Lobsters</title>
+    """
+    for i in range(LOBSTERS_MAX + 6):
+        xml += f"""
+      <item>
+        <title>Story {i}</title>
+        <link>https://lobste.rs/s/{i}</link>
+        <pubDate>Thu, 27 Aug 2026 12:00:00 -0500</pubDate>
+        <description>A thread.</description>
+      </item>
+    """
+    xml += "</channel></rss>"
+    parsed = parse_rss_or_atom(xml)
+    assert_true(len(parsed) == LOBSTERS_MAX + 6, len(parsed))
+    assert_true(all(item["published"].year == 2026 for item in parsed), "keep original dates")
+    assert_true(len(parsed[:LOBSTERS_MAX]) == LOBSTERS_MAX, LOBSTERS_MAX)
+
+
 def test_x_hot_popularity_and_no_replies() -> None:
     since = NOW - timedelta(hours=24)
     created = NOW.strftime("%a %b %d %H:%M:%S +0000 %Y")
@@ -240,6 +263,7 @@ def main() -> None:
     test_github_trending_rss_stamps_date_and_filters()
     test_github_hot_cap()
     test_hf_paper_and_model_caps()
+    test_lobsters_keeps_dates_and_cap()
     test_x_hot_popularity_and_no_replies()
     print("ok")
 
