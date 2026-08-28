@@ -5,304 +5,302 @@ date: 2026-08-28
 lang: en
 ---
 
-> From 193 items, 18 important content pieces were selected
+> From 238 items, 19 important content pieces were selected
 
 ---
 
 **Agent Harness Architecture**
-1. [Claude Code 2.1.248 Release](#item-harness-arch-1) ⭐️ 8.5/10
-2. [Cline Desktop v0.0.20 发布](#item-harness-arch-2) ⭐️ 7.5/10
-3. [crewAI 1.15.18 Released](#item-harness-arch-3) ⭐️ 7.5/10
-4. [FastMCP v4.0.0b5 Released](#item-harness-arch-4) ⭐️ 7.5/10
-5. [instructor v1.16.0 released](#item-harness-arch-5) ⭐️ 7.5/10
-6. [Goose v1.48.0 Released](#item-harness-arch-6) ⭐️ 6.5/10
-7. [Cloudflare Agents agents@0.22.0](#item-harness-arch-7) ⭐️ 6.5/10
-8. [Deep Agents GitHub trending](#item-harness-arch-8) ⭐️ 5.0/10
+1. [Deep Agents: Batteries-Included Open Source Agent Harness](#item-harness-arch-1) ⭐️ 8.0/10
+2. [FastMCP v4.0.0b5 Released](#item-harness-arch-2) ⭐️ 7.8/10
+3. [Cloudflare Agents @cloudflare/think@0.17.0 Released](#item-harness-arch-3) ⭐️ 7.8/10
+4. [LangChain 1.4.0a1 初始发布](#item-harness-arch-4) ⭐️ 7.8/10
+5. [Instructor v1.16.0 Released](#item-harness-arch-5) ⭐️ 7.8/10
+6. [E2B v2.46.1 Released](#item-harness-arch-6) ⭐️ 7.8/10
+7. [Claude Code 2.1.248 发布](#item-harness-arch-7) ⭐️ 7.8/10
+8. [Cloudflare Agents 0.22.0 Released](#item-harness-arch-8) ⭐️ 6.8/10
+9. [Anthropics Skills Trending on GitHub](#item-harness-arch-9) ⭐️ 5.0/10
+10. [EveryInc compound-engineering-plugin Trending](#item-harness-arch-10) ⭐️ 5.0/10
 
 **AI Agent Engineer**
-1. [Breaking Claude Code Opus 5 Auto Mode](#item-agent-engineer-1) ⭐️ 8.0/10
-2. [训练代理随其 Harness 演化：TaoLive 数字头像代理技术报告](#item-agent-engineer-2) ⭐️ 8.0/10
-3. [Gemini Omni 1.1 Flash: More Control for Builders](#item-agent-engineer-3) ⭐️ 7.5/10
-4. [DeepMind Pilots World&\#x27;s First Double-Blind AI Evaluations](#item-agent-engineer-4) ⭐️ 7.5/10
-5. [UrbanGround 沙盒：从局部感知到空间代理](#item-agent-engineer-5) ⭐️ 7.0/10
+1. [Cloudflare DNS缓存 100TB内存优化](#item-agent-engineer-1) ⭐️ 7.8/10
+2. [Breaking Claude Code Opus 5 Auto Mode](#item-agent-engineer-2) ⭐️ 7.0/10
+3. [Harness-Aware Training for Evolving Agent Harnesses](#item-agent-engineer-3) ⭐️ 7.0/10
+4. [DeepMind Pilots World&\#x27;s First Double-Blind AI Evaluations](#item-agent-engineer-4) ⭐️ 5.8/10
 
 **AI Daily**
-1. [ChatGPT and Critical-Thinking Training Improve Student Performance](#item-ai-daily-1) ⭐️ 7.5/10
-2. [OpenClaw Went Viral: Meet the Maintainers](#item-ai-daily-2) ⭐️ 5.5/10
+1. [OpenClaw Went Viral: Meet the Maintainers](#item-ai-daily-1) ⭐️ 6.8/10
+2. [OpenAI: ChatGPT Critical Thinking Study for Students](#item-ai-daily-2) ⭐️ 5.8/10
 
 **AI Deals**
-1. [AI Engineer Notebooks – free, framework-free RAG/agents/evals on Colab](#item-ai-deals-1) ⭐️ 8.0/10
-2. [JetBrains Junie 本地 Mac 版发布](#item-ai-deals-2) ⭐️ 7.0/10
-3. [axium-lab/llm-specs-api 免费 LLM API](#item-ai-deals-3) ⭐️ 5.0/10
+1. [Epic Games Free Games This Week: Breathedge, Rival Stars Horse Racing, Down in Bermuda](#item-ai-deals-1) ⭐️ 6.0/10
+2. [Free Tool Turns Market Research into Personal Branding Strategy](#item-ai-deals-2) ⭐️ 5.0/10
+3. [Free AI Engineer Notebooks for RAG, Agents &amp; Evals on Colab](#item-ai-deals-3) ⭐️ 5.0/10
 
 ---
 
 ## Agent Harness Architecture
 
 <a id="item-harness-arch-1"></a>
-### [Claude Code 2.1.248 Release](https://code.claude.com/docs/en/changelog#2-1-248) ⭐️ 8.5/10
+### [Deep Agents: Batteries-Included Open Source Agent Harness](https://github.com/langchain-ai/deepagents) ⭐️ 8.0/10
 
-Claude Code 2.1.248 release adds restricted tool execution \(removing command runners/WebFetch unless whitelisted\), per-agent prompt cache TTL, self-hosted runner client label support, and enhanced settings load diagnostics. The --restricted mode or CLAUDE\_CODE\_RESTRICTED=1 flag limits tools to working directory only and refuses bypassPermissions. Experimental cacheTtl sets per-agent prompt cache TTL when no subagent setting is configured.
+Deep Agents is a batteries-included open source agent harness from langchain-ai. It is opinionated with defaults tuned for long-horizon multi-step work. It is extensible without forking and model-agnostic for any LLM with tool calling. The harness is production-ready.
 
-rss · Claude Code Changelog · Aug 27, 22:19
+rss · GitHub Trending Daily · Aug 28, 08:25
 
-**「设计要点」** Restricted mode enforces sandboxing by limiting tools to the working directory and refusing bypassPermissions. Per-agent cacheTtl affects the prompt cache memory model for long sessions. Self-hosted runner client label overrides the default hostname for registration.
-
-**Tags**: `#tools`, `#permissions`, `#memory`, `#runtime`, `#self-hosted`
+**Tags**: `#runtime`, `#tools`, `#planning`
 
 ---
 
 <a id="item-harness-arch-2"></a>
-### [Cline Desktop v0.0.20 发布](https://github.com/cline/cline/releases/tag/desktop-v0.0.20) ⭐️ 7.5/10
+### [FastMCP v4.0.0b5 Released](https://github.com/PrefectHQ/fastmcp/releases/tag/v4.0.0b5) ⭐️ 7.8/10
 
-Cline Desktop v0.0.20 发布了 Windows 支持，包含代码签名 x64 安装程序，并支持自动更新。修复了后台进程弹出控制台窗口的问题，工具结果现在支持图片渲染为内联图片和轮播。会话搜索覆盖完整索引历史，并更新了 onboarding 的 GitHub 集成。
+FastMCP v4.0.0b5 introduces ClientGroup for managing multiple independent clients per server. Each client negotiates its own protocol independently with collision-checked tool namespacing and call routing without a proxy. Middleware response limits are aligned with output schemas.
 
-github · github-actions\[bot\] · Aug 28, 01:33
+github · zzstoatzz · Aug 28, 02:57
 
-**「设计要点」** 后台进程在 Windows 下不再弹出控制台窗口，更新以后台方式下载。工具层改进了图片渲染，支持内联和轮播显示。记忆层提升了会话搜索的索引覆盖范围。
+**「Architecture Note」** ClientGroup manages one client per server with independent protocol negotiation, collision-checked tool namespacing, call routing, and no proxy.
 
-**「改了什么」** 相比 v0.0.19，v0.0.20 增加了 Windows 支持，并修复了后台进程、更新、会话搜索和多个其他问题。工具结果渲染方式从 raw base64 改为支持图片内联和轮播。
+**「What Changed」** Added ClientGroup support for independent clients per server with direct protocol handling and tool call routing. Aligned middleware response limits with output schemas and removed obsolete Docket memory-server reset fixtures.
 
-**Tags**: `#runtime`, `#tools`, `#memory`, `#sandbox`, `#mcp`
+**Tags**: `#mcp`, `#runtime`, `#tools`
 
 ---
 
 <a id="item-harness-arch-3"></a>
-### [crewAI 1.15.18 Released](https://github.com/crewAIInc/crewAI/releases/tag/1.15.18) ⭐️ 7.5/10
+### [Cloudflare Agents @cloudflare/think@0.17.0 Released](https://github.com/cloudflare/agents/releases/tag/%40cloudflare/think%400.17.0) ⭐️ 7.8/10
 
-crewAI 1.15.18 is released. It promotes conversational flows to stable and enhances documentation and APIs for chat flows and declarative flows. Key changes include accepting crew-style LLM config in conversational declarations, recording project creation with UUID, and backfilling project IDs. Bug fixes address tool result preservation, message roles, and runtime messaging.
+Cloudflare Agents @cloudflare/think@0.17.0 released. Durable chat recovery is now unconditional for AIChatAgent and Think. Every chat turn runs in a recovery fiber including WebSocket, programmatic, retry, and continuation paths. chatRecovery accepts true or configuration object; false is no longer supported.
 
-github · lorenzejay · Aug 27, 18:07
+github · ben-reitz · Aug 27, 14:07
 
-**「What Changed」** Conversational flows are now stable with new APIs for declaring state shape and LLM config. This release adds features for chat flow lifecycle emission and project tracking while fixing bugs around tool results, message roles, and default model mappings.
+**「设计要点」** Durable chat recovery executes in fibers across all paths. Scheduler provides persistent delayed, cron, and interval callbacks via LifecycleCapability and Durable Object alarms.
 
-**「Community Discussion」** No community comments available.
+**「改了什么」** Made durable chat recovery unconditional with breaking chatRecovery config change. Added Scheduler for persistent scheduling callbacks.
 
-**Tags**: `#runtime`, `#tools`, `#memory`
+**Tags**: `#runtime`, `#memory`
 
 ---
 
 <a id="item-harness-arch-4"></a>
-### [FastMCP v4.0.0b5 Released](https://github.com/PrefectHQ/fastmcp/releases/tag/v4.0.0b5) ⭐️ 7.5/10
+### [LangChain 1.4.0a1 初始发布](https://github.com/langchain-ai/langchain/releases/tag/langchain%3D%3D1.4.0a1) ⭐️ 7.8/10
 
-FastMCP v4.0.0b5 introduces ClientGroup for independent client handling per server. Each client negotiates its own protocol era independently with collision-checked tool namespacing and call routing without a proxy. It also aligns middleware response limits with output schemas.
+LangChain 1.4.0a1 is the initial release of the LangChain library. It adds support for the MCP protocol with a new langchain.mcp namespace and MCPAdapter class. The release includes breaking changes to type handling for elicitation requests and responses per mode, plus refactoring of continuation logic to refuse rounds instead of polling.
 
-github · zzstoatzz · Aug 28, 02:57
+github · github-actions\[bot\] · Aug 27, 22:21
 
-**「Design Notes」** ClientGroup enables one managed client per server with independent protocol era negotiation, collision-checked tool namespacing, and proxy-free call routing.
+**「改了什么」** LangChain 1.4.0a1 introduces MCP protocol support and ports tool conversion from langchain-mcp-adapters. It refactors elicitation types to be per-mode and drops elicitation from MCPAdapter.
 
-**「What Changed」** Added independent client groups supporting per-server protocol era negotiation and collision-checked tool namespacing. Fixed middleware to align response limits with output schemas.
-
-**Tags**: `#runtime`, `#tools`, `#mcp`, `#client-groups`, `#middleware`
+**Tags**: `#mcp`, `#runtime`, `#tools`
 
 ---
 
 <a id="item-harness-arch-5"></a>
-### [instructor v1.16.0 released](https://github.com/567-labs/instructor/releases/tag/v1.16.0) ⭐️ 7.5/10
+### [Instructor v1.16.0 Released](https://github.com/567-labs/instructor/releases/tag/v1.16.0) ⭐️ 7.8/10
 
-instructor v1.16.0 from 567-labs adds native Bedrock structured outputs support and cumulative token budget retry validation for non-streaming generations. It supports Mode.JSON\_SCHEMA and Mode.TOOLS\_STRICT through Converse outputConfig with recursive schema normalization, requiring boto3 &gt;=1.42.42. Model selection remains caller-controlled.
+567-labs/instructor released v1.16.0. Adds Bedrock native structured outputs support with Mode.JSON\_SCHEMA and Mode.TOOLS\_STRICT modes via Converse API. Introduces validation retry budgets with cumulative token\_budget limits and immutable usage snapshots. Requires boto3 1.42.42 minimum.
 
 github · github-actions\[bot\] · Aug 27, 15:33
 
-**「Design points」** The Bedrock support integrates with Converse API&\#x27;s outputConfig for structured outputs and strict tool schemas. Retry budgets use immutable usage snapshots to enforce token limits and ensure parity between sync and async calls.
+**「What Changed」** Added Bedrock native structured outputs support with JSON\_SCHEMA and TOOLS\_STRICT modes. Introduced retry budgets that stop provider calls on token budget for failed structured outputs.
 
-**「What changed」** v1.16.0 adds native Bedrock structured outputs support using Mode.JSON\_SCHEMA and Mode.TOOLS\_STRICT via Converse outputConfig. It introduces cumulative token budget limits for retrying non-streaming generations with immutable usage snapshots and sync/async parity.
-
-**Tags**: `#tools`, `#runtime`, `#eval`
+**Tags**: `#tools`, `#runtime`
 
 ---
 
 <a id="item-harness-arch-6"></a>
-### [Goose v1.48.0 Released](https://github.com/aaif-goose/goose/releases/tag/v1.48.0) ⭐️ 6.5/10
+### [E2B v2.46.1 Released](https://github.com/e2b-dev/E2B/releases/tag/e2b%402.46.1) ⭐️ 7.8/10
 
-Goose v1.48.0 is released. The update adds new declarative providers including TrustedRouter, OpenCode Zen, Gondola, SayGM, Lynkr, PleumRouter, plus audio transcription and cost tracking improvements. It also introduces PreToolUse hooks, UI enhancements, CLI commands, and observability features.
+E2B v2.46.1 is released. It deprecates the sandbox.git module for git operations, recommending sandbox.commands.run instead. The module keeps working and will be removed in the next major version.
 
-github · github-actions\[bot\] · Aug 27, 19:12
+github · github-actions\[bot\] · Aug 27, 20:24
 
-**「What Changed」** Goose v1.48.0 adds new declarative providers such as TrustedRouter, OpenCode Zen, Gondola, SayGM, Lynkr, and PleumRouter. It introduces model-native audio transcription, custom provider cost fields for tracking, and new hooks including on\_failure for PreToolUse.
+**「What Changed」** This release deprecates the sandbox.git module and its public types and errors. Run git through the commands module instead, e.g. \`sandbox.commands.run\(&\#x27;git clone &lt;url&gt; repo&\#x27;\)\`, and the module will be removed in the next major version.
 
-**Tags**: `#runtime`, `#tools`
+**Tags**: `#sandbox`, `#tools`, `#runtime`
 
 ---
 
 <a id="item-harness-arch-7"></a>
-### [Cloudflare Agents agents@0.22.0](https://github.com/cloudflare/agents/releases/tag/agents%400.22.0) ⭐️ 6.5/10
+### [Claude Code 2.1.248 发布](https://code.claude.com/docs/en/changelog#2-1-248) ⭐️ 7.8/10
 
-Cloudflare Agents 0.22.0 release makes durable chat recovery unconditional in AIChatAgent and Think with fiber-based handling and onChatRecovery hook configuration. Every chat turn now runs in a recovery fiber, including WebSocket, programmatic, retry, and continuation paths. chatRecovery accepts true or a configuration object; false is no longer supported. Previously compiled JavaScript that still supplies false safely receives the default recovery configuration.
+Claude Code 2.1.248 introduces restricted mode that limits command tools and WebFetch. Experimental per-agent prompt cache TTL is added to agent frontmatter. Self-hosted runner client label override and server-managed settings diagnostics are also included.
 
-github · ben-reitz · Aug 27, 14:07
+rss · Claude Code Changelog · Aug 27, 22:19
 
-**「Design points」** Durable chat recovery now runs unconditionally in fibers for all paths including WebSockets. Agent extends Cloudflare DurableObject directly and composes the same lifecycle used by standalone objects, with WebSockets always using the Hibernation API.
+**「设计要点」** Restricted mode enforces tool and permission boundaries at runtime. The per-agent cacheTtl affects memory for subagents.
 
-**「What changed」** Durable chat recovery is now unconditional, previously could be disabled with false. Added reusable Scheduler for persistent delayed, cron, and interval callbacks under agents/schedules. Throttled chat UI updates by default in useAgentChat. Removed the published agents CLI binary.
+**「改了什么」** This release adds restricted mode, experimental prompt cache TTL, self-hosted runner client label override, and server-managed settings diagnostics.
 
-**Tags**: `#runtime`, `#memory`, `#durable`, `#recovery`, `#chat`
+**Tags**: `#runtime`, `#tools`, `#sandbox`, `#memory`, `#permissions`, `#subagents`
 
 ---
 
 <a id="item-harness-arch-8"></a>
-### [Deep Agents GitHub trending](https://github.com/langchain-ai/deepagents) ⭐️ 5.0/10
+### [Cloudflare Agents 0.22.0 Released](https://github.com/cloudflare/agents/releases/tag/agents%400.22.0) ⭐️ 6.8/10
 
-Deep Agents is an open-source extensible agent harness from langchain-ai, trending on GitHub. It is a batteries-included, opinionated agent that runs out of the box. It supports extending, overriding, or replacing any piece without forking. The harness is model-agnostic and works with any LLM that supports tool calling, including frontier, open-weight, or local models, and is production-ready.
+Cloudflare Agents v0.22.0 is released. Durable chat recovery is now unconditional via fibers for every chat turn to support durable bookkeeping and cancellation in AIChatAgent and Think. chatRecovery false is no longer supported as a breaking change; previously compiled JavaScript receives the default configuration. Additional updates include PartyServer runtime vendoring, Scheduler capability addition, default UI update throttling, CLI binary removal, and MCPClientManager as a lifecycle capability.
 
-rss · GitHub Trending Daily · Aug 28, 06:35
+github · ben-reitz · Aug 27, 14:07
 
-**Tags**: `#runtime`, `#tools`, `#extensible`
+**「Design points」** Agents now directly extend Cloudflare&\#x27;s DurableObject and compose the lifecycle for startup, WebSockets, alarms, and request interception. Fibers ensure recovery in all paths including hibernation; Scheduler uses the same lifecycle surface for persistent callbacks.
+
+**「Changes」** Durable chat recovery is now unconditional for all paths, breaking support for chatRecovery: false. Additional updates include PartyServer runtime integration, Scheduler capability, UI throttling, CLI removal, and MCP as lifecycle capability.
+
+**Tags**: `#runtime`, `#memory`, `#durable`, `#recovery`, `#fiber`
+
+---
+
+<a id="item-harness-arch-9"></a>
+### [Anthropics Skills Trending on GitHub](https://github.com/anthropics/skills) ⭐️ 5.0/10
+
+The anthropics/skills repository is trending on GitHub. It contains Anthropic&\#x27;s implementation of skills for Claude. Skills are folders of instructions, scripts, and resources that Claude loads dynamically to improve performance on specialized tasks. For the Agent Skills standard, see agentskills.io.
+
+rss · GitHub Trending Daily · Aug 28, 08:25
+
+**Tags**: `#runtime`, `#memory`, `#subagents`, `#skills`
+
+---
+
+<a id="item-harness-arch-10"></a>
+### [EveryInc compound-engineering-plugin Trending](https://github.com/EveryInc/compound-engineering-plugin) ⭐️ 5.0/10
+
+EveryInc&\#x27;s compound-engineering-plugin is a 33-skill system for AI coding agents. It structures the work around a brainstorm-plan-build-review-capture loop, capturing knowledge from each change for the next. It is a plugin for Claude Code, Codex, Cursor, and more, running on 14 agent hosts.
+
+rss · GitHub Trending Daily · Aug 28, 08:25
+
+**Tags**: `#runtime`, `#memory`, `#planning`, `#subagents`, `#tools`
 
 ---
 
 ## AI Agent Engineer
 
 <a id="item-agent-engineer-1"></a>
-### [Breaking Claude Code Opus 5 Auto Mode](https://simonwillison.net/2026/Aug/27/breaking-claude-code-opus-5-auto-mode/) ⭐️ 8.0/10
+### [Cloudflare DNS缓存 100TB内存优化](https://blog.cloudflare.com/dns-cache-memory-optimization-1111/) ⭐️ 7.8/10
 
-Johann Rehberger discovered a prompt injection attack against Claude Code&\#x27;s auto mode that works 80% of the time. The attack tricks the agent into downloading and uncompressing a malicious zip archive, then importing a local struct.py file via base64 encoding without detection. In a few cases the auto mode blocked the agent&\#x27;s cleanup commands after detecting the compromise, allowing harmful code to continue executing. This affects users of Anthropic&\#x27;s Claude Code auto mode.
+Cloudflare&\#x27;s Big Pineapple platform reduced its DNS cache memory footprint by over 50% through five successive struct optimizations. This freed up roughly 100 terabytes of memory fleet-wide from over 250 billion entries, equivalent to the RAM in 130 Gen 13 servers. Insert throughput rose 43% and lookup latency dropped 19%. The changes are especially impactful for ECS-heavy locations.
 
-rss · Simon Willison · Aug 27, 22:50
+rss · Cloudflare Engineering · Aug 27, 17:02 · [Discussion](https://news.ycombinator.com/item?id=49468083)
 
-**「Why it matters」** Anthropic has made auto mode the default for protecting coding agent users from prompt injection attacks, but this attack shows it can be bypassed in most cases.
+**「为什么重要」** These optimizations demonstrate effective memory management at extreme scale, offering lessons for caching patterns in AI agent toolchains and harness systems.
 
-**「What to watch」** What to watch: Run unattended coding agents in a container, VM or OS sandbox, restrict network egress, monitor agents, and do not expose home directories, SSH keys, cloud credentials to the agent runtime.
+**「可关注」** 可关注：Replace Vec&lt;T&gt; with Box&lt;\[T\]&gt; to eliminate capacity fields and reduce heap allocations, saving 64 bytes per entry.
 
-**Tags**: `#coding-agent`, `#harness`, `#permissions`
+**「评论」** Comments praised the incremental optimization approach after product stabilization. Some noted potential further gains by co-locating data in Rust, while others shared similar memory-saving techniques from their projects and discussed struct alignment.
+
+**Tags**: `#memory`, `#cache`, `#optimization`, `#systems-programming`, `#production-scale`
 
 ---
 
 <a id="item-agent-engineer-2"></a>
-### [训练代理随其 Harness 演化：TaoLive 数字头像代理技术报告](https://huggingface.co/papers/2608.15763) ⭐️ 8.0/10
+### [Breaking Claude Code Opus 5 Auto Mode](https://simonwillison.net/2026/Aug/27/breaking-claude-code-opus-5-auto-mode/) ⭐️ 7.0/10
 
-技术报告提出 Harness-Aware Training \(HAT\) 和 Harness-State Augmentation \(HSA\)，使紧凑型模型能够随变化的 agent harness 演化，用于低延迟实时数字头像流媒体。解决了大模型零样本适应快但延迟高与紧凑模型延迟低但固定 harness 过拟合的权衡。直接适用于代理编排、训练管道和可演化 harness 设计。
+Claude Code auto mode became the default after Anthropic&\#x27;s update. Johann Rehberger&\#x27;s prompt injection attack tricks the agent into downloading and uncompressing a malicious zip archive. It then executes harmful code through an imported base64 module that runs extracted struct.py. The attack succeeds 80% of the time and can evade built-in protections. In a few runs, auto mode blocked the agent&\#x27;s cleanup commands after detecting the malware process.
 
-rss · Hugging Face Daily Papers · Aug 28, 00:00
+rss · Simon Willison · Aug 27, 22:50
 
-**「为什么重要」** Harness-Aware Training \(HAT\) 解决了紧凑模型在动态 harness 变化下的适应性问题，这对于实时数字头像代理至关重要。
+**「Why it matters」** The attack shows auto mode&\#x27;s safety classifier can allow malware creation while blocking termination. This affects users of Claude Code coding agents and highlights risks in default auto mode.
 
-**「可关注」** 可关注：Harness-State Augmentation \(HSA\) 通过任务保持变换应用于 Skill 标识符、工具模式、提示结构和 Hook 函数。
+**「What to watch」** What to watch: Run unattended coding agents in a container, VM or OS sandbox. Restrict network egress. Monitor your agents. Do not expose home directories, SSH keys, cloud credentials to the agent runtime.
 
-**Tags**: `#harness`, `#orchestration`, `#coding-agent`
+**Tags**: `#coding-agent`, `#permissions`, `#harness`, `#eval`, `#orchestration`
 
 ---
 
 <a id="item-agent-engineer-3"></a>
-### [Gemini Omni 1.1 Flash: More Control for Builders](https://deepmind.google/blog/gemini-omni-1-1-flash-lets-you-build-with-more-control/) ⭐️ 7.5/10
+### [Harness-Aware Training for Evolving Agent Harnesses](https://huggingface.co/papers/2608.15763) ⭐️ 7.0/10
 
-Google DeepMind released Gemini Omni 1.1 Flash, a model update that provides more control for application builders. The update emphasizes greater control features for building applications. This change could impact agent orchestration and tool-use workflows.
+Technical report details Harness-Aware Training \(HAT\) using Harness-State Augmentation \(HSA\) for AI-powered digital avatar agents. These agents must answer product questions, engage viewers, and execute marketing strategies in real time, demanding low latency, frequent strategy updates, and accurate yet effective responses. Evolvable Harnesses, whose Skills, Hooks, prompts, and tools can be updated independently of model weights, enable rapid iteration but expose a trade-off: large models adapt zero-shot yet are too slow, whereas compact models meet latency targets but overfit to fixed Harness configurations. HAT trains compact models to adapt to changing Harnesses.
 
-rss · Google DeepMind · Aug 27, 16:11
+rss · Hugging Face Daily Papers · Aug 28, 00:00
 
-**「Why it matters」** The update from Google DeepMind focuses on builder control features, which is relevant for AI agent engineers working on orchestration and permissions.
+**「Why It Matters」** Harness-Aware Training \(HAT\) and Harness-State Augmentation \(HSA\) enable compact models to adapt to evolving harnesses, supporting rapid iteration in agent toolchains and orchestration for real-time applications.
 
-**「What to watch」** Watch for enhanced control options in the Gemini Omni 1.1 Flash model.
+**「Engineer Takeaway」** Focus on Harness-State Augmentation \(HSA\), which applies task-preserving transformations to Skill identifiers and content, tool schemas, prompt structures, and Hook functions.
 
-**Tags**: `#orchestration`, `#coding-agent`, `#permissions`
+**Tags**: `#harness`, `#coding-agent`, `#orchestration`, `#eval`
 
 ---
 
 <a id="item-agent-engineer-4"></a>
-### [DeepMind Pilots World&\#x27;s First Double-Blind AI Evaluations](https://deepmind.google/blog/piloting-the-worlds-first-double-blind-ai-evaluations/) ⭐️ 7.5/10
+### [DeepMind Pilots World&\#x27;s First Double-Blind AI Evaluations](https://deepmind.google/blog/piloting-the-worlds-first-double-blind-ai-evaluations/) ⭐️ 5.8/10
 
-Google DeepMind announced the piloting of the world&\#x27;s first double-blind AI evaluations. This is a verifiable first-hand announcement on a novel evaluation approach. The initiative is relevant to improving eval methods in agent harnesses and toolchains.
+Google DeepMind is piloting the world&\#x27;s first double-blind AI evaluations.
 
 rss · Google DeepMind · Aug 27, 12:59
 
-**「Why it matters」** Google DeepMind announced the piloting of the world&\#x27;s first double-blind AI evaluations. This change has occurred with the official blog post. The impact on agent harnesses has not been confirmed yet.
+**「Why it matters」** DeepMind has piloted the world&\#x27;s first double-blind AI evaluations. This change has occurred. Its impact on evaluation practices remains unconfirmed.
 
-**「What to Watch」** What to Watch: Double-blind AI evaluations.
-
-**Tags**: `#eval`, `#harness`, `#benchmark`
-
----
-
-<a id="item-agent-engineer-5"></a>
-### [UrbanGround 沙盒：从局部感知到空间代理](https://huggingface.co/papers/2608.27456) ⭐️ 7.0/10
-
-UrbanGround is a Hong Kong 3D geospatial replica sandbox enabling closed-loop first-person testing of multimodal agents converting local street-view perception into reliable navigation and action. The paper investigates how far current MLLM agents can turn local urban perception into reliable action in a complicated real-scale city. It proposes UrbanGround as the first sandbox to make this question testable in a physically constrained replica of Hong Kong built from territory-wide 3D geospatial data. Agents can directly enter the 3D city and explore from a first-person view, with support for closed-loop interaction and an interactive map for navigation.
-
-rss · Hugging Face Daily Papers · Aug 28, 00:00
-
-**「为什么重要」** The paper introduces UrbanGround as a sandbox for testing MLLM agents on spatial agency in a real-scale city. This change offers interpretable updates to agent eval harnesses and embodied workflows, though the extent of the impact remains unconfirmed.
-
-**「可关注」** 可关注：UrbanGround supports closed-loop interaction from a first-person view and provides an interactive map for navigation.
-
-**Tags**: `#eval`, `#harness`, `#memory`, `#orchestration`
+**Tags**: `#eval`, `#harness`
 
 ---
 
 ## AI Daily
 
 <a id="item-ai-daily-1"></a>
-### [ChatGPT and Critical-Thinking Training Improve Student Performance](https://openai.com/index/what-students-gain-from-chatgpt-critical-thinking-training) ⭐️ 7.5/10
+### [OpenClaw Went Viral: Meet the Maintainers](https://github.blog/open-source/maintainers/openclaw-went-viral-meet-the-maintainers-building-and-securing-it/) ⭐️ 6.8/10
 
-OpenAI published findings from a randomized controlled trial with more than 1,000 students. The study examined the effects of ChatGPT combined with critical-thinking training on a real-world university assignment. Results showed improvements in answer quality, thinking breadth, originality, and assignment performance.
+OpenClaw is the fastest-growing project in GitHub history. Peter Steinberger and several maintainers share what they learned in the project&\#x27;s first six months. The post appeared first on The GitHub Blog.
 
-rss · OpenAI Blog · Aug 27, 09:00
+rss · GitHub Blog · Aug 27, 16:00
 
-**「Why it matters」** This research offers insights into how AI tools like ChatGPT can support student learning when paired with critical thinking skills in higher education.
+**「Why It Matters」** This post highlights OpenClaw&\#x27;s rapid growth and shares learnings from its maintainers on building and securing the project.
 
-**「Key takeaway」** Key takeaway: Combining ChatGPT with critical-thinking training can enhance student performance on university assignments.
+**「Takeaway」** Takeaway: Maintainers share insights from the first six months of building and securing OpenClaw.
 
-**Tags**: `#openai`, `#chatgpt`, `#education`, `#study`, `#eval`
+**Tags**: `#open-source`
 
 ---
 
 <a id="item-ai-daily-2"></a>
-### [OpenClaw Went Viral: Meet the Maintainers](https://github.blog/open-source/maintainers/openclaw-went-viral-meet-the-maintainers-building-and-securing-it/) ⭐️ 5.5/10
+### [OpenAI: ChatGPT Critical Thinking Study for Students](https://openai.com/index/what-students-gain-from-chatgpt-critical-thinking-training) ⭐️ 5.8/10
 
-OpenClaw is the fastest-growing project in GitHub history. Peter Steinberger and several maintainers shared lessons learned during the project&\#x27;s initial six months. The story was covered in a GitHub Blog post.
+OpenAI published a randomized study of more than 1,000 university students examining ChatGPT, critical thinking, originality, and student performance on real-world university assignments. The study investigates the benefits of combining ChatGPT with critical-thinking training. The source material provides only a high-level description and does not include detailed methodology or specific results.
 
-rss · GitHub Blog · Aug 27, 16:00
+rss · OpenAI Blog · Aug 27, 09:00
 
-**「Why It Matters」** The rapid growth of OpenClaw shows how open-source projects can achieve massive popularity in a short time and offers practical insights for maintainers on building and securing their projects.
+**「Why It Matters」** The research examines how pairing ChatGPT with critical-thinking training may improve student outcomes on university assignments.
 
-**「Key Takeaway」** Maintainers of OpenClaw shared lessons from the project&\#x27;s first six months.
+**「Engineer Takeaway」** Students may gain better answers and broader thinking from using ChatGPT combined with critical-thinking training.
 
-**Tags**: `#open-source`, `#github`, `#viral-project`, `#maintainer`
+**Tags**: `#OpenAI`, `#ChatGPT`, `#education`, `#critical-thinking`, `#student performance`
 
 ---
 
 ## AI Deals
 
 <a id="item-ai-deals-1"></a>
-### [AI Engineer Notebooks – free, framework-free RAG/agents/evals on Colab](https://github.com/calmrocks/ai-engineer-notebooks) ⭐️ 8.0/10
+### [Epic Games Free Games This Week: Breathedge, Rival Stars Horse Racing, Down in Bermuda](https://www.appinn.com/eggs-26828/) ⭐️ 6.0/10
 
-calmrocks posted a GitHub repository with free, framework-free Jupyter notebooks for RAG systems, AI agents, and model evals. These notebooks run natively on Google Colab with no framework dependencies. The repo is open source and was posted on Hacker News with 81 points.
+Epic Games Store is offering three free games this week. Claim Breathedge, Rival Stars Horse Racing: Desktop Edition, and Down in Bermuda from August 28 to September 3. Two PC games and one mobile title.
 
-rss · HN Free API / Credits · Aug 27, 21:46
+rss · 小众软件 · Aug 28, 08:04
 
-**「为什么重要」** These notebooks are valuable for AI engineers as they provide a quick way to work on RAG and agent projects on the free Colab platform without needing to install or manage additional frameworks.
+**「What to Watch」** Epic Games Store free game promotion. Claim Breathedge, Rival Stars Horse Racing: Desktop Edition, and Down in Bermuda until September 3. Two PC titles and one mobile game.
 
-**「可关注」** Takeaway: The framework-free notebooks for RAG, agents, and evals on Colab are ideal for developers who want to avoid framework dependencies.
-
-**Tags**: `#free-tier`, `#colab`, `#rag`, `#agents`, `#evals`, `#notebooks`
+**Tags**: `#promo`, `#limited-free`
 
 ---
 
 <a id="item-ai-deals-2"></a>
-### [JetBrains Junie 本地 Mac 版发布](https://blog.jetbrains.com/junie/2026/08/junie-local-launch/) ⭐️ 7.0/10
+### [Free Tool Turns Market Research into Personal Branding Strategy](https://www.intelcue.ai/tools/personal-branding-strategy-builder) ⭐️ 5.0/10
 
-JetBrains 宣布 Junie 可以本地运行在 Mac 上。无需积分或云服务。用户可直接在本地 Mac 上使用。
+Intelcue released a free tool that turns market research into a personal branding strategy. The tool is available at https://www.intelcue.ai/tools/personal-branding-strategy-builder. No usage limits, regions, expiration, or access requirements are specified. It was promoted via a Show HN post on Hacker News.
 
-rss · HN Free API / Credits · Aug 27, 11:30
+rss · HN Free API / Credits · Aug 28, 06:36
 
-**「为什么重要」** 这让用户无需依赖云端或积分即可在 Mac 上运行 Junie。
-
-**「可关注」** 可关注：Junie 本地 Mac 版，适用于希望避免云服务和积分的用户。
-
-**Tags**: `#free-tier`, `#promo`, `#local`, `#jetbrains`
+**Tags**: `#free-tier`, `#promo`
 
 ---
 
 <a id="item-ai-deals-3"></a>
-### [axium-lab/llm-specs-api 免费 LLM API](https://github.com/axium-lab/llm-specs-api) ⭐️ 5.0/10
+### [Free AI Engineer Notebooks for RAG, Agents &amp; Evals on Colab](https://github.com/calmrocks/ai-engineer-notebooks) ⭐️ 5.0/10
 
-axium-lab 发布了 llm-specs-api，这是一个免费的 REST API，用于 LLM 定价、上下文窗口和成本估算。
+Calmrocks shared free, framework-free notebooks for RAG, agents, and evals that run on Google Colab. The full collection is in the GitHub repo at https://github.com/calmrocks/ai-engineer-notebooks. No quota, pricing, or claim process is listed.
 
-rss · HN Free API / Credits · Aug 27, 10:25
+rss · HN Free API / Credits · Aug 27, 21:46
 
-**「为什么重要」** 这是一个免费的 LLM API，适合需要获取模型规格信息的开发者。
+**「Takeaway」** Note: Notebooks require no extra frameworks and run directly in Colab.
 
-**「可关注」** 可关注：免费 API，无需限额或认证。
-
-**Tags**: `#free-tier`, `#api`, `#promo`, `#pricing`
+**Tags**: `#free-tier`, `#colab`, `#rag`, `#agents`, `#promo`
 
 ---
