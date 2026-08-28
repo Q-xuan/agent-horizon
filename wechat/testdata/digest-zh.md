@@ -22,7 +22,7 @@ lang: zh
 
 ### [Codex rust-v0.148.0 发布](https://github.com/openai/codex/releases/tag/rust-v0.148.0) ⭐️ 8.0/10
 
-Codex 是 OpenAI 的命令行 coding agent。此前 exec fork 要把会话状态自己接着。维护者写 rust-v0.148.0 加了 `codex exec fork`。仓库是 `openai/codex`。
+Codex 是 OpenAI 的命令行 coding agent。此前 exec fork 需由调用方自行维系会话状态。维护者在 rust-v0.148.0 原生增加 `codex exec fork`。仓库为 `openai/codex`。
 
 github · openai · 1月2日 10:00
 
@@ -34,7 +34,7 @@ github · openai · 1月2日 10:00
 
 ### [Claude Code v2.1.100 发布](https://github.com/anthropics/claude-code/releases/tag/v2.1.100) ⭐️ 7.0/10
 
-Claude Code 是 Anthropic 的终端 coding agent。此前新会话要手写模型名。v2.1.100 加了 `ANTHROPIC_DEFAULT_MODEL`。
+Claude Code 是 Anthropic 的终端 coding agent。此前新建会话需手动指定模型。v2.1.100 增加 `ANTHROPIC_DEFAULT_MODEL` 环境变量支持。
 
 github · anthropics · 1月2日 12:00
 
@@ -46,7 +46,7 @@ github · anthropics · 1月2日 12:00
 
 ### [Hamel Husain 谈 eval](https://hamel.dev/blog/eval) ⭐️ 7.0/10
 
-Hamel Husain 写过不少 LLM eval 指南。他这篇说，没有固定评测集时，不要把一次演示写成结论。
+Hamel Husain 针对 LLM eval 强调：缺少固定评测基准集时，单次演示不能定性为结论。
 
 rss · Hamel Husain · 1月2日 09:00
 
@@ -54,6 +54,6 @@ rss · Hamel Husain · 1月2日 09:00
 
 ### [某实验室打算给模型加水印](https://example.com/watermark-plan) ⭐️ 6.0/10
 
-材料只说实验室打算给生成内容加水印。没有上线日期，也没有版本号。
+材料仅说明实验室计划为生成内容增加水印。暂无明确上线日期与版本号。
 
 google_news · Example · 1月2日 08:00

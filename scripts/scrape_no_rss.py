@@ -140,15 +140,22 @@ def parse_month_day_year(text: str) -> datetime | None:
 def parse_iso(text: str) -> datetime | None:
     if not text:
         return None
-    match = re.search(r"(20\d{2}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:[.+]\d{2}:\d{2}|Z)?)", text)
+    cleaned = text.strip()
+    match = re.search(
+        r"(20\d{2}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:[+-]\d{2}:?\d{2}|Z)?)",
+        cleaned,
+    )
     if match:
         raw = match.group(1).replace("Z", "+00:00")
         try:
-            return datetime.fromisoformat(raw).astimezone(timezone.utc)
+            dt = datetime.fromisoformat(raw)
+            return dt if dt.tzinfo is not None else dt.replace(tzinfo=timezone.utc)
         except ValueError:
             return None
     try:
-        return datetime.fromisoformat(text.replace("Z", "+00:00")).astimezone(timezone.utc)
+        raw = cleaned.replace("Z", "+00:00")
+        dt = datetime.fromisoformat(raw)
+        return dt if dt.tzinfo is not None else dt.replace(tzinfo=timezone.utc)
     except ValueError:
         return None
 
