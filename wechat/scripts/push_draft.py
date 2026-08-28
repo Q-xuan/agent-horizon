@@ -138,6 +138,7 @@ def md_to_html(md: str) -> str:
             lambda m: (
                 f'<span style="{_font_style()}font-size:13px !important;'
                 f"border:1px solid currentColor !important;"
+                f"border-radius:2px !important;"
                 f'padding:1px 6px !important;">{m.group(1)}</span>'
             ),
             text,
