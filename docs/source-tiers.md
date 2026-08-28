@@ -8,7 +8,7 @@ Horizon 的 `data/config.json` 禁止未知字段（`extra=forbid`），所以�
 
 | 层 | 典型来源 | 调分 |
 | --- | --- | --- |
-| `official` | GitHub `repo_releases`；公司/实验室/工程博客 RSS | `score + official_boost`（默认 +0.5，上限 10） |
+| `official` | GitHub `repo_releases`；公司/实验室/工程博客 RSS | `score + official_boost`（默认 +0.8，上限 10） |
 | `practitioner` | 个人技术博客、The Batch / Import AI 等 | 不调 |
 | `deals` | 少数派 / 小众软件 / V2EX / Product Hunt / 爱范儿 / HN credits | 不调（羊毛栏单独走 `ai-deals`） |
 | `community` | Reddit、X follow-list / X Hot、HN / Lobsters、OSSInsight、GitHub Trending、HF Daily Papers / Trending Models | 没有官方一手 URL 时封顶并可能丢弃 |
@@ -20,7 +20,7 @@ Horizon 的 `data/config.json` 禁止未知字段（`extra=forbid`），所以�
 
 | 字段 | 默认 | 作用 |
 | --- | --- | --- |
-| `official_boost` | `0.5` | 官方源分数上浮 |
+| `official_boost` | `0.8` | 官方源分数上浮 |
 | `secondary_without_primary.score_cap` | `5.5` | 二手且无一手链接时的分数上限（「记一笔」） |
 | `secondary_without_primary.min_score_to_keep` | `6.5` | 二手且无一手链接时，低于此分直接丢弃。默认 **cap < min**，等于无一手链接的二手稿不会进日报 |
 | `community_without_primary.score_cap` | `6.0` | 社区帖无一手链接时的上限 |
@@ -29,7 +29,7 @@ Horizon 的 `data/config.json` 禁止未知字段（`extra=forbid`），所以�
 | `official_github_owners` | 已跟踪的 harness / agent 仓库 owner | 判断 GitHub URL 算不算一手 |
 | `official_hosts` | 公司/实验室域名 | 判断正文/链接算不算一手 |
 
-有官方一手 URL 的二手或社区稿**不封顶、不丢弃**，和从业者稿一样按模型分竞争；官方原文仍多 0.5 分，topic_dedup 时更容易留下原文。
+有官方一手 URL 的二手或社区稿**不封顶、不丢弃**，和从业者稿一样按模型分竞争；官方原文仍多 0.8 分，topic_dedup 时更容易留下原文。
 
 ## 本地 / Actions
 
