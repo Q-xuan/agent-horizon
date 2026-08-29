@@ -5,223 +5,244 @@ date: 2026-08-29
 lang: zh
 ---
 
-> 从 170 条内容中筛选出 13 条重要资讯。
+> 从 190 条内容中筛选出 14 条重要资讯。
 
 ---
 
 **Harness 架构**
-1. [Claude Code v2.1.251 发布](#item-harness-arch-1) ⭐️ 9.8/10
-2. [Mastra @mastra/core@1.63.0 发布](#item-harness-arch-2) ⭐️ 8.8/10
+1. [mastra @mastra/core@1.63.0 发布](#item-harness-arch-1) ⭐️ 8.8/10
+2. [Claude Code v2.1.251 发布](#item-harness-arch-2) ⭐️ 7.8/10
 3. [Pydantic AI v2.36.0 发布](#item-harness-arch-3) ⭐️ 7.8/10
-4. [LangChain langchain==1.4.0a2 发布](#item-harness-arch-4) ⭐️ 6.8/10
-5. [GitHub trending: EveryInc/compound-engineering-plugin](#item-harness-arch-5) ⭐️ 5.0/10
+4. [LangChain 1.4.0a2 发布](#item-harness-arch-4) ⭐️ 7.8/10
+5. [EveryInc compound-engineering-plugin trending](#item-harness-arch-5) ⭐️ 5.0/10
 
 **Agent 工程师日报**
-1. [openai-python HTTPX2 迁移](#item-agent-engineer-1) ⭐️ 7.0/10
-2. [ACE Lens Agentic 数据生成框架](#item-agent-engineer-2) ⭐️ 7.0/10
-3. [PILOT harness 实时自我改进](#item-agent-engineer-3) ⭐️ 7.0/10
-4. [OCaml 补丁 10 分钟内自动化漏洞探测](#item-agent-engineer-4) ⭐️ 6.0/10
-5. [UrbanGround 香港 3D 沙箱发布](#item-agent-engineer-5) ⭐️ 6.0/10
+1. [Harness-Aware Training: TaoLive 数字头像代理技术报告](#item-agent-engineer-1) ⭐️ 7.0/10
+2. [PILOT 长时域代理 实时自改进](#item-agent-engineer-2) ⭐️ 7.0/10
+3. [openai-python 迁移至 httpx2](#item-agent-engineer-3) ⭐️ 6.0/10
+4. [OCaml 补丁讨论 10 分钟内发现安全漏洞](#item-agent-engineer-4) ⭐️ 6.0/10
 
 **AI 日报**
-1. [Cursor SpaceX 收购，OpenAI 终止合同](#item-ai-daily-1) ⭐️ 7.8/10
-2. [Netflix MAPS 多模态资产个性化发布](#item-ai-daily-2) ⭐️ 7.8/10
+1. [Netflix MAPS 多模态资产个性化发布](#item-ai-daily-1) ⭐️ 8.8/10
+2. [OpenAI 终止 Cursor 模型供应](#item-ai-daily-2) ⭐️ 7.8/10
 
 **AI 羊毛**
-1. [Epic 鸡蛋 8.28~9.3 领取](#item-ai-deals-1) ⭐️ 7.0/10
+1. [Epic 鸡蛋：《呼吸边缘》《家族传奇：桌面版》《逃出百慕大》](#item-ai-deals-1) ⭐️ 7.0/10
+2. [StemDeck 免费开源本地 AI 分句工具](#item-ai-deals-2) ⭐️ 5.0/10
+3. [PorchWeather 推送好天气](#item-ai-deals-3) ⭐️ 5.0/10
 
 ---
 
 ## Harness 架构
 
 <a id="item-harness-arch-1"></a>
-### [Claude Code v2.1.251 发布](https://github.com/anthropics/claude-code/releases/tag/v2.1.251) ⭐️ 9.8/10
+### [mastra @mastra/core@1.63.0 发布](https://github.com/mastra-ai/mastra/releases/tag/%40mastra/core%401.63.0) ⭐️ 8.8/10
 
-Claude Code v2.1.251 增加了前景子代理工具调用的实时流式传输功能，允许远程控制客户端实时查看子代理的工具调用结果。还添加了会话级提示缓存跟踪、Pre/PostModelSwitch 和 SessionStart 钩子、花费限制 UI 以及 CLI 附加/日志命令，并修复了文件工具符号链接权限问题。
+Mastra @mastra/core@1.63.0 发布了新的 AdaptableLogger 合约，标准化了 trace-log 相关性。通过在 traced operations 中注入 trace\_id/span\_id 到原生日志记录，并从同一记录派生 observability LogEvent。PinoLogger 实现了该合约，在 stdout、files 和自定义 transports 中添加 trace 字段，同时保留用户 mixin 字段。还修复了非导出 spans 的日志关联问题，并提升了 worker 健康检查和调度恢复的可靠性。
 
-github · ashwin-ant · 8月28日 18:19
+github · PaulieScanlon · 8月28日 11:07
 
-**「设计要点」** 运行时层面，前景子代理的工具调用现在支持流式传输到远程控制客户端。工具层修复了文件工具的符号链接权限问题，防止越界访问。
+**「设计要点」** 新增 AdaptableLogger 合约，在 traced operations 中注入 trace\_id/span\_id 到原生日志记录，并从同一记录派生 LogEvent。PinoLogger 实现了该合约，在所有 transports 中添加 trace 字段。
 
-**「改了什么」** 相对于上一版，v2.1.251 增加了前景子代理工具调用的流式传输支持。添加了会话级提示缓存跟踪、模型切换钩子以及花费限制显示，并修复了多个工具和会话管理问题。
+**「改了什么」** 新增了 AdaptableLogger 合约，支持 trace 相关日志输出，并通过 Pino mixin 在所有 transports 中添加 trace 字段。修复了非导出 spans 的日志关联问题，并增加了 worker /health 端点。
 
-**标签**: `#subagents`, `#memory`, `#tools`, `#runtime`, `#prefix-cache`
+**标签**: `#runtime`, `#logging`, `#tracing`
 
 ---
 
 <a id="item-harness-arch-2"></a>
-### [Mastra @mastra/core@1.63.0 发布](https://github.com/mastra-ai/mastra/releases/tag/%40mastra/core%401.63.0) ⭐️ 8.8/10
+### [Claude Code v2.1.251 发布](https://github.com/anthropics/claude-code/releases/tag/v2.1.251) ⭐️ 7.8/10
 
-Mastra @mastra/core 1.63.0 发布。该版本新增 AdaptableLogger 合约，支持 trace 相关日志记录。PinoLogger 实现该合约，注入 trace\_id/span\_id 到日志记录中。修复了非导出 span 的 trace 链接问题。
+Claude Code v2.1.251 发布。该版本新增前景子代理工具调用的实时流式传输支持，并添加了 per-session prompt-cache 统计信息。还引入了 PreModelSwitch 和 PostModelSwitch 钩子事件，以及多个 CLI 命令增强。
 
-github · PaulieScanlon · 8月28日 11:07
+github · ashwin-ant · 8月28日 18:19
 
-**「改了什么」** @mastra/core 1.63.0 增加了 AdaptableLogger 合约。PinoLogger 实现了该合约，修复了非导出 span 的 trace 链接问题。
+**「改了什么」** Claude Code v2.1.251 相对于上一版，新增了子代理工具调用的流式传输和 per-session prompt-cache 统计能力。模型切换前后钩子和 CLI 命令也得到增强。
 
-**标签**: `#runtime`, `#logging`, `#tracing`
+**标签**: `#subagents`, `#prompt-cache`, `#runtime`, `#tools`, `#memory`
 
 ---
 
 <a id="item-harness-arch-3"></a>
 ### [Pydantic AI v2.36.0 发布](https://github.com/pydantic/pydantic-ai/releases/tag/v2.36.0) ⭐️ 7.8/10
 
-Pydantic AI v2.36.0 发布了 durable execution 特性，支持公共后端 API 供第三方 durable execution 引擎使用。稳定了 InstructionPart.id，并支持 RealtimeSession.send\_audio\(\) 接收异步可迭代对象。同时为 clai 添加了 --mcp-config 支持和工具调用流式传输。
+Pydantic AI v2.36.0 发布。新增 durable operation 支持和公共后端 API。添加 MCP 配置支持和工具调用流式传输。InstructionPart 获得稳定 id。
 
 github · dsfaccini · 8月29日 01:25
 
-**「设计要点」** durable\_operation 提供了运行时持久化执行能力，并通过公共后端 API 开放给第三方引擎集成。
+**「设计要点」** 设计要点：@durable\_operation 装饰器支持 durable execution engines 并提供公共后端 API。
 
-**「改了什么」** 相比 v2.35.3，新增了 @durable\_operation 装饰器和稳定的 InstructionPart.id。增加了对异步语音会话的支持，并要求 @durable\_operation 必须显式指定 operation name。
+**「改了什么」** 改了什么：新增 @durable\_operation 功能和公共后端 API。添加 MCP 配置支持和工具调用流式传输。
 
-**标签**: `#mcp`, `#runtime`, `#tools`
+**标签**: `#mcp`, `#tools`, `#runtime`, `#planning`
 
 ---
 
 <a id="item-harness-arch-4"></a>
-### [LangChain langchain==1.4.0a2 发布](https://github.com/langchain-ai/langchain/releases/tag/langchain%3D%3D1.4.0a2) ⭐️ 6.8/10
+### [LangChain 1.4.0a2 发布](https://github.com/langchain-ai/langchain/releases/tag/langchain%3D%3D1.4.0a2) ⭐️ 7.8/10
 
-LangChain 发布了 langchain==1.4.0a2 alpha 版本，新增 langchain.mcp 模块作为 MCP 服务器的适配器。
-该模块将任何 MCP 服务器转为可直接用于 create\_agent 的 LangChain 工具。
-集成 FastMCP 客户端，支持 URL、本地脚本和多服务器配置。
+LangChain 1.4.0a2 发布 langchain.mcp 阿尔法版。该适配器将任意 MCP 服务器转为 LangChain 工具，直接用于 create\_agent。连接基于 FastMCP 客户端特性，无需重新实现。支持 URL、本地脚本、in-process 服务器和多服务器配置。
 
 github · github-actions\[bot\] · 8月28日 16:19
 
-**「改了什么」** 新增 langchain.mcp 模块，将 MCP 服务器转为 LangChain 工具。
-集成 FastMCP 连接处理和 elicitation 中断功能。
+**「改了什么」** 新增 langchain.mcp 模块，提供 MCP 服务器到 LangChain 工具的适配器。
 
-**标签**: `#tools`, `#mcp`
+**标签**: `#mcp`, `#tools`, `#agents`
 
 ---
 
 <a id="item-harness-arch-5"></a>
-### [GitHub trending: EveryInc/compound-engineering-plugin](https://github.com/EveryInc/compound-engineering-plugin) ⭐️ 5.0/10
+### [EveryInc compound-engineering-plugin trending](https://github.com/EveryInc/compound-engineering-plugin) ⭐️ 5.0/10
 
-GitHub trending 展示了 EveryInc/compound-engineering-plugin。该插件为 Claude Code、Codex、Cursor 和更多工具提供了 33 个 AI 编码代理技能。它围绕 brainstorm-plan-build-review-capture 循环结构设计，在 14 个代理主机上运行。
+EveryInc compound-engineering-plugin 是 AI coding agents 的 Compound Engineering 插件。
+它支持 Claude Code、Codex、Cursor 等多个 agent，包含 33 个技能。
+技能围绕 brainstorm-plan-build-review-capture 循环结构，通过 capture 环节记录每次变更的知识。
+插件运行在 14 个 agent hosts 上。
 
-rss · GitHub Trending Daily · 8月29日 03:59
+rss · GitHub Trending Daily · 8月29日 04:31
 
-**标签**: `#planning`, `#memory`, `#tools`, `#subagents`
+**标签**: `#tools`, `#planning`, `#memory`
 
 ---
 
 ## Agent 工程师日报
 
 <a id="item-agent-engineer-1"></a>
-### [openai-python HTTPX2 迁移](https://github.com/openai/openai-python/blob/main/httpx2.md) ⭐️ 7.0/10
+### [Harness-Aware Training: TaoLive 数字头像代理技术报告](https://huggingface.co/papers/2608.15763) ⭐️ 7.0/10
 
-OpenAI Python SDK 迁移至 HTTPX2。
+HF 提出 Harness-Aware Training \(HAT\) 和 Harness-State Augmentation \(HSA\)，训练紧凑模型适应变化的 evolvable agent harnesses，用于低延迟数字头像代理。该方法解决大模型零样本适应但延迟高，紧凑模型延迟达标但过拟合固定 Harness 配置的权衡。HSA 对 Skill 标识符和内容、工具 schema、prompt 结构以及 Hook 函数应用任务保持变换。影响对象：AI-powered digital avatar streamers，需要实时回答产品问题、互动和执行营销策略。
 
-hackernews · tosh · 8月28日 11:51 · [社区讨论](https://news.ycombinator.com/item?id=49477212)
+rss · Hugging Face Daily Papers · 8月29日 04:31
 
-**「为什么重要」** 此迁移确保 API 稳定性，避开 httpx 即将发布 1.0 版本的破坏性变更。
+**「为什么重要」** 该技术直接解决实时系统中延迟、频繁策略更新和响应准确性的权衡，适用于需要快速迭代的数字头像代理。
 
-**「可关注」** 可关注：切换至 HTTPX2 fork 以维持 openai-python API 稳定性。
+**「可关注」** 可关注：Harness-State Augmentation 能使紧凑模型在不改变模型权重的情况下适应变化的 Harness。
 
-**「评论」** Anthropic 也进行了类似迁移。社区讨论了 httpx 1.0 即将的 breaking changes，httpx2 作为稳定依赖的优势。有人质疑优缺点，并提到 niquests 替代。
-
-**标签**: `#coding-agent`, `#orchestration`, `#harness`
+**标签**: `#harness`, `#agent`, `#training`, `#eval`, `#orchestration`
 
 ---
 
 <a id="item-agent-engineer-2"></a>
-### [ACE Lens Agentic 数据生成框架](https://huggingface.co/papers/2608.27260) ⭐️ 7.0/10
+### [PILOT 长时域代理 实时自改进](https://huggingface.co/papers/2608.26530) ⭐️ 7.0/10
 
-HF daily paper 介绍一种两级框架，用于理解和生成 LLM agents 的 agentic 数据。该框架将 agentic 数据表示为因子化对象 \(E, q, τ, v\)，包括环境规范、任务信号、交互实现和可选验证器。现有工作多聚焦特定领域，易混淆生成机制与验证选择。此框架有助于统一跨域生成范式。
+PILOT 提出监督-工作者 harness，用于长时域代理的实时自改进。
+该 harness 通过两个耦合机制：实时重定向活跃运行，并更新持久 harness。
+现有架构难以同时支持此目标。
 
-rss · Hugging Face Daily Papers · 8月29日 03:59
+rss · Hugging Face Daily Papers · 8月29日 04:31
 
-**「为什么重要」** 框架已提出，可帮助组织 agentic 数据生成范式。尚未证实其是否提升数据质量。
+**「为什么重要」** PILOT 提供长时域代理的实时自改进 harness，包含重定向活跃运行和更新持久 harness 的技术细节。
+这直接相关代理架构和工具链。
 
-**「可关注」** 可关注：框架将 agentic 数据表示为 \(E,q,τ,v\)，便于跨域比较和验证。
+**「可关注」** 可关注：监督-工作者 harness 支持长时域代理的实时自改进。
 
-**标签**: `#eval`, `#harness`, `#orchestration`, `#coding-agent`
+**标签**: `#harness`, `#orchestration`, `#coding-agent`
 
 ---
 
 <a id="item-agent-engineer-3"></a>
-### [PILOT harness 实时自我改进](https://huggingface.co/papers/2608.26530) ⭐️ 7.0/10
+### [openai-python 迁移至 httpx2](https://github.com/openai/openai-python/blob/main/httpx2.md) ⭐️ 6.0/10
 
-PILOT 是一个监督-工人 harness。它支持长时序代理的实时自我改进，通过耦合新兴经验到重定向活跃运行和实时更新 harness 来实现。现有自改进方法在执行结束后处理经验，无法重定向活跃运行或立即应用教训。PILOT 影响 agent 架构和工具链。
+OpenAI 的 openai-python SDK 正在迁移到 httpx2 项目，这是一个 HTTPX 的稳定分支。该迁移旨在避免 HTTPX 1.0 版本带来的 API 破坏。迁移细节记录在 openai-python 仓库的 httpx2.md 文件中。此变化影响使用该 SDK 的工具链和 coding agent。
 
-rss · Hugging Face Daily Papers · 8月29日 03:59
+hackernews · tosh · 8月28日 11:51 · [社区讨论](https://news.ycombinator.com/item?id=49477212)
 
-**「为什么重要」** 该 harness 提出实时自我改进机制，适用于长时序代理。
+**「为什么重要」** OpenAI 已将 openai-python 迁移至 httpx2，以稳定 HTTPX 依赖。此变更影响依赖该 SDK 的工具链，但具体影响尚未证实。
 
-**「可关注」** 可关注：监督-工人 harness 通过耦合新兴经验到重定向活跃运行和实时更新 harness 来支持实时自我改进。
+**「可关注」** 可关注：httpx2 提供稳定的 HTTPX API，避免 HTTPX 1.0 破环。
 
-**标签**: `#harness`, `#orchestration`, `#agent`, `#self-improvement`, `#memory`
+**「评论」** Anthropic 也进行了类似迁移，社区讨论了 httpx 1.0 破环问题。有人提到 httpx2 作为更稳定的依赖选项，并好奇是否评估过 niquests 等替代品。
+
+**标签**: `#orchestration`, `#harness`, `#coding-agent`
 
 ---
 
 <a id="item-agent-engineer-4"></a>
-### [OCaml 补丁 10 分钟内自动化漏洞探测](https://simonwillison.net/2026/Aug/28/just-a-rumour-of-a-bug/) ⭐️ 6.0/10
+### [OCaml 补丁讨论 10 分钟内发现安全漏洞](https://simonwillison.net/2026/Aug/28/just-a-rumour-of-a-bug/) ⭐️ 6.0/10
 
-OCaml 项目补丁公开讨论后，约 10 分钟内网站收到百分号编码遍历序列的探测，表明自动化观察者正在监控公共仓库。现代编码代理能将漏洞谣言转化为可利用的漏洞利用。rclone 项目过去 10 年仅收到约 20 次安全披露，最近一个月超过 40 次。
+OCaml 项目补丁讨论后，安全漏洞探测在 10 分钟内出现。Anil Madhavapeddy 报告自动化观察者对百分编码遍历序列的探测。现代编码代理能将漏洞谣言转化为实际漏洞。影响开源项目维护者。
 
 rss · Simon Willison · 8月28日 22:12
 
-**「为什么重要」** OCaml 补丁讨论引发的自动化漏洞探测显示，编码代理能快速利用公开信息。这对开源安全流程提出新挑战。
+**「为什么重要」** 补丁讨论后 10 分钟内发现探测表明自动化代理加速了漏洞发现。现有开源封存实践可能不兼容。
 
-**「可关注」** 可关注：自动化代理能从补丁讨论中重建漏洞利用。
+**「可关注」** 可关注：自动化代理能从补丁讨论谣言中快速发现漏洞。
 
-**标签**: `#coding-agent`, `#permissions`, `#observability`, `#security`
-
----
-
-<a id="item-agent-engineer-5"></a>
-### [UrbanGround 香港 3D 沙箱发布](https://huggingface.co/papers/2608.27456) ⭐️ 6.0/10
-
-HF Daily Paper 发布 UrbanGround 研究论文，提出首个基于香港领土 3D 地理空间数据的物理约束城市副本沙箱 UrbanGround，用于评估 MLLM 代理在移动过程中维持有用局部城市感知的能力。UrbanGround 支持从第一人称视角的闭环交互，并提供交互式地图进行导航。代理可以直接进入 3D 城市探索。分析通过三个研究问题评估代理从局部感知到可靠行动的转变。
-
-rss · Hugging Face Daily Papers · 8月29日 03:59
-
-**「为什么重要」** UrbanGround 为评估 coding agent harness 的空间代理能力提供了真实规模的城市环境测试平台。
-
-**「可关注」** 可关注：测试代理在移动中局部感知的有用性。
-
-**标签**: `#eval`, `#harness`, `#coding-agent`, `#spatial-agency`, `#multimodal`
+**标签**: `#coding-agent`, `#observability`, `#permissions`
 
 ---
 
 ## AI 日报
 
 <a id="item-ai-daily-1"></a>
-### [Cursor SpaceX 收购，OpenAI 终止合同](https://openai.com/index/our-decision-on-cursor-following-its-acquisition-by-spacex) ⭐️ 7.8/10
+### [Netflix MAPS 多模态资产个性化发布](https://netflixtechblog.com/maps-netflixs-multimodal-asset-personalization-at-scale-32f96320785e?source=rss----2615bd06b42e---4) ⭐️ 8.8/10
 
-OpenAI 决定终止向 Cursor 提供模型的合同。Cursor 已被 SpaceX 收购。合同将在收购后终止。
+Netflix 推出 MAPS 多模态资产个性化系统，使用 CLIP 图像嵌入增强资产表示，实现早期个性化推荐。系统将 CLIP 嵌入与资产 ID 嵌入拼接，解决新标题冷启动问题，并将多个画布模型统一为一个。使用基于奖励的权重混合训练数据，提升低数据画布的个性化效果。
 
-rss · OpenAI Blog · 8月28日 06:00
+rss · Netflix TechBlog · 8月28日 16:01
 
-**「可关注」** 可关注：OpenAI 终止向 Cursor 提供模型的合同
+**「为什么重要」** MAPS 让新标题的资产个性化更快启动，减少对流行度的依赖，提升用户发现体验。
 
-**标签**: `#lab`, `#industry`, `#policy`, `#product`
+**「可关注」** 可关注：使用 CLIP 嵌入将冷启动问题转化为已知信号。
+
+**标签**: `#model`, `#lab`, `#industry`, `#product`
 
 ---
 
 <a id="item-ai-daily-2"></a>
-### [Netflix MAPS 多模态资产个性化发布](https://netflixtechblog.com/maps-netflixs-multimodal-asset-personalization-at-scale-32f96320785e?source=rss----2615bd06b42e---4) ⭐️ 7.8/10
+### [OpenAI 终止 Cursor 模型供应](https://openai.com/index/our-decision-on-cursor-following-its-acquisition-by-spacex) ⭐️ 7.8/10
 
-Netflix 推出 MAPS 多模态资产个性化系统。该系统使用 CLIP 图像嵌入模型将 artwork 编码为 768 维向量，与 ID 嵌入拼接后经 MLP 层生成表示，让模型直接理解资产视觉内容。这一方法解决冷启动问题，允许成员偏好信号从已有资产转移到新资产。系统将原本独立的 5 个画布模型统一为一个，并应用于 query-aware ranking 和 video preview 个性化。
+OpenAI 已决定在 Cursor 被 SpaceX 收购后，终止向其提供 OpenAI 模型的合同。Cursor 是一家使用 OpenAI 模型的 AI 代码编辑器。OpenAI 官方博客发布了这一决定。
 
-rss · Netflix TechBlog · 8月28日 16:01
+rss · OpenAI Blog · 8月28日 06:00
 
-**「为什么重要」** 这一系统让新标题的资产个性化更快启动，减少对流行度启发式的依赖，提升用户发现体验。
+**「可关注」** 可关注：OpenAI 决定终止向 Cursor 提供 OpenAI 模型的合同。
 
-**「可关注」** 可关注：使用 CLIP 嵌入融合 ID 嵌入，统一模型以池化跨画布信号。
-
-**标签**: `#netflix`, `#product`, `#model`, `#multimodal`, `#personalization`
+**标签**: `#lab`, `#policy`, `#industry`
 
 ---
 
 ## AI 羊毛
 
 <a id="item-ai-deals-1"></a>
-### [Epic 鸡蛋 8.28~9.3 领取](https://www.appinn.com/eggs-26828/) ⭐️ 7.0/10
+### [Epic 鸡蛋：《呼吸边缘》《家族传奇：桌面版》《逃出百慕大》](https://www.appinn.com/eggs-26828/) ⭐️ 7.0/10
 
-本周 Epic Games Store 免费鸡蛋由青小蛙整理。包含 3 款游戏，2 款电脑游戏《呼吸边缘 / Breathedge》和《家族传奇：桌面版 / Rival Stars Horse Racing: Desktop Edition》，1 款手机游戏《逃出百慕大 / Down in Bermuda》。领取截止到 9.3。
+本周 Epic 免费游戏活动从 8 月 28 日到 9 月 3 日截止，提供 2 款电脑游戏和 1 款手机游戏，分别是《呼吸边缘 / Breathedge》《家族传奇：桌面版 / Rival Stars Horse Racing: Desktop Edition》和《逃出百慕大 / Down in Bermuda》。领取需在 Epic Games Launcher 平台完成，无需支付任何费用。
 
 rss · 小众软件 · 8月28日 08:04
 
-**标签**: `#promo`, `#free-tier`, `#limited-free`
+**「可关注」** 可关注：本活动限量提供 2 台电脑游戏 + 1 台手机游戏，领取需在 Epic Games Launcher 上操作。
+
+**标签**: `#promo`, `#limited-free`, `#free-tier`
+
+---
+
+<a id="item-ai-deals-2"></a>
+### [StemDeck 免费开源本地 AI 分句工具](https://github.com/stemdeckapp/stemdeck) ⭐️ 5.0/10
+
+StemDeck 是一款免费开源的本地 AI 分句工具。无需配额、无限制、无到期时间，可立即下载使用。作为本地软件，适合需要分句处理的开发者，但应用场景较为 niche。
+
+rss · HN Free API / Credits · 8月29日 01:24
+
+**「为什么重要」** 今天值得领取，因为它是免费开源的本地工具，无任何限制和到期时间，立即可用。
+
+**「可关注」** 可关注：本地运行的 StemDeck，适用于开发者下载使用，但应用场景 niche。
+
+**标签**: `#free-tier`, `#promo`, `#api`
+
+---
+
+<a id="item-ai-deals-3"></a>
+### [PorchWeather 推送好天气](https://porchweather.com/) ⭐️ 5.0/10
+
+PorchWeather 是一个免费的网页原生站点，用户可保存位置并设置条件，当条件变好时通过浏览器推送或邮件通知。无需注册，无限额。适合检查 Bay Area 晚上舒适温度，节省空调费用。
+
+rss · HN Free API / Credits · 8月28日 20:46
+
+**「为什么重要」** PorchWeather 适合 Bay Area 用户在晚上温度舒适时打开窗户通风，节省空调费用。
+
+**「可关注」** iOS 设备需要添加到主屏幕才能接收推送通知。
+
+**标签**: `#free-tier`, `#promo`, `#notification`
 
 ---
