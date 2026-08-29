@@ -71,6 +71,12 @@ def test_cli_list_and_polish() -> None:
     assert_true("data-linktype" in dry, "dry-run must load the WeChat link rule")
     assert_true("不要在正文打印「原文：」" in dry, dry)
     assert_true("原文：[标题](https://" not in dry, "writer prompt must not require a 原文 line")
+    assert_true("YYYY-MM-DD" in dry and "当天中文日报" in dry, dry)
+    assert_true(
+        "source: https://q-xuan.github.io/agent-horizon/" not in dry,
+        "writer prompt must not set source: to the site root",
+    )
+    assert_true("手记" in dry, "writer prompt must ask for 手记")
     assert_true("Codex rust-v0.148.0 发布" in dry, dry)
 
 

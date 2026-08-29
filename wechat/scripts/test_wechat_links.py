@@ -91,6 +91,19 @@ class ContentSourceUrlTests(unittest.TestCase):
             "https://example.com/second",
         )
 
+    def test_dated_daily_post_beats_site_root_and_first_news(self) -> None:
+        url = push.content_source_url(
+            {"source": "https://q-xuan.github.io/agent-horizon/"},
+            "见 https://github.com/first-news-item",
+            "wechat/posts/2026-08-29.md",
+        )
+        self.assertEqual(
+            url,
+            "https://q-xuan.github.io/agent-horizon/2026/08/29/summary-zh.html",
+        )
+        self.assertNotEqual(url, "https://q-xuan.github.io/agent-horizon/")
+        self.assertNotIn("first-news-item", url)
+
 
 class MdToHtmlTests(unittest.TestCase):
     def test_markdown_link_becomes_editor_tag(self) -> None:
@@ -197,7 +210,9 @@ class ProcessDocsTests(unittest.TestCase):
         style = (root / "STYLE.md").read_text(encoding="utf-8")
         readme = (root / "README.md").read_text(encoding="utf-8")
         self.assertNotIn("原文：", template)
+        self.assertNotIn("source: https://q-xuan.github.io/agent-horizon/", template)
         self.assertIn("从前怎样", template)
+        self.assertIn("**手记**", template)
         self.assertIn("author: yuseus", template)
         self.assertNotIn("author: pengyu", template)
         self.assertNotIn("### 我的疑问", template)
@@ -216,6 +231,8 @@ class ProcessDocsTests(unittest.TestCase):
         self.assertIn("q-xuan.github.io/agent-horizon", style)
         self.assertIn("summary-zh.html", style)
         self.assertIn("不要在正文打印「原文：」", style)
+        self.assertNotIn("source: 统一填", style)
+        self.assertIn("手记", style)
         self.assertIn("从前怎样", style)
         self.assertIn("所以怎样", style)
         self.assertIn("这次改了什么", style)
