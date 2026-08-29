@@ -169,7 +169,6 @@ class ProcessDocsTests(unittest.TestCase):
         template = (root / "template.md").read_text(encoding="utf-8")
         style = (root / "STYLE.md").read_text(encoding="utf-8")
         readme = (root / "README.md").read_text(encoding="utf-8")
-        self.assertIn("原文：[标题](https://", template)
         self.assertIn("从前怎样", template)
         self.assertIn("author: yuseus", template)
         self.assertNotIn("author: pengyu", template)

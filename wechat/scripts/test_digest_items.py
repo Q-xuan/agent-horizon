@@ -69,7 +69,7 @@ def test_cli_list_and_polish() -> None:
     )
     assert_true("从前怎样" in dry, "dry-run must load STYLE.md")
     assert_true("data-linktype" in dry, "dry-run must load the WeChat link rule")
-    assert_true("原文：[标题](https://" in dry, dry)
+    assert_true("https://q-xuan.github.io/agent-horizon/" in dry, dry)
     assert_true("Codex rust-v0.148.0 发布" in dry, dry)
 
 
