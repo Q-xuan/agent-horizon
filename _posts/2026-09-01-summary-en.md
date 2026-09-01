@@ -5,26 +5,30 @@ date: 2026-09-01
 lang: en
 ---
 
-> From 164 items, 11 important content pieces were selected
+> From 174 items, 15 important content pieces were selected
 
 ---
 
 **Agent Harness Architecture**
 1. [FastMCP v4.0.0 released](#item-harness-arch-1) ⭐️ 7.8/10
-2. [agent-framework dotnet-1.20.0 released](#item-harness-arch-2) ⭐️ 7.8/10
-3. [Cline desktop v0.0.21 released](#item-harness-arch-3) ⭐️ 6.8/10
-4. [Claude Code v2.1.252 Released](#item-harness-arch-4) ⭐️ 5.8/10
-5. [Cline desktop-v0.0.21-beta.2 发布](#item-harness-arch-5) ⭐️ 5.8/10
-6. [OmniParser Trending on GitHub](#item-harness-arch-6) ⭐️ 5.0/10
+2. [Cline desktop-v0.0.21-beta.2 发布](#item-harness-arch-2) ⭐️ 6.8/10
+3. [Claude Code v2.1.252 发布](#item-harness-arch-3) ⭐️ 5.8/10
+4. [Cline desktop-v0.0.21 发布](#item-harness-arch-4) ⭐️ 5.8/10
+5. [pydantic-ai v2.37.0 发布](#item-harness-arch-5) ⭐️ 5.8/10
+6. [microsoft/agent-framework dotnet-1.20.0 发布](#item-harness-arch-6) ⭐️ 5.8/10
+7. [OmniParser GitHub trending](#item-harness-arch-7) ⭐️ 5.0/10
+8. [Claude Cookbooks GitHub trending](#item-harness-arch-8) ⭐️ 5.0/10
 
 **AI Agent Engineer**
-1. [LoopArena: Benchmarking Models as Runtime Controllers for Loop Engineering](#item-agent-engineer-1) ⭐️ 7.0/10
-2. [StarHarness：分层搜索演化企业环境 harness](#item-agent-engineer-2) ⭐️ 7.0/10
+1. [StarHarness: 分层搜索演化 harness](#item-agent-engineer-1) ⭐️ 8.0/10
+2. [Wrapture Python library for function wrapping and tracing](#item-agent-engineer-2) ⭐️ 7.0/10
+3. [DART-SD 多轮工具调用自蒸馏框架](#item-agent-engineer-3) ⭐️ 6.0/10
+4. [ElephantBench: Probing LLMs&\#x27; Epistemic Myopia on Long-Tail Knowledge](#item-agent-engineer-4) ⭐️ 6.0/10
 
 **AI Daily**
-1. [ChatGPT Ads Hits $1B ARR and Expands Globally](#item-ai-daily-1) ⭐️ 8.8/10
-2. [Polimill 构建日本公共 AI 基础设施](#item-ai-daily-2) ⭐️ 6.8/10
-3. [Gemini 3.7 Flash &amp; Jalapeño Announced](#item-ai-daily-3) ⭐️ 5.0/10
+1. [ChatGPT Ads Hits $1B ARR and Expands Globally](#item-ai-daily-1) ⭐️ 6.8/10
+2. [Polimill Builds Japan&\#x27;s Next-Generation Public AI Infrastructure](#item-ai-daily-2) ⭐️ 5.8/10
+3. [LWiAI Podcast \#255: Gemini 3.7 Flash, Jalapeño, Qwen 3.8, Drones](#item-ai-daily-3) ⭐️ 5.0/10
 
 ---
 
@@ -33,155 +37,221 @@ lang: en
 <a id="item-harness-arch-1"></a>
 ### [FastMCP v4.0.0 released](https://github.com/PrefectHQ/fastmcp/releases/tag/v4.0.0) ⭐️ 7.8/10
 
-FastMCP v4.0.0 is the stable release supporting the new MCP protocol with sessionless self-contained requests and per-connection version negotiation. It is built on the rewritten Python SDK v2 and the MCP protocol revision released on July 28. Most FastMCP 3 applications upgrade without code changes.
+FastMCP 4.0.0 ships as the reference implementation for the July 2026 MCP revision. It enables load-balancer-friendly sessionless requests and interactive tools with context passing. One FastMCP 4 deployment negotiates the best protocol version per connection. New clients get the new protocol while old clients keep working.
 
 github · zzstoatzz · Aug 31, 18:19
 
-**「Architecture note」** FastMCP 4.0.0 uses the new protocol engine for sessionless requests that can be handled by any load-balanced replica. It provides high-level surfaces including interactive tools, background tasks via the io.modelcontextprotocol/tasks extension, server extensions, argument completion, and auth features. Dependency injection binds to call arguments and ClientGroup manages one client per server with per-connection protocol negotiation.
+**「Design notes」** FastMCP 4 runs on the modern MCP protocol with sessionless requests and per-connection version negotiation. It uses extensions for background tasks and provides server-level cache hints and routing headers.
 
-**「What changed」** FastMCP 4.0.0 adds support for the new MCP protocol including sessionless requests and version negotiation. Breaking changes remove server-initiated sampling and roots, deprecated FastMCP 3 APIs, migrate to MCP SDK v2, and move background tasks to the separate fastmcp-tasks package.
+**「Changed」** Most FastMCP 3 applications upgrade without code changes. Breaking changes include removal of server-initiated sampling and roots, deprecated APIs, and migration to MCP SDK v2.0.0b2.
 
-**Tags**: `#mcp`, `#runtime`, `#tools`
+**Tags**: `#mcp`, `#runtime`, `#tools`, `#permissions`, `#memory`
 
 ---
 
 <a id="item-harness-arch-2"></a>
-### [agent-framework dotnet-1.20.0 released](https://github.com/microsoft/agent-framework/releases/tag/dotnet-1.20.0) ⭐️ 7.8/10
+### [Cline desktop-v0.0.21-beta.2 发布](https://github.com/cline/cline/releases/tag/desktop-v0.0.21-beta.2) ⭐️ 6.8/10
 
-Microsoft released agent-framework dotnet-1.20.0. The update features API integrations, response handling fixes, and memory component updates. Key changes include Mem0Sharp integration for in-memory storage and Responses API usage for hosted web search.
+Cline desktop v0.0.21-beta.2 is released.
+New beta features include cloud session handoff with state preservation.
+Environment selection supports local, SSH, and Cloud.
+GitHub onboarding is behind the code-onboarding-github feature flag.
 
-github · SergeyMenshykh · Aug 31, 18:53
+github · github-actions\[bot\] · Aug 31, 21:08
 
-**「What Changed」** Stabilizes Foundry recovery tests and adds Mem0Sharp integration. Updates Responses API handling for web search and adds cancellation support for hosted workflows.
+**「改了什么」** This release adds beta features for handoff of local sessions to Cline Cloud with session state preservation and environment selection between local, SSH, and Cloud. It includes all stable improvements from version 0.0.20.
 
-**Tags**: `#runtime`, `#tools`, `#memory`
+**Tags**: `#memory`, `#runtime`, `#tools`
 
 ---
 
 <a id="item-harness-arch-3"></a>
-### [Cline desktop v0.0.21 released](https://github.com/cline/cline/releases/tag/desktop-v0.0.21) ⭐️ 6.8/10
+### [Claude Code v2.1.252 发布](https://github.com/anthropics/claude-code/releases/tag/v2.1.252) ⭐️ 5.8/10
 
-Cline desktop v0.0.21 is released. It adds a two-pane marketplace explorer, ensures session aborts propagate to child and delegated subagents as well as teammates, enables file drops in chat, refreshes live provider models, classifies auth errors, and fixes Langfuse tracing. The model catalog was refreshed with new providers like TokenGo and Volcengine Ark, and updates to model lists and pricing for ~36 providers.
+Claude Code v2.1.252 is released by Anthropics.
+Four bug fixes address Bash command failures on Macs, always allow settings persistence, remote session stalling, and large failure output notifications.
+
+github · ashwin-ant · Aug 31, 19:46
+
+**「改了什么」** v2.1.252 fixes Bash commands failing with task output swap refused \(tasks dir moved or linked\) on some Macs.
+Always allow settings now persist in projects without .claude/settings.local.json.
+Remote Control sessions hosted by Claude Desktop or VS Code no longer stall for minutes after a tool finished when the connection to claude.ai was degraded.
+Background task notifications with very large failure output \(for example git errors on a full disk\) no longer make the conversation exceed the API request size limit.
+
+**Tags**: `#runtime`, `#tools`, `#permissions`
+
+---
+
+<a id="item-harness-arch-4"></a>
+### [Cline desktop-v0.0.21 发布](https://github.com/cline/cline/releases/tag/desktop-v0.0.21) ⭐️ 5.8/10
+
+Cline desktop v0.0.21 has been released. The marketplace is now a two-pane explorer with a browsable list on the left and full catalog metadata on the right. Session stopping now propagates to child agents and teammates with cancelled tasks persisting. Provider models refresh from the live catalog and the model catalog has been refreshed with new providers and updated defaults.
 
 github · github-actions\[bot\] · Aug 31, 21:41
 
-**「Changes」** Relative to desktop-v0.0.20, this version adds a two-pane marketplace explorer, file drop support anywhere in the chat, live refresh of provider models, classification of auth errors, and propagation of session aborts to subagents and teammates. Langfuse tracing was fixed in release builds.
+**「What changed」** Relative to v0.0.20, the two-pane marketplace explorer and robust session stopping that affects subagents and teammates are the main changes. Additional updates include ask-a-question tool fixes, file attachment support anywhere in the chat, provider model catalog refresh, improved 401/403 error classification, and Langfuse tracing fix in release builds.
 
 **Tags**: `#subagents`, `#tools`, `#runtime`
 
 ---
 
-<a id="item-harness-arch-4"></a>
-### [Claude Code v2.1.252 Released](https://github.com/anthropics/claude-code/releases/tag/v2.1.252) ⭐️ 5.8/10
-
-Claude Code v2.1.252 is released with targeted bug fixes for runtime task handling, settings persistence, remote control stability, and output management.
-The update resolves Bash command failures on macOS due to task output swap issues, ensures &\#x27;always allow&\#x27; settings save in new projects, fixes remote control session stalling after tool completion during claude.ai connection degradation, and prevents large failure outputs from exceeding API request size limits.
-
-github · ashwin-ant · Aug 31, 19:46
-
-**「What changed」** This release fixes Bash task output swap refused errors on some Macs, makes &\#x27;always allow&\#x27; settings persist in projects without .claude/settings.local.json, prevents remote control sessions hosted by Claude Desktop or VS Code from stalling for minutes after tool finish when claude.ai connection is degraded, and avoids API request size limit issues from very large failure outputs in background task notifications.
-
-**Tags**: `#runtime`, `#tools`, `#memory`
-
----
-
 <a id="item-harness-arch-5"></a>
-### [Cline desktop-v0.0.21-beta.2 发布](https://github.com/cline/cline/releases/tag/desktop-v0.0.21-beta.2) ⭐️ 5.8/10
+### [pydantic-ai v2.37.0 发布](https://github.com/pydantic/pydantic-ai/releases/tag/v2.37.0) ⭐️ 5.8/10
 
-Cline desktop app v0.0.21-beta.2 released. Enhances session continuity to Cline Cloud with recovery for interrupted transfers and preservation of prompt, attachments, and session state. Adds multi-environment selection including SSH sandbox and realtime voice/avatar experiences. GitHub onboarding available behind feature flag.
+Pydantic-ai v2.37.0 is released. It adds the glm-5.3-flash model and reworks the Z.AI test suite onto cassettes. It fixes issues in model routing, UI messaging for tool calls, span queries, and capability hooks.
 
-github · github-actions\[bot\] · Aug 31, 21:08
+github · dsfaccini · Sep 1, 01:48
 
-**「改了什么」** Relative to v0.0.20, added session handoff to cloud, choice of local/SSH/Cloud environments, and realtime voice/avatar overlay.
+**「改了什么」** Added glm-5.3-flash model and reworked Z.AI test suite onto cassettes. Fixed bugs in model routing, UI messaging for tool calls, span queries, and capability hooks.
 
-**Tags**: `#memory`, `#sandbox`, `#runtime`, `#tools`
+**Tags**: `#runtime`, `#tools`, `#eval`
 
 ---
 
 <a id="item-harness-arch-6"></a>
-### [OmniParser Trending on GitHub](https://github.com/microsoft/OmniParser) ⭐️ 5.0/10
+### [microsoft/agent-framework dotnet-1.20.0 发布](https://github.com/microsoft/agent-framework/releases/tag/dotnet-1.20.0) ⭐️ 5.8/10
 
-OmniParser is a simple screen parsing tool for pure vision-based GUI agents. It parses user interface screenshots into structured and easy-to-understand elements, significantly enhancing GPT-4V&\#x27;s ability to generate actions grounded in interface regions. The tool trends on GitHub with project page, V2 blog post, models V2, models V1.5, and HuggingFace Space demo.
+Microsoft Agent Framework .NET 1.20.0 is released. The release adds Mem0Sharp integration for in-memory storage in agent samples and includes minor fixes such as preserving Responses logprobs, honoring cancellation for Foundry-hosted workflow responses, and using the Responses API for hosted web search in AG-UI. Dependency bumps, test stabilizations, and other updates were performed with no major runtime rewrites or breaking changes.
 
-rss · GitHub Trending Daily · Sep 1, 01:32
+github · SergeyMenshykh · Aug 31, 18:53
 
-**Tags**: `#tools`, `#gui-agent`, `#vision`, `#parsing`
+**「改了什么」** Added Mem0Sharp integration for in-memory storage in agent samples. Enabled Responses API usage for hosted web search in AG-UI. Added cancellation support for Foundry-hosted workflow responses. Preserved the Responses logprobs field.
+
+**Tags**: `#memory`, `#runtime`, `#tools`
+
+---
+
+<a id="item-harness-arch-7"></a>
+### [OmniParser GitHub trending](https://github.com/microsoft/OmniParser) ⭐️ 5.0/10
+
+microsoft/OmniParser is a screen parsing tool for pure vision based GUI agents.
+
+It parses user interface screenshots into structured and easy-to-understand elements.
+
+This enhances GPT-4V ability to generate grounded actions.
+
+Currently trending on GitHub.
+
+rss · GitHub Trending Daily · Sep 1, 01:54
+
+**Tags**: `#tools`, `#subagents`, `#vision`
+
+---
+
+<a id="item-harness-arch-8"></a>
+### [Claude Cookbooks GitHub trending](https://github.com/anthropics/claude-cookbooks) ⭐️ 5.0/10
+
+Claude Cookbooks is a trending collection of Claude AI notebooks and recipes for developers to build with Claude. The repo offers code and guides with copy-able code snippets that can be integrated into projects. Prerequisites include a Claude API key. Code examples are primarily written in Python.
+
+rss · GitHub Trending Daily · Sep 1, 01:54
+
+**Tags**: `#tools`, `#planning`, `#notebooks`
 
 ---
 
 ## AI Agent Engineer
 
 <a id="item-agent-engineer-1"></a>
-### [LoopArena: Benchmarking Models as Runtime Controllers for Loop Engineering](https://huggingface.co/papers/2608.28281) ⭐️ 7.0/10
+### [StarHarness: 分层搜索演化 harness](https://huggingface.co/papers/2608.24804) ⭐️ 8.0/10
 
-Hugging Face Daily Papers introduces LoopArena, a benchmark to test how well one model can guide a separate coding agent through long-running tasks in loop-based development. The model under evaluation is the Controller, which after each coding step decides what the agent should do next. This setup allows distinguishing whether success or failure reflects the loop&\#x27;s guidance or the coding agent&\#x27;s execution ability. It impacts eval and harness for agent loops with technical problem framing and benchmark definition.
+StarHarness is a framework for evolving environment-specific agent harnesses while keeping model weights fixed. The evolved harness can include prompt and task framing, tool interfaces, skills, MCP-backed providers, subagent structure, and agent-loop configuration. StarHarness constructs a compact evolution pool by stratifying tasks according to baseline failure behavior, separates proposer-visible search tasks from proposer-hidden selection tasks, and reserves held-out tasks for evaluating generalization. Across ITBench SRE, EnterpriseOps-Gym ITSM, and AutomationBench Finance, harness evolution improves full-benchmark performance by 20-35 percentage points over the default harness after 4-12 accepted changes per environment. These gains persist on tasks excluded from evolution.
 
-rss · Hugging Face Daily Papers · Sep 1, 01:32
+rss · Hugging Face Daily Papers · Sep 1, 01:54
 
-**「Why it matters」** The benchmark is directly relevant to evaluating agent loops, as it separates controller guidance quality from agent task performance.
+**「为什么重要」** StarHarness enables rapid adaptation of agent harnesses to enterprise environments with minimal changes, delivering 20-35pp performance gains on held-out tasks. This directly impacts harness, evaluation, and toolchain design for coding agents.
 
-**「Observable」** Observable: LoopArena enables isolated evaluation of the runtime controller&\#x27;s decision-making independent of the coding agent&\#x27;s capabilities.
+**「可关注」** 可关注：harness evolution pool is constructed by stratifying tasks according to baseline failure behavior, separating proposer-visible search tasks from proposer-hidden selection tasks.
 
-**Tags**: `#eval`, `#harness`, `#coding-agent`, `#orchestration`
+**Tags**: `#harness`, `#mcp`, `#eval`, `#orchestration`, `#coding-agent`
 
 ---
 
 <a id="item-agent-engineer-2"></a>
-### [StarHarness：分层搜索演化企业环境 harness](https://huggingface.co/papers/2608.24804) ⭐️ 7.0/10
+### [Wrapture Python library for function wrapping and tracing](https://simonwillison.net/2026/Aug/31/introducing-wrapture/) ⭐️ 7.0/10
 
-StarHarness 框架在保持模型权重不变的情况下，演化环境特定 harness，包括提示、工具、技能、MCP 提供者、子代理和代理循环。框架通过按基线失败行为分层任务，构建紧凑演化池。在 ITBench SRE、EnterpriseOps-Gym ITSM 和 AutomationBench Finance 基准上，演化 harness 相比默认 harness 提升 20-35 个百分点，需 4-12 次接受变化。这些提升在排除的 held-out 任务上持久存在。
+Wrapture is a new Python library by Graham Dumpleton for wrapping functions and methods to support tracing or overriding return values. It extends ideas from the wrapt library and acts as an alternative to unittest.mock for both testing and tracing existing projects without code changes. Wrapture includes OpenTelemetry support and a TOML-based configuration for adding tracing to projects. This young project, only a few weeks old, was entirely written by an AI assistant under the author&\#x27;s direction.
 
-rss · Hugging Face Daily Papers · Sep 1, 01:32
+rss · Simon Willison · Aug 31, 23:59
 
-**「为什么重要」** StarHarness 框架为 harness 演化提供可重复的方法，在企业 IT/ops/finance 环境中直接可应用。已报告的 20-35pp 提升在多个基准上可验证。
+**「Why it matters」** Wrapture provides non-intrusive tracing and controlled mocking relevant to agent harnesses, evals, testing, and observability toolchains.
 
-**「可关注」** 可关注：分层搜索和失败池可用于演化 harness，包括 MCP providers 和子代理结构。
+**「Takeaway」** Wrapture enables tracing without modifying the watched program and supports transforms\_result for modifying return values in unit tests.
 
-**Tags**: `#harness`, `#eval`, `#orchestration`, `#coding-agent`, `#MCP`
+**Tags**: `#harness`, `#eval`, `#tracing`, `#observability`, `#mocking`
+
+---
+
+<a id="item-agent-engineer-3"></a>
+### [DART-SD 多轮工具调用自蒸馏框架](https://huggingface.co/papers/2608.18524) ⭐️ 6.0/10
+
+HF Daily Papers introduces DART-SD, a diamond-topology aware retrieval and tuning method for self-distillation to improve multi-turn tool-calling in LLMs by preserving policy diversity in order-independent sub-goal tasks. The framework addresses topological collapse in multi-turn tool-calling trajectories via diamond-aware retrieval and self-distillation. It shifts the paradigm from global forcing to topology-guided localized correction.
+
+rss · Hugging Face Daily Papers · Sep 1, 01:54
+
+**「为什么重要」** It tackles a key limitation in autonomous agent development where forcing rich combinatorial solution spaces into monolithic trajectories degrades policy diversity.
+
+**「可关注」** 可关注：DART-SD shifts from global forcing to topology-guided localized correction for self-distillation in multi-turn tool-calling.
+
+**Tags**: `#coding-agent`, `#orchestration`, `#eval`, `#tool-calling`, `#self-distillation`
+
+---
+
+<a id="item-agent-engineer-4"></a>
+### [ElephantBench: Probing LLMs&\#x27; Epistemic Myopia on Long-Tail Knowledge](https://huggingface.co/papers/2608.28478) ⭐️ 6.0/10
+
+HF Daily Papers introduces ElephantBench, a closed-book knowledge probe benchmark with 1,094 multi-account QA records generated from web corpus disagreements to test LLMs&\#x27; epistemic myopia on long-tail facts. The benchmark is created through an auditable graph-based pipeline that retrieves related documents from a low-exposure web corpus, identifies naturally occurring disagreements, and converts them into multi-account QA records. Each answer is verified against the originating documents and authoritative public web sources and reviewed by human annotators. Across 32 models, even the strongest model recovers both accounts on only 52.4% of questions, while on nearly all remaining questions it recalls one account but omits the other.
+
+rss · Hugging Face Daily Papers · Sep 1, 01:54
+
+**「Why it matters」** This benchmark is directly relevant to eval and harness improvements as it exposes LLMs&\#x27; limitations in handling divergent long-tail knowledge that arises in real-world web data.
+
+**「What to watch」** What to watch: LLMs exhibit high epistemic myopia on long-tail facts, recovering both divergent accounts on only 52.4% of ElephantBench questions even in the strongest model.
+
+**Tags**: `#eval`, `#harness`, `#benchmark`, `#knowledge-probing`
 
 ---
 
 ## AI Daily
 
 <a id="item-ai-daily-1"></a>
-### [ChatGPT Ads Hits $1B ARR and Expands Globally](https://openai.com/index/expanding-access-to-ai-with-chatgpt-ads) ⭐️ 8.8/10
+### [ChatGPT Ads Hits $1B ARR and Expands Globally](https://openai.com/index/expanding-access-to-ai-with-chatgpt-ads) ⭐️ 6.8/10
 
-OpenAI reports that ChatGPT Ads has reached a $1 billion annualized revenue run rate. The service is expanding globally to support free and affordable AI access options.
+OpenAI reports that ChatGPT Ads has reached $1 billion in annualized revenue run rate. The service is expanding globally. This supports broader access to AI through free and affordable options.
 
 rss · OpenAI Blog · Aug 31, 04:00
 
-**「Why it matters」** This milestone reflects growing revenue from ChatGPT Ads and supports broader global access to AI.
+**「Why It Matters」** The global expansion with free and affordable options supports broader AI access.
 
-**「Key takeaway」** Takeaway: ChatGPT Ads has reached a $1 billion annualized revenue run rate and is expanding globally.
+**「Engineer Takeaway」** Key Takeaway: ChatGPT Ads global expansion supports free and affordable AI access.
 
-**Tags**: `#openai`, `#ads`, `#revenue`, `#access`, `#product`
+**Tags**: `#openai`, `#chatgpt`, `#ads`, `#revenue`, `#access`
 
 ---
 
 <a id="item-ai-daily-2"></a>
-### [Polimill 构建日本公共 AI 基础设施](https://openai.com/index/polimill) ⭐️ 6.8/10
+### [Polimill Builds Japan&\#x27;s Next-Generation Public AI Infrastructure](https://openai.com/index/polimill) ⭐️ 5.8/10
 
-Polimill 部署 OpenAI GPT 模型和 Codex，帮助日本各 municipalities 搜索和管理行政知识，同时加速地方发展。Polimill 正在构建日本的下一代公共 AI 基础设施。
+Polimill is building Japan&\#x27;s next-generation public AI infrastructure. The company uses OpenAI GPT models and Codex to help municipalities search and use administrative knowledge. This helps accelerate development.
 
 rss · OpenAI Blog · Aug 31, 07:00
 
-**「为什么重要」** Polimill 的这一合作将 OpenAI 技术引入日本公共 AI 基础设施建设，有助于提升地方行政效率。
+**「Why it matters」** This collaboration demonstrates OpenAI GPT models and Codex being applied to municipal public services in Japan.
 
-**「可关注」** 可关注：Polimill 集成 OpenAI GPT 模型和 Codex 构建日本公共 AI 基础设施。
+**「Key takeaway」** Key takeaway: Polimill uses OpenAI GPT models and Codex to help municipalities search and use administrative knowledge while accelerating development.
 
-**Tags**: `#openai`, `#gpt`, `#industry`, `#public-ai`, `#partnership`
+**Tags**: `#openai`, `#product`, `#industry`, `#japan`, `#partnership`
 
 ---
 
 <a id="item-ai-daily-3"></a>
-### [Gemini 3.7 Flash &amp; Jalapeño Announced](https://lastweekin.ai/p/lwiai-podcast-255-gemini-37-jalapeno) ⭐️ 5.0/10
+### [LWiAI Podcast \#255: Gemini 3.7 Flash, Jalapeño, Qwen 3.8, Drones](https://lastweekin.ai/p/lwiai-podcast-255-gemini-37-jalapeno) ⭐️ 5.0/10
 
-LWiAI Podcast \#255 covers Google&\#x27;s announcement of Gemini 3.7 Flash. Jalapeño&\#x27;s first results show industry-leading speed. The episode also discusses Qwen 3.8 and an AI-guided drone incident that killed three Ukrainians.
+Last Week in AI podcast recaps Google&\#x27;s Gemini 3.7 Flash launch. Jalapeño&\#x27;s first results show industry-leading speed. The episode also covers Qwen 3.8. An AI-guided drone killed three Ukrainians.
 
 rss · Last Week in AI · Aug 31, 08:20
 
-**「Key Takeaway」** Jalapeño&\#x27;s first results show industry-leading speed.
+**「Key Takeaway」** Jalapeño shows industry-leading speed in its first results.
 
-**Tags**: `#model`, `#gemini`, `#google`, `#qwen`, `#drone`, `#podcast`
+**Tags**: `#model`, `#lab`, `#industry`, `#product`
 
 ---
