@@ -5,342 +5,376 @@ date: 2026-09-03
 lang: en
 ---
 
-> From 188 items, 21 important content pieces were selected
+> From 207 items, 23 important content pieces were selected
 
 ---
 
 **Agent Harness Architecture**
-1. [Claude Code 2.1.259 Released](#item-harness-arch-1) ⭐️ 8.8/10
-2. [Cline CLI v3.0.61 Released](#item-harness-arch-2) ⭐️ 7.8/10
-3. [Langchain 1.4.0a4 released](#item-harness-arch-3) ⭐️ 7.8/10
-4. [E2B SDK 2.46.4 发布](#item-harness-arch-4) ⭐️ 6.8/10
-5. [E2B Python SDK 2.46.2 Released](#item-harness-arch-5) ⭐️ 6.8/10
-6. [Cline v4.1.17 released](#item-harness-arch-6) ⭐️ 5.8/10
-7. [Cline SDK v0.0.82](#item-harness-arch-7) ⭐️ 5.8/10
-8. [video-use: Open-Source Video Editing Tool with Claude Code](#item-harness-arch-8) ⭐️ 5.0/10
-9. [Claude Code trending](#item-harness-arch-9) ⭐️ 5.0/10
+1. [Claude Code v2.1.259 发布](#item-harness-arch-1) ⭐️ 7.8/10
+2. [LangChain 1.4.0a4 released](#item-harness-arch-2) ⭐️ 7.8/10
+3. [Cline v4.1.17 Release](#item-harness-arch-3) ⭐️ 6.8/10
+4. [openai/codex rust-v0.153.0 released](#item-harness-arch-4) ⭐️ 5.8/10
+5. [Cline SDK v0.0.82 发布](#item-harness-arch-5) ⭐️ 5.8/10
+6. [Cline desktop-v0.0.22 released](#item-harness-arch-6) ⭐️ 5.8/10
+7. [Cline cli-v3.0.61 发布](#item-harness-arch-7) ⭐️ 5.8/10
+8. [browser-use/video-use GitHub trending](#item-harness-arch-8) ⭐️ 5.0/10
 
 **AI Agent Engineer**
-1. [Gemini 3.8 Flash and 3.8 Flash Cyber Released](#item-agent-engineer-1) ⭐️ 7.0/10
-2. [llm-gemini 0.34 Released](#item-agent-engineer-2) ⭐️ 7.0/10
-3. [simonw/llm 0.34 发布](#item-agent-engineer-3) ⭐️ 6.8/10
-4. [意外的黑板](#item-agent-engineer-4) ⭐️ 6.0/10
-5. [H3-World: Language to World Control](#item-agent-engineer-5) ⭐️ 6.0/10
-6. [llm-openrouter v0.7.1 released](#item-agent-engineer-6) ⭐️ 5.8/10
+1. [llm-gemini 0.34 发布](#item-agent-engineer-1) ⭐️ 7.0/10
+2. [HF Daily: Consolidating 200+ Apps to Self-Hosted LLM](#item-agent-engineer-2) ⭐️ 7.0/10
+3. [Harness-of-Harness: Multi-Day Autonomous Software Development with Continual Improvement](#item-agent-engineer-3) ⭐️ 7.0/10
+4. [llm 0.34 日志增加耗时并加速](#item-agent-engineer-4) ⭐️ 6.8/10
+5. [Gemini 3.8 Flash 发布](#item-agent-engineer-5) ⭐️ 6.0/10
+6. [H3-World: Language-Native World Control](#item-agent-engineer-6) ⭐️ 6.0/10
+7. [llm-openrouter 0.7.1 released with OpenRouter model loading performance fix](#item-agent-engineer-7) ⭐️ 5.8/10
+8. [IBM TSFM on Confluent Enables Real-Time Intelligence](#item-agent-engineer-8) ⭐️ 5.8/10
 
 **AI Daily**
-1. [ATV Big Air Tour Uses ChatGPT to Turn 3 Days of Work into 3 Hours](#item-ai-daily-1) ⭐️ 7.8/10
-2. [GitHub Copilot 成本效率 AI 编码](#item-ai-daily-2) ⭐️ 7.8/10
-3. [Meta Builds AI Agent as Organizational Second Brain](#item-ai-daily-3) ⭐️ 7.8/10
-4. [GitHub Podcast 解码 AI lingo](#item-ai-daily-4) ⭐️ 6.8/10
+1. [GitHub Copilot Makes AI Coding More Cost Efficient](#item-ai-daily-1) ⭐️ 7.8/10
+2. [Meta Builds Organizational Second Brain AI](#item-ai-daily-2) ⭐️ 7.8/10
+3. [GitHub Podcast Decodes New AI Lingo](#item-ai-daily-3) ⭐️ 6.8/10
+4. [ATV Big Air Tour Uses ChatGPT to Cut Marketing Time](#item-ai-daily-4) ⭐️ 5.8/10
 
 **AI Deals**
-1. [Éclat Blue One-Click Auth SDK-Free OIDC Provider](#item-ai-deals-1) ⭐️ 6.0/10
-2. [LongCat-2.0 Free to Try in Cline](#item-ai-deals-2) ⭐️ 5.0/10
+1. [LongCat-2.0 Free to Try in Cline](#item-ai-deals-1) ⭐️ 6.0/10
+2. [Éclat Blue One-Click Auth：SDK-free OIDC Beta](#item-ai-deals-2) ⭐️ 5.0/10
+3. [Free Phone Number Live-Interprets Calls in 47 Languages](#item-ai-deals-3) ⭐️ 5.0/10
 
 ---
 
 ## Agent Harness Architecture
 
 <a id="item-harness-arch-1"></a>
-### [Claude Code 2.1.259 Released](https://code.claude.com/docs/en/changelog#2-1-259) ⭐️ 8.8/10
+### [Claude Code v2.1.259 发布](https://github.com/anthropics/claude-code/releases/tag/v2.1.259) ⭐️ 7.8/10
 
-Claude Code 2.1.259 is released. It adds managedMcpServers configuration so organizations can provide HTTP/SSE MCP servers to every user \(skipping any that name a command to run\). It also adds --permission-prompts none for unattended headless hosts and recognition of glab mr commands for GitLab merge requests. Additional changes include --json output for claude plugin validate and fixes for concurrent session state/memory stability.
+Claude Code v2.1.259 is released by Anthropic. It adds managedMcpServers to let organizations provide HTTP/SSE MCP servers to users. --permission-prompts none is added for headless hosts and GitLab MR support is added for glab commands. Concurrent sessions no longer revert each other&\#x27;s ~/.claude.json changes.
 
-rss · Claude Code Changelog · Sep 2, 22:54
+github · ashwin-ant · Sep 2, 22:33
 
-**「改了什么」** Relative to the prior version, this release adds managedMcpServers for org-provided servers and --permission-prompts none for headless mode. It introduces GitLab MR tool recognition and --json for plugin validation. Fixes cover concurrent sessions no longer reverting each other&\#x27;s ~/.claude.json changes, Bash Read deny rules for file options and compounds, prompt cache invalidation on OAuth refresh, and multiple runtime issues including fullscreen mode and auto mode model selection.
+**「改了什么」** v2.1.259 adds managedMcpServers allowing organizations to provide HTTP/SSE MCP servers and --permission-prompts none for headless hosts. GitLab MR support and concurrent session fixes are included.
 
 **Tags**: `#mcp`, `#permissions`, `#tools`, `#runtime`, `#memory`
 
 ---
 
 <a id="item-harness-arch-2"></a>
-### [Cline CLI v3.0.61 Released](https://github.com/cline/cline/releases/tag/cli-v3.0.61) ⭐️ 7.8/10
+### [LangChain 1.4.0a4 released](https://github.com/langchain-ai/langchain/releases/tag/langchain%3D%3D1.4.0a4) ⭐️ 7.8/10
 
-Cline CLI v3.0.61 is released. It updates hub compatibility with replacement prompts and session draining while fixing MCP server unreachable issues and tool calling for Dify/SAP/opencode/Codex models.
+LangChain 1.4.0a4 alpha release updates MCP client handling, interrupt routing, and reentrant groups for fastmcp compatibility.
 
-github · github-actions\[bot\] · Sep 2, 04:49
+It refactors the adapter by inlining client arming into \_\_init\_\_, stamping an arm marker instead of introspecting the handler closure, gating interrupt routing on the negotiated protocol era, dropping the elicitation flag, and adding \_ReentrantClientGroup.
 
-**「What Changed」** Cline now handles older hubs with a replacement prompt that shows active sessions and drains them before replacement. It fixes the CLI dying on unreachable remote MCP servers using a 10s budget and corrects tool calling for models declaring no capabilities.
-
-**Tags**: `#runtime`, `#mcp`, `#tools`
-
----
-
-<a id="item-harness-arch-3"></a>
-### [Langchain 1.4.0a4 released](https://github.com/langchain-ai/langchain/releases/tag/langchain%3D%3D1.4.0a4) ⭐️ 7.8/10
-
-LangChain 1.4.0a4 alpha release inlines MCP client arming into \_\_init\_\_ and stamps an arm marker. It drives elicitation via member session for fastmcp 4.0.1, removes reentrant impl, and gates interrupt routing on the negotiated protocol era. It also adds \_ReentrantClientGroup and narrows the MCPAdapter.client union in tests for mypy.
+This builds on the prior 1.4.0a3 MCP namespace feature.
 
 github · github-actions\[bot\] · Sep 2, 05:35
 
-**「设计要点」** MCP client arming is inlined into \_\_init\_\_ with an arm marker instead of introspecting the handler closure. Interrupt routing is derived from the client and gated on the negotiated protocol era.
+**「What changed」** Relative to 1.4.0a3, this release adds \_ReentrantClientGroup, inlines MCP client arming into \_\_init\_\_, uses arm marker stamping, gates interrupt routing on protocol era, and drops the elicitation flag.
 
-**「改了什么」** Relative to 1.4.0a3, this release adds \_ReentrantClientGroup, drives MCP elicitation via member session, gates interrupt routing on protocol era, and drops elicitation flag. It updates to latest fastmcp and removes reentrant impl.
+It updates tests to cover mixed-era ClientGroup and group elicitation.
 
 **Tags**: `#mcp`, `#runtime`, `#tools`
 
 ---
 
-<a id="item-harness-arch-4"></a>
-### [E2B SDK 2.46.4 发布](https://github.com/e2b-dev/E2B/releases/tag/%40e2b/python-sdk%402.46.4) ⭐️ 6.8/10
+<a id="item-harness-arch-3"></a>
+### [Cline v4.1.17 Release](https://github.com/cline/cline/releases/tag/v4.1.17) ⭐️ 6.8/10
 
-E2B released @e2b/python-sdk@2.46.4. The patch spreads envd traffic across four HTTP/2 connection pools for high-concurrency sandbox workloads. Set \`E2B\_ENVD\_POOL\_SHARDS\` before importing the SDK to change the pool count.
-
-github · github-actions\[bot\] · Sep 2, 20:48
-
-**「设计要点」** envd traffic is sharded across HTTP/2 connection pools in the Python SDK. Shard count comes from \`E2B\_ENVD\_POOL\_SHARDS\` and must be set before the SDK is imported.
-
-**「改了什么」** envd traffic now spreads across four HTTP/2 connection pools. Pool count is adjustable with \`E2B\_ENVD\_POOL\_SHARDS\`.
-
-**Tags**: `#runtime`, `#sandbox`
-
----
-
-<a id="item-harness-arch-5"></a>
-### [E2B Python SDK 2.46.2 Released](https://github.com/e2b-dev/E2B/releases/tag/%40e2b/python-sdk%402.46.2) ⭐️ 6.8/10
-
-E2B Python SDK 2.46.2 defaults envd traffic across four HTTP/2 connection pools to avoid stream-limit contention in high-concurrency streams. The E2B\_ENVD\_POOL\_SHARDS environment variable is exposed before import to tune the pool count.
-
-github · github-actions\[bot\] · Sep 2, 19:08
-
-**「Design notes」** The SDK spreads envd traffic across four HTTP/2 connection pools by default. This prevents high-concurrency long-running streams from contending for one connection&\#x27;s stream limit. Set E2B\_ENVD\_POOL\_SHARDS before importing the SDK to tune the pool count.
-
-**「What changed」** This patch release spreads envd traffic across four HTTP/2 connection pools by default. The E2B\_ENVD\_POOL\_SHARDS environment variable is exposed before import to tune the pool count.
-
-**Tags**: `#runtime`, `#sandbox`
-
----
-
-<a id="item-harness-arch-6"></a>
-### [Cline v4.1.17 released](https://github.com/cline/cline/releases/tag/v4.1.17) ⭐️ 5.8/10
-
-Cline v4.1.17 is a patch release fixing background Hub memory ballooning during long sessions by switching to state-only snapshots and surfacing ClinePass UI elements across the app. This applies to Windows running the SDK bundle. The change prevents the Hub process from ballooning to tens of gigabytes by broadcasting only state instead of full transcripts on status updates. ClinePass now includes a card on the account page, a hint in provider settings, and a banner on the home screen.
+Cline v4.1.17 is a patch release for the Cline AI coding agent. It surfaces ClinePass UI elements and fixes background Hub process memory growth plus related crashes. The release includes fixes for long session memory ballooning by using snapshots instead of broadcasting full transcripts, hook script crash prevention, and various other stability and credential issues.
 
 github · github-actions\[bot\] · Sep 2, 05:40
 
-**「Design points」** The Hub memory fix replaces full conversation transcript broadcasts with state-only snapshots on status updates, preventing process ballooning to tens of gigabytes. This runtime change applies to the SDK bundle on Windows.
+**「Design points」** The memory fix changes session status updates to carry only state snapshots instead of full conversation transcripts, preventing process ballooning to tens of gigabytes during long tasks. Hook script failures no longer crash the core process.
 
-**「What changed」** Relative to v4.1.16, the release switches to state-only snapshots to fix Hub memory ballooning in long sessions. The built-in model catalog was refreshed, adding ten providers and changing default models for 57 providers, including Anthropic to Claude Fable 5.1.
+**「Changed」** Relative to v4.1.16, the key change is the memory optimization for long sessions using snapshots. Other changes include surfacing ClinePass UI, improved credential handling, and a refreshed model catalog.
 
-**Tags**: `#runtime`, `#memory`
-
----
-
-<a id="item-harness-arch-7"></a>
-### [Cline SDK v0.0.82](https://github.com/cline/cline/releases/tag/sdk/sdk/v0.0.82) ⭐️ 5.8/10
-
-Cline SDK v0.0.82 patches silent tool calling disable for gateway models lacking capabilities, empty capability list stripping image inputs, and minified Langfuse tracing. It adds SessionImportService to discover and import conversation history from Claude Code, Codex, and opencode into Cline&\#x27;s native format. The hub now anchors schedules in ~/.cline/schedules, restores checkpoints with compare-and-swap, and gives remote MCP servers a 10s connect budget. The model catalog refreshes with ten new providers and updated defaults for 57 providers.
-
-github · github-actions\[bot\] · Sep 2, 04:40
-
-**「What Changed」** Relative to v0.0.81, Cline SDK v0.0.82 fixes tool calling disable for gateway models, restores image input handling by fixing empty capability list bypasses, enables Langfuse tracing in minified builds, adds SessionImportService for cross-tool history import, improves hub schedule management and checkpoint restore, and refreshes the model catalog with ten new providers.
-
-**「Community Discussion」** No community comments available.
-
-**Tags**: `#tools`, `#runtime`, `#tracing`
+**Tags**: `#runtime`, `#memory`, `#tools`
 
 ---
 
-<a id="item-harness-arch-8"></a>
-### [video-use: Open-Source Video Editing Tool with Claude Code](https://github.com/browser-use/video-use) ⭐️ 5.0/10
+<a id="item-harness-arch-4"></a>
+### [openai/codex rust-v0.153.0 released](https://github.com/openai/codex/releases/tag/rust-v0.153.0) ⭐️ 5.8/10
 
-video-use is an open-source tool for editing videos using Claude Code agents. Drop raw footage in a folder and chat with the agent to get final.mp4 back. It cuts out filler words and dead space between takes and auto color grades every segment. Works for any content type like talking heads, montages, tutorials, travel, interviews without presets or menus.
+openai/codex rust-v0.153.0 is released. It adds Vim mode undo/redo support with \`u\` and \`Ctrl+R\`, a plugin CLI for listing/installing/removing plugins, an option to disable automatic recaps in TUI while keeping manual \`/recap\`, TUI history showing patches/commands, and automatic TUI session reconnect after app-server drops. Bug fixes include preserving drafts/transcripts on reconnect, skipping Guardian reviews for Full Access, and handling rollouts/MCP approvals. Plus and Team users receive earlier allowance warnings.
 
-rss · GitHub Trending Daily · Sep 3, 00:54
+github · github-actions\[bot\] · Sep 3, 01:37
 
-**「What changed」** New open-source video editing tool video-use released for use with Claude Code agents.
+**「What Changed」** This release adds Vim mode undo/redo support, plugin CLI, auto recap disable option, TUI history, and session reconnect compared to rust-v0.152.1. It also includes fixes for TUI reconnection, Guardian review history, permission scoping, and configuration updates.
 
 **Tags**: `#tools`, `#runtime`
 
 ---
 
-<a id="item-harness-arch-9"></a>
-### [Claude Code trending](https://github.com/anthropics/claude-code) ⭐️ 5.0/10
+<a id="item-harness-arch-5"></a>
+### [Cline SDK v0.0.82 发布](https://github.com/cline/cline/releases/tag/sdk/sdk/v0.0.82) ⭐️ 5.8/10
 
-Claude Code is trending on GitHub. It is a terminal-based agentic coding tool that lives in the terminal, understands the user&\#x27;s codebase, and helps with routine tasks, code explanation, and git workflows through natural language commands. Details are at https://code.claude.com/docs/en/overview.
+Cline SDK v0.0.82 has been released with bug fixes and new features. The release resolves tool calling issues for gateway models, prevents image input stripping from empty capability lists, and supports Langfuse tracing in minified builds. It introduces SessionImportService to import sessions from Claude Code, Codex, and opencode, and refreshes the model catalog with new providers and changed defaults for 57 providers.
 
-rss · GitHub Trending Daily · Sep 3, 00:54
+github · github-actions\[bot\] · Sep 2, 04:40
 
-**Tags**: `#runtime`, `#tools`, `#planning`
+**「改了什么」** Relative to v0.0.81, v0.0.82 adds SessionImportService for importing conversation history from Claude Code, Codex, and opencode. It fixes capability handling for gateway models and empty lists, enables Langfuse tracing in minified builds, and refreshes the model catalog.
+
+**Tags**: `#tools`, `#runtime`
+
+---
+
+<a id="item-harness-arch-6"></a>
+### [Cline desktop-v0.0.22 released](https://github.com/cline/cline/releases/tag/desktop-v0.0.22) ⭐️ 5.8/10
+
+Cline desktop v0.0.22 is released. It adds history import from Claude Code, Codex, and opencode into sessions. Schedule runs are now collapsed into a single collapsible sidebar row. Voice input is enabled on macOS.
+
+github · github-actions\[bot\] · Sep 2, 05:20
+
+**「What Changed」** History import now supports multiple tools with grouped sessions. Schedule runs are grouped into one sidebar row. Bug fixes include tool calling for Dify, SAP AI Core, opencode, and Codex CLI models.
+
+**Tags**: `#tools`, `#runtime`, `#memory`
+
+---
+
+<a id="item-harness-arch-7"></a>
+### [Cline cli-v3.0.61 发布](https://github.com/cline/cline/releases/tag/cli-v3.0.61) ⭐️ 5.8/10
+
+Cline CLI v3.0.61 is released. It fixes hub replacement for older running hubs with a replacement prompt, unreachable remote MCP servers with a 10s timeout, Windows binaries Authenticode signing, and tool calling for Dify/SAP/opencode/Codex models. The model catalog is refreshed with new providers and updated defaults.
+
+github · github-actions\[bot\] · Sep 2, 04:49
+
+**「改了什么」** Relative to v3.0.60, changes include older hub replacement prompt, MCP server timeout handling, Windows signing, tool calling re-enable for specific models, checkpoint restore refusal on post-commit state, and model catalog refresh with ten new providers plus default updates for 57 providers.
+
+**Tags**: `#mcp`, `#runtime`, `#tools`
+
+---
+
+<a id="item-harness-arch-8"></a>
+### [browser-use/video-use GitHub trending](https://github.com/browser-use/video-use) ⭐️ 5.0/10
+
+Announcement of open-source video-use tool for editing videos with coding agents and Claude Code. Drop raw footage in a folder, chat with Claude Code, get final.mp4 back. Works for any content — talking heads, montages, tutorials, travel, interviews — without presets or menus. The tool cuts out filler words and dead space between takes and auto color grades every segment.
+
+rss · GitHub Trending Daily · Sep 3, 01:41
+
+**Tags**: `#tools`, `#subagents`, `#planning`
 
 ---
 
 ## AI Agent Engineer
 
 <a id="item-agent-engineer-1"></a>
-### [Gemini 3.8 Flash and 3.8 Flash Cyber Released](https://blog.google/innovation-and-ai/models-and-research/gemini-models/3-8-flash-and-3-8-flash-cyber/) ⭐️ 7.0/10
+### [llm-gemini 0.34 发布](https://simonwillison.net/2026/Sep/2/llm-gemini/) ⭐️ 7.0/10
 
-Google announced Gemini 3.8 Flash and 3.8 Flash Cyber models with strong benchmark performance and efficiency metrics. The intelligence score reaches 59, matching Opus 5 medium. This affects AI agent evals, harnesses, and tool integrations for coding agents.
+llm-gemini 0.34 adds support for Gemini 3.8 Flash model with low, medium, and high thinking levels. It fixes an async responses issue that failed to record the resolved model version. This update impacts users of the llm library in coding agents and harnesses.
 
-hackernews · bratao · Sep 2, 15:12 · [Discussion](https://news.ycombinator.com/item?id=49537553)
+rss · Simon Willison · Sep 2, 16:39
 
-**「Why It Matters」** The release provides fast inference at low cost with strong HTML/JS and document parsing capabilities. Multi-modal support for audio and video input distinguishes these models from competitors.
+**「为什么重要」** Gemini 3.8 Flash is fast, cheap, and competent at HTML and JavaScript. The release enables integration with this new model in llm-based toolchains.
 
-**「Engineer Takeaway」** Observe: Strong benchmark performance at low cost for media analysis and HTML/JS tasks.
+**「可关注」** 可关注：Support for Gemini 3.8 Flash with low, medium, and high thinking levels.
 
-**「Community Discussion」** Users praise the speed combined with HTML/JS expertise and multi-modal capabilities. Some note it ranks high on leaderboards but report regressions in thinking effort levels compared to 3.7.
-
-**Tags**: `#eval`, `#coding-agent`, `#orchestration`
+**Tags**: `#coding-agent`, `#harness`, `#orchestration`, `#model-integration`
 
 ---
 
 <a id="item-agent-engineer-2"></a>
-### [llm-gemini 0.34 Released](https://simonwillison.net/2026/Sep/2/llm-gemini/) ⭐️ 7.0/10
+### [HF Daily: Consolidating 200+ Apps to Self-Hosted LLM](https://huggingface.co/papers/2609.01572) ⭐️ 7.0/10
 
-llm-gemini 0.34 adds support for the gemini-3.8-flash model from Gemini 3.8 Flash, including low, medium, and high thinking levels. It also fixes an issue where async responses failed to record the resolved model version. The release aligns with Google&\#x27;s Gemini 3.8 Flash announcement and benefits llm-gemini users in coding agents and harnesses.
+HF daily paper describes consolidating traffic from over 200 internal applications onto a single self-hosted LLM by training separate GRPO experts per axis \(instruction following, function calling, internal task distribution\) and merging via two-stage SLERP. Quality is tracked by offline benchmarks stratified to production traffic and scored by deterministic verifiers or calibrated LLM judges. This approach addresses data-residency constraints by reducing the serving fleet while covering corporate request mixes.
 
-rss · Simon Willison · Sep 2, 16:39
+rss · Hugging Face Daily Papers · Sep 3, 01:41
 
-**「Why it matters」** The update provides access to Google&\#x27;s latest Flash model with configurable thinking modes for LLM integrations and agents.
+**「为什么重要」** Data-residency constraints force enterprises to self-host LLMs, expanding the serving fleet and fragmenting a finite GPU pool. Consolidating onto one model optimizes GPU resources for internal applications.
 
-**「What to watch」** Gemini 3.8 Flash generates HTML and JavaScript quickly and cheaply, as shown by creating a cool HTML thing in 13 seconds for 1.8 cents.
+**「可关注」** Train separate GRPO experts per quality axis to avoid cross-domain reward interference, then merge via two-stage SLERP.
 
-**Tags**: `#coding-agent`, `#orchestration`, `#harness`, `#eval`
+**Tags**: `#eval`, `#orchestration`, `#harness`, `#coding-agent`
 
 ---
 
 <a id="item-agent-engineer-3"></a>
-### [simonw/llm 0.34 发布](https://github.com/simonw/llm/releases/tag/0.34) ⭐️ 6.8/10
+### [Harness-of-Harness: Multi-Day Autonomous Software Development with Continual Improvement](https://huggingface.co/papers/2609.01481) ⭐️ 7.0/10
 
-llm 0.34 released. Adds response duration to llm logs --usage output in Markdown format and as human-readable duration. short mode now includes duration\_ms field. Caches repeated message and model lookups to speed up long conversations and plugin loading.
+Harness-of-Harness \(HoH\) is a framework that organizes coding-agent executions into iterative planning-coding-testing loops. It enables multi-day autonomous software development by balancing repair with capability growth, scoping development into small verifiable increments, separating implementation-time testing from independent evaluation, and constraining verifiable outputs rather than prescribing agent workflows. HoH operates on existing coding-agent harnesses and impacts agent harnesses, orchestration, and evals.
 
-github · simonw · Sep 2, 19:23
+rss · Hugging Face Daily Papers · Sep 3, 01:41
 
-**「为什么重要」** llm logs --usage response duration tracking and caching optimizations are useful for long conversations in coding agents. These changes have been implemented in the release.
+**「Why it matters」** HoH provides concrete techniques for sustaining improvement across loops in LLM coding agents. These techniques directly affect how harnesses are built, orchestrated, and evaluated for multi-day autonomous development.
 
-**「可关注」** 可关注：llm logs --usage now includes duration\_ms field.
+**「Attention」** Attention: Balance repair with capability growth across iterative loops while scoping to small verifiable increments and separating testing.
 
-**Tags**: `#observability`, `#orchestration`, `#performance`, `#coding-agent`
+**Tags**: `#harness`, `#coding-agent`, `#eval`, `#orchestration`
 
 ---
 
 <a id="item-agent-engineer-4"></a>
-### [意外的黑板](https://martinfowler.com/articles/exploring-gen-ai/an-accidental-blackboard.html) ⭐️ 6.0/10
+### [llm 0.34 日志增加耗时并加速](https://github.com/simonw/llm/releases/tag/0.34) ⭐️ 6.8/10
 
-A team experimenting with fully agentic engineering practices accidentally prompted agents to create a blackboard coordination system inside their git repository. Giles Edwards-Alexander reports the event. The system uses git for coordination.
+simonw 发布 llm 0.34。\`llm logs --usage\` 的 Markdown 现写入响应耗时，同时给出毫秒和可读时长；\`llm logs --short\` 增加 \`duration\_ms\` 字段。长对话里，\`llm logs\` 缓存重复的 message 与 model 查找；动态生成的 OpenAI options 类也改为缓存，避免 \`llm-openrouter\` 等插件反复构造 Pydantic 类。传给 \`llm prompt --schema\` 的非法 schema DSL 改为命令行报错，\`llm --extract\` 识别 CRLF 围栏代码块，\`monotonic\_ulid\(\)\` 在时钟回拨或并发时间戳乱序时仍保持单调，并直接依赖 \`typing-extensions\`。
 
-rss · Martin Fowler · Sep 2, 14:45
+github · simonw · Sep 2, 19:23
 
-**「Why it matters」** The team created a git-based blackboard coordination system. The impact on agentic engineering practices remains unconfirmed.
+**「为什么重要」** \`llm logs\` 能直接读到单次响应耗时。长对话日志查找和插件反复构造 OpenAI options 类已做缓存，材料未给加速数字。
 
-**「Engineer takeaway」** Git can serve as a blackboard for agent coordination.
+**「可关注」** 可关注：长对话上 \`llm logs\` 的重复查找，以及 \`llm-openrouter\` 一类插件对 OpenAI options Pydantic 类的重复构造，现已缓存。
 
-**Tags**: `#orchestration`, `#memory`, `#coding-agent`, `#harness`
+**Tags**: `#coding-agent`, `#orchestration`, `#observability`
 
 ---
 
 <a id="item-agent-engineer-5"></a>
-### [H3-World: Language to World Control](https://www.reddit.com/r/LocalLLaMA/comments/1w5akpy/h3world_turning_language_understanding_into_world/) ⭐️ 6.0/10
+### [Gemini 3.8 Flash 发布](https://blog.google/innovation-and-ai/models-and-research/gemini-models/3-8-flash-and-3-8-flash-cyber/) ⭐️ 6.0/10
 
-H3-World converts language instructions into precise character and camera actions in video latents via efficient LoRA on a pretrained model. It assigns one action prompt to each video latent interval for temporal grounding. Using MiniMax-H3 text pathway and LoRA \(0.199% params, 8k samples\) it achieves controllable motion including unseen action compositions and visual scenarios. Open code, model and project available.
+Google released Gemini 3.8 Flash, a fast model competitive with larger ones in benchmarks. It is useful for tasks like HTML generation. The intelligence score is 59, the same as Opus 5 medium.
 
-reddit · r/LocalLLaMA · /u/sachasayan · Sep 2, 13:35
+hackernews · bratao · Sep 2, 15:12 · [Discussion](https://news.ycombinator.com/item?id=49537553)
 
-**「Why it matters」** The method enables language-native control in video games and simulations with temporal grounding, though the domain is narrow and not a breaking change for agent harnesses or eval toolchains.
+**「为什么重要」** This release is worth paying attention today because it is competitive with larger models in speed and benchmarks. The long-term impact in actual coding agent tasks remains to be seen.
 
-**「Notable」** 0.199% LoRA parameters suffice for language-to-world control with temporal grounding in video latents.
+**「可关注」** 可关注：Gemini 3.8 Flash performs well in HTML generation tasks.
 
-**Tags**: `#coding-agent`, `#eval`, `#orchestration`
+**「评论」** Community discussion highlights excitement about the speed and HTML JavaScript capabilities from SimonW, positive experiences with trip planning from Jampa, and leaderboard leadership over Opus 5 from MattLondon.
+
+**Tags**: `#coding-agent`, `#eval`, `#harness`
 
 ---
 
 <a id="item-agent-engineer-6"></a>
-### [llm-openrouter v0.7.1 released](https://github.com/simonw/llm-openrouter/releases/tag/0.7.1) ⭐️ 5.8/10
+### [H3-World: Language-Native World Control](https://www.reddit.com/r/LocalLLaMA/comments/1w5akpy/h3world_turning_language_understanding_into_world/) ⭐️ 6.0/10
 
-Simon Willison released llm-openrouter v0.7.1. The update includes a performance fix for loading OpenRouter models, thanks to waveplate. This is a minor release with no breaking changes.
+H3-World converts language instructions into temporally grounded character and camera actions in video and game scenarios. It achieves this using only 8,000 gameplay samples, 10,000 LoRA steps, and 0.199% trainable parameters on MiniMax-H3. The method supports unseen action compositions and visual scenarios. Details appear in arXiv paper 2609.01560 and the GitHub repository at https://github.com/Danzer1xxxxChan/H3-World.
+
+reddit · r/LocalLLaMA · /u/sachasayan · Sep 2, 13:35
+
+**「Why it matters」** The paper demonstrates language-native world control with minimal trainable parameters. This advances agent systems that require precise character and camera control in dynamic environments.
+
+**「Engineer takeaway」** Note: 0.199% trainable parameters suffice for controllable character and camera motion using 8,000 samples and 10,000 LoRA steps.
+
+**Tags**: `#orchestration`, `#coding-agent`, `#harness`, `#eval`
+
+---
+
+<a id="item-agent-engineer-7"></a>
+### [llm-openrouter 0.7.1 released with OpenRouter model loading performance fix](https://github.com/simonw/llm-openrouter/releases/tag/0.7.1) ⭐️ 5.8/10
+
+Simonw released llm-openrouter 0.7.1. The update includes a performance fix for loading OpenRouter models. The fix was contributed by waveplate.
 
 github · simonw · Sep 2, 20:23
 
-**「Watch」** Watch: Performance fix for loading OpenRouter models in llm-openrouter v0.7.1.
+**「What to watch」** What to watch: Performance fix for loading OpenRouter models.
 
-**Tags**: `#coding-agent`, `#orchestration`, `#harness`
+**Tags**: `#orchestration`, `#coding-agent`
+
+---
+
+<a id="item-agent-engineer-8"></a>
+### [IBM TSFM on Confluent Enables Real-Time Intelligence](https://huggingface.co/blog/ibm-research/real-time-intelligence) ⭐️ 5.8/10
+
+IBM integrates its Time Series Foundation Models with Confluent to enable real-time intelligence. Models generalize to unseen series for forecasting, anomaly detection, similarity search, classification, gap-filling, and optimization. They run via Flink SQL functions in Confluent Cloud, with benefits including real-time processing on live data, zero configuration, fresh enriched context, built-in governance, cost efficiency, and enhanced security. A portfolio of four models is in Early Access.
+
+rss · Hugging Face Blog · Sep 2, 13:49
+
+**「Why it matters」** This bridges operational and analytical estates to turn live business events into actionable intelligence. Flink handles stateful forecasting and detection with per-series history, so signals retain value before they decay.
+
+**「Observable」** Observable: Switch between the four TSFM models with one SQL parameter in the AI\_FORECAST function, no pipeline redesign required.
+
+**Tags**: `#orchestration`, `#observability`, `#real-time`, `#time-series`, `#foundation-model`
 
 ---
 
 ## AI Daily
 
 <a id="item-ai-daily-1"></a>
-### [ATV Big Air Tour Uses ChatGPT to Turn 3 Days of Work into 3 Hours](https://openai.com/index/atv-big-air-tour) ⭐️ 7.8/10
+### [GitHub Copilot Makes AI Coding More Cost Efficient](https://github.blog/ai-and-ml/github-copilot/how-we-make-ai-coding-more-cost-efficient-without-sacrificing-task-quality/) ⭐️ 7.8/10
 
-ATV Big Air Tour used ChatGPT Work to turn 3 days of work into 3 hours. It converted merchandise photos into an inventory website in 15 minutes.
+GitHub explains how to make AI coding more cost-efficient without sacrificing task quality using GitHub Copilot. Shorter outputs can cost more, and GitHub Copilot reduces wasted work across the complete coding task.
 
-rss · OpenAI Blog · Sep 2, 12:00
+rss · GitHub Blog · Sep 2, 18:00
 
-**「Why It Matters」** ChatGPT Work enables rapid creation of marketing assets and inventory systems.
+**「Why it matters」** This approach helps teams optimize costs in AI-assisted coding while keeping high task quality.
 
-**「Key Takeaway」** Key takeaway: Merchandise photos can be turned into an inventory website in 15 minutes using ChatGPT Work.
+**「Engineer takeaway」** Key takeaway: Shorter outputs can cost more, and GitHub Copilot reduces wasted work across the complete coding task.
 
-**Tags**: `#lab`, `#product`, `#marketing`
+**Tags**: `#lab`, `#product`, `#industry`
 
 ---
 
 <a id="item-ai-daily-2"></a>
-### [GitHub Copilot 成本效率 AI 编码](https://github.blog/ai-and-ml/github-copilot/how-we-make-ai-coding-more-cost-efficient-without-sacrificing-task-quality/) ⭐️ 7.8/10
+### [Meta Builds Organizational Second Brain AI](https://engineering.fb.com/2026/09/02/ml-applications/organizational-second-brain-ai-learns-from-experts/) ⭐️ 7.8/10
 
-GitHub published a blog post titled &\#x27;How we make AI coding more cost efficient without sacrificing task quality&\#x27;. The post explains why shorter outputs can cost more and how GitHub Copilot reduces wasted work across the complete coding task.
+Meta has built an AI agent that acts as a secondary expert for a given domain, making deep specialist knowledge readily available and preserved for anyone in an organization to access, share, and build upon. Its novelty comes from integrating two layers: a structured, auditable knowledge architecture.
 
-rss · GitHub Blog · Sep 2, 18:00
+rss · Engineering at Meta · Sep 2, 09:00
 
-**「为什么重要」** This optimization helps developers manage costs in AI-assisted coding without compromising on the quality of their tasks.
+**「Why It Matters」** This approach enables organizations to preserve and share specialist knowledge through an integrated structured and auditable architecture.
 
-**「可关注」** 可关注：GitHub Copilot reduces wasted work across the complete coding task to improve cost efficiency.
+**「Takeaway」** The system integrates a structured, auditable knowledge architecture to preserve specialist knowledge.
 
-**Tags**: `#product`, `#industry`, `#github`, `#copilot`, `#ai-coding`
+**Tags**: `#lab`, `#product`, `#industry`
 
 ---
 
 <a id="item-ai-daily-3"></a>
-### [Meta Builds AI Agent as Organizational Second Brain](https://engineering.fb.com/2026/09/02/ml-applications/organizational-second-brain-ai-learns-from-experts/) ⭐️ 7.8/10
+### [GitHub Podcast Decodes New AI Lingo](https://github.blog/ai-and-ml/decoding-the-new-ai-lingo-loops-harnesses-squads-hill-climbing-oh-my/) ⭐️ 6.8/10
 
-Meta has developed an AI agent that acts as a secondary expert for a given domain, making deep specialist knowledge readily available and preserved for anyone in an organization to access, share, and build upon. This is not a typical domain-specific agent. Its novelty comes from integrating two layers: a structured, auditable knowledge architecture.
+GitHub Blog published a post decoding new AI lingo from the GitHub Podcast. The terms include loops, harnesses, squads, and hill climbing. The post explains these terms as they appear in developer conversations. It covers loop engineering to open weights.
 
-rss · Engineering at Meta · Sep 2, 09:00
+rss · GitHub Blog · Sep 2, 21:00
 
-**「Takeaway」** Takeaway: Integrates structured auditable knowledge architecture.
+**「Why it matters」** Understanding these new AI terms helps developers follow GitHub Podcast and community discussions.
 
-**Tags**: `#meta`, `#ai-agent`, `#knowledge-management`, `#product`, `#industry`
+**「Engineer takeaway」** Takeaway: GitHub Podcast breaks down AI terms like loops, harnesses, squads, and hill climbing from loop engineering to open weights.
+
+**Tags**: `#github`, `#industry`, `#ai-terms`
 
 ---
 
 <a id="item-ai-daily-4"></a>
-### [GitHub Podcast 解码 AI lingo](https://github.blog/ai-and-ml/decoding-the-new-ai-lingo-loops-harnesses-squads-hill-climbing-oh-my/) ⭐️ 6.8/10
+### [ATV Big Air Tour Uses ChatGPT to Cut Marketing Time](https://openai.com/index/atv-big-air-tour) ⭐️ 5.8/10
 
-GitHub Podcast breaks down the AI terms showing up in developer conversations. The terms include loop engineering, harnesses, squads, and open weights.
+ATV Big Air Tour used ChatGPT to accelerate marketing and merchandising. This reduced three days of work to three hours. They created an inventory website from merchandise photos in 15 minutes.
 
-rss · GitHub Blog · Sep 2, 21:00
+rss · OpenAI Blog · Sep 2, 12:00
 
-**「可关注」** 可关注：GitHub Podcast breaks down the AI terms showing up in developer conversations, including loop engineering, harnesses, squads, and open weights.
+**「Why It Matters」** The case demonstrates how ChatGPT can transform manual marketing and inventory tasks into fast automated processes.
 
-**Tags**: `#lab`, `#industry`, `#eval`, `#open-source`
+**「Takeaway」** Use ChatGPT to generate inventory websites from photos in 15 minutes and cut marketing work from three days to three hours.
+
+**Tags**: `#industry`, `#product`, `#ChatGPT`
 
 ---
 
 ## AI Deals
 
 <a id="item-ai-deals-1"></a>
-### [Éclat Blue One-Click Auth SDK-Free OIDC Provider](https://news.ycombinator.com/item?id=49543502) ⭐️ 6.0/10
+### [LongCat-2.0 Free to Try in Cline](https://twitter.com/Meituan_LongCat/status/2094996391387111865) ⭐️ 6.0/10
 
-Developer ameeting offers Éclat Blue One-Click Auth, a lightweight OpenID Connect identity provider using PKCE for frontend apps. It is in small-scale beta with a public demo available. No signup is required to inspect the integration flow and endpoints at https://eclatblue.com/oneclickauth.
+Meituan announces LongCat-2.0 is now free to try in Cline. No specific quota, duration or access limits are provided.
 
-rss · HN Free API / Credits · Sep 2, 22:32
+rss · HN Free API / Credits · Sep 2, 09:58
 
-**「Why It Matters」** The public demo requires no account, enabling immediate testing of the SDK-free OIDC flow for frontend apps.
+**「Note」** LongCat-2.0 is available for free trial in Cline without specified limits.
 
-**「Takeaway」** Takeaway: Éclat Blue enforces strict authorization code flows with PKCE natively, allowing frontend apps to use browser APIs without bulky SDKs or exposed client secrets.
-
-**Tags**: `#limited-free`, `#free-tier`, `#api`, `#promo`
+**Tags**: `#free-tier`, `#promo`, `#model`
 
 ---
 
 <a id="item-ai-deals-2"></a>
-### [LongCat-2.0 Free to Try in Cline](https://twitter.com/Meituan_LongCat/status/2094996391387111865) ⭐️ 5.0/10
+### [Éclat Blue One-Click Auth：SDK-free OIDC Beta](https://news.ycombinator.com/item?id=49543502) ⭐️ 5.0/10
 
-Meituan&\#x27;s LongCat-2.0 is now free to try in the Cline interface. The announcement comes from an official Twitter post by @Meituan\_LongCat. No details on quotas, models, prices, claiming conditions, or deadlines are provided.
+Éclat Blue One-Click Auth is a lightweight OIDC identity provider in small-scale beta. It allows frontend apps to be secured directly through native browser APIs without bulky SDKs or exposed client secrets. The tool is currently ready for small-scale beta use and can be inspected without an account via the Try Me link.
 
-rss · HN Free API / Credits · Sep 2, 09:58
+rss · HN Free API / Credits · Sep 2, 22:32
 
-**Tags**: `#free-tier`, `#promo`, `#LongCat`
+**「为什么重要」** This beta provides a simple alternative for public clients, avoiding heavy SDKs and secret management for frontend authentication.
+
+**「可关注」** Note: It is suitable for frontend applications and enforces strict authorization code flows with PKCE protocols natively.
+
+**Tags**: `#free-tier`, `#promo`, `#api`, `#beta`, `#limited-free`
+
+---
+
+<a id="item-ai-deals-3"></a>
+### [Free Phone Number Live-Interprets Calls in 47 Languages](https://translatemycall.com/) ⭐️ 5.0/10
+
+Show HN post announces a free phone number service that live-interprets calls in 47 languages. The service is hosted at translatemycall.com. No signup details, usage limits, expiration dates, or restrictions are provided.
+
+rss · HN Free API / Credits · Sep 2, 17:24
+
+**Tags**: `#free-tier`, `#promo`
 
 ---

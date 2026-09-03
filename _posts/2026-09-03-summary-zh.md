@@ -5,338 +5,368 @@ date: 2026-09-03
 lang: zh
 ---
 
-> 从 188 条内容中筛选出 21 条重要资讯。
+> 从 207 条内容中筛选出 23 条重要资讯。
 
 ---
 
 **Harness 架构**
-1. [Claude Code 2.1.259 发布](#item-harness-arch-1) ⭐️ 8.8/10
-2. [Cline CLI v3.0.61 发布](#item-harness-arch-2) ⭐️ 7.8/10
-3. [Langchain 1.4.0a4 发布](#item-harness-arch-3) ⭐️ 7.8/10
-4. [E2B python-sdk 2.46.4 发布](#item-harness-arch-4) ⭐️ 6.8/10
-5. [E2B Python SDK 2.46.2 发布](#item-harness-arch-5) ⭐️ 6.8/10
-6. [Cline v4.1.17 发布](#item-harness-arch-6) ⭐️ 5.8/10
-7. [Cline SDK v0.0.82 发布](#item-harness-arch-7) ⭐️ 5.8/10
+1. [Claude Code v2.1.259 发布](#item-harness-arch-1) ⭐️ 7.8/10
+2. [LangChain 1.4.0a4 发布](#item-harness-arch-2) ⭐️ 7.8/10
+3. [Cline v4.1.17 发布](#item-harness-arch-3) ⭐️ 6.8/10
+4. [Codex rust-v0.153.0 发布](#item-harness-arch-4) ⭐️ 5.8/10
+5. [Cline SDK v0.0.82 发布](#item-harness-arch-5) ⭐️ 5.8/10
+6. [Cline desktop-v0.0.22 发布](#item-harness-arch-6) ⭐️ 5.8/10
+7. [Cline CLI v3.0.61 发布](#item-harness-arch-7) ⭐️ 5.8/10
 8. [browser-use/video-use GitHub trending](#item-harness-arch-8) ⭐️ 5.0/10
-9. [Claude Code 进入 GitHub trending](#item-harness-arch-9) ⭐️ 5.0/10
 
 **Agent 工程师日报**
-1. [Gemini 3.8 Flash 与 3.8 Flash Cyber 发布](#item-agent-engineer-1) ⭐️ 7.0/10
-2. [llm-gemini 0.34 发布](#item-agent-engineer-2) ⭐️ 7.0/10
-3. [llm 0.34 发布](#item-agent-engineer-3) ⭐️ 6.8/10
-4. [意外的黑板](#item-agent-engineer-4) ⭐️ 6.0/10
-5. [H3-World 语言理解转世界控制](#item-agent-engineer-5) ⭐️ 6.0/10
-6. [llm-openrouter 0.7.1 发布](#item-agent-engineer-6) ⭐️ 5.8/10
+1. [llm-gemini 0.34 发布](#item-agent-engineer-1) ⭐️ 7.0/10
+2. [HF daily paper: 自托管 LLM GRPO 合并](#item-agent-engineer-2) ⭐️ 7.0/10
+3. [Harness-of-Harness 多日自主开发框架](#item-agent-engineer-3) ⭐️ 7.0/10
+4. [llm 0.34 日志加耗时并修缓存](#item-agent-engineer-4) ⭐️ 6.8/10
+5. [Gemini 3.8 Flash 发布](#item-agent-engineer-5) ⭐️ 6.0/10
+6. [H3-World：语言理解转向世界控制](#item-agent-engineer-6) ⭐️ 6.0/10
+7. [llm-openrouter 0.7.1 发布](#item-agent-engineer-7) ⭐️ 5.8/10
+8. [IBM TSFM Confluent 实时智能](#item-agent-engineer-8) ⭐️ 5.8/10
 
 **AI 日报**
-1. [ATV Big Air Tour 使用 ChatGPT Work 加速营销](#item-ai-daily-1) ⭐️ 7.8/10
-2. [Copilot 成本效率提升](#item-ai-daily-2) ⭐️ 7.8/10
-3. [Meta 组织第二大脑 AI 代理](#item-ai-daily-3) ⭐️ 7.8/10
-4. [GitHub Podcast 解码新术语](#item-ai-daily-4) ⭐️ 6.8/10
+1. [GitHub Copilot 成本优化 发布](#item-ai-daily-1) ⭐️ 7.8/10
+2. [Meta 组织第二大脑 AI 专家](#item-ai-daily-2) ⭐️ 7.8/10
+3. [GitHub Blog 解码 AI 流行语](#item-ai-daily-3) ⭐️ 6.8/10
+4. [ATV Big Air Tour 用 ChatGPT 节省 3 天工作](#item-ai-daily-4) ⭐️ 5.8/10
 
 **AI 羊毛**
-1. [Éclat Blue One-Click Auth 公测](#item-ai-deals-1) ⭐️ 6.0/10
-2. [LongCat-2.0 免费试用 Cline](#item-ai-deals-2) ⭐️ 5.0/10
+1. [LongCat-2.0 免费试用 Cline](#item-ai-deals-1) ⭐️ 6.0/10
+2. [Éclat Blue One-Click Auth 公测](#item-ai-deals-2) ⭐️ 5.0/10
+3. [translatemycall.com 免费电话服务](#item-ai-deals-3) ⭐️ 5.0/10
 
 ---
 
 ## Harness 架构
 
 <a id="item-harness-arch-1"></a>
-### [Claude Code 2.1.259 发布](https://code.claude.com/docs/en/changelog#2-1-259) ⭐️ 8.8/10
+### [Claude Code v2.1.259 发布](https://github.com/anthropics/claude-code/releases/tag/v2.1.259) ⭐️ 7.8/10
 
-Claude Code 2.1.259 发布。新增 managedMcpServers 配置，组织可提供 HTTP/SSE MCP 服务器给所有用户。添加 --permission-prompts none 选项用于无头主机。修复并发会话状态一致性问题。
+Claude Code v2.1.259 由 Anthropic 发布，新增 managedMcpServers 托管设置，允许组织向所有用户提供 HTTP/SSE MCP 服务器。添加 --permission-prompts none 选项用于无头主机，并支持 GitLab MR 操作以在工具摘要中显示 MR \!N。修复了并发会话中状态丢失等问题。
 
-rss · Claude Code Changelog · 9月2日 22:54
+github · ashwin-ant · 9月2日 22:33
 
-**「改了什么」** 新增 managedMcpServers 托管设置和 --permission-prompts none 选项。修复并发会话覆盖 ~/.claude.json 的问题。
+**「改了什么」** 相比上一版，v2.1.259 增加了 managedMcpServers 设置和 GitLab MR 支持，修复了并发会话中 ~/.claude.json 状态丢失的问题。
 
 **标签**: `#mcp`, `#permissions`, `#tools`, `#runtime`, `#memory`
 
 ---
 
 <a id="item-harness-arch-2"></a>
-### [Cline CLI v3.0.61 发布](https://github.com/cline/cline/releases/tag/cli-v3.0.61) ⭐️ 7.8/10
+### [LangChain 1.4.0a4 发布](https://github.com/langchain-ai/langchain/releases/tag/langchain%3D%3D1.4.0a4) ⭐️ 7.8/10
 
-Cline CLI v3.0.61 发布了更新，支持与旧版 Hub 兼容，通过提示中断活跃会话并排水。修复了 MCP 服务器不可达导致的 CLI 崩溃，连接有 10 秒预算，并修正了 Dify、SAP AI Core、opencode 和 Codex 模型的工具调用。Windows 二进制文件通过 Azure Trusted Signing 签名，Langfuse 追踪在发布版本中可用。
-
-github · github-actions\[bot\] · 9月2日 04:49
-
-**「改了什么」** 相对上一版，增加了与旧版 Hub 的兼容处理，通过提示和排水机制中断活跃会话。修复了 MCP 服务器 unreachable 问题，并修正了多个模型的工具调用支持。
-
-**标签**: `#runtime`, `#mcp`, `#tools`
-
----
-
-<a id="item-harness-arch-3"></a>
-### [Langchain 1.4.0a4 发布](https://github.com/langchain-ai/langchain/releases/tag/langchain%3D%3D1.4.0a4) ⭐️ 7.8/10
-
-LangChain 1.4.0a4 发布。更新 MCP 客户端 arming、reentrant group 修复和 interrupt routing。基于协商协议时代的改动，包括 elicitation 驱动和 interrupt routing 门控。
+LangChain 1.4.0a4 alpha 版本正式发布。该版本针对 MCP 客户端处理、打断路由和可重入组进行了更新，以支持 fastmcp 兼容性。
+核心改动包括将 MCP 客户端 arming 操作内联至 \_\_init\_\_ 方法，使用 arm marker 替代闭包内省，基于协商协议 era 门控打断路由，移除 elicitation 标志，并新增 \_ReentrantClientGroup。
+这是 LangChain 框架在 MCP 适配器上的迭代，针对 fastmcp 4.0.1 的兼容性优化。
 
 github · github-actions\[bot\] · 9月2日 05:35
 
-**「改了什么」** 移除 reentrant 实现，使用最新 fastmcp。内联 MCP 客户端 arming 到 \_\_init\_\_，并将 elicitation 标志移除，转而从客户端派生中断路由。
+**「改了什么」** 相比 1.4.0a3，该版本重构了 MCPAdapter，重点是客户端 arming 内联、arm marker 打标、基于协议 era 的打断路由门控，以及新增可重入组以支持 fastmcp 兼容性。
 
 **标签**: `#mcp`, `#runtime`, `#tools`
 
 ---
 
+<a id="item-harness-arch-3"></a>
+### [Cline v4.1.17 发布](https://github.com/cline/cline/releases/tag/v4.1.17) ⭐️ 6.8/10
+
+Cline v4.1.17 发布了。新增 ClinePass 界面元素，包括账户页面卡片、提供商设置提示和首页横幅。修复了长会话中后台 Hub 进程内存膨胀问题，通过快照替代全量转录广播。修复了钩子脚本失败导致的核心进程崩溃，以及聊天渲染、成本估算、API 密钥等多个 bug。
+
+github · github-actions\[bot\] · 9月2日 05:40
+
+**「改了什么」** 上线 ClinePass 界面元素和模型目录刷新。模型目录更新后，默认模型对 57 个提供商生效。
+
+**标签**: `#runtime`, `#memory`, `#tools`
+
+---
+
 <a id="item-harness-arch-4"></a>
-### [E2B python-sdk 2.46.4 发布](https://github.com/e2b-dev/E2B/releases/tag/%40e2b/python-sdk%402.46.4) ⭐️ 6.8/10
+### [Codex rust-v0.153.0 发布](https://github.com/openai/codex/releases/tag/rust-v0.153.0) ⭐️ 5.8/10
 
-E2B 发布 \`@e2b/python-sdk\` 2.46.4。此补丁把 envd 流量分摊到四个 HTTP/2 连接池，提高高并发 sandbox 的可靠性。池数量由 \`E2B\_ENVD\_POOL\_SHARDS\` 控制，须在导入 SDK 之前设置。
+openai/codex rust-v0.153.0 发布。新增 Vim 模式支持撤销（u）和重做（Ctrl+R），插件 CLI 支持列出安装移除插件，TUI 自动 recap 禁用选项，TUI 历史记录显示完整补丁和命令。TUI 会话在 app-server 连接断开后自动重连，保留草稿和转录。
 
-github · github-actions\[bot\] · 9月2日 20:48
+github · github-actions\[bot\] · 9月3日 01:37
 
-**「设计要点」** SDK 把 envd 流量摊到多个 HTTP/2 连接池，默认四个 shard。池数用导入前的环境变量 \`E2B\_ENVD\_POOL\_SHARDS\` 配置。
+**「改了什么」** Vim 模式新增撤销和重做支持。TUI 会话在 app-server 断开后自动重连，保留草稿和转录。
 
-**「改了什么」** 高并发 sandbox 下，envd 流量改为跨四个 HTTP/2 连接池分摊。可用 \`E2B\_ENVD\_POOL\_SHARDS\` 在导入 SDK 前改池数。
-
-**标签**: `#runtime`, `#sandbox`
+**标签**: `#tools`, `#runtime`
 
 ---
 
 <a id="item-harness-arch-5"></a>
-### [E2B Python SDK 2.46.2 发布](https://github.com/e2b-dev/E2B/releases/tag/%40e2b/python-sdk%402.46.2) ⭐️ 6.8/10
+### [Cline SDK v0.0.82 发布](https://github.com/cline/cline/releases/tag/sdk/sdk/v0.0.82) ⭐️ 5.8/10
 
-E2B Python SDK 2.46.2 发布。默认将 envd 流量分布到四个 HTTP/2 连接池，避免高并发长运行流争用一个连接的流限制。设置 E2B\_ENVD\_POOL\_SHARDS 环境变量可在导入 SDK 前调整池数量。
+Cline SDK v0.0.82 发布了。修复了网关模型工具调用被静默禁用的问题，以及空能力列表导致图像输入被剥离。Langfuse 追踪现在支持 minified release builds。新增加了 SessionImportService，支持从 Claude Code、Codex 和 opencode 导入会话历史。
 
-github · github-actions\[bot\] · 9月2日 19:08
+github · github-actions\[bot\] · 9月2日 04:40
 
-**「设计要点」** 默认将 envd 流量分布到四个 HTTP/2 连接池。设置 E2B\_ENVD\_POOL\_SHARDS 环境变量可在导入前调整池数量。
+**「设计要点」** hub 管理在活动检查前建立 drain barrier，避免在运行工作下被退休。SessionImportService 实现事务性、幂等性导入会话历史。
 
-**「改了什么」** 默认将 envd 流量分布到四个 HTTP/2 连接池，避免高并发长运行流争用一个连接的流限制。设置 E2B\_ENVD\_POOL\_SHARDS 环境变量可在导入前调整池数量。
+**「改了什么」** 此版本修复了工具调用和图像输入处理问题，添加了会话历史导入功能，改进了 hub 管理逻辑，并刷新了模型目录。
 
-**标签**: `#runtime`, `#sandbox`
+**标签**: `#tools`, `#runtime`
 
 ---
 
 <a id="item-harness-arch-6"></a>
-### [Cline v4.1.17 发布](https://github.com/cline/cline/releases/tag/v4.1.17) ⭐️ 5.8/10
+### [Cline desktop-v0.0.22 发布](https://github.com/cline/cline/releases/tag/desktop-v0.0.22) ⭐️ 5.8/10
 
-Cline v4.1.17 发布。修复长会话中后台 Hub 内存膨胀问题，通过切换到仅状态快照替代完整对话 transcript 广播。新增 ClinePass 在账户页面、提供商设置和首页的 UI 展示。
+Cline desktop v0.0.22 发布。新增从 Claude Code、Codex 和 opencode 导入历史记录到会话的功能。在 Sessions 头部提供导入按钮，并在设置中添加选项。macOS 上启用语音输入，并将调度运行折叠到单个侧边栏一行。
 
-github · github-actions\[bot\] · 9月2日 05:40
+github · github-actions\[bot\] · 9月2日 05:20
 
-**「设计要点」** 长会话内存膨胀通过切换到仅状态快照解决，避免 transcript 广播导致的进程膨胀。
+**「改了什么」** Cline desktop v0.0.22 相对上一版新增历史记录导入功能，将调度运行折叠到单个侧边栏行，并启用 macOS 语音输入。
 
-**「改了什么」** Cline v4.1.17 切换到仅状态快照修复长会话内存膨胀。模型目录刷新，新增十个提供商并更新默认模型。
-
-**标签**: `#runtime`, `#memory`
+**标签**: `#tools`, `#runtime`, `#memory`
 
 ---
 
 <a id="item-harness-arch-7"></a>
-### [Cline SDK v0.0.82 发布](https://github.com/cline/cline/releases/tag/sdk/sdk/v0.0.82) ⭐️ 5.8/10
+### [Cline CLI v3.0.61 发布](https://github.com/cline/cline/releases/tag/cli-v3.0.61) ⭐️ 5.8/10
 
-Cline SDK v0.0.82 发布了工具调用、图像输入和追踪相关补丁。修复了网关模型工具调用被静默禁用的问题，修复了空能力列表剥离图像输入的 bug，并使 Langfuse 追踪在压缩构建中可用。新增了 SessionImportService，支持从 Claude Code、Codex 和 opencode 导入会话历史记录。
+Cline CLI v3.0.61 发布，修复了 Hub 替换流中较旧版本的兼容问题。CLI 不再因不可达的远程 MCP 服务器而崩溃，并为特定模型重新启用了工具调用。Windows 二进制现已通过 Azure Trusted Signing 签名，并改进了 Langfuse 追踪和检查点恢复等功能。
 
-github · github-actions\[bot\] · 9月2日 04:40
+github · github-actions\[bot\] · 9月2日 04:49
 
-**「改了什么」** 相对 v0.0.81，修复了网关模型工具调用静默禁用和 Langfuse 追踪在 minified 构建中的可用性问题。新增了 SessionImportService 和多个稳定性改进。
+**「改了什么」** v3.0.61 修复了 Hub 替换流、远程 MCP 服务器不可达导致的崩溃，以及特定模型工具调用被禁用的问题，并改进了 Windows 二进制签名、检查点恢复和 Langfuse 追踪支持。
 
-**标签**: `#tools`, `#runtime`, `#tracing`
+**标签**: `#mcp`, `#runtime`, `#tools`
 
 ---
 
 <a id="item-harness-arch-8"></a>
 ### [browser-use/video-use GitHub trending](https://github.com/browser-use/video-use) ⭐️ 5.0/10
 
-browser-use/video-use 是一个开源视频编辑工具，使用 Claude Code agents 处理视频素材。用户将原始 footage 放入文件夹，通过聊天与 Claude Code 交互，即可生成最终的 final.mp4 文件。该工具支持任何内容类型，包括谈话头、蒙太奇、教程、旅行和访谈等，无需预设或菜单。
+browser-use/video-use 工具在 GitHub trending，推出开源视频编辑工具 video-use。100% 开源，用户将原始视频素材放入文件夹，与 Claude Code 聊天，即可生成 final.mp4。支持任何内容类型，无需预设或菜单。在 Browser Use Cloud 中可尝试。
 
-rss · GitHub Trending Daily · 9月3日 00:54
+rss · GitHub Trending Daily · 9月3日 01:41
 
-**标签**: `#tools`, `#runtime`
-
----
-
-<a id="item-harness-arch-9"></a>
-### [Claude Code 进入 GitHub trending](https://github.com/anthropics/claude-code) ⭐️ 5.0/10
-
-Claude Code 是一个终端代理编码工具。它理解你的代码库，通过自然语言命令执行例行任务、解释复杂代码和处理 Git 工作流。
-
-rss · GitHub Trending Daily · 9月3日 00:54
-
-**标签**: `#runtime`, `#tools`, `#planning`
+**标签**: `#tools`, `#subagents`, `#planning`
 
 ---
 
 ## Agent 工程师日报
 
 <a id="item-agent-engineer-1"></a>
-### [Gemini 3.8 Flash 与 3.8 Flash Cyber 发布](https://blog.google/innovation-and-ai/models-and-research/gemini-models/3-8-flash-and-3-8-flash-cyber/) ⭐️ 7.0/10
+### [llm-gemini 0.34 发布](https://simonwillison.net/2026/Sep/2/llm-gemini/) ⭐️ 7.0/10
 
-Google 发布了 Gemini 3.8 Flash 和 3.8 Flash Cyber 模型。这些模型在基准测试中表现出色，智能分数达到 59，与 Opus 5 相当。它们在速度和成本方面具有高效指标，特别擅长 HTML/JS 和文档解析。
+llm-gemini 0.34 发布了。2026 年 9 月 2 日新增 gemini-3.8-flash 模型支持，支持低、中、高三种 thinking levels。修复了异步响应未能记录解析模型版本的 bug。
 
-hackernews · bratao · 9月2日 15:12 · [社区讨论](https://news.ycombinator.com/item?id=49537553)
+rss · Simon Willison · 9月2日 16:39
 
-**「为什么重要」** 该模型发布为 AI Agent 工程师更新评估和工具集成提供了高效选项。
+**「为什么重要」** Gemini 3.8 Flash 模型支持为 coding-agent harness 提供了新模型选项。异步响应修复确保了工具链的准确性。
 
-**「可关注」** 可关注：Gemini 3.8 Flash 在 HTML/JS 处理和多模态支持上的表现。
+**「可关注」** 可关注：Gemini 3.8 Flash 支持三种 thinking levels。
 
-**「评论」** 社区用户分享了使用体验，强调其在 HTML/JS 生成和多模态分析中的优势。部分用户注意到与 3.7 版本的对比。
-
-**标签**: `#eval`, `#coding-agent`, `#orchestration`
+**标签**: `#coding-agent`, `#harness`, `#orchestration`, `#model-integration`
 
 ---
 
 <a id="item-agent-engineer-2"></a>
-### [llm-gemini 0.34 发布](https://simonwillison.net/2026/Sep/2/llm-gemini/) ⭐️ 7.0/10
+### [HF daily paper: 自托管 LLM GRPO 合并](https://huggingface.co/papers/2609.01572) ⭐️ 7.0/10
 
-llm-gemini 0.34 发布，支持 gemini-3.8-flash 模型，包含低、中、高三种思考级别。修复了异步响应未能记录解析模型版本的问题。Google 今日发布了 Gemini 3.8 Flash 模型。
+数据主权限制迫使企业自托管 LLM。持续采用新模型而不停用旧模型，导致服务舰队扩张，碎片化有限 GPU 池。我们将 200+内部应用的流量整合到单个模型，通过生产错误分析沿指令遵循、函数调用、内部任务分布三个轴，训练各轴 GRPO 专家并用两阶段 SLERP 合并。质量通过生产流量分层离线基准测试，用确定性验证器或校准 LLM judges 打分。
 
-rss · Simon Willison · 9月2日 16:39
+rss · Hugging Face Daily Papers · 9月3日 01:41
 
-**「为什么重要」** Gemini 3.8 Flash 模型今日发布，llm-gemini 0.34 提供了低中高思考级别支持，影响集成 Gemini 模型的工具和代理。
+**「为什么重要」** 数据主权约束下，自托管 LLM 需覆盖企业请求混合。GRPO 专家和 SLERP 合并方案可整合 200+应用流量到单一模型，缓解 GPU 池碎片化。
 
-**「可关注」** 可关注：Gemini 3.8 Flash 支持低、中、高三种思考级别。
+**「可关注」** 可关注：沿三个轴训练 GRPO 专家并用 SLERP 合并，避免联合优化引入的跨域奖励干扰。
 
-**标签**: `#coding-agent`, `#orchestration`, `#harness`, `#eval`
+**标签**: `#eval`, `#orchestration`, `#harness`, `#coding-agent`
 
 ---
 
 <a id="item-agent-engineer-3"></a>
-### [llm 0.34 发布](https://github.com/simonw/llm/releases/tag/0.34) ⭐️ 6.8/10
+### [Harness-of-Harness 多日自主开发框架](https://huggingface.co/papers/2609.01481) ⭐️ 7.0/10
 
-llm 0.34 发布，新增 llm logs --usage Markdown 输出包含响应时长（毫秒和人类可读格式），llm logs --short 新增 duration\_ms 字段。缓存重复消息和模型查找以加速长对话和插件加载。
+Harness-of-Harness \(HoH\) 框架将 coding-agent 执行组织成迭代 planning-coding-testing 循环。HoH 在现有 harness 上运行，实现多日自主软件开发中的持续改进。HoH 平衡 repair 与 capability growth，划分 small verifiable increments，分离 implementation-time testing 与 independent evaluation，并约束 verifiable outputs 而非 workflow。
 
-github · simonw · 9月2日 19:23
+rss · Hugging Face Daily Papers · 9月3日 01:41
 
-**「为什么重要」** 此更新提升了 llm logs 的性能和可观测性，对使用 llm 的工具链有直接帮助。
+**「为什么重要」** HoH 框架已提供迭代循环和 repair-growth 平衡等具体技术，支持 coding-agent 的持续改进。尚未证实其在实际多日开发中的效果。
 
-**「可关注」** 可关注：llm logs 缓存重复查找显著提升长对话性能。
+**「可关注」** 可关注：HoH 平衡 repair 与 capability growth，划分 small verifiable increments，分离 implementation-time testing 与 independent evaluation。
 
-**标签**: `#observability`, `#orchestration`, `#performance`, `#coding-agent`
+**标签**: `#harness`, `#coding-agent`, `#eval`, `#orchestration`
 
 ---
 
 <a id="item-agent-engineer-4"></a>
-### [意外的黑板](https://martinfowler.com/articles/exploring-gen-ai/an-accidental-blackboard.html) ⭐️ 6.0/10
+### [llm 0.34 日志加耗时并修缓存](https://github.com/simonw/llm/releases/tag/0.34) ⭐️ 6.8/10
 
-在一次完全代理工程实践的实验中，团队意外促使代理在 git 仓库内创建了黑板协调系统。这是由 Giles Edwards-Alexander 报告的。该事件展示了代理行为在 git 仓库中的意外涌现。
+simonw 发布 llm 0.34。\`llm logs --usage\` 的 Markdown 输出现含响应耗时，毫秒数与可读时长一并写出；\`llm logs --short\` 新增 \`duration\_ms\` 字段。长对话下 \`llm logs\` 缓存重复的 message 与 model 查找；动态生成的 OpenAI options 类也做缓存，避免 \`llm-openrouter\` 等插件反复构造 Pydantic 类。非法 schema DSL 传给 \`llm prompt --schema\` 时改为干净命令行报错，不再出 Python traceback；\`llm --extract\` 能识别 CRLF 换行的围栏代码块；\`monotonic\_ulid\(\)\` 在系统时钟回拨或并发时间戳乱序时仍保持单调；\`typing-extensions\` 列为直接依赖，并补测试防止漏依赖。
 
-rss · Martin Fowler · 9月2日 14:45
+github · simonw · 9月2日 19:23
 
-**「为什么重要」** 这个意外事件突显了在完全代理工程实践中协调机制的潜在需求。尚未证实其对团队生产力的长期影响。
+**「为什么重要」** 用 llm 记调用日志的人，现在能在 \`--usage\` / \`--short\` 里直接看到单次响应耗时。长会话 logs 与 OpenAI 兼容插件反复建 Pydantic 类，是这次点名修掉的开销；材料没有给出加速数字。
 
-**「可关注」** 可关注：代理在 git 仓库中意外创建黑板协调系统。
+**「可关注」** 可关注：长对话 logs 上的重复 message / model 查找，以及插件动态构造 OpenAI options（Pydantic 类），是 0.34 写明的两条热路径。
 
-**标签**: `#orchestration`, `#memory`, `#coding-agent`, `#harness`
+**标签**: `#coding-agent`, `#orchestration`, `#observability`
 
 ---
 
 <a id="item-agent-engineer-5"></a>
-### [H3-World 语言理解转世界控制](https://www.reddit.com/r/LocalLLaMA/comments/1w5akpy/h3world_turning_language_understanding_into_world/) ⭐️ 6.0/10
+### [Gemini 3.8 Flash 发布](https://blog.google/innovation-and-ai/models-and-research/gemini-models/3-8-flash-and-3-8-flash-cyber/) ⭐️ 6.0/10
 
-H3-World 将语言指令转化为视频潜在空间中的角色和相机动作。通过 MiniMax-H3 的预训练文本路径注入指令，并使用 LoRA 进行高效微调。仅需 8000 个游戏样本、10000 步训练和 0.199% 可训练参数，即实现时间接地控制和对未见动作组合及视觉场景的泛化。代码和模型已开源。
+Google 发布了 Gemini 3.8 Flash 模型。该模型速度快，在基准测试中与更大模型竞争，在 HTML 生成等任务中表现良好。模型智能分数为 59，与 Opus 5 中等版本相当。适用于编码代理、评估和 harness。
 
-reddit · r/LocalLLaMA · /u/sachasayan · 9月2日 13:35
+hackernews · bratao · 9月2日 15:12 · [社区讨论](https://news.ycombinator.com/item?id=49537553)
 
-**「为什么重要」** 该方法将语言理解直接映射到世界控制。论文已发布且代码开源，但其在 agent harness 中的实际影响尚未证实。
+**「为什么重要」** Gemini 3.8 Flash 的发布展示了快速模型在基准测试中的竞争力。社区成员分享了其在 HTML 生成和多模态支持方面的实际体验。
 
-**「可关注」** 可关注：仅 0.199% 参数和 8000 样本即可实现语言到世界控制的泛化。
+**「可关注」** 可关注：Gemini 3.8 Flash 在 HTML/JS 生成任务中表现突出，成本低至 1.8 美分。
 
-**标签**: `#coding-agent`, `#eval`, `#orchestration`
+**「评论」** 社区成员分享了使用体验。Simon Willison 指出速度与 HTML/JS 生成能力结合令人兴奋，并提供了示例代码。Matt London 表示其在 deepswe.datacurve.ai 上排名第一，超越 Opus 5。
+
+**标签**: `#coding-agent`, `#eval`, `#harness`
 
 ---
 
 <a id="item-agent-engineer-6"></a>
+### [H3-World：语言理解转向世界控制](https://www.reddit.com/r/LocalLLaMA/comments/1w5akpy/h3world_turning_language_understanding_into_world/) ⭐️ 6.0/10
+
+H3-World 论文将语言指令转换为视频和游戏场景中的角色和相机动作。通过 MiniMax-H3 的预训练文本路径实现语言原生控制。为每个视频潜在间隔分配动作提示，实现时间上接地的精确控制。仅使用 8000 个游戏样本、10000 个 LoRA 步骤和 0.199%可训练参数，即可实现包括未见动作组合和视觉场景在内的可控角色和相机运动。
+
+reddit · r/LocalLLaMA · /u/sachasayan · 9月2日 13:35
+
+**「可关注」** 可关注：仅使用 0.199%可训练参数和 8000 个游戏样本，即可实现包括未见动作组合在内的可控角色和相机运动。
+
+**标签**: `#orchestration`, `#coding-agent`, `#harness`, `#eval`
+
+---
+
+<a id="item-agent-engineer-7"></a>
 ### [llm-openrouter 0.7.1 发布](https://github.com/simonw/llm-openrouter/releases/tag/0.7.1) ⭐️ 5.8/10
 
-Simon Willison 发布了 llm-openrouter 0.7.1 版本。该版本针对加载 OpenRouter 模型的性能进行了修复。感谢 waveplate 的贡献。这是 Simon Willison 的 LLM CLI 工具的一个性能优化版本。
+Simonw 发布了 llm-openrouter 0.7.1 版本，修复了加载 OpenRouter 模型的性能问题。感谢 waveplate 贡献的 \#59。这是一个小版本更新，没有破坏性变更。
 
 github · simonw · 9月2日 20:23
 
-**「可关注」** 可关注：OpenRouter 模型加载性能修复
+**「可关注」** 可关注：修复了加载 OpenRouter 模型的性能问题。
 
-**标签**: `#coding-agent`, `#orchestration`, `#harness`
+**标签**: `#orchestration`, `#coding-agent`
+
+---
+
+<a id="item-agent-engineer-8"></a>
+### [IBM TSFM Confluent 实时智能](https://huggingface.co/blog/ibm-research/real-time-intelligence) ⭐️ 5.8/10
+
+IBM TSFM 集成 Confluent，支持实时智能。模型训练一次泛化到未见系列，通过 Flink SQL 函数 AI\_FORECAST 和 AI\_DETECT\_ANOMALIES 在流数据上直接运行预测和异常检测。Confluent Cloud 提供新鲜上下文、治理和成本效率，无需专用 ML 栈。
+
+rss · Hugging Face Blog · 9月2日 13:49
+
+**「为什么重要」** 该集成将实时业务事件转化为可行动的智能，桥接操作和分析领域。
+
+**「可关注」** 可关注：使用 AI\_FORECAST Flink SQL 函数调用 IBM TSFM 模型实现实时预测和异常检测。
+
+**标签**: `#orchestration`, `#observability`, `#real-time`, `#time-series`, `#foundation-model`
 
 ---
 
 ## AI 日报
 
 <a id="item-ai-daily-1"></a>
-### [ATV Big Air Tour 使用 ChatGPT Work 加速营销](https://openai.com/index/atv-big-air-tour) ⭐️ 7.8/10
+### [GitHub Copilot 成本优化 发布](https://github.blog/ai-and-ml/github-copilot/how-we-make-ai-coding-more-cost-efficient-without-sacrificing-task-quality/) ⭐️ 7.8/10
 
-ATV Big Air Tour 使用 ChatGPT Work 加速营销、商品管理和更多。团队将 3 天的营销工作缩短为 3 小时。同时，他们用 15 分钟将商品照片转化为库存网站。
+GitHub 博客文章解释如何通过 GitHub Copilot 使 AI 编码更具成本效率，而不牺牲任务质量。较短的输出可能导致更高成本，但 GitHub Copilot 通过减少完整编码任务中的浪费工作来实现优化。
 
-rss · OpenAI Blog · 9月2日 12:00
+rss · GitHub Blog · 9月2日 18:00
 
-**「为什么重要」** ATV Big Air Tour 的案例展示了 ChatGPT Work 在营销和商品管理中的高效应用。
+**「为什么重要」** 这一方法帮助开发者在 AI 编码中节省成本，提高工作效率。
 
-**「可关注」** 可关注：使用 ChatGPT Work 将 3 天工作缩短为 3 小时。
+**「可关注」** 可关注：较短输出可能成本更高，GitHub Copilot 通过减少完整任务浪费来优化 AI 编码成本。
 
-**标签**: `#lab`, `#product`, `#marketing`
+**标签**: `#lab`, `#product`, `#industry`
 
 ---
 
 <a id="item-ai-daily-2"></a>
-### [Copilot 成本效率提升](https://github.blog/ai-and-ml/github-copilot/how-we-make-ai-coding-more-cost-efficient-without-sacrificing-task-quality/) ⭐️ 7.8/10
+### [Meta 组织第二大脑 AI 专家](https://engineering.fb.com/2026/09/02/ml-applications/organizational-second-brain-ai-learns-from-experts/) ⭐️ 7.8/10
 
-GitHub 博客分享了如何通过 GitHub Copilot 降低 AI 编码任务中的浪费工作，从而提升成本效率而不牺牲质量。文章指出，较短的输出有时反而可能成本更高。Copilot 通过优化整个编码任务流程来减少浪费。
+Meta 构建了 AI 代理，作为给定领域的次级专家。它使深层专业知识易于获取并保留，供组织内任何人访问、分享并构建。该系统非典型领域特定代理，其创新在于整合两层：结构化可审计知识架构。
 
-rss · GitHub Blog · 9月2日 18:00
+rss · Engineering at Meta · 9月2日 09:00
 
-**「为什么重要」** GitHub Copilot 的这一优化能帮助开发者在 AI 编码中节省成本，同时保持任务质量。
+**「为什么重要」** 这个系统帮助组织保留专业知识，防止知识流失。
 
-**「可关注」** 可关注：通过减少输出浪费来提升 AI 编码任务的成本效率。
+**「可关注」** 可关注：结构化可审计知识架构
 
-**标签**: `#product`, `#industry`, `#github`, `#copilot`, `#ai-coding`
+**标签**: `#lab`, `#product`, `#industry`
 
 ---
 
 <a id="item-ai-daily-3"></a>
-### [Meta 组织第二大脑 AI 代理](https://engineering.fb.com/2026/09/02/ml-applications/organizational-second-brain-ai-learns-from-experts/) ⭐️ 7.8/10
+### [GitHub Blog 解码 AI 流行语](https://github.blog/ai-and-ml/decoding-the-new-ai-lingo-loops-harnesses-squads-hill-climbing-oh-my/) ⭐️ 6.8/10
 
-Meta 开发了 AI 代理，作为给定领域的次要专家。它让深层专业知识易于获取，并保存下来，以便组织内任何人访问、共享和构建。这不是典型的领域特定代理。其新颖之处在于整合了两个层：结构化的、可审计的知识架构。
+GitHub Blog 发布文章，解码 AI 新流行语。这些术语包括 Loops、harnesses、squads 和 hill climbing 等，均来自 GitHub Podcast。
 
-rss · Engineering at Meta · 9月2日 09:00
+文章指出，从 loop engineering 到 harnesses、squads 和 open weights，GitHub Podcast 拆解开发者对话中的 AI 术语。
 
-**「为什么重要」** Meta 构建的 AI 代理使组织专业知识易于访问、共享和构建。这有助于知识的保存和传承。
+rss · GitHub Blog · 9月2日 21:00
 
-**「可关注」** 可关注：AI 代理整合结构化、可审计的知识架构。
+**「可关注」** 可关注：GitHub Podcast 拆解 AI 术语 Loops、harnesses、squads 和 hill climbing。
 
-**标签**: `#meta`, `#ai-agent`, `#knowledge-management`, `#product`, `#industry`
+**标签**: `#github`, `#industry`, `#ai-terms`
 
 ---
 
 <a id="item-ai-daily-4"></a>
-### [GitHub Podcast 解码新术语](https://github.blog/ai-and-ml/decoding-the-new-ai-lingo-loops-harnesses-squads-hill-climbing-oh-my/) ⭐️ 6.8/10
+### [ATV Big Air Tour 用 ChatGPT 节省 3 天工作](https://openai.com/index/atv-big-air-tour) ⭐️ 5.8/10
 
-GitHub Podcast 解码了 AI 领域的新术语。这些术语包括循环工程、测试平台、小队和开放权重，在开发者对话中频繁出现。
+ATV Big Air Tour 使用 ChatGPT 加速营销和商品管理。将三天的营销工作缩短至三小时。15 分钟内将商品照片生成库存网站。
 
-rss · GitHub Blog · 9月2日 21:00
+rss · OpenAI Blog · 9月2日 12:00
 
-**「可关注」** 可关注：循环工程、测试平台、小队和开放权重
+**「为什么重要」** ATV Big Air Tour 的案例展示了 ChatGPT 在营销和商品管理中的效率提升。
 
-**标签**: `#lab`, `#industry`, `#eval`, `#open-source`
+**「可关注」** 可关注：15 分钟将商品照片生成库存网站。
+
+**标签**: `#industry`, `#product`, `#ChatGPT`
 
 ---
 
 ## AI 羊毛
 
 <a id="item-ai-deals-1"></a>
-### [Éclat Blue One-Click Auth 公测](https://news.ycombinator.com/item?id=49543502) ⭐️ 6.0/10
+### [LongCat-2.0 免费试用 Cline](https://twitter.com/Meituan_LongCat/status/2094996391387111865) ⭐️ 6.0/10
 
-开发者推出 Éclat Blue One-Click Auth，这是一款轻量级的 OpenID Connect 身份提供商，使用 PKCE 协议支持前端应用。当前处于小规模公测阶段，可直接在 https://eclatblue.com/oneclickauth 试用，无需注册即可查看集成流程和端点。Éclat Blue 严格遵循授权码流和 PKCE 协议，支持前端应用通过浏览器原生 API 直接认证，无需引入大量外部代码库。
+美团官方发布 LongCat-2.0 免费试用 Cline。该模型无具体额度或时长限制。领取条件为在 Cline 平台访问，截止时间未提供。
 
-rss · HN Free API / Credits · 9月2日 22:32
+rss · HN Free API / Credits · 9月2日 09:58
 
-**「为什么重要」** 它避免了主流提供商对公开客户端的繁重 SDK 或静态密钥要求，适合前端应用开发者。
-
-**「可关注」** 可关注：无需 SDK，直接通过浏览器原生 API 实现前端认证，适用于公开客户端应用。
-
-**标签**: `#limited-free`, `#free-tier`, `#api`, `#promo`
+**标签**: `#free-tier`, `#promo`, `#model`
 
 ---
 
 <a id="item-ai-deals-2"></a>
-### [LongCat-2.0 免费试用 Cline](https://twitter.com/Meituan_LongCat/status/2094996391387111865) ⭐️ 5.0/10
+### [Éclat Blue One-Click Auth 公测](https://news.ycombinator.com/item?id=49543502) ⭐️ 5.0/10
 
-Meituan LongCat-2.0 现已免费试用 Cline 接口。根据官方推文，LongCat-2.0 在 Cline 中可免费尝试。
+Éclat Blue One-Click Auth 推出小规模公测。作为轻量级 OIDC 身份提供商，支持前端通过浏览器原生 API 认证，无需导入外部 SDK。严格执行授权码流和 PKCE 协议，可直接通过浏览器 API 安全前端应用。无需注册即可在首页 Try Me 链接查看集成流程和端点。
 
-rss · HN Free API / Credits · 9月2日 09:58
+rss · HN Free API / Credits · 9月2日 22:32
 
-**标签**: `#free-tier`, `#promo`, `#LongCat`
+**「可关注」** 可关注：适用于前端应用认证，无需暴露客户端密钥。
+
+**标签**: `#free-tier`, `#promo`, `#api`, `#beta`, `#limited-free`
+
+---
+
+<a id="item-ai-deals-3"></a>
+### [translatemycall.com 免费电话服务](https://translatemycall.com/) ⭐️ 5.0/10
+
+translatemycall.com 提供免费电话号码，支持 47 种语言的实时通话翻译。该服务声称无需注册即可使用，但未披露具体领取条件和使用限制。目前未提供截止时间或额度信息。
+
+rss · HN Free API / Credits · 9月2日 17:24
+
+**「可关注」** 可关注：服务未提供注册详情、使用限制、截止时间或使用限制。
+
+**标签**: `#free-tier`, `#promo`
 
 ---
