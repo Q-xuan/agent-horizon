@@ -5,90 +5,62 @@ date: 2026-09-06
 lang: en
 ---
 
-> From 134 items, 4 important content pieces were selected
+> From 127 items, 3 important content pieces were selected
 
 ---
 
 **Agent Harness Architecture**
-1. [FastMCP v4.0.3 Released](#item-harness-arch-1) ⭐️ 5.8/10
-2. [Gemini CLI v0.60.0-nightly.20260905 发布](#item-harness-arch-2) ⭐️ 5.8/10
+1. [gemini-cli v0.60.0-nightly.20260905.g85aca163f released](#item-harness-arch-1) ⭐️ 5.8/10
+2. [SGLang v0.5.19 Released](#item-harness-arch-2) ⭐️ 5.8/10
 
-**Technology News**
-1. [Simon Willison shares link on balloons](#item-tech-news-1) ⭐️ 0.0/10
-2. [Simon Willison praises AI game as impressive](#item-tech-news-2) ⭐️ 0.0/10
+**AI Agent Engineer**
+1. [Claude 3.5 Sonnet 形式化费马最后定理](#item-agent-engineer-1) ⭐️ 9.0/10
 
 ---
 
 ## Agent Harness Architecture
 
 <a id="item-harness-arch-1"></a>
-### [FastMCP v4.0.3 Released](https://github.com/PrefectHQ/fastmcp/releases/tag/v4.0.3) ⭐️ 5.8/10
+### [gemini-cli v0.60.0-nightly.20260905.g85aca163f released](https://github.com/google-gemini/gemini-cli/releases/tag/v0.60.0-nightly.20260905.g85aca163f) ⭐️ 5.8/10
 
-FastMCP v4.0.3 is released. Multi-server clients with legacy-only backends now avoid unnecessary startup retries. Tools returning unconstrained sequences no longer send images twice. This patch also fixes task timing field serialization and cleans up unfinished Monty callbacks when execution ends.
+gemini-cli v0.60.0-nightly.20260905.g85aca163f released with fixes for environment consent, workspace boundary checks, and config permission enforcement.
 
-github · zzstoatzz · Sep 5, 00:30
+github · gemini-cli-robot · Sep 5, 01:26
 
-**「What Changed」** Relative to v4.0.2, this release avoids duplicate startup for mixed-era backends, prevents double image sending for unconstrained sequences, fixes task timing serialization, and cleans up unfinished Monty callbacks.
+**「What Changed」** Fixed prompt for consent on environment changes and sanitized runtime-altering environment variables. Enhanced workspace path boundary checks and symlink resolution in command safety and file discovery. Enforced strict permission and ownership checks on system-wide configuration paths.
 
-**Tags**: `#mcp`, `#runtime`, `#tools`
+**Tags**: `#permissions`, `#sandbox`, `#runtime`, `#tools`, `#config`
 
 ---
 
 <a id="item-harness-arch-2"></a>
-### [Gemini CLI v0.60.0-nightly.20260905 发布](https://github.com/google-gemini/gemini-cli/releases/tag/v0.60.0-nightly.20260905.g85aca163f) ⭐️ 5.8/10
+### [SGLang v0.5.19 Released](https://github.com/sgl-project/sglang/releases/tag/v0.5.19) ⭐️ 5.8/10
 
-Google&\#x27;s gemini-cli v0.60.0-nightly.20260905.g85aca163f is a minor nightly release. It includes fixes for config permissions, workspace safety, and runtime environment handling. Three PRs address permission enforcement, workspace boundary checks and symlink resolution, and environment variable sanitization with consent prompts. No major changes or breaking updates.
+SGLang v0.5.19 adds support for new autoregressive models including Qwen3.8 \(2.4T-A95B\), Qwen3.8-27B, dots3.note, Ling-3.0-flash, Ling-3.0-tiny, Spark2.5, MiniCPM-SALA, and Granite 4.2, plus some diffusion models. It introduces beam search, DeepEP v2 for MoE, layer norm sequence parallelism, W4A8 MoE on Hopper, DCP on Blackwell MLA, and optimizations for speculative decoding and AMD hardware. The release includes 786 PRs from 214 contributors and dependency updates such as FlashInfer to 0.6.18.
 
-github · gemini-cli-robot · Sep 5, 01:26
+github · Qiaolin-Yu · Sep 5, 02:27
 
-**「改了什么」** Added prompt for consent on environment changes and sanitized runtime-altering environment variables. Enhanced workspace path boundary checks and symlink resolution in command safety and file discovery. Enforced strict permission and ownership checks on system-wide configuration paths.
+**「Design Points」** The unified radix tree is now the default cache for every model. Layer norm sequence parallelism normalizes only local tensor shares in prefill to reduce overhead in high TP degrees.
 
-**「评论」** No community comments available.
+**「What Changed」** This release adds support for multiple new models and features like beam search and DeepEP v2. It also enables DCP on the default Blackwell MLA backend and faster speculative kernels for KDA models.
 
-**Tags**: `#permissions`, `#sandbox`, `#runtime`
-
----
-
-## Technology News
-
-<a id="item-tech-news-1"></a>
-### [Simon Willison shares link on balloons](https://twitter.com/simonw/status/tweet-2096285730809184452) ⭐️ 0.0/10
-
-Simon Willison responded to a question about what the balloons are attached to by sharing a link. The tweet includes the phrase &\#x27;and, yeah...&\#x27; to affirm the attachment. This represents a direct reply in a social media conversation. The link is provided as the primary element of the response.
-
-twitter · Simon Willison · Sep 5, 17:13
-
-**「Tweet Responding to Balloon Attachment Question」** The item is a post on X by Simon Willison. It responds to an inquiry about what the balloons are attached to. The response includes a link to a related tweet for additional context.
-
-<details><summary>References</summary>
-<ul>
-<li><a href="https://x.com/simonw/status/2096285730809184452">Simon Willison on X: &quot;Someone asked what the balloons are attached to ...</a></li>
-
-</ul>
-</details>
-
-**Tags**: `#twitter`, `#simon willison`, `#balloons`, `#social media`, `#tech community`
+**Tags**: `#runtime`, `#models`, `#release`
 
 ---
 
-<a id="item-tech-news-2"></a>
-### [Simon Willison praises AI game as impressive](https://twitter.com/simonw/status/tweet-2096253404398191102) ⭐️ 0.0/10
+## AI Agent Engineer
 
-Simon Willison described an experimental game as very impressive in a tweet, stating it is a whole lot better than any of his experimental games built with other models. This subjective comment reflects rapid perceived progress in AI-driven game development. The praise comes from a prominent tech figure known for tools like SQLite and his blog. The tweet highlights community interest in experimental software projects but provides no specific technical details or project names. Low engagement on the post suggests limited immediate broader impact.
+<a id="item-agent-engineer-1"></a>
+### [Claude 3.5 Sonnet 形式化费马最后定理](https://www.anthropic.com/research/formalizing-fermats-last-theorem) ⭐️ 9.0/10
 
-twitter · Simon Willison · Sep 5, 15:05
+Anthropic 展示了 Claude 3.5 Sonnet 如何使用 Lean 形式化费马最后定理。研究博客和开源代码已发布。这项工作展示了 AI 在形式验证和数学证明代理方面的进步。影响对象是开发数学推理 AI 代理的工程师。
 
-**「Simon Willison on Generative AI Experiments」** Simon Willison has experimented with building games using large language models. He has stated that GPT-4 is significantly ahead of any of the other models that he has experimented with. His recent comment highlights a new model that is very impressive, based on his preview access in the iPhone app.
+rss · Lobsters · Sep 5, 12:54
 
-<details><summary>References</summary>
-<ul>
-<li><a href="https://changelog.com/podcast/534">LLMs break the internet with Simon Willison (Changelog Interviews #534)</a></li>
-<li><a href="https://simonwillison.net/tags/generative-ai/">Simon Willison on generative-ai</a></li>
-<li><a href="https://x.com/simonw">Simon Willison (@simonw) on X</a></li>
+**「为什么重要」** 这一形式化工作突显了 Claude 3.5 Sonnet 在复杂数学任务中的能力。目前尚未证实其对实际 AI 代理构建的影响。
 
-</ul>
-</details>
+**「可关注」** 可关注：Claude 3.5 Sonnet 在 Lean 中形式化费马最后定理的实现细节。
 
-**Tags**: `#Twitter`, `#Tech Reactions`, `#Experimental Software`, `#Gaming`, `#Community Comments`
+**Tags**: `#coding-agent`, `#eval`, `#harness`, `#orchestration`
 
 ---
