@@ -5,41 +5,39 @@ date: 2026-09-13
 lang: zh
 ---
 
-> 从 138 条内容中筛选出 2 条重要资讯。
+> 从 140 条内容中筛选出 2 条重要资讯。
 
 ---
 
 **Harness 架构**
-1. [pydantic-ai v2.43.0 发布](#item-harness-arch-1) ⭐️ 5.8/10
-2. [Gemini CLI v0.61.0-nightly.20260912 发布](#item-harness-arch-2) ⭐️ 5.8/10
+1. [Claude Code v2.1.270 发布](#item-harness-arch-1) ⭐️ 5.8/10
+2. [gemini-cli v0.61.0-nightly.20260912.g9c1b0a610 发布](#item-harness-arch-2) ⭐️ 5.8/10
 
 ---
 
 ## Harness 架构
 
 <a id="item-harness-arch-1"></a>
-### [pydantic-ai v2.43.0 发布](https://github.com/pydantic/pydantic-ai/releases/tag/v2.43.0) ⭐️ 5.8/10
+### [Claude Code v2.1.270 发布](https://github.com/anthropics/claude-code/releases/tag/v2.1.270) ⭐️ 5.8/10
 
-pydantic-ai v2.43.0 发布。OpenAIChatModel 更新工具调用。新增首次运行横幅。支持 clai 会话。修复文本边界。修正 temporal MCP 检查。
+这是 Anthropic 的 Claude Code v2.1.270 版本发布。修复了 v2.1.269 中 Bash 只读 git 命令在长时间运行会话后意外请求权限的回归问题。
 
-github · DouweM · 9月12日 00:54
+github · ashwin-ant · 9月12日 19:45
 
-**「改了什么」** 新增首次运行横幅并支持 clai 会话。修复 OpenAIChatModel 文本边界并修正 temporal MCP 检查。
+**「改了什么」** 修复了 Bash 中只读 git 命令在长时间运行会话后意外请求权限的回归问题。
 
-**标签**: `#mcp`, `#tools`, `#runtime`
+**标签**: `#tools`, `#runtime`, `#sandbox`, `#permissions`
 
 ---
 
 <a id="item-harness-arch-2"></a>
-### [Gemini CLI v0.61.0-nightly.20260912 发布](https://github.com/google-gemini/gemini-cli/releases/tag/v0.61.0-nightly.20260912.g9c1b0a610) ⭐️ 5.8/10
+### [gemini-cli v0.61.0-nightly.20260912.g9c1b0a610 发布](https://github.com/google-gemini/gemini-cli/releases/tag/v0.61.0-nightly.20260912.g9c1b0a610) ⭐️ 5.8/10
 
-Google Gemini CLI v0.61.0-nightly.20260912.g9c1b0a610 已发布，包含针对间接提示注入和沙箱隔离的安全修复。
-主要通过构建文件修改和不受信任标志来防止间接提示注入，并加固文件系统边界并隔离运行时状态。
+gemini-cli v0.61.0-nightly.20260912.g9c1b0a610 发布。修复了通过构建文件修改和不受信任标志进行间接提示注入的漏洞。加强了文件系统边界和运行时状态隔离。
 
 github · gemini-cli-robot · 9月12日 01:25
 
-**「改了什么」** 修复了间接提示注入问题，通过构建文件修改和不受信任标志。
-加固了沙箱的文件系统边界并隔离运行时状态。
+**「改了什么」** 相比上一版，修复了通过构建文件修改和不受信任标志进行间接提示注入的漏洞，并加强了文件系统边界和运行时状态隔离。
 
 **标签**: `#sandbox`, `#runtime`, `#permissions`
 
