@@ -5,44 +5,60 @@ date: 2026-09-14
 lang: en
 ---
 
-> From 137 items, 2 important content pieces were selected
+> From 137 items, 3 important content pieces were selected
 
 ---
 
 **Agent Harness Architecture**
-1. [microsoft/mcp-for-beginners GitHub trending](#item-harness-arch-1) ⭐️ 5.0/10
+1. [LangChain Academy trending](#item-harness-arch-1) ⭐️ 5.0/10
+
+**AI Agent Engineer**
+1. [shot-scraper 1.12 released](#item-agent-engineer-1) ⭐️ 5.8/10
 
 **AI Daily**
-1. [Perplexity Adopts Astra for Production Systems](#item-ai-daily-1) ⭐️ 7.8/10
+1. [Perplexity Trusts Astra with End-to-End Systems](#item-ai-daily-1) ⭐️ 5.8/10
 
 ---
 
 ## Agent Harness Architecture
 
 <a id="item-harness-arch-1"></a>
-### [microsoft/mcp-for-beginners GitHub trending](https://github.com/microsoft/mcp-for-beginners) ⭐️ 5.0/10
+### [LangChain Academy trending](https://github.com/langchain-ai/langchain-academy) ⭐️ 5.0/10
 
-Microsoft&\#x27;s mcp-for-beginners repository is trending on GitHub. It introduces the fundamentals of Model Context Protocol \(MCP\) through real-world, cross-language examples in .NET, Java, TypeScript, JavaScript, Rust, and Python. The curriculum focuses on practical techniques for building modular, scalable, and secure AI workflows from session setup to service orchestration.
+LangChain Academy repo \(langchain-ai/langchain-academy\) is trending on GitHub. The repository provides a set of educational notebooks focused on building agents using LangGraph modules. Modules cover foundational concepts in the LangChain ecosystem, from basic setup to deploying agents. No version numbers, release notes, or technical architecture details are included.
 
-rss · GitHub Trending Daily · Sep 13, 23:15
+rss · GitHub Trending Daily · Sep 14, 00:36
 
-**「评论」** No community comments available.
+**Tags**: `#runtime`, `#planning`, `#memory`, `#subagents`, `#eval`
 
-**Tags**: `#mcp`, `#protocol`, `#curriculum`, `#beginners`, `#microsoft`
+---
+
+## AI Agent Engineer
+
+<a id="item-agent-engineer-1"></a>
+### [shot-scraper 1.12 released](https://github.com/simonw/shot-scraper/releases/tag/1.12) ⭐️ 5.8/10
+
+Simonw released shot-scraper 1.12. The update adds WebP support with quality settings, for example \`shot-scraper http://www.example.com/ -o shot.webp --quality 80\`. It also fixes local file URI handling for WebKit. WebP filesizes should be significantly smaller than both JPEG and PNG for many web pages. This is a minor release with no breaking changes.
+
+github · simonw · Sep 13, 23:58
+
+**「Watch」** Watch: WebP support with quality settings and the local file URI handling fix for WebKit.
+
+**Tags**: `#harness`, `#coding-agent`
 
 ---
 
 ## AI Daily
 
 <a id="item-ai-daily-1"></a>
-### [Perplexity Adopts Astra for Production Systems](https://openai.com/index/perplexity-improving-accuracy-with-astra) ⭐️ 7.8/10
+### [Perplexity Trusts Astra with End-to-End Systems](https://openai.com/index/perplexity-improving-accuracy-with-astra) ⭐️ 5.8/10
 
-Perplexity uses Astra to write communications, change software, and monitor production systems. It checks in much less frequently than with earlier models. This adoption supports end-to-end systems integration.
+Perplexity uses Astra to write communications, change software, and monitor production systems, and checks in much less frequently than with earlier models.
 
 rss · OpenAI Blog · Sep 14, 00:00
 
-**「Engineer Takeaway」** Takeaway: Perplexity uses Astra to write communications, change software, and monitor production systems, and checks in much less frequently than with earlier models.
+**「Key Takeaway」** Perplexity checks in much less frequently than with earlier models when using Astra for end-to-end systems.
 
-**Tags**: `#openai`, `#perplexity`, `#astra`, `#industry`, `#product`
+**Tags**: `#openai`, `#product`, `#perplexity`, `#astra`, `#industry`
 
 ---
