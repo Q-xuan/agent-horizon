@@ -5,60 +5,66 @@ date: 2026-09-14
 lang: en
 ---
 
-> From 137 items, 3 important content pieces were selected
+> From 136 items, 3 important content pieces were selected
 
 ---
-
-**Agent Harness Architecture**
-1. [LangChain Academy trending](#item-harness-arch-1) ⭐️ 5.0/10
 
 **AI Agent Engineer**
-1. [shot-scraper 1.12 released](#item-agent-engineer-1) ⭐️ 5.8/10
+1. [Simon Willison releases commit-rewriter 0.1](#item-agent-engineer-1) ⭐️ 5.8/10
+2. [shot-scraper 1.12 released with WebP support](#item-agent-engineer-2) ⭐️ 5.8/10
 
 **AI Daily**
-1. [Perplexity Trusts Astra with End-to-End Systems](#item-ai-daily-1) ⭐️ 5.8/10
-
----
-
-## Agent Harness Architecture
-
-<a id="item-harness-arch-1"></a>
-### [LangChain Academy trending](https://github.com/langchain-ai/langchain-academy) ⭐️ 5.0/10
-
-LangChain Academy repo \(langchain-ai/langchain-academy\) is trending on GitHub. The repository provides a set of educational notebooks focused on building agents using LangGraph modules. Modules cover foundational concepts in the LangChain ecosystem, from basic setup to deploying agents. No version numbers, release notes, or technical architecture details are included.
-
-rss · GitHub Trending Daily · Sep 14, 00:36
-
-**Tags**: `#runtime`, `#planning`, `#memory`, `#subagents`, `#eval`
+1. [Perplexity Adopts Astra for End-to-End Systems](#item-ai-daily-1) ⭐️ 5.8/10
 
 ---
 
 ## AI Agent Engineer
 
 <a id="item-agent-engineer-1"></a>
-### [shot-scraper 1.12 released](https://github.com/simonw/shot-scraper/releases/tag/1.12) ⭐️ 5.8/10
+### [Simon Willison releases commit-rewriter 0.1](https://github.com/simonw/commit-rewriter/releases/tag/0.1) ⭐️ 5.8/10
 
-Simonw released shot-scraper 1.12. The update adds WebP support with quality settings, for example \`shot-scraper http://www.example.com/ -o shot.webp --quality 80\`. It also fixes local file URI handling for WebKit. WebP filesizes should be significantly smaller than both JPEG and PNG for many web pages. This is a minor release with no breaking changes.
+Simon Willison released 0.1 of commit-rewriter, a tool that starts a local web app for rewriting commit messages in a given repository.
+
+Run \`uvx commit-rewriter path/to/repo\` to start the local web app. It defaults to port 8000; add \`-p 8033\` to run on a different port.
+
+This is the initial release with technical details on GitHub.
+
+github · simonw · Sep 14, 00:35
+
+**「Why it matters」** The release is official and first-hand. Its potential integration into coding-agent toolchains for git commit workflows is noted but unverified.
+
+**「What to watch」** What to watch: The commit-rewriter tool starts a local web app for rewriting commit messages in a repository.
+
+**Tags**: `#coding-agent`, `#harness`, `#orchestration`
+
+---
+
+<a id="item-agent-engineer-2"></a>
+### [shot-scraper 1.12 released with WebP support](https://github.com/simonw/shot-scraper/releases/tag/1.12) ⭐️ 5.8/10
+
+shot-scraper 1.12 released with WebP support including quality settings and a fix for WebKit local file URI handling. WebP filesizes should be significantly smaller than JPEG and PNG for many web pages. No breaking changes.
 
 github · simonw · Sep 13, 23:58
 
-**「Watch」** Watch: WebP support with quality settings and the local file URI handling fix for WebKit.
+**「Why it matters」** WebP support and WebKit URI fix added to shot-scraper. Potential efficiency gains for web scraping and screenshot workflows in agent toolchains remain unconfirmed.
 
-**Tags**: `#harness`, `#coding-agent`
+**「What to watch」** Watch for WebP quality settings in screenshot commands and WebKit local file URI handling.
+
+**Tags**: `#harness`, `#eval`, `#coding-agent`
 
 ---
 
 ## AI Daily
 
 <a id="item-ai-daily-1"></a>
-### [Perplexity Trusts Astra with End-to-End Systems](https://openai.com/index/perplexity-improving-accuracy-with-astra) ⭐️ 5.8/10
+### [Perplexity Adopts Astra for End-to-End Systems](https://openai.com/index/perplexity-improving-accuracy-with-astra) ⭐️ 5.8/10
 
-Perplexity uses Astra to write communications, change software, and monitor production systems, and checks in much less frequently than with earlier models.
+Perplexity is integrating OpenAI&\#x27;s Astra system for its end-to-end operations. The company uses Astra to write communications, change software, and monitor production systems. It checks in much less frequently than with earlier models.
 
 rss · OpenAI Blog · Sep 14, 00:00
 
-**「Key Takeaway」** Perplexity checks in much less frequently than with earlier models when using Astra for end-to-end systems.
+**「Key Takeaway」** Key Takeaway: Perplexity uses Astra to write communications, change software, and monitor production systems, and checks in much less frequently than with earlier models.
 
-**Tags**: `#openai`, `#product`, `#perplexity`, `#astra`, `#industry`
+**Tags**: `#perplexity`, `#openai`, `#astra`, `#gpt`, `#industry`
 
 ---
