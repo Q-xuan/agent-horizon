@@ -51,7 +51,7 @@ uv run horizon --hours 24
 
 仓库里的 `.github/workflows/daily.yml` 会 checkout 本仓库 + Horizon，套上这份配置后跑，再把 `docs/` 推到 `gh-pages`。
 
-需要在仓库 Settings → Secrets 里加 **一个** 模型密钥，和 `data/config.github.json` 里的 `api_key_env` 对上。Actions 当前用 OpenAI 兼容网关 + `gemini-3.5-flash`：
+需要在仓库 Settings → Secrets 里加 **一个** 模型密钥，和 `data/config.github.json` 里的 `api_key_env` 对上。Actions 当前用 OpenAI 兼容网关 + `gemini-3.6-flash`：
 
 - `OPENAI_API_KEY`
 
