@@ -55,7 +55,8 @@ jobs:
           cat overlay/profiles/STYLE.md >> horizon/profiles/ai-deals/enrichment.md
           cp overlay/data/source_tiers.json horizon/data/source_tiers.json
           cp overlay/scripts/apply_source_tiers.py horizon/src/apply_source_tiers.py
-          python3 overlay/patches/grok_reasoning_effort.py horizon/src/ai/client.py
+          # Actions uses gemini-3.5-flash on the OpenAI-compatible gateway.
+          # grok_reasoning_effort.py is local-only (config.json still grok-4.6).
           python3 overlay/patches/shanghai_digest_date.py horizon/src/orchestrator.py
           python3 overlay/patches/apply_source_tiers.py horizon/src/orchestrator.py
 
@@ -100,7 +101,9 @@ jobs:
           GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
           HORIZON_WEBHOOK_URL: ${{ secrets.HORIZON_WEBHOOK_URL }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: uv run horizon --hours ${{ github.event.inputs.hours || '24' }}
+        run: |
+          set -o pipefail
+          uv run horizon --hours ${{ github.event.inputs.hours || '24' }} 2>&1 | tee "$GITHUB_WORKSPACE/horizon-run.log"
 
       - name: Patch Pages baseurl and homepage
         run: |
@@ -132,6 +135,12 @@ jobs:
           else
             echo "Digest file not in the usual place yet; still wrote wechat-latest.md"
           fi
+
+      - name: Fail if Digest AI is dead or empty
+        run: |
+          python3 overlay/scripts/check_digest_health.py \
+            --log "$GITHUB_WORKSPACE/horizon-run.log" \
+            --zh "horizon/docs/_posts/${DATE}-summary-zh.md"
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
