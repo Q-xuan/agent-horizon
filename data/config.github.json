@@ -1,8 +1,8 @@
 {
   "ai": {
     "provider": "openai",
-    "model": "gemini-3.5-flash",
-    "base_url": "https://ai.aruyx.com/v1",
+    "model": "gemini-3.7-flash",
+    "base_url": "https://ai.aruyx.com/cpa/v1",
     "api_key_env": "OPENAI_API_KEY",
     "temperature": 0.3,
     "max_tokens": 32768,

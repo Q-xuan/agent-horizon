@@ -55,7 +55,7 @@ jobs:
           cat overlay/profiles/STYLE.md >> horizon/profiles/ai-deals/enrichment.md
           cp overlay/data/source_tiers.json horizon/data/source_tiers.json
           cp overlay/scripts/apply_source_tiers.py horizon/src/apply_source_tiers.py
-          # Actions uses gemini-3.5-flash on the OpenAI-compatible gateway.
+          # Actions uses gemini-3.7-flash on the CPA OpenAI-compatible gateway.
           # grok_reasoning_effort.py is local-only (config.json still grok-4.6).
           python3 overlay/patches/shanghai_digest_date.py horizon/src/orchestrator.py
           python3 overlay/patches/apply_source_tiers.py horizon/src/orchestrator.py
