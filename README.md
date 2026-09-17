@@ -51,7 +51,7 @@ uv run horizon --hours 24
 
 仓库里的 `.github/workflows/daily.yml` 会 checkout 本仓库 + Horizon，套上这份配置后跑，再把 `docs/` 推到 `gh-pages`。
 
-需要在仓库 Settings → Secrets 里加 **一个** 模型密钥，和 `data/config.github.json` 里的 `api_key_env` 对上。当前用 OpenAI 兼容网关 + `grok-4.6`（`reasoning_effort=xhigh`）：
+需要在仓库 Settings → Secrets 里加 **一个** 模型密钥，和 `data/config.github.json` 里的 `api_key_env` 对上。Actions 当前用 OpenAI 兼容网关 + `gemini-3.5-flash`：
 
 - `OPENAI_API_KEY`
 
@@ -62,6 +62,8 @@ uv run horizon --hours 24
 1. Settings → Pages → Source 选 `gh-pages` 分支
 2. Actions 里手动跑一次 **Daily Agent Digest**，确认通了
 3. 之后每天 UTC 23:00（北京时间次日 7:00）自动出报；23:30 再试一次（GitHub 可能因 main 空闲跳过定时，gh-pages 提交保不了 main）
+
+抓到条目后如果 AI 打分挂了，或 `Selected 0` / 中文日报是空的，workflow 会失败（默认靠 GitHub Actions 失败邮件通知仓库主人）。个别 RSS 429 不会单独让任务失败。
 
 ## 改源
 
