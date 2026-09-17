@@ -2,7 +2,7 @@
 
 给 AI Agent 工程师的每日雷达。引擎用 [Horizon](https://github.com/Thysrael/Horizon)，信息源和打分按 **coding agent / harness 架构** 收窄。
 
-每天早上（北京时间约 7 点）GitHub Actions 会：
+每天早上（北京时间目标约 7:30 出页，见下面的 SLA）GitHub Actions 会：
 
 1. 抓 HN、RSS、Reddit、GitHub Release、OSSInsight、Google News，以及 GitHub / Hugging Face / X 热点
 2. 去重，用 profile 打分；再按 [来源权威分层](docs/source-tiers.md) 上调官方源、压掉无一手链接的二手/社区稿
@@ -61,7 +61,13 @@ uv run horizon --hours 24
 
 1. Settings → Pages → Source 选 `gh-pages` 分支
 2. Actions 里手动跑一次 **Daily Agent Digest**，确认通了
-3. 之后每天 UTC 23:00（北京时间次日 7:00）自动出报；23:30 再试一次（GitHub 可能因 main 空闲跳过定时，gh-pages 提交保不了 main）
+3. 之后按 UTC 错开的四次定时自动出报（04:13 / 05:17 / 06:23 / 07:37 上海时间）。GitHub 的 `schedule` 是尽力而为：本仓库 2026-09 实测创建时间晚 1.5–2.1 小时，且整点 cron 更容易被挤。digest 提交在 `gh-pages` 上，保不了 `main` 的活跃度。第一次把当天 `summary-zh` 挂上 Pages 之后，同日后续定时会跳过 Horizon。
+
+**出版 SLA（诚实）：** 工作日目标是当天
+
+`https://q-xuan.github.io/agent-horizon/YYYY/MM/DD/summary-zh.html`
+
+在 **07:30–08:00 Asia/Shanghai** 可访问。07:10 在 delay ≤ 约 2 小时且 Horizon ≤ 约 40 分钟时通常也有；GitHub 再晚或模型跑超时，07:10 仍可能 404，08:30 前应补上。不能保证准时到分。页面已 200 却觉得旧，用 Actions 的 `force` 手动重跑。
 
 ## 改源
 
