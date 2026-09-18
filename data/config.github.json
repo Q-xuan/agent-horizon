@@ -1,8 +1,8 @@
 {
   "ai": {
     "provider": "openai",
-    "model": "gemini-3.6-flash",
-    "base_url": "https://ai.aruyx.com/cpa/v1",
+    "model": "gpt-5.5",
+    "base_url": "https://ooioo.work/v1",
     "api_key_env": "OPENAI_API_KEY",
     "temperature": 0.3,
     "max_tokens": 32768,
@@ -11,8 +11,8 @@
       "zh",
       "en"
     ],
-    "analysis_concurrency": 5,
-    "enrichment_concurrency": 5
+    "analysis_concurrency": 2,
+    "enrichment_concurrency": 2
   },
   "processing": {
     "profiles_dir": "profiles",
