@@ -1,8 +1,8 @@
 {
   "ai": {
     "provider": "openai",
-    "model": "gpt-5.5",
-    "base_url": "https://ooioo.work/v1",
+    "model": "step-5-preview",
+    "base_url": "https://api.stepfun.com/step_plan/v1",
     "api_key_env": "OPENAI_API_KEY",
     "temperature": 0.3,
     "max_tokens": 32768,
