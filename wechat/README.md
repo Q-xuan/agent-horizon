@@ -30,7 +30,7 @@
 
 ## 流程
 
-1. Actions 跑出当天中文日报（`gh-pages` 的 `_posts/YYYY-MM-DD-summary-zh.md`，或本地 Horizon 的 `data/summaries/`）。路径也会写在 Pages 的 `wechat-latest.md`。日期按 Asia/Shanghai，不是 UTC。
+1. Actions 跑出当天中文日报（`gh-pages` 的 `_posts/YYYY-MM-DD-summary-zh.md`，或本地 Horizon 的 `data/summaries/`）。路径也会写在 Pages 的 `wechat-latest.md`。日期按 Asia/Shanghai，不是 UTC。工作日目标约 07:30 能打开当天 `summary-zh.html`；07:10 仍可能 404，见仓库 README 的 SLA。
 2. 按 [STYLE.md](STYLE.md) 写成稿。人写，或：
 
    ```bash

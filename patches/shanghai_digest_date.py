@@ -1,8 +1,9 @@
 """Patch Horizon so digest/post dates use Asia/Shanghai, not UTC.
 
-Scheduled daily.yml runs at 23:00 UTC = 07:00 Asia/Shanghai. Horizon names
-_posts/YYYY-MM-DD-summary-*.md from datetime.now(timezone.utc), so a morning
-Shanghai run still writes yesterday's UTC date.
+Scheduled daily.yml runs in the Asia/Shanghai morning (primary 20:13 UTC =
+04:13). Horizon names _posts/YYYY-MM-DD-summary-*.md from
+datetime.now(timezone.utc), so a morning Shanghai run still writes
+yesterday's UTC date.
 
 Fetch-window `now - hours` stays UTC.
 """
