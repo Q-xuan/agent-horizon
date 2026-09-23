@@ -5,288 +5,360 @@ date: 2026-09-23
 lang: zh
 ---
 
-> 从 220 条内容中筛选出 18 条重要资讯。
+> 从 233 条内容中筛选出 22 条重要资讯。
 
 ---
 
 **Harness 架构**
-1. [Cline desktop v0.0.34 发布](#item-harness-arch-1) ⭐️ 8.8/10
-2. [vllm-project/vllm released v0.30.0](#item-harness-arch-2) ⭐️ 8.8/10
-3. [Claude Code v2.1.280 发布](#item-harness-arch-3) ⭐️ 8.3/10
-4. [openai/codex released rust-v0.156.0](#item-harness-arch-4) ⭐️ 8.3/10
-5. [Cline 桌面版 v0.0.33 发布](#item-harness-arch-5) ⭐️ 8.3/10
-6. [2.1.280](#item-harness-arch-6) ⭐️ 8.3/10
-7. [Cline SDK v0.0.85 改进运行时韧性](#item-harness-arch-7) ⭐️ 7.8/10
+1. [cline/cline released sdk/sdk/v0.0.85](#item-harness-arch-1) ⭐️ 8.8/10
+2. [Cline 桌面版 v0.0.33 发布](#item-harness-arch-2) ⭐️ 8.8/10
+3. [vLLM v0.30.0 发布](#item-harness-arch-3) ⭐️ 8.8/10
+4. [Cline SDK v0.0.84 发布](#item-harness-arch-4) ⭐️ 7.8/10
+5. [2.1.280](#item-harness-arch-5) ⭐️ 7.8/10
+6. [Cline v4.1.20 发布](#item-harness-arch-6) ⭐️ 6.8/10
+7. [Cline CLI v3.0.64 发布](#item-harness-arch-7) ⭐️ 6.8/10
+8. [GitHub trending: langchain-ai/agents-from-scratch](#item-harness-arch-8) ⭐️ 5.0/10
 
 **Agent 工程师日报**
-1. [Claude Opus 5.5 发布并降价](#item-agent-engineer-1) ⭐️ 9.0/10
-2. [simonw released 0.36 in simonw/llm](#item-agent-engineer-2) ⭐️ 8.3/10
-3. [llm 0.36 支持单轮模型约束](#item-agent-engineer-3) ⭐️ 7.5/10
-4. [Opus 5.5 与 GPT-6 同日发布](#item-agent-engineer-4) ⭐️ 6.5/10
-5. [simonw released 0.29 in simonw/llm-anthropic](#item-agent-engineer-5) ⭐️ 6.3/10
-6. [GPT-6 Sol and Luna](#item-agent-engineer-6) ⭐️ 5.5/10
+1. [GPT-6 Sol 与 Luna 发布](#item-agent-engineer-1) ⭐️ 8.0/10
+2. [RRSI 约束 harness 递归自我改进](#item-agent-engineer-2) ⭐️ 7.5/10
+3. [Claude Opus 5.5 发布，价格下调](#item-agent-engineer-3) ⭐️ 7.0/10
+4. [llm 0.36 发布：插件可声明单轮模型](#item-agent-engineer-4) ⭐️ 6.8/10
+5. [Claude Opus 5.5 与 GPT-6 掀价格战](#item-agent-engineer-5) ⭐️ 6.5/10
+6. [RULER：SVG 生成 rubric 奖励](#item-agent-engineer-6) ⭐️ 6.0/10
+7. [AIDE^2：AI agent 递归自我改进](#item-agent-engineer-7) ⭐️ 6.0/10
+8. [D-RAC：PDF 归一化与多模态分块](#item-agent-engineer-8) ⭐️ 6.0/10
+9. [llm 0.36 支持单轮模型插件](#item-agent-engineer-9) ⭐️ 5.5/10
+10. [llm-anthropic 0.29 支持 Claude Opus 5.5](#item-agent-engineer-10) ⭐️ 5.5/10
+11. [llm-typesafe 0.1a0 发布](#item-agent-engineer-11) ⭐️ 5.5/10
 
 **AI 日报**
-1. [GPT-6 Sol 和 Luna 发布](#item-ai-daily-1) ⭐️ 9.8/10
-2. [GPT-6 优化提示缓存](#item-ai-daily-2) ⭐️ 9.3/10
-3. [Parallel 用 GPT-6 Astra 减半](#item-ai-daily-3) ⭐️ 5.8/10
+1. [Introducing GPT-6 Sol and Luna](#item-ai-daily-1) ⭐️ 9.8/10
+2. [Parallel cut research time and cost in half with GPT‑6 Astra](#item-ai-daily-2) ⭐️ 8.3/10
 
 **AI 羊毛**
-1. [OpenRouter Batch API：批量请求半价](#item-ai-deals-1) ⭐️ 8.0/10
-2. [产品评论分析 API 注册送 $1 额度](#item-ai-deals-2) ⭐️ 5.0/10
+1. [OpenRouter Batch 半价推理](#item-ai-deals-1) ⭐️ 7.0/10
 
 ---
 
 ## Harness 架构
 
 <a id="item-harness-arch-1"></a>
-### [Cline desktop v0.0.34 发布](https://github.com/cline/cline/releases/tag/desktop-v0.0.34) ⭐️ 8.8/10
+### [cline/cline released sdk/sdk/v0.0.85](https://github.com/cline/cline/releases/tag/sdk/sdk/v0.0.85) ⭐️ 8.8/10
 
-Cline desktop v0.0.34 发布。Composio 连接器修复工具加载不全，完整拉取列表并刷新缓存。新增 Mac 到 Mac 的 SSH 远程连接，应用在 Apple Silicon 和 Intel 主机上使用自签名后端作为 helper。会话错误跨客户端持久保留。停止运行在重试等待期间立即生效。
+Cline SDK v0.0.85 improves runtime resilience by retrying turns that exhaust output tokens without tool calls and dynamically scaling default output allowances based on model limits.
 
-github · github-actions\[bot\] · 9月22日 21:10
-
-**「设计要点」** 工具层上，Composio 此前只加载前 20 个工具且缓存不过期，v0.0.34 改为拉取完整列表并主动刷新。远程连接层引入自签名后端 helper 处理 darwin/arm64 目标，替代系统 SSH 路径；Windows 和 Linux 桌面仍无法直接连接 Mac。状态层将失败运行和重试耗尽的错误写入转录，仅含错误的条目不参与 compaction。
-
-**「改了什么」** Composio 工具从最多 20 个扩展到全量加载，Installed 视图计数修正。Mac 主机 SSH 远程从报错不可用变为可用，依赖签名后端 helper。错误条目从一次性提示变为持久化转录内容，并跳过压缩。停止操作从等待 backoff 结束变为立即中断。
-
-**标签**: `#tools`, `#runtime`, `#sandbox`, `#memory`
-
----
-
-<a id="item-harness-arch-2"></a>
-### [vllm-project/vllm released v0.30.0](https://github.com/vllm-project/vllm/releases/tag/v0.30.0) ⭐️ 8.8/10
-
-vLLM v0.30.0 ships a persistent GPU weight-cache daemon with CUDA IPC fast-start, broad new model/kernel support, and multi-node TP capabilities.
-
-github · khluu · 9月22日 05:20
-
-**标签**: `#runtime`, `#memory`, `#prefix-cache`
-
----
-
-<a id="item-harness-arch-3"></a>
-### [Claude Code v2.1.280 发布](https://github.com/anthropics/claude-code/releases/tag/v2.1.280) ⭐️ 8.3/10
-
-Claude Code v2.1.280 将默认 Opus 模型切换为 Opus 5.5（\`claude-opus-5-5\`），支持 1M 上下文，输入/输出价格 $4/$20 per Mtok，缓存读取 $0.20/Mtok。新增 \`CLAUDE\_CODE\_MAX\_MCP\_DESCRIPTION\_LENGTH\` 环境变量，可调整 MCP 工具描述和服务器指令的 2,048 字符上限。\`hook\_execution\_complete\` OpenTelemetry 事件新增 hook 输出大小与超大输出落盘数量指标。权限层修复符号链接写入判定：提示明确写入落点，\`acceptEdits\`、允许规则和自动模式不再批准树外落地。
-
-github · ashwin-ant · 9月22日 16:38
-
-**「设计要点」** 自动模式重试逻辑收紧：安全检查拒绝审查时直接拒绝并提示重试无效；无答案时引入退避，连续十次后终止轮次。Write 工具参数校验放宽，兼容 \`path\`、\`file\_text\`、\`file\_content\` 等非标准字段；后台子代理与 fork 恢复机制修复，避免工具列表重建导致的 prompt cache 失效。
-
-**「改了什么」** 默认模型切到 Opus 5.5，MCP 描述长度开放配置，OpenTelemetry 增加 hook 输出体积指标，符号链接写入与自动模式重试的权限判定收紧。
-
-**标签**: `#runtime`, `#tools`, `#mcp`, `#permissions`, `#eval`
-
----
-
-<a id="item-harness-arch-4"></a>
-### [openai/codex released rust-v0.156.0](https://github.com/openai/codex/releases/tag/rust-v0.156.0) ⭐️ 8.3/10
-
-OpenAI Codex rust-v0.156.0 ships default-enabled worktree sessions, daemon management, fullscreen TUI, voice conversations, and a usage dashboard.
-
-github · github-actions\[bot\] · 9月22日 19:51
+github · github-actions\[bot\] · 9月22日 08:13
 
 **标签**: `#runtime`, `#tools`, `#planning`
 
 ---
 
-<a id="item-harness-arch-5"></a>
-### [Cline 桌面版 v0.0.33 发布](https://github.com/cline/cline/releases/tag/desktop-v0.0.33) ⭐️ 8.3/10
+<a id="item-harness-arch-2"></a>
+### [Cline 桌面版 v0.0.33 发布](https://github.com/cline/cline/releases/tag/desktop-v0.0.33) ⭐️ 8.8/10
 
-Cline 桌面版 v0.0.33 发布，新增 git worktree 任务隔离，并修复桌面端 auto-compaction 长期未触发的问题。新线程可在欢迎屏把 “Work in” 切到 Worktree，首个 prompt 即从当前分支切出 \`cline/&lt;id&gt;\`，在 \`~/.cline/worktrees/\` 下建 worktree 执行，agent 不碰工作区；删除任务会清掉对应 worktree 和分支，除非仍有其他会话占用，且只影响新线程。auto-compaction 此前因 sidecar 只勾选 checkpoint 未勾选 compaction，90% 阈值从未安装，长会话直接爆上下文；该缺口可追溯到 4 月 core 将 compaction 改为 opt-in。
+Cline 桌面版 v0.0.33 发布。新任务可跑在独立 git worktree 中：欢迎屏的 Work in 开关选 Worktree 后，新线程首条 prompt 会从当前分支切出 cline/&lt;id&gt;，在 ~/.cline/worktrees/ 下建工作树并执行，仅新线程生效。长会话自动压缩修复：桌面 sidecar 过去只勾选 checkpoint、从未启用 compaction，90% 触发条件没装上，现补齐。另修 Windows 重复启动、登录早期失败、SSH 新会话启动等问题。
 
 github · github-actions\[bot\] · 9月22日 09:07
 
-**「设计要点」** worktree 隔离在 sidecar 层为每个新线程切出独立 git worktree，执行路径固定为 \`~/.cline/worktrees/\`，删除任务即回收分支与工作树。compaction 修复同时改了两处：sidecar 为会话装上 90% 触发，summarizer 改为跟随会话当前凭证与模型，避免凭证刷新后静默回退到截断。
+**「设计要点」** 任务隔离靠 git worktree：分支命名 cline/&lt;id&gt;，工作树落在 ~/.cline/worktrees/，删除任务即清理分支与工作树，除非其他会话仍占用。压缩链路在 core 自四月起改为 opt-in，桌面 sidecar 漏配 compaction，导致长会话只 checkpoint 不压缩；本次同时让 summarizer 跟随会话当前凭证与模型，避免中途回退到截断。
 
-**「改了什么」** 相对上一版，真正变了的能力是把任务执行搬进独立 git worktree，以及让桌面端长会话首次真正触发 auto-compaction。其余改动集中在 Windows 单实例、启动期登录、SSH 新会话、更新入口和模型目录刷新等稳定性与目录问题。
+**「改了什么」** 相对上一版，新增 worktree 任务隔离与长会话自动压缩；修复 Windows 多实例、登录竞态、SSH 新会话、删除当前会话视图、历史删除不生效等运行时问题。模型目录从 203 提供商、6,079 模型扩到 209、6,237，Kimi For Coding 拆成 kimi.com 与 kimi.ai。
 
-**标签**: `#runtime`, `#sandbox`, `#memory`
+**标签**: `#sandbox`, `#runtime`, `#memory`
+
+---
+
+<a id="item-harness-arch-3"></a>
+### [vLLM v0.30.0 发布](https://github.com/vllm-project/vllm/releases/tag/v0.30.0) ⭐️ 8.8/10
+
+vLLM v0.30.0 发布，合并 762 个提交。新增 DeepSeek-V4.1-Flash、GLM-5.3-Flash 等模型后端，DeepSeek-V4.1-Flash 在 SM100 上经 FlashMLA V4.1 将全部 KV 存为 MXFP8。引入 Fast Start：per-GPU 权重缓存守护进程持有量化、TP 分片后的权重，引擎重启时通过 CUDA IPC 映射，用 \`--load-format ipc\_cache\` 替代磁盘加载，覆盖 FP4 检查点和多节点 TP。新增 HiSparse 主机内存层，显存压力下将稀疏 MLA 解码的 KV 页溢出到 pinned host memory，经 \`HiSparseConnector\` 启用。
+
+github · khluu · 9月22日 05:20
+
+**「设计要点」** Fast Start 以 per-GPU 守护进程缓存量化、TP 分片权重，重启时经 CUDA IPC 映射，省去磁盘加载；HiSparse 为稀疏 MLA 解码增加 host-resident KV 层，显存不足时溢出到 pinned host memory，由 \`HiSparseConnector\` 控制。
+
+**「改了什么」** 权重加载新增 \`--load-format ipc\_cache\` 持久化路径，稀疏 MLA 解码新增 HiSparse 主机内存层；Model Runner V2 在 H200 上把 CUDA graph 捕获从 12s 降到 2s、引擎初始化从 28.9s 降到 8.2s。Breaking changes 包括 scale-out 端点改为 \`--enable-scale-out\` 显式开启，移除 GPTQ \`g\_idx\`，弃用 \`all\` Mamba 缓存模式。
+
+**标签**: `#runtime`, `#prefix-cache`, `#memory`
+
+---
+
+<a id="item-harness-arch-4"></a>
+### [Cline SDK v0.0.84 发布](https://github.com/cline/cline/releases/tag/sdk/sdk/v0.0.84) ⭐️ 7.8/10
+
+Cline SDK v0.0.84 修复 feature-flag 并发轮询竞争，新增 run-start hook 上下文注入。Compaction 改用 provider 上报的 input-token 数触发，summarizer 默认输出预算从 4096 提到 8192。Windows 下新增 \`disableCurrentDirectoryExecutableSearch\(\)\`，阻止工作区内被植入的程序顶替真实可执行文件。Subagent 工具调用默认并发执行，且不再继承父会话的审批策略。
+
+github · github-actions\[bot\] · 9月22日 03:26
+
+**「设计要点」** Run-start hook 通过 \`AgentRunStartResult\` 的 \`appendContext\` 通道注入上下文，运行时将其收敛为单条 \`&lt;hook\_context source=&quot;RunStart&quot;&gt;\` 消息置于输入消息之后；恢复会话中若尾部有未解析 \`tool\_use\`，则插入到该调用之前以保持配对相邻。Hook 文件与子进程层新增 \`blockingRunStartHooks\` 选项，默认仍为 fire-and-forget，开启后阻塞 hook 在子进程退出后的宽限期结束并丢弃 stdio 管道。
+
+**「改了什么」** Feature-flag 轮询共享 in-flight 请求，失败可传播重试，切换账号不再等待前一账号请求。Compaction 触发条件加入 \`max\(estimate, actual\)\`，保留字符估算作为下限。配置型 subagent 的审批回调与父会话解耦，避免并发子代理争用同一终端审批。仅以磁盘 manifest 形式存在的会话现在可被真正删除。\`@cline/shared\` 导出 rules-path 解析器，覆盖 \`.clinerules\`、\`.cline/rules\` 及 OneDrive 重定向的 Documents 全局规则路径。
+
+**标签**: `#runtime`, `#tools`, `#permissions`
+
+---
+
+<a id="item-harness-arch-5"></a>
+### [2.1.280](https://code.claude.com/docs/en/changelog#2-1-280) ⭐️ 7.8/10
+
+Claude Code 2.1.280 adds an MCP description length limit, fixes symlink write permission bypasses, and expands OpenTelemetry hook telemetry.
+
+rss · Claude Code Changelog · 9月22日 16:48
+
+**标签**: `#permissions`, `#sandbox`, `#tools`, `#mcp`, `#eval`
 
 ---
 
 <a id="item-harness-arch-6"></a>
-### [2.1.280](https://code.claude.com/docs/en/changelog#2-1-280) ⭐️ 8.3/10
+### [Cline v4.1.20 发布](https://github.com/cline/cline/releases/tag/v4.1.20) ⭐️ 6.8/10
 
-Claude Code 2.1.280 ships Opus 5.5 as default, adds MCP description length config and hook telemetry, and patches a symlink write-approval bypass.
+Cline v4.1.20 调整子代理执行与输出预算。同一步内派生的子代理现在并行执行工具调用，有顺序依赖的工具仍串行，父代理等所有结果返回后再进入下一轮。默认输出预算改为模型声明输出上限的 30%，与固定 32,000 tokens 取大者；声明上限低于约 107k tokens 的模型不受影响。模型目录从 203 个提供商、6,079 个模型刷新到 209 个、6,237 个，36 个未固定模型的提供商默认模型发生变更。
 
-rss · Claude Code Changelog · 9月22日 16:48
+github · github-actions\[bot\] · 9月22日 20:45
 
-**标签**: `#runtime`, `#tools`, `#mcp`, `#permissions`
+**「设计要点」** 同步子代理的工具调用并行调度，顺序依赖工具仍串行，父代理阻塞等待全部结果；默认输出预算按模型声明上限的 30% 与 32,000 tokens 取大。钩子注入的上下文以 \`&lt;hook\_context&gt;\` 块随首轮请求下发，不渲染到对话记录。
+
+**「改了什么」** 子代理同一步内的工具调用从串行改为并行，默认输出预算从固定 32,000 tokens 改为按模型上限动态缩放。修复钩子上下文注入丢失、Retry 清空未发送输入、后台命令输出不流式、规则面板漏载、任务删除不生效、压缩回退截断、输出超限结束任务；自定义子代理在委派获批后不再逐条请求工具批准。
+
+**标签**: `#runtime`, `#subagents`, `#tools`
 
 ---
 
 <a id="item-harness-arch-7"></a>
-### [Cline SDK v0.0.85 改进运行时韧性](https://github.com/cline/cline/releases/tag/sdk/sdk/v0.0.85) ⭐️ 7.8/10
+### [Cline CLI v3.0.64 发布](https://github.com/cline/cline/releases/tag/cli-v3.0.64) ⭐️ 6.8/10
 
-Cline SDK v0.0.85 发布，改动集中在运行时韧性与默认输出分配。达到模型输出 token 上限但未产出工具调用的 turn 现在会重试，最多连续三次，附加简洁回复与拆分工具调用的提醒；计数器在工具调用进展和每次运行开始时重置，耗尽后仍以现有错误失败。默认输出 token 改为随模型扩展，请求限制与调用者默认值均缺失时取 \`max\(32000, floor\(maxOutputTokens \* 0.3\)\)\`，只升不降。模型目录同步更新，209 个 provider 下模型数从 6,188 增至 6,237。
+Cline CLI v3.0.64 修复模型回合在工具调用前耗尽输出 token 导致运行中断的问题，现在最多重试三次并提示拆分工作。大上下文模型的默认输出预算从固定 32,000 tokens 改为模型上限的 30%，取较大者，约 107k 以下模型不受影响。模型目录从 6,188 个增至 6,237 个，覆盖 209 个 provider，10 个 provider 的默认模型发生变更。
 
-github · github-actions\[bot\] · 9月22日 08:13
+github · github-actions\[bot\] · 9月22日 08:25
 
-**「设计要点」** 网关在请求限制与调用者默认值均缺失时，按模型广告的输出上限计算默认 token 配额，保留模型输出、剩余上下文钳制与推理预算下限。重试路径通过 \`turn-finished\` 事件保持迭代配对，空的 max-tokens 响应与超限响应共用同一恢复逻辑。
+**「设计要点」** 运行时在模型回合触及输出上限且未发起工具调用时插入重试层，通过提醒控制单回合输出长度。输出预算策略改为按模型上限比例分配，直接影响单回合成本与延迟。
 
-**「改了什么」** 新增输出 token 超限重试，默认输出 token 从固定 32,000 改为模型感知扩展。模型目录刷新，10 个未固定模型的 provider 默认模型发生变更。
+**「改了什么」** 新增输出限制重试机制，大输出模型默认预算改为按上限比例分配，模型目录与 10 个 provider 默认模型刷新。
 
-**标签**: `#runtime`, `#tools`
+**标签**: `#runtime`, `#tools`, `#planning`
+
+---
+
+<a id="item-harness-arch-8"></a>
+### [GitHub trending: langchain-ai/agents-from-scratch](https://github.com/langchain-ai/agents-from-scratch) ⭐️ 5.0/10
+
+A LangChain educational repository that guides users through building an email assistant agent from scratch, covering evaluation, human-in-the-loop, and memory with accompanying code.
+
+rss · GitHub Trending Daily · 9月23日 02:22
+
+**标签**: `#memory`, `#eval`, `#tools`, `#permissions`
 
 ---
 
 ## Agent 工程师日报
 
 <a id="item-agent-engineer-1"></a>
-### [Claude Opus 5.5 发布并降价](https://www.anthropic.com/claude-opus-5-5) ⭐️ 9.0/10
+### [GPT-6 Sol 与 Luna 发布](https://openai.com/index/introducing-gpt-6-sol-and-luna/) ⭐️ 8.0/10
 
-Anthropic 于 2026-09-22 发布 Claude Opus 5.5。相比 Opus 5，每 1M tokens 输入价格由 $5 降至 $4，输出由 $25 降至 $20，缓存读取由 $0.50 降至 $0.20，缓存写入由 $6.25 降至 $5。官方称新模型通信更自然，长会话中更易跟随与检查。
+OpenAI 发布 GPT-6 Sol 与 Luna，发布日期为 2026-09-22。Hacker News 讨论集中在定价、agentic coding 体验与订阅用量限制。simonw 称 GPT-6 Luna 价格是 GPT-5.6 Luna 的一半；jeffnash 对比 Claude Code 20x 与 Codex Pro 20x，指出用量限制与计费窗口是选型决定因素，并认为 Codex 20x 计划下 ChatGPT 用量基本无限。官方公告细节未在材料中给出，具体能力与限制仍不确定。
 
-hackernews · km144 · 9月22日 16:29 · [社区讨论](https://news.ycombinator.com/item?id=49803892)
+hackernews · OfficialTurkey · 9月22日 18:00 · [社区讨论](https://news.ycombinator.com/item?id=49805509)
 
-**「为什么重要」** 缓存读取降价幅度最大，对依赖长会话与高频调用的 coding agent 成本结构影响直接。官方所称的通信改进则关系 harness 的输出解析与人工检查流程。
+**「为什么重要」** 对 coding agent 工程师而言，模型迭代伴随价格与用量限制变化，关系 harness 选型与成本结构。已发生的是新模型发布与社区对价格、限流的反馈，尚未证实的是新模型在 agent 工作流中的实际表现。
 
-**「可关注」** Opus 5.5 缓存读取价格降至原来的 40%，依赖 prompt caching 的 coding agent 可重新测算长会话成本。
+**「可关注」** 可关注：GPT-6 Luna 降价与 20x 计划下 ChatGPT 用量宽松，可能改变 Codex 与 Claude Code 在 agent 场景中的成本与限流权衡。
 
-**「评论」** 社区讨论集中在价格与 Anthropic 的 frontier pacing 立场上。有用户质疑其上周呼吁放缓前沿发展，本周即发布大幅升级模型；也有用户表示已转向 DeepSeek v4.1 等低成本方案。
+**「评论」** 社区对 GPT-5.6 Sol 的 agent 交互体验有明确好感，认为其沟通方式与工程直觉契合；对新模型定价下降表示欢迎，但对订阅计划的用量限制与计费窗口复杂度仍有不满。
 
-**标签**: `#coding-agent`, `#eval`, `#harness`, `#observability`
+**标签**: `#coding-agent`, `#harness`, `#eval`, `#observability`
 
 ---
 
 <a id="item-agent-engineer-2"></a>
-### [simonw released 0.36 in simonw/llm](https://github.com/simonw/llm/releases/tag/0.36) ⭐️ 8.3/10
+### [RRSI 约束 harness 递归自我改进](https://huggingface.co/papers/2609.24972) ⭐️ 7.5/10
 
-simonw/llm 0.36 introduces a plugin API for declaring single-turn models and improves reasoning-trace formatting in logs.
+Hugging Face Daily Papers 在 2026-09-23 收录论文 RRSI，提出用正则化约束 agent harness 的递归自我改进。现有方法迭代提议并选择 harness 的组件级编辑，实现系统级递归自我改进，但容易记忆训练任务，在分布外基准上收益大幅缩水甚至消失。RRSI 将正则化原则引入 harness 自改进，约束演化候选的生成与选择，以缓解过拟合并提升 OOD 表现。论文具体正则化形式与实验数据在摘要中未完整给出。
 
-github · simonw · 9月22日 18:48
+rss · Hugging Face Daily Papers · 9月23日 02:22
 
-**标签**: `#harness`, `#observability`, `#tooling`
+**「为什么重要」** 对做 coding agent / harness 的工程师，这直接指向自动化 harness 演化的可靠性边界：当系统靠递归编辑自我改进时，如何避免只在训练任务上刷分。论文尚未给出完整实验细节，实际效果待验证。
+
+**「可关注」** 可关注：在 harness 自动化演化流程中引入正则化约束，可能是缓解训练任务过拟合、保住 OOD 基准表现的一条路径。
+
+**标签**: `#harness`, `#eval`, `#memory`, `#orchestration`
 
 ---
 
 <a id="item-agent-engineer-3"></a>
-### [llm 0.36 支持单轮模型约束](https://simonwillison.net/2026/Sep/22/llm/) ⭐️ 7.5/10
+### [Claude Opus 5.5 发布，价格下调](https://www.anthropic.com/claude-opus-5-5) ⭐️ 7.0/10
 
-2026 年 9 月 22 日，Simon Willison 发布 llm 0.36。新增 gpt-6-sol 与 gpt-6-luna 两个 OpenAI 模型。模型插件可声明 supports\_conversation = False，标记只接受单轮提示的模型；LLM 在收到助手或工具历史时抛出 llm.ConversationNotSupported，llm chat 也会在启动前拒绝这类模型。llm logs 的 Markdown 输出将推理轨迹包裹在 &lt;details&gt;&lt;summary&gt; 标签中，版本另含五位新贡献者的 bug 修复。
+Anthropic 发布 Claude Opus 5.5。每百万 token 价格全线下调：缓存读取 $0.20（原 $0.50），输入 $4（原 $5），输出 $20（原 $25），缓存写入 $5（原 $6.25）。Hacker News 用户实测反映生成质量提升，3D 动画任务显著优于 Opus 5。Anthropic 称其沟通更自然，长会话更易协作。当前信息主要来自社区讨论，暂无第一方工程细节。
 
-rss · Simon Willison · 9月22日 18:48
+hackernews · km144 · 9月22日 16:29 · [社区讨论](https://news.ycombinator.com/item?id=49803892)
 
-**「为什么重要」** 该标志把单轮模型的限制前移到插件声明与 llm chat 启动阶段，而非调用后抛错。对需要动态管理对话与工具历史的 harness 和插件集成，这提供了明确的失败边界。
+**「为什么重要」** 对 coding agent 与 harness 开发者，token 成本直接影响长会话与批量任务预算。缓存读取降价 60%，输出降价 20%，可能改变模型选型的经济性。社区观察到 Opus 5 是 OpenRouter 支出最高的模型，新价格或影响现有工作流成本结构。
 
-**「可关注」** 可关注：为自研模型插件声明 supports\_conversation = False，可在 llm chat 启动前阻断单轮模型接收历史，减少运行时错误。
+**「可关注」** 若现有 agent 流程重度依赖 Opus 系列，可评估 Opus 5.5 在缓存密集型任务上的成本变化；社区实测的性能提升尚属个案，需自行验证。
 
-**标签**: `#harness`, `#coding-agent`, `#tooling`
+**「评论」** Hacker News 用户指出 Anthropic 在呼吁“放缓前沿”后立即发布新模型并强调价格优势，存在反差。部分用户认可性能提升，也有用户更倾向 DeepSeek v4.1。
+
+**标签**: `#coding-agent`, `#eval`, `#model-release`
 
 ---
 
 <a id="item-agent-engineer-4"></a>
-### [Opus 5.5 与 GPT-6 同日发布](https://simonwillison.net/2026/Sep/22/opus-and-sol-and-luna/) ⭐️ 6.5/10
+### [llm 0.36 发布：插件可声明单轮模型](https://github.com/simonw/llm/releases/tag/0.36) ⭐️ 6.8/10
 
-Anthropic 发布 Claude Opus 5.5，OpenAI 约一小时后推出 GPT-6 Sol 与 GPT-6 Luna。GPT-6 两个型号价格较 GPT-5.6 现行促销价减半（GPT-5.6 已计划 11 月涨价 25%）：Luna 为 $0.10/M 输入、$0.50/M 输出，Sol 为 $2/M 输入、$10/M 输出。Claude Opus 5.5 相比 Opus 5.0 输入与输出降价 20% 至 $4/M 与 $20/M，缓存读取价格下降 60%。Simon Willison 测试发现 Opus 5.5 在 max 思考等级下因过度推理触及 128,000 输出 token 上限而无法完成响应，两次均失败，每次花费 $2.56、耗时近 20 分钟。
+simonw/llm 0.36 于 2026-09-22 发布。新增 OpenAI 模型别名 \`gpt-6-sol\` 与 \`gpt-6-luna\`；模型插件可声明 \`supports\_conversation = False\` 限定单轮提示，\`llm chat\` 启动前拒绝这类模型，库在收到助手或工具历史时抛出 \`llm.ConversationNotSupported\`。\`llm logs\` 的 Markdown 输出将推理轨迹包裹在 \`&lt;details&gt;&lt;summary&gt;\` 中。修复涵盖 \`llm logs -t\` 崩溃、\`AsyncResponse.log\_to\_db\(\)\` 报错、\`title\` 字段丢失、\`llm.Prompt\` 默认 \`Options\` 未初始化、异步流未关闭及 SQLite 连接未关闭等问题。
 
-rss · Simon Willison · 9月22日 23:46
+github · simonw · 9月22日 18:48
 
-**「为什么重要」** GPT-6 与 Opus 5.5 的降价直接压缩 coding agent 与长对话场景的推理成本，Opus 5.5 缓存读取降 60% 对 agentic 对话尤其关键。同时 Opus 5.5 的 max 等级在简单任务上即可能耗尽 128K 输出预算，提示高 effort 设置未必稳定，选型时需重新验证成本与可靠性。
+**「为什么重要」** 把单轮能力边界写进插件声明和 CLI 入口，能在会话开始前拦截不兼容的历史格式，而不是等运行时报错；日志折叠与连接、流关闭修复则直接降低调试与资源泄漏成本。目前材料未提供性能数据或更广泛的兼容性结论，影响主要集中在使用该插件机制与 OpenAI 新别名的场景。
 
-**「可关注」** 可关注：GPT-6 Luna 以 $0.10/$0.50 成为 OpenAI 最便宜的模型之一，而 Opus 5.5 的 max 等级在简单 SVG 任务上即触发 128K 输出上限；工程上需把 effort 当作成本与稳定性风险来管理，而非默认拉满。
+**「可关注」** 可关注：\`supports\_conversation = False\` 为单轮模型提供了显式契约，开发 harness 或模型插件时可在入口处统一拦截多轮历史，避免依赖下游 provider 的偶发错误。
 
-**标签**: `#coding-agent`, `#eval`
+**标签**: `#harness`, `#observability`, `#coding-agent`
 
 ---
 
 <a id="item-agent-engineer-5"></a>
-### [simonw released 0.29 in simonw/llm-anthropic](https://github.com/simonw/llm-anthropic/releases/tag/0.29) ⭐️ 6.3/10
+### [Claude Opus 5.5 与 GPT-6 掀价格战](https://simonwillison.net/2026/Sep/22/opus-and-sol-and-luna/) ⭐️ 6.5/10
 
-simonw/llm-anthropic 0.29 adds support for the Claude Opus 5.5 model via \`llm -m claude-opus-5.5\`.
+Anthropic 发布 Claude Opus 5.5，OpenAI 一小时后发布 GPT-6 Sol 与 GPT-6 Luna。GPT-6 Luna 定价 $0.10/$0.50（输入/输出，每百万 token），较 GPT-5.6 Luna 再降一半；GPT-6 Sol 定价 $2/$10，与 Grok 4.7 输入价持平。Claude Opus 5.5 从 $5/$25 降至 $4/$20，缓存读取价降 60%。GPT-5.6 已计划 11 月涨价 25%。Simon Willison 测试发现，Opus 5.5 在 max 思考档位下因过度推理耗尽 128,000 输出 token 上限，两次未能返回 SVG 结果，各耗资 $2.56、耗时近 20 分钟。
 
-github · simonw · 9月22日 17:14
+rss · Simon Willison · 9月22日 23:46
 
-**标签**: `#harness`, `#coding-agent`
+**「为什么重要」** token 单价与缓存价格直接决定 coding agent 的长对话和多轮工具调用成本。Opus 5.5 缓存读取降 60%，对 agentic 场景中 90% 以上输入走缓存的情况尤其关键。同时 max 档位在简单任务上即耗尽输出上限，提示高推理档位在长链路任务中存在不可用风险。
+
+**「可关注」** 可关注：GPT-6 Luna 定价 $0.10/$0.50，是 OpenAI 最便宜的模型之一；Claude Opus 5.5 缓存读取降至 $0.20/M，长上下文 agent 的推理成本结构正在快速变化。但 Opus 5.5 max 档位在简单 SVG 任务上两次撞上 128K 输出上限，高投入推理档位的稳定性仍需实测。
+
+**标签**: `#coding-agent`, `#harness`, `#eval`
 
 ---
 
 <a id="item-agent-engineer-6"></a>
-### [GPT-6 Sol and Luna](https://openai.com/index/introducing-gpt-6-sol-and-luna/) ⭐️ 5.5/10
+### [RULER：SVG 生成 rubric 奖励](https://huggingface.co/papers/2609.25270) ⭐️ 6.0/10
 
-HN thread reacting to the GPT-6 Sol and Luna announcement, focusing on pricing, subjective coding-agent experience, and usage-limit math.
+RULER 提出实例感知的 rubric 奖励，用于 SVG 代码生成的强化学习。论文实测，CLIP、Aesthetic 等标量指标从自然图像迁移到矢量内容时效果差，直接用作 RL 奖励会触发奖励黑客；改用多轴 rubric 提示视觉语言裁判后，与人类判断的相关性在跨样本和同指令内均显著更高。RULER 将每条指令转换为实例感知的 rubric 作为奖励信号。该方法给开放生成任务的评估设计提供了参考，但应用领域限于 SVG，且属于研究论文而非生产工程变更。
 
-hackernews · OfficialTurkey · 9月22日 18:00 · [社区讨论](https://news.ycombinator.com/item?id=49805509)
+rss · Hugging Face Daily Papers · 9月23日 00:00
 
-**标签**: `#coding-agent`, `#observability`, `#harness`
+**「为什么重要」** 在缺乏绝对视觉 ground truth 的开放生成任务中，标量指标迁移失败和奖励黑客是通用风险。该论文实证多轴 rubric 与人类判断更相关，为 RL 奖励设计提供了可复用的评估思路。不过，其效果目前仅在 SVG 生成场景验证，尚未证明可推广到其他代码生成领域。
+
+**「可关注」** 可关注：在开放生成任务的 RL 训练中，若标量奖励指标出现奖励黑客，可参考 RULER 用多轴 rubric 替代单一标量分数，并先验证其与人类判断的相关性。
+
+**标签**: `#eval`, `#coding-agent`, `#rl`, `#reward-hacking`
+
+---
+
+<a id="item-agent-engineer-7"></a>
+### [AIDE^2：AI agent 递归自我改进](https://huggingface.co/papers/2609.26457) ⭐️ 6.0/10
+
+Hugging Face Daily Papers 于 2026-09-23 收录 AIDE^2 论文。该系统让前沿 AI research agent 修改自身代码，在 AI R&amp;D 任务套件上基准测试改写版本，保留通过的版本，形成递归自我改进循环。论文称这可对抗研发投入边际递减。目前 RSS 摘要仅给出高层概念，未提供可复核的代码、性能数据或架构细节，实际价值需读原文。
+
+rss · Hugging Face Daily Papers · 9月23日 00:00
+
+**「为什么重要」** 该论文触及 coding agent、评测与 harness 的交叉点：agent 自身代码成为优化对象时，评测体系与代码改写机制需共同支撑自我改进。对 agent 工程师而言，这是一手研究线索，但实际收益尚未证实。
+
+**「可关注」** 可关注：AIDE^2 将 agent 自身代码作为优化对象，用基准测试筛选改写并保留通过版本，形成自我改进循环；但 RSS 摘要缺乏可复核的代码、性能数据或架构细节，落地效果需读原文验证。
+
+**标签**: `#coding-agent`, `#eval`, `#harness`
+
+---
+
+<a id="item-agent-engineer-8"></a>
+### [D-RAC：PDF 归一化与多模态分块](https://huggingface.co/papers/2609.24220) ⭐️ 6.0/10
+
+Hugging Face 每日论文收录 D-RAC，面向企业 RAG 文档摄取提出新流程。该方法先把任意输入格式统一转为 PDF，再用单次多模态 LLM 调用完成检索感知分块。论文指出，规则抽取和 OCR 会破坏阅读顺序、压平表格、丢失标题层级；而基于纯文本的 agentic 分块则带来高 token 成本与幻觉风险。D-RAC 是 W-RAC 框架向任意文档格式的扩展。目前公开内容仅到摘要层面，缺少可复现基准或生产环境数据。
+
+rss · Hugging Face Daily Papers · 9月23日 02:22
+
+**「为什么重要」** 对企业知识库 RAG 和 agent 文档摄取工具链，D-RAC 提供了一条区别于规则 OCR 和纯文本 agentic 分块的中间路径。但论文尚未给出可复现基准或生产环境验证，实际收益仍待确认。
+
+**「可关注」** 可关注：D-RAC 将文档格式归一化到 PDF 后，用单次多模态 LLM 调用替代多步文本抽取与分块，可能降低 agentic 分块的 token 成本与幻觉风险；不过目前仅停留在摘要描述，缺乏可复现的评测数据。
+
+**标签**: `#harness`, `#eval`, `#rag`
+
+---
+
+<a id="item-agent-engineer-9"></a>
+### [llm 0.36 支持单轮模型插件](https://simonwillison.net/2026/Sep/22/llm/) ⭐️ 5.5/10
+
+llm 0.36 发布，新增 OpenAI 模型 \`gpt-6-sol\` 与 \`gpt-6-luna\`。模型插件可声明 \`supports\_conversation = False\`，用于仅接受单轮提示的模型；LLM 在收到助手或工具历史时抛出 \`llm.ConversationNotSupported\`，\`llm chat\` 也会在启动前拒绝。\`llm logs\` 的 Markdown 输出将推理轨迹包裹在 \`&lt;details&gt;&lt;summary&gt;\` 标签中。该版本还包含五位新贡献者的 bug 修复。
+
+rss · Simon Willison · 9月22日 18:48
+
+**「为什么重要」** 对 llm 插件作者和 CLI 用户，单轮模型现在有了明确的会话边界，\`llm chat\` 会在启动前拒绝不支持的会话。首个使用该功能的插件是 \`llm-typesafe\`。新模型 ID 让 GPT-6 Sol 和 GPT-6 Luna 可直接在 llm 中调用。
+
+**「可关注」** 可关注：\`supports\_conversation = False\` 让插件在声明阶段标记单轮模型，\`llm chat\` 会在启动会话前拒绝，插件作者可据此在入口处拦截多轮请求。
+
+**标签**: `#harness`, `#tooling`, `#plugins`, `#openai`
+
+---
+
+<a id="item-agent-engineer-10"></a>
+### [llm-anthropic 0.29 支持 Claude Opus 5.5](https://simonwillison.net/2026/Sep/22/llm-anthropic/) ⭐️ 5.5/10
+
+Simon Willison 发布 llm-anthropic 0.29。该插件为 llm CLI 新增 Claude Opus 5.5 支持。调用命令为 \`llm -m claude-opus-5.5 &quot;prompt goes here&quot;\`。发布说明未包含性能数据或架构调整。
+
+rss · Simon Willison · 9月22日 17:14
+
+**「为什么重要」** llm CLI 用户可直接调用 Claude Opus 5.5，无需更换工具链。
+
+**「可关注」** 可关注：llm-anthropic 0.29 为 llm CLI 接入 Claude Opus 5.5，调用命令为 \`llm -m claude-opus-5.5\`。
+
+**标签**: `#harness`, `#llm`, `#anthropic`
+
+---
+
+<a id="item-agent-engineer-11"></a>
+### [llm-typesafe 0.1a0 发布](https://simonwillison.net/2026/Sep/22/llm-typesafe/) ⭐️ 5.5/10
+
+Simon Willison 发布 LLM CLI 插件 llm-typesafe 0.1a0，接入 TypeSafe AI 的 Jev 模型。插件支持三类结构化输出：noul 二分类、choice 多选、score 评分。安装后需配置 TypeSafe API key，当前为 alpha 版本。
+
+rss · Simon Willison · 9月22日 15:54
+
+**「为什么重要」** LLM CLI 插件生态再添新模型，展示了 noul、choice、score 三类结构化输出的调用方式。当前为 alpha 版本，影响范围有限。
+
+**「可关注」** 插件以 alpha 状态发布，但已完整覆盖 noul、choice、score 三类结构化输出，演示了 LLM CLI 接入新模型后的分类调用模式。
+
+**标签**: `#harness`, `#eval`, `#coding-agent`
 
 ---
 
 ## AI 日报
 
 <a id="item-ai-daily-1"></a>
-### [GPT-6 Sol 和 Luna 发布](https://openai.com/index/introducing-gpt-6-sol-and-luna) ⭐️ 9.8/10
+### [Introducing GPT-6 Sol and Luna](https://openai.com/index/introducing-gpt-6-sol-and-luna) ⭐️ 9.8/10
 
-OpenAI 于 2026 年 9 月 22 日发布 GPT-6 Sol 和 Luna 两款模型。官方称其将前沿智能带入日常工作，并在能力与成本之间提供不同平衡。目前公开信息有限，未披露具体参数、基准测试或定价细节。
+OpenAI officially introduces GPT-6 Sol and Luna, two new models bringing frontier intelligence to everyday work with different balances of capability and cost.
 
 rss · OpenAI Blog · 9月22日 18:00
-
-**「可关注」** 可关注：两款模型在能力与成本上给出不同取舍，可按实际场景选择。
 
 **标签**: `#model`, `#lab`, `#product`
 
 ---
 
 <a id="item-ai-daily-2"></a>
-### [GPT-6 优化提示缓存](https://openai.com/index/better-prompt-caching-for-gpt-6) ⭐️ 9.3/10
+### [Parallel cut research time and cost in half with GPT‑6 Astra](https://openai.com/index/parallel-cuts-time-and-cost-with-astra) ⭐️ 8.3/10
 
-OpenAI 发布 GPT-6 提示缓存改进，包含更高缓存命中率、新诊断工具、显式断点，以及降低延迟与成本的控件。官方称这些改动可减少重复请求开销。目前未公布具体命中率数字或延迟降幅。
-
-rss · OpenAI Blog · 9月22日 21:00
-
-**「为什么重要」** 对 coding agent 与 harness 场景，提示缓存直接影响长上下文任务的延迟与调用成本。
-
-**「可关注」** 可关注：GPT-6 新增显式断点与诊断工具，可在长会话中更精细地控制缓存行为。
-
-**标签**: `#model`, `#lab`, `#product`
-
----
-
-<a id="item-ai-daily-3"></a>
-### [Parallel 用 GPT-6 Astra 减半](https://openai.com/index/parallel-cuts-time-and-cost-with-astra) ⭐️ 5.8/10
-
-OpenAI 官方博客发布客户案例。Parallel 的智能体使用 GPT-6 Astra 研究和合成劳动力市场数据，耗时与成本较此前模型均减半。官方未披露对比基线、任务规模及测试条件。该案例来自 OpenAI 一手材料，但属于客户宣传，尚无独立验证。
+OpenAI’s official blog shares a Parallel case study claiming GPT‑6 Astra cut agent research time and cost in half for labor-market data synthesis.
 
 rss · OpenAI Blog · 9月22日 12:00
 
-**「为什么重要」** 对 coding agent 与 harness 开发者而言，该案例显示 GPT-6 Astra 可能降低多步检索与合成任务的延迟和 token 成本。若效果成立，智能体执行长流程数据研究时，单位任务开销有望减半。但目前仅有一个客户案例，不足以推断普遍性能。
-
-**「可关注」** GPT-6 Astra 在劳动力市场数据研究中将耗时与成本减半，但需等待独立基准测试验证。
-
-**标签**: `#model`, `#lab`, `#industry`
+**标签**: `#model`, `#lab`, `#product`, `#eval`
 
 ---
 
 ## AI 羊毛
 
 <a id="item-ai-deals-1"></a>
-### [OpenRouter Batch API：批量请求半价](https://openrouter.ai/blog/announcements/batch-api/) ⭐️ 8.0/10
+### [OpenRouter Batch 半价推理](https://openrouter.ai/blog/announcements/batch-api/) ⭐️ 7.0/10
 
-OpenRouter 推出 Batch API，将请求捆绑成批量任务后按半价计费。开发者可通过打包请求降低推理成本。官方公告未提及适用模型、额度上限或截止时间。
+OpenRouter 推出 Batch API，捆绑请求可享半价推理。该接口面向开发者，按批量计费，并非免费额度或积分赠送。材料未说明具体截止时间与使用上限。
 
 rss · HN Free API / Credits · 9月22日 16:42
 
-**「为什么重要」** 对可排队、非实时的批量推理任务，这能直接减少一半 API 支出。
+**「为什么重要」** 对可延迟的批量推理任务，半价直接降低调用成本。
 
-**「可关注」** OpenRouter Batch API 适合可排队、非交互式的批量推理场景；材料未披露具体模型覆盖与速率限制，接入前需查阅官方文档确认适用范围。
+**「可关注」** 可关注：OpenRouter Batch API 对捆绑请求提供半价推理，适合可延迟的批量任务，但材料未说明额度上限与截止时间。
 
-**标签**: `#promo`, `#api`, `#discount`
-
----
-
-<a id="item-ai-deals-2"></a>
-### [产品评论分析 API 注册送 $1 额度](https://bb-product-api-docs.web.app/) ⭐️ 5.0/10
-
-aditya314159 在 Show HN 发布产品评论分析 API，输入品牌与产品名后，抓取 Amazon、TikTok、Reddit、YouTube、Instagram、Walmart 等平台的评论，提取跨评论重复出现的正面情绪并附原文引用与链接。单次分析收费 $0.99，注册创建 API key 赠送 $1 额度，首次分析免费。目前仅支持消费品，单产品分析耗时数分钟。
-
-rss · HN Free API / Credits · 9月22日 15:45
-
-**「为什么重要」** 对需要零成本验证产品口碑的开发者，$1 注册额度可直接覆盖首次分析，快速拿到跨平台评论证据。
-
-**「可关注」** 可关注：该 API 仅支持消费品且按次计费 $0.99，适合小规模口碑验证；非消费品或高频调用场景需先评估成本与覆盖范围。
-
-**标签**: `#credits`, `#promo`, `#api`, `#free-tier`
+**标签**: `#api`, `#promo`, `#batch`
 
 ---
