@@ -5,252 +5,189 @@ date: 2026-09-25
 lang: en
 ---
 
-> From 226 items, 17 important content pieces were selected
+> From 211 items, 14 important content pieces were selected
 
 ---
 
 **Agent Harness Architecture**
-1. [Mastra Core 1.69.0 Adds Classifiers, Policy Gates, and Background Tools](#item-harness-arch-1) ⭐️ 8.8/10
+1. [Mastra 1.69.0 发布](#item-harness-arch-1) ⭐️ 8.8/10
 2. [cline/cline released sdk/sdk/v0.0.86](#item-harness-arch-2) ⭐️ 8.3/10
-3. [pydantic/pydantic-ai released v2.49.0](#item-harness-arch-3) ⭐️ 8.3/10
-4. [Cline Desktop v0.0.35 Adds Linux Builds and Plugin Command Fixes](#item-harness-arch-4) ⭐️ 7.3/10
-5. [Cline CLI v3.0.65 Patch](#item-harness-arch-5) ⭐️ 6.3/10
-6. [Gemini CLI v0.61.0 Released](#item-harness-arch-6) ⭐️ 6.3/10
-7. [2.1.282](#item-harness-arch-7) ⭐️ 6.3/10
-8. [Anthropic financial-services Repo Ships Reference Agents](#item-harness-arch-8) ⭐️ 5.5/10
+3. [Cline 桌面版 v0.0.35 发布](#item-harness-arch-3) ⭐️ 6.8/10
+4. [pydantic-ai v2.49.0 发布](#item-harness-arch-4) ⭐️ 6.8/10
+5. [anthropics/claude-code released v2.1.282](#item-harness-arch-5) ⭐️ 6.3/10
+6. [Cline v4.1.21 发布](#item-harness-arch-6) ⭐️ 6.3/10
+7. [Cline CLI v3.0.65 发布](#item-harness-arch-7) ⭐️ 6.3/10
+8. [video-use 开源：对话剪视频](#item-harness-arch-8) ⭐️ 5.0/10
 
 **AI Agent Engineer**
-1. [HF daily paper: Schrödinger&\#x27;s Code Repository: Have LLMs Learned SWE-bench or Memorized It?](#item-agent-engineer-1) ⭐️ 8.0/10
-2. [JIT Memory 论文：查询时再筛选记忆](#item-agent-engineer-2) ⭐️ 7.0/10
-3. [Paper Extracts Hidden CoT from Frontier Models via API Tools](#item-agent-engineer-3) ⭐️ 7.0/10
-4. [VHD-Play 论文：先解模型再造环境](#item-agent-engineer-4) ⭐️ 7.0/10
-5. [LFM2.5-VL-DSpark 发布](#item-agent-engineer-5) ⭐️ 6.8/10
+1. [LFM2.5-VL-DSpark 正式发布](#item-agent-engineer-1) ⭐️ 8.3/10
+2. [Introducing Gemini 3.8 Live with Live Avatar](#item-agent-engineer-2) ⭐️ 7.8/10
+3. [Qwen3.8-Flash-Next on 12GB VRAM - 65 tokens per second](#item-agent-engineer-3) ⭐️ 6.0/10
 
 **AI Daily**
-1. [Claude Opus 5.5 降价 40%](#item-ai-daily-1) ⭐️ 9.8/10
-2. [Meta AI Glasses 隐私处理](#item-ai-daily-2) ⭐️ 8.8/10
-3. [AI-powered fuzzing with the GitHub Security Lab Taskflow Agent](#item-ai-daily-3) ⭐️ 7.8/10
-4. [Claude Tag 频道支持个人连接器](#item-ai-daily-4) ⭐️ 7.8/10
+1. [AI-powered fuzzing with the GitHub Security Lab Taskflow Agent](#item-ai-daily-1) ⭐️ 8.3/10
+2. [When chat is the wrong UI](#item-ai-daily-2) ⭐️ 5.8/10
+
+**Technology News**
+1. [Simon Willison retweets AI video prompt featuring pelican explaining shell command](#item-tech-news-1) ⭐️ 0.0/10
 
 ---
 
 ## Agent Harness Architecture
 
 <a id="item-harness-arch-1"></a>
-### [Mastra Core 1.69.0 Adds Classifiers, Policy Gates, and Background Tools](https://github.com/mastra-ai/mastra/releases/tag/%40mastra/core%401.69.0) ⭐️ 8.8/10
+### [Mastra 1.69.0 发布](https://github.com/mastra-ai/mastra/releases/tag/%40mastra/core%401.69.0) ⭐️ 8.8/10
 
-Mastra Core 1.69.0 promotes classifiers, policy enforcement, and background tool execution to first-class runtime primitives. Developers register classifiers on \`new Mastra\(\{ classifiers \}\)\`, manage them through \`getClassifier\`/\`listClassifiers\`/\`addClassifier\`/\`removeClassifier\`, and use them as typed workflow steps with token usage for branching. A new \`ClassifierProcessor\` applies typed policies to agent input, output, and streaming content, failing closed by default with an opt-in \`errorStrategy: &\#x27;warn&\#x27;\`. Tools can hand long-running operations to Mastra via \`context.background.adopt\(\{ completion, cancel \}\)\` and return immediately, though adopted handles remain in-memory and do not survive restarts.
+Mastra 1.69.0 把分类器提升为 core 与 workflow 的一等原语：可在 \`new Mastra\(\{ classifiers \}\)\` 注册，用 \`getClassifier\`、\`listClassifiers\`、\`addClassifier\`、\`removeClassifier\` 管理，无活跃 trace 的评估会自动起根 \`CLASSIFIER\_EVALUATION\` span。新增 \`ClassifierProcessor\` 对 agent 输入、输出和流式内容施加分类策略，默认 fail-closed，分类器失败即 abort；设 \`errorStrategy: &\#x27;warn&\#x27;\` 才回到旧 fail-open。工具层新增 \`context.background.adopt\(\)\`，\`execute\(\)\` 可立即返回确认，把长时操作的完成与取消交给原生后台跟踪，但句柄只在内存，进程重启后不恢复。
 
 github · PaulieScanlon · Sep 24, 06:58
 
-**「Design Notes」** Classifier evaluations without an active trace start a root \`CLASSIFIER\_EVALUATION\` span through the configured observability provider. Background adoption decouples \`execute\(\)\` return from operation completion, letting the runtime track cancellation without holding the call open.
+**「设计要点」** 分类器既是运行时原语也是工作流步骤，能在 fluent/dynamic graph 里做类型化分支，并给出完整答案与 token 用量。\`ClassifierProcessor\` 把安全/路由门控前移到 agent 输入输出与流式管道，用显式 abort 收口权限。
 
-**「What Changed」** The release adds classifier registration and management APIs, a \`ClassifierProcessor\` for input/output/streaming gates with fail-closed defaults, and native background tool adoption via \`context.background.adopt\(\)\`. It also introduces \`rootSpanName\` in \`tracingOptions\` for per-run root span naming and deprecates trace-query \`group\` in favor of the \`queryThreads\` contract.
+**「改了什么」** 分类器从零变成可注册、可追踪、可嵌入工作流的核心能力。后台工具从必须挂起 \`execute\(\)\` 等结果，改为 adopt 句柄后立即返回。Inngest durable run 新增 \`retries\`，并修复 resume 时缺快照失败的问题。
 
-**Tags**: `#runtime`, `#tools`, `#permissions`, `#planning`, `#eval`
+**Tags**: `#runtime`, `#tools`, `#permissions`, `#planning`
 
 ---
 
 <a id="item-harness-arch-2"></a>
 ### [cline/cline released sdk/sdk/v0.0.86](https://github.com/cline/cline/releases/tag/sdk/sdk/v0.0.86) ⭐️ 8.3/10
 
-Cline SDK v0.0.86 adds a compact-and-retry recovery path for output-token truncation on local model servers and improves hub startup error reporting.
+Cline SDK v0.0.86 adds output-token-limit recovery through forced compaction and improves local hub startup error reporting.
 
 github · github-actions\[bot\] · Sep 24, 05:43
 
-**Tags**: `#runtime`, `#memory`
+**Tags**: `#runtime`, `#tools`, `#planning`, `#eval`
 
 ---
 
 <a id="item-harness-arch-3"></a>
-### [pydantic/pydantic-ai released v2.49.0](https://github.com/pydantic/pydantic-ai/releases/tag/v2.49.0) ⭐️ 8.3/10
+### [Cline 桌面版 v0.0.35 发布](https://github.com/cline/cline/releases/tag/desktop-v0.0.35) ⭐️ 6.8/10
 
-pydantic-ai v2.49.0 adds GitHub Copilot OAuth device flow, TypeSafeModel structured-output refinements, and a RealtimeSession reply-wait API, plus logprobs and model-support fixes.
-
-github · DouweM · Sep 24, 03:09
-
-**Tags**: `#runtime`, `#permissions`, `#eval`
-
----
-
-<a id="item-harness-arch-4"></a>
-### [Cline Desktop v0.0.35 Adds Linux Builds and Plugin Command Fixes](https://github.com/cline/cline/releases/tag/desktop-v0.0.35) ⭐️ 7.3/10
-
-Cline Desktop v0.0.35 adds Linux support with x64 .deb and .rpm packages, fixes plugin slash commands to execute registered handlers rather than send plain text to the model, and introduces a Diagnostics export that strips sensitive data. The release also restores voice input with provider-backed streaming transcription, remembers reasoning effort per provider, and surfaces actual endpoint errors for several model providers. First launch after install or update can take 8 to 13 seconds on Windows while the new binary is scanned.
+Cline Desktop v0.0.35 发布，桌面端首次支持 Linux，每个版本提供 x64 \`.deb\` 和 \`.rpm\` 包，暂不提供 AppImage。插件斜杠命令改为直接执行插件注册的 handler，不再把命令当纯文本发给模型；斜杠菜单中的技能和工作流改为从当前会话的工作区（含 worktree）读取。设置页新增 Diagnostics 导出，会把应用版本、系统、设置、sidecar 与 hub 日志及所选会话 manifest 写入 Downloads 下的单个文本文件，并剥离 API key、凭证样式值、提示词和 home 目录路径。
 
 github · github-actions\[bot\] · Sep 24, 08:34
 
-**「Design Notes」** The desktop runtime now supports Linux with native GTK pickers and background updates that install on restart. Plugin slash commands execute registered handlers, the slash menu sources skills and workflows from the conversation&\#x27;s own workspace including worktrees, and Diagnostics export strips API keys, credential-shaped values, prompts, and home directory paths before writing a single text file.
+**「设计要点」** 工具层上，插件 slash command 从“文本透传”变为“本地 handler 执行”，仅在命令需要时才开启模型回合；单个插件损坏不再导致所有 slash 提示失败。诊断导出在权限与隐私上做了字段级 redaction，明确排除密钥、凭证、提示词和用户 home 路径，可直接附到 GitHub issue。
 
-**「What Changed」** Linux packaging \(.deb/.rpm\) is new, plugin slash commands now run registered handlers instead of sending text to the model, and a Diagnostics export writes sanitized logs and session manifests to Downloads. Voice input returns with provider-backed streaming transcription, reasoning effort persists per provider, and model lists surface real endpoint errors.
+**「改了什么」** 相比 desktop-v0.0.34，这一版补齐了 Linux 桌面运行时、修复了插件斜杠命令的执行路径，并新增了可安全外发的诊断导出。推理强度选择改为按 provider 持久化，切换 provider 时应用上次所选 effort；本地模型在触达 output-token 上限时会压缩对话并重试一次，不再直接失败。
 
 **Tags**: `#runtime`, `#tools`, `#plugins`
 
 ---
 
+<a id="item-harness-arch-4"></a>
+### [pydantic-ai v2.49.0 发布](https://github.com/pydantic/pydantic-ai/releases/tag/v2.49.0) ⭐️ 6.8/10
+
+pydantic-ai v2.49.0 adds GitHub Copilot device OAuth via \`GitHubCopilotOAuthFlow\`, extends \`TypeSafeModel\` with \`BoolCriteria\` and improved \`None\`/numeric choice handling, and introduces \`RealtimeSession.wait\_for\_reply\(\)\`. The release also fixes OpenAI logprob streaming, Bedrock model-name and parameter handling, and realtime error propagation. Changes are incremental, targeting structured-output reliability and provider compatibility rather than core architecture.
+
+github · DouweM · Sep 24, 03:09
+
+**「设计要点」** The OAuth flow and realtime session method touch the tool and runtime layers: device authorization is added as a first-class flow, while \`wait\_for\_reply\(\)\` gives realtime consumers a synchronous handle on asynchronous audio streams. \`TypeSafeModel\` changes refine how structured outputs map optional and numeric fields to model choices.
+
+**「改了什么」** Versus v2.48.0, the release adds Copilot device OAuth, \`BoolCriteria\`, \`RealtimeSession.wait\_for\_reply\(\)\`, and several \`TypeSafeModel\` structured-output improvements. It also fixes Bedrock Converse compatibility for GPT-5.6/GPT-6 and new \`gpt-6-\*\` models, preserves streamed OpenAI logprobs, and surfaces realtime receive-side failures to all consumer shapes.
+
+**Tags**: `#runtime`, `#tools`, `#permissions`
+
+---
+
 <a id="item-harness-arch-5"></a>
-### [Cline CLI v3.0.65 Patch](https://github.com/cline/cline/releases/tag/cli-v3.0.65) ⭐️ 6.3/10
+### [anthropics/claude-code released v2.1.282](https://github.com/anthropics/claude-code/releases/tag/v2.1.282) ⭐️ 6.3/10
 
-Cline CLI v3.0.65 patches local model reliability and hub startup behavior. When llama.cpp, Ollama, or LM Studio cap generation at the remaining context, the CLI compacts the conversation and retries the turn once before falling back to concise-retry recovery, preserving partial answers if all attempts fail. Hub startup errors now state the cause instead of a generic message, and the CLI waits up to 15 seconds for a fresh hub instead of 8. Session error messages persist across resumes without being sent to the model or counted by compaction.
+Routine Claude Code release adding minor managed settings, telemetry diagnostics, UI polish, and a web search decryption bug fix.
 
-github · github-actions\[bot\] · Sep 24, 05:54
+github · ashwin-ant · Sep 24, 18:38
 
-**「设计要点」** Runtime recovery now handles output-token exhaustion by compacting context and retrying once, while failed plugin loads avoid repeated sandbox spawns by retrying after 30 seconds. Session state keeps error transcripts across resumes without feeding them back into the model context.
+**Tags**: `#tools`, `#mcp`, `#permissions`, `#runtime`
 
-**「改了什么」** Local model runs survive output-token limits via compaction and retry, hub startup failures now report causes with a 15-second wait, and session errors persist across resumes. \`cline history update\` metadata now persists for hub-managed sessions, the ai&amp; provider joins the catalog, and Yolo mode \(\`-y\`\) enforces tighter output rules.
+---
+
+<a id="item-harness-arch-6"></a>
+### [Cline v4.1.21 发布](https://github.com/cline/cline/releases/tag/v4.1.21) ⭐️ 6.3/10
+
+Cline v4.1.21 发布，新增日本区 OpenAI 兼容 provider ai&amp;，模型目录刷新至 6,386 个模型、209 个 provider。未固定默认模型的 19 个 provider 中有 11 个切到 Claude Opus 5.5，包括 GitHub Copilot 和 Vertex。本地模型（llama.cpp、Ollama、LM Studio）触发输出上限时，harness 会压缩对话并重试一次，不再直接结束任务。另外修复了失败任务重开、空命令输出、Windows @-mention 文件名和取消重试等待等问题。
+
+github · github-actions\[bot\] · Sep 24, 16:16
+
+**「设计要点」** 本地模型服务端按剩余上下文截断生成，与 output budget 无关；Cline 的恢复路径是先 compact 再 concise-retry，并保留部分答案。
+
+**「改了什么」** 相对 v4.1.20，本地模型长回复触顶后新增压缩并重试的恢复路径，模型默认值批量刷新；其余为 provider 新增、js-yaml 安全版本提升和交互修复。
 
 **Tags**: `#runtime`, `#memory`, `#tools`
 
 ---
 
-<a id="item-harness-arch-6"></a>
-### [Gemini CLI v0.61.0 Released](https://github.com/google-gemini/gemini-cli/releases/tag/v0.61.0) ⭐️ 6.3/10
-
-Gemini CLI v0.61.0 is a minor maintenance release published on 2026-09-23. It focuses on security hardening and core runtime fixes rather than architectural changes. Key corrections include blocking indirect prompt injection through build file modifications and untrusted flags, hardening sandbox filesystem boundaries, and preserving explicit versioned Flash model IDs. The release notes also include a cherry-picked patch that produced v0.61.0-preview.1.
-
-github · gemini-cli-robot · Sep 23, 23:59
-
-**「Design Points」** The sandbox fix isolates runtime state and tightens filesystem boundaries. A core fix ensures AgentLoopContext properties are preserved across object spread operations. These adjustments affect the tool execution layer and agent loop context without adding new capabilities.
-
-**「What Changed」** Relative to v0.60.0, v0.61.0 introduces indirect prompt injection prevention for build files and untrusted flags, hardens sandbox filesystem isolation, preserves explicit versioned Flash model IDs, and fixes AgentLoopContext property loss during object spread. A patch cherry-pick also generated v0.61.0-preview.1.
-
-**Tags**: `#sandbox`, `#permissions`, `#runtime`
-
----
-
 <a id="item-harness-arch-7"></a>
-### [2.1.282](https://code.claude.com/docs/en/changelog#2-1-282) ⭐️ 6.3/10
+### [Cline CLI v3.0.65 发布](https://github.com/cline/cline/releases/tag/cli-v3.0.65) ⭐️ 6.3/10
 
-Claude Code 2.1.282 adds minor terminal, telemetry, MCP, and gateway settings plus a web-history 400 error fix.
+Cline CLI v3.0.65 发布，修复本地模型长会话在输出上限中断、hub 启动报错不清、会话恢复后错误丢失等问题。llama.cpp、Ollama、LM Studio 会在剩余上下文内截断生成，CLI 现在压缩对话并重试一次，失败再退回简洁重试，保留部分回答。hub 启动失败会给出具体原因，等待时间从 8 秒放宽到 15 秒，覆盖 Windows 安装或更新后首次启动 8–13 秒的情况。会话中的错误信息在恢复后重新出现在 transcript，不再发给模型或计入 compaction。
 
-rss · Claude Code Changelog · Sep 24, 18:46
+github · github-actions\[bot\] · Sep 24, 05:54
 
-**Tags**: `#runtime`, `#mcp`, `#permissions`, `#sandbox`, `#tools`
+**「设计要点」** 运行时上，本地模型输出受限时先压缩再重试；hub 启动失败输出原因并延长等待；插件加载失败不再每次 prompt 都拉起 sandbox，而是 30 秒后重试。错误消息只进 transcript，不进入模型上下文，也不参与 compaction 计数。
+
+**「改了什么」** 相对 cli-v3.0.64，本地模型输出上限从直接失败改为压缩重试；hub 启动诊断和等待时间调整；错误消息与 \`cline history update\` 的 title/prompt 在 hub 托管会话中跨恢复持久化；Yolo 模式收紧输出规则；新增 ai&amp; provider；模型目录从 6,237 扩到 6,386，19 个 provider 默认模型变更。
+
+**Tags**: `#runtime`, `#tools`
 
 ---
 
 <a id="item-harness-arch-8"></a>
-### [Anthropic financial-services Repo Ships Reference Agents](https://github.com/anthropics/financial-services) ⭐️ 5.5/10
+### [video-use 开源：对话剪视频](https://github.com/browser-use/video-use) ⭐️ 5.0/10
 
-Anthropic open-sourced \`anthropics/financial-services\`, a reference repository of agents, skills, and data connectors for investment banking, equity research, private equity, and wealth management workflows. The same system prompts and skills ship from one source and run in two modes: installed as a Claude Cowork plugin or deployed through the Claude Managed Agents API behind a custom workflow engine. The repo is domain-specific reference material rather than a harness architecture or protocol update.
+browser-use 开源 video-use，把视频剪辑搬进 Claude Code。原始素材丢进文件夹，对话下达指令，Claude Code 自动切掉 filler words、false starts 和 take 间死区，逐段自动调色，输出 final.mp4。不设预设和菜单，talking heads、montages、tutorials、travel、interviews 都能直接处理。可在 Browser Use Cloud 试用。
 
-rss · GitHub Trending Daily · Sep 24, 23:19
+rss · GitHub Trending Daily · Sep 25, 01:06
 
-**「Design Notes」** Agent definitions are decoupled from runtime: identical prompts and skills execute either locally via the Cowork plugin or remotely via the Managed Agents API, so teams can choose execution location without rewriting logic.
-
-**Tags**: `#agents`, `#tools`, `#runtime`
+**Tags**: `#tools`, `#planning`, `#runtime`
 
 ---
 
 ## AI Agent Engineer
 
 <a id="item-agent-engineer-1"></a>
-### [HF daily paper: Schrödinger&\#x27;s Code Repository: Have LLMs Learned SWE-bench or Memorized It?](https://huggingface.co/papers/2609.27891) ⭐️ 8.0/10
+### [LFM2.5-VL-DSpark 正式发布](https://huggingface.co/blog/LiquidAI/lfm2-5-vl-dspark) ⭐️ 8.3/10
 
-A new paper introduces SchrodingerRepo, an evaluation framework that dynamically instantiates repository representations to combat data leakage and memorization in coding agent benchmarks like SWE-bench.
+LiquidAI 发布 LFM2.5-VL-DSpark，为 LFM2.5-VL-3B 提供投机解码 drafter，增加 280M 参数（8.9%）。在 M5 Max 上解码提速 2.30x 到 3.13x，H100 上为 2.04x 到 2.66x；端到端延迟分别改善 1.56x 到 2.62x 与 1.64x 到 2.27x。该 drafter 沿用文本 DSpark 架构，在固定 tapped layers 捕获隐状态，将图像 patch 与文本 token 投影到同一表示后生成候选块，推理算法不变；llama.cpp、MLX-VLM 和 SGLang 已首日支持，模型提供 Safetensors 与 GGUF 格式。投机解码仅加速 decode，视觉编码与 prefill 不在范围内，端到端收益受 Amdahl 定律限制。
 
-rss · Hugging Face Daily Papers · Sep 24, 00:00
+rss · Hugging Face Blog · Sep 24, 14:08
 
-**Tags**: `#eval`, `#coding-agent`, `#memory`
+**「为什么重要」** 对构建 VLM agent 的工程师而言，这提供了即插即用的推理优化路径：drafter 仅增加 8.9% 参数，主流框架已首日集成，可在边缘设备与数据中心 GPU 上获得 2–3 倍解码加速。文章同时明确划定加速边界——视觉编码与 prefill 未被加速，端到端增益受非解码阶段制约，为评估真实部署收益提供依据。
+
+**「可关注」** 可关注：LFM2.5-VL-DSpark 的推理算法与文本 DSpark 一致，图像与文本在 tapped layers 之前已投影到同一隐状态空间，现有文本投机解码工具链可低成本迁移到 VLM；目标模型会验证每个候选 token，贪心输出与单独运行目标模型一致，但需按硬件选择 block size 8 或 9，并预期端到端提速会显著低于纯解码提速。
+
+**Tags**: `#inference`, `#vlm`, `#speculative-decoding`, `#toolchain`
 
 ---
 
 <a id="item-agent-engineer-2"></a>
-### [JIT Memory 论文：查询时再筛选记忆](https://huggingface.co/papers/2609.27334) ⭐️ 7.0/10
+### [Introducing Gemini 3.8 Live with Live Avatar](https://deepmind.google/blog/introducing-gemini-38-live-with-live-avatar/) ⭐️ 7.8/10
 
-Hugging Face Daily Papers 收录论文 Just-in-Time Memory，提出保留原始轨迹、在查询时再学习 curation 的 agent memory 新范式。现有系统多在任务完成后把轨迹蒸馏成反思、工作流、技能或推理策略等固定工件，在查询到来前就不可逆地丢弃信息；学习 write-time curator 也受长程信用分配制约，存储决策的价值可能要等很多任务之后的相关查询出现才显现。论文主张把筛选推迟到查询时，生成 task-adaptive memory。该文于 2026-09-24 发布，获 33 upvotes，但摘要未展示基准突破或生产数据。
+Google DeepMind introduces Gemini 3.8 Live with Live Avatar, a new real-time multimodal model release.
 
-rss · Hugging Face Daily Papers · Sep 24, 00:00
+rss · Google DeepMind · Sep 24, 16:20
 
-**「为什么重要」** 对做 coding agent / harness 的人，这直接质疑了当前主流的 write-time memory 设计：如果记忆在写入时就被压成 query-independent 摘要，长程任务里真正有用的细节可能已经丢失。论文把问题从“怎么摘要更好”转向“什么时候筛选”，但尚未给出基准或生产验证，实际收益仍待观察。
-
-**「可关注」** 如果你们的 agent memory 也在任务结束时做 reflection 或 workflow 蒸馏，可以评估保留原始轨迹、把筛选逻辑移到查询时是否会减少信息损失，尤其关注长程信用分配导致的存储决策难题。
-
-**Tags**: `#memory`, `#eval`, `#coding-agent`
+**Tags**: `#coding-agent`, `#multimodal`, `#model-release`
 
 ---
 
 <a id="item-agent-engineer-3"></a>
-### [Paper Extracts Hidden CoT from Frontier Models via API Tools](https://huggingface.co/papers/2609.26637) ⭐️ 7.0/10
+### [Qwen3.8-Flash-Next on 12GB VRAM - 65 tokens per second](https://www.reddit.com/r/LocalLLaMA/comments/1wp7zyb/qwen38flashnext_on_12gb_vram_65_tokens_per_second/) ⭐️ 6.0/10
 
-A Hugging Face daily paper \(2026-09-24\) introduces a method to externalize hidden chain-of-thought in closed-source frontier models by registering a custom tool through a standard API feature. Validated against native CoT on open-source models and extended to closed frontier models including GPT-6 Astra, the extracted reasoning matches native performance and substantially outperforms no-reasoning baselines across competition mathematics, science, and code generation. The authors caution that these traces may reflect post-hoc rationalization rather than genuine reasoning, and characterize how frontier models structure intermediate steps. The work targets agent evaluation and observability; it is a research finding, not a change to mainstream coding agents, protocols, or benchmarks.
+A custom inference engine claims 65 tok/s output on 12GB VRAM for Qwen3.8-Flash-Next with specific quantization and memory trade-offs.
 
-rss · Hugging Face Daily Papers · Sep 24, 00:00
+reddit · r/LocalLLaMA · /u/KnownAd4832 · Sep 24, 17:30
 
-**「为什么重要」** Engineers gain a concrete, reproducible way to inspect intermediate reasoning in closed models via standard API tool calls, addressing an observability gap for agent evaluation. The authors caution, however, that externalized traces may be post-hoc rationalizations and should not be treated as verified ground-truth reasoning.
-
-**「可关注」** Registering a custom API tool can induce frontier models to externalize hidden CoT with parity to native reasoning, but the traces require careful interpretation as potential post-hoc rationalizations.
-
-**Tags**: `#eval`, `#observability`, `#coding-agent`, `#harness`
-
----
-
-<a id="item-agent-engineer-4"></a>
-### [VHD-Play 论文：先解模型再造环境](https://huggingface.co/papers/2609.27321) ⭐️ 7.0/10
-
-VHD-Play 反转了环境生成依赖：先采样并求解数学模型，再由语料约束的 setter 将决策过程渲染为有状态工具。可执行动力学与轨迹打分参考来自同一已解模型，无需事后对齐。该 pipeline 以每个环境几美分的成本产出 3,300 个多样化 agentic RL 环境。材料提及在 Qwen3.6-35B-A3B 上开展训练，但具体结果被截断，未给出。
-
-rss · Hugging Face Daily Papers · Sep 24, 00:00
-
-**「为什么重要」** 对做 coding agent / harness 的人来说，环境构造与评估规则的事后对齐是常见成本。VHD-Play 把动力学和评分参考绑定到同一个已解模型，为低成本、可扩展的 agentic RL 环境生成提供了一条可复现路径。已发生的变化是 pipeline 设计本身，尚未证实的影响是其训练收益。
-
-**「可关注」** 可关注：若需批量构造可验证的 agentic 训练环境，可评估「先解模型、后渲染工具」的路线，尤其关注其已解模型如何同时提供动力学与评分参考。
-
-**Tags**: `#eval`, `#orchestration`, `#harness`
-
----
-
-<a id="item-agent-engineer-5"></a>
-### [LFM2.5-VL-DSpark 发布](https://huggingface.co/blog/LiquidAI/lfm2-5-vl-dspark) ⭐️ 6.8/10
-
-Liquid AI 发布 LFM2.5-VL-DSpark，为 LFM2.5-VL-3B 配套视觉草稿模型，通过投机解码加速 VLM 推理。草稿模型约 280M 参数，增加 8.9% 部署开销，采用 4 层简化注意力结构，推荐块大小 8 或 9。官方基准显示，设备端解码最高加速 3.13x，H100 上为 20.4x–2.66x；端到端提升最高分别达 2.62x 和 2.27x。llama.cpp、MLX-VLM、SGLang 首日支持，但需合入对应 PR；投机解码保持精确，贪心输出与单独运行目标模型一致。
-
-rss · Hugging Face Blog · Sep 24, 14:08
-
-**「为什么重要」** 视觉编码与 prefill 仍占用大量端到端时延，投机解码只加速 decode 阶段。对多模态 agent 推理栈，这提供了可复用的加速路径，但收益受 Amdahl 定律限制。
-
-**「可关注」** 可关注：视觉草稿模型复用文本 DSpark 架构，图像 patch 与文本 token 在 hidden states 层前统一表征，推理算法不变；SGLang、llama.cpp、MLX-VLM 均已提供启用路径，但需合入对应 PR 并配置块大小。
-
-**Tags**: `#toolchain`, `#inference`, `#vlm`
+**Tags**: `#harness`, `#eval`, `#local-inference`
 
 ---
 
 ## AI Daily
 
 <a id="item-ai-daily-1"></a>
-### [Claude Opus 5.5 降价 40%](https://claude.com/blog/claude-opus-5-5-built-for-coding-sessions-that-use-more-context) ⭐️ 9.8/10
+### [AI-powered fuzzing with the GitHub Security Lab Taskflow Agent](https://github.blog/security/application-security/ai-powered-fuzzing-with-the-github-security-lab-taskflow-agent/) ⭐️ 8.3/10
 
-Claude 发布 Opus 5.5，官方称按 token 计费的典型负载运行成本比 Opus 5 低约 40%，其中输入输出 token 降价 20%，缓存读取降价 60%。官方数据显示，2026 年 3 月至 9 月 Claude Code 单次请求上下文增长约 2.6 倍，缓存未命中率下降超 50%。Zeta Labs 实测任务轮次和工具调用减少，成本近乎减半，最难任务完成量翻倍；Addy 指出开放式任务收益更明显，范围明确的任务差距不大。
-
-rss · Claude Blog · Sep 24, 00:00
-
-**「为什么重要」** 编程会话正从短交互转向长时程、高上下文 agent 任务，缓存读取占 agent 任务成本大头。Opus 5.5 的降价和 Claude Code harness 优化针对这一趋势，且允许会话中切换 effort 级别而不重置缓存。
-
-**「可关注」** 可关注：在 Claude Code 中运行 /usage 查看缓存读取占比，把 Opus 5.5 用于开放式、高上下文任务；范围明确的短任务可能只享受降价，轮次不会明显减少。
-
-**Tags**: `#model`, `#lab`, `#product`, `#industry`
-
----
-
-<a id="item-ai-daily-2"></a>
-### [Meta AI Glasses 隐私处理](https://engineering.fb.com/2026/09/23/security/private-processing-meta-ai-glasses/) ⭐️ 8.8/10
-
-Meta 官方工程博客宣布为 Meta AI Glasses 带来隐私处理能力。文章称眼镜是全天候获得 AI 协助的最佳形态，能更好理解个人上下文，并让用户无需拿起手机即可保持在场。目前公开信息仅确认该功能发布，未披露具体技术实现、部署范围或性能数据。
-
-rss · Engineering at Meta · Sep 24, 00:00
-
-**「为什么重要」** Meta 将隐私处理作为 AI Glasses 的官方能力发布，对关注可穿戴设备隐私架构的工程师具有参考价值。
-
-**「可关注」** 可关注：Meta AI Glasses 隐私处理的具体技术路径尚未公开，需等待后续官方文档或论文披露实现细节。
-
-**Tags**: `#product`, `#industry`, `#policy`
-
----
-
-<a id="item-ai-daily-3"></a>
-### [AI-powered fuzzing with the GitHub Security Lab Taskflow Agent](https://github.blog/security/application-security/ai-powered-fuzzing-with-the-github-security-lab-taskflow-agent/) ⭐️ 7.8/10
-
-GitHub Security Lab announced an AI-powered fuzzing taskflow agent in an official blog post.
+GitHub Security Lab launches an AI-powered fuzzing taskflow via its Taskflow Agent framework, adding automated security testing capabilities.
 
 rss · GitHub Blog · Sep 24, 18:26
 
@@ -258,17 +195,28 @@ rss · GitHub Blog · Sep 24, 18:26
 
 ---
 
-<a id="item-ai-daily-4"></a>
-### [Claude Tag 频道支持个人连接器](https://claude.com/blog/claude-tag-now-supports-personal-connectors-in-channels) ⭐️ 7.8/10
+<a id="item-ai-daily-2"></a>
+### [When chat is the wrong UI](https://github.blog/ai-and-ml/github-copilot/when-chat-is-the-wrong-ui/) ⭐️ 5.8/10
 
-Claude Tag（beta）在 Slack 频道中支持个人连接器，用户可调用自己账号下已连接的日历、云盘、CRM 等服务，此前频道仅能使用管理员挂载的共享连接器。输出可由用户逐条预览，或开启自动模式（Claude 判定敏感时仍需确认），企业版管理员可强制全员审核。该功能正于 Team 计划推出，Enterprise 随后；个人连接器不适用于无人值守任务，定时及自主发起的动作仍依赖管理员连接器。通过个人连接器的操作记录在用户账号下，频道自身操作仍归属服务账号。
+GitHub Blog post argues that canvases offer a more tangible UI than chat boxes for developers, in the context of GitHub Copilot.
 
-rss · Claude Blog · Sep 24, 00:00
+rss · GitHub Blog · Sep 24, 20:00
 
-**「为什么重要」** 频道内 agent 的权限模型从单一服务账号身份，扩展为「用户身份 + 服务账号身份」混合。个人连接器让 agent 能访问频道成员各自的私有数据，但无人值守任务仍须依赖共享连接器。
+**Tags**: `#product`, `#lab`
 
-**「可关注」** 可关注：个人连接器与共享连接器的审计路径分离。用户通过个人连接器的操作计入其个人账号日志，频道操作留在服务账号日志。若需在频道内运行定时或自主发起的 CI 分诊、值班响应，应为 runbook、监控和部署历史配置共享连接器，个人连接器不覆盖此类场景。
+---
 
-**Tags**: `#product`, `#lab`, `#model`
+## Technology News
+
+<a id="item-tech-news-1"></a>
+### [Simon Willison retweets AI video prompt featuring pelican explaining shell command](https://twitter.com/simonw/status/tweet-2103264194158338480) ⭐️ 0.0/10
+
+Simon Willison retweeted a prompt from @goodside asking for a 30-second animated video with synthesized voice, featuring an animated pelican on a unicycle that explains a shell command beginning with \`w \| t\`. The retweeted text is truncated, so the full command and any resulting video are not visible. The item is a social media share of a creative text-to-video prompt rather than a product release or technical analysis.
+
+twitter · Simon Willison · Sep 24, 23:23
+
+**「Background」** Text-to-video AI tools are frequently demonstrated through whimsical or educational prompts shared on social media, and such posts often circulate without the full prompt, output, or technical context needed for independent evaluation.
+
+**Tags**: `#AI video generation`, `#shell scripting`, `#Simon Willison`, `#social media`, `#text-to-video`
 
 ---
