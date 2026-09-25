@@ -5,31 +5,29 @@ date: 2026-09-25
 lang: en
 ---
 
-> From 211 items, 14 important content pieces were selected
+> From 230 items, 14 important content pieces were selected
 
 ---
 
 **Agent Harness Architecture**
 1. [Mastra 1.69.0 发布](#item-harness-arch-1) ⭐️ 8.8/10
-2. [cline/cline released sdk/sdk/v0.0.86](#item-harness-arch-2) ⭐️ 8.3/10
-3. [Cline 桌面版 v0.0.35 发布](#item-harness-arch-3) ⭐️ 6.8/10
-4. [pydantic-ai v2.49.0 发布](#item-harness-arch-4) ⭐️ 6.8/10
-5. [anthropics/claude-code released v2.1.282](#item-harness-arch-5) ⭐️ 6.3/10
-6. [Cline v4.1.21 发布](#item-harness-arch-6) ⭐️ 6.3/10
-7. [Cline CLI v3.0.65 发布](#item-harness-arch-7) ⭐️ 6.3/10
-8. [video-use 开源：对话剪视频](#item-harness-arch-8) ⭐️ 5.0/10
+2. [Cline SDK v0.0.86 发布](#item-harness-arch-2) ⭐️ 7.8/10
+3. [Cline Desktop v0.0.35 发布](#item-harness-arch-3) ⭐️ 6.8/10
+4. [pydantic/pydantic-ai released v2.49.0](#item-harness-arch-4) ⭐️ 6.8/10
+5. [Claude Code v2.1.282 发布](#item-harness-arch-5) ⭐️ 6.3/10
+6. [cline/cline released cli-v3.0.65](#item-harness-arch-6) ⭐️ 6.3/10
+7. [Claude Code 2.1.282 发布](#item-harness-arch-7) ⭐️ 6.3/10
 
 **AI Agent Engineer**
-1. [LFM2.5-VL-DSpark 正式发布](#item-agent-engineer-1) ⭐️ 8.3/10
-2. [Introducing Gemini 3.8 Live with Live Avatar](#item-agent-engineer-2) ⭐️ 7.8/10
-3. [Qwen3.8-Flash-Next on 12GB VRAM - 65 tokens per second](#item-agent-engineer-3) ⭐️ 6.0/10
+1. [LFM2.5-VL-DSpark 发布](#item-agent-engineer-1) ⭐️ 8.8/10
+2. [HF daily paper: Schrödinger&\#x27;s Code Repository: Have LLMs Learned SWE-bench or Memorized It?](#item-agent-engineer-2) ⭐️ 8.0/10
+3. [HF daily paper: HappyWorld-Bench](#item-agent-engineer-3) ⭐️ 7.5/10
+4. [Just-in-Time Memory 论文：查询时策展 Agent 记忆](#item-agent-engineer-4) ⭐️ 7.0/10
+5. [Gemini 3.8 Live Avatar](#item-agent-engineer-5) ⭐️ 6.3/10
+6. [Strata 引擎 Qwen3.8 推理 65 tok/s](#item-agent-engineer-6) ⭐️ 5.5/10
 
 **AI Daily**
-1. [AI-powered fuzzing with the GitHub Security Lab Taskflow Agent](#item-ai-daily-1) ⭐️ 8.3/10
-2. [When chat is the wrong UI](#item-ai-daily-2) ⭐️ 5.8/10
-
-**Technology News**
-1. [Simon Willison retweets AI video prompt featuring pelican explaining shell command](#item-tech-news-1) ⭐️ 0.0/10
+1. [AI-powered fuzzing with the GitHub Security Lab Taskflow Agent](#item-ai-daily-1) ⭐️ 7.8/10
 
 ---
 
@@ -38,185 +36,193 @@ lang: en
 <a id="item-harness-arch-1"></a>
 ### [Mastra 1.69.0 发布](https://github.com/mastra-ai/mastra/releases/tag/%40mastra/core%401.69.0) ⭐️ 8.8/10
 
-Mastra 1.69.0 把分类器提升为 core 与 workflow 的一等原语：可在 \`new Mastra\(\{ classifiers \}\)\` 注册，用 \`getClassifier\`、\`listClassifiers\`、\`addClassifier\`、\`removeClassifier\` 管理，无活跃 trace 的评估会自动起根 \`CLASSIFIER\_EVALUATION\` span。新增 \`ClassifierProcessor\` 对 agent 输入、输出和流式内容施加分类策略，默认 fail-closed，分类器失败即 abort；设 \`errorStrategy: &\#x27;warn&\#x27;\` 才回到旧 fail-open。工具层新增 \`context.background.adopt\(\)\`，\`execute\(\)\` 可立即返回确认，把长时操作的完成与取消交给原生后台跟踪，但句柄只在内存，进程重启后不恢复。
+Mastra 1.69.0 将分类器（Classifier）提升为一等原语，支持在 \`new Mastra\(\{ classifiers \}\)\` 注册，并提供 \`getClassifier\`、\`listClassifiers\`、\`addClassifier\`、\`removeClassifier\` 管理 API。分类器可直接作为工作流步骤（含 fluent 与 dynamic graph）驱动分支控制，并自动生成 \`CLASSIFIER\_EVALUATION\` 根追踪。新增 \`ClassifierProcessor\` 对 agent 输入、输出与流式内容执行策略管控，默认 fail-closed（分类器失败即中止），可通过 \`errorStrategy: &\#x27;warn&\#x27;\` 退回 fail-open。工具层新增 \`context.background.adopt\(\)\`，允许 \`execute\(\)\` 立即返回确认，由原生后台任务接管完成与取消；句柄仅存内存，进程重启后不恢复。
 
 github · PaulieScanlon · Sep 24, 06:58
 
-**「设计要点」** 分类器既是运行时原语也是工作流步骤，能在 fluent/dynamic graph 里做类型化分支，并给出完整答案与 token 用量。\`ClassifierProcessor\` 把安全/路由门控前移到 agent 输入输出与流式管道，用显式 abort 收口权限。
+**「设计要点」** 分类器同时进入运行时注册表、工作流步骤与处理器链，形成从评估到策略阻断的统一路径。后台工具通过 adopt 将长任务从 \`execute\(\)\` 生命周期中解耦，但牺牲了跨重启的持久性。
 
-**「改了什么」** 分类器从零变成可注册、可追踪、可嵌入工作流的核心能力。后台工具从必须挂起 \`execute\(\)\` 等结果，改为 adopt 句柄后立即返回。Inngest durable run 新增 \`retries\`，并修复 resume 时缺快照失败的问题。
+**「改了什么」** 相比此前版本，分类器从独立评估工具变为可注册、可追踪、可阻断的工作流与 agent 原语；后台工具不再需要挂起 \`execute\(\)\` 等待完成。
 
-**Tags**: `#runtime`, `#tools`, `#permissions`, `#planning`
+**Tags**: `#runtime`, `#tools`, `#permissions`, `#eval`
 
 ---
 
 <a id="item-harness-arch-2"></a>
-### [cline/cline released sdk/sdk/v0.0.86](https://github.com/cline/cline/releases/tag/sdk/sdk/v0.0.86) ⭐️ 8.3/10
+### [Cline SDK v0.0.86 发布](https://github.com/cline/cline/releases/tag/sdk/sdk/v0.0.86) ⭐️ 7.8/10
 
-Cline SDK v0.0.86 adds output-token-limit recovery through forced compaction and improves local hub startup error reporting.
+Cline SDK v0.0.86 发布，新增本地模型输出截断的 compact-and-retry 恢复。文本轮次触达 output-token 上限时，运行时走一次强制压缩再重试；压缩无可删内容或重试再次截断，才退回 nudge-and-retry，原始 max-tokens 错误仍带部分回答抛出。产生工具调用的轮次不重放。新增 \`task.max\_tokens\_recovery\` 事件（\`started\`/\`retried\`/\`failed\`）观测恢复频率。
 
 github · github-actions\[bot\] · Sep 24, 05:43
 
-**Tags**: `#runtime`, `#tools`, `#planning`, `#eval`
+**「设计要点」** 恢复路径复用 \`prepareTurn\` 处理上下文溢出的同一套强制压缩逻辑。插件斜杠命令收敛为 \`@cline/core\` 的 \`createPluginCommandService\`，CLI 与桌面 sidecar 共用；插件加载失败不再拒绝服务，而是记录日志、缓存空命令集，30 秒后重试，handler 异常仍向上抛。
+
+**「改了什么」** Hub 启动失败透出真实原因并放宽新 hub 等待至 15 秒。会话重命名经 \`session.update\` 显式传 \`title\` 不再被 metadata 替换覆盖；终端错误持久化为只显示历史条目；模型列表在主机不可达或密钥错误时上报错误；退避期间可中止请求；流式转录覆盖 OpenAI、Vercel AI Gateway 和 ElevenLabs。
+
+**Tags**: `#runtime`, `#memory`, `#planning`
 
 ---
 
 <a id="item-harness-arch-3"></a>
-### [Cline 桌面版 v0.0.35 发布](https://github.com/cline/cline/releases/tag/desktop-v0.0.35) ⭐️ 6.8/10
+### [Cline Desktop v0.0.35 发布](https://github.com/cline/cline/releases/tag/desktop-v0.0.35) ⭐️ 6.8/10
 
-Cline Desktop v0.0.35 发布，桌面端首次支持 Linux，每个版本提供 x64 \`.deb\` 和 \`.rpm\` 包，暂不提供 AppImage。插件斜杠命令改为直接执行插件注册的 handler，不再把命令当纯文本发给模型；斜杠菜单中的技能和工作流改为从当前会话的工作区（含 worktree）读取。设置页新增 Diagnostics 导出，会把应用版本、系统、设置、sidecar 与 hub 日志及所选会话 manifest 写入 Downloads 下的单个文本文件，并剥离 API key、凭证样式值、提示词和 home 目录路径。
+Cline Desktop v0.0.35 adds Linux support with x64 .deb and .rpm packages. Plugin slash commands now execute handlers instead of passing as plain text to the model. A new Diagnostics export writes sanitized logs to Downloads. Voice input streams via provider-backed transcription with browser fallback, and reasoning effort persists per provider.
 
 github · github-actions\[bot\] · Sep 24, 08:34
 
-**「设计要点」** 工具层上，插件 slash command 从“文本透传”变为“本地 handler 执行”，仅在命令需要时才开启模型回合；单个插件损坏不再导致所有 slash 提示失败。诊断导出在权限与隐私上做了字段级 redaction，明确排除密钥、凭证、提示词和用户 home 路径，可直接附到 GitHub issue。
+**「设计要点」** Plugin slash commands invoke registered handlers directly and start a turn only when requested. Slash menus, skills, and workflows resolve from the active conversation workspace, including worktrees. Diagnostics export strips API keys, credential-shaped values, prompts, and home paths before writing a single text file.
 
-**「改了什么」** 相比 desktop-v0.0.34，这一版补齐了 Linux 桌面运行时、修复了插件斜杠命令的执行路径，并新增了可安全外发的诊断导出。推理强度选择改为按 provider 持久化，切换 provider 时应用上次所选 effort；本地模型在触达 output-token 上限时会压缩对话并重试一次，不再直接失败。
+**「改了什么」** Linux packaging \(.deb/.rpm\) joins macOS and Windows with native GTK picker and background updates. Plugin slash commands moved from plain-text passthrough to handler execution. Settings adds a Diagnostics row for sanitized log export. Reasoning effort is remembered per provider, and unreachable endpoints surface real errors instead of empty lists.
 
-**Tags**: `#runtime`, `#tools`, `#plugins`
+**Tags**: `#runtime`, `#tools`, `#eval`, `#plugins`
 
 ---
 
 <a id="item-harness-arch-4"></a>
-### [pydantic-ai v2.49.0 发布](https://github.com/pydantic/pydantic-ai/releases/tag/v2.49.0) ⭐️ 6.8/10
+### [pydantic/pydantic-ai released v2.49.0](https://github.com/pydantic/pydantic-ai/releases/tag/v2.49.0) ⭐️ 6.8/10
 
-pydantic-ai v2.49.0 adds GitHub Copilot device OAuth via \`GitHubCopilotOAuthFlow\`, extends \`TypeSafeModel\` with \`BoolCriteria\` and improved \`None\`/numeric choice handling, and introduces \`RealtimeSession.wait\_for\_reply\(\)\`. The release also fixes OpenAI logprob streaming, Bedrock model-name and parameter handling, and realtime error propagation. Changes are incremental, targeting structured-output reliability and provider compatibility rather than core architecture.
+Pydantic-AI v2.49.0 adds GitHub Copilot OAuth device flow, TypeSafeModel structured output refinements, and RealtimeSession.wait\_for\_reply\(\), plus logprobs and model support fixes.
 
 github · DouweM · Sep 24, 03:09
-
-**「设计要点」** The OAuth flow and realtime session method touch the tool and runtime layers: device authorization is added as a first-class flow, while \`wait\_for\_reply\(\)\` gives realtime consumers a synchronous handle on asynchronous audio streams. \`TypeSafeModel\` changes refine how structured outputs map optional and numeric fields to model choices.
-
-**「改了什么」** Versus v2.48.0, the release adds Copilot device OAuth, \`BoolCriteria\`, \`RealtimeSession.wait\_for\_reply\(\)\`, and several \`TypeSafeModel\` structured-output improvements. It also fixes Bedrock Converse compatibility for GPT-5.6/GPT-6 and new \`gpt-6-\*\` models, preserves streamed OpenAI logprobs, and surfaces realtime receive-side failures to all consumer shapes.
 
 **Tags**: `#runtime`, `#tools`, `#permissions`
 
 ---
 
 <a id="item-harness-arch-5"></a>
-### [anthropics/claude-code released v2.1.282](https://github.com/anthropics/claude-code/releases/tag/v2.1.282) ⭐️ 6.3/10
+### [Claude Code v2.1.282 发布](https://github.com/anthropics/claude-code/releases/tag/v2.1.282) ⭐️ 6.3/10
 
-Routine Claude Code release adding minor managed settings, telemetry diagnostics, UI polish, and a web search decryption bug fix.
+Claude Code v2.1.282 发布，补丁级更新。新增 \`maxProseWidth\` 设置，在宽终端中限制正文宽度，表格与代码块仍保持全宽；新增 \`allowClaudeInChromeWithManagedMcp\` 托管设置，允许 \`claude --chrome\` 与独占 \`managed-mcp.json\` 同时运行。网关新增 \`store.readiness\_grace\_seconds\`，让 \`/readyz\` 在 Postgres 短暂故障（如数据库切换）期间保持就绪。修复 web search 历史无法解密导致的所有请求 400 错误，以及会话恢复时重发消息、丢失 extended thinking 等问题。
 
 github · ashwin-ant · Sep 24, 18:38
 
-**Tags**: `#tools`, `#mcp`, `#permissions`, `#runtime`
+**「设计要点」** 托管设置层增强布尔锁校验与嵌套容错：单个无效值不再导致整个 \`permissions\`、\`autoMode\`、\`worktree\`、\`attribution\` 块被忽略。Bash 权限规则中的 \`:\*\` 中间模式现从所有来源生效，启动时给出匹配警告。
+
+**「改了什么」** 相对上一版，权限与托管配置健壮性提升：Chrome 与 managed MCP 可共存，布尔锁键拼写错误现在会锁定并提示，嵌套无效值不再阻断其余设置。网关侧新增 Postgres 故障宽限，减少误报未就绪。
+
+**Tags**: `#tools`, `#mcp`, `#permissions`
 
 ---
 
 <a id="item-harness-arch-6"></a>
-### [Cline v4.1.21 发布](https://github.com/cline/cline/releases/tag/v4.1.21) ⭐️ 6.3/10
+### [cline/cline released cli-v3.0.65](https://github.com/cline/cline/releases/tag/cli-v3.0.65) ⭐️ 6.3/10
 
-Cline v4.1.21 发布，新增日本区 OpenAI 兼容 provider ai&amp;，模型目录刷新至 6,386 个模型、209 个 provider。未固定默认模型的 19 个 provider 中有 11 个切到 Claude Opus 5.5，包括 GitHub Copilot 和 Vertex。本地模型（llama.cpp、Ollama、LM Studio）触发输出上限时，harness 会压缩对话并重试一次，不再直接结束任务。另外修复了失败任务重开、空命令输出、Windows @-mention 文件名和取消重试等待等问题。
+Cline CLI v3.0.65 fixes local-model mid-answer failures with compaction/retry, improves hub startup error reporting and timeout, and preserves session error messages on resume.
 
-github · github-actions\[bot\] · Sep 24, 16:16
+github · github-actions\[bot\] · Sep 24, 05:54
 
-**「设计要点」** 本地模型服务端按剩余上下文截断生成，与 output budget 无关；Cline 的恢复路径是先 compact 再 concise-retry，并保留部分答案。
-
-**「改了什么」** 相对 v4.1.20，本地模型长回复触顶后新增压缩并重试的恢复路径，模型默认值批量刷新；其余为 provider 新增、js-yaml 安全版本提升和交互修复。
-
-**Tags**: `#runtime`, `#memory`, `#tools`
+**Tags**: `#runtime`, `#tools`, `#memory`
 
 ---
 
 <a id="item-harness-arch-7"></a>
-### [Cline CLI v3.0.65 发布](https://github.com/cline/cline/releases/tag/cli-v3.0.65) ⭐️ 6.3/10
+### [Claude Code 2.1.282 发布](https://code.claude.com/docs/en/changelog#2-1-282) ⭐️ 6.3/10
 
-Cline CLI v3.0.65 发布，修复本地模型长会话在输出上限中断、hub 启动报错不清、会话恢复后错误丢失等问题。llama.cpp、Ollama、LM Studio 会在剩余上下文内截断生成，CLI 现在压缩对话并重试一次，失败再退回简洁重试，保留部分回答。hub 启动失败会给出具体原因，等待时间从 8 秒放宽到 15 秒，覆盖 Windows 安装或更新后首次启动 8–13 秒的情况。会话中的错误信息在恢复后重新出现在 transcript，不再发给模型或计入 compaction。
+Claude Code 发布 2.1.282，以修复为主，新增少量配置。新增 \`maxProseWidth\` 限制宽终端中 prose 宽度，表格与代码块仍占满；新增托管设置 \`allowClaudeInChromeWithManagedMcp\`，允许 \`claude --chrome\` 与独占 \`managed-mcp.json\` 共存。Claude apps gateway 新增 \`store.readiness\_grace\_seconds\`，让 \`/readyz\` 在 Postgres 短时中断（如数据库故障转移）期间保持就绪。启动提示、\`/status\` 和 \`claude doctor\` 会列出项目中 ignored 或关闭遥测的 settings 变量。
 
-github · github-actions\[bot\] · Sep 24, 05:54
+rss · Claude Code Changelog · Sep 24, 18:46
 
-**「设计要点」** 运行时上，本地模型输出受限时先压缩再重试；hub 启动失败输出原因并延长等待；插件加载失败不再每次 prompt 都拉起 sandbox，而是 30 秒后重试。错误消息只进 transcript，不进入模型上下文，也不参与 compaction 计数。
+**「设计要点」** 托管设置层细化了 MCP 与 Chrome 的权限边界，\`allowClaudeInChromeWithManagedMcp\` 让浏览器自动化在受管 MCP 环境下可运行。Gateway 通过 \`readiness\_grace\_seconds\` 把数据库故障纳入就绪检查容忍窗口，避免瞬时切换引发服务不可用。
 
-**「改了什么」** 相对 cli-v3.0.64，本地模型输出上限从直接失败改为压缩重试；hub 启动诊断和等待时间调整；错误消息与 \`cline history update\` 的 title/prompt 在 hub 托管会话中跨恢复持久化；Yolo 模式收紧输出规则；新增 ai&amp; provider；模型目录从 6,237 扩到 6,386，19 个 provider 默认模型变更。
+**「改了什么」** 新增 \`allowClaudeInChromeWithManagedMcp\` 托管设置，允许 \`claude --chrome\` 与独占 \`managed-mcp.json\` 同时运行；gateway 新增 \`store.readiness\_grace\_seconds\`，使 \`/readyz\` 可容忍短时 Postgres 故障；Bash 权限规则中的 \`:\*\` 中间模式现从所有 settings 来源生效，不再仅限于 \`--allowedTools\`。
 
-**Tags**: `#runtime`, `#tools`
-
----
-
-<a id="item-harness-arch-8"></a>
-### [video-use 开源：对话剪视频](https://github.com/browser-use/video-use) ⭐️ 5.0/10
-
-browser-use 开源 video-use，把视频剪辑搬进 Claude Code。原始素材丢进文件夹，对话下达指令，Claude Code 自动切掉 filler words、false starts 和 take 间死区，逐段自动调色，输出 final.mp4。不设预设和菜单，talking heads、montages、tutorials、travel、interviews 都能直接处理。可在 Browser Use Cloud 试用。
-
-rss · GitHub Trending Daily · Sep 25, 01:06
-
-**Tags**: `#tools`, `#planning`, `#runtime`
+**Tags**: `#tools`, `#mcp`, `#permissions`, `#runtime`
 
 ---
 
 ## AI Agent Engineer
 
 <a id="item-agent-engineer-1"></a>
-### [LFM2.5-VL-DSpark 正式发布](https://huggingface.co/blog/LiquidAI/lfm2-5-vl-dspark) ⭐️ 8.3/10
+### [LFM2.5-VL-DSpark 发布](https://huggingface.co/blog/LiquidAI/lfm2-5-vl-dspark) ⭐️ 8.8/10
 
-LiquidAI 发布 LFM2.5-VL-DSpark，为 LFM2.5-VL-3B 提供投机解码 drafter，增加 280M 参数（8.9%）。在 M5 Max 上解码提速 2.30x 到 3.13x，H100 上为 2.04x 到 2.66x；端到端延迟分别改善 1.56x 到 2.62x 与 1.64x 到 2.27x。该 drafter 沿用文本 DSpark 架构，在固定 tapped layers 捕获隐状态，将图像 patch 与文本 token 投影到同一表示后生成候选块，推理算法不变；llama.cpp、MLX-VLM 和 SGLang 已首日支持，模型提供 Safetensors 与 GGUF 格式。投机解码仅加速 decode，视觉编码与 prefill 不在范围内，端到端收益受 Amdahl 定律限制。
+Liquid AI 发布 LFM2.5-VL-DSpark，为 LFM2.5-VL-3B 配备视觉语言投机解码 drafter。该 drafter 增加约 280M 参数，仅占目标模型 3B 参数的 8.9%；在 M5 Max 上解码最高加速 3.13x，H100 上最高 2.66x，端到端延迟最高分别改善 2.62x 与 2.27x。llama.cpp、MLX-VLM 与 SGLang 首日支持。drafter 沿用文本 LFM2.5-DSpark 架构，在固定 tapped layers 捕获目标模型隐藏状态并生成候选 token 块；图像 patch 与文本 token 在进入这些层前投影到同一表示空间，推理算法与文本模型一致。
 
 rss · Hugging Face Blog · Sep 24, 14:08
 
-**「为什么重要」** 对构建 VLM agent 的工程师而言，这提供了即插即用的推理优化路径：drafter 仅增加 8.9% 参数，主流框架已首日集成，可在边缘设备与数据中心 GPU 上获得 2–3 倍解码加速。文章同时明确划定加速边界——视觉编码与 prefill 未被加速，端到端增益受非解码阶段制约，为评估真实部署收益提供依据。
+**「为什么重要」** VLM 的端到端延迟由视觉编码、prefill 与 decode 共同决定，而投机解码只作用于 decode。LFM2.5-VL-DSpark 以 8.9% 的参数增量在边缘设备上把 decode 最高提升 3.13x，端到端最高提升 2.62x，表明轻量 drafter 在视觉负载中仍有实际收益。但未加速的视觉编码与 prefill 会按 Amdahl 定律稀释整体增益，这也是 H100 与 Apple silicon 上端到端提升低于 decode 提升的原因。
 
-**「可关注」** 可关注：LFM2.5-VL-DSpark 的推理算法与文本 DSpark 一致，图像与文本在 tapped layers 之前已投影到同一隐状态空间，现有文本投机解码工具链可低成本迁移到 VLM；目标模型会验证每个候选 token，贪心输出与单独运行目标模型一致，但需按硬件选择 block size 8 或 9，并预期端到端提速会显著低于纯解码提速。
+**「可关注」** 可关注：图像 patch 与文本 token 在 tapped layers 之前已投影到同一隐藏状态空间，drafter 对模态无感知，因此 llama.cpp、MLX-VLM 与 SGLang 可以复用文本 DSpark 的同一套投机解码流程，只需挂载 draft 模型并配置 block size。
 
-**Tags**: `#inference`, `#vlm`, `#speculative-decoding`, `#toolchain`
+**Tags**: `#inference`, `#speculative-decoding`, `#vlm`, `#harness`, `#performance`
 
 ---
 
 <a id="item-agent-engineer-2"></a>
-### [Introducing Gemini 3.8 Live with Live Avatar](https://deepmind.google/blog/introducing-gemini-38-live-with-live-avatar/) ⭐️ 7.8/10
+### [HF daily paper: Schrödinger&\#x27;s Code Repository: Have LLMs Learned SWE-bench or Memorized It?](https://huggingface.co/papers/2609.27891) ⭐️ 8.0/10
 
-Google DeepMind introduces Gemini 3.8 Live with Live Avatar, a new real-time multimodal model release.
+论文提出 SchrodingerRepo，通过将测试仓库视为评估时动态实例化的潜变量，来应对仓库级 coding agent 基准中的数据泄漏与记忆化问题。
 
-rss · Google DeepMind · Sep 24, 16:20
+rss · Hugging Face Daily Papers · Sep 25, 01:55
 
-**Tags**: `#coding-agent`, `#multimodal`, `#model-release`
+**Tags**: `#eval`, `#coding-agent`, `#memory`, `#harness`
 
 ---
 
 <a id="item-agent-engineer-3"></a>
-### [Qwen3.8-Flash-Next on 12GB VRAM - 65 tokens per second](https://www.reddit.com/r/LocalLLaMA/comments/1wp7zyb/qwen38flashnext_on_12gb_vram_65_tokens_per_second/) ⭐️ 6.0/10
+### [HF daily paper: HappyWorld-Bench](https://huggingface.co/papers/2609.24308) ⭐️ 7.5/10
 
-A custom inference engine claims 65 tok/s output on 12GB VRAM for Qwen3.8-Flash-Next with specific quantization and memory trade-offs.
+HappyWorld-Bench is a new hierarchical benchmark for evaluating world models across video, spatial, and embodied tracks using human A/B comparisons.
+
+rss · Hugging Face Daily Papers · Sep 25, 01:55
+
+**Tags**: `#eval`, `#world-model`, `#benchmark`, `#embodied-ai`
+
+---
+
+<a id="item-agent-engineer-4"></a>
+### [Just-in-Time Memory 论文：查询时策展 Agent 记忆](https://huggingface.co/papers/2609.27334) ⭐️ 7.0/10
+
+Hugging Face Daily Papers 于 2026-09-25 收录论文 Just-in-Time Memory，主张保留原始 Agent 轨迹，把记忆策展推迟到查询时执行，以避开写入时蒸馏带来的信息丢失与长程信用分配问题。现有设计在任务结束后将轨迹固化为反思、工作流或技能等工件，未来查询未知，只能生成查询无关的摘要。该论文目前停留在提出架构层面，未给出具体工具或协议变更，也未提供生产环境验证数据。
+
+rss · Hugging Face Daily Papers · Sep 25, 01:55
+
+**「为什么重要」** 对 coding agent 与 harness 设计者，这暴露了记忆模块的核心张力：写入时策展实现简单但会不可逆地丢弃信息，查询时策展保留原始上下文却可能增加检索与计算开销。论文尚未公布实测基准，实际收益与成本仍待社区验证。
+
+**「可关注」** 可关注：若现有 Agent 记忆依赖写入时蒸馏，可评估保留原始轨迹、在查询时再做筛选的方案，尤其观察长程任务中信用分配与信息保真的差异。
+
+**Tags**: `#memory`, `#orchestration`, `#eval`, `#coding-agent`
+
+---
+
+<a id="item-agent-engineer-5"></a>
+### [Gemini 3.8 Live Avatar](https://deepmind.google/blog/introducing-gemini-38-live-with-live-avatar/) ⭐️ 6.3/10
+
+Google DeepMind 发布 Gemini 3.8 Live，新增 Live Avatar 功能。官方公告已上线，但现有材料仅包含标题与链接，未提供技术细节、代码、基准测试或架构信息。该功能定位实时多模态场景，具体能力与限制尚不明确。
+
+rss · Google DeepMind · Sep 24, 16:20
+
+**「为什么重要」** 这是 Google DeepMind 在实时多模态方向的官方产品更新，但材料中缺乏技术细节，暂无法确认对 coding agent 或 harness 工作流的直接影响。
+
+**「可关注」** 可关注：Gemini 3.8 Live 引入 Live Avatar，但当前未见技术文档与基准数据，工程侧可等待更多细节再评估接入价值。
+
+**Tags**: `#multimodal`, `#real-time`, `#gemini`, `#product-update`
+
+---
+
+<a id="item-agent-engineer-6"></a>
+### [Strata 引擎 Qwen3.8 推理 65 tok/s](https://www.reddit.com/r/LocalLLaMA/comments/1wp7zyb/qwen38flashnext_on_12gb_vram_65_tokens_per_second/) ⭐️ 5.5/10
+
+Reddit 用户 KnownAd4832 发布自研推理引擎 Strata，针对 Qwen3.8-Flash-Next 与 12GB 显存 PC 优化。同一 IQ3\_XXS 量化下，输出从 llama.cpp 的 15 tok/s 提升到约 65 tok/s，提示处理从 100–120 tok/s 提升到约 430 tok/s。在 128K 上下文、64GB DDR5（5600）+ RTX 5070 12GB + Ryzen 5 7600 + Windows 环境下，Q2\_0 输出 65.1 tok/s、提示处理 543 tok/s；IQ3\_XXS 输出 44.8 tok/s、提示处理 414 tok/s。最低内存+显存需求从 Q2\_0 的 37.6GB 到 IQ3\_XXS 的 47GB 不等，视觉编码器另占 0.91GB；引擎目前仅优化 CUDA，提供一键安装，所有性能数字为作者自报，暂无独立验证。
 
 reddit · r/LocalLLaMA · /u/KnownAd4832 · Sep 24, 17:30
 
-**Tags**: `#harness`, `#eval`, `#local-inference`
+**「为什么重要」** 对持有 12GB 显卡和 64GB 内存的本地部署者，这给出了在 128K 上下文下运行 Qwen3.8-Flash-Next 的一条路径，但性能数字来自单一自报测试，尚未经第三方复现。
+
+**「可关注」** 可关注：Strata 在 2-bit 量化（Q2\_0）下同时给出最高输出与提示处理速度，且内存+显存门槛比 IQ3\_XXS 低约 9.4GB，低比特量化配合专用引擎可能是 12GB 显存跑长上下文的一个权衡点。
+
+**Tags**: `#toolchain`, `#inference`, `#coding-agent`
 
 ---
 
 ## AI Daily
 
 <a id="item-ai-daily-1"></a>
-### [AI-powered fuzzing with the GitHub Security Lab Taskflow Agent](https://github.blog/security/application-security/ai-powered-fuzzing-with-the-github-security-lab-taskflow-agent/) ⭐️ 8.3/10
+### [AI-powered fuzzing with the GitHub Security Lab Taskflow Agent](https://github.blog/security/application-security/ai-powered-fuzzing-with-the-github-security-lab-taskflow-agent/) ⭐️ 7.8/10
 
-GitHub Security Lab launches an AI-powered fuzzing taskflow via its Taskflow Agent framework, adding automated security testing capabilities.
+GitHub Security Lab introduces an AI-powered fuzzing taskflow agent for automated vulnerability discovery.
 
 rss · GitHub Blog · Sep 24, 18:26
 
-**Tags**: `#product`, `#open-source`, `#lab`, `#industry`
-
----
-
-<a id="item-ai-daily-2"></a>
-### [When chat is the wrong UI](https://github.blog/ai-and-ml/github-copilot/when-chat-is-the-wrong-ui/) ⭐️ 5.8/10
-
-GitHub Blog post argues that canvases offer a more tangible UI than chat boxes for developers, in the context of GitHub Copilot.
-
-rss · GitHub Blog · Sep 24, 20:00
-
-**Tags**: `#product`, `#lab`
-
----
-
-## Technology News
-
-<a id="item-tech-news-1"></a>
-### [Simon Willison retweets AI video prompt featuring pelican explaining shell command](https://twitter.com/simonw/status/tweet-2103264194158338480) ⭐️ 0.0/10
-
-Simon Willison retweeted a prompt from @goodside asking for a 30-second animated video with synthesized voice, featuring an animated pelican on a unicycle that explains a shell command beginning with \`w \| t\`. The retweeted text is truncated, so the full command and any resulting video are not visible. The item is a social media share of a creative text-to-video prompt rather than a product release or technical analysis.
-
-twitter · Simon Willison · Sep 24, 23:23
-
-**「Background」** Text-to-video AI tools are frequently demonstrated through whimsical or educational prompts shared on social media, and such posts often circulate without the full prompt, output, or technical context needed for independent evaluation.
-
-**Tags**: `#AI video generation`, `#shell scripting`, `#Simon Willison`, `#social media`, `#text-to-video`
+**Tags**: `#product`, `#lab`, `#open-source`
 
 ---
