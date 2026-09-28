@@ -5,42 +5,44 @@ date: 2026-09-28
 lang: en
 ---
 
-> From 146 items, 2 important content pieces were selected
+> From 152 items, 2 important content pieces were selected
 
 ---
 
 **Agent Harness Architecture**
-1. [OmniParser 将 UI 截图转为结构化元素](#item-harness-arch-1) ⭐️ 5.5/10
+1. [Claude Code 官方插件目录上线](#item-harness-arch-1) ⭐️ 5.0/10
 
-**AI Agent Engineer**
-1. [2026 in LLMs \(so far\)](#item-agent-engineer-1) ⭐️ 5.5/10
+**AI Deals**
+1. [echelongraph-mcp 查 CVE](#item-ai-deals-1) ⭐️ 5.0/10
 
 ---
 
 ## Agent Harness Architecture
 
 <a id="item-harness-arch-1"></a>
-### [OmniParser 将 UI 截图转为结构化元素](https://github.com/microsoft/OmniParser) ⭐️ 5.5/10
+### [Claude Code 官方插件目录上线](https://github.com/anthropics/claude-plugins-official) ⭐️ 5.0/10
 
-OmniParser 是微软的屏幕解析工具，把 UI 截图解析为结构化元素，服务纯视觉 GUI agent。项目页面列出 V2 与 V1.5 模型及 HuggingFace Space Demo。据项目描述，该工具能显著提升 GPT-4V 在界面区域中生成可精准定位动作的能力。此次为 GitHub trending 条目，材料仅含项目简介，无具体版本变更或实现细节。
+Anthropic 上线官方 Claude Code 插件目录 \`anthropics/claude-plugins-official\`，收录经筛选的高质量插件。仓库明确警告：Anthropic 不控制插件内的 MCP 服务器、文件或其他软件，无法验证其是否按预期工作或是否会被更改。材料未包含实现细节、架构变更或发布说明。
 
-rss · GitHub Trending Daily · Sep 28, 01:21
+rss · GitHub Trending Daily · Sep 28, 01:57
 
-**「设计要点」** OmniParser 位于感知与动作生成之间，充当工具层组件。它将视觉输入转换为 agent 可直接消费的结构化 UI 元素，为纯视觉 GUI agent 提供 grounding 基础，自身不执行动作。
-
-**Tags**: `#tools`, `#vision`, `#gui-agent`, `#runtime`
+**Tags**: `#tools`, `#mcp`, `#permissions`
 
 ---
 
-## AI Agent Engineer
+## AI Deals
 
-<a id="item-agent-engineer-1"></a>
-### [2026 in LLMs \(so far\)](https://simonwillison.net/2026/Sep/27/2026-in-llms-so-far/) ⭐️ 5.5/10
+<a id="item-ai-deals-1"></a>
+### [echelongraph-mcp 查 CVE](https://news.ycombinator.com/item?id=49863302) ⭐️ 5.0/10
 
-Simon Willison 对 2026 年 LLM 关键趋势的主题演讲综述，附带动幻灯片注释。
+echelongraph 发布免费 MCP 服务器 echelongraph-mcp，无需 API key 和注册，可在 Claude、Cursor 等 MCP 客户端中查询 CVE 数据，并查看其 radar 记录的互联网暴露面服务数量。配置仅需一条 npx 命令。
 
-rss · Simon Willison · Sep 27, 23:54
+rss · HN Free API / Credits · Sep 27, 04:13
 
-**Tags**: `#coding-agent`, `#eval`, `#observability`
+**「为什么重要」** 对需要快速核查 CVE 影响面的开发者，该工具可立即接入现有 MCP 客户端，省去注册和 key 申请步骤。
+
+**「可关注」** 可关注：echelongraph-mcp 免费且无密钥，适合在 Claude、Cursor 中查询 CVE 及互联网暴露面；但暴露面数据来源于 echelongraph 自有 radar 记录，覆盖范围以该记录为限。
+
+**Tags**: `#free-tier`, `#api`, `#mcp`
 
 ---
