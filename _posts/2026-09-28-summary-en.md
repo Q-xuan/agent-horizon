@@ -5,28 +5,42 @@ date: 2026-09-28
 lang: en
 ---
 
-> From 147 items, 1 important content pieces were selected
+> From 146 items, 2 important content pieces were selected
 
 ---
 
+**Agent Harness Architecture**
+1. [OmniParser 将 UI 截图转为结构化元素](#item-harness-arch-1) ⭐️ 5.5/10
+
 **AI Agent Engineer**
-1. [Qwen 加 logit 惩罚提升准确率](#item-agent-engineer-1) ⭐️ 6.0/10
+1. [2026 in LLMs \(so far\)](#item-agent-engineer-1) ⭐️ 5.5/10
+
+---
+
+## Agent Harness Architecture
+
+<a id="item-harness-arch-1"></a>
+### [OmniParser 将 UI 截图转为结构化元素](https://github.com/microsoft/OmniParser) ⭐️ 5.5/10
+
+OmniParser 是微软的屏幕解析工具，把 UI 截图解析为结构化元素，服务纯视觉 GUI agent。项目页面列出 V2 与 V1.5 模型及 HuggingFace Space Demo。据项目描述，该工具能显著提升 GPT-4V 在界面区域中生成可精准定位动作的能力。此次为 GitHub trending 条目，材料仅含项目简介，无具体版本变更或实现细节。
+
+rss · GitHub Trending Daily · Sep 28, 01:21
+
+**「设计要点」** OmniParser 位于感知与动作生成之间，充当工具层组件。它将视觉输入转换为 agent 可直接消费的结构化 UI 元素，为纯视觉 GUI agent 提供 grounding 基础，自身不执行动作。
+
+**Tags**: `#tools`, `#vision`, `#gui-agent`, `#runtime`
 
 ---
 
 ## AI Agent Engineer
 
 <a id="item-agent-engineer-1"></a>
-### [Qwen 加 logit 惩罚提升准确率](https://www.reddit.com/r/LocalLLaMA/comments/1wromzr/adding_logit_penalty_for_wait_maybe_and_perhaps/) ⭐️ 6.0/10
+### [2026 in LLMs \(so far\)](https://simonwillison.net/2026/Sep/27/2026-in-llms-so-far/) ⭐️ 5.5/10
 
-Reddit 用户 /u/am17an 在 50 道随机 MATH-500 题目上测试 Qwen3.5-4B 的多个 GGUF 量化版本，对 49 个 hedging token 施加 -2 logit bias。各量化版本准确率均上升：BF16 从 74% 升至 84%，Q8\_0 从 76% 升至 80%，Q4\_K\_M 从 60% 升至 66%，Q3\_K\_M 从 52% 升至 66%，Q2\_K 从 12% 升至 24%。推理 token 数量同步下降 11.0%–19.4%，BF16 亦出现提升。token 列表取自 Meta 论文的 overthinking markers，但作者明确此为单模型单次测试。
+Simon Willison 对 2026 年 LLM 关键趋势的主题演讲综述，附带动幻灯片注释。
 
-reddit · r/LocalLLaMA · /u/am17an · Sep 27, 16:29
+rss · Simon Willison · Sep 27, 23:54
 
-**「为什么重要」** 该做法把论文中的 overthinking markers 转化为 llama.cpp 可直接执行的 --logit-bias 参数，为抑制过度推理提供了一条低成本的干预路径。但 50 题样本和单一模型限制了结论强度，跨模型、跨任务的普适性尚未验证。
-
-**「可关注」** 可关注：该干预只需在 llama.cpp 启动参数中加入 --logit-bias，实现成本低；但当前证据仅来自 50 题单模型测试，跨模型、跨任务的普适性尚未确认。
-
-**Tags**: `#eval`, `#harness`, `#coding-agent`
+**Tags**: `#coding-agent`, `#eval`, `#observability`
 
 ---

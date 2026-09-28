@@ -5,28 +5,40 @@ date: 2026-09-28
 lang: zh
 ---
 
-> 从 147 条内容中筛选出 1 条重要资讯。
+> 从 146 条内容中筛选出 2 条重要资讯。
 
 ---
 
+**Harness 架构**
+1. [OmniParser 登 GitHub 趋势榜](#item-harness-arch-1) ⭐️ 5.5/10
+
 **Agent 工程师日报**
-1. [Qwen 抑制犹豫 token 提升数学准确率](#item-agent-engineer-1) ⭐️ 6.0/10
+1. [2026 in LLMs \(so far\)](#item-agent-engineer-1) ⭐️ 5.5/10
+
+---
+
+## Harness 架构
+
+<a id="item-harness-arch-1"></a>
+### [OmniParser 登 GitHub 趋势榜](https://github.com/microsoft/OmniParser) ⭐️ 5.5/10
+
+microsoft/OmniParser 登上 GitHub 趋势榜。这是一个面向纯视觉 GUI agent 的屏幕解析工具，将 UI 截图转换为结构化、易理解的元素。项目称，该方法能显著提升 GPT-4V 在界面对应区域中生成可精确定位动作的能力。仓库提供 V2 与 V1.5 模型及 HuggingFace Space Demo。
+
+rss · GitHub Trending Daily · 9月28日 01:21
+
+**标签**: `#tools`, `#vision`, `#gui-agent`, `#runtime`
 
 ---
 
 ## Agent 工程师日报
 
 <a id="item-agent-engineer-1"></a>
-### [Qwen 抑制犹豫 token 提升数学准确率](https://www.reddit.com/r/LocalLLaMA/comments/1wromzr/adding_logit_penalty_for_wait_maybe_and_perhaps/) ⭐️ 6.0/10
+### [2026 in LLMs \(so far\)](https://simonwillison.net/2026/Sep/27/2026-in-llms-so-far/) ⭐️ 5.5/10
 
-Reddit 用户 am17an 报告，对 Qwen3.5-4B GGUF 量化模型施加 logit 惩罚，抑制 &quot;wait&quot;、&quot;maybe&quot; 等犹豫 token，MATH-500 准确率提升。测试基于 50 道随机题目，覆盖 BF16 到 Q2\_K 五种量化。结果显示 BF16 从 74% 升至 84%，Q2\_K 从 12% 升至 24%，推理 token 普遍减少 11%–19%。作者声明这是单模型单次测试，结果待复现。
+Simon Willison 对 2026 年 LLM 关键趋势的主题演讲综述，附带动幻灯片注释。
 
-reddit · r/LocalLLaMA · /u/am17an · 9月27日 16:29
+rss · Simon Willison · 9月27日 23:54
 
-**「为什么重要」** 这是 harness 层面的具体干预，可直接用 llama.cpp 的 --logit-bias 复现。在低量化模型上提升幅度最大，Q2\_K 准确率从 12% 升至 24%。
-
-**「可关注」** 可关注：该实验仅覆盖 50 题和一个模型，准确率提升是否稳定需更多样本验证；惩罚 token 列表来自 Meta 论文的 overthinking markers，直接套用到 Qwen 上有效但机制未明。
-
-**标签**: `#eval`, `#harness`, `#coding-agent`
+**标签**: `#coding-agent`, `#eval`, `#observability`
 
 ---
