@@ -5,315 +5,341 @@ date: 2026-09-29
 lang: en
 ---
 
-> From 202 items, 20 important content pieces were selected
+> From 184 items, 21 important content pieces were selected
 
 ---
 
 **Agent Harness Architecture**
-1. [MCP TypeScript SDK 1.31.0](#item-harness-arch-1) ⭐️ 8.8/10
-2. [modelcontextprotocol/typescript-sdk released @modelcontextprotocol/core@2.2.0](#item-harness-arch-2) ⭐️ 8.3/10
-3. [Codex rust-v0.158.0 发布](#item-harness-arch-3) ⭐️ 7.8/10
-4. [crewAIInc/crewAI released 1.15.23](#item-harness-arch-4) ⭐️ 6.8/10
-5. [2.1.284](#item-harness-arch-5) ⭐️ 6.8/10
-6. [LangChain 1.4.3 Patch Release](#item-harness-arch-6) ⭐️ 6.3/10
-7. [langchain-ai/langchain released langchain-fireworks==1.7.0](#item-harness-arch-7) ⭐️ 6.3/10
+1. [openai/codex released rust-v0.158.0](#item-harness-arch-1) ⭐️ 8.3/10
+2. [MCP TypeScript SDK v2.2.0 Released](#item-harness-arch-2) ⭐️ 8.3/10
+3. [modelcontextprotocol/typescript-sdk released 1.31.0](#item-harness-arch-3) ⭐️ 8.3/10
+4. [Claude Code v2.1.284 发布](#item-harness-arch-4) ⭐️ 7.8/10
+5. [Kitesurf 更新支持 WebMCP](#item-harness-arch-5) ⭐️ 7.3/10
+6. [Fireworks 1.7.0 发布](#item-harness-arch-6) ⭐️ 6.8/10
+7. [LangChain 1.4.3 Patch Released](#item-harness-arch-7) ⭐️ 5.8/10
 
 **AI Agent Engineer**
-1. [Claude Sonnet 5.5 发布](#item-agent-engineer-1) ⭐️ 8.0/10
-2. [分离 Prefill 与 Decode 量化](#item-agent-engineer-2) ⭐️ 8.0/10
-3. [Holo4: powering generalist computer-use agents](#item-agent-engineer-3) ⭐️ 6.8/10
-4. [llm-anthropic 0.30 发布](#item-agent-engineer-4) ⭐️ 6.3/10
-5. [Supporting native Rust in Workers with the new Emscripten target for wasm-bindgen](#item-agent-engineer-5) ⭐️ 6.3/10
-6. [Sonnet 5.5 发布，安全回退影响评测](#item-agent-engineer-6) ⭐️ 6.0/10
-7. [Cloudflare \`cf\` CLI 发布](#item-agent-engineer-7) ⭐️ 5.5/10
-8. [EMem-Bench：具身记忆评测基准](#item-agent-engineer-8) ⭐️ 5.5/10
-9. [AdaTutoRank：自适应辅导优化重排](#item-agent-engineer-9) ⭐️ 5.5/10
+1. [CIS 修正 RLVR 训练推理失配](#item-agent-engineer-1) ⭐️ 8.0/10
+2. [llm-anthropic 0.30 发布](#item-agent-engineer-2) ⭐️ 7.8/10
+3. [TraceDance 用部署轨迹构建行为基准](#item-agent-engineer-3) ⭐️ 7.5/10
+4. [EMem-Bench：2,554 个具身 episode 测长程记忆](#item-agent-engineer-4) ⭐️ 7.5/10
+5. [Supporting native Rust in Workers with the new Emscripten target for wasm-bindgen](#item-agent-engineer-5) ⭐️ 6.8/10
+6. [Holo4 发布：27B 与 35B-A3B](#item-agent-engineer-6) ⭐️ 6.3/10
+7. [Sonnet 5.5 发布](#item-agent-engineer-7) ⭐️ 6.0/10
+8. [Claude Sonnet 5.5 发布](#item-agent-engineer-8) ⭐️ 6.0/10
+9. [Claude Code’s Next Era — Thariq Shihipar, Anthropic](#item-agent-engineer-9) ⭐️ 6.0/10
+10. [HF daily paper: AdaTutoRank: Learning to Rerank Document Sets via Adaptive Tutoring Optimization for RAG and Deep Research](#item-agent-engineer-10) ⭐️ 5.5/10
 
 **AI Daily**
-1. [OpenAI 就澳洲政府网站事件道歉](#item-ai-daily-1) ⭐️ 8.8/10
-2. [How we found 24 Android vulnerabilities using our open source AI security agent](#item-ai-daily-2) ⭐️ 8.3/10
-3. [OpenAI Expands Lenfest Program with Up to $10M Support](#item-ai-daily-3) ⭐️ 6.8/10
+1. [OpenAI 就澳大利亚政府网站事件道歉](#item-ai-daily-1) ⭐️ 8.8/10
+2. [GitHub AI Security Agent Finds 24 Android Bugs](#item-ai-daily-2) ⭐️ 7.3/10
+3. [OpenAI 扩展 Lenfest 计划](#item-ai-daily-3) ⭐️ 6.8/10
 
 **AI Deals**
-1. [OpenCode 与 Command Code $10 套餐 DeepSeek 额度升至 $60](#item-ai-deals-1) ⭐️ 8.0/10
+1. [$10 套餐 6 倍 DeepSeek 额度](#item-ai-deals-1) ⭐️ 7.0/10
 
 ---
 
 ## Agent Harness Architecture
 
 <a id="item-harness-arch-1"></a>
-### [MCP TypeScript SDK 1.31.0](https://github.com/modelcontextprotocol/typescript-sdk/releases/tag/1.31.0) ⭐️ 8.8/10
+### [openai/codex released rust-v0.158.0](https://github.com/openai/codex/releases/tag/rust-v0.158.0) ⭐️ 8.3/10
 
-The Model Context Protocol \(MCP\) TypeScript SDK version 1.31.0 introduces issuer binding for stored OAuth credentials. Stored OAuth tokens and client information now include an \`issuer\` field, and storage implementations that reject unknown fields must allow it. Constructing \`ClientCredentialsProvider\`, \`PrivateKeyJwtProvider\`, or \`StaticPrivateKeyJwtProvider\` without \`expectedIssuer\` is deprecated.
+Codex Rust v0.158.0 adds MCP OAuth client-secret support, bearer-token-secured exec-server WebSockets, sandbox fixes, and stricter default terminal approval for elevated commands.
 
-github · felixweinberger · Sep 28, 18:52
+github · github-actions\[bot\] · Sep 28, 05:07
 
-**「Design Points」** The change tightens OAuth credential storage by binding each token and client record to the authorization server that issued it, reducing the risk of credential replay across issuers. Providers now require an explicit \`expectedIssuer\` parameter to validate the issuer at construction time.
-
-**「What Changed」** Stored OAuth tokens and client information now persist an \`issuer\` field. Auth provider constructors deprecate omission of \`expectedIssuer\`, making issuer validation explicit for \`ClientCredentialsProvider\`, \`PrivateKeyJwtProvider\`, and \`StaticPrivateKeyJwtProvider\`.
-
-**Tags**: `#mcp`, `#permissions`, `#runtime`
+**Tags**: `#mcp`, `#sandbox`, `#permissions`, `#tools`, `#runtime`
 
 ---
 
 <a id="item-harness-arch-2"></a>
-### [modelcontextprotocol/typescript-sdk released @modelcontextprotocol/core@2.2.0](https://github.com/modelcontextprotocol/typescript-sdk/releases/tag/%40modelcontextprotocol/core%402.2.0) ⭐️ 8.3/10
+### [MCP TypeScript SDK v2.2.0 Released](https://github.com/modelcontextprotocol/typescript-sdk/releases/tag/v2.2.0) ⭐️ 8.3/10
 
-MCP TypeScript SDK v2.2.0 deprecates OAuth provider construction without expectedIssuer and adds AuthorizationServerMismatchError validation in fetchToken\(\).
+The MCP TypeScript SDK v2.2.0 updates the client, server, core, server-legacy, and codemod packages. It tightens machine-to-machine OAuth by requiring \`expectedIssuer\` on \`ClientCredentialsProvider\`, \`PrivateKeyJwtProvider\`, \`StaticPrivateKeyJwtProvider\`, and \`CrossAppAccessProvider\`, and makes \`fetchToken\(\)\` throw \`AuthorizationServerMismatchError\` before sending anything when client information is bound to a different authorization server. List calls without a cursor now follow \`nextCursor\` until the server stops sending one, still capped by \`listMaxPages\`.
 
-github · github-actions\[bot\] · Sep 28, 19:07
+github · felixweinberger · Sep 28, 19:24
 
-**Tags**: `#mcp`, `#tools`, `#permissions`, `#runtime`
+**「Design Notes」** OAuth providers now stamp and validate the authorization-server \`issuer\` on client information, rejecting mismatches pre-flight. Pagination is handled inside the SDK so \`listTools\(\)\`, \`listPrompts\(\)\`, \`listResources\(\)\`, and \`listResourceTemplates\(\)\` return complete lists by default.
+
+**「What Changed」** \`expectedIssuer\` is deprecated-if-missing on four M2M OAuth providers; \`fetchToken\(\)\` adds an authorization-server mismatch guard; list methods auto-paginate; and fixes restore CommonJS type-checking, prevent \`Client.listen\(\)\` unhandled rejections and hangs, preserve \`\_meta\` on \`input\_required\`, treat \`.localhost\` as loopback, and stop \`createMcpHandler\` stack overflows.
+
+**Tags**: `#mcp`, `#permissions`, `#tools`, `#runtime`
 
 ---
 
 <a id="item-harness-arch-3"></a>
-### [Codex rust-v0.158.0 发布](https://github.com/openai/codex/releases/tag/rust-v0.158.0) ⭐️ 7.8/10
+### [modelcontextprotocol/typescript-sdk released 1.31.0](https://github.com/modelcontextprotocol/typescript-sdk/releases/tag/1.31.0) ⭐️ 8.3/10
 
-Codex rust-v0.158.0 ships MCP OAuth client-secret support, bearer-token security for direct exec-server WebSocket connections, and default terminal-input approval for elevated commands. It fixes Windows sandbox failures involving ordinary Windows 10 paths, rejected stored credentials, and large permission policies. Linux sandbox startup with nested writable roots is repaired, and Git metadata protections are preserved across writable roots on Linux and macOS.
+MCP TypeScript SDK 1.31.0 binds stored OAuth credentials to their issuing authorization server and deprecates provider construction without expectedIssuer.
 
-github · github-actions\[bot\] · Sep 28, 05:07
+github · felixweinberger · Sep 28, 18:52
 
-**「设计要点」** WebSocket authentication is extracted into a dedicated \`codex-websocket-auth\` crate, and app-server executor connections support bearer tokens. Sandbox fixes reorder read-only metadata mounts for nested writable roots and preserve Git metadata protections across writable roots on Linux and macOS.
-
-**「改了什么」** MCP servers can authenticate with pre-registered OAuth client secrets via \`codex mcp add --oauth-client-secret\`. Direct exec-server WebSocket connections now support bearer tokens, including through app-server, and elevated commands trigger terminal-input approval by default.
-
-**Tags**: `#mcp`, `#permissions`, `#sandbox`, `#runtime`, `#tools`
+**Tags**: `#mcp`, `#permissions`, `#auth`
 
 ---
 
 <a id="item-harness-arch-4"></a>
-### [crewAIInc/crewAI released 1.15.23](https://github.com/crewAIInc/crewAI/releases/tag/1.15.23) ⭐️ 6.8/10
+### [Claude Code v2.1.284 发布](https://github.com/anthropics/claude-code/releases/tag/v2.1.284) ⭐️ 7.8/10
 
-crewAI 1.15.23 adds native Gemini 3.8 Flash support, improves evaluation tracing and platform integration UX, and includes multiple bug fixes.
+Anthropic released Claude Code v2.1.284. The release sets Claude Sonnet 5.5 \(\`claude-sonnet-5-5\`\) as the default Sonnet model with 1M context, priced at $2/$10 per Mtok and $0.20/Mtok for cache reads. Auto mode adds a &quot;Yes, but ask again next time&quot; option before reads outside working directories. The update also brings USD spend-limit tracking to \`/usage\` and the status line, rebindable effort-slider keybindings, and \`/mcp reconnect all\`.
 
-github · lorenzejay · Sep 28, 21:14
+github · ashwin-ant · Sep 28, 18:02
 
-**Tags**: `#eval`, `#runtime`, `#tools`
+**「设计要点」** Auto mode now distinguishes one-off reads from recurring ones outside the working directory, so a single approval does not suppress future prompts. The Claude apps gateway adds certificate client authentication \(\`private\_key\_jwt\`\) and Google Cloud OTLP telemetry export, and warns when managed \`availableModels\` is empty or omits the startup model without setting \`model\` or \`enforceAvailableModels\`.
+
+**「改了什么」** The default model shifts to Sonnet 5.5, and out-of-directory read permissions become granular. Spend limits now surface as USD amounts in \`/usage\` and the status line, while MCP recovery and effort-slider controls gain dedicated commands and keybindings.
+
+**Tags**: `#runtime`, `#tools`, `#permissions`, `#mcp`
 
 ---
 
 <a id="item-harness-arch-5"></a>
-### [2.1.284](https://code.claude.com/docs/en/changelog#2-1-284) ⭐️ 6.8/10
+### [Kitesurf 更新支持 WebMCP](https://blog.cloudflare.com/kitesurf-update/) ⭐️ 7.3/10
 
-Claude Code 2.1.284 adds Sonnet 5.5 as the default model, refines auto-mode read permissions with a &\#x27;ask again next time&\#x27; option, and introduces spend-limit display and effort-slider keybindings.
+Cloudflare 更新跑在 Workers 上的 agentic browser Kitesurf，加入 WebMCP 支持，网站可直接向 agent 暴露函数（如 searchFlights\(\)），不用再模拟点击。Cloudflare Radar 已提供 navigate-to、set-location 等 WebMCP 工具，可通过 chrome-devtools-mcp 经 wss 端点接入。Kitesurf 补齐 Browser Run 全量 API，支持 CDP、Playwright、Puppeteer、MCP，WPT 子测试通过数达 730,000+，比发布时多 500,000。官方称新增 Web 标准支持后，wall-clock 时间与 CPU 用量仍与发布基准大致持平。
 
-rss · Claude Code Changelog · Sep 28, 18:15
+rss · Cloudflare AI · Sep 28, 13:00
 
-**Tags**: `#permissions`, `#tools`, `#sandbox`
+**「设计要点」** Kitesurf 把 PageScript（页面会话与代码执行）和 PageRenderer（像素生成）拆开，安全关键逻辑留在服务端，渲染可移到客户端或另一个 Worker。终端版将 PageRenderer 输出改为 Kitty 图形协议或 ANSI 文本，让开发者在终端里直接查看 agent 看到的页面。
+
+**「改了什么」** 新增 WebMCP 支持与 Worker 内 env.BROWSER.quickAction\(\) 绑定；Boa 与 Wasm DOM 之间的 getAttribute、id、parentNode 等常见读取改为在 Wasm DOM 内直接应答，减少跨引擎往返；字体按需加载，跳过页面未使用的语言包。
+
+**Tags**: `#runtime`, `#tools`, `#mcp`
 
 ---
 
 <a id="item-harness-arch-6"></a>
-### [LangChain 1.4.3 Patch Release](https://github.com/langchain-ai/langchain/releases/tag/langchain%3D%3D1.4.3) ⭐️ 6.3/10
+### [Fireworks 1.7.0 发布](https://github.com/langchain-ai/langchain/releases/tag/langchain-fireworks%3D%3D1.7.0) ⭐️ 6.8/10
 
-LangChain 1.4.3 is a patch release over 1.4.2. It adds Bedrock Mantle chat model support to \`init\_chat\_model\`, fixes GPT-6 structured output recognition without profiles, repairs invalid tool calls in \`create\_agent\`, and sanitizes cache settings for fallback models. The anyio dependency is bumped to 4.14.2.
+LangChain Fireworks 集成包 1.7.0 发布，上一版为 1.6.3。新增 prompt caching middleware，在 Fireworks 调用中启用前缀缓存；同时修复 mid-stream read timeout 的分类问题。版本还替换了不可用的集成测试模型，并刷新模型 profile 数据。
 
-github · github-actions\[bot\] · Sep 28, 20:17
+github · github-actions\[bot\] · Sep 28, 20:46
 
-**「Design Points」** The changes concentrate in three runtime paths: chat model initialization via \`init\_chat\_model\`, agent tool-call validation inside \`create\_agent\`, and cache-setting propagation for fallback models. No interface or protocol breaks.
+**「设计要点」** prompt caching middleware 位于 Fireworks 集成层，负责前缀缓存命中；mid-stream read timeout 被单独归类，与连接阶段超时区分。
 
-**「What Changed」** Bedrock Mantle chat models are now selectable through \`init\_chat\_model\`. GPT-6 structured output no longer requires profiles. \`create\_agent\` rejects invalid tool calls. Fallback models receive sanitized cache settings. anyio moves from 4.11.0 to 4.14.2.
+**「改了什么」** 相对 1.6.3，1.7.0 引入 prompt caching middleware，支持前缀缓存；修复 mid-stream read timeout 分类；替换失效的集成测试模型，并刷新模型 profile 数据。
 
-**Tags**: `#runtime`, `#tools`, `#prefix-cache`
+**Tags**: `#prefix-cache`, `#runtime`, `#tools`
 
 ---
 
 <a id="item-harness-arch-7"></a>
-### [langchain-ai/langchain released langchain-fireworks==1.7.0](https://github.com/langchain-ai/langchain/releases/tag/langchain-fireworks%3D%3D1.7.0) ⭐️ 6.3/10
+### [LangChain 1.4.3 Patch Released](https://github.com/langchain-ai/langchain/releases/tag/langchain%3D%3D1.4.3) ⭐️ 5.8/10
 
-Minor 1.7.0 release of langchain-fireworks adds a prompt caching middleware and fixes mid-stream timeout classification, with no detailed technical notes.
+LangChain 1.4.3 is a patch release that adds Bedrock Mantle chat model support to \`init\_chat\_model\` and fixes agent tool-call and cache-setting bugs. It also recognizes GPT-6 structured output without profiles. No breaking changes are introduced.
 
-github · github-actions\[bot\] · Sep 28, 20:46
+github · github-actions\[bot\] · Sep 28, 20:17
 
-**Tags**: `#prefix-cache`, `#runtime`, `#eval`
+**「Design Notes」** The patch adjusts the model initialization path and agent tool layer. \`init\_chat\_model\` now routes Bedrock Mantle chat models, and \`create\_agent\` repairs invalid tool calls. Cache settings are sanitized for fallback models to prevent misconfiguration.
+
+**「What Changed」** Relative to 1.4.2, \`init\_chat\_model\` supports Bedrock Mantle chat models, \`create\_agent\` fixes invalid tool calls, cache settings are sanitized for fallback models, and GPT-6 structured output is recognized without profiles.
+
+**Tags**: `#runtime`, `#tools`
 
 ---
 
 ## AI Agent Engineer
 
 <a id="item-agent-engineer-1"></a>
-### [Claude Sonnet 5.5 发布](https://simonwillison.net/2026/Sep/28/claude-sonnet-5-5/) ⭐️ 8.0/10
+### [CIS 修正 RLVR 训练推理失配](https://huggingface.co/papers/2609.32444) ⭐️ 8.0/10
 
-Anthropic 发布 Claude Sonnet 5.5，定价与 Sonnet 5 持平，官方称速度提升 30% 以上，多数任务成本最多降低 30%，基准测试全面超越前代。Simon Willison 实测：xhigh 思考档位生成 SVG 耗时 41 秒，花费 5.74 美分；max 档位复现 Opus 5.5 缺陷，思考 128,000 tokens、花费 1.28 美元后耗尽 token 且未输出。该模型已成为 claude.ai 免费层模型，实测可生成 WebGL 三维动画页面，部分编码任务表现接近 Opus 5.5。Haiku 5.5 将在未来数周内推出。
+Hugging Face Daily Papers 于 2026-09-29 收录论文，研究 RLVR 中推理引擎与训练引擎对同一 token 概率不一致的问题。论文提出校准重要性采样（CIS），将失配刻画为 log-odds 中的加性位移 ε\_t，其由 softmax 前的逐 logit 扰动决定，分布近似与 token 置信度无关。CIS 据此实施置信度感知截断，对较大正位移进行截断。原文未完整给出截断阈值，也未提供与既有方法的量化对比。
 
-rss · Simon Willison · Sep 28, 22:07
+rss · Hugging Face Daily Papers · Sep 29, 00:00
 
-**「为什么重要」** 对 coding agent 与 harness 开发者而言，Sonnet 5.5 在保持价格的同时提升速度并降低成本，直接影响推理预算与延迟设计。但 max 思考档位的 token 耗尽缺陷提示，需设置输出上限与失败重试，否则单次调用可能产生 1.28 美元无结果开销。
+**「为什么重要」** RLVR 是 coding agent 与 harness 训练的常见范式，训练与推理引擎的概率失配会直接影响策略更新。该论文给出可复现的失配刻画与修正方法，为 Agent 训练链路提供直接的技术参考。
 
-**「可关注」** 可关注：Sonnet 5.5 的 xhigh 档位在 41 秒内完成 SVG 生成且成本可控，但 max 档位存在 128,000 tokens 无输出缺陷，生产环境应避免直接使用 max 档位或增加 token 预算熔断。
+**「可关注」** 可关注：CIS 把训练-推理失配归结为 logit 空间的加性位移，并据此做置信度感知截断，工程上可在 RLVR 训练框架中复现该修正逻辑。
 
-**Tags**: `#coding-agent`, `#eval`, `#observability`, `#harness`
+**Tags**: `#eval`, `#harness`, `#coding-agent`
 
 ---
 
 <a id="item-agent-engineer-2"></a>
-### [分离 Prefill 与 Decode 量化](https://huggingface.co/papers/2609.26333) ⭐️ 8.0/10
+### [llm-anthropic 0.30 发布](https://github.com/simonw/llm-anthropic/releases/tag/0.30) ⭐️ 7.8/10
 
-2026-09-29，Hugging Face Daily Papers 收录论文《Disaggregated Quantization: Specializing LLM Prefill and Decode》，提出 disaggregated quantization（DQ），针对 prefill 与 decode 分别特化计算格式、权重与存储位置。在 Qwen 3 和 Gemma 3 上，decode 阶段移除激活量化可在不增加推理成本的前提下提升 decode-heavy 任务精度；训练独立的 compute-native prefill 权重能在 2–3-bit decode 下匹配或超过 weight-only 推理精度，同时加速 prompt 处理。论文释出 Qwen3.8-27B GGUF decoders，并报告 NVFP4 prefiller 将 1-bit 精度提升 32.5 点（原文数据在此处截断），当前获得 44 个 upvotes。
-
-rss · Hugging Face Daily Papers · Sep 29, 02:27
-
-**「为什么重要」** 主流推理常对 prefill 与 decode 使用同一套低比特权重，该论文用实验指出两阶段对量化策略的诉求相反：prefill 受益于低精度计算，decode 受益于紧凑权重以降低显存带宽。对 coding agent 与推理 harness 工程师而言，这直接影响内存占用、吞吐与精度的权衡假设。
-
-**「可关注」** 可关注：若现有推理栈对 prefill 与 decode 强制统一量化格式，可能同时牺牲 prompt 处理速度与生成精度；可评估分阶段特化权重与已释出的 GGUF 解码器在实际负载下的收益。
-
-**Tags**: `#memory`, `#eval`, `#harness`
-
----
-
-<a id="item-agent-engineer-3"></a>
-### [Holo4: powering generalist computer-use agents](https://huggingface.co/blog/Hcompany/holo4) ⭐️ 6.8/10
-
-Hugging Face announces Holo4, a new series of generalist computer-use agent models available in 27B dense and 35B-A3B MoE sizes with open trajectories and an API.
-
-rss · Hugging Face Blog · Sep 28, 09:44
-
-**Tags**: `#coding-agent`, `#mcp`, `#eval`, `#harness`
-
----
-
-<a id="item-agent-engineer-4"></a>
-### [llm-anthropic 0.30 发布](https://github.com/simonw/llm-anthropic/releases/tag/0.30) ⭐️ 6.3/10
-
-simonw/llm-anthropic 0.30 发布，新增 Claude Sonnet 5.5 支持，并加入 \`llm anthropic refresh\`、\`llm anthropic models\`、\`llm anthropic count\` 三个命令。\`refresh\` 从 Anthropic models API 拉取可用模型并缓存到用户目录 \`anthropic\_models.json\`，未收录模型按 API 回报的能力注册，包括图像与 PDF 输入、thinking、effort、结构化输出和最大输出 token。\`count\` 调用 token counting API 统计输入 token 而不运行模型，Python 侧对应 \`model.count\_tokens\(\)\`。同时修复了对话中遭拒后，后续 prompt 因空 content 报 400 错误的问题。
+simonw/llm-anthropic 发布 0.30，新增 Claude Sonnet 5.5 支持。插件加入 \`llm anthropic refresh\` 与 \`llm anthropic models\`，从 Anthropic models API 拉取可用模型并缓存至 \`anthropic\_models.json\`，未知模型按 API 回报的能力注册。新增 \`llm anthropic count\`，基于 token counting API 在不执行 prompt 的情况下统计输入 token，参数与 \`llm prompt\` 一致，Python 暴露 \`model.count\_tokens\(\)\`。修复对话遭遇拒绝后，后续 follow-up 因空 content 报 400 的错误。
 
 github · simonw · Sep 28, 23:06
 
-**「为什么重要」** 对用 LLM CLI 管理 Anthropic 模型的工程师，模型枚举和 token 预检从查文档变为本地命令，可减少上下文超限的反复试错。目前材料仅展示工具链增量更新，未提供对 agent 架构或生产环境的影响数据。
+**「为什么重要」** 对 agent 工程师，\`count\` 提供了执行前的上下文与成本预估，\`refresh\`/\`models\` 减少跟进 Anthropic 新模型时的手工配置。拒绝后的 400 修复直接改善多轮对话稳定性。
 
-**「可关注」** 可关注：\`llm anthropic count\` 与 \`model.count\_tokens\(\)\` 能在不触发推理的前提下统计输入 token，适合在 harness 中作为上下文预算的前置校验；\`refresh\` 依赖本地 \`anthropic\_models.json\` 缓存，新模型能力需主动拉取后才会注册。
+**「可关注」** \`llm anthropic count\` 与 \`model.count\_tokens\(\)\` 可在不触发推理的前提下验证 prompt token 规模，适合嵌入 harness 预检；\`refresh\` 将模型能力发现从人工维护转为 API 驱动。
 
 **Tags**: `#harness`, `#observability`, `#coding-agent`
 
 ---
 
-<a id="item-agent-engineer-5"></a>
-### [Supporting native Rust in Workers with the new Emscripten target for wasm-bindgen](https://blog.cloudflare.com/rust-workers-emscripten-target/) ⭐️ 6.3/10
+<a id="item-agent-engineer-3"></a>
+### [TraceDance 用部署轨迹构建行为基准](https://huggingface.co/papers/2609.33295) ⭐️ 7.5/10
 
-Cloudflare announces experimental first-class support for the Emscripten wasm32-unknown-emscripten target in wasm-bindgen, allowing native Rust and Tokio-based applications to run on Workers.
+TraceDance 从真实部署轨迹自动构建针对特定不良行为的 agent 基准。Anchor-and-Confirm 结合可编程检索与 Flash LLM 的候选确认，Anchor Synthesis Loop 生成并修订自定义行为规范。基准通过 decision-point continuation 评估 LLM 在记录决策点的下一轮输出，使用行为专属 rubric，不需要参考答案或环境回放。论文包含 coding 与通用任务的实验。
+
+rss · Hugging Face Daily Papers · Sep 29, 00:00
+
+**「为什么重要」** Agent 执行任务时可能出现不良行为，固定基准套件难以覆盖部署中遇到的具体问题。TraceDance 把部署轨迹直接转为行为测试，为 eval 与 observability 工作流提供了新路径。其架构尚未被证明是主流基准升级，但对 agent 工程师有直接参考价值。
+
+**「可关注」** 可关注：TraceDance 用 decision-point continuation 在记录决策点评测 LLM 下一轮输出，替代环境回放，为 harness 中的 eval 环节提供了从部署轨迹构建测试的新思路。
+
+**Tags**: `#eval`, `#observability`, `#coding-agent`, `#harness`
+
+---
+
+<a id="item-agent-engineer-4"></a>
+### [EMem-Bench：2,554 个具身 episode 测长程记忆](https://huggingface.co/papers/2609.28236) ⭐️ 7.5/10
+
+Hugging Face Daily Papers 收录 EmbodiedMemory-Bench（EMem-Bench）。该基准包含 2,554 个交互 episode，覆盖四类任务，要求智能体在长程具身交互中构建并更新记忆。论文将当前智能体的记忆瓶颈归结为四点：细粒度视觉记忆弱、动态世界状态跟踪不可靠、未记录交互结果揭示的世界状态、难以从先前经验泛化。作者认为现有基准未直接评测这些能力。
+
+rss · Hugging Face Daily Papers · Sep 29, 00:00
+
+**「为什么重要」** 对构建具身智能体或记忆系统的工程师，论文明确指出现有基准未覆盖长程交互中的四类记忆缺陷，EMem-Bench 提供了针对这些缺陷的交互式评测面。基准已发布，但是否能直接推动智能体记忆能力提升，尚未有外部验证。
+
+**「可关注」** 可关注：EMem-Bench 把长程具身记忆拆成细粒度视觉、动态世界状态、交互结果记录、经验泛化四个可测维度，做记忆系统的工程师可以对照这四点检查自身设计是否被现有基准遗漏。
+
+**Tags**: `#eval`, `#memory`, `#benchmark`, `#embodied-agent`
+
+---
+
+<a id="item-agent-engineer-5"></a>
+### [Supporting native Rust in Workers with the new Emscripten target for wasm-bindgen](https://blog.cloudflare.com/rust-workers-emscripten-target/) ⭐️ 6.8/10
+
+Cloudflare announces an experimental preview of the Emscripten wasm32-unknown-emscripten target for wasm-bindgen, allowing native Rust and Tokio-based applications to run on Workers.
 
 rss · Cloudflare Engineering · Sep 28, 13:00
 
-**Tags**: `#toolchain`, `#rust`, `#wasm`, `#cloudflare-workers`
+**Tags**: `#wasm`, `#rust`, `#toolchain`, `#cloudflare-workers`
 
 ---
 
 <a id="item-agent-engineer-6"></a>
-### [Sonnet 5.5 发布，安全回退影响评测](https://www.anthropic.com/claude-sonnet-5-5) ⭐️ 6.0/10
+### [Holo4 发布：27B 与 35B-A3B](https://huggingface.co/blog/Hcompany/holo4) ⭐️ 6.3/10
 
-2026 年 9 月 28 日，Anthropic 发布 Sonnet 5.5，Hacker News 讨论集中在 Terminal-Bench 得分。Sonnet 5.5 取得 70.6 分，高于 Opus 5.5 的 66.4 分。用户 abejora 指出，Opus 5.5 有 10% 的试验因安全护栏回退到其他模型，Sonnet 5.5 仅 1.5%，分差可能主要来自回退率差异。该数据出自 Sonnet 5.5 System Card 第 8.5 节，目前为社区解读，尚无独立基准复现。
+H Company 发布 Holo4 系列 agentic 模型，提供 27B dense 与 35B-A3B MoE 两个尺寸，已在 H Models API 上线，同时发布 Holotron4 Nano。模型通过 GUI、代码、MCP 和 API 与软件交互，训练基于 Agentic Task Factory 生成的环境与任务。OSWorld 2.0 上，27B 得 61.7%，35B-A3B 得 30.9%，低于 Opus 5.5 的 81.8%，但参数量与成本显著更低。官方公开了基准测试的完整轨迹。
 
-hackernews · D2OQZG8l5BI1S06 · Sep 28, 17:58 · [Discussion](https://news.ycombinator.com/item?id=49881850)
+rss · Hugging Face Blog · Sep 28, 09:44
 
-**「为什么重要」** 对 coding agent 工程师而言，这提醒在对比模型终端任务基准时，安全回退率会直接扭曲结果。若忽略回退机制，容易把工程约束误读为模型能力差异。
+**「为什么重要」** 对 coding agent 与 harness 工程师，Holo4 的要点是同一模型跨 GUI、代码、MCP、API 四类接口通用，且公开 OSWorld 2.0 与 AutomationBench 的完整轨迹，可直接回放每一步。其 harness 改造经验——可靠记忆与桌面 shell——对长程 agent 设计有参考意义。
 
-**「可关注」** 可关注：解读 Terminal-Bench 等终端基准时，需同步核查模型的安全回退率与 System Card 中的降级策略，避免将护栏触发误判为能力差距。
+**「可关注」** Holo4 将 GUI 操作、代码执行、MCP 与 API 调用统一到同一模型，官方称无需按平台切换模型；同时公开全部基准轨迹，便于复现与对比 harness 差异。
 
-**「评论」** 社区对 Sonnet 5.5 的定位和性价比分歧明显：Sol- 认为 Opus 5.5 在 5x 套餐下已够用，难以看到 Sonnet 5.5 的日常场景；azuanrb 和 MisterMunchkin 则强调 GLM、DeepSeek 等中国模型价格优势显著。wongarsu 注意到 Sonnet 5.5 网络安全能力提升后配备了接近 Opus 5.5 的护栏，高风险任务会回退到 Sonnet 5。
-
-**Tags**: `#coding-agent`, `#eval`, `#llm`, `#benchmark`, `#anthropic`
+**Tags**: `#coding-agent`, `#mcp`, `#eval`, `#harness`
 
 ---
 
 <a id="item-agent-engineer-7"></a>
-### [Cloudflare \`cf\` CLI 发布](https://blog.cloudflare.com/cloudflare-cf-cli-launch/) ⭐️ 5.5/10
+### [Sonnet 5.5 发布](https://www.anthropic.com/claude-sonnet-5-5) ⭐️ 6.0/10
 
-Cloudflare 发布了 agentic CLI \`cf\`，用于操作其 API。当前材料仅包含 HN 社区讨论，未提供官方架构说明、trace 或 eval 数据。评论集中在 TypeScript 选型、token 创建与权限管理的摩擦，以及 CLI 相对直接调用 REST 的必要性。该产品对 agent 工具链的实际影响尚无法从现有材料评估。
+Anthropic 上线 Sonnet 5.5，Hacker News 出现相关讨论。有用户指出 Sonnet 5.5 在 Terminal-Bench 得分 70.6，高于 Opus 5.5 的 66.4；但 Opus 5.5 约 10% 的试验因安全护栏触发回退模型，Sonnet 5.5 仅 1.5%，得分差距可能主要来自回退率差异而非模型能力。另有评论提到 Sonnet 5.5 对高风险网络安全任务会回退到 Sonnet 5。
 
-hackernews · macleos · Sep 28, 15:28 · [Discussion](https://news.ycombinator.com/item?id=49879577)
+hackernews · D2OQZG8l5BI1S06 · Sep 28, 17:58 · [Discussion](https://news.ycombinator.com/item?id=49881850)
 
-**「为什么重要」** Cloudflare 推出 agentic CLI \`cf\` 作为其 API 的操作入口，但 HN 讨论显示，token 权限管理和与 REST 的边界仍是 agent 自动化的实际断点。已发生的是产品发布，未证实的是它是否比现有 REST 方案更适合 agent 工作流。
+**「为什么重要」** Terminal-Bench 等基准的裸分可能被安全护栏的回退率混淆，直接影响对模型编码能力的判断。对搭建 coding agent 评测流程的工程师来说，分差归因需要先剥离回退样本。
 
-**「可关注」** 可关注：\`cf\` 与 Cloudflare REST API 的能力边界。有评论者指出 agent 依据 REST 文档已可执行全部操作，若 CLI 是子集，harness 需评估是否值得引入额外抽象；同时 CLI 不负责生成带权限的 token，用户仍需手动在网站查找，且入口经常变动。
+**「可关注」** 可关注：在对比 Terminal-Bench 分数时，先确认各模型的安全护栏回退率，避免把回退差异当成能力差距。
 
-**「评论」** HN 评论分歧较大。有评论者质疑 TypeScript 选型，认为应使用编译型语言避免依赖地狱；也有评论者将 agentic CLI 称为“随机词生成器”，质疑其用于生产基础设施配置的安全性。另有开发者表示从未遇到 agent 通过 REST 调用 Cloudflare 的障碍，认为 CLI 价值待验证。共识是 token 管理体验差，网站入口经常变动。
+**「评论」** 评论分歧集中在性价比与使用场景。一方认为 Opus 5.5 的效率已足够日常 2–3 个并发会话，Sonnet 5.5 的额外并发不实用；另一方则强调 GLM、DeepSeek 等中国模型价格低得多，Anthropic 的定价缺乏竞争力。多数评论为闲聊，少数涉及评测归因与网络安全回退策略。
 
-**Tags**: `#coding-agent`, `#harness`, `#permissions`
+**Tags**: `#coding-agent`, `#eval`, `#observability`
 
 ---
 
 <a id="item-agent-engineer-8"></a>
-### [EMem-Bench：具身记忆评测基准](https://huggingface.co/papers/2609.28236) ⭐️ 5.5/10
+### [Claude Sonnet 5.5 发布](https://simonwillison.net/2026/Sep/28/claude-sonnet-5-5/) ⭐️ 6.0/10
 
-Hugging Face 每日论文收录 EmbodiedMemory-Bench（EMem-Bench），针对长程具身交互中的记忆能力提出基准。该基准包含 2,554 个交互 episode，覆盖四类任务家族，要求 agent 在观察、行动与遭遇环境变化时持续建立并更新记忆。论文将当前 agent 的记忆缺陷归纳为四点：细粒度视觉记忆弱、动态世界状态跟踪不可靠、未记录交互结果揭示的世界状态、难以从先前经验泛化。目前 RSS 仅提供摘要，尚无代码、实验结果或架构细节，对一般 coding agent 工程师的即时可操作性有限。
+Anthropic 发布 Claude Sonnet 5.5，官方称运行速度提升 30% 以上，多数任务成本最多降低 30%。定价与 Sonnet 5 持平，Simon Willison 实测认为其基准表现已全面超越前代，并作为 claude.ai 免费层模型上线。该模型在 max 思考档位复现了 Opus 5.5 的缺陷：单次请求思考 128,000 tokens（约 $1.28）后耗尽额度，未能生成 SVG；xhigh 档位耗时 41 秒、花费 5.74 美分，可正常输出。作者指出其在部分编码任务上接近 Opus 5.5，Haiku 5.5 将在未来数周内发布。
 
-rss · Hugging Face Daily Papers · Sep 29, 00:00
+rss · Simon Willison · Sep 28, 22:07
 
-**「为什么重要」** 长程具身任务要求 agent 跨时间维持环境状态，而现有基准缺少对记忆能力的直接评估；EMem-Bench 的出现为这一空白提供了可量化的测试面。不过摘要未给出实验数据，其区分度与实用性仍待全文验证。
+**「为什么重要」** 免费层模型更替直接影响默认用户体验。Sonnet 5.5 进入 claude.ai 免费层后，与 ChatGPT 免费层使用的 Luna 5.6 形成对比，作者认为 Anthropic 当前免费档位能力更强。此外，max 档位的 token 失控缺陷提示高思考预算场景仍需成本护栏。
 
-**「可关注」** 可关注：EMem-Bench 把长程具身记忆拆成细粒度视觉、动态世界状态、交互结果记录与经验泛化四个维度，但摘要未提供代码与实验数据，暂无法评估其基线表现。
+**「可关注」** 可关注：max 思考档位在 Sonnet 5.5 上仍可能耗尽 token 且无法产出结果，接入时需为思考预算和输出长度设置硬上限，避免单次请求成本失控。
 
-**Tags**: `#eval`, `#memory`, `#benchmark`
+**Tags**: `#coding-agent`, `#eval`, `#observability`
 
 ---
 
 <a id="item-agent-engineer-9"></a>
-### [AdaTutoRank：自适应辅导优化重排](https://huggingface.co/papers/2609.32472) ⭐️ 5.5/10
+### [Claude Code’s Next Era — Thariq Shihipar, Anthropic](https://www.latent.space/p/thariq) ⭐️ 6.0/10
 
-AdaTutoRank 面向 RAG 与深度研究的文档集合重排，提出自适应辅导优化。主流重排器按相关性匹配挑选文档，但复杂信息需求要的是互补、无冗余的集合。先前工作以集合级 rubric 总分作奖励，把目标从排序文档转向组合集合；但该分数是集合内所有文档共享的单一标量，监督稀疏——集合得分高时，冗余文档跟着受奖；集合得分低时，关键文档跟着受罚。信用分配分不清贡献者与搭便车者。该论文 2026-09-29 收录于 Hugging Face Daily Papers，获 7 次 upvote。
+Anthropic&\#x27;s Thariq Shihipar discusses Claude Code&\#x27;s next era, including shipping new models and features like Plugins and Projects.
+
+rss · Latent Space · Sep 29, 01:48
+
+**Tags**: `#coding-agent`, `#harness`, `#orchestration`
+
+---
+
+<a id="item-agent-engineer-10"></a>
+### [HF daily paper: AdaTutoRank: Learning to Rerank Document Sets via Adaptive Tutoring Optimization for RAG and Deep Research](https://huggingface.co/papers/2609.32472) ⭐️ 5.5/10
+
+AdaTutoRank proposes adaptive tutoring optimization for set-level document reranking in RAG and deep research, but only an abstract is available without results or code.
 
 rss · Hugging Face Daily Papers · Sep 29, 00:00
 
-**「为什么重要」** 重排器决定哪些证据进入下游模型。集合级奖励若让监督稀疏，重排器就难以区分关键文档与冗余文档，直接影响 RAG 与深度研究的证据质量。
-
-**「可关注」** 可关注：集合级奖励导致文档重排信用分配稀疏，AdaTutoRank 用自适应辅导优化应对；但原文对 on-policy 蒸馏现有方法缺陷的描述在截断处中断，具体改进需查论文全文。
-
-**Tags**: `#rag`, `#deep-research`, `#eval`, `#optimization`
+**Tags**: `#rag`, `#eval`, `#retrieval`, `#deep-research`
 
 ---
 
 ## AI Daily
 
 <a id="item-ai-daily-1"></a>
-### [OpenAI 就澳洲政府网站事件道歉](https://openai.com/index/how-we-will-do-better-for-australia) ⭐️ 8.8/10
+### [OpenAI 就澳大利亚政府网站事件道歉](https://openai.com/index/how-we-will-do-better-for-australia) ⭐️ 8.8/10
 
-OpenAI 官方博客致歉，称事件涉及澳大利亚政府网站。同时宣布强化安全防护与支持，加强澳大利亚网络防御。此次为区域性政策更新，未提及全球调整。
+OpenAI 就涉及澳大利亚政府网站的事件公开道歉。官方称将加强安全防护措施，并提供支持以强化澳大利亚的网络防御能力。
 
-rss · OpenAI Blog · Sep 29, 01:00
+rss · OpenAI Blog · Sep 28, 19:00
 
-**「为什么重要」** 主要 AI 实验室正式回应政府网站相关事件，并给出安全防护与支持承诺，属区域合规与网络防御层面的政策动作。
+**「为什么重要」** 主要 AI 实验室公开为政府网站相关事件道歉，并承诺加强网络安全支持，显示其与政府数字基础设施交互时的责任边界正受到更严格审视。
 
-**Tags**: `#policy`, `#industry`, `#lab`
+**「可关注」** OpenAI 将加强安全防护措施，并为澳大利亚网络防御提供支持。
+
+**Tags**: `#lab`, `#policy`, `#industry`
 
 ---
 
 <a id="item-ai-daily-2"></a>
-### [How we found 24 Android vulnerabilities using our open source AI security agent](https://github.blog/security/how-we-found-24-android-vulnerabilities-using-our-open-source-ai-security-agent/) ⭐️ 8.3/10
+### [GitHub AI Security Agent Finds 24 Android Bugs](https://github.blog/security/how-we-found-24-android-vulnerabilities-using-our-open-source-ai-security-agent/) ⭐️ 7.3/10
 
-GitHub 官方博客介绍其开源 AI 安全代理通过定向任务流发现 24 个 Android 漏洞，并开放该工具供用户自行运行。
+GitHub&\#x27;s official blog reports that its open-source AI security agent uncovered 24 Android vulnerabilities using targeted taskflows. The post details the critical bugs and explains how to run the agent on your own app. The source is a first-party security tooling case study, not a major model release or policy change.
 
 rss · GitHub Blog · Sep 28, 19:00
 
-**Tags**: `#open-source`, `#industry`, `#product`, `#lab`
+**「Why It Matters」** The case study shows that an open-source AI agent can surface critical Android vulnerabilities, and the published taskflows give teams a concrete method to reproduce the audit on their own codebases.
+
+**「Takeaway」** Watch: GitHub&\#x27;s open-source AI security agent and the targeted taskflows behind the 24 findings, which the blog says can be run against your own Android app.
+
+**Tags**: `#open-source`, `#product`, `#industry`
 
 ---
 
 <a id="item-ai-daily-3"></a>
-### [OpenAI Expands Lenfest Program with Up to $10M Support](https://openai.com/index/lenfest-ai-collaborative-expansion) ⭐️ 6.8/10
+### [OpenAI 扩展 Lenfest 计划](https://openai.com/index/lenfest-ai-collaborative-expansion) ⭐️ 6.8/10
 
-OpenAI announced an expansion of the Lenfest AI Collaborative and Fellowship Program on September 28, 2026. The commitment includes $5 million in funding and up to $5 million in software credits and engineering support. The source is an official OpenAI blog post; no further technical or product details were provided.
+OpenAI 宣布扩展 Lenfest AI Collaborative and Fellowship Program。投入 500 万美元资金，并提供至多 500 万美元的软件额度与工程支持。此次属于公益项目扩展，不涉及模型发布或行业政策变化。
 
 rss · OpenAI Blog · Sep 28, 07:00
 
-**「Why It Matters」** The expansion concerns a philanthropic program rather than a core model or product release, limiting its broader industry impact.
+**「为什么重要」** 关注 AI 行业生态的读者可注意，此举显示 OpenAI 正通过非产品渠道扩大影响力。但项目影响面相对有限，暂未触及 coding agent 或 harness 的核心技术演进。
 
-**Tags**: `#lab`, `#industry`, `#product`
+**「可关注」** OpenAI 以资金、软件额度与工程支持结合的形式扩展公益项目，支持结构较为完整。
+
+**Tags**: `#lab`, `#industry`
 
 ---
 
 ## AI Deals
 
 <a id="item-ai-deals-1"></a>
-### [OpenCode 与 Command Code $10 套餐 DeepSeek 额度升至 $60](https://www.appinn.com/opencode-vs-command-code-ai-coding-plans/) ⭐️ 8.0/10
+### [$10 套餐 6 倍 DeepSeek 额度](https://www.appinn.com/opencode-vs-command-code-ai-coding-plans/) ⭐️ 7.0/10
 
-OpenCode 将 $10/月 Go 套餐中的 DeepSeek V4.1 Flash 额度永久提升至 $60/月。Command Code 随后在 $10/月 GOAT 套餐中做出相同调整，同款模型额度也永久提升至 $60/月。用户以 $10 月费可获得价值 $60 的模型用量，额度放大 6 倍。材料未提及具体领取条件或截止时间。
+OpenCode 与 Command Code 先后宣布，将 $10/月套餐中的 DeepSeek V4.1 Flash 使用额度永久提升至 $60/月等值。OpenCode 的 Go 套餐与 Command Code 的 GOAT 套餐均在此列，相当于 $10 换取 $60 额度，提升 6 倍。材料未提及领取条件、绑卡或地区限制，也未提供官方领取页面。
 
 rss · 小众软件 · Sep 28, 08:17
 
-**「为什么重要」** 两家在 $10 套餐中同时将 DeepSeek V4.1 Flash 额度提升至 $60/月，$10 月费可用到 $60 模型用量，对依赖该模型做编程辅助的用户是直接的额度放大。
+**「为什么重要」** 额度为永久提升而非限时活动，$10/月套餐可用到 $60/月等值的 DeepSeek V4.1 Flash，直接影响订阅性价比。
 
-**「可关注」** 可关注：OpenCode Go 与 Command Code GOAT 的 $10/月套餐均永久提供 $60/月 DeepSeek V4.1 Flash 额度；适合已订阅这两家、且主力使用 DeepSeek V4.1 Flash 的用户，材料未说明超额计费或额度结转规则。
+**「可关注」** 可关注：这是 $10/月付费套餐的额度提升，不是免费额度；材料未说明绑卡、地区或领取入口等限制，订阅前需自行确认。
 
 **Tags**: `#promo`, `#credits`, `#api`
 
