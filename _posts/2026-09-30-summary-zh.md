@@ -5,70 +5,107 @@ date: 2026-09-30
 lang: zh
 ---
 
-> 从 210 条内容中筛选出 20 条重要资讯。
+> 从 190 条内容中筛选出 16 条重要资讯。
 
 ---
 
 **Harness 架构**
-1. [openai/codex released rust-v0.159.0](#item-harness-arch-1) ⭐️ 8.3/10
-2. [Cline SDK v0.0.87 修复 Windows 启动与计费](#item-harness-arch-2) ⭐️ 6.3/10
-3. [google-gemini/gemini-cli released v0.63.0-preview.0](#item-harness-arch-3) ⭐️ 6.3/10
-4. [2.1.285](#item-harness-arch-4) ⭐️ 6.3/10
-5. [openai/codex released rust-v0.159.1](#item-harness-arch-5) ⭐️ 5.8/10
-6. [google-gemini/gemini-cli released v0.62.0](#item-harness-arch-6) ⭐️ 5.8/10
+1. [Claude Code v2.1.285 发布](#item-harness-arch-1) ⭐️ 8.3/10
+2. [pydantic/pydantic-ai released v2.52.0](#item-harness-arch-2) ⭐️ 8.3/10
+3. [Claude Code 2.1.285 发布](#item-harness-arch-3) ⭐️ 8.3/10
+4. [openai/codex released rust-v0.159.0](#item-harness-arch-4) ⭐️ 7.3/10
+5. [Gemini CLI nightly 发布](#item-harness-arch-5) ⭐️ 6.3/10
+6. [google-gemini/gemini-cli released v0.63.0-preview.0](#item-harness-arch-6) ⭐️ 6.3/10
+7. [Pydantic-AI v1.107.7 发布](#item-harness-arch-7) ⭐️ 5.8/10
+8. [SkillOpt：文本空间训练技能](#item-harness-arch-8) ⭐️ 5.0/10
 
 **Agent 工程师日报**
-1. [Getting the Source Right, Not Just the Fact: Source-Aware Verification for MCP Agents](#item-agent-engineer-1) ⭐️ 8.3/10
-2. [Apple 往返协议量化序列化损失](#item-agent-engineer-2) ⭐️ 8.3/10
-3. [TraceDance 从部署轨迹生成行为基准](#item-agent-engineer-3) ⭐️ 8.0/10
-4. [HF daily paper: Knowing When Thinking Is Not Enough: Teaching Small Reasoning Models to Reason Beyond Their Parametric Knowledge](#item-agent-engineer-4) ⭐️ 8.0/10
-5. [GLM-5.3 端到端漏洞利用能力评估](#item-agent-engineer-5) ⭐️ 7.8/10
-6. [GPT 6.1 Sol: Near-Astra intelligence for a fifth of the price](#item-agent-engineer-6) ⭐️ 6.0/10
-7. [OpenAI DevDay 2026 回顾](#item-agent-engineer-7) ⭐️ 5.5/10
-8. [GLM-5.3 控制流劫持成功率 4%](#item-agent-engineer-8) ⭐️ 5.5/10
-9. [Qwen3.8-Flash-Next 推出 GSQ-RCO 量化与专家剪枝版](#item-agent-engineer-9) ⭐️ 5.5/10
+1. [HF daily paper: TraceDance: An Automated System for Building Agent Behavior Benchmarks from Real-World Agent Deployment Traces](#item-agent-engineer-1) ⭐️ 8.0/10
+2. [Getting the Source Right, Not Just the Fact: Source-Aware Verification for MCP Agents](#item-agent-engineer-2) ⭐️ 7.8/10
+3. [小推理模型思考瓶颈与 FlyBy 框架](#item-agent-engineer-3) ⭐️ 7.5/10
+4. [HF daily paper: CompoWorld: Compositional Environment Scaling for General Agents](#item-agent-engineer-4) ⭐️ 7.5/10
+5. [HF daily paper: Groupwise Agentic Grading and Advantage Redistribution for Code Agent RL](#item-agent-engineer-5) ⭐️ 7.0/10
 
 **AI 日报**
-1. [OpenAI DevDay 2026 回顾](#item-ai-daily-1) ⭐️ 10.0/10
-2. [OpenAI 发布 GPT-6.1 Sol](#item-ai-daily-2) ⭐️ 8.8/10
-3. [Asana 训练 Claude 代理当队友](#item-ai-daily-3) ⭐️ 8.3/10
-4. [OpenAI 发布 dots 主动助手](#item-ai-daily-4) ⭐️ 6.8/10
-5. [GitHub 更新开发者政策与透明度数据](#item-ai-daily-5) ⭐️ 6.8/10
+1. [OpenAI 发布 GPT-6.1 Sol](#item-ai-daily-1) ⭐️ 9.8/10
+2. [OpenAI DevDay 2026 回顾](#item-ai-daily-2) ⭐️ 9.8/10
+3. [GitHub 更新开发者政策与透明度数据](#item-ai-daily-3) ⭐️ 7.8/10
 
 ---
 
 ## Harness 架构
 
 <a id="item-harness-arch-1"></a>
-### [openai/codex released rust-v0.159.0](https://github.com/openai/codex/releases/tag/rust-v0.159.0) ⭐️ 8.3/10
+### [Claude Code v2.1.285 发布](https://github.com/anthropics/claude-code/releases/tag/v2.1.285) ⭐️ 8.3/10
 
-Codex Rust v0.159.0 introduces opt-in instant interrupt steering, app-server thread-history pagination, and Windows MCP/code-mode launch fixes.
+Claude Code v2.1.285 引入环境级工具与权限控制、安装期 MCP 服务器配置、API provider 限制及运行时超时重试设置。新增 \`CLAUDE\_CODE\_DISABLE\_WEB\_FETCH\` 关闭 WebFetch，\`allowedProviders\` 托管设置限定可用 API provider，\`claude plugin install --config\` 支持在安装 \`.mcpb\` 服务器时直接写入 \`&lt;server&gt;.&lt;key&gt;=&lt;value&gt;\`。\`CLAUDE\_CODE\_NONSTREAMING\_TIMEOUT\_RETRIES\` 限制非流式回退请求超时后的重发次数。版本同时修复 subagent 前台执行、fork 权限模式继承、SSH 安装忽略 \`GIT\_SSH\`、托管设置读取失败拒绝启动等大量运行问题。
 
-github · github-actions\[bot\] · 9月29日 08:05
+github · ashwin-ant · 9月29日 19:27
 
-**标签**: `#runtime`, `#tools`, `#mcp`, `#sandbox`
+**「设计要点」** 工具层通过环境变量和托管设置实现细粒度开关，MCP 服务器配置前移到安装阶段。权限模型上，fork subagent 继承父会话的 permission mode 且不能退出 plan mode，后台 subagent 的权限请求路由到 prompt tool。
+
+**「改了什么」** 新增 provider 限定、安装期 MCP 配置、WebFetch 环境开关及非流式超时重试上限。修复覆盖 subagent 前台化、fork 权限继承、SSH 安装、托管设置容错、Remote Control 消息状态、Artifact 发布冲突与 \`/ultrareview\` 上传等运行时行为。
+
+**标签**: `#tools`, `#mcp`, `#permissions`, `#runtime`, `#subagents`
 
 ---
 
 <a id="item-harness-arch-2"></a>
-### [Cline SDK v0.0.87 修复 Windows 启动与计费](https://github.com/cline/cline/releases/tag/sdk/sdk/v0.0.87) ⭐️ 6.3/10
+### [pydantic/pydantic-ai released v2.52.0](https://github.com/pydantic/pydantic-ai/releases/tag/v2.52.0) ⭐️ 8.3/10
 
-Cline SDK v0.0.87 发布，修复 Windows 下 hub 因系统代理无法启动的问题，新增 loopback 代理绕过。修正 reasoning token 重复计费，Bedrock 推理路由与模型目录同步更新。补全 PHP 代码搜索、UTF-8 BOM 解析及云会话交接能力。
+Pydantic AI v2.52.0 integrates the harness into the main repository, introduces a workspace abstraction for sandboxed/local tool execution, and fixes a moderate web\_fetch security issue.
 
-github · github-actions\[bot\] · 9月29日 05:30
+github · dsfaccini · 9月30日 00:54
 
-**「设计要点」** 运行时层面，hub client 在探测、排水和关闭前调用 ensureLoopbackProxyBypass\(\)，将 loopback 地址写入 NO\_PROXY/no\_proxy，避免 Bun fetch 把本地请求送入 HTTP\(S\)\_PROXY。计费层调整 normalizeUsage\(\)，使 outputTokens 排除 reasoning tokens，成本仍按完整输出计费。
-
-**「改了什么」** 相对 v0.0.86，hub 在 Windows 系统代理环境下可正常启动，daemon 日志新增 socket 关闭原因与端口占用诊断。token 统计不再双计 reasoning，Bedrock 裸 OpenAI 模型 id 改走 inference profile，模型目录扩至 211 家 provider、6,447 个模型。
-
-**标签**: `#runtime`, `#tools`
+**标签**: `#runtime`, `#sandbox`, `#tools`
 
 ---
 
 <a id="item-harness-arch-3"></a>
+### [Claude Code 2.1.285 发布](https://code.claude.com/docs/en/changelog#2-1-285) ⭐️ 8.3/10
+
+Claude Code 2.1.285 发布。新增 \`CLAUDE\_CODE\_DISABLE\_WEB\_FETCH\` 环境变量关闭 WebFetch 工具，\`claude --desktop\` 可在当前目录或指定会话打开桌面端。插件体系加入 \`claude plugin configure\` 命令，并支持在 \`claude plugin install --config\` 时用 \`&lt;server&gt;.&lt;key&gt;=&lt;value&gt;\` 直接写入 \`.mcpb\` 服务器配置。托管设置新增 \`allowedProviders\`，限制机器可用的 API 提供商。
+
+rss · Claude Code Changelog · 9月29日 19:37
+
+**「设计要点」** 工具层与权限面收紧：环境变量和托管设置分别控制 WebFetch 出口与 API 提供商白名单。插件配置命令把 MCP 服务器设置从 \`/plugin\` 界面前移到安装期，减少交互步骤。fork subagent 改为继承父级权限模式，且不能自行退出 plan mode。
+
+**「改了什么」** 新增 WebFetch 禁用开关、桌面端目录/会话联动、插件配置查询与安装期 MCP 注入、API 提供商托管白名单、非流式超时重试上限。修复覆盖 subagent 前台执行、SSH 安装忽略 \`GIT\_SSH\`、MCP 服务器关闭后工具残留、Artifact 发布覆盖、Remote Control 消息已读状态等 harness 缺陷。
+
+**标签**: `#runtime`, `#tools`, `#mcp`, `#permissions`
+
+---
+
+<a id="item-harness-arch-4"></a>
+### [openai/codex released rust-v0.159.0](https://github.com/openai/codex/releases/tag/rust-v0.159.0) ⭐️ 7.3/10
+
+Codex Rust v0.159.0 adds opt-in instant-interrupt steering, app-server history pagination, and Windows launcher fixes for MCP/code-mode hosts.
+
+github · github-actions\[bot\] · 9月29日 08:05
+
+**标签**: `#runtime`, `#tools`, `#sandbox`, `#mcp`
+
+---
+
+<a id="item-harness-arch-5"></a>
+### [Gemini CLI nightly 发布](https://github.com/google-gemini/gemini-cli/releases/tag/v0.64.0-nightly.20260930.g38700b4b3) ⭐️ 6.3/10
+
+Gemini CLI 发布 v0.64.0-nightly.20260930.g38700b4b3。本次 nightly 集中在非交互模式自主计划执行、A2A 服务器 V1 到 V2 设置迁移、ACP 使用量通知桥接，以及 headless 模式下的文件夹信任状态传播。改动横跨 runtime、planning、permissions 与 protocol 层，均为增量修复与重构，无破坏性变更。
+
+github · gemini-cli-robot · 9月30日 01:33
+
+**「设计要点」** 非交互模式启用自主计划执行，影响 runtime 的规划回路。A2A 服务器引入 V1 到 V2 设置迁移逻辑，调整协议层配置兼容。ACP 桥接 PromptResponse.usage 并发出 usage\_update 通知，补齐使用量回传路径。Headless 模式传播解析后的文件夹信任状态，修正权限判定链路。
+
+**「改了什么」** 相对 v0.63.0-nightly，新增非交互模式下的自主计划执行能力。formatTruncatedToolOutput 在 maxChars &lt;= 0 时禁用截断。A2A 服务器完成 V1 到 V2 设置迁移重构。ACP 支持 PromptResponse.usage 桥接与 usage\_update 通知。Headless 模式修复文件夹信任状态传播。
+
+**标签**: `#runtime`, `#planning`, `#permissions`, `#tools`
+
+---
+
+<a id="item-harness-arch-6"></a>
 ### [google-gemini/gemini-cli released v0.63.0-preview.0](https://github.com/google-gemini/gemini-cli/releases/tag/v0.63.0-preview.0) ⭐️ 6.3/10
 
-Gemini CLI v0.63.0-preview.0 ships bug fixes including bounded tool output and memory lifecycle optimizations for long-running agent loops.
+Gemini CLI v0.63.0-preview.0 is a bug-fix release with minor improvements to connection recovery, MCP config handling, and memory lifecycle in long-running agent loops.
 
 github · gemini-cli-robot · 9月29日 20:58
 
@@ -76,234 +113,135 @@ github · gemini-cli-robot · 9月29日 20:58
 
 ---
 
-<a id="item-harness-arch-4"></a>
-### [2.1.285](https://code.claude.com/docs/en/changelog#2-1-285) ⭐️ 6.3/10
+<a id="item-harness-arch-7"></a>
+### [Pydantic-AI v1.107.7 发布](https://github.com/pydantic/pydantic-ai/releases/tag/v1.107.7) ⭐️ 5.8/10
 
-Claude Code 2.1.285 introduces incremental tool, MCP, and permission conveniences including a WebFetch kill switch, desktop integration, plugin config commands, and a managed provider allowlist.
+Pydantic-AI v1.107.7 是 v1 线的维护版本，回移了 2.52.0 的安全修复，并限制了 genai-prices 依赖。本地 web\_fetch 工具解析攻击者控制的深度嵌套 HTML 时可能过度消耗 CPU 和内存，provider-native 网页抓取不受影响。同时将 genai-prices 锁定在 0.1 以下，保证 token 用量提取与限额功能正常。
 
-rss · Claude Code Changelog · 9月29日 19:37
+github · dsfaccini · 9月30日 00:54
 
-**标签**: `#tools`, `#mcp`, `#permissions`, `#runtime`
+**「设计要点」** 本地 web\_fetch 工具与 provider-native 抓取在实现上分离，安全修复仅影响前者；依赖上限用于稳定 token 计量链路。
 
----
+**「改了什么」** 相对 v1.107.6，本次回移了 web\_fetch 的 HTML 解析 DoS 修复，并将 genai-prices 依赖限制在 0.1 以下。
 
-<a id="item-harness-arch-5"></a>
-### [openai/codex released rust-v0.159.1](https://github.com/openai/codex/releases/tag/rust-v0.159.1) ⭐️ 5.8/10
-
-Codex Rust v0.159.1 backports GPT-6.1 Sol as the default model in bundled and Bedrock catalogs.
-
-github · github-actions\[bot\] · 9月29日 20:32
-
-**标签**: `#runtime`, `#models`, `#catalog`
+**标签**: `#tools`, `#runtime`, `#security`
 
 ---
 
-<a id="item-harness-arch-6"></a>
-### [google-gemini/gemini-cli released v0.62.0](https://github.com/google-gemini/gemini-cli/releases/tag/v0.62.0) ⭐️ 5.8/10
+<a id="item-harness-arch-8"></a>
+### [SkillOpt：文本空间训练技能](https://github.com/microsoft/SkillOpt) ⭐️ 5.0/10
 
-Routine gemini-cli v0.62.0 patch release with minor fixes to MCP tool title formatting, OAuth token retention, A2A server handling, and UI rendering.
+microsoft/SkillOpt 是一个文本空间优化器，为冻结的 LLM agent 训练可复用的自然语言技能。它通过轨迹驱动编辑和验证门控更新迭代技能，最终产出可部署的 best\_skill.md 工件。项目把技能训练类比为神经网络训练，引入 epochs、mini-batchsize、learning rates 和 validation gates，但不触碰模型权重。当前信息来自 GitHub trending 聚合，缺少官方发布说明、代码路径与架构细节。
 
-github · gemini-cli-robot · 9月29日 21:17
+rss · GitHub Trending Daily · 9月30日 01:47
 
-**标签**: `#mcp`, `#tools`, `#runtime`
+**「设计要点」** SkillOpt 在冻结模型之上运行，把技能表示为自然语言文本，通过轨迹数据驱动编辑并用验证门筛选更新，最终以 best\_skill.md 形式部署。训练循环借鉴神经网络范式，但优化对象是文本技能而非模型权重。
+
+**标签**: `#memory`, `#planning`, `#eval`
 
 ---
 
 ## Agent 工程师日报
 
 <a id="item-agent-engineer-1"></a>
-### [Getting the Source Right, Not Just the Fact: Source-Aware Verification for MCP Agents](https://huggingface.co/blog/MultiverseComputingCAI/getting-the-source-right-not-just-the-fact-source) ⭐️ 8.3/10
+### [HF daily paper: TraceDance: An Automated System for Building Agent Behavior Benchmarks from Real-World Agent Deployment Traces](https://huggingface.co/papers/2609.33295) ⭐️ 8.0/10
 
-Hugging Face introduces ProvenanceGuard, a source-aware verification approach for MCP agents designed to catch cross-source conflation where a fact exists in the evidence pool but is attributed to the wrong source.
+TraceDance 是一个从真实 agent 部署 trace 中自动构建针对性行为基准的评测系统，通过可编程检索与候选确认生成测试，并在决策点用 rubric 评估 LLM 下一步行为。
 
-rss · Hugging Face Blog · 9月29日 13:07
+rss · Hugging Face Daily Papers · 9月30日 01:47
 
-**标签**: `#eval`, `#mcp`, `#observability`, `#harness`
+**标签**: `#eval`, `#observability`, `#coding-agent`, `#harness`
 
 ---
 
 <a id="item-agent-engineer-2"></a>
-### [Apple 往返协议量化序列化损失](https://machinelearning.apple.com/research/communication-bottleneck-serialization) ⭐️ 8.3/10
+### [Getting the Source Right, Not Just the Fact: Source-Aware Verification for MCP Agents](https://huggingface.co/blog/MultiverseComputingCAI/getting-the-source-right-not-just-the-fact-source) ⭐️ 7.8/10
 
-Apple Machine Learning Research 提出往返评测协议，测量树状结构化内容经自然语言序列化后的损失。生成器把程序化生成的算术表达式转成文字题，提取器仅从文字题还原表达式，符号等价提供精确判定。研究覆盖 16 个模型的两两组合。该协议把结构化信息在自由文本交换中的幸存程度变成可复现的量化问题。
+Hugging Face 博客发布 ProvenanceGuard 论文介绍，提出通过源感知验证解决 MCP Agent 的跨源事实混淆问题。
 
-rss · Apple Machine Learning Research · 9月29日 00:00
+rss · Hugging Face Blog · 9月29日 13:07
 
-**「为什么重要」** 做 coding agent 与 harness 的工程师常让模型以自然语言交换中间结果，该协议提供了用符号等价 oracle 精确量化这种瓶颈的方法。已发生的变化是协议设计与 16 模型评测，对特定 harness 的实际影响仍待验证。
-
-**「可关注」** 可关注：当 harness 依赖模型以自然语言交换中间结果时，可用符号等价构造往返测试，直接测量结构化信息的幸存比例，而非依赖人工抽查。
-
-**标签**: `#eval`, `#harness`, `#orchestration`
+**标签**: `#mcp`, `#eval`, `#harness`
 
 ---
 
 <a id="item-agent-engineer-3"></a>
-### [TraceDance 从部署轨迹生成行为基准](https://huggingface.co/papers/2609.33295) ⭐️ 8.0/10
+### [小推理模型思考瓶颈与 FlyBy 框架](https://huggingface.co/papers/2609.34327) ⭐️ 7.5/10
 
-2026-09-29，TraceDance 论文提出从真实部署轨迹自动构建针对性行为基准的系统，用于评估用户指定的不良行为。系统用 Anchor-and-Confirm 机制，结合可编程检索与 Flash LLM 的候选确认，并通过 Anchor Synthesis Loop 生成和修订自定义行为规范。基准采用决策点延续，在录制的决策点上评估 LLM 的下一轮输出，使用行为特定评分规则，无需参考答案或环境重放。论文报告了在编程与通用任务上的实验。
+2026 年 9 月 30 日，Hugging Face Daily Papers 收录研究，发现小推理模型（sRMs）的自我修正主要把概率质量巩固到已可达的解，而非让新解变得可达。研究者在两个模型家族、多个规模上干预中间推理状态，区分出执行瓶颈与知识瓶颈：前者正确路径本就可达，反思可恢复；后者需外部信息介入。作者据此提出 FlyBy 选择性查询框架。该论文目前获 32 次点赞。
 
-rss · Hugging Face Daily Papers · 9月29日 00:00
+rss · Hugging Face Daily Papers · 9月30日 01:47
 
-**「为什么重要」** 固定基准套件难以覆盖部署中遇到的具体不良行为，该工作直接针对这一评估缺口。其决策点延续方法无需环境重放即可评估 LLM 在决策点的下一轮输出，为行为基准提供了不依赖完整环境复现的验证路径。
+**「为什么重要」** 这项工作用干预实验拆穿了「思考越多越好」的直觉，为 agent 编排中何时继续反思、何时调用外部工具提供了判别依据。已确认的是自我修正的机理局限，尚未确认的是 FlyBy 在真实生产链路中的增益幅度。
 
-**「可关注」** 可关注：在评估 Agent 时，除了任务完成率，还可以利用部署轨迹中的决策点，针对特定不良行为设计评分规则，无需重放环境即可检验模型的下一轮选择。
+**「可关注」** 可关注：构建小推理模型 harness 时，先诊断失败属于执行瓶颈还是知识瓶颈，再决定加深反思或触发外部查询，避免盲目堆叠测试时算力。
 
-**标签**: `#eval`, `#coding-agent`, `#observability`, `#harness`
+**标签**: `#eval`, `#orchestration`, `#harness`
 
 ---
 
 <a id="item-agent-engineer-4"></a>
-### [HF daily paper: Knowing When Thinking Is Not Enough: Teaching Small Reasoning Models to Reason Beyond Their Parametric Knowledge](https://huggingface.co/papers/2609.34327) ⭐️ 8.0/10
+### [HF daily paper: CompoWorld: Compositional Environment Scaling for General Agents](https://huggingface.co/papers/2609.33665) ⭐️ 7.5/10
 
-This paper identifies when small reasoning models should stop self-refining and instead query external knowledge, introducing a selective querying framework based on execution versus knowledge bottlenecks.
+CompoWorld 论文提出通过组合可复用服务与依赖图来自动生成并验证跨服务任务环境，为通用智能体训练提供可扩展的交互数据来源。
 
-rss · Hugging Face Daily Papers · 9月29日 00:00
+rss · Hugging Face Daily Papers · 9月30日 01:47
 
-**标签**: `#orchestration`, `#eval`, `#coding-agent`, `#harness`
+**标签**: `#eval`, `#orchestration`, `#coding-agent`, `#harness`
 
 ---
 
 <a id="item-agent-engineer-5"></a>
-### [GLM-5.3 端到端漏洞利用能力评估](https://www.anthropic.com/research/glm-5-3-and-the-spread-of-advanced-cyber-capabilities) ⭐️ 7.8/10
+### [HF daily paper: Groupwise Agentic Grading and Advantage Redistribution for Code Agent RL](https://huggingface.co/papers/2609.32577) ⭐️ 7.0/10
 
-Anthropic Frontier Red Team 评估 GLM-5.3，发现其具备与 Claude Mythos Preview 相当的端到端漏洞利用能力，但缺乏有效安全限制；模拟测试中，简单技术绕过防护的成功率为 64%–100%。ExploitBench 上，GLM-5.3 在 410 次尝试中成功构建 50 次端到端漏洞利用；内部二进制利用基准中，完整控制流劫持比例为 4%。人类专家一天内用 GLM-5.3 发现浏览器 JavaScript 引擎多个未知漏洞并串联成可利用网页；GLM-5.3-Flash 以 8 小时、20 分钟人工投入构建绕过 PAC 的 ARM64 漏洞利用链，API 成本 20.40 美元。开源权重使 abliteration 可在约 2,200 GPU 小时、4,400 美元内将拒绝率从 90% 以上降至 2%–12%，能力未见显著下降。
+A new paper proposes GAGAR, an agentic grading framework that redistributes advantages in GRPO for code agent RL to favor higher-quality, targeted implementations.
 
-rss · Anthropic Research · 9月29日 00:00
+rss · Hugging Face Daily Papers · 9月30日 01:47
 
-**「为什么重要」** GLM-5.3 作为开放权重模型，任何人可下载，且防护可被低成本移除，这降低了恶意行为者获取高级网络攻击能力的门槛。Anthropic 指出这些能力同样可帮助防御者，但对整体网络安全态势的净影响尚未证实。
-
-**「可关注」** 可关注：开放权重模型的前沿网络安全能力可被 abliteration 快速释放，防御方需将模型滥用视为可复现工程问题，而非仅依赖发布方的安全声明。
-
-**标签**: `#eval`, `#safety`, `#red-teaming`, `#model-capabilities`
-
----
-
-<a id="item-agent-engineer-6"></a>
-### [GPT 6.1 Sol: Near-Astra intelligence for a fifth of the price](https://openai.com/index/introducing-gpt-6-1-sol/) ⭐️ 6.0/10
-
-Hacker News discussion of OpenAI&\#x27;s GPT 6.1 Sol release, highlighting significantly cheaper cached input pricing alongside mixed practitioner reports on coding model regression.
-
-hackernews · crorella · 9月29日 17:06 · [社区讨论](https://news.ycombinator.com/item?id=49896586)
-
-**标签**: `#coding-agent`, `#eval`, `#pricing`
-
----
-
-<a id="item-agent-engineer-7"></a>
-### [OpenAI DevDay 2026 回顾](https://openai.com/index/devday-2026-recap/) ⭐️ 5.5/10
-
-Hacker News 提交了 OpenAI DevDay 2026 官方回顾链接，但现有材料仅含社区评论，未见第一方技术细节、代码或基准数据。评论提到的 Decisions API、子账户登录、Codex 扩展及 Ultrafast 基础设施均未在提供的文本中得到证实。部分评论者认为发布反响平淡，新功能难以融入日常工作流；也有评论者提到决策模型 API 与批量推理速度，但相关数据来自个人未公开测试，无法核实。
-
-hackernews · polygot · 9月29日 17:07 · [社区讨论](https://news.ycombinator.com/item?id=49896600)
-
-**「为什么重要」** 对 coding agent 与 harness 开发者而言，社区讨论中出现的 Codex 扩展、子账户权限和 Decisions API 暗示了供应商可能在身份、编排与推理接口上推进，但在缺乏第一方资料前，这些仍属未证实信号，不宜直接纳入技术规划。
-
-**「可关注」** 可关注：Decisions API、子账户与 Codex 扩展若经第一方确认，将直接影响 agent 的权限边界与编排方式；目前所有相关描述均来自社区评论，不能作为架构决策依据。
-
-**「评论」** 评论普遍认为此次发布缺乏日常可用功能，对 ultrafast 能力仅限 Pro 500 用户表示不满；分歧在于 Decisions API 与子账户是否具有实际价值，有评论者视其为重要更新，也有评论者质疑整体产品方向。
-
-**标签**: `#coding-agent`, `#permissions`, `#eval`, `#orchestration`
-
----
-
-<a id="item-agent-engineer-8"></a>
-### [GLM-5.3 控制流劫持成功率 4%](https://simonwillison.net/2026/Sep/29/anthropic-frontier-red-team/) ⭐️ 5.5/10
-
-Anthropic Frontier Red Team 从内部 Binary Exploitation 基准随机抽取 100 个任务。GLM-5.3 完整控制流劫持成功率 4%，Claude Mythos Preview 6%。Claude Opus 4.6 和 GLM-5.2 等早期模型均未成功。报告称阈值已被跨越。
-
-rss · Simon Willison · 9月29日 22:20
-
-**「为什么重要」** 官方第一方基准给出具体指标：GLM-5.3 与 Claude Mythos Preview 在二进制利用上已越过早期模型未达到的阈值。这是模型能力边界的实测数据，对安全评测与红队测试有参考价值。
-
-**「可关注」** 内部 Binary Exploitation 基准上，GLM-5.3 与 Claude Mythos Preview 的控制流劫持成功率分别为 4% 和 6%，早期模型为零。模型能力边界的这一变化，为安全评测与红队测试提供了新的对比基线。
-
-**标签**: `#eval`, `#coding-agent`, `#ai-security-research`
-
----
-
-<a id="item-agent-engineer-9"></a>
-### [Qwen3.8-Flash-Next 推出 GSQ-RCO 量化与专家剪枝版](https://www.reddit.com/r/LocalLLaMA/comments/1wt4s88/release_gsqrco_ggufs_for_qwen38flashnext_plus_a/) ⭐️ 5.5/10
-
-ISTA-DASLab 发布 Qwen3.8-Flash-Next 的 GSQ/RCO 量化 GGUFs 与专家剪枝 Coder 构建。原模型为 48 层稀疏 MoE，每层 512 个路由专家，176.9B 参数，BF16 下 354 GB。量化版覆盖 2.40–3.50 bpw（66.4–83.6 GB），IQ3\_S 在 3.50 bpw 下任务均分 93.26，略高于 BF16 的 93.12。Coder 版每层剪除 256 个专家，保留权重仍为 3.5 bpw，按原始参数量折算等效 1.89 bpw，常驻内存 29.6 GB；SWE-bench Verified 75.60，为 BF16 的 91.3%，属实验性发布。
-
-reddit · r/LocalLLaMA · /u/Loginhe · 9月29日 08:40
-
-**「为什么重要」** 该版本把 176.9B 稀疏 MoE 的常驻显存压到 29.6 GB，可装入单张 32 GB 加速卡；同时用 RCO 统一处理量化类型分配与专家保留，为 MoE 模型本地部署提供一条剪枝加量化的组合路径。
-
-**「可关注」** 可关注：RCO 以任务损失梯度下降同时满足每层精确预算，无需逐约束调参，并在该版本中统一负责量化类型分配与专家保留。
-
-**标签**: `#quantization`, `#moe`, `#gguf`, `#local-llm`, `#model-release`
+**标签**: `#coding-agent`, `#eval`, `#rl`
 
 ---
 
 ## AI 日报
 
 <a id="item-ai-daily-1"></a>
-### [OpenAI DevDay 2026 回顾](https://openai.com/index/devday-2026-recap) ⭐️ 10.0/10
+### [OpenAI 发布 GPT-6.1 Sol](https://openai.com/index/introducing-gpt-6-1-sol) ⭐️ 9.8/10
 
-OpenAI 发布 DevDay 2026 回顾，宣布推出 GPT-6 Astra，并汇总超过 20 项更新，覆盖 ChatGPT、Codex、API、安全及面向开发者的新工具。官方 recap 仅列出发布范围，未提供模型基准、API 定价或工具具体变更等技术细节。所有信息均来自 OpenAI 第一方博客，尚无独立验证。
+OpenAI 发布 GPT-6.1 Sol，官方定位为面向编程、计算机操作和专业工作的模型，并称其具备接近 Astra 的智能水平。该模型的 API 输入与输出 token 价格均为 Astra 标准价格的五分之一。目前官方仅给出定位与定价，未披露基准测试、上下文长度或架构细节。
 
 rss · OpenAI Blog · 9月29日 10:00
 
-**「为什么重要」** 作为主要实验室的年度开发者大会，OpenAI 此次集中更新模型与开发者工具，影响 ChatGPT 与 Codex 的现有用户及 API 接入方。
+**「为什么重要」** 官方将编程与计算机操作列为核心场景，并给出明确的价格锚点，为 agent 相关成本评估提供直接参照。
 
-**「可关注」** GPT-6 Astra 与 Codex、API、安全工具同步亮相，开发者可对照官方发布说明检查自身工作流是否受影响。
+**「可关注」** 可关注：GPT-6.1 Sol 的 API 输入与输出 token 价格均为 Astra 标准价格的五分之一，官方定位覆盖编程与计算机操作。
 
 **标签**: `#model`, `#lab`, `#product`, `#industry`
 
 ---
 
 <a id="item-ai-daily-2"></a>
-### [OpenAI 发布 GPT-6.1 Sol](https://openai.com/index/introducing-gpt-6-1-sol) ⭐️ 8.8/10
+### [OpenAI DevDay 2026 回顾](https://openai.com/index/devday-2026-recap) ⭐️ 9.8/10
 
-OpenAI 发布 GPT-6.1 Sol。官方称其具备接近 Astra 的智能水平，覆盖编程、计算机操作及专业工作场景。API 输入与输出 token 价格定为 Astra 标准价的五分之一。
+OpenAI 官方博客发布 DevDay 2026 回顾，汇总超过 20 项公告，涉及 GPT-6 Astra、ChatGPT、Codex、API、安全及开发者工具。官方未在摘要中给出具体性能指标或发布时间表。目前仅见官方通稿，缺乏第三方验证。
 
 rss · OpenAI Blog · 9月29日 10:00
 
-**「为什么重要」** OpenAI 将接近 Astra 的智能水平开放给 coding、computer use 及专业工作场景，输入与输出 token 价格均为 Astra 标准价的五分之一。对做 coding agent 与 computer use 集成的团队，单位调用成本随之降低。
-
-**「可关注」** GPT-6.1 Sol 的 API 输入与输出 token 价格均为 Astra 标准价的五分之一，做 coding agent 或 computer use 集成时可重新评估模型选型。
+**「可关注」** 可关注：DevDay 2026 公布超过 20 项更新，其中 Codex 与 API 部分值得后续跟进官方细节。
 
 **标签**: `#model`, `#lab`, `#product`, `#industry`
 
 ---
 
 <a id="item-ai-daily-3"></a>
-### [Asana 训练 Claude 代理当队友](https://claude.com/blog/agents-you-can-coach-how-asana-builds-human-agent-teams-with-claude) ⭐️ 8.3/10
+### [GitHub 更新开发者政策与透明度数据](https://github.blog/news-insights/policy-news-and-insights/developer-policy-update-transparency-state-policy-and-whats-ahead/) ⭐️ 7.8/10
 
-Anthropic 官方博客披露，Asana 将 Claude 驱动的 AI 代理作为团队成员运行，依托 Work Graph 模型赋予代理明确角色、任务与权限。代理具备持久记忆、独立凭证和共享上下文，可在活动流中与人类同事协同工作。Asana 称代理的有效访问权限受触发者权限约束，且仅管理员和编辑可将反馈写入永久记忆。该案例覆盖内容写作、洞察分析、项目管理等岗位，但属于客户实践，非模型发布或政策变更。
-
-rss · Claude Blog · 9月29日 00:00
-
-**「为什么重要」** 该案例展示了企业如何通过权限继承、角色化配置和透明活动流，将 AI 代理嵌入既有工作模型，而非另建上下文结构。对构建 coding agent / harness 的读者而言，其「触发者权限上界」和「共享记忆分级写入」机制提供了可参考的访问控制与记忆治理设计。
-
-**「可关注」** 可关注：Asana 将代理的有效访问权限绑定到触发者权限，并限制仅管理员和编辑可提交永久记忆，以此在开放协作与权限收敛之间取得平衡。
-
-**标签**: `#product`, `#lab`, `#industry`
-
----
-
-<a id="item-ai-daily-4"></a>
-### [OpenAI 发布 dots 主动助手](https://openai.com/index/introducing-dots) ⭐️ 6.8/10
-
-OpenAI 发布 dots，一款主动助手，可在复杂项目和日常任务中持续工作。官方称其能在工作推进时让用户保持掌控。当前公告仅有一句简介，未披露具体能力、可用时间及与现有产品的差异。
-
-rss · OpenAI Blog · 9月29日 00:00
-
-**「可关注」** 可关注：dots 主打跨复杂项目与日常任务的持续工作，并强调用户掌控，但技术形态、接入方式与可用范围均未公布。
-
-**标签**: `#product`, `#lab`, `#industry`
-
----
-
-<a id="item-ai-daily-5"></a>
-### [GitHub 更新开发者政策与透明度数据](https://github.blog/news-insights/policy-news-and-insights/developer-policy-update-transparency-state-policy-and-whats-ahead/) ⭐️ 6.8/10
-
-GitHub 发布开发者政策更新，涉及透明度数据以及影响开发者和开源项目的州政策。官方博客文章由 Margaret Tucker 撰写，但当前材料仅为简短预告，未披露具体政策条款或数据细节。
+GitHub 发布开发者政策更新，涵盖透明度数据与州政策变化，影响开发者及开源项目。官方博客称将公布最新透明度数据，但现有摘录未提供具体条款、数字或生效时间。政策变化对开发者的实际影响尚不明确。
 
 rss · GitHub Blog · 9月29日 15:00
 
-**「可关注」** 可关注：GitHub 官方博客将发布影响开发者和开源项目的政策更新，需等待完整内容以确认透明度数据与州政策的具体范围。
+**「为什么重要」** 此次更新涉及开发者与开源项目，但现有摘录未披露具体政策条款与数据细节。
+
+**「可关注」** 可关注：GitHub 后续披露的透明度数据与州政策具体内容，当前信息不足以评估影响。
 
 **标签**: `#policy`, `#industry`, `#open-source`
 
