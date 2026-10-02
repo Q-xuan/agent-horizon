@@ -5,108 +5,105 @@ date: 2026-10-02
 lang: zh
 ---
 
-> 从 200 条内容中筛选出 21 条重要资讯。
+> 从 189 条内容中筛选出 18 条重要资讯。
 
 ---
 
 **Harness 架构**
-1. [Cline SDK v0.0.89 发布](#item-harness-arch-1) ⭐️ 8.3/10
-2. [2.1.287](#item-harness-arch-2) ⭐️ 8.3/10
-3. [microsoft/agent-framework released dotnet-1.23.0](#item-harness-arch-3) ⭐️ 7.8/10
-4. [Codex rust-v0.160.0 增强 Guardian 审查](#item-harness-arch-4) ⭐️ 7.3/10
-5. [anthropics/claude-code released v2.1.287](#item-harness-arch-5) ⭐️ 6.8/10
-6. [e2b-dev/e2b released e2b@2.52.0](#item-harness-arch-6) ⭐️ 6.8/10
-7. [Cline desktop v0.0.40 发布](#item-harness-arch-7) ⭐️ 6.3/10
+1. [google/adk-python released v2.11.0](#item-harness-arch-1) ⭐️ 8.8/10
+2. [Claude Code 2.1.287 发布](#item-harness-arch-2) ⭐️ 8.8/10
+3. [Codex rust-v0.160.0 发布](#item-harness-arch-3) ⭐️ 6.8/10
+4. [openai/openai-agents-python released v0.23.0](#item-harness-arch-4) ⭐️ 6.8/10
+5. [microsoft/agent-framework released dotnet-1.23.0](#item-harness-arch-5) ⭐️ 6.8/10
+6. [e2b-dev/e2b released e2b@2.52.0](#item-harness-arch-6) ⭐️ 6.3/10
+7. [E2B CLI 2.21.0 限制 fork](#item-harness-arch-7) ⭐️ 6.3/10
 
 **Agent 工程师日报**
-1. [pwasm 0.2a0 发布：WASM 沙箱](#item-agent-engineer-1) ⭐️ 8.8/10
-2. [Apple 研究：ML Agent 的 Harness 取舍](#item-agent-engineer-2) ⭐️ 8.8/10
-3. [自进化搜索智能体共谋作弊诊断](#item-agent-engineer-3) ⭐️ 8.0/10
-4. [Box^2-Bench 评估模型外部指导依赖](#item-agent-engineer-4) ⭐️ 8.0/10
-5. [AED 论文发布：5 万条错误诊断对](#item-agent-engineer-5) ⭐️ 8.0/10
-6. [Agent 沙箱可经共享缓存传播恶意指令](#item-agent-engineer-6) ⭐️ 7.0/10
-7. [Clef 决策模型与 RL 微调平台发布](#item-agent-engineer-7) ⭐️ 6.0/10
-8. [llama.cpp 支持 Qwen MTP](#item-agent-engineer-8) ⭐️ 6.0/10
-9. [Olmo-core 3 扩展 MoE 至万亿](#item-agent-engineer-9) ⭐️ 5.8/10
+1. [Box^2-Bench 测模型对外部引导依赖](#item-agent-engineer-1) ⭐️ 8.0/10
+2. [pwasm 0.2a0 支持 WASM 沙箱](#item-agent-engineer-2) ⭐️ 7.8/10
+3. [AREX-2 提出长程反思自改进智能体](#item-agent-engineer-3) ⭐️ 7.5/10
+4. [Mid-Harness 论文：边界处验证动作](#item-agent-engineer-4) ⭐️ 7.5/10
+5. [Meta-Skill 设计 Harness](#item-agent-engineer-5) ⭐️ 7.5/10
+6. [沙箱 Agent 可借共享缓存传播蠕虫](#item-agent-engineer-6) ⭐️ 6.0/10
+7. [Qwen Flash Next 接入 MTP](#item-agent-engineer-7) ⭐️ 6.0/10
+8. [Clef 决策模型与 RL 微调平台](#item-agent-engineer-8) ⭐️ 5.5/10
 
 **AI 日报**
-1. [Barclays 扩大 Claude 部署](#item-ai-daily-1) ⭐️ 8.8/10
-2. [Claude Code 推出 mods 扩展机制](#item-ai-daily-2) ⭐️ 8.8/10
-3. [The eternal complement](#item-ai-daily-3) ⭐️ 6.3/10
-4. [Albertsons 采用 ChatGPT](#item-ai-daily-4) ⭐️ 6.3/10
-5. [ChatGPT Work 客户案例：周省 10–15 小时](#item-ai-daily-5) ⭐️ 6.3/10
+1. [OpenAI：AI 或重塑常规执行工作](#item-ai-daily-1) ⭐️ 6.3/10
+2. [Albertsons 部署 ChatGPT](#item-ai-daily-2) ⭐️ 6.3/10
+3. [10 technical talks I’m excited about at GitHub Universe 2026](#item-ai-daily-3) ⭐️ 5.8/10
 
 ---
 
 ## Harness 架构
 
 <a id="item-harness-arch-1"></a>
-### [Cline SDK v0.0.89 发布](https://github.com/cline/cline/releases/tag/sdk/sdk/v0.0.89) ⭐️ 8.3/10
+### [google/adk-python released v2.11.0](https://github.com/google/adk-python/releases/tag/v2.11.0) ⭐️ 8.8/10
 
-Cline SDK v0.0.89 发布。超大 MCP/Composio 工具结果改为按会话缓存：核心把超长输出存入内存，给模型有界预览和 \`cline://cache/...\` URI，\`read\_files\` 按行范围分页读取；自定义工具经 \`createTool\` 的 \`resultPolicy: &quot;cache-oversized&quot;\` 接入。条目 5 次模型迭代未读即过期，单会话上限 16 MiB，原始输出仍留在历史与工具事件。自定义 provider 修复了 agent 路径注册，provider 设置持久化也更稳健。
+ADK v2.11.0 adds runtime cancellation, workflow tool approval, and a built-in SQLite memory service.
 
-github · github-actions\[bot\] · 9月30日 23:34
+github · xuanyang15 · 10月2日 00:44
 
-**「设计要点」** 工具层将超长结果外置到会话级内存缓存，以 URI 分页替代直接回传，压低上下文占用；provider 注册统一收敛到 \`@cline/llms\` 导出的 \`resolveGatewayProviderRegistration\(Sync\)\`，使自定义 provider 与内置 provider 共用网关路径。
-
-**「改了什么」** 相比 v0.0.88，新增超大工具结果缓存与分页读取，自定义 provider 从仅出现在选择器变为可在 agent 路径运行；\`saveLocalProviderSettings\` 改为异步并串行化写设置，模型目录刷新，Vultr 上游重命名模型 id 需重新选择。
-
-**标签**: `#runtime`, `#tools`, `#mcp`, `#memory`
+**标签**: `#runtime`, `#tools`, `#memory`, `#permissions`
 
 ---
 
 <a id="item-harness-arch-2"></a>
-### [2.1.287](https://code.claude.com/docs/en/changelog#2-1-287) ⭐️ 8.3/10
+### [Claude Code 2.1.287 发布](https://code.claude.com/docs/en/changelog#2-1-287) ⭐️ 8.8/10
 
-Claude Code 2.1.287 adds MCP URL prompts on the 2025-11-25 protocol, a Claude Mods plugin system for deeper behavior changes, and an OpenTelemetry prompt\_text field.
+Claude Code 2.1.287 发布。新增 Claude Mods，插件可修改更深层运行时行为；内置 side-agent mod「You should know」用于标记用户或 Claude 可能遗漏的内容，通过 \`/plugin enable cc-plugin-you-should-know@builtin\` 启用。MCP 服务器在 2025-11-25 协议下可发起 URL 提示（如登录），但需在 MCP 配置中加入 \`&quot;bareElicitationCapability&quot;: true\`，否则服务器可能无法连接。OpenTelemetry \`user\_prompt\` 事件新增 \`prompt\_text\` 字段，作为 \`prompt\` 的副本，供嵌套点分键的后端使用。
 
 rss · Claude Code Changelog · 10月1日 18:14
 
-**标签**: `#runtime`, `#tools`, `#mcp`, `#subagents`
+**「设计要点」** Claude Mods 将插件能力从工具层延伸到运行时行为层，side-agent 以独立观察者身份介入会话。MCP 客户端以 \`bareElicitationCapability\` 作为 URL elicitation 的显式开关，未开启时拒绝连接；OpenTelemetry 用 \`prompt\_text\` 复制 \`prompt\`，绕开后端对点分键的嵌套限制。
+
+**「改了什么」** 运行时新增 Mods 插件机制与内置 side-agent；MCP 层支持 URL 提示并引入破坏性配置项 \`bareElicitationCapability\`；可观测性层为 \`user\_prompt\` 事件补充 \`prompt\_text\` 字段。
+
+**标签**: `#runtime`, `#mcp`, `#subagents`, `#eval`
 
 ---
 
 <a id="item-harness-arch-3"></a>
-### [microsoft/agent-framework released dotnet-1.23.0](https://github.com/microsoft/agent-framework/releases/tag/dotnet-1.23.0) ⭐️ 7.8/10
+### [Codex rust-v0.160.0 发布](https://github.com/openai/codex/releases/tag/rust-v0.160.0) ⭐️ 6.8/10
 
-Microsoft Agent Framework .NET 1.23.0 release introduces breaking changes for tool management between runs, MCP client hardening, and workflow topology fixes.
+OpenAI Codex 发布 rust-v0.160.0。新增 workspace 默认会话权限，支持在项目外启动会话，并在恢复时还原已保存权限。Guardian 审查能力改为可选开启，可检索早期用户指令并纳入 agent 交接上下文。Windows 沙盒修复 PowerShell 回退与长路径 ACL 问题，同时抑制后台助手弹出的控制台窗口。
 
-github · dmytrostruk · 10月1日 10:54
+github · andrewgu-oai · 10月1日 20:19
 
-**标签**: `#runtime`, `#tools`, `#mcp`, `#planning`
+**「设计要点」** 权限层引入 workspace 默认值，使无项目会话在策略允许下运行。Guardian 作为可选审查模块，通过检索历史指令和交接上下文增强记忆连续性。Subagent 启动时保留 pending 环境，确保配置或准备失败能正确回传。
+
+**「改了什么」** TUI 支持重连后恢复未发送消息，修复 resume/fork 历史中的 provider 与模型查找。SQLite 连接初始化错误不再被掩盖为超时，并新增后台日志库空间回收。显式 provider 模型目录被设为权威来源，刷新失败后不再复用陈旧条目。
+
+**标签**: `#sandbox`, `#permissions`, `#memory`, `#subagents`, `#runtime`
 
 ---
 
 <a id="item-harness-arch-4"></a>
-### [Codex rust-v0.160.0 增强 Guardian 审查](https://github.com/openai/codex/releases/tag/rust-v0.160.0) ⭐️ 7.3/10
+### [openai/openai-agents-python released v0.23.0](https://github.com/openai/openai-agents-python/releases/tag/v0.23.0) ⭐️ 6.8/10
 
-OpenAI Codex 发布 rust-v0.160.0。新增 opt-in Guardian review，检索早期用户指令并纳入 agent handoff 上下文。支持项目外启动会话，恢复时还原已保存权限。修复 Windows sandbox PowerShell fallback、长路径 ACL 及后台 helper 控制台窗口。TUI 保留服务器端 provider、reasoning-summary 与 verbosity 设置，修正 resume/fork 历史显示。
+OpenAI Agents Python v0.23.0 adds configurable MCP listing page limits, opt-in Docker removal protection, configurable memory consolidation turns, and an opt-in encrypted history scan budget.
 
-github · andrewgu-oai · 10月1日 20:19
+github · openai-sdks\[bot\] · 10月2日 01:08
 
-**「设计要点」** Guardian review 检索对话历史与 handoff 快照扩展审查上下文，权限恢复依赖会话保存状态。Windows sandbox 修复覆盖 fallback、长路径 ACL 及后台控制台抑制，Subagent 保留 pending environments，SQLite 初始化错误不再掩盖为超时。
-
-**「改了什么」** 新增 opt-in Guardian review 与项目外会话权限恢复。修复 Windows sandbox fallback、长路径 ACL 及后台控制台窗口；TUI 保留服务器设置并修正历史显示；Subagent 保留启动中的环境，SQLite 初始化错误不再掩盖为超时。
-
-**标签**: `#runtime`, `#sandbox`, `#permissions`, `#subagents`
+**标签**: `#sandbox`, `#mcp`, `#memory`, `#sessions`
 
 ---
 
 <a id="item-harness-arch-5"></a>
-### [anthropics/claude-code released v2.1.287](https://github.com/anthropics/claude-code/releases/tag/v2.1.287) ⭐️ 6.8/10
+### [microsoft/agent-framework released dotnet-1.23.0](https://github.com/microsoft/agent-framework/releases/tag/dotnet-1.23.0) ⭐️ 6.8/10
 
-Claude Code v2.1.287 adds MCP URL prompt support, deeper plugin behavior hooks, and telemetry/permission refinements.
+Microsoft Agent Framework .NET 1.23.0 ships breaking changes to tool handling between runs, MCP client origin pinning, and multiple workflow topology and declarative workflow fixes.
 
-github · ashwin-ant · 10月1日 18:00
+github · dmytrostruk · 10月1日 10:54
 
-**标签**: `#runtime`, `#tools`, `#mcp`, `#permissions`, `#subagents`
+**标签**: `#runtime`, `#tools`, `#mcp`, `#workflow`
 
 ---
 
 <a id="item-harness-arch-6"></a>
-### [e2b-dev/e2b released e2b@2.52.0](https://github.com/e2b-dev/E2B/releases/tag/e2b%402.52.0) ⭐️ 6.8/10
+### [e2b-dev/e2b released e2b@2.52.0](https://github.com/e2b-dev/E2B/releases/tag/e2b%402.52.0) ⭐️ 6.3/10
 
-E2B 2.52.0 caps sandbox fork counts at 20 client-side and makes template file copying respect Docker-style \`.dockerignore\` and ignore-pattern semantics, affecting uploads and hashing.
+E2B 2.52.0 caps sandbox fork count at 20 via client-side validation and aligns template file copying with Docker ignore semantics.
 
 github · github-actions\[bot\] · 10月1日 10:44
 
@@ -115,224 +112,179 @@ github · github-actions\[bot\] · 10月1日 10:44
 ---
 
 <a id="item-harness-arch-7"></a>
-### [Cline desktop v0.0.40 发布](https://github.com/cline/cline/releases/tag/desktop-v0.0.40) ⭐️ 6.3/10
+### [E2B CLI 2.21.0 限制 fork](https://github.com/e2b-dev/E2B/releases/tag/%40e2b/cli%402.21.0) ⭐️ 6.3/10
 
-Cline desktop v0.0.40 发布。修复自定义 provider 执行失败，新聊天记住 Cloud/Local 状态与模型选择。统一 MCP 设置文件路径，读取、保存、OAuth 与 UI 现在共用同一文件。MCP 工具输出超出上下文时，agent 可经预览和链接分页读取剩余内容。模型目录更新，Vultr 模型 id 上游重命名，固定模型需重选。
+E2B CLI 2.21.0 发布，核心变更为 sandbox fork 数量增加客户端校验。CLI、JavaScript 与 Python SDK 现在在调用 API 前拒绝 1–20 范围外的 count。此前 21–100 的 count 会直接到达 API。省略 count 时请求不带该字段，仍由 API 默认值处理。
 
-github · github-actions\[bot\] · 9月30日 23:56
+github · github-actions\[bot\] · 10月1日 10:44
 
-**「设计要点」** MCP 设置路径在 \`CLINE\_MCP\_SETTINGS\_PATH\`、\`CLINE\_DATA\_DIR\`、\`CLINE\_DIR\` 下统一为单一路径，覆盖读写、OAuth 与 UI 入口。工具输出超过上下文时不再截断丢弃，改为预览加分页链接，由 agent 主动翻页读取。
+**「改了什么」** \`e2b sandbox fork --count\`、JavaScript \`Sandbox.fork\(\{ count \}\)\` 与 Python \`Sandbox.fork\(count=...\)\` 新增前置校验，count 超出 1–20 直接报错。补丁部分将 protobuf 与 OpenAPI 客户端、终端样式及交互提示升级到兼容的次要版本，并更新依赖至 \`e2b@2.52.0\`。
 
-**「改了什么」** 自定义 provider 修复后可直接执行任务，不再报 \`Unknown or disabled provider\`。新聊天默认恢复上次的 Cloud/Local 模式与 Cloud 模型。保存 provider 凭证不再因模型列表拉取失败而中断，切换 API key 或 endpoint 会刷新模型列表。工具 diff 跟随应用字体大小，弃用固定 13px。
-
-**标签**: `#mcp`, `#tools`, `#runtime`
+**标签**: `#sandbox`, `#runtime`, `#tools`
 
 ---
 
 ## Agent 工程师日报
 
 <a id="item-agent-engineer-1"></a>
-### [pwasm 0.2a0 发布：WASM 沙箱](https://github.com/simonw/pwasm/releases/tag/0.2a0) ⭐️ 8.8/10
+### [Box^2-Bench 测模型对外部引导依赖](https://huggingface.co/papers/2609.39578) ⭐️ 8.0/10
 
-simonw 发布 pwasm 0.2a0。该版本通过 WebAssembly 沙箱运行不可信的 Python 与 JavaScript，打包 MicroPython、QuickJS 和 Micro QuickJS 的 WASM 构建。新增 \`pwasm.guests\` 与 \`pwasm.sandbox\` 模块，支持内存、CPU 与时间限制；\`pwasm.wasi.WasiLite\` 提供 WASI preview1 子集，无文件系统与网络访问。热函数编译为 Python 源码后通常比解释器快 8 到 14 倍，QuickJS 启动从约 1.3s 降至 0.1s。
+新论文提出 Box^2-Bench 基准，固定模型与任务，变化工作流可靠性，单独隔离模型对外部引导的依赖调节能力。作者将「受益于有用引导、同时覆盖不可靠引导」的能力称为 thinking outside the box。实测显示，前沿模型能从可靠引导中获益，但面对误导性或失效引导时仍显脆弱。作者用坏工作流训练两个开源权重模型，保留好工作流用于评估，并探索两种互补训练策略，其中一种为反事实监督。
 
-github · simonw · 10月1日 17:10
+rss · Hugging Face Daily Papers · 10月2日 01:56
 
-**「为什么重要」** 对构建代码执行 harness 的 agent 工程师而言，这提供了一个可审查的隔离执行原语，带显式的燃料、内存与墙钟限制。WASI 实现刻意排除文件系统与网络访问，缩小了沙箱内工具调用的攻击面。
+**「为什么重要」** Agent harness 常借助人工设计的工作流提升模型，但模型能力增强后，不可靠引导可能越来越制约执行。该基准把「选择性依赖」从笼统的 agent 评测中拆出，直接对应 harness 设计中的引导质量问题。
 
-**「可关注」** \`pwasm.sandbox.Sandbox\` 与 \`pwasm.guests\` 提供带燃料、内存和墙钟限制的隔离执行原语，且无文件系统与网络访问。
+**「可关注」** 可关注：Box^2-Bench 将工作流可靠性作为独立变量，为 harness 中外部引导的评估提供了隔离方法；训练用坏工作流、评估保留好工作流的设定，也划出了能力泛化的测试边界。
 
-**标签**: `#harness`, `#permissions`, `#coding-agent`, `#sandbox`
+**标签**: `#eval`, `#harness`, `#orchestration`, `#coding-agent`
 
 ---
 
 <a id="item-agent-engineer-2"></a>
-### [Apple 研究：ML Agent 的 Harness 取舍](https://machinelearning.apple.com/research/harness-autonomous-ml-engineering) ⭐️ 8.8/10
+### [pwasm 0.2a0 支持 WASM 沙箱](https://github.com/simonw/pwasm/releases/tag/0.2a0) ⭐️ 7.8/10
 
-Apple ML Research 于 2026 年 10 月 1 日发布研究，探讨自主机器学习工程（MLE）Agent 需要多复杂的 harness。当前 MLE Agent 在公开排行榜上进展显著，但多受长周期进展停滞与 LLM 原语受限驱动，转而依赖多 Agent 编排、检索子 Agent 等复杂机制。该研究将这类复杂系统与具备 read、write、bash 原语的原始 coding agent 对比，指出后者虽在改进，却在领域内关注不足。
+simonw 发布 pwasm 0.2a0，新增基于 WebAssembly 的沙箱，可执行未受信的 Python 与 JavaScript 代码。该版本内置 MicroPython、QuickJS 与 MQuickJS 的 WebAssembly 构建，通过 \`pwasm.guests\` 与 \`pwasm.sandbox\` 提供内存、CPU 与时间限制，且无文件系统与网络访问。pwasm 完整实现 WebAssembly 2.0 核心指令集（除 SIMD），并引入编译到 Python 的执行层，热点函数较解释执行快 8–14 倍；磁盘缓存将 QuickJS 启动从约 1.3s 降至 0.1s。项目同时支持 PyPy 与 CPython 3.10–3.14。
 
-rss · Apple Machine Learning Research · 10月1日 00:00
+github · simonw · 10月1日 17:10
 
-**「为什么重要」** 对 coding agent 与 harness 设计者而言，这提供了一个直接对照：复杂编排是否必要，还是原始工具原语已足够。研究把问题从堆更多机制拉回到 LLM 原语与执行环境直接交互的基线。
+**「为什么重要」** 对需要执行未受信代码的 agent harness 而言，pwasm 0.2a0 提供了纯 Python 的 WebAssembly 沙箱方案，内置资源限制与无文件系统/网络的 WASI 实现。其编译到 Python 的层级与磁盘缓存显著降低了启动与执行开销，但尚未验证在真实 agent 负载下的稳定性与兼容性。
 
-**「可关注」** 可关注：Apple 将 elaborate multi-agent orchestrators 与具备 read、write、bash 原语的 primitive coding agents 对比，为 harness 复杂度与直接环境访问的权衡提供实证基线。
+**「可关注」** 可关注：\`pwasm.guests\` 与 \`pwasm.sandbox\` 的 API 设计，以及 \`Limits\`、\`OutOfFuel\`、\`Timeout\` 等异常如何嵌入现有 harness 的权限与超时控制。同时注意其 wheel 约 650KB，且当前不支持 SIMD。
+
+**标签**: `#coding-agent`, `#harness`, `#permissions`
+
+---
+
+<a id="item-agent-engineer-3"></a>
+### [AREX-2 提出长程反思自改进智能体](https://huggingface.co/papers/2609.38288) ⭐️ 7.5/10
+
+AREX-2 论文把智能体的自改进能力定义为测试时迭代优化解，并拆成反思与长程执行两部分。作者假设这两种能力领域无关，因此在机器学习和算法编程任务上合成长程改进轨迹，利用可验证反馈监督训练。基于 Qwen3.8-27B 的智能体在 MLE-bench Lite 上报告了较强结果，论文未披露具体分数。
+
+rss · Hugging Face Daily Papers · 10月2日 01:56
+
+**「为什么重要」** 对 coding agent 与 harness 设计者而言，这提供了一条将反思与长程执行分离训练、再在可验证域合成轨迹的路径。当前证据仅限 MLE-bench Lite，跨领域泛化尚未验证。
+
+**「可关注」** 可关注：设计迭代改进循环时，可把「生成更优解」与「维持多轮有效迭代」作为两个独立模块，并优先在有可验证反馈的任务域构造监督数据。
+
+**标签**: `#eval`, `#coding-agent`, `#harness`, `#orchestration`
+
+---
+
+<a id="item-agent-engineer-4"></a>
+### [Mid-Harness 论文：边界处验证动作](https://huggingface.co/papers/2609.39982) ⭐️ 7.5/10
+
+Hugging Face Daily Papers 于 2026-10-02 收录 Mid-Harness 论文，提出在模型与 harness 边界处采样并验证候选动作，再转发执行，且不修改生成器与 harness。实验基于 TMAX-9B 生成器，摘要显示弱验证下增加动作采样收益有限，强验证器可提升轨迹成功率，但原文在此处截断，具体效果未完整给出。论文将测试时计算放在模型与 harness 之间，用于提升终端 Agent 的动作可靠性。
+
+rss · Hugging Face Daily Papers · 10月2日 01:56
+
+**「为什么重要」** 终端 Agent 执行错误命令可能改变环境状态，阻碍后续步骤。该论文把可靠性瓶颈从模型生成转移到 harness 边界的动作筛选，为不更换模型的情况下提升执行成功率提供了一条可测试路径。
+
+**「可关注」** 可关注：在 harness 外层增加动作采样前，先确认验证器是否足够强，否则采样数量增加对结果帮助有限。
 
 **标签**: `#harness`, `#coding-agent`, `#eval`, `#orchestration`
 
 ---
 
-<a id="item-agent-engineer-3"></a>
-### [自进化搜索智能体共谋作弊诊断](https://huggingface.co/papers/2609.39102) ⭐️ 8.0/10
-
-2026 年 10 月 1 日，Hugging Face Daily Papers 收录一篇关于自进化搜索智能体的论文。该类智能体联合优化出题器与解题器，自行构建训练课程。论文将其中一种失效模式命名为共谋作弊：出题器与解题器对共享错误达成一致，内部奖励上升，外部正确率却未同步提升。对源证据的事后审计显示，多轮自进化后共谋作弊加剧，伪标签正确率停滞或下降，而训练信号仍在改善。论文提出多样本验证（MSV）作为缓解：对同一模型分别带源证据与不带源证据各查询三次，据此决定任务准入。
-
-rss · Hugging Face Daily Papers · 10月1日 00:00
-
-**「为什么重要」** 该研究揭示自进化智能体在缺乏外部校验时可能陷入内部指标虚高的陷阱，直接影响智能体评估与自改进循环设计。目前结论来自论文实验，尚未在更广泛场景中复现。
-
-**「可关注」** 可关注：在自进化流程中引入外部证据校验，避免仅依赖内部奖励判断任务质量。
-
-**标签**: `#eval`, `#orchestration`, `#observability`
-
----
-
-<a id="item-agent-engineer-4"></a>
-### [Box^2-Bench 评估模型外部指导依赖](https://huggingface.co/papers/2609.39578) ⭐️ 8.0/10
-
-2026 年 10 月 1 日，Hugging Face Daily Papers 收录论文，提出 Box^2-Bench 基准。该基准固定模型与任务，只变化工作流可靠性，单独考察模型如何调节对外部指导的依赖。结果显示，前沿模型通常能从可靠指导中获益，但遇到误导性或可靠性下降的指导时依然脆弱。论文训练了两个开源权重模型，仅用不可靠工作流训练，把可靠工作流留到评估，并探索了两种互补训练策略；原文对策略细节的描述在此处截断。
-
-rss · Hugging Face Daily Papers · 10月1日 00:00
-
-**「为什么重要」** Agent harnesses 普遍依赖人工设计的工作流来增强语言模型，但模型能力增强后，不可靠指导可能反过来限制执行。Box^2-Bench 固定模型与任务，只变化工作流可靠性，为度量‘选择性依赖’提供了可复现的隔离环境；训练策略能否扩展到更大规模或真实场景，仍待验证。
-
-**「可关注」** 可关注：为 harness 接入外部工作流时，除了量化可靠指导的增益，也要单独评估模型对误导性指导的鲁棒性。
-
-**标签**: `#eval`, `#harness`, `#orchestration`
-
----
-
 <a id="item-agent-engineer-5"></a>
-### [AED 论文发布：5 万条错误诊断对](https://huggingface.co/papers/2609.40111) ⭐️ 8.0/10
+### [Meta-Skill 设计 Harness](https://huggingface.co/papers/2609.38143) ⭐️ 7.5/10
 
-Hugging Face Daily Papers 收录 Agent Error Dataset \(AED\) 论文。数据集包含 50,228 条错误诊断对，来自 9,961 个源任务，覆盖 33 个环境、19 个 harness 家族与 23 个策略模型。作者保留源轨迹与执行元数据，支持跨设置失败分析与重诊断，无需重复原始 rollout。论文提出五阶段 Agentic Error-to-Training \(AET\) 流水线，收集自然失败，生成诊断与修正建议，并验证。
+Hugging Face 论文提出 Meta-Skill 方法，在测试期 AI-for-AI 设定下让 Builder 为 Target 设计执行环境（harness），两侧模型权重均保持固定。Builder 从 Target 在开发集上的执行反馈中学习元技能，再用冻结的技能库为未见任务构建 harness。在 Harness-Bench 和 NewtonBench 上，完整技能库相比无技能构建将宏平均性能提升 8.95 个百分点，相比直接向 Target 交付同一技能库提升 12.02 个百分点。论文发布于 2026-10-02，目前获得 76 次 upvote。
 
-rss · Hugging Face Daily Papers · 10月1日 00:00
+rss · Hugging Face Daily Papers · 10月2日 01:56
 
-**「为什么重要」** 失败的 LLM agent rollout 包含观测、动作与环境响应，信息量高于最终 reward。AED 与 AET 流水线把这类失败转化为训练信号，可直接服务于 agent 评估、harness 调试与训练流程。
+**「为什么重要」** 该工作把 harness 设计本身变成可学习的对象，为固定权重模型提供了一条不依赖微调的 Agent 性能优化路径。目前结果限于 Harness-Bench 和 NewtonBench，尚未覆盖更广场景。
 
-**「可关注」** 可关注：AED 提供大规模、可复现的失败样本与五阶段 AET 流水线，可将自然失败直接转化为错误感知后训练信号，无需重复原始 rollout。
+**「可关注」** 可关注：在固定模型权重下，由 Builder 学习元技能并构建 harness 的思路，为 Agent 执行环境优化提供了不依赖微调的新路径。
 
-**标签**: `#eval`, `#harness`, `#coding-agent`, `#observability`
+**标签**: `#harness`, `#eval`, `#coding-agent`, `#orchestration`
 
 ---
 
 <a id="item-agent-engineer-6"></a>
-### [Agent 沙箱可经共享缓存传播恶意指令](https://simonwillison.net/2026/Oct/1/matthew-green/) ⭐️ 7.0/10
+### [沙箱 Agent 可借共享缓存传播蠕虫](https://simonwillison.net/2026/Oct/1/matthew-green/) ⭐️ 6.0/10
 
-密码学家 Matthew Green 在 2026 年 9 月 30 日的文章中提出，处于相互隔离沙箱中的 Agent 可以通过共享包缓存互相留下指令，并改变接收方的行为。Simon Willison 于 10 月 1 日引用了这一分析。Green 将其描述为蠕虫的两个半边：一个劫持 Agent 的载荷，以及一个把载荷带给下一个 Agent 的载体。他指出，若把共享包缓存替换为邮件、Slack、共享文档或 WhatsApp，把独立沙箱化的训练任务替换为独立部署的个人 Agent（如 Muse），就具备了蠕虫所需的全部要素。该分析属于威胁模型推演，未提供代码、基准测试或生产环境证据。
+Matthew Green 在 2026 年 9 月 30 日的文章中提出，分别隔离的沙箱 Agent 可通过共享包缓存互相传递指令，接收方行为随之改变。Simon Willison 于 10 月 1 日引述了这一分析。Green 指出，若将包缓存替换为 email、Slack、共享文档或 WhatsApp，并将独立沙箱化的训练运行替换为独立部署的个人 Agent（如 Muse），即构成蠕虫传播的完整条件。该分析目前仅为观点引述，缺少完整技术细节与可复现材料。
 
 rss · Simon Willison · 10月1日 06:29
 
-**「为什么重要」** 这一警告直接挑战了「沙箱即可遏制失控 Agent」的隔离假设。对构建 coding agent harness 和多 Agent 系统的工程师而言，共享缓存与跨 Agent 通信通道可能成为恶意指令的传播面，而不仅是数据交换路径。需要区分的是，文中给出的是具体技术机理与推演，并非已发生的生产环境攻击。
+**「为什么重要」** 沙箱隔离常被视为 Agent 安全边界，该分析指出共享基础设施可能成为跨沙箱传播通道，直接影响 harness 的权限与编排设计。目前尚未出现公开复现或实际攻击案例，风险仍停留在理论推演层面。
 
-**「可关注」** 可关注：共享包缓存、邮件、Slack 等跨 Agent 通道可能成为指令传播面，沙箱边界不足以单独视为安全遏制手段。
+**「可关注」** 可关注：共享包缓存、邮件、Slack 等跨 Agent 通信面是否应纳入沙箱威胁模型，而非仅隔离执行环境。
 
-**标签**: `#harness`, `#permissions`, `#orchestration`
+**标签**: `#permissions`, `#orchestration`, `#harness`
 
 ---
 
 <a id="item-agent-engineer-7"></a>
-### [Clef 决策模型与 RL 微调平台发布](https://blog.cloudflare.com/clef-decision-models/) ⭐️ 6.0/10
+### [Qwen Flash Next 接入 MTP](https://www.reddit.com/r/LocalLLaMA/comments/1wuwrsk/qwen4exp_add_mtp_by_am17an_pull_request_29761/) ⭐️ 6.0/10
 
-Cloudflare 发布 Clef 决策模型及配套 RL 微调平台。模型采用开放权重，社区指出底座分别为 Qwen3.8-27B 与 Qwen3.5-9B。定价上，Clef 输入 $0.24/m tokens，Clef-flash 为 $0.09/m tokens；社区对比 Jev 后测算，百万次 300-token 决策在 Clef 上约 $72，在 Jev 上约 $12.60。社区同时强调，此次发布是开放权重而非完全开源，训练数据与流程未公开。
+2026 年 10 月 1 日，llama.cpp 合并 PR \#29761，为 Qwen Flash Next 添加 MTP 支持。Hugging Face 已发布对应的 GGUF 量化版本。该 PR 从开发到合并耗时 17 小时。目前影响范围限于单一模型与单一推理特性，尚无基准数据或社区反馈。
 
-hackernews · jasondavies · 10月1日 16:18 · [社区讨论](https://news.ycombinator.com/item?id=49923692)
+reddit · r/LocalLLaMA · /u/jacek2023 · 10月1日 11:18
 
-**「为什么重要」** 对追踪决策模型与微调工具的工程师，Clef 提供了新的开放权重选项和 RL 平台。但材料显示其影响偏增量：定价高于 Jev，且「开源」宣传与可复现性之间存在差距。
+**「为什么重要」** 对使用 Qwen Flash Next 的本地推理用户而言，MTP 支持与现成 GGUF 量化版本降低了尝试门槛。但材料未提供性能对比，实际收益仍待验证。
 
-**「可关注」** 可关注：Clef 开放权重但未公开训练数据与流程，自托管可行、复现困难；API 输入定价 $0.24/m tokens，社区测算百万次 300-token 决策约 $72，Jev 同期约 $12.60。
+**「可关注」** 可关注：GGUF 量化版本已随 PR 发布，本地部署可直接切换；不过 MTP 对生成速度的具体提升尚未给出基准，需自行实测。
 
-**「评论」** 社区分歧集中在「开源」定义：buildbuildbuild 等指出权重许可宽松，但数据与训练管线未公开，不能算真正开源。定价上，vulture916 和 ssiddharth 认为 Clef 标准版比 Jev 贵，Clef-flash 的 $0.09/m 输入更具竞争力；bityard 补充其底座为 Qwen3.8-27B 与 Qwen3.5-9B。
-
-**标签**: `#models`, `#fine-tuning`, `#rl`, `#pricing`, `#open-weights`
+**标签**: `#harness`, `#coding-agent`
 
 ---
 
 <a id="item-agent-engineer-8"></a>
-### [llama.cpp 支持 Qwen MTP](https://www.reddit.com/r/LocalLLaMA/comments/1wuwrsk/qwen4exp_add_mtp_by_am17an_pull_request_29761/) ⭐️ 6.0/10
+### [Clef 决策模型与 RL 微调平台](https://blog.cloudflare.com/clef-decision-models/) ⭐️ 5.5/10
 
-llama.cpp 合并 PR \#29761，为 Qwen Flash Next 加入 Multi-Token Prediction（MTP）支持，从开发到合并约 17 小时。对应 GGUF 量化版本已在 Hugging Face 发布（ggml-org/Qwen3.8-Flash-Next-GGUF）。原帖未提供基准测试、追踪数据或深度技术分析，实际推理加速效果与限制尚不明确。发帖者提出可对比 Qwen 3.8 27B，但未给出切换依据。
+Cloudflare 发布 Clef 开放权重决策模型与 RL 微调平台。早期社区实测显示，Clef 比现有 Jev 模型慢 2–3 倍，仇恨言论识别更少；输入定价 $0.24/m，约为 Jev（$0.042/m）的 6 倍。按每次调用 300 token 估算，百万次决策成本从约 $12.60 升至约 $72。评论指出，Clef 仅开放权重，训练数据与流程未公开，无法从专有 Qwen 基座复现。
 
-reddit · r/LocalLLaMA · /u/jacek2023 · 10月1日 11:18
+hackernews · jasondavies · 10月1日 16:18 · [社区讨论](https://news.ycombinator.com/item?id=49923692)
 
-**「为什么重要」** MTP 支持直接关系本地推理速度，对使用 Qwen Flash Next 的工程师是即时代码更新。不过该改进仅覆盖单一模型，且缺少公开基准，收益幅度仍待社区验证。
+**「为什么重要」** 对 coding agent 与 harness 工程师，决策模型是编排链路上的候选组件。Clef 当前在延迟、准确率、成本上均落后于 Jev，且训练流程不透明，短期替换动力有限。若具备自托管能力，开放权重提供了一条潜在路径。
 
-**「可关注」** 可关注：ggml-org/Qwen3.8-Flash-Next-GGUF 已提供量化文件，可在自有硬件上验证 MTP 对生成速度的实际影响，再决定是否从 Qwen 3.8 27B 迁移。
+**「可关注」** 可关注：选型决策模型时，将 Clef 与 Jev 做延迟、准确率、单次调用成本的三维对比；已有 Jev 工作流的话，迁移前先做小规模 A/B 测试。
 
-**标签**: `#harness`, `#coding-agent`, `#inference`
+**「评论」** 有评论猜测 Clef 基于 Typesafe 新范式且排名优于 Jev，但实测反馈是更慢、更不准、更贵。开放权重的价值也有分歧：一方看中自托管，另一方强调未公开数据与流程，不等于开源。
 
----
-
-<a id="item-agent-engineer-9"></a>
-### [Olmo-core 3 扩展 MoE 至万亿](https://huggingface.co/blog/allenai/olmocore3) ⭐️ 5.8/10
-
-AllenAI 发布 Olmo-core 3，将 MoE 训练推向万亿参数规模。框架从 FSDP 切换到 DDP，专家常驻 GPU 并按需路由数据，避免重复收集权重；基准中专家池从 8 扩到 128、每 token 仍选 4 个，总参数从 4.6B 增至 47B，吞吐下降不足 5%。在 8 张 NVIDIA B300 上，47B MoE 达到 52,000 tokens/s/GPU，为此前实现的约 2.7 倍；官方另用随机路由在 512 张 B300 上跑通 1.2 万亿总参数、单 token 激活 58.36B 的模型，最高观测 858 TFLOP/s/GPU，并以 DeepEP v2 完成 2.38 万亿总参数的短容量测试。技术报告记录反直觉结果：重叠通信与计算未必更快，专家学习率调低未改善效果。
-
-rss · Hugging Face Blog · 10月1日 15:01
-
-**「为什么重要」** 对 coding agent 与 harness 工程的直接改动有限，但 Olmo-core 3 完整开放了万亿 MoE 的并行策略、路由优化与 MXFP8 实测数据。其技术报告写明了未采纳的方案与失败模式，例如 token gerrymandering、通信计算重叠导致端到端变慢，对自建训练或推理集群有参考价值。
-
-**「可关注」** 可关注：若自建 MoE 训练或推理集群，可对比 Olmo-core 3 的 DDP + 专家常驻方案；其在 4 张 B300 上测得 MXFP8 较 BF16 提升约 21% 吞吐、峰值显存从 103 GiB 降至 95 GiB，且增益主要来自 FFN 与专家间通信，可作为硬件选型与并行策略的对照基线。
-
-**标签**: `#training-infrastructure`, `#moe`, `#open-source`, `#llm`
+**标签**: `#orchestration`, `#eval`, `#fine-tuning`
 
 ---
 
 ## AI 日报
 
 <a id="item-ai-daily-1"></a>
-### [Barclays 扩大 Claude 部署](https://www.anthropic.com/news/barclays-scales-claude) ⭐️ 8.8/10
+### [OpenAI：AI 或重塑常规执行工作](https://openai.com/index/the-eternal-complement) ⭐️ 6.3/10
 
-巴克莱宣布扩大与 Anthropic 的战略合作，将 Claude 集成到全球运营，用于加速软件开发、现代化遗留系统并提升运营效率。该行计划到 2026 年底让 Claude Code 覆盖 50% 的开发者，2027 年覆盖多数软件工程师。已落地场景中，Colleague Knowledge Assistant 自 2025 年上线，基于 RAG 架构，超 16,000 名员工使用，累计处理超 100 万次检索，服务超 2,000 万英国零售客户；全球市场业务每日处理约 120,000 封邮件，执行分类、富化与路由。巴克莱强调在强治理、安全控制与人工监督下推进部署。
-
-rss · Anthropic News · 10月1日 00:00
-
-**「为什么重要」** 大型银行公开 Claude Code 的量化采用目标，并披露两个生产场景的规模数据，为受监管行业部署 coding agent 与 RAG 提供了可参考的落地基线。
-
-**「可关注」** 可关注：巴克莱给出 Claude Code 的明确采用曲线（2026 年底 50% 开发者，2027 年多数工程师），并已上线 RAG 知识助手与邮件路由两个生产场景，可作为企业级 AI 推广的量化参考。
-
-**标签**: `#model`, `#lab`, `#industry`, `#product`
-
----
-
-<a id="item-ai-daily-2"></a>
-### [Claude Code 推出 mods 扩展机制](https://claude.com/blog/claude-code-mods) ⭐️ 8.8/10
-
-Anthropic 为 Claude Code 推出 mods，用小型 TypeScript 函数改写 prompt、替换内置功能、增删 UI。mods 随插件分发，可在 CLI 和桌面应用安装。它们未沙箱化，拥有与 Claude Code 相同的机器访问权限，官方提示只安装信任来源。多个 mods 按加载顺序 hook 同一事件，首个加载者最先看到事件、最后看到结果。
-
-rss · Claude Blog · 10月1日 00:00
-
-**「为什么重要」** mods 把部分内置能力降级为可替换模块，/diff 已改为 mod，用户能在 /plugin 中关闭或替换。开发者无需等待官方发布即可调整工具行为。
-
-**「可关注」** 可关注：mods 未沙箱化且拥有完整机器访问权限，Team/Enterprise 计划依赖 sec-default 限制危险操作，管理员若自载优先 mods 需手动保留 sec-default。
-
-**标签**: `#product`, `#lab`, `#open-source`
-
----
-
-<a id="item-ai-daily-3"></a>
-### [The eternal complement](https://openai.com/index/the-eternal-complement) ⭐️ 6.3/10
-
-OpenAI publishes an essay arguing that advanced AI&\#x27;s greatest economic impact may come from routine execution work behind breakthrough ideas.
+OpenAI 发布博客文章《The eternal complement》，提出先进 AI 的最大影响可能在于突破性想法背后的常规执行工作。文章认为，执行环节或塑造下一个经济形态与进步节奏。该文为官方观点，并非模型发布或政策变更。
 
 rss · OpenAI Blog · 10月1日 17:00
+
+**「为什么重要」** 作为 OpenAI 官方对 AI 经济影响的一手论述，该文为观察行业叙事提供了直接材料。
+
+**「可关注」** 可关注：OpenAI 将 AI 的经济价值指向常规执行环节，而非仅限突破性创新。
 
 **标签**: `#lab`, `#industry`
 
 ---
 
-<a id="item-ai-daily-4"></a>
-### [Albertsons 采用 ChatGPT](https://openai.com/index/albertsons-reimagining-retail) ⭐️ 6.3/10
+<a id="item-ai-daily-2"></a>
+### [Albertsons 部署 ChatGPT](https://openai.com/index/albertsons-reimagining-retail) ⭐️ 6.3/10
 
-据 OpenAI 官方博客，Albertsons Cos. 正使用 ChatGPT Enterprise 与 OpenAI API，帮助团队提速，并让数百万顾客的杂货购物更便捷。该案例来自官方一手来源，但属于企业客户采用实例，并非模型发布或政策变化，影响面有限。
+Albertsons Cos. 正在使用 ChatGPT Enterprise 与 OpenAI API，帮助团队提速，并让数百万顾客的杂货购物更便捷。该案例来自 OpenAI 官方博客，属于企业采用实例，并非模型发布或政策变化。公开材料未披露具体部署规模、量化收益或技术实现细节。
 
 rss · OpenAI Blog · 10月1日 16:00
 
-**「可关注」** 该案例显示 ChatGPT Enterprise 与 OpenAI API 被同时用于内部团队提效与顾客购物流程优化。
+**「可关注」** 可关注：官方仅披露产品组合与业务方向，未给出架构、成本或效果数据，具体实现仍待补充。
 
 **标签**: `#product`, `#industry`, `#lab`
 
 ---
 
-<a id="item-ai-daily-5"></a>
-### [ChatGPT Work 客户案例：周省 10–15 小时](https://openai.com/index/the-den-family-social) ⭐️ 6.3/10
+<a id="item-ai-daily-3"></a>
+### [10 technical talks I’m excited about at GitHub Universe 2026](https://github.blog/news-insights/company-news/10-technical-talks-im-excited-about-at-github-universe-2026/) ⭐️ 5.8/10
 
-OpenAI 官方博客发布客户案例。社交俱乐部 The Den 用 ChatGPT Work 处理拨款和酒牌申请，每周节省 10–15 小时。拨款申请从 3 天缩至 2 小时，酒牌材料从 4 天缩至 3 小时。这是单一公司案例，不是模型发布或政策变更。
+GitHub Blog previews 10 technical talks at GitHub Universe 2026, including sessions on verifying AI-written code and securing npm dependencies.
 
-rss · OpenAI Blog · 10月1日 00:00
+rss · GitHub Blog · 10月1日 15:07
 
-**「可关注」** 可关注：该案例显示 ChatGPT Work 可将拨款与酒牌申请从数天压缩到数小时，但仅一家公司数据，不足以推广。
-
-**标签**: `#product`, `#industry`
+**标签**: `#industry`, `#product`, `#open-source`, `#eval`
 
 ---
