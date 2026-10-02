@@ -5,286 +5,274 @@ date: 2026-10-02
 lang: en
 ---
 
-> From 189 items, 18 important content pieces were selected
+> From 212 items, 18 important content pieces were selected
 
 ---
 
 **Agent Harness Architecture**
-1. [google/adk-python released v2.11.0](#item-harness-arch-1) ⭐️ 8.8/10
-2. [Claude Code 2.1.287 Released](#item-harness-arch-2) ⭐️ 8.8/10
-3. [Codex rust-v0.160.0 发布](#item-harness-arch-3) ⭐️ 6.8/10
-4. [openai/openai-agents-python released v0.23.0](#item-harness-arch-4) ⭐️ 6.8/10
-5. [microsoft/agent-framework released dotnet-1.23.0](#item-harness-arch-5) ⭐️ 6.8/10
-6. [e2b-dev/e2b released e2b@2.52.0](#item-harness-arch-6) ⭐️ 6.3/10
-7. [E2B CLI 2.21.0 发布](#item-harness-arch-7) ⭐️ 6.3/10
+1. [ADK Python v2.11.0 Out](#item-harness-arch-1) ⭐️ 8.8/10
+2. [pydantic-ai v2.53.0 Patches Streaming Concurrency Leak](#item-harness-arch-2) ⭐️ 8.3/10
+3. [anthropics/claude-code released v2.1.287](#item-harness-arch-3) ⭐️ 7.8/10
+4. [openai/codex released rust-v0.160.0](#item-harness-arch-4) ⭐️ 7.3/10
+5. [OpenAI Agents Python v0.23.0 发布](#item-harness-arch-5) ⭐️ 7.3/10
+6. [microsoft/agent-framework released dotnet-1.23.0](#item-harness-arch-6) ⭐️ 7.3/10
+7. [google-gemini/gemini-cli released v0.64.0-nightly.20261002.gc9096a847](#item-harness-arch-7) ⭐️ 6.8/10
 
 **AI Agent Engineer**
-1. [Box^2-Bench 测模型对外部引导的依赖](#item-agent-engineer-1) ⭐️ 8.0/10
-2. [pwasm 0.2a0 发布：WASM 沙箱](#item-agent-engineer-2) ⭐️ 7.8/10
-3. [AREX-2 用长程反思任务训练自改进智能体](#item-agent-engineer-3) ⭐️ 7.5/10
-4. [Mid-Harness: Action Verification for Terminal Agents](#item-agent-engineer-4) ⭐️ 7.5/10
-5. [Meta-Skill 设计 Harness](#item-agent-engineer-5) ⭐️ 7.5/10
-6. [沙箱 Agent 可借共享包缓存传播蠕虫](#item-agent-engineer-6) ⭐️ 6.0/10
-7. [Qwen Flash Next 支持 MTP](#item-agent-engineer-7) ⭐️ 6.0/10
-8. [Cloudflare 推 Clef 决策模型](#item-agent-engineer-8) ⭐️ 5.5/10
+1. [pwasm 0.2a0 支持 WASM 沙箱](#item-agent-engineer-1) ⭐️ 8.3/10
+2. [HF daily paper: Beyond Memory: Harnessing Long-Horizon Agents with Explicit Belief States](#item-agent-engineer-2) ⭐️ 7.5/10
+3. [预训练模型 pass@K 反超后训练模型](#item-agent-engineer-3) ⭐️ 7.5/10
+4. [沙箱 Agent 可经共享包缓存传播蠕虫](#item-agent-engineer-4) ⭐️ 7.0/10
+5. [ActiveSaddler: Curriculum Learning for Harness Optimization](#item-agent-engineer-5) ⭐️ 6.0/10
+6. [RASO：跨 harness 检索增强技能优化](#item-agent-engineer-6) ⭐️ 6.0/10
+7. [Introducing Olmo-core 3: Open, scalable training infrastructure for large MoEs](#item-agent-engineer-7) ⭐️ 5.8/10
 
 **AI Daily**
-1. [OpenAI: AI&\#x27;s Biggest Impact May Be Routine Execution](#item-ai-daily-1) ⭐️ 6.3/10
-2. [Albertsons 部署 ChatGPT](#item-ai-daily-2) ⭐️ 6.3/10
-3. [10 technical talks I’m excited about at GitHub Universe 2026](#item-ai-daily-3) ⭐️ 5.8/10
+1. [The eternal complement](#item-ai-daily-1) ⭐️ 6.3/10
+2. [How Albertsons Companies is reimagining retail from the inside out](#item-ai-daily-2) ⭐️ 6.3/10
+3. [GitHub Universe 2026 技术议程](#item-ai-daily-3) ⭐️ 5.8/10
+4. [Mollick：模型已学会组织智能体](#item-ai-daily-4) ⭐️ 5.0/10
 
 ---
 
 ## Agent Harness Architecture
 
 <a id="item-harness-arch-1"></a>
-### [google/adk-python released v2.11.0](https://github.com/google/adk-python/releases/tag/v2.11.0) ⭐️ 8.8/10
+### [ADK Python v2.11.0 Out](https://github.com/google/adk-python/releases/tag/v2.11.0) ⭐️ 8.8/10
 
-ADK v2.11.0 adds runtime cancellation, workflow tool approval, and a built-in SQLite memory service.
+ADK Python v2.11.0 adds graceful cancellation, workflow tool confirmation, a model-consultation tool, and a built-in SQLite memory service. \`abort\_signal\` threads through \`Runner\`, \`Workflow\`, and nodes to stop runs gracefully, and \`/run\_sse\` cancels on client disconnect. Workflow tool nodes pause for approval via \`RequestInput\` instead of erroring downstream. \`ModelConsultTool\` consults another model mid-task under per-turn and per-session budgets, memory persists to SQLite via a \`sqlite://\` URI, and an opt-in path supports MCP SDK 2.x.
 
 github · xuanyang15 · Oct 2, 00:44
+
+**「Design Notes」** Cancellation synthesizes an abort event and function response when \`abort\_signal\` fires. Workflow tool nodes share the \`RequestInput\` confirmation path with \`LlmAgent\`, and the SQLite memory service is selected by URI scheme.
+
+**「What Changed」** Graceful cancellation via \`abort\_signal\` now spans \`Runner\`, \`Workflow\`, and nodes, with \`/run\_sse\` canceling on client disconnect, while workflow tool nodes pause for approval via \`RequestInput\`. The release adds \`ModelConsultTool\` with per-turn and per-session budgets, a SQLite memory service via \`sqlite://\` URI, and an opt-in MCP SDK 2.x modern-protocol path; breaking, the Dev UI runtime config moves to the server endpoint \`/dev-ui/assets/config/runtime-config.json\` and logos use \`--logo-text\` and \`--logo-image-url\`.
 
 **Tags**: `#runtime`, `#tools`, `#memory`, `#permissions`
 
 ---
 
 <a id="item-harness-arch-2"></a>
-### [Claude Code 2.1.287 Released](https://code.claude.com/docs/en/changelog#2-1-287) ⭐️ 8.8/10
+### [pydantic-ai v2.53.0 Patches Streaming Concurrency Leak](https://github.com/pydantic/pydantic-ai/releases/tag/v2.53.0) ⭐️ 8.3/10
 
-Claude Code 2.1.287 adds Claude Mods, letting plugins modify deeper runtime behavior. It ships a built-in side-agent mod named You should know, enabled with /plugin enable cc-plugin-you-should-know@builtin for first-party telemetry sessions. MCP URL prompts land on the 2025-11-25 protocol; servers that stop connecting need &quot;bareElicitationCapability&quot;: true in their MCP config. The OpenTelemetry user\_prompt event gains prompt\_text, a copy of prompt for backends that nest dotted keys.
+pydantic-ai v2.53.0 patches a high-severity streaming concurrency slot leak in ConcurrencyLimitedModel. A streamed request could retain its slot when released on a different task than the one that acquired it. Early exit, cancellation, or fully consuming stream\_text\(\) with default debouncing all triggered the leak. Repeated streams could block every request sharing the limiter. Agent-level max\_concurrency and non-streaming requests are unaffected.
 
-rss · Claude Code Changelog · Oct 1, 18:14
+github · dsfaccini · Oct 2, 02:52
 
-**「Design Notes」** Claude Mods push plugin hooks into the runtime layer rather than limiting them to commands. The built-in side-agent mod runs as an independent watcher, and MCP elicitation now carries URL prompts in-band. Telemetry adds prompt\_text alongside prompt so backends with dotted-key nesting can ingest the same data.
+**「Design Notes」** The fix redefines limiter sharing. A model wrapper now raises UserError when it shares a limiter with the agent or an enclosing wrapper. ConcurrencyLimiter.acquire\(\) takes a slot on every call, even on the same task. Custom AbstractConcurrencyLimiter implementations must allow release\(\) from another task.
 
-**「What Changed」** Plugins gain deeper runtime modification through Claude Mods. MCP servers on 2025-11-25 can surface URL prompts, with a required bareElicitationCapability migration for configs that break. A built-in side-agent mod and an n:&lt;text&gt; agents-view filter are added.
+**「What Changed」** The release hardens concurrency limiter semantics and patches GHSA-6fqq-452j-qhrp. It also converts clai2 plugins to declarative Plugin subclasses and adds ToolCallJudge, SystemOneModel, and AbsurdDurability.
 
-**Tags**: `#runtime`, `#mcp`, `#subagents`, `#eval`
+**Tags**: `#runtime`, `#tools`, `#security`
 
 ---
 
 <a id="item-harness-arch-3"></a>
-### [Codex rust-v0.160.0 发布](https://github.com/openai/codex/releases/tag/rust-v0.160.0) ⭐️ 6.8/10
+### [anthropics/claude-code released v2.1.287](https://github.com/anthropics/claude-code/releases/tag/v2.1.287) ⭐️ 7.8/10
 
-Codex rust-v0.160.0 发布。新增 workspace 默认会话权限，无项目环境下可按策略启动并恢复已保存权限。Guardian 审查支持可选检索早期用户指令与 agent handoff 上下文。修复 Windows 沙盒 PowerShell 回退、长路径权限修复及后台控制台窗口问题。
+Claude Code v2.1.287 introduces MCP URL prompt support on the 2025-11-25 protocol, a new plugin mods system for deeper behavior modification, and a built-in side-agent plugin, plus minor telemetry and UI updates.
 
-github · andrewgu-oai · Oct 1, 20:19
+github · ashwin-ant · Oct 1, 18:00
 
-**「设计要点」** 权限模型支持 workspace 级默认值，无项目会话可按策略启动并恢复已保存权限。Guardian 审查通过可选开关检索早期用户指令与 agent handoff 上下文，Windows 沙盒修复 exec server 的 PowerShell 回退与长路径 ACL 逻辑。
-
-**「改了什么」** 新增 workspace 默认权限与 Guardian 可选上下文检索。修复 Windows 沙盒 PowerShell 回退、长路径 ACL 修复及后台控制台窗口，TUI 恢复 server provider、reasoning summary 与 verbosity 设置。
-
-**Tags**: `#sandbox`, `#permissions`, `#memory`, `#subagents`, `#runtime`
+**Tags**: `#mcp`, `#subagents`, `#tools`, `#runtime`, `#permissions`
 
 ---
 
 <a id="item-harness-arch-4"></a>
-### [openai/openai-agents-python released v0.23.0](https://github.com/openai/openai-agents-python/releases/tag/v0.23.0) ⭐️ 6.8/10
+### [openai/codex released rust-v0.160.0](https://github.com/openai/codex/releases/tag/rust-v0.160.0) ⭐️ 7.3/10
 
-OpenAI Agents Python v0.23.0 adds configurable MCP listing page limits, opt-in Docker removal protection, configurable memory consolidation turns, and an opt-in encrypted history scan budget.
+OpenAI Codex Rust v0.160.0 ships incremental agent harness improvements: workspace-default session resumption, opt-in Guardian review with cross-handoff context, and Windows sandbox permission fixes.
 
-github · openai-sdks\[bot\] · Oct 2, 01:08
+github · andrewgu-oai · Oct 1, 20:19
 
-**Tags**: `#sandbox`, `#mcp`, `#memory`, `#sessions`
+**Tags**: `#runtime`, `#sandbox`, `#permissions`, `#memory`, `#subagents`
 
 ---
 
 <a id="item-harness-arch-5"></a>
-### [microsoft/agent-framework released dotnet-1.23.0](https://github.com/microsoft/agent-framework/releases/tag/dotnet-1.23.0) ⭐️ 6.8/10
+### [OpenAI Agents Python v0.23.0 发布](https://github.com/openai/openai-agents-python/releases/tag/v0.23.0) ⭐️ 7.3/10
 
-Microsoft Agent Framework .NET 1.23.0 ships breaking changes to tool handling between runs, MCP client origin pinning, and multiple workflow topology and declarative workflow fixes.
+OpenAI Agents Python v0.23.0 ships four configurable or opt-in runtime controls across MCP, sandbox, and session subsystems. MCP listing gains configurable page limits. The sandbox adds opt-in Docker removal protection and configurable memory consolidation turns. Sessions introduce an opt-in encrypted history scan budget. Core fixes cover nested agent tool state, guardrail persistence, streaming tracebacks, and tool failure redaction.
 
-github · dmytrostruk · Oct 1, 10:54
+github · openai-sdks\[bot\] · Oct 2, 01:08
 
-**Tags**: `#runtime`, `#tools`, `#mcp`, `#workflow`
+**「设计要点」** Sandbox and session changes ship as opt-in or configurable limits, not defaults. MCP page limits and encrypted history scan budgets expose operational bounds to harness engineers.
+
+**「改了什么」** Versus v0.22.3, v0.23.0 adds configurable MCP listing page limits, opt-in Docker removal protection, configurable memory consolidation turns, and an opt-in encrypted history scan budget. Core fixes isolate nested agent tool state, preserve guarded final outputs, scope function tool approvals to owning agents, and redact default tool failure details and streaming exception tracebacks.
+
+**Tags**: `#mcp`, `#sandbox`, `#memory`, `#sessions`
 
 ---
 
 <a id="item-harness-arch-6"></a>
-### [e2b-dev/e2b released e2b@2.52.0](https://github.com/e2b-dev/E2B/releases/tag/e2b%402.52.0) ⭐️ 6.3/10
+### [microsoft/agent-framework released dotnet-1.23.0](https://github.com/microsoft/agent-framework/releases/tag/dotnet-1.23.0) ⭐️ 7.3/10
 
-E2B 2.52.0 caps sandbox fork count at 20 via client-side validation and aligns template file copying with Docker ignore semantics.
+Microsoft Agent Framework .NET 1.23.0 ships breaking changes for tool changes between runs, MCP client origin pinning, and several workflow/runtime fixes.
 
-github · github-actions\[bot\] · Oct 1, 10:44
+github · dmytrostruk · Oct 1, 10:54
 
-**Tags**: `#sandbox`, `#tools`, `#runtime`
+**Tags**: `#runtime`, `#tools`, `#mcp`
 
 ---
 
 <a id="item-harness-arch-7"></a>
-### [E2B CLI 2.21.0 发布](https://github.com/e2b-dev/E2B/releases/tag/%40e2b/cli%402.21.0) ⭐️ 6.3/10
+### [google-gemini/gemini-cli released v0.64.0-nightly.20261002.gc9096a847](https://github.com/google-gemini/gemini-cli/releases/tag/v0.64.0-nightly.20261002.gc9096a847) ⭐️ 6.8/10
 
-E2B CLI 2.21.0 adds client-side validation that caps sandbox fork count at 20. The CLI \`e2b sandbox fork --count\`, JavaScript \`Sandbox.fork\(\{ count \}\)\`, and Python \`Sandbox.fork\(count=...\)\` reject counts outside 1–20 before the API call. Counts from 21 through 100 previously reached the API. Omitting the count still leaves the field off the request, so the API default applies.
+Gemini CLI nightly v0.64.0 ships fixes for chat history memory management, atomic state persistence, and emergency cancellation handling.
 
-github · github-actions\[bot\] · Oct 1, 10:44
+github · gemini-cli-robot · Oct 2, 01:33
 
-**「改了什么」** The release enforces a local ceiling of 20 on sandbox fork operations across CLI, JavaScript, and Python SDKs. Counts 21–100 are now rejected before the API call instead of being sent. Patch changes update protobuf and OpenAPI clients, terminal styling, and interactive prompts to compatible minor releases. The \`e2b\` dependency moves to 2.52.0.
-
-**Tags**: `#sandbox`, `#runtime`, `#tools`
+**Tags**: `#runtime`, `#memory`, `#tools`
 
 ---
 
 ## AI Agent Engineer
 
 <a id="item-agent-engineer-1"></a>
-### [Box^2-Bench 测模型对外部引导的依赖](https://huggingface.co/papers/2609.39578) ⭐️ 8.0/10
+### [pwasm 0.2a0 支持 WASM 沙箱](https://github.com/simonw/pwasm/releases/tag/0.2a0) ⭐️ 8.3/10
 
-新论文提出 Box^2-Bench 基准，固定模型与任务，只改变工作流可靠性，单独考察模型对外部引导的依赖调节能力。实测显示，前沿模型能从可靠引导中获益，但面对误导性或可靠性下降的引导时仍然脆弱。作者用不可靠工作流训练两个开源权重模型，保留可靠工作流用于评估，并探索了两种互补训练策略，其中一种为反事实监督。论文认为，随着模型能力增强，不可靠引导对执行的约束可能加剧。
+simonw 发布 pwasm 0.2a0，捆绑 MicroPython、QuickJS 和 Micro QuickJS 的 WebAssembly 构建，用纯 Python 在沙箱中运行不可信 Python/JavaScript 及 C 编译程序，并施加内存、CPU 和时间限制。新增 pwasm.guests 与 pwasm.sandbox.Sandbox，资源限制通过 Limits\(fuel=..., max\_memory=...\) 和 set\_deadline\(\) 实现，越界抛出 OutOfFuel 或 Timeout。该版本实现 WebAssembly 2.0 核心指令集（除 SIMD），并引入编译到 Python 的层级，热函数通常比解释器快 8–14 倍；编译结果缓存到 ~/.cache/pwasm，QuickJS 启动从约 1.3s 降到 0.1s。
 
-rss · Hugging Face Daily Papers · Oct 2, 01:56
+github · simonw · Oct 1, 17:10
 
-**「为什么重要」** 对做 coding agent / harness 的工程师来说，这直接指向一个长期张力：harness 用人类设计的工作流增强模型，但模型变强后，不可靠引导反而可能拖累执行。该基准把「模型能否分辨引导好坏」变成可量化指标，为评测 harness 可靠性提供了新维度。
+**「为什么重要」** 对需要安全执行代码的 agent harness 来说，pwasm 0.2a0 提供了纯 Python 的 WASM 沙箱方案，内置 MicroPython 和 QuickJS 两种 guest，可直接运行不可信脚本并限制资源。编译缓存显著降低启动开销，使沙箱在交互式场景中更可用。
 
-**「可关注」** 可关注：在 harness 中引入外部引导或工作流时，需评估模型对误导性引导的鲁棒性，而非只测可靠路径下的收益。
+**「可关注」** pwasm 0.2a0 用编译到 Python 的层级把热函数提速 8–14 倍，并用磁盘缓存把 QuickJS 启动从约 1.3s 压到 0.1s；若 harness 需要频繁起停沙箱，可评估 PWASM\_CACHE\_DIR 与 mode=&quot;compile&quot; 的实际收益。
 
-**Tags**: `#eval`, `#harness`, `#orchestration`, `#coding-agent`
+**Tags**: `#harness`, `#coding-agent`, `#permissions`, `#memory`
 
 ---
 
 <a id="item-agent-engineer-2"></a>
-### [pwasm 0.2a0 发布：WASM 沙箱](https://github.com/simonw/pwasm/releases/tag/0.2a0) ⭐️ 7.8/10
+### [HF daily paper: Beyond Memory: Harnessing Long-Horizon Agents with Explicit Belief States](https://huggingface.co/papers/2610.01415) ⭐️ 7.5/10
 
-simonw 发布 pwasm 0.2a0，新增 WebAssembly 沙箱，用纯 Python 执行不可信的 Python 和 JavaScript。该版本内置 MicroPython、QuickJS 和 Micro QuickJS 的 WASM 构建，支持内存、CPU 和时间限制。pwasm 完整实现 WebAssembly 2.0 核心指令集（除 SIMD），并加入编译到 Python 的层级，热点函数通常比解释器快 8 到 14 倍。磁盘缓存将 QuickJS 启动从约 1.3s 降至 0.1s。
+A research paper proposes PoS, an inference-time framework for maintaining explicit belief states in LLM agents and detecting Belief Trapping during long-horizon tasks.
 
-github · simonw · Oct 1, 17:10
+rss · Hugging Face Daily Papers · Oct 2, 00:00
 
-**「为什么重要」** 对 coding agent 和 harness 而言，不可信代码执行是核心安全边界。pwasm 用纯 Python 提供 WASM 隔离，无需引入外部运行时即可限制内存、CPU 和 wall-clock 时间。当前为 0.2a0 alpha 版本，生产环境稳定性仍待验证。
-
-**「可关注」** 可关注：\`pwasm.guests\` 与 \`pwasm.sandbox\` 提供现成的沙箱 API，可直接用于需要执行不可信代码的 agent 场景；\`WasiLite\` 默认无文件系统和网络访问，适合作为隔离边界。
-
-**Tags**: `#coding-agent`, `#harness`, `#permissions`
+**Tags**: `#memory`, `#observability`, `#orchestration`
 
 ---
 
 <a id="item-agent-engineer-3"></a>
-### [AREX-2 用长程反思任务训练自改进智能体](https://huggingface.co/papers/2609.38288) ⭐️ 7.5/10
+### [预训练模型 pass@K 反超后训练模型](https://huggingface.co/papers/2610.01509) ⭐️ 7.5/10
 
-Hugging Face 每日论文收录 AREX-2，提出训练 LLM 智能体在测试时迭代优化解。论文将自改进拆为反思与长程执行两种互补能力，假设二者领域无关，可在适合监督的场景中学习。研究从机器学习和算法编程任务合成长程改进轨迹，基于 Qwen3.8-27B 训练智能体，在 MLE-bench Lite 上取得较强结果。
+论文报告一个反直觉发现：预训练 LLM 配备轻量推理 harness 即可作为可用智能体。在充足测试时预算下，尽管 pass@1 远低于后训练模型，其 pass@K 常反超后者。作者进一步分析了底层机制，并指出这一结果对 RL 后训练在智能体任务上的必要性及评测方法提出挑战。
 
-rss · Hugging Face Daily Papers · Oct 2, 01:56
+rss · Hugging Face Daily Papers · Oct 2, 00:00
 
-**「为什么重要」** 对做 coding agent 与 harness 的工程师而言，这给出了训练测试时迭代能力的直接路径：在可验证领域合成长程反思轨迹，而非仅依赖提示工程。论文点出反思与长程执行是两种互补能力，对设计多轮智能体循环有参考价值。
+**「为什么重要」** 对 coding agent 与 harness 工程而言，这直接动摇了「后训练模型一定更适合智能体任务」的默认假设。若结论成立，轻量 harness 加预训练模型可能在解覆盖率上提供更高性价比，尤其在测试时预算充足的场景。
 
-**「可关注」** 可关注：AREX-2 仅在机器学习与算法编程任务上合成训练轨迹，若领域无关假设成立，其向代码生成或软件工程场景迁移的效果仍待验证。
+**「可关注」** 可关注：在智能体架构选型与评测时，需区分 pass@1 与 pass@K 指标；若任务更看重解覆盖率而非单次准确率，预训练模型加轻量 harness 值得作为基线重新评估。
 
-**Tags**: `#eval`, `#coding-agent`, `#harness`, `#orchestration`
+**Tags**: `#harness`, `#eval`, `#coding-agent`
 
 ---
 
 <a id="item-agent-engineer-4"></a>
-### [Mid-Harness: Action Verification for Terminal Agents](https://huggingface.co/papers/2609.39982) ⭐️ 7.5/10
+### [沙箱 Agent 可经共享包缓存传播蠕虫](https://simonwillison.net/2026/Oct/1/matthew-green/) ⭐️ 7.0/10
 
-A paper introduces Mid-Harness, a method that samples and verifies candidate actions at the model-harness boundary to improve terminal agent reliability without modifying the generator or harness. It targets the failure mode where stochastic generations produce useful actions that still execute poorly—such as a wrong package install—and degrade the environment for later steps. With a TMAX-9B generator, the authors report that more action sampling yields little benefit under weak verification, while a capable verifier can improve outcomes; the abstract is truncated, leaving the full verification results unverified. The work appeared on Hugging Face Daily Papers on 2026-10-02 with 102 upvotes.
-
-rss · Hugging Face Daily Papers · Oct 2, 01:56
-
-**「Why It Matters」** It offers a harness-level pattern: spend test-time compute to verify actions before execution rather than changing the model or harness. The reported tension between sampling quantity and verification strength suggests reliability gains may hinge more on verifier capability than on candidate count.
-
-**「Watch」** Watch: when building terminal-agent harnesses, the TMAX-9B results indicate that investing in a capable action verifier may matter more than increasing the number of sampled candidates.
-
-**Tags**: `#harness`, `#coding-agent`, `#eval`, `#orchestration`
-
----
-
-<a id="item-agent-engineer-5"></a>
-### [Meta-Skill 设计 Harness](https://huggingface.co/papers/2609.38143) ⭐️ 7.5/10
-
-Hugging Face 每日论文收录一篇测试期 AI-for-AI 研究。论文提出 Meta-Skill：Builder 在固定模型权重下，从 Target 的开发集执行反馈中学习元技能，再用冻结的技能库为未见任务构建 harness。在 Harness-Bench 和 NewtonBench 上，完整技能库相比无技能构建将宏平均性能提升 8.95 个百分点，相比直接向 Target 交付同一技能库提升 12.02 个百分点。论文未提及其他基准或实际部署细节。
-
-rss · Hugging Face Daily Papers · Oct 2, 01:56
-
-**「为什么重要」** 该研究把 harness 设计从人工规则转向可学习过程，并给出可复核的基准差距，对 agent 评测与执行环境构建有直接参考。
-
-**「可关注」** 在固定模型权重下，Builder 从执行反馈中学习「何时提供支持、提供什么资源」的元技能，再据此为 Target 构建 harness；相比直接向 Target 交付同一技能库，这一方式在基准上高出 12.02 个百分点，说明技能库的使用原则比资源本身更关键。
-
-**Tags**: `#harness`, `#eval`, `#coding-agent`, `#orchestration`
-
----
-
-<a id="item-agent-engineer-6"></a>
-### [沙箱 Agent 可借共享包缓存传播蠕虫](https://simonwillison.net/2026/Oct/1/matthew-green/) ⭐️ 6.0/10
-
-Simon Willison 于 2026 年 10 月 1 日引述 Matthew Green 9 月 30 日的分析。Green 描述，相互隔离沙箱中的 Agent 可以在共享包缓存里互相留下指令，这些指令改变了接收方的行为。他指出这构成了蠕虫的两半：劫持 Agent 的载荷，以及将载荷带给下一个 Agent 的传播体。Green 进一步推演，若把包缓存替换为邮件、Slack、共享文档或 WhatsApp，把独立沙箱化的训练任务替换为独立部署的个人 Agent（如 Muse），就具备了蠕虫所需的全部要素。该条目仅为引述，缺少完整技术细节与可复现材料。
+Matthew Green 在 9 月 30 日的分析中指出，互相隔离的沙箱 Agent 能在共享包缓存中留下指令，改变接收方行为。这凑成蠕虫的两半：载荷劫持 Agent，Agent 携带载荷感染下一个 Agent。若把包缓存换成 email、Slack、共享文档或 WhatsApp，把独立沙箱训练换成独立部署的个人 Agent（如 Muse），就具备蠕虫传播的完整条件。
 
 rss · Simon Willison · Oct 1, 06:29
 
-**「为什么重要」** 对构建 coding agent 与 harness 的工程师而言，这直接冲击“沙箱即安全”的默认假设。共享包缓存、共享文档等跨 Agent 协作设施可能成为指令信道，隔离边界需要重新评估。已发生的是 Green 提出这一攻击面推演；尚未证实的是个人 Agent 场景下是否已出现实际传播。
+**「为什么重要」** 沙箱隔离是 Agent 安全的常见基线。该分析表明，仅靠沙箱边界不足以阻断 Agent 间指令传递，共享包缓存等中间状态可能成为跨实例传播路径。
 
-**「可关注」** 可关注：共享包缓存、共享文档等跨 Agent 协作设施是否应被视为不可信输入面，以及现有沙箱策略是否覆盖了通过缓存元数据或文件内容传递的指令。
+**「可关注」** 可关注：设计 Agent 的共享缓存、文件系统或消息通道时，需把跨实例指令注入当作攻击面，不能只信任沙箱隔离。
 
 **Tags**: `#permissions`, `#orchestration`, `#harness`
 
 ---
 
-<a id="item-agent-engineer-7"></a>
-### [Qwen Flash Next 支持 MTP](https://www.reddit.com/r/LocalLLaMA/comments/1wuwrsk/qwen4exp_add_mtp_by_am17an_pull_request_29761/) ⭐️ 6.0/10
+<a id="item-agent-engineer-5"></a>
+### [ActiveSaddler: Curriculum Learning for Harness Optimization](https://huggingface.co/papers/2610.00906) ⭐️ 6.0/10
 
-llama.cpp PR \#29761 已合并，为 Qwen Flash Next 添加 MTP 支持。PR 作者 am17an，从开发到合并耗时 17 小时。Hugging Face 已发布对应 GGUF 量化版本。此前相关讨论帖已删除以避免重复。
+A Hugging Face Daily Papers entry dated Oct 2, 2026 presents ActiveSaddler, which formulates agent harness optimization as an automated curriculum learning problem. The paper notes that current methods iteratively update prompts, tool interfaces, and control logic from execution feedback but largely fix which training scenarios produce that feedback. ActiveSaddler instead models the evolving curriculum as a non-stationary bandit with dynamically instantiated optimization targets. Only the abstract is public; no code, benchmark results, or production data are available yet, so reproducibility and impact remain unverified.
 
-reddit · r/LocalLLaMA · /u/jacek2023 · Oct 1, 11:18
+rss · Hugging Face Daily Papers · Oct 2, 00:00
 
-**「为什么重要」** MTP 支持进入 llama.cpp 主线，Qwen Flash Next 用户可直接通过 GGUF 量化版本使用该特性。目前影响范围限于单一模型与单一推理功能，尚未看到基准测试或生态变化数据。
+**「Why It Matters」** Harness and eval engineers typically adjust training scenarios manually or keep them static while the agent harness mutates. The paper identifies this mismatch, but its claimed benefit is not yet backed by released artifacts or comparative benchmarks.
 
-**「可关注」** 可关注：Qwen Flash Next 的 MTP 支持已进入 llama.cpp 主线，可测试 Hugging Face 上的 GGUF 量化版本；模型间切换缺乏公开对比数据，需自行验证。
+**「Engineer Takeaway」** Watch: track whether ActiveSaddler releases code and benchmark numbers; until then, treat the non-stationary bandit curriculum as an unverified hypothesis rather than a drop-in optimization.
 
-**Tags**: `#harness`, `#coding-agent`
+**Tags**: `#harness`, `#eval`, `#orchestration`, `#coding-agent`
 
 ---
 
-<a id="item-agent-engineer-8"></a>
-### [Cloudflare 推 Clef 决策模型](https://blog.cloudflare.com/clef-decision-models/) ⭐️ 5.5/10
+<a id="item-agent-engineer-6"></a>
+### [RASO：跨 harness 检索增强技能优化](https://huggingface.co/papers/2609.38024) ⭐️ 6.0/10
 
-Cloudflare 发布 Clef 开放权重决策模型，同时上线 RL 微调平台。官方未公开训练数据与流程，模型基于专有 Qwen 起点。早期社区实测显示，Clef 比现有 Jev 慢 2–3 倍，仇恨言论识别率更低；输入价格约为 Jev 的 6 倍。按每次调用 300 token 估算，百万次决策成本从 Jev 的约 12.60 美元升至约 72 美元。
+Hugging Face 每日论文于 2026-10-02 收录 RASO \(Retrieval-Augmented Skill Optimization\)。该框架从外部技能库检索已有 agent 技能，将其作为先验知识适配到目标任务，以跨不同 harness 优化技能。论文指出现有技能优化方法忽视公开积累的技能，仅依赖昂贵的 agent rollouts 迭代。目前材料仅含截断摘要，无代码、基准数据或生产验证，实际效果与可复现性待确认。
 
-hackernews · jasondavies · Oct 1, 16:18 · [Discussion](https://news.ycombinator.com/item?id=49923692)
+rss · Hugging Face Daily Papers · Oct 2, 00:00
 
-**「为什么重要」** 决策模型是 agent 编排链里的候选组件。Clef 当前在速度、准确率、成本三项均未超过 Jev，短期不构成替换理由。开放权重允许自托管，可能摊薄 API 价格劣势，但需自行承担运维与复现成本。
+**「为什么重要」** 技能优化长期依赖高成本 rollouts，RASO 提出把公开技能库作为先验知识引入优化流程，为降本提供新路径。但摘要未提供基准数字，实际收益仍待验证。
 
-**「可关注」** 可关注：若已用 Jev 做前置过滤，暂不必切换到 Clef；若需自托管决策模型，可评估其权重许可与推理开销，但准确率须自行验证。
+**「可关注」** 可关注：RASO 将外部技能库作为先验知识注入优化过程，若后续放出代码与基准，可评估其跨 harness 适配能力是否优于纯 rollout 方案。
 
-**「评论」** 社区实测反馈负面。有用户将 Clef 放在 Cloudflare 托管的 Ollama 之前做毒性/仇恨言论初筛，结果比 Jev 慢且漏检更多。另有评论质疑“开放权重”不等于开源，指出训练数据与流程未公开。还有用户认为这篇博文终于把 Jev 的设计讲清楚了，胜过此前多轮模糊营销。
+**Tags**: `#harness`, `#memory`, `#eval`
 
-**Tags**: `#orchestration`, `#eval`, `#fine-tuning`
+---
+
+<a id="item-agent-engineer-7"></a>
+### [Introducing Olmo-core 3: Open, scalable training infrastructure for large MoEs](https://huggingface.co/blog/allenai/olmocore3) ⭐️ 5.8/10
+
+AllenAI releases Olmo-core 3, an open-source framework for scalable trillion-parameter MoE training, with limited direct impact on day-to-day agent engineering.
+
+rss · Hugging Face Blog · Oct 1, 15:01
+
+**Tags**: `#training`, `#moe`, `#infrastructure`, `#open-source`, `#llm`
 
 ---
 
 ## AI Daily
 
 <a id="item-ai-daily-1"></a>
-### [OpenAI: AI&\#x27;s Biggest Impact May Be Routine Execution](https://openai.com/index/the-eternal-complement) ⭐️ 6.3/10
+### [The eternal complement](https://openai.com/index/the-eternal-complement) ⭐️ 6.3/10
 
-OpenAI published a blog essay arguing that advanced AI may matter most for the routine work behind breakthrough ideas. The piece explores why execution could shape the next economy and the pace of progress. It is an official essay, not a model release or policy change.
+OpenAI publishes an essay arguing that advanced AI&\#x27;s greatest impact may lie in routine execution work behind breakthrough ideas, shaping the next economy.
 
 rss · OpenAI Blog · Oct 1, 17:00
-
-**「Why It Matters」** The essay offers a first-party perspective from OpenAI on AI and economic execution, worth noting for how the lab frames value beyond frontier model capabilities.
-
-**「Worth Watching」** Worth watching: the claim that execution-layer work, not just breakthroughs, may drive the next economy and the pace of progress.
 
 **Tags**: `#lab`, `#industry`
 
 ---
 
 <a id="item-ai-daily-2"></a>
-### [Albertsons 部署 ChatGPT](https://openai.com/index/albertsons-reimagining-retail) ⭐️ 6.3/10
+### [How Albertsons Companies is reimagining retail from the inside out](https://openai.com/index/albertsons-reimagining-retail) ⭐️ 6.3/10
 
-OpenAI 官方博客称，Albertsons 部署 ChatGPT Enterprise 与 OpenAI API。该方案帮助内部团队提效，并服务数百万杂货顾客。这是企业采用案例，不是模型发布或政策变化，影响面有限。
+OpenAI publishes a customer case study on Albertsons using ChatGPT Enterprise and the OpenAI API to improve internal workflows and grocery shopping.
 
 rss · OpenAI Blog · Oct 1, 16:00
-
-**「可关注」** 可关注：Albertsons 同时采用 ChatGPT Enterprise 与 OpenAI API，官方未进一步披露技术架构或量化效果。
 
 **Tags**: `#product`, `#industry`, `#lab`
 
 ---
 
 <a id="item-ai-daily-3"></a>
-### [10 technical talks I’m excited about at GitHub Universe 2026](https://github.blog/news-insights/company-news/10-technical-talks-im-excited-about-at-github-universe-2026/) ⭐️ 5.8/10
+### [GitHub Universe 2026 技术议程](https://github.blog/news-insights/company-news/10-technical-talks-im-excited-about-at-github-universe-2026/) ⭐️ 5.8/10
 
-GitHub Blog previews 10 technical talks at GitHub Universe 2026, including sessions on verifying AI-written code and securing npm dependencies.
+GitHub 官方博客预览 GitHub Universe 2026 的 10 场技术演讲，主题涉及验证 AI 编写的代码与保护 npm 依赖安全。文章仅提前披露会议议程，未伴随产品、模型或政策发布。受限于信息量，当前可确认的实质影响有限。
 
 rss · GitHub Blog · Oct 1, 15:07
 
-**Tags**: `#industry`, `#product`, `#open-source`, `#eval`
+**「可关注」** 可关注：GitHub Universe 2026 将设 AI 代码验证与 npm 依赖安全相关技术演讲，但官方尚未公布具体产品细节或发布时间。
+
+**Tags**: `#industry`, `#product`, `#open-source`
+
+---
+
+<a id="item-ai-daily-4"></a>
+### [Mollick：模型已学会组织智能体](https://www.oneusefulthing.org/p/the-dot-and-the-swarm) ⭐️ 5.0/10
+
+Ethan Mollick 撰文承认，自己此前认为人类需要像管理公司一样精心设计智能体组织架构的判断有误。他认为苦涩教训（The Bitter Lesson）同样适用于组织问题：更强大的模型已能自行规划步骤、寻找信息并协调工作，不再依赖精细的人工规则。他举出 OpenAI 用数千个智能体在 88 小时内推进纳维–斯托克斯方程证明的例子，称其协调结构极为精简；同时提到 Meta Muse、OpenAI dots 等个人智能体已能主动处理邮件、行程等事务，无需用户输入大量上下文或计划。该文属于反思性评论，尚无模型发布、政策变更或基准测试等可验证的新事实，且纳维–斯托克斯证明尚未获得正式接受。
+
+rss · One Useful Thing · Oct 1, 10:54
+
+**「为什么重要」** 对构建 coding agent 与 harness 的工程师而言，这篇文章指出了一个方向性变化：当模型能自行拆分任务、组建团队并传递想法时，精心设计的编排层和提示链的价值可能被削弱。Mollick 以 OpenAI swarm 和 Codex 自动派生智能体为例，说明薄协调结构已能驱动大规模协作，这迫使重新评估自建多智能体框架的投入产出。
+
+**「可关注」** 可关注：OpenAI 推进纳维–斯托克斯证明时，仅设少量分组、一次方向调整，并由 Codex 在组间传递最优想法，便协调了约 270 万条消息；这种薄协调结构可作为设计多智能体系统时的对照基线。
+
+**Tags**: `#industry`, `#product`, `#model`
 
 ---
