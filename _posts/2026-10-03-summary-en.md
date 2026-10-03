@@ -5,247 +5,243 @@ date: 2026-10-03
 lang: en
 ---
 
-> From 183 items, 15 important content pieces were selected
+> From 209 items, 16 important content pieces were selected
 
 ---
 
 **Agent Harness Architecture**
-1. [Cline SDK v0.0.90 重构存储](#item-harness-arch-1) ⭐️ 8.8/10
-2. [MCP TypeScript SDK 2.0.2 Enforces Per-Request Server Lifecycle](#item-harness-arch-2) ⭐️ 8.8/10
-3. [MCP TypeScript SDK fastify 2.0.1 Enforces Per-Request Servers](#item-harness-arch-3) ⭐️ 8.8/10
-4. [MCP TypeScript SDK Client 2.3.0 Released](#item-harness-arch-4) ⭐️ 8.8/10
-5. [modelcontextprotocol/typescript-sdk released v2.3.0](#item-harness-arch-5) ⭐️ 8.3/10
-6. [microsoft/agent-framework released python-1.20.0](#item-harness-arch-6) ⭐️ 8.3/10
-7. [MCP Python SDK v2.3.0 Released](#item-harness-arch-7) ⭐️ 7.8/10
+1. [Cline SDK v0.0.90 Released](#item-harness-arch-1) ⭐️ 8.8/10
+2. [MCP TypeScript SDK v2.3.0 Released](#item-harness-arch-2) ⭐️ 8.8/10
+3. [MCP TypeScript SDK Hono 2.0.2 Enforces One Connection Per Server](#item-harness-arch-3) ⭐️ 8.8/10
+4. [modelcontextprotocol/python-sdk released v2.3.0](#item-harness-arch-4) ⭐️ 8.3/10
+5. [cloudflare/agents released agents@0.25.0](#item-harness-arch-5) ⭐️ 8.3/10
+6. [modelcontextprotocol/typescript-sdk released 1.32.0](#item-harness-arch-6) ⭐️ 8.3/10
+7. [modelcontextprotocol/typescript-sdk released @modelcontextprotocol/fastify@2.0.1](#item-harness-arch-7) ⭐️ 8.3/10
 
 **AI Agent Engineer**
-1. [AutoSynthData 失败转训练数据](#item-agent-engineer-1) ⭐️ 8.3/10
-2. [后训练锐化税：基座模型 agent 反超](#item-agent-engineer-2) ⭐️ 8.0/10
-3. [Llama3/Qwen2.5 蒸馏动力学](#item-agent-engineer-3) ⭐️ 7.0/10
-4. [RASO 框架：检索增强技能优化](#item-agent-engineer-4) ⭐️ 7.0/10
-5. [PoS 用显式信念状态改进长程 Agent](#item-agent-engineer-5) ⭐️ 6.5/10
-6. [Open-sourcing AstaBrief, the fast report-generation model in Asta](#item-agent-engineer-6) ⭐️ 5.8/10
-7. [FrogNano-4B-2609 后训练细节](#item-agent-engineer-7) ⭐️ 5.5/10
+1. [PoS：用显式信念状态治理长程 Agent](#item-agent-engineer-1) ⭐️ 8.0/10
+2. [Hugging Face 论文：后训练的锐化税](#item-agent-engineer-2) ⭐️ 8.0/10
+3. [HF daily paper: ActiveSaddler: Automated Curriculum Learning for Agent Harness Optimization](#item-agent-engineer-3) ⭐️ 7.5/10
+4. [RASO 框架：跨 harness 技能优化](#item-agent-engineer-4) ⭐️ 7.5/10
+5. [AutoSynthData: Generating Training Data for Enterprise Agents](#item-agent-engineer-5) ⭐️ 7.3/10
+6. [Open-sourcing AstaBrief, the fast report-generation model in Asta](#item-agent-engineer-6) ⭐️ 6.3/10
+7. [microsoft/FrogNano-4B-2609 · Hugging Face](#item-agent-engineer-7) ⭐️ 6.0/10
+8. [Pi 1.0 稳定版与 TypeScript](#item-agent-engineer-8) ⭐️ 5.5/10
 
 **AI Daily**
-1. [OpenAI 发布 GPT-6 实用指南](#item-ai-daily-1) ⭐️ 8.3/10
+1. [OpenAI 发布 GPT-6 模型选用指南](#item-ai-daily-1) ⭐️ 8.3/10
 
 ---
 
 ## Agent Harness Architecture
 
 <a id="item-harness-arch-1"></a>
-### [Cline SDK v0.0.90 重构存储](https://github.com/cline/cline/releases/tag/sdk/sdk/v0.0.90) ⭐️ 8.8/10
+### [Cline SDK v0.0.90 Released](https://github.com/cline/cline/releases/tag/sdk/sdk/v0.0.90) ⭐️ 8.8/10
 
-Cline SDK v0.0.90 重构 agent team 状态持久化，消除流式分片和心跳写库造成的数据库膨胀。此前每次流式分片和 2 秒心跳都会重写整个团队状态，含已完成队友的完整 transcript，本地 teams.db 曾达 1.66 GB，单条运行记录被重写约 339k 次。现在分片和心跳只推送给实时 UI，不再落库；仅变更实体以约 300 ms 批量事务写入，运行记录只保留 summary，team\_events 按团队限制 2000 行 / 30 天。SQLite 团队存储升级到 schema v2，一次性迁移压缩存量数据，显式调用 SqliteTeamStore.vacuum\(\) 可回收空间；团队写入失败改为重试而非丢弃。
+Cline SDK v0.0.90 stops agent-team state from bloating during long sessions. Stream chunks and 2-second heartbeats no longer persist or trigger full-team rewrites; only changed entities batch into one SQLite transaction every ~300 ms. Run records keep summaries instead of transcripts, and team\_events caps at 2000 rows or 30 days per team. SQLite team storage migrates to schema v2 with one-time compaction, failed writes retry, and standalone provider requests resolve surface headers with optional sessionId.
 
 github · github-actions\[bot\] · Oct 2, 04:35
 
-**「设计要点」** 持久化层改为 schema v2，只写变更实体并批量提交，team\_events 设 2000 行 / 30 天上限；resolveProviderRequestHeaders 将 sessionId 设为可选，支持会话外请求解析 Cline surface headers。
+**「Design Points」** Live streaming data stays in memory for UIs, while durable SQLite schema v2 stores compacted run summaries and bounded event logs. Explicit vacuum reclaims freed space after migration.
 
-**「改了什么」** 相对 v0.0.89，流式分片与心跳不再落库，运行记录只存 summary，team\_events 限制 2000 行 / 30 天，SQLite 升级 schema v2 并支持 vacuum。resolveProviderRequestHeaders 的 sessionId 变为可选，X-Task-ID 为空时省略；模型目录刷新，DigitalOcean、GMI Cloud、NanoGPT、Nvidia、Ofox 默认模型变更。
+**「What Changed」** Persistence moves from full-team-state rewrites on every chunk to batched changed-entity writes. The standalone provider header API makes sessionId optional and omits empty X-Task-ID. Default models refresh for DigitalOcean, GMI Cloud, NanoGPT, Nvidia, and Ofox.
 
 **Tags**: `#runtime`, `#memory`, `#subagents`
 
 ---
 
 <a id="item-harness-arch-2"></a>
-### [MCP TypeScript SDK 2.0.2 Enforces Per-Request Server Lifecycle](https://github.com/modelcontextprotocol/typescript-sdk/releases/tag/%40modelcontextprotocol/hono%402.0.2) ⭐️ 8.8/10
+### [MCP TypeScript SDK v2.3.0 Released](https://github.com/modelcontextprotocol/typescript-sdk/releases/tag/v2.3.0) ⭐️ 8.8/10
 
-The MCP TypeScript SDK released @modelcontextprotocol/hono@2.0.2, tightening the server connection lifecycle. A \`Server\` or \`McpServer\` now serves one connection at a time, and a stateless Streamable HTTP transport \(\`sessionIdGenerator: undefined\`\) serves one request. Reusing a single server object or stateless transport across HTTP requests fails on the second request. Build the server and transport per request.
+modelcontextprotocol/typescript-sdk v2.3.0 introduces breaking changes to server lifecycle and HTTP transport security. Stateless Streamable HTTP now handles one server per request, and Server.connect\(\) rejects an already-connected instance. HTTP client transports follow redirects only within the same origin, with an opt-out via redirectPolicy: &\#x27;follow&\#x27;. The release also adds opt-in guards for tool input size and bearer token audience, and requires eventsource-parser 3.0.8 or later.
 
-github · github-actions\[bot\] · Oct 2, 17:43
+github · felixweinberger · Oct 2, 17:55
 
-**「Design Points」** Stateless Streamable HTTP deployments must instantiate the server and transport inside each request handler. Session-based transports still allow one server and one transport per session, but sharing one server across sessions now fails at \`initialize\` with \`ALREADY\_CONNECTED\`.
+**「Design Points」** Servers must be instantiated inside the request handler or createMcpHandler factory rather than shared across requests; server creation is cheap after \#2889. Transport and auth layers now enforce stricter boundaries: same-origin redirects by default and audience-restricted bearer tokens when expectedResource is set.
 
-**「What Changed」** Shared-server and shared-stateless-transport patterns now hard-fail: \`connect\(\)\` rejects with \`ALREADY\_CONNECTED\`, \`WebStandardStreamableHTTPServerTransport.handleRequest\(\)\` rejects with a reuse error, and \`NodeStreamableHTTPServerTransport.handleRequest\(\)\` returns \`500\`. Package license metadata moved to \`Apache-2.0\` with no code change, and \`@modelcontextprotocol/server\` bumped to \`2.3.0\`.
+**「What Changed」** Breaking: one server per request for stateless Streamable HTTP, and same-origin-only redirects for HTTP client transports. New capabilities include maxToolInputElements, expectedResource, wildcard origin entries like &lt;scheme&gt;://\* for browser-extension clients, and tasks/get and tasks/cancel on 2026-07-28 connections. Large single SSE events now parse dramatically faster with eventsource-parser 3.0.8+.
 
-**Tags**: `#runtime`, `#mcp`, `#tools`
+**Tags**: `#mcp`, `#runtime`, `#tools`
 
 ---
 
 <a id="item-harness-arch-3"></a>
-### [MCP TypeScript SDK fastify 2.0.1 Enforces Per-Request Servers](https://github.com/modelcontextprotocol/typescript-sdk/releases/tag/%40modelcontextprotocol/fastify%402.0.1) ⭐️ 8.8/10
+### [MCP TypeScript SDK Hono 2.0.2 Enforces One Connection Per Server](https://github.com/modelcontextprotocol/typescript-sdk/releases/tag/%40modelcontextprotocol/hono%402.0.2) ⭐️ 8.8/10
 
-The MCP TypeScript SDK shipped @modelcontextprotocol/fastify@2.0.1, a patch that enforces single-connection servers and single-request stateless transports. A Server or McpServer now serves only one connection at a time, and a Streamable HTTP transport without sessions \(sessionIdGenerator: undefined\) serves only one request. Applications that reuse one server object or one stateless transport across HTTP requests fail on the second request; the migration path is to build the server and transport per request. The release also updates the package license field to Apache-2.0 with no code change.
+@modelcontextprotocol/hono@2.0.2 ships a breaking change to MCP server and transport lifecycles. A Server or McpServer now serves one connection at a time, and a Streamable HTTP transport without sessions \(sessionIdGenerator: undefined\) serves one request. Code that reuses a single server object or stateless transport across HTTP requests fails on the second request. The migration path is to build the server and transport per request or per session.
 
 github · github-actions\[bot\] · Oct 2, 17:43
 
-**「Design Notes」** The SDK now rejects shared server instances and stateless transport reuse at runtime. Session-based transports with a sessionIdGenerator, per-request handlers, stdio servers, and clients remain unaffected. Failure modes vary by host: Express 5, Fastify, and Hono return 500, while a plain node:http listener without error handling crashes on unhandled rejection.
+**「设计要点」** The runtime now rejects reuse at the transport layer: connect\(\) throws SdkError ALREADY\_CONNECTED when a server is already connected, and WebStandardStreamableHTTPServerTransport.handleRequest\(\) rejects stateless transports with a reuse error. NodeStreamableHTTPServerTransport returns 500. Express 5, Fastify, and Hono surface these failures as 500 responses; a bare node:http listener without error handling crashes on unhandled rejection.
 
-**「What Changed」** The SDK now enforces one-connection-per-server and one-request-per-stateless-transport at runtime, breaking shared-instance patterns that previously worked. Documentation examples across the express, fastify, hono, and node packages now build a server and transport per request, the license field changed to Apache-2.0 with no code change, and @modelcontextprotocol/server moved to 2.3.0.
+**「改了什么」** The SDK moved from implicit sharing to strict per-request or per-session instantiation for stateless HTTP transports. Package manifests now declare Apache-2.0, and the bundled @modelcontextprotocol/server dependency is bumped to 2.3.0.
 
 **Tags**: `#runtime`, `#mcp`, `#tools`
 
 ---
 
 <a id="item-harness-arch-4"></a>
-### [MCP TypeScript SDK Client 2.3.0 Released](https://github.com/modelcontextprotocol/typescript-sdk/releases/tag/%40modelcontextprotocol/client%402.3.0) ⭐️ 8.8/10
+### [modelcontextprotocol/python-sdk released v2.3.0](https://github.com/modelcontextprotocol/python-sdk/releases/tag/v2.3.0) ⭐️ 8.3/10
 
-The MCP TypeScript SDK shipped @modelcontextprotocol/client@2.3.0. HTTP client transports and OAuth helpers now follow redirects only within the request origin and only when the method is preserved. Cross-origin attempts fail the request with a named target, keep the session alive, and let OAuth discovery fall back to the next well-known URL. The release also speeds up large SSE messages, adds Tasks extension methods, and clarifies version negotiation failures.
+MCP Python SDK v2.3.0 introduces breaking changes to tool header annotation validation and dependency requirements, plus minor fixes and new options.
 
-github · github-actions\[bot\] · Oct 2, 17:43
+github · maxisbey · Oct 2, 22:02
 
-**「Design Notes」** Transport security is enforced at the fetch boundary: same-origin checks cover scheme, host, and port, with http-to-https upgrades allowed on default ports. Node permits up to five consecutive same-origin method-preserving redirects, while browsers fail redirected requests because the target is not exposed; \`redirectPolicy: &\#x27;follow&\#x27;\` delegates handling back to fetch.
-
-**「What Changed」** Redirects are now restricted to same-origin targets that preserve the method, with explicit errors for cross-origin attempts and OAuth discovery falling back to the next well-known URL. Large single SSE events over Streamable HTTP parse from about 13 seconds to under one second, and \`SSEClientTransport\` retries once after \`onUnauthorized\(\)\` before rejecting with \`SdkHttpError\`.
-
-**Tags**: `#mcp`, `#runtime`, `#tools`
+**Tags**: `#tools`, `#mcp`, `#runtime`
 
 ---
 
 <a id="item-harness-arch-5"></a>
-### [modelcontextprotocol/typescript-sdk released v2.3.0](https://github.com/modelcontextprotocol/typescript-sdk/releases/tag/v2.3.0) ⭐️ 8.3/10
+### [cloudflare/agents released agents@0.25.0](https://github.com/cloudflare/agents/releases/tag/agents%400.25.0) ⭐️ 8.3/10
 
-MCP TypeScript SDK v2.3.0 introduces a breaking one-server-per-request constraint and a same-origin redirect policy for HTTP client transports.
+Cloudflare Agents 0.25.0 changes async RPC lifecycle initialization and fixes agent-tool child failure reporting.
 
-github · felixweinberger · Oct 2, 17:55
+github · github-actions\[bot\] · Oct 2, 12:30
 
-**Tags**: `#mcp`, `#runtime`, `#tools`
+**Tags**: `#runtime`, `#tools`, `#subagents`
 
 ---
 
 <a id="item-harness-arch-6"></a>
-### [microsoft/agent-framework released python-1.20.0](https://github.com/microsoft/agent-framework/releases/tag/python-1.20.0) ⭐️ 8.3/10
+### [modelcontextprotocol/typescript-sdk released 1.32.0](https://github.com/modelcontextprotocol/typescript-sdk/releases/tag/1.32.0) ⭐️ 8.3/10
 
-microsoft/agent-framework python-1.20.0 adds Foundry hosting, vector-store connectors, and runtime/sandbox improvements.
+MCP TypeScript SDK 1.32.0 restricts HTTP redirects to same-origin by default and adds options to limit tool input size and validate bearer token audience.
 
-github · eavanvalkenburg · Oct 2, 14:40
+github · felixweinberger · Oct 2, 17:28
 
-**Tags**: `#runtime`, `#tools`, `#sandbox`, `#memory`, `#permissions`
+**Tags**: `#mcp`, `#tools`, `#permissions`, `#runtime`
 
 ---
 
 <a id="item-harness-arch-7"></a>
-### [MCP Python SDK v2.3.0 Released](https://github.com/modelcontextprotocol/python-sdk/releases/tag/v2.3.0) ⭐️ 7.8/10
+### [modelcontextprotocol/typescript-sdk released @modelcontextprotocol/fastify@2.0.1](https://github.com/modelcontextprotocol/typescript-sdk/releases/tag/%40modelcontextprotocol/fastify%402.0.1) ⭐️ 8.3/10
 
-MCP Python SDK v2.3.0 lands with mostly fixes and three new options. The release raises the httpx2 requirement to &gt;=2.10.0 and tightens tool registration: invalid x-mcp-header annotations now raise InvalidSignature instead of letting the server start while clients silently drop the tool. On 2025-11-25 and earlier connections, outbound requests omit empty \_meta and params, and initialize no longer sends an empty experimental capability.
+MCP TypeScript SDK Fastify 2.0.1 patch documents a breaking change requiring per-request server and stateless transport instantiation, breaking apps that reuse a single server object across HTTP requests.
 
-github · maxisbey · Oct 2, 22:02
+github · github-actions\[bot\] · Oct 2, 17:43
 
-**「Design Points」** Header validation shifts to registration time. MCPServer stops running tools/list for every tools/call; Mcp-Param-\* checks now look up the registered schema by name, so middleware that filters or rewrites tools/list no longer influences validation. Low-level servers can pass Server\(get\_tool\_input\_schema=...\) to supply schemas without a tools/list handler.
-
-**「What Changed」** httpx2&gt;=2.10.0 replaces the old &gt;=2.5.0 floor. Invalid x-mcp-header annotations now fail at registration with InvalidSignature; only plain str, int, and bool parameters pass, header names must be valid tokens, and case-only duplicates are refused. Empty \_meta and params are omitted on 2025-11-25 and earlier connections, so ctx.meta and ctx.params become None. initialize drops an empty experimental capability. Mcp-Param-\* validation looks up the registered schema by name instead of running tools/list. Interactive OAuth logins pause request timeouts. New options: max\_sse\_event\_size on streamable\_http\_client and StreamableHttpParameters \(default 1 MiB\), MCPServer\(subscriptions=False\), Server\(get\_tool\_input\_schema=...\), and Client.call\_tool retrying once after HeaderMismatch \(-32020\). Fixes include Context\[AppState\] on prompts and resource templates, explicit null structuredContent checked against the output schema, raising progress\_callback contained on in-process Client\(server\), OpenTelemetry spans recording JSON-RPC errors, and stdio\_client resolving the executable off the event loop on Windows.
-
-**Tags**: `#tools`, `#mcp`, `#runtime`, `#permissions`
+**Tags**: `#mcp`, `#runtime`, `#tools`
 
 ---
 
 ## AI Agent Engineer
 
 <a id="item-agent-engineer-1"></a>
-### [AutoSynthData 失败转训练数据](https://huggingface.co/blog/ServiceNow-AI/autosynthdata) ⭐️ 8.3/10
+### [PoS：用显式信念状态治理长程 Agent](https://huggingface.co/papers/2610.01415) ⭐️ 8.0/10
 
-ServiceNow CoreAI 提出 AutoSynthData，将企业 Agent 的失败转化为合成训练任务。方法在目标环境中评估模型，结合更强教师的成功轨迹定位能力缺口，再生成并验证新任务。任务定义为 system specification、user prompt、verifier 三元组，需满足可行、真实、有难度；验证器需一致、可靠、完整。流程分 Target 与 Multiply 两阶段，后者从已接受样本扩展变体，且禁止变体再衍生变体。
+Hugging Face Daily Papers 收录论文《Beyond Memory: Harnessing Long-Horizon Agents with Explicit Belief States》，提出推理时框架 PoS，为长程 LLM agent 构建并持续维护显式信念状态作为决策上下文。每个信念融合当前世界状态估计与未解决的任务需求，显式暴露 agent 仍需学习和完成的内容；PoS 同时校验信念一致性，监控任务进度以检测 Belief Trapping，即 agent 持续行动却未朝目标取得实质进展，并依据陷落模式与未解决需求类型定制恢复策略。论文认为，仅把交互历史组织成记忆，无法保证 agent 对当前世界形成连贯理解。该论文目前获得 69 次 upvotes。
 
-rss · Hugging Face Blog · Oct 2, 04:01
+rss · Hugging Face Daily Papers · Oct 3, 03:03
 
-**「为什么重要」** 企业 Agent 的短板常藏在特定工作流、工具组合或约束中，通用能力无法直接覆盖。AutoSynthData 给出从失败到课程化训练数据的工程路径，并分离生成控制与环境执行。
+**「为什么重要」** 长程 agent 的失效往往不是记忆容量不足，而是世界模型未能随交互持续更新。PoS 将信念状态作为可校验、可监控的决策上下文，让 harness 在检测到 Belief Trapping 时有明确恢复依据，而非仅依赖历史检索。这对做长程任务编排与记忆架构的工程师，提供了一条不依赖模型微调的推理时干预路径。
 
-**「可关注」** 可关注：AutoSynthData 将能力缺口蒸馏为脱敏的 capability specification cards，生成器只接收卡片，不接触原始 prompt、实体、轨迹和验证器细节，以此限制跨代漂移。
+**「可关注」** PoS 把「未解决的任务需求」纳入信念状态并做一致性校验，这提示 harness 设计可将显式世界状态与任务进度监控从 prompt 工程中抽离，作为独立运行时组件。
 
-**Tags**: `#eval`, `#coding-agent`, `#harness`
+**Tags**: `#memory`, `#harness`, `#orchestration`
 
 ---
 
 <a id="item-agent-engineer-2"></a>
-### [后训练锐化税：基座模型 agent 反超](https://huggingface.co/papers/2610.01509) ⭐️ 8.0/10
+### [Hugging Face 论文：后训练的锐化税](https://huggingface.co/papers/2610.01509) ⭐️ 8.0/10
 
-Hugging Face Daily Papers 于 2026-10-03 收录论文《Sharpening Tax in Post-Training》，获 63 赞。论文认为 RL 后训练只是在锐化基座模型已有行为，以 pass@K 覆盖率为代价提升 pass@1。作者发现，预训练模型加轻量推理 harness 即可作为 agent；测试时预算充足时，其 agentic 任务覆盖率常超过后训练模型，尽管 pass@1 远低。该 trade-off 此前见于数学和代码任务，本文将其扩展到多轮工具使用场景。
+Hugging Face 论文《Sharpening Tax in Post-Training》发现，预训练 LLM 加上轻量推理 harness，就能承担 agent 任务。虽然 pass@1 远低于后训练模型，但在测试时预算充足时，其 pass@K 解覆盖率常常更高。论文将机制归结为 RL 后训练对已有行为的锐化：它提升单次准确率，却牺牲解覆盖率，且这一权衡同样适用于 agentic 场景。
 
-rss · Hugging Face Daily Papers · Oct 3, 01:39
+rss · Hugging Face Daily Papers · Oct 3, 03:03
 
-**「为什么重要」** 它挑战「RL 后训练是获得可用 agent 的必要条件」这一假设。对 coding agent 与 harness 开发者，论文证据表明测试时预算和 harness 设计可能比后训练更影响 pass@K 覆盖率，但该影响尚未在生产环境验证。
+**「为什么重要」** 如果后训练只是锐化分布，那么 agent 系统的瓶颈可能不在模型权重，而在 harness 与测试时预算的分配。这为重新评估 RL 后训练的必要性提供了实证依据。
 
-**「可关注」** 可关注：在 pass@K 覆盖率优先的 agent 任务中，可对比测试基座模型加轻量 harness 与后训练模型的表现，尤其是测试时预算充足时。
+**「可关注」** 可关注：在 agent 评测与 harness 设计中，pass@1 与 pass@K 需分开度量；若测试时预算充足，预训练模型配合轻量 harness 可能是比后训练模型更优的基线。
 
 **Tags**: `#harness`, `#eval`, `#coding-agent`
 
 ---
 
 <a id="item-agent-engineer-3"></a>
-### [Llama3/Qwen2.5 蒸馏动力学](https://huggingface.co/papers/2609.35259) ⭐️ 7.0/10
+### [HF daily paper: ActiveSaddler: Automated Curriculum Learning for Agent Harness Optimization](https://huggingface.co/papers/2610.00906) ⭐️ 7.5/10
 
-2026 年 10 月 3 日，Hugging Face Daily Papers 收录一篇系统研究蒸馏动力学的论文。研究在 Llama3 与 Qwen2.5 上独立变化 rollout 策略、token 级 KL 方向和学习率，覆盖科学、医疗、算术推理任务。论文发现 rollout 策略未必是核心因素，token 级 KL 方向更清晰地塑造蒸馏结果。该论文获得 122 次 upvote。
+A new paper proposes ActiveSaddler, formulating agent harness optimization as an automated curriculum learning problem that adapts training scenarios alongside harness updates using a non-stationary bandit.
 
-rss · Hugging Face Daily Papers · Oct 3, 01:39
+rss · Hugging Face Daily Papers · Oct 3, 03:03
 
-**「为什么重要」** 此前对比监督微调与强化学习时，多个因素同时变化，难以分离 rollout 策略的贡献。该研究通过受控实验挑战了 on-policy 必然更优的假设，指出 token 级 KL 方向才是更关键的影响因素。
-
-**「可关注」** 可关注：在强到弱蒸馏或微调中，调 token 级 KL 方向可能比对齐 rollout 策略更影响最终效果；实验设计需独立控制这些变量。
-
-**Tags**: `#eval`, `#memory`, `#distillation`
+**Tags**: `#harness`, `#eval`, `#coding-agent`, `#orchestration`
 
 ---
 
 <a id="item-agent-engineer-4"></a>
-### [RASO 框架：检索增强技能优化](https://huggingface.co/papers/2609.38024) ⭐️ 7.0/10
+### [RASO 框架：跨 harness 技能优化](https://huggingface.co/papers/2609.38024) ⭐️ 7.5/10
 
-Hugging Face Daily Papers 于 2026-10-03 收录论文《Retrieval-Augmented Skill Optimization via Cross-Harness Adaptation》，提出 RASO 框架。该框架把外部技能语料库当作先验知识，在技能优化全过程中检索相关已有技能，并跨 harness 适配到目标任务。论文指出现有方法主要依赖昂贵的 agent rollouts 迭代精炼技能，忽略了公开积累的百万级技能。材料未提供实验细节、量化对比或生产环境验证。
+Hugging Face Daily Papers 收录论文《Retrieval-Augmented Skill Optimization via Cross-Harness Adaptation》，提出 RASO 框架。RASO 从外部技能语料库检索已有 agent skill，跨 harness 适配后用于优化新技能，降低对昂贵 rollout 的依赖。论文指出现有技能优化方法忽视数百万公开共享的技能，仅靠迭代 rollout 精炼目标技能。RASO 将外部语料作为先验知识贯穿优化全程。该论文获 41 次 upvote。
 
-rss · Hugging Face Daily Papers · Oct 3, 01:39
+rss · Hugging Face Daily Papers · Oct 3, 03:03
 
-**「为什么重要」** 对 coding agent 与 harness 工程师而言，论文提出了复用公开技能资产、降低 rollout 成本的路径；但跨 harness 适配的实际收益与限制仍待实验证实。
+**「为什么重要」** 对 coding agent / harness 从业者，技能优化长期受限于 rollout 成本。RASO 提供复用公开技能积累的路径，可能改变技能冷启动与迭代方式。目前仅为论文提案，尚未验证产品级效果。
 
-**「可关注」** 可关注：RASO 将外部技能语料库作为先验注入技能优化，若实验验证其跨 harness 适配有效，或改变当前依赖昂贵 rollout 的技能迭代方式。
+**「可关注」** 可关注：RASO 将外部技能语料作为先验，检索后跨 harness 适配，或可减少从零优化技能所需的 rollout 次数。
 
-**Tags**: `#harness`, `#eval`, `#memory`, `#orchestration`
+**Tags**: `#harness`, `#eval`, `#coding-agent`, `#memory`
 
 ---
 
 <a id="item-agent-engineer-5"></a>
-### [PoS 用显式信念状态改进长程 Agent](https://huggingface.co/papers/2610.01415) ⭐️ 6.5/10
+### [AutoSynthData: Generating Training Data for Enterprise Agents](https://huggingface.co/blog/ServiceNow-AI/autosynthdata) ⭐️ 7.3/10
 
-HF Daily Papers 于 2026-10-03 推荐论文《Beyond Memory: Harnessing Long-Horizon Agents with Explicit Belief States》，提出推理时框架 PoS。该框架持续维护显式信念状态，将当前世界状态估计与未解决任务需求结合，作为 Agent 决策上下文。PoS 校验信念一致性并监控任务进度，检测 Belief Trapping——Agent 持续行动但未朝目标取得实质进展——再依据困住模式与未解决需求类型定制恢复策略。论文未提供可复现基准或代码，实际效果需结合全文评估。
+ServiceNow CoreAI presents AutoSynthData, a system that generates enterprise-specific agent training data by mining target model failures to create environment-aware, verifiable tasks.
 
-rss · Hugging Face Daily Papers · Oct 3, 01:39
+rss · Hugging Face Blog · Oct 2, 04:01
 
-**「为什么重要」** 长程 Agent 仅将交互历史组织为记忆，未必保证对当前世界的连贯理解。PoS 把隐式历史转为显式信念并加入进度监控，为 memory/harness 设计提供了新思路；但摘要未给出实验数据，其相对现有记忆方案的增益仍待验证。
-
-**「可关注」** 可关注：PoS 将信念状态作为决策上下文并检测 Belief Trapping，若后续给出可复现基准或代码，可评估其在长程任务中的恢复效果。
-
-**Tags**: `#memory`, `#harness`, `#orchestration`, `#eval`
+**Tags**: `#eval`, `#harness`, `#coding-agent`
 
 ---
 
 <a id="item-agent-engineer-6"></a>
-### [Open-sourcing AstaBrief, the fast report-generation model in Asta](https://huggingface.co/blog/allenai/astabrief) ⭐️ 5.8/10
+### [Open-sourcing AstaBrief, the fast report-generation model in Asta](https://huggingface.co/blog/allenai/astabrief) ⭐️ 6.3/10
 
-AllenAI open-sources AstaBrief, a fast report-generation model for its agentic scientific platform Asta, designed to produce cited reports grounded in evidence.
+AllenAI open-sources AstaBrief, a fast report-generation model used in its agentic scientific platform Asta.
 
 rss · Hugging Face Blog · Oct 2, 15:19
 
-**Tags**: `#agent`, `#model-release`, `#scientific-ai`, `#report-generation`, `#open-source`
+**Tags**: `#orchestration`, `#harness`, `#agent`
 
 ---
 
 <a id="item-agent-engineer-7"></a>
-### [FrogNano-4B-2609 后训练细节](https://www.reddit.com/r/LocalLLaMA/comments/1ww40o2/microsoftfrognano4b2609_hugging_face/) ⭐️ 5.5/10
+### [microsoft/FrogNano-4B-2609 · Hugging Face](https://www.reddit.com/r/LocalLLaMA/comments/1ww40o2/microsoftfrognano4b2609_hugging_face/) ⭐️ 6.0/10
 
-2026 年 10 月 2 日，Reddit 用户 /u/jacek2023 分享了 Microsoft FrogNano-4B-2609 的技术细节。该模型派生自 Qwen/Qwen3.5-4B，在约 1,500 个合成 SWE 任务环境上用强化学习做后训练，配合五工具 Leaf harness 与可执行测试奖励，聚焦仓库级软件工程。原帖未提供官方发布链接或基准测试结果，仅指向第三方 GGUF 量化，模型性能与官方状态仍不确定。
+Microsoft&\#x27;s FrogNano-4B is a compact agentic model post-trained via reinforcement learning on synthetic SWE tasks using a five-tool Leaf harness, targeting repository-level coding on modest hardware.
 
 reddit · r/LocalLLaMA · /u/jacek2023 · Oct 2, 20:16
 
-**「为什么重要」** 对 coding agent 开发者而言，这展示了在 4B 尺寸上用合成环境和 RL 专攻仓库级编码的路径，且明确不使用行为蒸馏。但缺乏基准和官方渠道，暂时只能作为技术参考。
-
-**「可关注」** 可关注：FrogNano 在 4B 尺寸上用约 1,500 个合成 SWE 环境和 Leaf harness 做 RL，且不使用行为蒸馏，但原帖缺少基准与官方发布信息，效果待验证。
-
 **Tags**: `#coding-agent`, `#harness`, `#eval`
+
+---
+
+<a id="item-agent-engineer-8"></a>
+### [Pi 1.0 稳定版与 TypeScript](https://www.latent.space/p/ainews-pi-10-pi-durable-and-aie-nyc) ⭐️ 5.5/10
+
+Latent Space AINews 提到，极简 harness Pi 进入 1.0 稳定版，并支持 TypeScript。该摘要未给出主仓库、变更日志或破坏性变更说明，同期还提及 Pi Durable 与 AIE NYC，但无细节。工程影响暂无法从现有片段确认。
+
+rss · Latent Space · Oct 2, 06:40
+
+**「为什么重要」** 对使用 TypeScript 的 agent 团队，稳定版 harness 可能提供一个轻量接入选项。但该价值尚未经一手资料确认。
+
+**「可关注」** Pi 1.0 稳定版与 TypeScript 支持的具体变更范围，等待主仓库或发布说明披露后再评估是否采用。
+
+**Tags**: `#harness`, `#coding-agent`
 
 ---
 
 ## AI Daily
 
 <a id="item-ai-daily-1"></a>
-### [OpenAI 发布 GPT-6 实用指南](https://openai.com/index/practical-guide-building-gpt-6) ⭐️ 8.3/10
+### [OpenAI 发布 GPT-6 模型选用指南](https://openai.com/index/practical-guide-building-gpt-6) ⭐️ 8.3/10
 
-OpenAI 发布 GPT-6 系列官方实用指南。文档面向初创团队，覆盖模型选择、reasoning effort 调节、提示词与技能优化、工具协同及生产工作流准备。这是权威使用指导，非新模型或政策发布。
+OpenAI 发布 GPT-6 家族模型实践指南，面向初创公司说明如何选择模型、调节推理强度、优化提示词与技能、协同工具，以及准备生产工作流。内容聚焦部署与调用层面的操作指引，并非模型发布公告。材料未提供具体基准或性能数字。
 
 rss · OpenAI Blog · Oct 2, 16:15
 
-**「为什么重要」** GPT-6 家族首份官方工程指南，为模型选型与推理成本控制提供一手依据。
+**「为什么重要」** 对构建 coding agent 或 harness 的团队，这份指南给出了官方对 GPT-6 家族差异与推理强度调节的说明，可直接用于模型选型与生产配置。
 
-**「可关注」** 可关注：指南将 reasoning effort 作为可调参数，与工具协同、生产工作流并列，工程侧需重新评估延迟与成本的平衡。
+**「可关注」** 可关注：OpenAI 官方给出了 GPT-6 家族推理强度调节、提示词优化、工具协同的建议，可直接作为生产环境参数配置的参考依据。
 
 **Tags**: `#model`, `#lab`, `#product`
 
