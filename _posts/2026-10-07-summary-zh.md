@@ -5,316 +5,360 @@ date: 2026-10-07
 lang: zh
 ---
 
-> 从 216 条内容中筛选出 21 条重要资讯。
+> 从 186 条内容中筛选出 23 条重要资讯。
 
 ---
 
 **Harness 架构**
-1. [anthropics/claude-code released v2.1.292](#item-harness-arch-1) ⭐️ 8.3/10
-2. [Claude Code v2.1.290 发布](#item-harness-arch-2) ⭐️ 7.3/10
-3. [All-Hands-AI/OpenHands released v1.25.0](#item-harness-arch-3) ⭐️ 6.3/10
-4. [Gemini CLI v0.64.0-preview.0 发布](#item-harness-arch-4) ⭐️ 5.8/10
-5. [google-gemini/gemini-cli released v0.63.0](#item-harness-arch-5) ⭐️ 5.3/10
-6. [microsoft/semantic-kernel released python-1.45.0](#item-harness-arch-6) ⭐️ 5.3/10
-7. [Semantic Kernel dotnet-1.81.0 发布](#item-harness-arch-7) ⭐️ 5.3/10
+1. [Claude Code v2.1.292](#item-harness-arch-1) ⭐️ 8.3/10
+2. [gemini-cli v0.64.0-preview.0 发布](#item-harness-arch-2) ⭐️ 7.8/10
+3. [Claude Code v2.1.291 修复会话回归](#item-harness-arch-3) ⭐️ 6.8/10
+4. [gemini-cli v0.65.0-nightly 修复会话与权限](#item-harness-arch-4) ⭐️ 6.3/10
+5. [Gemini CLI v0.63.0 发布](#item-harness-arch-5) ⭐️ 6.3/10
+6. [microsoft/semantic-kernel released python-1.45.0](#item-harness-arch-6) ⭐️ 6.3/10
+7. [microsoft/semantic-kernel released dotnet-1.81.0](#item-harness-arch-7) ⭐️ 6.3/10
 
 **Agent 工程师日报**
-1. [EmbeddingGemma 2 发布](#item-agent-engineer-1) ⭐️ 7.8/10
-2. [EmbeddingGemma 2: An open, lightweight multimodal embedding model](#item-agent-engineer-2) ⭐️ 7.5/10
-3. [OSWorld-Pro 发布过程式评测基准](#item-agent-engineer-3) ⭐️ 7.5/10
-4. [HF daily paper: Self-Generated Feedback Destabilizes Test-Time Training: A Causal Decomposition of Long-Horizon Adaptation](#item-agent-engineer-4) ⭐️ 7.0/10
-5. [MemAdapter：按上下文调节记忆影响](#item-agent-engineer-5) ⭐️ 6.5/10
-6. [simonw released 0.16 in simonw/llm-mistral](#item-agent-engineer-6) ⭐️ 6.3/10
-7. [I gave a 21M model a 6.4B-parameter lookup table. It matches a 114M dense model and runs with the table on an SSD \(RX 9070\)](#item-agent-engineer-7) ⭐️ 6.0/10
+1. [自生成反馈破坏 TTT 长时程适应](#item-agent-engineer-1) ⭐️ 8.0/10
+2. [OpenAI Decisions API 进入公测](#item-agent-engineer-2) ⭐️ 7.5/10
+3. [Introducing Mistral Large 4: Le chonk](#item-agent-engineer-3) ⭐️ 7.5/10
+4. [HF daily paper: Harness Engineering for Software Engineering via Modular Executable Dev-Primitives](#item-agent-engineer-4) ⭐️ 7.5/10
+5. [OSWorld-Pro 过程化评估 CUAs](#item-agent-engineer-5) ⭐️ 7.5/10
+6. [EmbeddingGemma 2: An open, lightweight multimodal embedding model](#item-agent-engineer-6) ⭐️ 7.0/10
+7. [llm-mistral 0.16 发布](#item-agent-engineer-7) ⭐️ 6.8/10
+8. [LMBuild 测 Agent 3D 建造](#item-agent-engineer-8) ⭐️ 6.0/10
+9. [EmbeddingGemma 2 开源](#item-agent-engineer-9) ⭐️ 6.0/10
+10. [I gave a 21M model a 6.4B-parameter lookup table. It matches a 114M dense model and runs with the table on an SSD \(RX 9070\)](#item-agent-engineer-10) ⭐️ 5.5/10
 
 **AI 日报**
-1. [OpenAI 公布数学开放问题新结果](#item-ai-daily-1) ⭐️ 10.0/10
-2. [EmbeddingGemma 2 多模态嵌入](#item-ai-daily-2) ⭐️ 9.3/10
-3. [Anthropic 扩展 CVP 访问层级](#item-ai-daily-3) ⭐️ 8.8/10
-4. [Advancing computer use with Ironclad](#item-ai-daily-4) ⭐️ 8.3/10
-5. [GitHub 不停机重建 Git 基础设施](#item-ai-daily-5) ⭐️ 8.3/10
-6. [Atlassian 与 OpenAI 扩大合作](#item-ai-daily-6) ⭐️ 7.8/10
-7. [Jump Trading 用 ChatGPT 扩展量化研究](#item-ai-daily-7) ⭐️ 6.3/10
+1. [OpenAI 公开数学 AI 新结果](#item-ai-daily-1) ⭐️ 10.0/10
+2. [OpenAI 与 Ironclad 训练合同 agent](#item-ai-daily-2) ⭐️ 8.3/10
+3. [Building Git infrastructure for agent-scale development](#item-ai-daily-3) ⭐️ 7.8/10
+4. [Jump Trading 扩展量化研究](#item-ai-daily-4) ⭐️ 6.8/10
+5. [OpenAI 扩展 Atlassian 合作](#item-ai-daily-5) ⭐️ 6.8/10
+6. [Meta nts.meta.com 支持 NTS](#item-ai-daily-6) ⭐️ 6.8/10
 
 ---
 
 ## Harness 架构
 
 <a id="item-harness-arch-1"></a>
-### [anthropics/claude-code released v2.1.292](https://github.com/anthropics/claude-code/releases/tag/v2.1.292) ⭐️ 8.3/10
+### [Claude Code v2.1.292](https://github.com/anthropics/claude-code/releases/tag/v2.1.292) ⭐️ 8.3/10
 
-Claude Code v2.1.292 ships subagent effort controls, plugin marketplace integration, mod-hook extensibility, prompt caching, and a permissions fix.
+Claude Code v2.1.292 发布。\`claude plugin install\` 新增 \`--marketplace &lt;source&gt;\`，可在同一套策略检查下自动补全 marketplace 再安装插件。Agent 工具加入 \`effort\` 参数，按指定力度运行子代理；新增 \`CLAUDE\_CODE\_OVERLOADED\_RETRY\_BASE\_DELAY\_MS\` 调整 529 重试的基础退避时长。mod 侧新增 \`prompt.autocomplete\` 事件、\`agent.spawn\` 工作流代理拒绝能力，以及 \`$.model.complete\` 的 prompt 缓存。
 
 github · ashwin-ant · 10月6日 18:59
 
-**标签**: `#subagents`, `#tools`, `#permissions`, `#prefix-cache`, `#runtime`
+**「设计要点」** 工具层与 mod 钩子继续扩展：插件安装复用 marketplace 策略检查，子代理支持 effort 分级，\`$.model.complete\` 支持按块前缀缓存。权限与沙箱收紧，覆盖 UNC 路径、自动模式绕过、托管设置缓存篡改及 MCP 工具名超长导致的全局失败。
+
+**「改了什么」** 新增能力集中在插件安装链路、子代理力度控制、mod 钩子与模型请求缓存。其余大量条目为安全与稳定性修复，包括沙箱越权读取、计划模式恢复、云会话与插件加载缺陷，不构成接口变化。
+
+**标签**: `#runtime`, `#tools`, `#subagents`, `#permissions`, `#prefix-cache`
 
 ---
 
 <a id="item-harness-arch-2"></a>
-### [Claude Code v2.1.290 发布](https://github.com/anthropics/claude-code/releases/tag/v2.1.290) ⭐️ 7.3/10
+### [gemini-cli v0.64.0-preview.0 发布](https://github.com/google-gemini/gemini-cli/releases/tag/v0.64.0-preview.0) ⭐️ 7.8/10
 
-Claude Code v2.1.290 发布，扩展插件钩子对子代理权限与工具审批的可见性。\`turn.step\` 新增 \`serverToolUses\` 列出 API 自调工具，\`tool.check\` 新增 \`agentId\` 与 \`ceiling\` 区分子代理检查并给出组织审批档位。CLI 的 \`attach\`/\`logs\` 支持会话名片段匹配，网关登录页加入 Deny 按钮终止等待中的登录。
-
-github · ashwin-ant · 10月5日 23:33
-
-**「设计要点」** 插件钩子层将子代理权限流与主会话显式分离，\`tool.check\` 通过 \`agentId\` 标识来源，\`ceiling\` 字段把组织审批策略前置到钩子读取路径。\`turn.step\` 的 \`serverToolUses\` 把 API 侧自调工具纳入审计面，mod 可据此复核或重放。
-
-**「改了什么」** 这一版真正变了的是插件钩子获得子代理权限标识和组织审批上限，\`claude plugin validate\` 新增 \`gatingHooks\` JSON 输出以检查门控钩子的 \`.catch\`，CLI 会话操作从精确 ID 匹配放宽到名称片段匹配。
-
-**标签**: `#runtime`, `#tools`, `#permissions`, `#subagents`
-
----
-
-<a id="item-harness-arch-3"></a>
-### [All-Hands-AI/OpenHands released v1.25.0](https://github.com/OpenHands/OpenHands/releases/tag/v1.25.0) ⭐️ 6.3/10
-
-OpenHands v1.25.0 adds Model Router configuration toggles, bulk LLM profile management, and refactors canvas streaming to use event-id-based slots.
-
-github · openhands-release-bot\[bot\] · 10月6日 00:56
-
-**标签**: `#runtime`, `#tools`, `#planning`
-
----
-
-<a id="item-harness-arch-4"></a>
-### [Gemini CLI v0.64.0-preview.0 发布](https://github.com/google-gemini/gemini-cli/releases/tag/v0.64.0-preview.0) ⭐️ 5.8/10
-
-Gemini CLI v0.64.0-preview.0 发布，修复工具层与运行时稳定性。文件工具操作串行化并改为原子写入，ChatRecordingService 引入 append-only delta 补丁与有界历史窗口。无头模式传递解析后的文件夹信任状态，CLI 解析修复代码块内 @ 符号引发的 CPU 挂起与引号吞掉。
+gemini-cli v0.64.0-preview.0 发布。协议层接入 a2a V1→V2 设置迁移，acp 桥接 PromptResponse.usage 并发出 usage\_update 通知。运行时将文件工具序列化并改为原子写入，headless 模式开始传播解析后的文件夹信任状态。另修复 CPU 挂起、状态损坏恢复、Ctrl+C 取消传递等稳定性问题。
 
 github · gemini-cli-robot · 10月6日 20:26
 
-**「设计要点」** 工具层串行化文件写入并保证原子性，记录服务用 append-only delta 与有界窗口控制历史，状态持久化支持损坏后从备份恢复。
+**「设计要点」** 文件工具操作被序列化，写入原子化，规避并发冲突。headless 模式向下传递解析后的文件夹信任状态，收紧权限边界。ChatRecordingService 改用仅追加增量补丁与有界历史窗口，限制内存增长。
 
-**「改了什么」** 相对 v0.63.0-preview.0，新增 A2A V1 到 V2 设置迁移与 ACP usage\_update 通知；文件工具改为串行原子写入，无头模式传递文件夹信任状态。
+**「改了什么」** 相对 v0.63.0-preview.0，新增 a2a V1→V2 设置迁移与 acp usage 桥接。文件工具从并行执行改为串行原子写入。headless 信任传播、状态原子持久化、Ctrl+C 紧急中止链路均得到修复。
 
 **标签**: `#runtime`, `#tools`, `#permissions`
 
 ---
 
-<a id="item-harness-arch-5"></a>
-### [google-gemini/gemini-cli released v0.63.0](https://github.com/google-gemini/gemini-cli/releases/tag/v0.63.0) ⭐️ 5.3/10
+<a id="item-harness-arch-3"></a>
+### [Claude Code v2.1.291 修复会话回归](https://github.com/anthropics/claude-code/releases/tag/v2.1.291) ⭐️ 6.8/10
 
-Gemini CLI v0.63.0 is a patch release that fixes CLI retry indicators, MCP config error distinction, stdin restoration, and core memory lifecycle in long-running agent loops.
+Claude Code v2.1.291 发布补丁，修复两处回归。2.1.290 引入的云会话可能丢弃权限提示答案的问题得到修复；2.1.288 引入的退出时丢失会话末尾消息的问题也一并解决。此版本不引入新功能或架构调整。
+
+github · ashwin-ant · 10月6日 03:55
+
+**「设计要点」** 权限提示的应答回传依赖云会话链路，退出时的消息持久化则关系运行时状态落盘。两处回归分别触及权限交互与会话记忆的完整性。
+
+**「改了什么」** 修复 2.1.290 中云会话丢弃权限提示答案的回归；修复 2.1.288 中退出时丢失会话最后消息的回归。
+
+**标签**: `#permissions`, `#runtime`, `#memory`
+
+---
+
+<a id="item-harness-arch-4"></a>
+### [gemini-cli v0.65.0-nightly 修复会话与权限](https://github.com/google-gemini/gemini-cli/releases/tag/v0.65.0-nightly.20261007.gef59c532f) ⭐️ 6.3/10
+
+google-gemini/gemini-cli 发布 v0.65.0-nightly.20261007.gef59c532f。本次为 nightly 修订版，聚焦安全与会话恢复。CLI 在不可信文件夹中强制只读工作区设置；核心层修复恢复会话时的重复工具响应轮次，并阻止快速退出删除已恢复会话历史。OAuth 回调 iss 参数验证对齐 RFC 9207。
+
+github · gemini-cli-robot · 10月7日 01:31
+
+**「设计要点」** 权限层将不可信文件夹的工作区锁定为只读，限制工具写入路径。会话恢复机制调整了历史与工具响应的重放逻辑，避免状态错乱。
+
+**「改了什么」** 相对 v0.64.0-nightly，新增不可信文件夹只读强制；修复恢复会话时的重复工具响应与历史误删；OAuth 回调验证对齐 RFC 9207；Ctrl+O 展开不再触发终端清屏与滚动重置。
+
+**标签**: `#runtime`, `#permissions`, `#sandbox`, `#tools`
+
+---
+
+<a id="item-harness-arch-5"></a>
+### [Gemini CLI v0.63.0 发布](https://github.com/google-gemini/gemini-cli/releases/tag/v0.63.0) ⭐️ 6.3/10
+
+Gemini CLI v0.63.0 发布，为补丁版本。核心修复是限制长时运行 agent 循环中的工具输出大小，并优化内存生命周期。同时修复 MCP 配置错误提示、stdin 恢复、临时目录清理、认证死循环及非交互模式下自主计划执行等问题。无破坏性变更，未新增能力或调整架构。
 
 github · gemini-cli-robot · 10月6日 20:38
+
+**「设计要点」** 工具输出边界与内存生命周期优化针对长时运行 agent 循环，属于运行时资源管理层面的修复。
+
+**「改了什么」** 相对 v0.62.0，v0.63.0 限制了长时运行 agent 循环中的工具输出大小并优化内存生命周期，同时修复 MCP 配置错误提示、stdin 恢复及认证死循环等稳定性问题。
 
 **标签**: `#runtime`, `#memory`, `#tools`, `#mcp`
 
 ---
 
 <a id="item-harness-arch-6"></a>
-### [microsoft/semantic-kernel released python-1.45.0](https://github.com/microsoft/semantic-kernel/releases/tag/python-1.45.0) ⭐️ 5.3/10
+### [microsoft/semantic-kernel released python-1.45.0](https://github.com/microsoft/semantic-kernel/releases/tag/python-1.45.0) ⭐️ 6.3/10
 
-Semantic Kernel 1.45.0 is a routine maintenance release with minor breaking changes and dependency updates, lacking architectural significance for agent harness engineers.
+Semantic Kernel 1.45.0 is a routine maintenance release with minor breaking changes and dependency updates, lacking significant architectural innovations.
 
 github · eavanvalkenburg · 10月6日 12:54
 
-**标签**: `#runtime`, `#permissions`, `#tools`
+**标签**: `#runtime`, `#tools`, `#permissions`
 
 ---
 
 <a id="item-harness-arch-7"></a>
-### [Semantic Kernel dotnet-1.81.0 发布](https://github.com/microsoft/semantic-kernel/releases/tag/dotnet-1.81.0) ⭐️ 5.3/10
+### [microsoft/semantic-kernel released dotnet-1.81.0](https://github.com/microsoft/semantic-kernel/releases/tag/dotnet-1.81.0) ⭐️ 6.3/10
 
-microsoft/semantic-kernel 发布 dotnet-1.81.0。这是 .NET 侧的常规补丁版本，无架构调整与破坏性变更。更新集中在工具层与记忆层维护：FileIOPlugin 调整文件处理逻辑，Milvus 向量检索改进过滤条件，插件路径验证规则对齐，SessionsPythonPlugin 修复一处缺陷。同时跳过直接 OpenAI 集成测试，并升级 Git 构建依赖。
+Semantic Kernel .NET 1.81.0 is a routine minor release with incremental plugin, file handling, and vector store filtering improvements.
 
 github · dmytrostruk · 10月6日 16:34
 
-**「改了什么」** dotnet-1.81.0 合入 FileIOPlugin 文件处理更新、Milvus 过滤改进、插件路径验证对齐以及 SessionsPythonPlugin 缺陷修复，同时暂时跳过直接 OpenAI 集成测试并升级 Git 构建依赖。
-
-**标签**: `#tools`, `#memory`, `#permissions`
+**标签**: `#runtime`, `#tools`, `#permissions`, `#memory`
 
 ---
 
 ## Agent 工程师日报
 
 <a id="item-agent-engineer-1"></a>
-### [EmbeddingGemma 2 发布](https://deepmind.google/blog/embeddinggemma-2-an-open-lightweight-multimodal-embedding-model/) ⭐️ 7.8/10
+### [自生成反馈破坏 TTT 长时程适应](https://huggingface.co/papers/2610.05076) ⭐️ 8.0/10
 
-Google DeepMind 于 2026-10-06 发布 EmbeddingGemma 2。该模型为开源、轻量级多模态嵌入模型。材料未披露参数量、基准分数或部署限制。分析指出其直接关联智能体检索与记忆架构。
+Hugging Face Daily Papers 收录论文，验证自生成反馈会破坏 TTT 的长时程适应。论文在 128K-token 流上运行三个 TTT-E2E 配置（125M、760M、3B）。保留生成文本更新后，模型对独立人类文本的预测变差。Adam 更新 Qwen3-4B 现有权重时复现同样失败。相同更新机制读真实文本可改进，排除写作本身问题。三个匹配比较显示，Fixed Generation 用冻结模型生成训练块，在 125M 和 760M 上消除超过 98% 的损害。
 
-rss · Google DeepMind · 10月6日 19:57
+rss · Hugging Face Daily Papers · 10月7日 01:58
 
-**「为什么重要」** 智能体检索与记忆系统依赖嵌入模型。轻量级开源多模态模型为工程侧增加可评估选项。实际收益需待技术细节与基准确认。
+**「为什么重要」** 做 agent memory 与 self-improvement loop 的工程师可拿到量化基线：自生成反馈在 128K-token 流上足以让 TTT 退化。Fixed Generation 的 98% 消除率目前仅在 125M 和 760M 上报告，3B 与 Qwen3-4B 的对应数据未给出。
 
-**「可关注」** EmbeddingGemma 2 的开源轻量级多模态定位值得评估，但官方尚未给出技术规格与基准数据。
+**「可关注」** 可关注：设计长时程 self-improvement loop 时，若用 TTT 更新权重，需把生成端与学习端解耦——用冻结模型产训练块，避免模型被自身退化输出污染。
 
-**标签**: `#memory`, `#harness`
+**标签**: `#memory`, `#eval`, `#harness`, `#observability`
 
 ---
 
 <a id="item-agent-engineer-2"></a>
-### [EmbeddingGemma 2: An open, lightweight multimodal embedding model](https://blog.google/innovation-and-ai/technology/developers-tools/embeddinggemma-2/) ⭐️ 7.5/10
+### [OpenAI Decisions API 进入公测](https://developers.openai.com/api/docs/guides/decisions) ⭐️ 7.5/10
 
-Google releases EmbeddingGemma 2, an open-source lightweight multimodal embedding model under Apache 2.0, providing a new option for agent memory and retrieval tooling.
+OpenAI 的 Decisions API 进入公开测试，官方开发者文档已发布，接口端点为 \`https://api.openai.com/v1/decisions\`，示例请求调用 \`gpt-6-luna\` 模型。社区开发者对比了该 API 与手写 prompt 分类方案：成本持平（每百万 token 0.10 美元），速度比 responses API 快约 10 倍，质量与 luna 基本相当。另有开发者通过 OpenRouter 对 Jev 和 Mercury Decide 发起少于 600 次调用的初步评估，结果尚未收敛。
 
-hackernews · ilreb · 10月6日 16:03 · [社区讨论](https://news.ycombinator.com/item?id=49980487)
+hackernews · chiefstorm · 10月6日 20:57 · [社区讨论](https://news.ycombinator.com/item?id=49984025)
 
-**标签**: `#memory`, `#multimodal`, `#open-source`, `#rag`
+**「为什么重要」** 对 coding agent 与 harness 工程师而言，这提供了一个可能替代 prompt 分类的原生决策接口，在延迟敏感的编排环节有直接用处。但当前对比数据多来自个人测试，尚缺公开基准。
+
+**「可关注」** 可关注：Decisions API 在相同 token 成本下将决策延迟压低约一个数量级，适合对响应速度敏感的 agent 编排环节，但需自行验证在具体任务上的质量与成本表现。
+
+**「评论」** HN 讨论中，开发者通过 OpenRouter 对比了 Jev 与 Mercury Decide，认为 Jev 胜在性价比，Mercury Decide 则因 dLLM 路线具备吸引力。也有观点指出，快速的 yes/no/confidence 输出正是当前市场所需，大厂正围绕低价决策模型展开竞争。
+
+**标签**: `#eval`, `#harness`, `#orchestration`, `#coding-agent`
 
 ---
 
 <a id="item-agent-engineer-3"></a>
-### [OSWorld-Pro 发布过程式评测基准](https://huggingface.co/papers/2609.24890) ⭐️ 7.5/10
+### [Introducing Mistral Large 4: Le chonk](https://simonwillison.net/2026/Oct/6/le-chonk/) ⭐️ 7.5/10
 
-2026 年 10 月 6 日，Hugging Face Daily Papers 收录 OSWorld-Pro：面向 Computer-Use Agents（CUAs）的过程式评测基准，包含 300 余项任务、2800 余个子目标，并基于 6.7 万余条人工标注构建人类对齐的 LLM-Judges 评估子目标完成度。该基准针对 OSWorld 等仅验证最终交付物的局限，试图回答 agent 在长流程中如何失败、为何失败。论文强调，键盘输入错误与图形界面点击失败需要不同缓解策略，过程式拆解可暴露这类差异。材料未给出与现有基准的量化对比数据。
+Mistral Large 4 preview released: 1T parameter / 49B active model with only &\#x27;none&\#x27; and &\#x27;high&\#x27; reasoning levels, open weights promised by end of month.
 
-rss · Hugging Face Daily Papers · 10月6日 00:00
+rss · Simon Willison · 10月6日 20:18
 
-**「为什么重要」** 对 coding agent 与 harness 工程师而言，评测粒度从端到端功能验证下沉到子目标完成度，直接影响失败归因与可观测性设计。已发生的变化是基准与人工标注集发布；尚未证实的影响是 LLM-Judges 的判定一致性能否在真实工程场景中复现。
+**标签**: `#coding-agent`, `#eval`, `#harness`, `#observability`
 
-**「可关注」** 可关注：OSWorld-Pro 用 2800 余个子目标和 6.7 万条人工标注把 CUAs 失败拆到步骤级，其子目标对齐与 LLM-Judge 设计可为 agent 过程式评测提供直接参照。
+---
+
+<a id="item-agent-engineer-4"></a>
+### [HF daily paper: Harness Engineering for Software Engineering via Modular Executable Dev-Primitives](https://huggingface.co/papers/2610.07832) ⭐️ 7.5/10
+
+该论文提出 Dev-Primitives，一种将仓库组件转化为可执行抽象以缓解长程软件工程任务中上下文爆炸和语义漂移的模块化方案。
+
+rss · Hugging Face Daily Papers · 10月7日 00:00
+
+**标签**: `#coding-agent`, `#harness`, `#memory`, `#orchestration`
+
+---
+
+<a id="item-agent-engineer-5"></a>
+### [OSWorld-Pro 过程化评估 CUAs](https://huggingface.co/papers/2609.24890) ⭐️ 7.5/10
+
+Hugging Face Daily Papers 于 2026-10-07 收录 OSWorld-Pro，当前 20 upvotes。该基准含 300+ 任务、2800+ 子目标，基于 67,000+ 条人工标注，面向 Computer-Use Agents \(CUAs\) 做过程化评估。它用与人类对齐的 LLM-Judges 判定子目标完成度，取代 OSWorld 只验最终交付物的功能验证。论文未公布跨模型跑分，子目标判定与人工标注的一致性仍待第三方复核。
+
+rss · Hugging Face Daily Papers · 10月7日 01:58
+
+**「为什么重要」** CUAs 在数百步后只交最终答卷，失败原因常被端到端验证抹平。OSWorld-Pro 把评估下沉到子目标，让键盘输入错误与图形界面点击错误可分别归因，直接影响调试与改进路径。
+
+**「可关注」** 可关注：接入 OSWorld-Pro 后，CUA 评估需从功能验证器切换为子目标级 LLM-Judges，并准备对齐 67,000 条人工标注的判定标准。
 
 **标签**: `#eval`, `#coding-agent`, `#observability`
 
 ---
 
-<a id="item-agent-engineer-4"></a>
-### [HF daily paper: Self-Generated Feedback Destabilizes Test-Time Training: A Causal Decomposition of Long-Horizon Adaptation](https://huggingface.co/papers/2610.05076) ⭐️ 7.0/10
-
-A causal decomposition paper demonstrates that test-time training on self-generated text destabilizes long-horizon adaptation, and that using a frozen model to generate training chunks removes over 98% of the damage.
-
-rss · Hugging Face Daily Papers · 10月6日 00:00
-
-**标签**: `#memory`, `#eval`, `#harness`
-
----
-
-<a id="item-agent-engineer-5"></a>
-### [MemAdapter：按上下文调节记忆影响](https://huggingface.co/papers/2610.05162) ⭐️ 6.5/10
-
-2026-10-06，Hugging Face Daily Papers 收录论文 MemAdapter: Counterfactual Adaptation Against Memory-induced Sycophancy，当前 26 upvotes。论文指出，长时记忆虽支撑个性化与长程交互，但持久记忆可能诱发 sycophancy，使 agent 过度对齐用户历史信念，即便这些信念已过时或与客观证据冲突。现有缓解方法多假设 sycophancy 源于有偏或错误记忆，并在记忆管线各阶段过滤；但论文认为客观正确的记忆同样可能诱发 sycophancy，且同一记忆在不同上下文应具有不同影响力。为此作者提出 MemAdapter 反事实适配框架，按上下文调整记忆影响；摘要未披露完整实验结果与代码可用性。
-
-rss · Hugging Face Daily Papers · 10月6日 00:00
-
-**「为什么重要」** 对做 coding agent / harness 的人，记忆模块不再只是检索增强，而是需要按上下文动态调节影响力，否则正确记忆也会把 agent 带向用户历史偏见。
-
-**「可关注」** 可关注：MemAdapter 把“记忆是否有偏”转换为“记忆在该上下文该有多强”，为记忆评估与适配提供了新切面；但论文摘要未给出实验细节，效果待验证。
-
-**标签**: `#memory`, `#eval`, `#coding-agent`, `#harness`
-
----
-
 <a id="item-agent-engineer-6"></a>
-### [simonw released 0.16 in simonw/llm-mistral](https://github.com/simonw/llm-mistral/releases/tag/0.16) ⭐️ 6.3/10
+### [EmbeddingGemma 2: An open, lightweight multimodal embedding model](https://blog.google/innovation-and-ai/technology/developers-tools/embeddinggemma-2/) ⭐️ 7.0/10
 
-llm-mistral v0.16 adds Mistral reasoning model support, a breaking safe\_prompt option change, and local MP3 attachments for Voxtral.
+Google releases EmbeddingGemma 2, an open-source multimodal embedding model that agent engineers can use for local RAG and memory systems.
 
-github · simonw · 10月6日 21:32
+hackernews · ilreb · 10月6日 16:03 · [社区讨论](https://news.ycombinator.com/item?id=49980487)
 
-**标签**: `#harness`, `#tooling`, `#llm`
+**标签**: `#memory`, `#toolchain`, `#multimodal`
 
 ---
 
 <a id="item-agent-engineer-7"></a>
-### [I gave a 21M model a 6.4B-parameter lookup table. It matches a 114M dense model and runs with the table on an SSD \(RX 9070\)](https://www.reddit.com/r/LocalLLaMA/comments/1wz7tvs/i_gave_a_21m_model_a_64bparameter_lookup_table_it/) ⭐️ 6.0/10
+### [llm-mistral 0.16 发布](https://github.com/simonw/llm-mistral/releases/tag/0.16) ⭐️ 6.8/10
 
-A hobbyist shows that a 21M model with a 6.4B-parameter SSD-resident lookup table can match a 114M dense model, with Triton kernels enabling execution across Radeon, MI350X, and H100/H200.
+simonw 发布 llm-mistral 0.16。插件支持推理模型，覆盖 Mistral Large 4。用 \`-o reasoning\_effort\` 调节推理级别，可选 \`none\`、\`minimal\`、\`low\`、\`medium\`、\`high\`、\`xhigh\`，具体取决于模型。底层改用官方 \`mistralai\` Python 库。破坏性变更：\`safe\_mode\` 已移除，请改用 \`-o safe\_prompt 1\`，与 Mistral API 命名对齐。Voxtral 音频模型新增本地 MP3 附件支持，此前仅支持 URL。
+
+github · simonw · 10月6日 21:32
+
+**「为什么重要」** 调用 Mistral 的 llm 用户需更新参数写法。推理力度可调和本地音频附件直接改变调用方式。
+
+**「可关注」** 可关注：升级到 0.16 必须替换 \`safe\_mode\`；调用推理模型时需按模型支持选择 \`reasoning\_effort\` 档位。
+
+**标签**: `#harness`, `#coding-agent`, `#tools`
+
+---
+
+<a id="item-agent-engineer-8"></a>
+### [LMBuild 测 Agent 3D 建造](https://huggingface.co/papers/2610.04292) ⭐️ 6.0/10
+
+Hugging Face Daily Papers 于 2026-10-07 收录 LMBuild 论文。该基准评估 LLM Agent 生成物理可建造且功能性 3D 结构的能力，针对现有评测重几何质量、轻物理可实现性的缺口。LMBuild 将生成对象表示为包含部件分解、关节、材料与装配顺序的组装结构，并提供含交互式环境的统一框架，Agent 可在其中调用工具完成检索。论文页显示 27 次 upvotes；目前仅公开摘要，缺少可复现的性能对比数据，影响面集中于 3D 与具身生成场景。
+
+rss · Hugging Face Daily Papers · 10月7日 01:58
+
+**「为什么重要」** 对做 3D 与具身生成的 Agent 工程师，LMBuild 提供了把物理可实现性纳入评测的参考框架。其实际区分度与跨场景通用性尚未经可复现数据验证。
+
+**「可关注」** 可关注：LMBuild 用部件分解、关节、材料与装配顺序刻画 3D 对象，把评测从几何质量推进到物理可实现性；若做具身或 3D 生成 Agent，可对照其框架检查自身评测是否覆盖建造约束。
+
+**标签**: `#eval`, `#harness`
+
+---
+
+<a id="item-agent-engineer-9"></a>
+### [EmbeddingGemma 2 开源](https://www.reddit.com/r/LocalLLaMA/comments/1wz7faa/introducing_embeddinggemma_2_a_bestinclass_open/) ⭐️ 6.0/10
+
+Google DeepMind 开源 EmbeddingGemma 2。总参数 740M，由 270M 文本、170M 视觉和 300M 音频编码器组成。模型把文本（含代码）、图像、视频和音频映射进同一个 768 维向量空间。面向手机和笔记本等消费级硬件，提供低延迟语义表示，支持端侧搜索、RAG、分类和聚类。官方称其 &quot;best-in-class&quot;，但未给出基准数据。
+
+reddit · r/LocalLLaMA · /u/Recoil42 · 10月6日 16:42
+
+**「为什么重要」** 对做 agent RAG、记忆和检索工具链的工程师，这是一个可直接部署到端侧的组件模型。它把多模态输入统一到同一向量空间，可能简化本地检索管线的数据预处理。但材料未证实其相对现有嵌入模型的实际增益，且它不改变 coding agent、协议或 harness 本身。
+
+**「可关注」** 可关注：EmbeddingGemma 2 采用模块化编码器（文本/视觉/音频分离）并输出 768 维统一向量，为端侧多模态检索提供了新选项；但在缺乏公开基准的情况下，不宜直接替换现有嵌入方案。
+
+**标签**: `#memory`, `#rag`, `#coding-agent`, `#eval`
+
+---
+
+<a id="item-agent-engineer-10"></a>
+### [I gave a 21M model a 6.4B-parameter lookup table. It matches a 114M dense model and runs with the table on an SSD \(RX 9070\)](https://www.reddit.com/r/LocalLLaMA/comments/1wz7tvs/i_gave_a_21m_model_a_64bparameter_lookup_table_it/) ⭐️ 5.5/10
+
+A hobbyist reports that a 21M model with a 6.4B-parameter SSD-resident lookup table matches a 114M dense model on a small Wikipedia corpus, running at ~140 tok/s on a consumer AMD GPU with minimal VRAM.
 
 reddit · r/LocalLLaMA · /u/fechyyy · 10月6日 16:57
 
-**标签**: `#memory`, `#inference`, `#toolchain`
+**标签**: `#memory`, `#eval`, `#toolchain`
 
 ---
 
 ## AI 日报
 
 <a id="item-ai-daily-1"></a>
-### [OpenAI 公布数学开放问题新结果](https://openai.com/index/sharing-ai-progress-in-mathematics) ⭐️ 10.0/10
+### [OpenAI 公开数学 AI 新结果](https://openai.com/index/sharing-ai-progress-in-mathematics) ⭐️ 10.0/10
 
-OpenAI 公布内部前沿模型在数学开放问题上的新结果。研究细节与 Lean 证明形式化已发布至 GitHub。公告未给出具体问题清单、模型版本或量化指标。目前仅见官方一手信息。
+OpenAI 发布内部前沿模型在数学开放问题上的新结果，并在 GitHub 公开 Lean 证明形式化与研究细节。材料未说明具体问题、模型版本或量化指标。该发布来自官方博客，属第一方研究披露。
 
 rss · OpenAI Blog · 10月6日 12:00
 
-**「为什么重要」** 数学开放问题是检验前沿模型推理能力的硬基准。此次公开 Lean 证明形式化与研究细节，可供社区直接查验。
+**「为什么重要」** 公开 Lean 证明形式化与研究细节，使外部研究者可独立复核其数学结论，提升结果可验证性。
 
-**「可关注」** 可关注：GitHub 上的 Lean 证明形式化与研究细节，以及内部前沿模型在数学开放问题上的结果。
+**「可关注」** 可关注：OpenAI 在 GitHub 公开的 Lean 证明形式化与研究细节，可用于独立验证数学结果。
 
-**标签**: `#model`, `#lab`, `#eval`, `#open-source`
+**标签**: `#model`, `#lab`, `#open-source`, `#eval`
 
 ---
 
 <a id="item-ai-daily-2"></a>
-### [EmbeddingGemma 2 多模态嵌入](https://developers.googleblog.com/embeddinggemma-2-the-developer-guide/) ⭐️ 9.3/10
+### [OpenAI 与 Ironclad 训练合同 agent](https://openai.com/index/advancing-computer-use-with-ironclad) ⭐️ 8.3/10
 
-Google 开源 EmbeddingGemma 2，基于 Gemma 4 的 sub-1B 多模态嵌入模型，采用 Apache 2.0 许可。文本、代码、图像、视频、音频统一映射到 768 维空间，模块化架构支持按需加载编码器，参数量从 270M 扩展到 740M。MTEB \(Code\) 得分较 EmbeddingGemma 1 提升 14%，同时保留多语言文本能力。sentence-transformers v6.1.0 起支持调用。
+OpenAI 与 Ironclad 合作，在复杂合同工作流上训练并评估 AI agent，推进 computer use 在专业工作中的应用。官方博客称此为应用更新，未发布新模型或政策。公开材料未给出具体基准数字或技术细节。
 
-rss · Google Developers AI · 10月6日 00:00
+rss · OpenAI Blog · 10月6日 10:00
 
-**「为什么重要」** 检索和 RAG 应用常需跨文本、代码、图像、视频、音频工作。EmbeddingGemma 2 用单一紧凑模型替代链式模型，降低本地搜索与媒体检索的延迟和内存开销。Pixel 11 Pro 上文本权重仅占约 191MB 活跃内存，完整多模态约 567MB。
+**「为什么重要」** 专业工作流是 computer use 的高价值场景。该合作为 agent 在复杂合同任务中的训练与评估提供了公开案例。
 
-**「可关注」** 可关注：通过 config\_kwargs 禁用未使用的模态编码器，可在加载时节省内存；truncate\_dim 支持 512/256/128 维截断，配合 normalize\_embeddings=True 获得单位向量，百万级 768 维向量存储约 1.5 GB，截断至 128 维仅需 250 MB。
+**「可关注」** 可关注：双方如何针对复杂合同工作流设定训练目标与评估方案。
 
-**标签**: `#model`, `#lab`, `#open-source`, `#product`
+**标签**: `#lab`, `#product`, `#eval`, `#industry`
 
 ---
 
 <a id="item-ai-daily-3"></a>
-### [Anthropic 扩展 CVP 访问层级](https://www.anthropic.com/news/cyber-verification-program) ⭐️ 8.8/10
+### [Building Git infrastructure for agent-scale development](https://github.blog/engineering/architecture-optimization/building-git-infrastructure-for-agent-scale-development/) ⭐️ 7.8/10
 
-Anthropic 合并 Project Glasswing 与 CVP，推出 Defense Access、Red Team Access、Specialized Access 三档访问，覆盖 Claude Opus 5.5、Claude Sonnet 5.5、Claude Mythos 5.1 及后续模型。官方测试显示，无 CVP 权限时 Claude Opus 5.5 在 CyScenarioBench 所有任务首轮即被阻断；Defense Access 下 50 次试验有 46 次中途阻断；Red Team Access 无阻断，完成 34/50 任务，接近无防护模型的 67.6% 成功率。Project Glasswing 期间合作伙伴报告至少 129,000 个已验证漏洞，Anthropic 开源扫描另发现 5,500 个，其中超 33,000 个为严重或高危；官方称实际影响可能至少高出五倍。
+GitHub is rebuilding its Git infrastructure to create a foundation for agent-scale software development.
 
-rss · Anthropic News · 10月6日 00:00
+rss · GitHub Blog · 10月6日 20:57
 
-**「为什么重要」** 安全团队此前需在“保守阻断”与“无防护模型”之间取舍。三档 CVP 把网络能力按防御、红队、关键系统测试分级开放，同时保留对物理伤害与大规模破坏的实时阻断。对构建 coding agent 与 harness 的工程师而言，这重新划定了模型在漏洞挖掘、代码审计与红队场景的可用边界。
-
-**「可关注」** 可关注：若团队从事授权渗透或关键基础设施测试，CVP 提供了官方申请通道，但须接受数据保留；在 Enterprise Frontier Safeguards（EFS）今年秋季晚些时候可用前，持有 Claude Fable 5.1 或 Claude Mythos 5.1 零数据保留权限的组织可零保留使用 CVP。
-
-**标签**: `#lab`, `#policy`, `#product`, `#model`
+**标签**: `#industry`, `#product`, `#open-source`
 
 ---
 
 <a id="item-ai-daily-4"></a>
-### [Advancing computer use with Ironclad](https://openai.com/index/advancing-computer-use-with-ironclad) ⭐️ 8.3/10
+### [Jump Trading 扩展量化研究](https://openai.com/index/jump-trading) ⭐️ 6.8/10
 
-OpenAI and Ironclad are training and evaluating AI agents on complex contracting workflows to advance computer use for professional work.
+OpenAI 官方博客发布客户案例，Jump Trading 用 ChatGPT 扩展量化研究。文章称其部署更长周期的 AI 工作流，融合多个数据源，并保留人工复核。这是单一企业用例，未给出具体指标，也不涉及模型或政策更新。
 
-rss · OpenAI Blog · 10月6日 10:00
+rss · OpenAI Blog · 10月6日 12:00
 
-**标签**: `#model`, `#lab`, `#product`, `#eval`, `#industry`
+**「为什么重要」** 案例展示了长周期 AI 工作流在高风险领域的用法：多源数据输入，人工复核留在环路里。对设计 coding agent 的人来说，这种人机协作形态值得参考。
+
+**「可关注」** 可关注：Jump Trading 将 ChatGPT 嵌入更长周期的研究工作流，串联多个数据源，关键步骤保留人工复核。
+
+**标签**: `#model`, `#industry`, `#product`
 
 ---
 
 <a id="item-ai-daily-5"></a>
-### [GitHub 不停机重建 Git 基础设施](https://github.blog/engineering/architecture-optimization/building-git-infrastructure-for-agent-scale-development/) ⭐️ 8.3/10
+### [OpenAI 扩展 Atlassian 合作](https://openai.com/index/atlassian-partnership) ⭐️ 6.8/10
 
-GitHub 宣布正在重建 Git 基础设施，目标支撑 agent 规模的软件开发。官方表示重建过程保持服务运行，未披露具体技术方案、时间表或性能数据。该博文由 Brian Celenza 撰写，属于工程架构优化类别。
+OpenAI 与 Atlassian 宣布扩大合作伙伴关系，目标是将前沿模型与企业知识连接，帮助团队规划、构建和交付工作。官方公告未披露具体模型名称、产品功能或上线时间。目前仅确认合作方向，缺乏可验证的技术细节。
 
-rss · GitHub Blog · 10月6日 20:57
+rss · OpenAI Blog · 10月6日 16:00
 
-**「可关注」** 可关注：GitHub 正在保持服务运行的同时重建 Git 基础设施，为 agent 规模开发构建底层基础。
+**「可关注」** 双方合作聚焦企业知识连接，目前无模型名称、功能或时间表可查。
 
-**标签**: `#industry`, `#product`, `#lab`
+**标签**: `#lab`, `#industry`, `#model`, `#product`
 
 ---
 
 <a id="item-ai-daily-6"></a>
-### [Atlassian 与 OpenAI 扩大合作](https://openai.com/index/atlassian-partnership) ⭐️ 7.8/10
+### [Meta nts.meta.com 支持 NTS](https://engineering.fb.com/2026/10/06/production-engineering/nts-authenticated-time-at-meta/) ⭐️ 6.8/10
 
-OpenAI 与 Atlassian 宣布扩大合作，将前沿模型与企业知识连接，帮助团队规划、构建和交付工作。该消息来自 OpenAI 官方博客，未披露具体产品形态、上线时间或技术细节。目前仅确认双方在连接企业知识与前沿模型方向上的合作意向。
+Meta 公共时间服务 nts.meta.com 现已支持 NTS（Network Time Security，RFC 8915）。数据包经过认证，设备可验证时间来源并检测传输篡改。服务器不保存每客户端状态，Cookie 密钥派生而不存储、不复制。实现已开源。
 
-rss · OpenAI Blog · 10月6日 16:00
+rss · Engineering at Meta · 10月6日 16:00
 
-**「为什么重要」** 企业知识库与前沿模型的连接，是团队工作流与 AI 结合的一个明确方向。对 coding agent 与 harness 开发者而言，企业级知识接入是值得留意的场景延伸。
+**「为什么重要」** 认证时间同步可防止传输篡改，是基础设施的安全基础。Meta 开源了无状态 NTS 实现，Cookie 密钥派生而不存储，工程师可直接参考。
 
-**「可关注」** 可关注：OpenAI 与 Atlassian 将连接前沿模型与企业知识，具体产品形态与开放范围尚未公布。
+**「可关注」** nts.meta.com 的 NTS 服务器无每客户端状态，Cookie 密钥派生而不存储、不复制，且实现已开源，可作为认证时间同步的参考设计。
 
-**标签**: `#industry`, `#product`, `#lab`
-
----
-
-<a id="item-ai-daily-7"></a>
-### [Jump Trading 用 ChatGPT 扩展量化研究](https://openai.com/index/jump-trading) ⭐️ 6.3/10
-
-OpenAI 官方博客披露，Jump Trading 正用 ChatGPT 扩展量化研究。其做法是运行更长时间的 AI 工作流，聚合多个数据源，并保留人工审核环节。该案例属于企业采用实践，未涉及模型发布或政策变化，影响面相对有限。
-
-rss · OpenAI Blog · 10月6日 12:00
-
-**「为什么重要」** 在量化研究这类高门槛领域，Jump Trading 把 ChatGPT 放进长时运行、多数据源、有人工审核的工作流，显示 AI 正从单轮对话转向持续参与研究流程。
-
-**「可关注」** 可关注：Jump Trading 的用法不是单轮提问，而是把 ChatGPT 接入长时运行的工作流，结合多数据源并保留人工审核。
-
-**标签**: `#model`, `#product`, `#industry`, `#lab`
+**标签**: `#industry`, `#lab`, `#open-source`, `#product`
 
 ---
