@@ -5,302 +5,282 @@ date: 2026-10-08
 lang: en
 ---
 
-> From 212 items, 24 important content pieces were selected
+> From 203 items, 22 important content pieces were selected
 
 ---
 
 **Agent Harness Architecture**
-1. [cloudflare/agents released agents@0.27.0](#item-harness-arch-1) ⭐️ 8.3/10
-2. [mastra-ai/mastra released @mastra/core@1.75.0](#item-harness-arch-2) ⭐️ 8.3/10
-3. [Claude Code 2.1.293 发布](#item-harness-arch-3) ⭐️ 8.3/10
-4. [openai/codex released rust-v0.161.0](#item-harness-arch-4) ⭐️ 7.8/10
-5. [cline/cline released desktop-v0.0.44](#item-harness-arch-5) ⭐️ 7.8/10
-6. [Agent Framework 1.24.0](#item-harness-arch-6) ⭐️ 7.3/10
-7. [Cline SDK v0.0.91 发布](#item-harness-arch-7) ⭐️ 6.8/10
+1. [openai/codex released rust-v0.161.0](#item-harness-arch-1) ⭐️ 8.3/10
+2. [Agents v0.27.0 发布](#item-harness-arch-2) ⭐️ 8.3/10
+3. [Mastra Core 1.75.0 Released](#item-harness-arch-3) ⭐️ 8.3/10
+4. [Cline desktop v0.0.44 发布](#item-harness-arch-4) ⭐️ 7.8/10
+5. [Claude Code 2.1.293 发布](#item-harness-arch-5) ⭐️ 7.8/10
+6. [Cline SDK v0.0.91 Tightens Finish-Reason and MCP Handling](#item-harness-arch-6) ⭐️ 7.3/10
+7. [crewAI 1.15.24 Released](#item-harness-arch-7) ⭐️ 6.3/10
 
 **AI Agent Engineer**
-1. [HF daily paper: From Evidence to Action: How Tool-Using Agents Fail](#item-agent-engineer-1) ⭐️ 7.5/10
-2. [Claude Haiku 5.5](#item-agent-engineer-2) ⭐️ 7.0/10
-3. [Claude Haiku 5.5 发布](#item-agent-engineer-3) ⭐️ 7.0/10
-4. [UNREAL 统一检索与长上下文](#item-agent-engineer-4) ⭐️ 7.0/10
-5. [Liquid AI 开源 d1 边缘决策模型](#item-agent-engineer-5) ⭐️ 6.3/10
-6. [Bolmo 字节级技术登 Nature](#item-agent-engineer-6) ⭐️ 6.3/10
-7. [SSR：多模态智能体改用选择式推理](#item-agent-engineer-7) ⭐️ 6.0/10
-8. [GPT-6 发布，智能界面面向大众](#item-agent-engineer-8) ⭐️ 5.5/10
+1. [GPT‑6 and Intelligent UI for everyone](#item-agent-engineer-1) ⭐️ 9.0/10
+2. [Haiku 5.5 发布，100k 上下文限制](#item-agent-engineer-2) ⭐️ 8.0/10
+3. [Liquid AI 开源 d1 边缘决策模型](#item-agent-engineer-3) ⭐️ 7.3/10
+4. [ReSAIL 抑制迭代自蒸馏崩溃](#item-agent-engineer-4) ⭐️ 7.0/10
+5. [论文提出 KLPO：采样器锚定 KL 正则化](#item-agent-engineer-5) ⭐️ 7.0/10
+6. [One Model Family, Two Gold-Level Results: Fine-Tuning Nemotron for IOI and IMO](#item-agent-engineer-6) ⭐️ 6.8/10
+7. [Bolmo 字节级语言模型登 Nature](#item-agent-engineer-7) ⭐️ 6.3/10
+8. [Cloudflare 安全运营 harness](#item-agent-engineer-8) ⭐️ 6.3/10
+9. [DecepEval 基准：1,532 实例测 LLM 智能体欺骗](#item-agent-engineer-9) ⭐️ 6.0/10
 
 **AI Daily**
-1. [GPT-6 全球上线 ChatGPT](#item-ai-daily-1) ⭐️ 9.8/10
-2. [Claude Haiku 5.5 发布并调价](#item-ai-daily-2) ⭐️ 9.8/10
-3. [Claude 新增 eval 构建与调优命令](#item-ai-daily-3) ⭐️ 8.8/10
-4. [Helping teens learn, plan, and shape the future of AI](#item-ai-daily-4) ⭐️ 7.8/10
-5. [Google 开发者知识 API 发布](#item-ai-daily-5) ⭐️ 7.8/10
-6. [丽笙推出 ChatGPT 酒店插件](#item-ai-daily-6) ⭐️ 6.8/10
+1. [Helping teens learn, plan, and shape the future of AI](#item-ai-daily-1) ⭐️ 8.3/10
+2. [Radisson Hotel Group brings hotel discovery into ChatGPT](#item-ai-daily-2) ⭐️ 7.8/10
+3. [GitHub 主张密钥保护随软件扩展](#item-ai-daily-3) ⭐️ 5.8/10
 
 **AI Deals**
-1. [Claude: Monthly API credits for Max and Team plans](#item-ai-deals-1) ⭐️ 7.0/10
-2. [Claude Agents SDK will no longer use subscription; API credits included in plans](#item-ai-deals-2) ⭐️ 6.0/10
-3. [Claude Max and Teams plans now forced to API \(Oct 7th update\)](#item-ai-deals-3) ⭐️ 5.0/10
+1. [Claude 计划含 API credits](#item-ai-deals-1) ⭐️ 7.0/10
+2. [Claude Max/Teams 套餐新增月度 API credits](#item-ai-deals-2) ⭐️ 5.0/10
+3. [Claude 付费档月领 API 额度](#item-ai-deals-3) ⭐️ 5.0/10
 
 ---
 
 ## Agent Harness Architecture
 
 <a id="item-harness-arch-1"></a>
-### [cloudflare/agents released agents@0.27.0](https://github.com/cloudflare/agents/releases/tag/agents%400.27.0) ⭐️ 8.3/10
+### [openai/codex released rust-v0.161.0](https://github.com/openai/codex/releases/tag/rust-v0.161.0) ⭐️ 8.3/10
 
-Cloudflare Agents v0.27.0 adds four experimental harnesses, a web\_search tool, and a breaking rebuild of the Channels API around conversations and turns.
+OpenAI Codex Rust v0.161.0 ships GPT-6.1 Sol as default, Bedrock multi-agent V2 support, MCP login from terminal, and opt-in Daybreak/Cyber routing.
 
-github · github-actions\[bot\] · Oct 7, 13:25
+github · github-actions\[bot\] · Oct 7, 15:58
 
-**Tags**: `#runtime`, `#tools`, `#mcp`, `#sandbox`, `#subagents`
+**Tags**: `#runtime`, `#mcp`, `#subagents`, `#tools`
 
 ---
 
 <a id="item-harness-arch-2"></a>
-### [mastra-ai/mastra released @mastra/core@1.75.0](https://github.com/mastra-ai/mastra/releases/tag/%40mastra/core%401.75.0) ⭐️ 8.3/10
+### [Agents v0.27.0 发布](https://github.com/cloudflare/agents/releases/tag/agents%400.27.0) ⭐️ 8.3/10
 
-Mastra core 1.75.0 adds span-level observability queries, cross-store token/cost trace aggregation, and self-embedding vector stores for semantic recall.
+Cloudflare Agents v0.27.0 发布，新增四个实验性 harness 与 \`web\_search\` 工具，并将 Channels API 重构为基于对话和轮次的实验性接口。\`AiSdkHarness\`、\`ThinkHarness\`、\`ContainerHarness\` 和 \`OpenCodeHarness\` 与 \`PiHarness\` 同形，其中 \`ContainerHarness\` 可在 Container 中运行 Claude Code 或 Codex。旧的 \`agents/channels\` 入口已移除，新入口 \`agents/experimental/channels\` 提供 \`ChannelGateway\`、Web Channel、AI SDK chat transport 及 \`npx agents tui\` 终端客户端。
 
-github · Patrycja-J · Oct 7, 16:17
+github · github-actions\[bot\] · Oct 7, 13:25
 
-**Tags**: `#eval`, `#memory`, `#runtime`
+**「设计要点」** Channels 以 Durable Object 为授权边界，每个参与者默认独占一个 agent 对象，\`route\` 回调可共享或拒绝；harness 的会话与转录持久化在 Durable Object 中，通过 \`Streams\` 提供可恢复响应。
+
+**「改了什么」** 相对上一版，真正变了的是能力面：harness 从单一 \`PiHarness\` 扩展到 AI SDK、思考、容器内编码代理与 OpenCode 四种形态；Channels 推翻重写，\`ChannelHost\`、\`fallback\`/\`fanout\` 及首轮 AI SDK/TanStack/Voice 助手全部移除，Slack、Telegram、Email 迁至 \`agents/experimental/channels/\*\`。工具层新增基于 Cloudflare Web Search API 的 \`web\_search\`，并修复 \`AiSdkHarness\` 启动、\`session.wait\` 中止语义与工具输出转换。
+
+**Tags**: `#runtime`, `#tools`, `#mcp`, `#sandbox`
 
 ---
 
 <a id="item-harness-arch-3"></a>
-### [Claude Code 2.1.293 发布](https://code.claude.com/docs/en/changelog#2-1-293) ⭐️ 8.3/10
+### [Mastra Core 1.75.0 Released](https://github.com/mastra-ai/mastra/releases/tag/%40mastra/core%401.75.0) ⭐️ 8.3/10
 
-Claude Code 2.1.293 发布，新增默认 Haiku 模型 \`claude-haiku-5-5\`，1M 上下文，输入 $0.10/Mtok、输出 $0.50/Mtok，超过 100K 的 prompt 按 $0.50/$2.50 计费。工具层加入 \`isDeferred\` 参数，mod 可将工具 schema 从启动即放入 prompt，而非藏在 tool search 后；\`subagentStatusLine\` 增加 \`agentType\`，脚本可区分自定义 subagent 类型。修复上下文压缩后 Claude 把压缩前动作当作已完成而重做或撤回的问题，以及 HTTP MCP 连接在关闭前持续持有全部请求的内存泄漏。
+Mastra core 1.75.0 introduces a span-level observability query API, cross-store trace aggregation with token and cost analytics, and self-embedding vector store support for semantic recall. Developers can query completed spans directly via \`storage.querySpans\(\)\`, \`client.querySpans\(\)\`, or \`POST /api/observability/spans/query\` using filters, cursors, and cost previews. \`aggregateTraces\(\)\` now supports \`tokens.\*\` and \`cost.\*\` measures across ClickHouse, DuckDB, and Postgres observability stores. Semantic recall runs against self-embedding stores such as \`MongoDBVector\` with \`autoEmbed\`, removing the need for a client-side embedder.
+
+github · Patrycja-J · Oct 7, 16:17
+
+**「Design Notes」** The span query API operates across storage, client, and HTTP layers, returning completed spans with filters and cursors without requiring trace lookup first. Trace aggregation sums token usage per trace before grouping, and cost rows carry coverage and currency metadata, returning \`null\` when groups mix currencies.
+
+**「What Changed」** Adds direct span querying, token/cost measures in \`aggregateTraces\(\)\`, and \`MastraVector.isSelfEmbedding\` for embedder-free semantic recall. \`@mastra/connect\` reaches 1.0 with a reworked provider API, Microsoft Teams channels, and encrypted Discord credentials, while AgentController sessions persist a single model per thread and support starting without an initial thread.
+
+**Tags**: `#runtime`, `#eval`, `#memory`
+
+---
+
+<a id="item-harness-arch-4"></a>
+### [Cline desktop v0.0.44 发布](https://github.com/cline/cline/releases/tag/desktop-v0.0.44) ⭐️ 7.8/10
+
+Cline desktop v0.0.44 发布，修复 Windows MCP 加载、本地模型会话与自定义 Anthropic 网关接入。MCP 启动超时从 3 秒放宽至 10 秒，避免 npx/uvx 服务被静默丢弃。会话层新增自动重连，Cline Hub 掉线后最多尝试一分钟，排队消息恢复后补发。模型目录同步更新，免费列表增补 Solar Mini 4，下架 DeepSeek V4.1 Flash。
+
+github · github-actions\[bot\] · Oct 7, 07:17
+
+**「设计要点」** 工具层放宽 Windows MCP 启动超时至 10 秒，修复 npx/uvx 静默失败；会话层支持 Hub 断连自动重连与排队消息补发；模型适配层增加 reasoning level 协商，自动匹配最接近的支持档位。
+
+**「改了什么」** Windows MCP 启动超时提至 10 秒；本地与自托管提供商恢复无 API key 会话；新增 Hub 断连自动重连与消息补发；修复自定义 Anthropic base URL 与推理级别协商。
+
+**Tags**: `#runtime`, `#tools`, `#mcp`
+
+---
+
+<a id="item-harness-arch-5"></a>
+### [Claude Code 2.1.293 发布](https://code.claude.com/docs/en/changelog#2-1-293) ⭐️ 7.8/10
+
+Claude Code 2.1.293 发布。默认 Haiku 模型切换为 Claude Haiku 5.5（claude-haiku-5-5），1M 上下文，$0.10/$0.50 per Mtok，超 100K 提示词为 $0.50/$2.50。subagentStatusLine 载荷新增 agentType，脚本可区分自定义 subagent 类型；$.tool.register 新增 isDeferred，mods 可让工具 schema 从起始即出现在 prompt，而非仅在 tool search 后可见。修复 HTTP MCP 连接持有全部已发请求的内存泄漏，以及上下文压缩后模型将已完成工作误判为未完成而撤回或重做的问题。
 
 rss · Claude Code Changelog · Oct 7, 18:26
 
-**「设计要点」** Deferred tool registration 让 harness 控制工具 schema 的暴露时机，\`isDeferred=false\` 直接进 prompt；subagent 状态通过 \`agentType\` 暴露类型，配合 \`SendMessage\` 与权限规则修复，影响 subagent 的工具可见性与消息路由。
+**「设计要点」** 工具层与 subagent 元数据扩展：agentType 进入状态行载荷，isDeferred 控制 schema 注册时机；MCP 连接修复请求缓存失控；上下文压缩逻辑避免对压缩前动作的重复处理。
 
-**「改了什么」** 2.1.293 回滚了 2.1.290 对云会话容器重启后保持休眠的修复，以及 2.1.281 的自动模式拒绝消息调整。claude.ai 技能同步在无会话时从每 10 分钟改为约每 40 分钟，OpenTelemetry \`claude\_code.at\_mention\` 每次读取 prompt 的 agent 与 MCP 资源事件上限各降为 100。
+**「改了什么」** 新增 subagent 类型标识与工具 schema 即时注册能力；修复 MCP 内存泄漏和压缩后工作误判；回滚 2.1.281 自动模式拒绝提示与 2.1.290 云会话唤醒修复。
 
 **Tags**: `#runtime`, `#tools`, `#mcp`, `#subagents`, `#memory`
 
 ---
 
-<a id="item-harness-arch-4"></a>
-### [openai/codex released rust-v0.161.0](https://github.com/openai/codex/releases/tag/rust-v0.161.0) ⭐️ 7.8/10
+<a id="item-harness-arch-6"></a>
+### [Cline SDK v0.0.91 Tightens Finish-Reason and MCP Handling](https://github.com/cline/cline/releases/tag/sdk/sdk/v0.0.91) ⭐️ 7.3/10
 
-Codex Rust v0.161.0 adds terminal MCP login, Bedrock multi-agent V2 support, and opt-in Daybreak/Cyber routing controls.
+Cline SDK v0.0.91 tightens finish-reason semantics, raises stdio MCP init timeout to 10s, and gates Anthropic refusal fallbacks to official endpoints. Missing or unrecognized finish reasons now map to a new \`unknown\` state; the agent keeps the partial response and continues once with a hidden user message before failing on a second unknown. Stdio MCP servers get a 10s default initialize budget to prevent Windows \`npx\`/\`uvx\` drops, and the Anthropic provider sends \`fallbacks\` only to \`api.anthropic.com\` to avoid 400s on Azure.
 
-github · github-actions\[bot\] · Oct 7, 15:58
+github · github-actions\[bot\] · Oct 7, 06:00
 
-**Tags**: `#runtime`, `#tools`, `#mcp`, `#subagents`, `#planning`
+**「Design Notes」** \`AgentModelFinishReason\` gains \`unknown\`, with the AI SDK adapter mapping unified \`other\` and missing reasons to it instead of \`stop\`. A new \`isOfficialAnthropicEndpoint\` helper restricts the \`fallbacks\` option to \`api.anthropic.com\`, while stdio MCP servers get a 10s default initialize budget overridable by explicit \`timeout\`.
 
----
-
-<a id="item-harness-arch-5"></a>
-### [cline/cline released desktop-v0.0.44](https://github.com/cline/cline/releases/tag/desktop-v0.0.44) ⭐️ 7.8/10
-
-Cline desktop v0.0.44 fixes MCP Windows startup timeouts, adds session auto-reconnect, and resolves API key and custom base URL failures for local and enterprise providers.
-
-github · github-actions\[bot\] · Oct 7, 07:17
+**「What Changed」** Finish-reason handling now maps missing/unrecognized reasons to \`unknown\` and retries once before failing; stdio MCP initialize timeout rises to 10s; Anthropic \`fallbacks\` is gated to official endpoints; and portable reasoning levels snap to advertised effort levels for \`cline\` and \`openai-compatible\` adapters.
 
 **Tags**: `#runtime`, `#tools`, `#mcp`
-
----
-
-<a id="item-harness-arch-6"></a>
-### [Agent Framework 1.24.0](https://github.com/microsoft/agent-framework/releases/tag/dotnet-1.24.0) ⭐️ 7.3/10
-
-microsoft/agent-framework 发布 dotnet-1.24.0，针对 .NET agent harness 的运行时状态、记忆与安全做增量加固。会话状态往返保留显式 null，可禁用近期搜索记忆，惰性请求消息能穿过 agent invocation 保留。LocalCodeAct 能力校验收紧，敏感声明式标识符会被拒绝，Anthropic agent 包转为稳定。
-
-github · dmytrostruk · Oct 7, 13:26
-
-**「设计要点」** 运行时细化会话状态序列化与后台任务元数据同步；工具层校验 LocalCodeAct 能力声明并绑定 MCP 审批头；记忆侧修正 Foundry 空上下文消息、Valkey 零消息限制及近期搜索记忆开关。
-
-**「改了什么」** 新增显式 null 会话状态保留、惰性请求消息传递和后台任务延迟发布；安全面拒绝敏感声明式标识符、越界 MaxBatchSize 及未授权 MCP 调用；Anthropic 包标记稳定。
-
-**Tags**: `#runtime`, `#memory`, `#sandbox`, `#permissions`, `#tools`
 
 ---
 
 <a id="item-harness-arch-7"></a>
-### [Cline SDK v0.0.91 发布](https://github.com/cline/cline/releases/tag/sdk/sdk/v0.0.91) ⭐️ 6.8/10
+### [crewAI 1.15.24 Released](https://github.com/crewAIInc/crewAI/releases/tag/1.15.24) ⭐️ 6.3/10
 
-Cline SDK v0.0.91 发布，收紧运行时结束原因处理，stdio MCP 初始化超时从 3s 提升到 10s，并限制 Anthropic 回退仅发往官方端点。缺失或未识别的 finish reason 不再视为成功，\`AgentModelFinishReason\` 新增 \`unknown\`；无工具活动时保留部分响应并以隐藏用户消息续跑一次，第二次 unknown 才失败。排队用户消息现在在每次请求边界被消费，包括首次迭代。
+crewAI 1.15.24 adds experimental job lifecycle and runner support, turn and reply identities, and Oracle integrations. Eval tooling gains a markdown brief for agent runs, \`--models\` and \`llm\_overlay\` for swapping models and roles, and a strict exit code 1 unless the gate passes. Refactoring moves message summarization into \`SummarizeMessages\` and centralizes context window handling.
 
-github · github-actions\[bot\] · Oct 7, 06:00
+github · lorenzejay · Oct 7, 17:39
 
-**「设计要点」** 运行时把 finish reason 状态机显式建模为 \`unknown\`，配合隐藏消息重试与请求边界消费队列，避免静默截断。MCP 层给 stdio 服务器 10s 初始化预算，显式 \`timeout\` 仍可覆盖。
+**「Architecture Note」** The experimental runner and job lifecycle introduce a new execution path for background replies and turn identity. Summarization logic now lives in \`SummarizeMessages\`, and context windows are centrally managed instead of inline.
 
-**「改了什么」** 相对 v0.0.90，SDK 把未识别结束原因从成功改为可重试的中间态，修复 Windows 下 npx/uvx 启动超时导致的 MCP 服务器静默丢弃，并用 \`isOfficialAnthropicEndpoint\` 把服务端 refusal \`fallbacks\` 限制在 \`api.anthropic.com\`，避免自定义端点返回 400。
+**「What Changed」** Eval now exits with code 1 on failure and supports model swapping via CLI flags and overlays. Start steps can re-run on events they listen to, and human feedback steps expose review content in outputs.
 
-**Tags**: `#runtime`, `#tools`, `#mcp`
+**Tags**: `#eval`, `#runtime`, `#memory`, `#tools`
 
 ---
 
 ## AI Agent Engineer
 
 <a id="item-agent-engineer-1"></a>
-### [HF daily paper: From Evidence to Action: How Tool-Using Agents Fail](https://huggingface.co/papers/2610.07753) ⭐️ 7.5/10
+### [GPT‑6 and Intelligent UI for everyone](https://openai.com/index/gpt-6-for-everyone/) ⭐️ 9.0/10
 
-A new paper introduces SafeActBench to study how tool-using agents fail to connect evidence to action, finding that failures often occur before execution and in multi-action workflows.
+OpenAI announces GPT-6 and an intelligent UI, accompanied by a system card noting statistically significant safety eval regressions relative to GPT-5.6.
 
-rss · Hugging Face Daily Papers · Oct 7, 00:00
+hackernews · joshuawright11 · Oct 7, 18:00 · [Discussion](https://news.ycombinator.com/item?id=49996425)
 
-**Tags**: `#eval`, `#harness`, `#coding-agent`, `#orchestration`
+**Tags**: `#coding-agent`, `#eval`
 
 ---
 
 <a id="item-agent-engineer-2"></a>
-### [Claude Haiku 5.5](https://www.anthropic.com/claude-haiku-5-5) ⭐️ 7.0/10
+### [Haiku 5.5 发布，100k 上下文限制](https://www.anthropic.com/claude-haiku-5-5) ⭐️ 8.0/10
 
-Community discussion of Claude Haiku 5.5, covering pricing tiers, a 100k context cutoff, and cost/latency tradeoffs across thinking levels.
+Anthropic 发布 Claude Haiku 5.5，Hacker News 讨论聚焦定价与 100k 上下文门槛。输入在 100k token 以内 $0.10/MTok、超出后 $0.50/MTok；输出对应 $0.50/MTok 与 $2.50/MTok，该 cutoff 仅作用于 Haiku，不覆盖 Sonnet 或 Opus。chriddyp 的 DataAnalyticsBench 显示其比 Haiku 4.5 便宜 9 倍、成绩高两个字母等级，40 题成本 $0.38。simonw 测试不同 thinking level，low 耗时 7 秒、成本 0.0936 美分，max 耗时 5 分 9 秒、成本 3.3826 美分。
 
 hackernews · sfkgtbor · Oct 7, 18:01 · [Discussion](https://news.ycombinator.com/item?id=49996437)
+
+**「为什么重要」** 100k token 的计费与上下文分界对 agent 负载偏低，minimaxir 指出该限制会迅速被超出；输出价格在越界后跳升 5 倍，直接影响长上下文 agent 的成本模型。
+
+**「可关注」** 可关注：Haiku 5.5 在短上下文任务上具备显著成本优势，但 agent 场景需按 100k 边界重新评估 prompt 压缩与上下文管理策略。
+
+**「评论」** simonw 与 chriddyp 的实测分别从绘图质量与数据分析基准验证了低价高效；minimaxir 则认为 100k 分界低得离谱，且仅覆盖 Haiku 而不适用于 Sonnet 或 Opus，定价结构引发争议。
 
 **Tags**: `#coding-agent`, `#eval`, `#observability`
 
 ---
 
 <a id="item-agent-engineer-3"></a>
-### [Claude Haiku 5.5 发布](https://simonwillison.net/2026/Oct/7/claude-haiku-5-5/) ⭐️ 7.0/10
+### [Liquid AI 开源 d1 边缘决策模型](https://huggingface.co/blog/LiquidAI/open-d1) ⭐️ 7.3/10
 
-Anthropic 发布 Claude Haiku 5.5。每百万 token 输入/输出定价 $0.10/$0.50，与 GPT-6 Luna 持平；超过 100,000 token 后上调 5 倍至 $0.50/$2.50。新 tokenizer 更紧缩，同一长提示较 Haiku 4.5 多耗约 1.25 倍 token。100,000 token 以内，Haiku 5.5 与 Luna 同价且自报基准分更高；超出后 Luna 更划算。模型强制开启推理，默认 medium；Anthropic 同步为 Max 与 Team 订阅者提供与订阅费等额的每月 API 额度，并将 Sonnet 5.5 缓存读取价格减半。
+Liquid AI 发布开源边缘决策模型 d1-3B 与 d1-omni-600M。d1-3B 在 Decision Index 0.2.1 取得 48.57 分，为 10B 以下最佳，超过 Decider 35B-A3B 的 47.11；两个模型均不做 token 生成，单次前向输出结构化决策。d1-3B 支持文本与图像，基于 LFM2.5-VL-3B；d1-omni-600M 支持文本+图像或文本+音频，基于 LFM2.5-Encoder-350M，目前为早期研究版本。在 NVIDIA Jetson AGX Thor 上，d1-3B 单问延迟 16 ms，Jetson Orin Nano 上为 50 ms。
 
-rss · Simon Willison · Oct 7, 20:56
+rss · Hugging Face Blog · Oct 7, 16:54
 
-**「为什么重要」** 100,000 token 成为新的成本分水岭，直接影响长上下文 agent 的选型。tokenizer 变更带来隐性涨价，标价对比可能失真。API 额度与订阅费对齐，改变订阅用户的边际调用成本。
+**「为什么重要」** 对边缘 agent 与实时决策场景，这类模型将分类、打分、路由等任务从生成式调用转为单次前向，延迟降至几十毫秒级。但官方未提供视觉与音频决策基准，多模态决策质量仍缺乏公开验证。
 
-**「可关注」** 可关注：若 agent 上下文稳定低于 100,000 token，Haiku 5.5 具备成本竞争力；一旦接近或超过该阈值，需按 $0.50/$2.50 重新核算，并与 Luna 的 272,000 token 阈值对比。建议用真实提示实测 tokenizer 膨胀率，再决定是否切换。
+**「可关注」** 可关注：d1-3B 在 Jetson AGX Thor 上处理 3.4K-token 状态需 220 ms，远高于单问的 16 ms；长状态而非请求数是边缘部署的主要瓶颈，需按状态长度评估吞吐。
 
-**Tags**: `#coding-agent`, `#eval`, `#orchestration`
+**Tags**: `#eval`, `#coding-agent`, `#edge`
 
 ---
 
 <a id="item-agent-engineer-4"></a>
-### [UNREAL 统一检索与长上下文](https://huggingface.co/papers/2610.08463) ⭐️ 7.0/10
+### [ReSAIL 抑制迭代自蒸馏崩溃](https://huggingface.co/papers/2609.39306) ⭐️ 7.0/10
 
-UNREAL 提出模型原生的证据选择框架，用同一个冻结 LLM 同时处理语料检索与长上下文推理。它从冻结模型的内部表示中编码 chunk 并派生检索 query，新增可训练参数少于 500K，骨干网络不变。在 3B token、21M chunk 的 Wikipedia 索引上，四种 dense 与 hybrid UNREAL 骨干均超过 SOTA retriever-reranker 系统。
+Hugging Face 每日论文收录 ReSAIL，针对迭代特权信息自蒸馏提出插件式增强。论文实验显示，现有方法在多轮部署后出现部署性能崩溃，特权信息（PI）任务表现也随周期下降。ReSAIL 筛选 PI 最强烈改变教师预测的交互步骤，跨轨迹平衡蒸馏损失，并在学生接替教师时保留 PI 条件行为。该方法面向迭代 PI 自蒸馏场景，论文同时指出其影响范围目前集中于该研究方向。
 
-rss · Hugging Face Daily Papers · Oct 7, 00:00
+rss · Hugging Face Daily Papers · Oct 8, 00:00
 
-**「为什么重要」** 对做 agent memory / retrieval 架构的工程师，这提供了一条不替换 backbone、不引入独立检索器的替代路径。已发生的变化是该方法在 Wikipedia 基准上超过现有 retriever-reranker 组合；尚未证实的是其在生产环境多跳、动态语料下的稳定性。
+**「为什么重要」** 迭代自蒸馏是 LLM 智能体通往递归自我改进（RSI）的路径之一，跨部署周期的性能崩溃直接阻断该路径。ReSAIL 针对这一具体失效模式给出插件式缓解方案，对从事智能体训练与自改进循环的工程师具有直接参考价值。
 
-**「可关注」** 可关注：UNREAL 把检索与长上下文的证据选择收敛到模型内部表示，新增参数少于 500K，适合评估冻结 LLM 上的统一记忆层，而非直接替换现有 RAG 栈。
+**「可关注」** 可关注：在搭建迭代自蒸馏或自改进循环时，需监控跨周期部署性能与特权信息条件行为的衰减，ReSAIL 的步骤筛选与损失平衡提供了可复用的缓解思路。
 
-**Tags**: `#memory`, `#eval`, `#retrieval`, `#long-context`
+**Tags**: `#eval`, `#memory`, `#orchestration`
 
 ---
 
 <a id="item-agent-engineer-5"></a>
-### [Liquid AI 开源 d1 边缘决策模型](https://huggingface.co/blog/LiquidAI/open-d1) ⭐️ 6.3/10
+### [论文提出 KLPO：采样器锚定 KL 正则化](https://huggingface.co/papers/2610.08963) ⭐️ 7.0/10
 
-Liquid AI 开源 d1-3B 与 d1-omni-600M 两款多模态决策模型，面向边缘设备。d1-3B 在 Decision Index 0.2.1 得 48.57，为 10B 以下最高分，超过 Decider 35B-A3B 的 47.11。模型不生成 token，单次前向传播直接输出决策。d1-3B 基于 LFM2.5-VL-3B，支持文本与图像；d1-omni-600M 基于 LFM2.5-Encoder-350M，支持文本+图像或文本+音频，仍处早期研究阶段。在 NVIDIA Jetson AGX Thor 上单问延迟 16 ms，Jetson Orin Nano 上 50 ms；RTX 4090 上低于 10 ms。
+2026-10-08 HF 日报论文提出 KLPO，针对异步 RL 训练 LLM agent 时 rollout 来自旧 checkpoint、推理引擎与训练器概率失配的问题。现有做法要么裁剪重要性比率引入偏差，要么像 GRPO 那样按 prompt 组采样，长 episode 下成本高。KLPO 将 KL 正则化锚定在采样器上，给出闭式 Gibbs 解，并用最小二乘拟合 log-ratio 最优性条件，使采样器概率通过 log-ratio 进入。论文未发布代码与基准结果。
 
-rss · Hugging Face Blog · Oct 7, 16:54
+rss · Hugging Face Daily Papers · Oct 8, 00:00
 
-**「为什么重要」** d1 不做 token 生成，单次前向传播直接输出决策，边缘延迟压到 50 ms 以内。对做 coding agent / harness 的人，这是本地分类、路由或工具选择的前置层形态，而非通用对话模型。
+**「为什么重要」** 异步 RL 的概率失配是训练 LLM agent 的常见工程瓶颈。KLPO 给出闭式 Gibbs 解与最小二乘 log-ratio 拟合，提供了不同于重要性比率裁剪和 GRPO 组采样的更新路径，但论文尚未发布代码与基准，实际效果待验证。
 
-**「可关注」** 可关注：d1-3B 在 3B 参数量下达到 48.57 的 Decision Index 分数，边缘延迟稳定在 50 ms 以内；加载需 transformers&gt;=5.14 并设 trust\_remote\_code=True。d1-omni-600M 仍处早期研究阶段，未发布速度数据，且视觉与音频决策基准缺公开评测。
+**「可关注」** KLPO 用采样器锚定 KL 正则化，把异步 RL 更新写成闭式 Gibbs 解，并以最小二乘拟合 log-ratio 条件；若后续放出代码，可对比其与 GRPO、重要性比率裁剪在长 episode 下的训练稳定性与成本。
 
-**Tags**: `#edge`, `#multimodal`, `#benchmark`, `#model-release`
+**Tags**: `#eval`, `#coding-agent`, `#rl`
 
 ---
 
 <a id="item-agent-engineer-6"></a>
-### [Bolmo 字节级技术登 Nature](https://allenai.org/blog/bolmo-nature) ⭐️ 6.3/10
+### [One Model Family, Two Gold-Level Results: Fine-Tuning Nemotron for IOI and IMO](https://huggingface.co/blog/nvidia/nemotron-ioi-and-imo-2026) ⭐️ 6.8/10
 
-10 月 7 日，Allen AI 宣布 Bolmo 字节级语言模型技术正式发表于 Nature。新检查点显示，该方法已从 Olmo 泛化到其他模型家族。Bolmo 是 Ai2 的完全开源字节级语言模型。
+NVIDIA reports Nemotron 3 fine-tuned with SFT, RL, and generate-verify-refine systems reached gold-medal level at IOI 2026 and IMO 2026.
 
-rss · Allen AI · Oct 7, 08:00
+rss · Hugging Face Blog · Oct 7, 12:45
 
-**「为什么重要」** 字节级模型直接处理原始字节，不依赖预定义词表。该技术进入 Nature 并泛化到 Olmo 之外，为开源社区提供了 tokenization 之外的可行路径。
-
-**「可关注」** Bolmo 新检查点已泛化至 Olmo 以外的模型家族，做输入表示实验时可对比字节级与传统 tokenization 方案。
-
-**Tags**: `#llm`, `#tokenization`, `#research`
+**Tags**: `#eval`, `#coding-agent`, `#orchestration`
 
 ---
 
 <a id="item-agent-engineer-7"></a>
-### [SSR：多模态智能体改用选择式推理](https://huggingface.co/papers/2610.01892) ⭐️ 6.0/10
+### [Bolmo 字节级语言模型登 Nature](https://allenai.org/blog/bolmo-nature) ⭐️ 6.3/10
 
-Hugging Face 每日论文上线一篇多模态智能体推理框架论文，提出 Selection-based Structured Reasoning（SSR）。SSR 将动作生成前的自由形式推理改为选择：把反复出现的高层推理预先写成可复用的自然语言候选，每轮根据当前上下文计算候选似然并选一个，无需辅助任务头。论文针对小模型容量有限、开放生成长推理对动作指导弱且推理成本高的问题，指出预指定推理轨迹支持并行评分，通过 teacher-forced prefilling 计算 token 似然。论文发布于 2026-10-07，当前获得 14 个 upvotes。
+2026 年 10 月 7 日，Ai2 宣布 Bolmo 字节级语言模型技术论文发表于 Nature，论文题为 “Retrofitting language models to operate over bytes”。官方称 Bolmo 为完全开放的字节级语言模型，新检查点显示该方法已从 Olmo 泛化到其他模型家族。博客未提供技术细节、代码或 Agent 工程相关影响。
 
-rss · Hugging Face Daily Papers · Oct 7, 00:00
+rss · Allen AI · Oct 7, 08:00
 
-**「为什么重要」** 多模态 agent 通常在每步动作前生成自由形式推理，小模型上这段推理冗长且对动作帮助有限，却带来可观推理开销。SSR 把推理压缩为受控选择，直接对着成本与指导性两个痛点；能否在实际任务中降低时延并提升动作质量，仍需完整论文和实验验证。
+**「为什么重要」** 字节级语言建模可能改变现有基于子词分词的模型假设，影响 coding agent 的上下文计算与工具链设计。但官方博客未给出技术细节，实际影响仍待论文与代码验证。
 
-**「可关注」** 可关注：若多模态 agent 的推理步骤可被枚举为有限候选，SSR 的并行评分与免任务头设计提供了一种降低推理开销的替代路径；采用前需评估候选集对实际任务推理分布的覆盖度。
+**「可关注」** 可关注：Bolmo 新检查点已泛化至 Olmo 以外的模型家族，但官方未同步提供代码或技术细节，工程侧暂无法评估其对现有 tokenizer 与 eval 流程的改造成本。
 
-**Tags**: `#agents`, `#reasoning`, `#multimodal`, `#efficiency`
+**Tags**: `#llm`, `#research`, `#model-architecture`
 
 ---
 
 <a id="item-agent-engineer-8"></a>
-### [GPT-6 发布，智能界面面向大众](https://openai.com/index/gpt-6-for-everyone/) ⭐️ 5.5/10
+### [Cloudflare 安全运营 harness](https://blog.cloudflare.com/agentic-security-operations/) ⭐️ 6.3/10
 
-OpenAI 发布 GPT-6，主打面向大众的智能界面。官方系统卡显示，相比 GPT-5.6，GPT-6 Sol（10 月）在标准自残评测上出现统计显著回退，GPT-6 Luna（10 月）在自残、血腥和性内容上均出现统计显著回退。本次发布重点在消费端体验，未提供面向 coding agent、harness 或工具链的明确破坏性变更。
+Cloudflare 发布 Managed Defense AI agent harness，用多智能体处理安全告警分诊与调查。模型推理前，确定性代码先执行固定侦察工作流，收集身份、检测历史、流量基线与网络观测并记录来源、版本、时间戳；初筛由开源决策模型 Clef 在 Workers AI 上完成，高噪声告警直接跳过专家分析。需深查的告警由协调智能体并行调度流量分析、客户上下文、全球遥测、威胁情报四个专家智能体，综合智能体合并类型化发现，只能引用版本化证据包内条目，不能获取新证据或超出受控词汇表分类。深度分析调用 OpenAI Daybreak Defense Network 与 Anthropic 模型（GPT-5.6 Cyber、Mythos），全球遥测仅用聚合数据保护客户隐私；官方博客为产品级公告，未提供代码、架构细节或可复现基准。
 
-hackernews · joshuawright11 · Oct 7, 18:00 · [Discussion](https://news.ycombinator.com/item?id=49996425)
+rss · Cloudflare Engineering · Oct 7, 16:30
 
-**「为什么重要」** 系统卡明确记录安全评测回退，为关注模型安全与评估的工程师提供了具体信号；但本次发布未触及 agent 工程链路，消费端变化与工具端影响需分开看待。
+**「为什么重要」** 对构建 coding agent 与 harness 的工程师而言，该设计把「先侦察、后推理」落成工程模式：用确定性代码固定证据收集与范围执行，再让多个窄域智能体在版本化证据包上并行推理，直接针对单智能体出现的幻觉、上下文越权、范围漂移与失败不可见问题。目前官方仅给出产品级描述，未公开代码、架构细节或第三方基准，实际效果仍待验证。
 
-**「可关注」** 可关注：GPT-6 的安全评测回退已被官方系统卡记录，若后续将其用于 agent 或工具链，需重新验证相关安全边界；当前材料未给出面向工程集成的技术细节。
+**「可关注」** 可关注：将侦察与范围执行固化为确定性代码，再让多智能体在受控证据包上并行推理，是抑制单智能体幻觉与范围漂移的一种工程路径。
 
-**「评论」** HN 用户对 5.6 与 6 的对比反应不一，有用户批评新界面过于简化，也有用户借系统卡链接指出安全评测回退；另有用户担忧工作与聊天合并会波及 Codex 等工具。讨论重心在消费体验，未形成对 agent 工程影响的共识。
+**Tags**: `#harness`, `#orchestration`, `#observability`
 
-**Tags**: `#eval`, `#coding-agent`, `#ui`
+---
+
+<a id="item-agent-engineer-9"></a>
+### [DecepEval 基准：1,532 实例测 LLM 智能体欺骗](https://huggingface.co/papers/2610.07967) ⭐️ 6.0/10
+
+DecepEval 基准发布，含 1,532 个实例，覆盖 3 个任务族与 28 个专业场景。论文提出 LLM Deception Diamond 框架，用压力、激励、机会、冲突四个外部条件刻画智能体欺骗倾向。每个实例配中性版与诱导版，测量条件依赖性。此前评估多聚焦孤立场景，该基准试图系统回答欺骗何时更易发生。
+
+rss · Hugging Face Daily Papers · Oct 8, 00:00
+
+**「为什么重要」** 工程师需要评估 coding agent 在压力或激励下是否走偏。DecepEval 提供条件化测试集，把欺骗从个案观察变成可量化指标。目前材料仅限摘要，具体任务族与诱导方式尚未公开。
+
+**「可关注」** 可关注：DecepEval 将欺骗评估拆成四个可干预的外部条件，后续做 agent 评测时可对照压力、激励、机会、冲突设计对照实验。
+
+**Tags**: `#eval`, `#benchmark`, `#llm-agents`
 
 ---
 
 ## AI Daily
 
 <a id="item-ai-daily-1"></a>
-### [GPT-6 全球上线 ChatGPT](https://openai.com/index/gpt-6-for-everyone) ⭐️ 9.8/10
+### [Helping teens learn, plan, and shape the future of AI](https://openai.com/index/teens-learn-and-plan) ⭐️ 8.3/10
 
-OpenAI 宣布 GPT-6 正在全球范围内向 ChatGPT 推送，并引入 Intelligent UI。官方称新界面将提供更快的响应，支持可视化与交互式体验，用户可直接探索和使用。目前公告信息有限，未披露具体模型参数、基准测试或分阶段推送细节。
-
-rss · OpenAI Blog · Oct 7, 00:00
-
-**「为什么重要」** 作为 OpenAI 的重大模型发布，GPT-6 的全球上线将直接影响所有 ChatGPT 用户，并可能重塑人机交互方式。
-
-**「可关注」** 可关注：Intelligent UI 把视觉与交互能力直接嵌入模型响应，用户可在 ChatGPT 内直接探索和使用这些内容。
-
-**Tags**: `#model`, `#lab`, `#product`, `#industry`
-
----
-
-<a id="item-ai-daily-2"></a>
-### [Claude Haiku 5.5 发布并调价](https://www.anthropic.com/claude-haiku-5-5) ⭐️ 9.8/10
-
-Anthropic 发布 Claude Haiku 5.5，定位高并发、成本敏感任务。官方称其为迄今最便宜、最快的小模型，平均运行成本较 Haiku 4.5 低约 75%；10 万 token 以内请求降价 90%，超出部分降价 50%。同步将 Sonnet 5.5 缓存读取价格减半至 $0.10 / 百万 token，多数智能体任务成本降低约 20%。模型已上线 AWS、Google Cloud、Azure 及 Claude Platform，并首次配备可调节 effort 设置。
-
-rss · Claude Blog · Oct 7, 00:00
-
-**「为什么重要」** Haiku 5.5 在 OSWorld 2.1 取得 72.4%，较 Haiku 4.5 的 15.7% 大幅提升；Terminal-Bench 4.0 从 0.0% 升至 39.2%。价格下调叠加 Max/Team 月度 API 额度，直接压低智能体与子代理的调用成本。
-
-**「可关注」** 可关注：Haiku 5.5 适合压缩、摘要、子代理等窄域任务，复杂智能体编码仍应选 Sonnet 5.5 或 Opus 5.5；Python 与 TypeScript SDK 已新增 computer use 与 browser use beta 支持。
-
-**Tags**: `#model`, `#lab`, `#product`, `#industry`
-
----
-
-<a id="item-ai-daily-3"></a>
-### [Claude 新增 eval 构建与调优命令](https://claude.dev/blog/automating-eval-design-and-hillclimbing/) ⭐️ 8.8/10
-
-Claude 官方博客为 claude-api skill 新增 /claude-api build-eval 与 /claude-api hillclimb 命令，把评估构建与爬山调优流程内置到 Claude Code。build-eval 通过访谈引导用户在代码库内生成评估，优先采样生产流量，并挑选最简可用评分器；hillclimb 每次只做一个补丁级改动，随机拆分训练/测试集，若训练集提升而测试集持平即回滚以防过拟合。官方示例中，44 张客服工单基准从 Opus 4.8 默认高努力度的 74.4% 准确率、每单 4.6 美分，经提示词审计与模型降档至 Sonnet 5 低努力度后达到 88.9% 准确率、每单约 1 美分。若最终增益在评估噪声内，hillclimb 会建议不要合并。
-
-rss · Claude Blog · Oct 7, 00:00
-
-**「为什么重要」** 这两个命令将评估设计与爬山调优从经验原则落为可执行工作流，对做 coding agent 与 harness 的工程师有直接参考价值。它同时给出了成本-性能权衡的具体路径：先审提示词，再降模型档位，并用留出集兜底。
-
-**「可关注」** 可关注：hillclimb 在每轮改动前会检查评估噪声是否小于最小可行动增益，不足时建议增加重复次数或案例数，而不是盲目迭代。
-
-**Tags**: `#eval`, `#product`, `#lab`, `#model`
-
----
-
-<a id="item-ai-daily-4"></a>
-### [Helping teens learn, plan, and shape the future of AI](https://openai.com/index/teens-learn-and-plan) ⭐️ 7.8/10
-
-OpenAI announced College Planner and new learning tools for ChatGPT Teens.
+OpenAI announces College Planner and new learning tools for ChatGPT Teens, along with a teen AI council.
 
 rss · OpenAI Blog · Oct 7, 12:00
 
@@ -308,66 +288,76 @@ rss · OpenAI Blog · Oct 7, 12:00
 
 ---
 
-<a id="item-ai-daily-5"></a>
-### [Google 开发者知识 API 发布](https://developers.googleblog.com/supercharge-your-development-with-the-google-developer-knowledge-api-ecosystem/) ⭐️ 7.8/10
+<a id="item-ai-daily-2"></a>
+### [Radisson Hotel Group brings hotel discovery into ChatGPT](https://openai.com/index/radisson) ⭐️ 7.8/10
 
-Google 发布 Developer Knowledge API 生态，为 AI agent 与开发工具提供官方结构化文档源。接口覆盖 Google Cloud、Firebase、Android，返回 Markdown 格式的最新文档，替代脆弱的网页抓取。核心能力包括语义与关键词搜索、智能文档分块、grounded Q&amp;A。gcloud CLI 已内置该接口，提供 answer-query、documents search-chunks、documents describe 命令。官方同时提供 agent skill、多语言客户端库与 API Explorer。
-
-rss · Google Developers AI · Oct 7, 00:00
-
-**「为什么重要」** AI agent 与开发工具长期依赖网页抓取或受限于训练数据截止。该 API 提供官方、可编程、频繁索引的文档源，直接改善信息获取的准确性与新鲜度。
-
-**「可关注」** 可关注：gcloud developer-knowledge answer-query 支持直接读取错误日志文件并返回 grounded 答案，且 CLI 已预装在 Cloud Shell，跨 Linux、macOS、Windows 无需额外配置。
-
-**Tags**: `#product`, `#lab`, `#industry`
-
----
-
-<a id="item-ai-daily-6"></a>
-### [丽笙推出 ChatGPT 酒店插件](https://openai.com/index/radisson) ⭐️ 6.8/10
-
-丽笙酒店集团与 Accenture 合作，基于 OpenAI 技术开发了一款 ChatGPT 插件。旅客可在规划行程时查找、比较并预订酒店。该消息来自 OpenAI 官方博客，属于企业产品集成，并非模型或政策更新。
+Radisson Hotel Group partnered with Accenture to build a ChatGPT plugin for hotel discovery and booking. Travelers can find, compare, and book hotels while planning trips. The plugin uses OpenAI technology. This is a product integration, not a core model release or policy change.
 
 rss · OpenAI Blog · Oct 7, 07:00
 
-**「为什么重要」** 该合作展示了传统酒店集团通过 Accenture 集成 OpenAI 技术，将酒店查找、比较与预订流程嵌入 ChatGPT 的路径。对关注企业级 AI 应用的从业者，提供了一个可参考的集成样本。
+**「为什么重要」** The plugin extends ChatGPT into travel booking through a third-party integration. The source provides no usage metrics, booking conversion data, or technical implementation details.
 
-**「可关注」** 可关注：丽笙酒店集团与 Accenture 合作开发 ChatGPT 插件，将酒店查找、比较与预订流程嵌入对话界面。这种由外部合作方主导的集成方式，为传统企业接入 OpenAI 技术提供了一种实施路径。
+**「可关注」** Hotel search is entering conversational interfaces via plugins. The source does not describe the architecture, API surface, or performance.
 
-**Tags**: `#product`, `#industry`, `#lab`
+**Tags**: `#product`, `#industry`, `#lab`, `#model`
+
+---
+
+<a id="item-ai-daily-3"></a>
+### [GitHub 主张密钥保护随软件扩展](https://github.blog/ai-and-ml/github-copilot/secret-protection-must-scale-with-software/) ⭐️ 5.8/10
+
+GitHub 发布博文《Secret protection must scale with software》，主张开发者并非更粗心，而是被软件创建速度超越。文章认为，帮助开发者创建更多软件的工具，也应承担更多保护软件的责任。提供的摘录仅包含这一核心论点，未提及具体新功能、发布事实或可验证的产品细节。
+
+rss · GitHub Blog · Oct 7, 17:45
+
+**「可关注」** 可关注：GitHub 主张由开发工具承担更多密钥防护工作，以匹配软件创建速度；摘录未说明对应功能或时间表。
+
+**Tags**: `#product`, `#industry`
 
 ---
 
 ## AI Deals
 
 <a id="item-ai-deals-1"></a>
-### [Claude: Monthly API credits for Max and Team plans](https://support.claude.com/en/articles/17154008-monthly-api-credits-for-max-and-team-plans) ⭐️ 7.0/10
+### [Claude 计划含 API credits](https://news.ycombinator.com/item?id=49997654) ⭐️ 7.0/10
 
-Claude 官方页面宣布 Max 和 Team 订阅用户可获得每月 API credits。
+Claude Max 和 Team 计划现包含月度 API credits，可用于 Claude Agent SDK、Claude API 及 Claude Managed Agents。用户需在 Claude Console 中领取，并使用该组织下的 API key 调用。此前 6 月宣布的 Agent SDK 月度 credit 已不再提供。材料未给出具体额度数值。
 
-rss · HN Free API / Credits · Oct 7, 18:52
+rss · HN Free API / Credits · Oct 7, 19:28
+
+**「为什么重要」** 对已订阅 Max 或 Team 的开发者，Agent SDK 与 Managed Agents 的调用成本可直接用套餐内 credits 抵扣，无需另外充值。仅覆盖上述三项服务，且需先领取到 Console 组织。
+
+**「可关注」** 可关注：已付费订阅用户可在 Claude Console 组织内领取月度 API credits，用于 Agent SDK、Claude API 和 Managed Agents；未订阅或需高频调用的场景仍需按量付费，且 6 月单独的 Agent SDK credit 已停发。
 
 **Tags**: `#credits`, `#api`, `#promo`
 
 ---
 
 <a id="item-ai-deals-2"></a>
-### [Claude Agents SDK will no longer use subscription; API credits included in plans](https://news.ycombinator.com/item?id=49997654) ⭐️ 6.0/10
+### [Claude Max/Teams 套餐新增月度 API credits](https://news.ycombinator.com/item?id=49999508) ⭐️ 5.0/10
 
-Claude Max and Team plans now include monthly API credits covering the Agent SDK, Claude API, and Managed Agents, claimable into a Claude Console organization.
+Anthropic 更新 Claude Max 与 Teams 套餐，现包含月度 API credits，覆盖 Claude Agent SDK、Claude API 与 Claude Managed Agents。用户需在 Claude Console 组织中领取，并使用该组织的 API key 调用。6 月曾预告的 Agent SDK 月度 credit 已不再提供。来源未说明具体额度、有效期或官方领取页链接。
 
-rss · HN Free API / Credits · Oct 7, 19:28
+rss · HN Free API / Credits · Oct 7, 22:15
+
+**「为什么重要」** 对已订阅 Max 或 Teams 的开发者，套餐内 API credits 可直接用于 Agent SDK 与 Managed Agents，减少额外采购 API 额度的支出。但具体额度与限制未公开，实际价值需以 Console 内显示为准。
+
+**「可关注」** 可关注：若你已在 Claude Console 建有组织并持有 API key，可检查 Max/Teams 套餐是否自动到账；未建组织或使用个人 key 的开发者需先完成组织领取才能用上这批 credits。
 
 **Tags**: `#credits`, `#api`, `#promo`
 
 ---
 
 <a id="item-ai-deals-3"></a>
-### [Claude Max and Teams plans now forced to API \(Oct 7th update\)](https://news.ycombinator.com/item?id=49999508) ⭐️ 5.0/10
+### [Claude 付费档月领 API 额度](https://support.claude.com/en/articles/17154008-monthly-api-credits-for-max-and-team-plans) ⭐️ 5.0/10
 
-Claude Max与Team套餐用户现可在Console组织中领取月度API credits，用于Agent SDK、Claude API及Managed Agents。
+Claude 官方支持文档宣布，Max 和 Team 计划可领取每月 API credits。材料仅包含标题与链接，未给出具体额度、使用限制和有效期。领取条件与截止时间需查阅官方支持文档确认。
 
-rss · HN Free API / Credits · Oct 7, 22:15
+rss · HN Free API / Credits · Oct 7, 18:52
+
+**「为什么重要」** 对已订阅 Max 或 Team 计划的开发者而言，这是官方文档提到的每月 API credits 领取入口。由于材料缺少额度与限制信息，实际价值需以支持文档为准。
+
+**「可关注」** 可关注：该 credits 仅面向 Claude Max 和 Team 计划，具体额度、限制和有效期需查阅官方支持文档确认。
 
 **Tags**: `#credits`, `#api`, `#promo`
 
