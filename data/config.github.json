@@ -534,7 +534,7 @@
       {
         "name": "X Hot",
         "url": "http://127.0.0.1:8766/x-hot.xml",
-        "enabled": true,
+        "enabled": false,
         "category": "social",
         "profile": "agent-engineer"
       },
@@ -1131,7 +1131,7 @@
       "profile": "ai-daily"
     },
     "twitter": {
-      "enabled": true,
+      "enabled": false,
       "users": [
         "karpathy",
         "simonw",

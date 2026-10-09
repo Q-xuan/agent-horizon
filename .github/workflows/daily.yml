@@ -75,12 +75,27 @@ jobs:
         working-directory: horizon
         run: uv sync
 
+      - name: Mask Apify token in logs
+        env:
+          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+        run: |
+          # GitHub auto-masks secrets, but Horizon's logger wraps long URLs and
+          # can split the token across lines so the matcher misses it. Register
+          # the value explicitly and also mask common prefixes.
+          if [ -n "${APIFY_TOKEN:-}" ]; then
+            echo "::add-mask::${APIFY_TOKEN}"
+            echo "::add-mask::token=${APIFY_TOKEN}"
+            echo "::add-mask::apify_api_${APIFY_TOKEN#apify_api_}"
+          fi
+
       - name: Scrape sites without official RSS
         env:
           APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
         run: |
           mkdir -p scraped-feeds
-          python3 overlay/scripts/scrape_no_rss.py --out scraped-feeds --print-items
+          # Strip token= / Bearer from any exception text before it hits the log.
+          python3 overlay/scripts/scrape_no_rss.py --out scraped-feeds --print-items \
+            2> >(python3 overlay/scripts/redact_secrets.py >&2)
           python3 -m http.server 8766 --directory scraped-feeds --bind 127.0.0.1 &
           echo $! > /tmp/scraped-feeds.pid
           sleep 1
@@ -104,7 +119,11 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           set -o pipefail
-          uv run horizon --hours ${{ github.event.inputs.hours || '24' }} 2>&1 | tee "$GITHUB_WORKSPACE/horizon-run.log"
+          # Redact token= query params before tee: Horizon httpx errors embed
+          # the Apify URL and the Actions logger wraps mid-token.
+          uv run horizon --hours ${{ github.event.inputs.hours || '24' }} 2>&1 \
+            | python3 "$GITHUB_WORKSPACE/overlay/scripts/redact_secrets.py" \
+            | tee "$GITHUB_WORKSPACE/horizon-run.log"
 
       - name: Patch Pages baseurl and homepage
         run: |

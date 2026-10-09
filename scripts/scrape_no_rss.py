@@ -595,8 +595,29 @@ def x_hot_item(row: dict, since: datetime) -> dict | None:
     }
 
 
+def _apify_auth_headers(token: str, *, json_body: bool = False) -> dict[str, str]:
+    """Put the token in Authorization, never in the URL (avoids logging leaks)."""
+    headers = {
+        "User-Agent": UA,
+        "Accept": "application/json",
+        "Authorization": f"Bearer {token}",
+    }
+    if json_body:
+        headers["Content-Type"] = "application/json"
+    return headers
+
+
+def redact_secrets(text: str) -> str:
+    """Strip token= / Bearer values from any string before it hits stdout/stderr."""
+    text = re.sub(r"(?i)(\b(?:token|access_token)=)([^\s&<>]+)", r"\1<redacted>", text)
+    text = re.sub(r"(?i)(Bearer\s+)\S+", r"\1<redacted>", text)
+    text = re.sub(r"\bapify_api_[A-Za-z0-9]+", "apify_api_<redacted>", text)
+    return text
+
+
 def apify_search_tweets(token: str, query: str, max_items: int) -> list[dict]:
-    start_url = f"https://api.apify.com/v2/acts/{APIFY_ACTOR}/runs?token={token}"
+    # Token stays in Authorization header so HTTPError.url never embeds it.
+    start_url = f"https://api.apify.com/v2/acts/{APIFY_ACTOR}/runs"
     payload = json.dumps(
         {
             "source_mode": "search",
@@ -608,23 +629,26 @@ def apify_search_tweets(token: str, query: str, max_items: int) -> list[dict]:
     req = Request(
         start_url,
         data=payload,
-        headers={"User-Agent": UA, "Content-Type": "application/json", "Accept": "application/json"},
+        headers=_apify_auth_headers(token, json_body=True),
         method="POST",
     )
-    with urlopen(req, timeout=30) as resp:
-        started = json.loads(resp.read().decode("utf-8"))
+    try:
+        with urlopen(req, timeout=30) as resp:
+            started = json.loads(resp.read().decode("utf-8"))
+    except HTTPError as exc:
+        raise RuntimeError(redact_secrets(f"Apify start failed: {exc.code} {exc.reason} url={exc.url}")) from None
     data = started.get("data") or {}
     run_id = data.get("id")
     dataset_id = data.get("defaultDatasetId")
     if not run_id or not dataset_id:
         raise RuntimeError("Apify run did not return id/dataset")
 
-    status_url = f"https://api.apify.com/v2/actor-runs/{run_id}?token={token}"
+    status_url = f"https://api.apify.com/v2/actor-runs/{run_id}"
     elapsed = 0.0
     while elapsed < APIFY_MAX_WAIT:
         time.sleep(APIFY_POLL)
         elapsed += APIFY_POLL
-        status_req = Request(status_url, headers={"User-Agent": UA, "Accept": "application/json"})
+        status_req = Request(status_url, headers=_apify_auth_headers(token))
         with urlopen(status_req, timeout=15) as resp:
             status = (json.loads(resp.read().decode("utf-8")).get("data") or {}).get("status")
         if status == "SUCCEEDED":
@@ -634,8 +658,8 @@ def apify_search_tweets(token: str, query: str, max_items: int) -> list[dict]:
     else:
         raise RuntimeError(f"Apify run {run_id} timed out after {APIFY_MAX_WAIT}s")
 
-    items_url = f"https://api.apify.com/v2/datasets/{dataset_id}/items?token={token}"
-    items_req = Request(items_url, headers={"User-Agent": UA, "Accept": "application/json"})
+    items_url = f"https://api.apify.com/v2/datasets/{dataset_id}/items"
+    items_req = Request(items_url, headers=_apify_auth_headers(token))
     with urlopen(items_req, timeout=30) as resp:
         rows = json.loads(resp.read().decode("utf-8"))
     return rows if isinstance(rows, list) else []
@@ -719,7 +743,7 @@ def main() -> int:
                 print(f"{filename}: {len(items)} items")
         except (URLError, HTTPError, TimeoutError, OSError, ValueError, RuntimeError, json.JSONDecodeError) as exc:
             write_rss(out / filename, title, home, [])
-            print(f"{filename}: failed ({exc})", file=sys.stderr)
+            print(f"{filename}: failed ({redact_secrets(str(exc))})", file=sys.stderr)
             # Missing APIFY_TOKEN is a skip, not a hard fail.
             if filename != "x-hot.xml":
                 failed += 1
