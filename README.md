@@ -51,11 +51,11 @@ uv run horizon --hours 24
 
 仓库里的 `.github/workflows/daily.yml` 会 checkout 本仓库 + Horizon，套上这份配置后跑，再把 `docs/` 推到 `gh-pages`。
 
-需要在仓库 Settings → Secrets 里加 **一个** 模型密钥，和 `data/config.github.json` 里的 `api_key_env` 对上。Actions 当前用 OpenAI 兼容网关 + `step-5-preview`：
+需要在仓库 Settings → Secrets 里加 **一个** 模型密钥，和 `data/config.github.json` 里的 `api_key_env` 对上。Actions 当前用 OpenAI 兼容网关 + `gemini-3.8-flash-high`：
 
-- `OPENAI_API_KEY`
+- `CPA_API_KEY`（Actions 注入为环境变量 `OPENAI_API_KEY`，与 config 的 `api_key_env` 对齐）
 
-接口地址在 `ai.base_url`，默认 `https://api.stepfun.com/step_plan/v1`。StepFun 另有 Anthropic 兼容地址（`https://api.stepfun.com/step_plan`，请求走 `/v1/messages`）；日报仍走 OpenAI 兼容的 Chat Completions。
+接口地址在 `ai.base_url`，默认 `https://cpa.yuseus.io/v1`（Oracle CPA）。Actions 用 secret `CPA_API_KEY` 注入为 `OPENAI_API_KEY` 环境变量；仓库里的 `OPENAI_API_KEY` secret（StepFun）保持不动。
 
 然后：
 

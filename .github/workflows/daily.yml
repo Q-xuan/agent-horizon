@@ -55,9 +55,8 @@ jobs:
           cat overlay/profiles/STYLE.md >> horizon/profiles/ai-deals/enrichment.md
           cp overlay/data/source_tiers.json horizon/data/source_tiers.json
           cp overlay/scripts/apply_source_tiers.py horizon/src/apply_source_tiers.py
-          # Actions uses step-5-preview on the StepFun OpenAI-compatible gateway
-          # (api.stepfun.com/step_plan/v1). Anthropic Messages exists at
-          # api.stepfun.com/step_plan; Horizon stays on Chat Completions.
+          # Actions uses gemini-3.8-flash-high on Oracle CPA (cpa.yuseus.io).
+          # OPENAI_API_KEY env is fed from secrets.CPA_API_KEY; keep OPENAI_API_KEY secret (StepFun) untouched.
           # grok_reasoning_effort.py is local-only (config.json still grok-4.6).
           python3 overlay/patches/shanghai_digest_date.py horizon/src/orchestrator.py
           python3 overlay/patches/apply_source_tiers.py horizon/src/orchestrator.py
@@ -97,7 +96,7 @@ jobs:
         working-directory: horizon
         env:
           DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.CPA_API_KEY }}
           APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
