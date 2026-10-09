@@ -395,3 +395,103 @@ body > .theme-toggle {
   text-decoration: underline !important;
   text-decoration-color: var(--nano-link-line-hover) !important;
 }
+
+/* Section TOC and anchors (scripts/add_section_toc.py) */
+/* In-page jumps (#item-*, #sec-*, #ah-toc) land below the fixed .page-header.
+   --ah-nav-h is the header height plus a little air; JS-free. */
+:root { --ah-nav-h: 72px; }
+@media (max-width: 720px) { :root { --ah-nav-h: 130px; } }
+html {
+  scroll-padding-top: var(--ah-nav-h);
+  scroll-behavior: smooth;
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+/* Item targets are an empty <a id="item-…"> paragraph right above the h3.
+   Zero its margins so it collapses onto the h3 and the title lands at the offset. */
+.main-content p:has(> a[id^="item-"]:only-child) { margin: 0 !important; }
+
+.main-content .ah-toc {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.4rem 0.6rem;
+  margin: 1.2rem 0 1.6rem;
+  padding: 0.7rem 0.9rem;
+  border: 1px solid var(--nano-border);
+  border-radius: 8px;
+  font-family: Inter, "Noto Sans SC", "PingFang SC", sans-serif !important;
+  font-size: 14px;
+  line-height: 1.4;
+}
+.main-content .ah-toc-title {
+  color: var(--nano-text);
+  font-weight: 500;
+  margin-right: 0.2rem;
+}
+.main-content .ah-toc ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none !important;
+}
+.main-content .ah-toc li { margin: 0 !important; padding: 0 !important; }
+.main-content .ah-toc li::before { content: none !important; }
+.main-content .ah-toc a,
+.main-content .ah-toc span {
+  font-family: Inter, "Noto Sans SC", "PingFang SC", sans-serif !important;
+}
+.main-content .ah-toc a {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.35rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  background: var(--nano-chip);
+  color: var(--nano-heading) !important;
+  text-decoration: none !important;
+  white-space: nowrap;
+}
+.main-content .ah-toc a:hover { background: var(--nano-border); }
+.main-content .ah-toc-count {
+  color: var(--nano-text);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.main-content .ah-sec-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin: -0.6em 0 0.6em !important;
+  font-family: Inter, "Noto Sans SC", "PingFang SC", sans-serif !important;
+  font-size: 13px;
+  line-height: 1.4;
+}
+.main-content .ah-anchor {
+  margin-left: 0.45em;
+  padding: 0 0.2em;
+  color: var(--nano-text) !important;
+  font-weight: 400;
+  text-decoration: none !important;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+.main-content h2.ah-section:hover + .ah-sec-meta .ah-anchor,
+.main-content .ah-sec-meta:hover .ah-anchor,
+.main-content .ah-anchor:focus { opacity: 0.8; }
+@media (hover: none) {
+  .main-content .ah-anchor { opacity: 0.45; }
+}
+
+.main-content .ah-back {
+  color: var(--nano-text) !important;
+  text-decoration: none !important;
+}
+.main-content .ah-back:hover { color: var(--nano-heading) !important; }
+
+@media (max-width: 480px) {
+  .main-content .ah-toc { padding: 0.6rem 0.7rem; font-size: 13px; }
+  .main-content .ah-toc-title { flex-basis: 100%; }
+}
