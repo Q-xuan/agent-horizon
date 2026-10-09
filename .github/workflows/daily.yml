@@ -118,6 +118,12 @@ jobs:
       - name: Set current date
         run: echo "DATE=$(TZ=Asia/Shanghai date +'%Y-%m-%d')" >> "$GITHUB_ENV"
 
+      - name: Add section TOC to Chinese digest
+        run: |
+          for f in "horizon/docs/_posts/${DATE}-summary-zh.md" "horizon/_posts/${DATE}-summary-zh.md"; do
+            if [ -f "$f" ]; then python3 overlay/scripts/add_section_toc.py "$f"; fi
+          done
+
       - name: Note today's Chinese digest for local WeChat writing
         run: |
           ZH="_posts/${DATE}-summary-zh.md"
