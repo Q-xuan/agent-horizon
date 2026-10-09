@@ -7,9 +7,11 @@ lang: zh
 
 > 从 192 条内容中筛选出 17 条重要资讯。
 
+<nav id="ah-toc" class="ah-toc" aria-label="目录"><span class="ah-toc-title">目录</span><ul><li><a href="#sec-harness-arch"><span class="ah-toc-name">Harness 架构</span><span class="ah-toc-count">8条</span></a></li><li><a href="#sec-agent-engineer"><span class="ah-toc-name">Agent 工程师日报</span><span class="ah-toc-count">6条</span></a></li><li><a href="#sec-ai-daily"><span class="ah-toc-name">AI 日报</span><span class="ah-toc-count">3条</span></a></li></ul></nav>
+
 ---
 
-**Harness 架构**
+**[Harness 架构](#sec-harness-arch)**
 1. [openai-agents-js 0.20.0 发布](#item-harness-arch-1) ⭐️ 8.1/10
 2. [Codex rust-v0.162.0 发布](#item-harness-arch-2) ⭐️ 8.0/10
 3. [FastMCP v4.1.0 发布](#item-harness-arch-3) ⭐️ 7.8/10
@@ -19,7 +21,7 @@ lang: zh
 7. [agent-framework 1.21.0](#item-harness-arch-7) ⭐️ 6.8/10
 8. [Anthropic 开源知识工作插件集](#item-harness-arch-8) ⭐️ 5.2/10
 
-**Agent 工程师日报**
+**[Agent 工程师日报](#sec-agent-engineer)**
 1. [AgentMonBench 与 EBG：长程 Agent 行为监管](#item-agent-engineer-1) ⭐️ 7.2/10
 2. [TestPrism 提出多候选测试评测基准](#item-agent-engineer-2) ⭐️ 7.0/10
 3. [Trace2Env：基于历史 Trace 模拟交互环境](#item-agent-engineer-3) ⭐️ 6.0/10
@@ -27,7 +29,7 @@ lang: zh
 5. [ttok 0.4 发布](#item-agent-engineer-5) ⭐️ 5.8/10
 6. [Learn2Play Bench 评测 Agent 经验学习能力](#item-agent-engineer-6) ⭐️ 5.8/10
 
-**AI 日报**
+**[AI 日报](#sec-ai-daily)**
 1. [LegalOn 削减 Codex 日常预估成本 65%](#item-ai-daily-1) ⭐️ 5.8/10
 2. [Oracle 接入 ChatGPT 与 Codex 加速工作流](#item-ai-daily-2) ⭐️ 5.3/10
 3. [OpenAI 公布数学证明与多款开源模型发布](#item-ai-daily-3) ⭐️ 5.0/10
@@ -35,6 +37,9 @@ lang: zh
 ---
 
 ## Harness 架构
+{: #sec-harness-arch .ah-section}
+
+<p class="ah-sec-meta"><a class="ah-anchor" href="#sec-harness-arch" aria-label="链接到本节">#</a><a class="ah-back" href="#ah-toc">↑ 回到目录</a></p>
 
 <a id="item-harness-arch-1"></a>
 ### [openai-agents-js 0.20.0 发布](https://github.com/openai/openai-agents-js/releases/tag/%40openai/agents-core%400.20.0) ⭐️ 8.1/10
@@ -155,6 +160,9 @@ rss · GitHub Trending Daily · 10月9日 05:59
 ---
 
 ## Agent 工程师日报
+{: #sec-agent-engineer .ah-section}
+
+<p class="ah-sec-meta"><a class="ah-anchor" href="#sec-agent-engineer" aria-label="链接到本节">#</a><a class="ah-back" href="#ah-toc">↑ 回到目录</a></p>
 
 <a id="item-agent-engineer-1"></a>
 ### [AgentMonBench 与 EBG：长程 Agent 行为监管](https://huggingface.co/papers/2610.06406) ⭐️ 7.2/10
@@ -245,6 +253,9 @@ rss · Hugging Face Daily Papers · 10月9日 00:00
 ---
 
 ## AI 日报
+{: #sec-ai-daily .ah-section}
+
+<p class="ah-sec-meta"><a class="ah-anchor" href="#sec-ai-daily" aria-label="链接到本节">#</a><a class="ah-back" href="#ah-toc">↑ 回到目录</a></p>
 
 <a id="item-ai-daily-1"></a>
 ### [LegalOn 削减 Codex 日常预估成本 65%](https://openai.com/index/legalon-halves-codex-costs) ⭐️ 5.8/10
