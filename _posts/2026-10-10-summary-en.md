@@ -5,172 +5,187 @@ date: 2026-10-10
 lang: en
 ---
 
-> From 194 items, 13 important content pieces were selected
+> From 217 items, 15 important content pieces were selected
 
 ---
 
 **Agent Harness Architecture**
-1. [Cloudflare Agents 0.28.0](#item-harness-arch-1) ⭐️ 8.1/10
-2. [Pydantic AI v2.55.0 Released](#item-harness-arch-2) ⭐️ 8.0/10
-3. [E2B Python SDK 2.55.0](#item-harness-arch-3) ⭐️ 7.6/10
-4. [Anthropic open-sources knowledge-work-plugins](#item-harness-arch-4) ⭐️ 5.5/10
-5. [OpenSRE v0.1 Alpha](#item-harness-arch-5) ⭐️ 5.5/10
+1. [PydanticAI v2.55.0 Released](#item-harness-arch-1) ⭐️ 8.0/10
+2. [Cloudflare Agents 0.28.0](#item-harness-arch-2) ⭐️ 8.0/10
+3. [E2B 2.55.0 SnapshotMode](#item-harness-arch-3) ⭐️ 6.8/10
+4. [Anthropic knowledge-work-plugins Released](#item-harness-arch-4) ⭐️ 5.5/10
+5. [OpenSRE v0.1 Public Alpha Released](#item-harness-arch-5) ⭐️ 5.5/10
+6. [Microsoft Agent Framework](#item-harness-arch-6) ⭐️ 5.5/10
 
 **AI Agent Engineer**
-1. [TestPrism 指单参考解虚高 Agent 测试表现](#item-agent-engineer-1) ⭐️ 7.3/10
-2. [Trace2Env 用轨迹重构交互环境世界模型](#item-agent-engineer-2) ⭐️ 6.0/10
-3. [Memento 3 提出规则手册自迭代架构](#item-agent-engineer-3) ⭐️ 6.0/10
-4. [MiMo-V2.6 扩展多模态强化学习训练](#item-agent-engineer-4) ⭐️ 5.8/10
-5. [H2O Releases H2O-Lightning-4B Decision Model](#item-agent-engineer-5) ⭐️ 5.5/10
+1. [TestPrism: Multi-Reference Benchmark for Coding Agent Test Evaluation](#item-agent-engineer-1) ⭐️ 7.2/10
+2. [Trace2Env：基于日志构建环境世界模型](#item-agent-engineer-2) ⭐️ 6.0/10
+3. [Memento 3：规则手册驱动的 Agent 自改进](#item-agent-engineer-3) ⭐️ 6.0/10
+4. [Learn2Play Bench 评测 Agent 经验学习](#item-agent-engineer-4) ⭐️ 5.8/10
+5. [H2O-Lightning-4B 开源决策模型发布](#item-agent-engineer-5) ⭐️ 5.5/10
 
 **AI Daily**
 1. [Asana 浏览器智能体测试成本降 76 倍](#item-ai-daily-1) ⭐️ 7.3/10
-2. [Sophos 采用 OpenAI Daybreak 处理威胁调查](#item-ai-daily-2) ⭐️ 6.3/10
-3. [OpenAI 公布 719 份模型数学手稿](#item-ai-daily-3) ⭐️ 5.0/10
+2. [Sophos 借助 OpenAI Daybreak 提速威胁调查](#item-ai-daily-2) ⭐️ 6.6/10
+3. [OpenAI 释出数学证明与开源模型动向](#item-ai-daily-3) ⭐️ 5.0/10
+
+**AI Deals**
+1. [Anthropic 上线 Max 与 Team 每月 API 额度](#item-ai-deals-1) ⭐️ 7.0/10
 
 ---
 
 ## Agent Harness Architecture
 
 <a id="item-harness-arch-1"></a>
-### [Cloudflare Agents 0.28.0](https://github.com/cloudflare/agents/releases/tag/agents%400.28.0) ⭐️ 8.1/10
+### [PydanticAI v2.55.0 Released](https://github.com/pydantic/pydantic-ai/releases/tag/v2.55.0) ⭐️ 8.0/10
 
-Cloudflare Agents 0.28.0 introduces persistent browser management and a markdown-converting web retrieval tool across multiple agent frameworks. The release stabilizes core runtime primitives including lifecycle hooks, scheduling, and MCP client management, while unifying harness state storage.
+PydanticAI released v2.55.0, dropping Python 3.10 support to require Python 3.11 or newer across all packages. The release introduces a unified cross-provider prompt caching interface, adds a first-class \`Conversation\` abstraction accepted across all run entry points, and cuts \`import pydantic\_ai\` latency in half by lazy-loading the MCP subsystem. It also adds hosted Postgres storage backends for messages and media.
 
-github · github-actions\[bot\] · Oct 9, 14:05
+github · dsfaccini · Oct 9, 19:20
 
-**「Architecture Note」** \`ThinkHarness\` moves session and operation tracking into the unified \`agents/harness/store\` with automatic first-run migrations for recovery. The new browser abstraction supports persistent multi-step sessions rather than single-invocation sandboxes.
+**「Architecture Note」** Hardens durable execution runtimes by recording harness capabilities \(\`ExaSearch\`, \`LocalStack\`\), \`Planning\` stores, and \`Memory\` calls to prevent duplicate state writes during recovery or DBOS workflow replays. Re-executed durable runs now preserve stable \`run\_id\` and \`conversation\_id\` identifiers, and execution states remain recoverable when streams are interrupted.
 
-**「What Changed」** Added \`browser\` and \`web\_fetch\` tools across \`pi\`, \`ai-sdk\`, and \`tanstack-ai\` integrations, enabling persistent browser sessions and Worker AI-powered document conversion to markdown. Stabilized \`agents/lifecycle\`, \`Scheduler\`, \`State\`, \`WebSockets\`, and \`MCPClientManager\`.
+**「What Changed」** Enforces Python 3.11+ compatibility, bounds retained realtime audio with \`retain\_audio\_max\_seconds\`, prefixes \`LogfireMCP\` tool names with \`logfire\_\`, and tracks failed \`FallbackModel\` attempts inside \`RunUsage\`. New capabilities include \`OpenAIDecisionsModel\`, \`PostgresStepStore\`, \`PostgresMediaStore\`, WebRTC call controls, and default prompt caching in the harness \`Coder\`.
 
-**Tags**: `#runtime`, `#tools`, `#sandbox`
+**Tags**: `#runtime`, `#tools`, `#mcp`, `#memory`
 
 ---
 
 <a id="item-harness-arch-2"></a>
-### [Pydantic AI v2.55.0 Released](https://github.com/pydantic/pydantic-ai/releases/tag/v2.55.0) ⭐️ 8.0/10
+### [Cloudflare Agents 0.28.0](https://github.com/cloudflare/agents/releases/tag/agents%400.28.0) ⭐️ 8.0/10
 
-Pydantic AI released v2.55.0, requiring Python 3.11 or newer across all packages and locking Python 3.10 installs to v2.54.0. The release records harness capability tool calls under durable execution to prevent duplicate writes during replay, adds a unified cross-provider prompt caching interface, and introduces a first-class \`Conversation\` object for persisting run state. It also halves library import latency by lazily loading \`pydantic\_ai.mcp\` and prefixes \`LogfireMCP\` tool names with \`logfire\_\`.
+Cloudflare released agents@0.28.0, introducing dedicated browser and web\_fetch tools across pi, ai-sdk, and tanstack-ai adapters. The browser tool provides agents with persistent browser session manipulation, while web\_fetch converts web pages, PDFs, and Office documents into Markdown, JSON, or text via Workers AI. The release also stabilizes core runtime modules including lifecycle management, scheduling, state, WebSockets, and MCP client coordination.
 
-github · dsfaccini · Oct 9, 19:20
+github · github-actions\[bot\] · Oct 9, 14:05
 
-**「Architecture Note」** Durable execution now journals external tool requests \(\`ExaSearch\`, \`YouSearch\`, \`LocalStack\`\), \`Memory\` tool calls, and \`Planning\` store operations, preventing repeated writes across DBOS workflow forks while preserving stable \`run\_id\` and \`conversation\_id\` values on re-execution. Multi-run history transitions to a structured \`Conversation\` container accepted by all entry points, paired with hosted \`PostgresStepStore\` and \`PostgresMediaStore\` persistence backends.
+**「Architecture Note」** Core runtime primitives—agents/lifecycle, Scheduler, State, WebSockets, and MCPClientManager—are now marked stable. For agent execution harnesses, ThinkHarness unifies session and operation tracking into a shared agents/harness/store with automatic first-run state migrations.
 
-**「What Changed」** Drops Python 3.10 support, prefixes \`LogfireMCP\` tool names with \`logfire\_\`, and bounds realtime audio buffers using \`retain\_audio\_max\_seconds\`. Adds an \`OpenAIDecisionsModel\` backend, lazy-loads MCP modules to cut import times by 50%, and automatically enables prompt caching in harness \`Coder\`.
+**「What Changed」** Added persistent browser automation tools and Workers AI-backed web\_fetch document conversion across three SDK interfaces. Stabilized lifecycle and scheduling runtime APIs, and relocated ThinkHarness persistence into the centralized harness store.
 
-**Tags**: `#runtime`, `#tools`, `#mcp`
+**Tags**: `#tools`, `#runtime`, `#sandbox`
 
 ---
 
 <a id="item-harness-arch-3"></a>
-### [E2B Python SDK 2.55.0](https://github.com/e2b-dev/E2B/releases/tag/%40e2b/python-sdk%402.55.0) ⭐️ 7.6/10
+### [E2B 2.55.0 SnapshotMode](https://github.com/e2b-dev/E2B/releases/tag/e2b%402.55.0) ⭐️ 6.8/10
 
-E2B released @e2b/python-sdk@2.55.0, introducing a SnapshotMode option \(\`mode: &\#x27;full&\#x27; \| &\#x27;filesystem&\#x27;\`\) to sandbox snapshot and pause APIs. Selecting \`&\#x27;filesystem&\#x27;\` persists only disk state, yielding smaller and faster snapshots whose downstream sandboxes cold-boot from disk rather than restoring memory. The source sandbox remains running regardless of mode, and omitting the parameter defaults to full memory snapshots.
+E2B released version 2.55.0, introducing \`mode: &\#x27;full&\#x27; \| &\#x27;filesystem&\#x27;\` \(exported as \`SnapshotMode\`\) for sandbox snapshots and pause lifecycles. Selecting \`&\#x27;filesystem&\#x27;\` persists only disk state, producing smaller and faster snapshots whose spawned sandboxes cold-boot from disk rather than restoring memory, while the source sandbox continues running. The parameter defaults to full memory snapshots when omitted, and deprecates the legacy \`keepMemory\` option across \`createSnapshot\`, \`pause\(\)\`, and lifecycle timeout hooks.
 
 github · github-actions\[bot\] · Oct 9, 10:01
 
-**「Architecture Note」** Decoupling filesystem persistence from memory state provides agent runtimes a lightweight checkpointing path without the overhead of process memory serialization. Sandboxes instantiated from filesystem-only snapshots boot cleanly from disk while retaining generated workspace files.
+**「Design Notes」** Decoupling filesystem persistence from RAM state allows sandboxes to create lightweight checkpoints, trading memory restoration for faster snapshot generation and disk-only cold boots.
 
-**「What Changed」** Added \`mode: &\#x27;full&\#x27; \| &\#x27;filesystem&\#x27;\` to \`create\_snapshot\`, \`pause\(\)\`, and timeout lifecycle pause options, deprecating \`keepMemory\` / \`keep\_memory\` and raising \`InvalidArgumentException\` if both are supplied. Removed dead empty-chunk handling guards from command output parsing because envd does not emit empty output chunks.
+**「What Changed」** Added \`SnapshotMode\` \(\`&\#x27;full&\#x27;\` \| \`&\#x27;filesystem&\#x27;\`\) to \`createSnapshot\`, \`pause\(\)\`, and \`lifecycle.onTimeout\`, deprecating \`keepMemory\` and raising \`InvalidArgumentError\` if both parameters are passed. Removed redundant empty-chunk guards from command output handling without altering runtime behavior.
 
-**Tags**: `#sandbox`, `#runtime`, `#tools`
+**Tags**: `#sandbox`, `#runtime`, `#memory`
 
 ---
 
 <a id="item-harness-arch-4"></a>
-### [Anthropic open-sources knowledge-work-plugins](https://github.com/anthropics/knowledge-work-plugins) ⭐️ 5.5/10
+### [Anthropic knowledge-work-plugins Released](https://github.com/anthropics/knowledge-work-plugins) ⭐️ 5.5/10
 
-Anthropic open-sourced anthropics/knowledge-work-plugins, providing role- and team-specific plugins for Claude Cowork and Claude Code. The repository allows users to configure tool integrations, data sources, critical workflows, and slash commands to adapt Claude to specialized workplace roles. The source defines application- and prompt-level workflow configurations without exposing low-level harness runtime implementation details.
+Anthropic open-sourced knowledge-work-plugins, a collection of role- and team-specific plugins built for Claude Cowork and compatible with Claude Code. The plugins bundle custom slash commands, tool integrations, and data connections to guide how Claude handles specialized workflows. The repository focuses on role-level task patterns and tooling configurations rather than core harness runtime modifications.
 
-rss · GitHub Trending Daily · Oct 10, 02:01
+rss · GitHub Trending Daily · Oct 10, 02:29
 
-**Tags**: `#tools`, `#runtime`, `#subagents`
+**Tags**: `#tools`, `#runtime`, `#planning`
 
 ---
 
 <a id="item-harness-arch-5"></a>
-### [OpenSRE v0.1 Alpha](https://github.com/Tracer-Cloud/opensre) ⭐️ 5.5/10
+### [OpenSRE v0.1 Public Alpha Released](https://github.com/Tracer-Cloud/opensre) ⭐️ 5.5/10
 
-Tracer-Cloud released OpenSRE v0.1 in public alpha, providing an open-source framework and evaluation environment for building AI SRE agents. The toolkit connects with over 60 existing operational tools, enables custom workflow definitions, and queries production environments directly on local infrastructure. The release is currently in early public alpha, with core workflows functional for exploration but full production readiness still limited.
+Tracer-Cloud released OpenSRE v0.1 in public alpha as an open-source framework and environment to build, train, and evaluate AI SRE agents. The toolkit connects with over 60 existing operational tools and enables users to define custom workflows to investigate production issues on their own infrastructure. The project is currently in an early public alpha stage, with core workflows available for initial exploration.
 
-rss · GitHub Trending Daily · Oct 10, 02:01
+rss · GitHub Trending Daily · Oct 10, 02:29
 
-**Tags**: `#runtime`, `#tools`, `#eval`, `#planning`
+**Tags**: `#runtime`, `#tools`, `#eval`
+
+---
+
+<a id="item-harness-arch-6"></a>
+### [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) ⭐️ 5.5/10
+
+Microsoft open-sourced the Microsoft Agent Framework \(MAF\), a multi-language framework for building, orchestrating, and deploying production-grade AI agents and multi-agent workflows. The project provides support across both Python and .NET to establish a consistent foundation for agent systems. It is aimed at development teams transitioning multi-agent workflows from prototype to production.
+
+rss · GitHub Trending Daily · Oct 10, 02:29
+
+**Tags**: `#runtime`, `#subagents`, `#planning`, `#tools`
 
 ---
 
 ## AI Agent Engineer
 
 <a id="item-agent-engineer-1"></a>
-### [TestPrism 指单参考解虚高 Agent 测试表现](https://huggingface.co/papers/2610.12289) ⭐️ 7.3/10
+### [TestPrism: Multi-Reference Benchmark for Coding Agent Test Evaluation](https://huggingface.co/papers/2610.12289) ⭐️ 7.2/10
 
-论文提出测试生成评测基准 TestPrism，包含来自 17 个来源的 300 项任务与 3000 个候选实现，其中有效解与无效解各占一半。核心指标 Joint Success Function 要求生成的测试在初始状态报错、放行全部有效实现并拦截所有无效实现。在 14 种基线 coding agent 配置下，联合成功率仅为 28.00%，远低于单参考解评测的 59.67%，暴露出测试用例存在行为遗漏与未支持断言。
+TestPrism introduces a benchmark to evaluate LLM coding agent test generation beyond single reference solutions, spanning 300 test tasks from 17 sources and 3,000 candidate implementations evenly split between valid and invalid solutions. Its primary metric, Joint Success Function, requires generated tests to fail on the initial program state, accept every valid candidate, and reject every invalid candidate. Across 14 baseline coding agent configurations, Joint Success Function reached only 28.00%, compared to 59.67% under single-reference evaluation, revealing missed behaviors and unsupported assertions.
 
-rss · Hugging Face Daily Papers · Oct 10, 02:01
+rss · Hugging Face Daily Papers · Oct 10, 02:29
 
-**「为什么重要」** 现有测试评测普遍依赖单一参考解，容易将 agent 生成质量虚高近一倍。多候选解的严格判别机制能暴露断言不充分的测试，为改进 coding agent 评测 harness 提供了更可靠的检验基准。
+**「Why It Matters」** Single-reference evaluation substantially overstates the quality of agent-generated tests by ignoring alternative valid implementations. Adopting multi-candidate verification halves apparent agent test performance, demonstrating that existing harness validation criteria remain too permissive.
 
-**「可关注」** 可关注：仅用单一参考实现检验 agent 生成的测试极易误判，需引入正反候选实现组合验证测试用例的拦截精度。
+**「Engineer Takeaway」** Key takeaway: Evaluating coding agent test suites against a single reference implementation risks high false-positive rates; test harnesses should validate test suites across pools of known-valid implementations and known-invalid mutants.
 
 **Tags**: `#eval`, `#coding-agent`, `#harness`
 
 ---
 
 <a id="item-agent-engineer-2"></a>
-### [Trace2Env 用轨迹重构交互环境世界模型](https://huggingface.co/papers/2610.06100) ⭐️ 6.0/10
+### [Trace2Env：基于日志构建环境世界模型](https://huggingface.co/papers/2610.06100) ⭐️ 6.0/10
 
-Trace2Env 提出一种免训练的语言世界模型框架，用于在原始系统不可访问时模拟交互环境。系统不重写可执行代码环境，而是将历史交互轨迹整理为包含环境 Schema、基底证据与行为知识的“环境世界书”（worldbook）。运行时由专门的世界模型 Agent 结合状态与该书进行查询，为任务 Agent 提供有状态的模拟交互。
+论文提出 Trace2Env 框架，探索在原始系统不可用时，利用历史交互日志构建 Agent 语言世界模型来模拟交互环境。该方案无需训练，将历史日志重构为包含环境 schema、事实依据与行为知识的“环境世界书”。运行时由世界模型 Agent 结合世界书模拟有状态交互，但截断材料未披露具体基准评测数据与运行开销。
 
-rss · Hugging Face Daily Papers · Oct 10, 02:01
+rss · Hugging Face Daily Papers · Oct 10, 02:29
 
-**「为什么重要」** 高保真环境沙箱难以复现一直制约 Coding 与任务 Agent 评测。该方案探索了直接利用既有 Trace 支撑离线模拟的机制，但其状态一致性与模拟边界仍依赖后续开源代码与实测检验。
+**「为什么重要」** 复现可执行的真实系统环境成本高昂，用模型充当模拟器为 Agent 评测与训练提供了替代路径。目前缺乏完整实测数据，其保真度与多轮状态一致性仍待验证。
 
-**「可关注」** 可关注：在缺少可交互沙箱的业务场景中，将既有 API 或操作日志重构成结构化知识库、由 LLM 充当环境模拟器，可作为低成本构建评测 Harness 的备选路线。
+**「可关注」** 可关注：无需训练即可借由日志提取的 schema 与知识驱动环境模拟，但模拟环境的可靠性完全依赖世界模型 Agent 对持久状态的维护能力。
 
 **Tags**: `#eval`, `#harness`, `#orchestration`
 
 ---
 
 <a id="item-agent-engineer-3"></a>
-### [Memento 3 提出规则手册自迭代架构](https://huggingface.co/papers/2610.11794) ⭐️ 6.0/10
+### [Memento 3：规则手册驱动的 Agent 自改进](https://huggingface.co/papers/2610.11794) ⭐️ 6.0/10
 
-Memento 3 针对未知环境任务，让冻结权重的 LLM 智能体通过外部记忆持续学习显式世界模型。系统将环境动力学假设记入自然语言规则手册，再编译为可执行代码用于预测与规划，借助观察、反思、规则修订、编译与验证的循环推进更新。公开材料摘要存在截断，未包含基准评测成绩与执行开销。
+Memento 3 提出一种面向冻结 LLM 的世界模型自改进架构。Agent 将环境动态假设记录在外部自然语言规则手册中作为持久语义记忆，并将其编译为可执行代码辅助预测与规划。系统通过观察、反思、规则修订、编译与验证的持续循环更新对环境的理解。当前公开内容主要为论文摘要，完整实验评测与开源实现细节尚未充分披露。
 
-rss · Hugging Face Daily Papers · Oct 10, 02:01
+rss · Hugging Face Daily Papers · Oct 10, 02:29
 
-**「为什么重要」** 该设计把非结构化自然语言反思直接编译为可执行代码参与规划，展示了无需微调模型权重即可动态调整外部世界模型的机制，但实际效果仍有待完整评测验证。
+**「为什么重要」** 它尝试把世界模型从隐式权重抽取为显式规则并转为可执行代码，给免微调环境建模提供了新解法。其实际预测精度和在长流程环境下的鲁棒性仍有待基准评测验证。
 
-**「可关注」** 可关注：维护可修改规则手册并转译为代码进行检验，为长程任务中环境假设的持久化表达与代码化验证提供了参考实现。
+**「可关注」** 可关注：将环境规则以自然语言沉淀并编译为代码执行器的模式，可在不微调模型的前提下拆分记忆存储与确定性模拟验证。
 
-**Tags**: `#memory`, `#orchestration`, `#harness`
+**Tags**: `#memory`, `#orchestration`, `#eval`
 
 ---
 
 <a id="item-agent-engineer-4"></a>
-### [MiMo-V2.6 扩展多模态强化学习训练](https://huggingface.co/papers/2610.11959) ⭐️ 5.8/10
+### [Learn2Play Bench 评测 Agent 经验学习](https://huggingface.co/papers/2610.08215) ⭐️ 5.8/10
 
-MiMo-V2.6 技术报告披露了通过扩展强化学习算力推动全模态模型自我进化的方案。模型基于 hybrid-SWA 架构并经历多模态 mid-training，采用异步训练在高达 1M 的上下文长度下实现单步消耗 1,568 个样本与 27 亿至 37 亿 tokens。训练引入混合 agent harness，覆盖代码、视觉、通用和网络安全等异构环境。
+研究团队推出针对 LLM Agent 的新基准 Learn2Play Bench，用于评估模型在陌生环境中从交互经验中学习的能力。现有基准多直接给出规则或依赖预训练已知任务，难以区分 Agent 是依靠交互学习还是利用既有先验推理。该基准设计了规则新颖且反直觉的文字游戏，要求 Agent 必须依靠交互试错获取知识，并提供可复现的自动化反馈环境。
 
-rss · Hugging Face Daily Papers · Oct 10, 02:01
+rss · Hugging Face Daily Papers · Oct 10, 02:29
 
-**「为什么重要」** 该报告给出了在 1M 超长上下文下运行超大批次异步强化学习的具体吞吐基准，验证了跨多领域统一调度 agent harness 进行基座进化的路径。
+**「为什么重要」** 传统 Agent 评测常将常识推理能力误判为自适应能力。通过构建反直觉环境，该基准尝试将预训练记忆与在线经验学习解耦，为衡量 Agent 上下文适应机制提供了新参照。
 
-**「可关注」** 可关注：其采用混合 agent harness 统一承接代码与网络攻防等多领域环境，为长上下文复杂任务的强化学习流水线设计提供了基础设施参考。
+**「可关注」** 可关注：评测 Agent 经验累积与探索策略时，引入对抗先验规则的环境设计，能更准确检验模型吸收运行时环境反馈的真实效率。
 
-**Tags**: `#harness`, `#coding-agent`, `#eval`
+**Tags**: `#eval`, `#memory`, `#orchestration`
 
 ---
 
 <a id="item-agent-engineer-5"></a>
-### [H2O Releases H2O-Lightning-4B Decision Model](https://www.reddit.com/r/LocalLLaMA/comments/1x1w1nv/h2olightning4b_apache20_4b_decision_model/) ⭐️ 5.5/10
+### [H2O-Lightning-4B 开源决策模型发布](https://www.reddit.com/r/LocalLLaMA/comments/1x1w1nv/h2olightning4b_apache20_4b_decision_model/) ⭐️ 5.5/10
 
-H2O.ai released H2O-Lightning-4B, an Apache-2.0 open-weight decision model fine-tuned from Qwen3.5-4B for single-forward-pass inference. Rather than generating tokens, the model takes a state and typed questions \(pick-one, yes/no, or score\) to output calibrated probabilities, running on stock vLLM with a custom shim at approximately 30 ms per decision on an H100. On the public JevBench leaderboard, it scored a composite 72.5, edging out Jev 1.13 at 71.5. H2O.ai stated that 12B and 31B variants remain in internal testing.
+H2O.ai 开源决策模型 H2O-Lightning-4B（Apache-2.0），基于 Qwen3.5-4B 微调。该模型对标 Jev 的决策 API 范式，接收状态与单选、是非或评分问题后，仅凭单次前向传播直接输出校准概率，不生成额外 token。官方称在 H100 搭配原生 vLLM 时单次决策约 30 ms，在 JevBench 取得 72.5 分，高于 Jev 1.13 的 71.5 分。
 
 reddit · r/LocalLLaMA · /u/pseudotensor1234 · Oct 9, 20:26
 
-**「Why It Matters」** Agent harnesses frequently waste latency and compute running autoregressive decoding for basic routing and boolean gating. Replacing text generation with calibrated probability extraction across a single forward pass provides a local, low-latency alternative for deterministic workflow branches.
+**「为什么重要」** Agent 的意图路由和条件分支通常需要自回归解码，带来额外时延与计算开销。单次前向输出概率分布的开源小模型，为高频判断逻辑提供了本地化替代路径。
 
-**「Key Takeaway」** For high-frequency routing and state-triage steps, engineers can test single-pass probability classification on vLLM to bypass generative token overhead, provided the decision state fits structured, typed questions.
+**「可关注」** 可关注：在多步骤工作流的快速分类与路由节点，评估用单次前向概率决策替代完整文本生成的实际时延收益。
 
 **Tags**: `#orchestration`, `#eval`, `#harness`
 
@@ -181,36 +196,55 @@ reddit · r/LocalLLaMA · /u/pseudotensor1234 · Oct 9, 20:26
 <a id="item-ai-daily-1"></a>
 ### [Asana 浏览器智能体测试成本降 76 倍](https://openai.com/index/asana-browser-agent) ⭐️ 7.3/10
 
-OpenAI 博客披露，Asana 在 Codex 中测试浏览器智能体。测试数据显示运行成本降低 76 倍，速度提升 5 倍。正文记录采用 GPT-6 Astra，标题则提及 GPT-6.1 Sol，文中未公开具体评测基线与细节。
+OpenAI 披露 Asana 在浏览器智能体测试中接入 Codex 运行 GPT-6 Astra。测试数据显示，其运行成本降低 76 倍，运行速度提升 5 倍。该测试旨在向用户提供能力更强且成本更低的模型支持，但未公布具体任务类型与成功率细节。
 
 rss · OpenAI Blog · Oct 9, 07:00
 
-**「可关注」** 可关注：Asana 在 Codex 中测试浏览器智能体，尝试通过降低运行成本与时延来向客户提供更强模型。
+**「可关注」** 可关注：浏览器智能体执行长路径交互时，模型推理延迟与 token 成本是主要瓶颈，针对性换用适配底座可带来数量级成本压缩，但需留意该数据仅来自特定测试场景。
 
-**Tags**: `#product`, `#industry`, `#model`
+**Tags**: `#product`, `#lab`, `#model`
 
 ---
 
 <a id="item-ai-daily-2"></a>
-### [Sophos 采用 OpenAI Daybreak 处理威胁调查](https://openai.com/index/sophos) ⭐️ 6.3/10
+### [Sophos 借助 OpenAI Daybreak 提速威胁调查](https://openai.com/index/sophos) ⭐️ 6.6/10
 
-OpenAI 发布案例研究，网络安全厂商 Sophos 在托管检测与响应（MDR）业务中接入 OpenAI Daybreak。数据显示威胁调查时间缩短 96%，52% 的 MDR 案例实现自动化处理，全流程保留人工复核机制。
+OpenAI 发布 Sophos 落地案例。网络安全厂商 Sophos 采用 OpenAI Daybreak 处理威胁调查，将调查耗时缩短 96%，并实现 52% 托管检测与响应（MDR）案例的自动化处理。整体流程保留了人工监督，材料未披露具体的测试基线与集成细节。
 
 rss · OpenAI Blog · Oct 9, 07:00
 
-**「可关注」** 可关注：安全工单自动化接入时采用人工复核兜底，目前将自动化覆盖率控制在约半数（52%）。
+**「为什么重要」** 安全告警分析受制于海量低信噪比日志，该数据验证了 agent 工具在保留人工复核时承担常规分流的可行性。
 
-**Tags**: `#industry`, `#product`, `#lab`
+**「可关注」** 可关注：半数以上 MDR 案件走向自动化处理的同时仍保留人工复核，重点在于如何界定安全分流中模型与人工介入的边界。
+
+**Tags**: `#product`, `#industry`, `#lab`
 
 ---
 
 <a id="item-ai-daily-3"></a>
-### [OpenAI 公布 719 份模型数学手稿](https://lastweekin.ai/p/last-week-in-ai-346-719-math-manuscripts) ⭐️ 5.0/10
+### [OpenAI 释出数学证明与开源模型动向](https://lastweekin.ai/p/last-week-in-ai-346-719-math-manuscripts) ⭐️ 5.0/10
 
-Last Week in AI \#346 汇总当周动态，OpenAI 发布未公开前沿模型生成的 719 份数学证明手稿。Mistral 与 Reflection AI 分别推出权重开放模型，同时 OpenAI 再有一名安全团队成员离职。原始材料仅为周报导语，未披露相关模型的技术规格与评测细节。
+Last Week in AI 第 346 期汇总近期行业动态。OpenAI 公布了来自未发布前沿模型的 719 份数学证明手稿。Mistral 与 Reflection AI 分别发布开源权重模型，此外另有一名安全团队成员离职。该材料仅为周报导语，未提供具体模型版本与评测基准数据。
 
 rss · Last Week in AI · Oct 9, 05:06
 
-**Tags**: `#industry`, `#model`, `#open-source`
+**「可关注」** 可关注：OpenAI 披露的前沿模型数学手稿以及 Mistral 与 Reflection AI 的开源权重发布动态。
+
+**Tags**: `#model`, `#open-source`, `#industry`, `#lab`
+
+---
+
+## AI Deals
+
+<a id="item-ai-deals-1"></a>
+### [Anthropic 上线 Max 与 Team 每月 API 额度](https://support.claude.com/en/articles/17154008-monthly-api-credits-for-max-and-team-plans) ⭐️ 7.0/10
+
+Anthropic 官方支持页面公布 Max 与 Team 订阅计划的每月 API 额度说明。现有公开材料未披露具体额度金额、适用模型与发放细则。拥有相关订阅计划的用户可关注官方文档更新。
+
+rss · HN Free API / Credits · Oct 9, 15:31
+
+**「可关注」** 可关注：该权益仅限 Max 与 Team 订阅用户，具体额度与生效限制需以官方支持文档为准。
+
+**Tags**: `#credits`, `#api`, `#promo`
 
 ---
