@@ -6,26 +6,57 @@ name: Daily Agent Digest
 
 on:
   schedule:
-    # Two crons: GitHub may delay or skip scheduled workflows when the
-    # default branch looks idle. Digest commits land on gh-pages, so
-    # main can sit still and the 23:00 tick is more likely to be skipped.
-    # 23:30 is a same-morning retry (07:30 Asia/Shanghai).
-    - cron: "0 23 * * *"   # 07:00 Asia/Shanghai
-    - cron: "30 23 * * *"  # 07:30 Asia/Shanghai
+    # GitHub schedule is best-effort (UTC). This repo's 23:00/23:30 ticks
+    # were created 1.5–2.1h late every day in 2026-09-07..17, then Horizon
+    # ran 20–50m and Pages built ~1m. A 07:10 Asia/Shanghai watcher therefore
+    # saw 404 even though the later run and pages-build-deployment went green.
+    # Digest commits land on gh-pages, so main can look idle; GitHub may also
+    # delay or drop :00/:30 crons under load.
+    # Shift earlier and stagger off-minute retries. After the first live
+    # summary-zh, later ticks skip Horizon (see scripts/digest_publish_gate.py).
+    # Target: page up ~07:30 Asia/Shanghai when delay stays near 2h.
+    # Honest SLA: 07:10 can still 404 if GitHub delay > ~2.5h or Horizon > ~50m.
+    - cron: "13 20 * * *"   # 04:13 Asia/Shanghai — primary
+    - cron: "17 21 * * *"   # 05:17 Asia/Shanghai — retry
+    - cron: "23 22 * * *"   # 06:23 Asia/Shanghai — retry
+    - cron: "37 23 * * *"   # 07:37 Asia/Shanghai — last same-morning chance
   workflow_dispatch:
     inputs:
       hours:
         description: Lookback window in hours
         required: false
         default: "24"
+      force:
+        description: Rebuild even if today's summary-zh is already on Pages
+        type: boolean
+        default: false
 
-# If 23:00 is still scraping, 23:30 waits instead of starting a second Horizon run.
+# A late retry waits instead of starting a second Horizon run.
+# After the first success, the next run's gate job exits in seconds.
 concurrency:
   group: daily-digest
   cancel-in-progress: false
 
 jobs:
+  gate:
+    runs-on: ubuntu-latest
+    outputs:
+      skip: ${{ steps.check.outputs.skip }}
+      date: ${{ steps.check.outputs.date }}
+    steps:
+      - name: Checkout overlay
+        uses: actions/checkout@v5
+
+      - name: Check live summary-zh
+        id: check
+        env:
+          DIGEST_EVENT_NAME: ${{ github.event_name }}
+          DIGEST_FORCE: ${{ github.event.inputs.force || 'false' }}
+        run: python3 scripts/digest_publish_gate.py
+
   daily-summary:
+    needs: gate
+    if: needs.gate.outputs.skip != 'true'
     runs-on: ubuntu-latest
     permissions:
       contents: write
