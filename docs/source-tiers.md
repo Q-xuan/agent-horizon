@@ -44,7 +44,18 @@ python3 scripts/scrape_no_rss.py --out /tmp/scraped-feeds --print-items
 
 Actions 在 `daily.yml` 里把 `source_tiers.json` 和脚本拷进 Horizon，再打 orchestrator 补丁。本地跑也要同样做一遍，见仓库 README。
 
-## 以后可以做（本 PR 不做）
+## Release 折叠（`release_policy`）
+
+分析调分之后再跑一轮，专门压 Harness 区的版本号刷屏：
+
+| 字段 | 默认 | 作用 |
+| --- | --- | --- |
+| `same_day_dedupe` | `true` | 同一天同一产品（`owner/repo`，Changelog 会映射到对应仓库）只留分最高的一条，其余打到 0 |
+| `harness_release_cap` | `3` | `harness-arch`（及 harness/coding-agent/mcp 类目）里，release 类条目最多留 3 条 |
+| `patch_penalty` / `patch_score_cap` | `1.5` / `5.5` | 纯 patch（semver 的 patch>0）先减分再封顶，避免小版本挤掉架构新闻 |
+| `product_aliases` | 含 Claude Code Changelog → `anthropics/claude-code` | 把 RSS changelog 与 GitHub Release 当成同一产品 |
+
+## 以后可以做
 
 - 跨日 URL 历史库，避免同一公告连着两天出现
-- 同一产品同一天多包 Release（例如 Cline SDK / CLI / desktop / extension）折成一条
+- 同一产品多个 packaging（SDK / CLI / desktop）更细的折叠
