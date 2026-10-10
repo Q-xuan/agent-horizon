@@ -5,6 +5,8 @@ Horizon's Config model forbids unknown fields, so knobs live in
 ``data/source_tiers.json`` (not config.json). This module is the
 deterministic enforcement layer: analysis.md can bias the model, but
 caps / boosts here actually change who survives profile thresholds.
+A second pass (release_policy) collapses same-day same-product releases,
+downweights pure patches, and caps harness-zone release slots.
 """
 
 from __future__ import annotations
@@ -176,6 +178,243 @@ def _annotate(item: Any, **fields: Any) -> None:
     meta.update(fields)
 
 
+
+SEMVER_RE = re.compile(
+    r"(?i)(?:^|[^0-9])v?(\d+)\.(\d+)\.(\d+)(?:[-+][0-9A-Za-z.-]+)?(?:[^0-9]|$)"
+)
+RELEASE_TITLE_RE = re.compile(
+    r"(?i)(\breleased?\b|\brelease\b|发布|changelog|version\s+v?\d)"
+)
+
+
+def _published_day(item: Any) -> str:
+    raw = getattr(item, "published_at", None)
+    if raw is None:
+        meta = _metadata(item)
+        raw = meta.get("published_at") or meta.get("published")
+    if raw is None:
+        return "unknown"
+    if hasattr(raw, "strftime"):
+        try:
+            return raw.strftime("%Y-%m-%d")
+        except Exception:
+            return "unknown"
+    text = str(raw)
+    return text[:10] if len(text) >= 10 else "unknown"
+
+
+def _classification_profile(item: Any) -> str:
+    processing = getattr(item, "processing", None)
+    classification = getattr(processing, "classification", None) if processing else None
+    profile = getattr(classification, "profile", None) if classification else None
+    if profile:
+        return str(profile)
+    # Source-config override may still be on the item.
+    raw = getattr(item, "profile", None)
+    if isinstance(raw, str) and raw and raw != "auto":
+        return raw
+    if isinstance(raw, list) and raw:
+        return str(raw[0])
+    return ""
+
+
+def _category(item: Any) -> str:
+    return str(_metadata(item).get("category") or "").strip().lower()
+
+
+def github_owner_repo(url: str) -> str:
+    try:
+        parsed = urlparse(url)
+    except ValueError:
+        return ""
+    host = (parsed.hostname or "").lower()
+    if host not in {"github.com", "www.github.com"}:
+        return ""
+    parts = [part for part in parsed.path.split("/") if part]
+    if len(parts) < 2:
+        return ""
+    return f"{parts[0]}/{parts[1]}".lower()
+
+
+def extract_semver(text: str) -> tuple[int, int, int] | None:
+    match = SEMVER_RE.search(text or "")
+    if not match:
+        return None
+    return int(match.group(1)), int(match.group(2)), int(match.group(3))
+
+
+def is_patch_release(item: Any) -> bool:
+    """True when the best version we see is a pure patch (x.y.Z with Z>0)."""
+    blob = " ".join(
+        [
+            str(getattr(item, "title", "") or ""),
+            str(getattr(item, "url", "") or ""),
+            str(getattr(item, "content", "") or "")[:500],
+        ]
+    )
+    ver = extract_semver(blob)
+    if ver is None:
+        return False
+    _major, _minor, patch = ver
+    return patch > 0
+
+
+def is_release_like(item: Any, policy: dict[str, Any]) -> bool:
+    if is_github_release(item):
+        return True
+    feed = _feed_name(item)
+    aliases = (policy.get("release_policy") or {}).get("product_aliases") or {}
+    if feed in aliases:
+        return True
+    if feed.lower().endswith("changelog") or "changelog" in feed.lower():
+        return True
+    title = str(getattr(item, "title", "") or "")
+    url = str(getattr(item, "url", "") or "")
+    if "/releases/" in url or "/tags/" in url:
+        return True
+    if extract_semver(title) and RELEASE_TITLE_RE.search(title):
+        return True
+    return False
+
+
+def release_product_key(item: Any, policy: dict[str, Any]) -> str:
+    aliases = (policy.get("release_policy") or {}).get("product_aliases") or {}
+    feed = _feed_name(item)
+    if feed in aliases:
+        return str(aliases[feed]).lower()
+    for url in extract_urls(item):
+        repo = github_owner_repo(url)
+        if repo:
+            return str(aliases.get(repo, repo)).lower()
+        host = _host(url)
+        # code.claude.com changelog pages → claude-code product
+        if host in {"code.claude.com", "www.code.claude.com"}:
+            return str(aliases.get("code.claude.com/claude-code", "anthropics/claude-code")).lower()
+    title = str(getattr(item, "title", "") or "").lower()
+    if feed:
+        return str(aliases.get(feed, f"feed:{feed}")).lower()
+    return f"title:{title[:60]}"
+
+
+def is_harness_zone(item: Any, policy: dict[str, Any]) -> bool:
+    rp = policy.get("release_policy") or {}
+    profiles = {p.lower() for p in rp.get("harness_profiles") or ["harness-arch"]}
+    categories = {c.lower() for c in rp.get("harness_categories") or []}
+    if _classification_profile(item).lower() in profiles:
+        return True
+    if _category(item) in categories:
+        return True
+    raw = getattr(item, "profile", None)
+    if isinstance(raw, str) and raw.lower() in profiles:
+        return True
+    if isinstance(raw, list) and any(str(x).lower() in profiles for x in raw):
+        return True
+    return False
+
+
+def _set_score(item: Any, new_score: float, policy: dict[str, Any], action: str) -> None:
+    analysis = _analysis(item)
+    if analysis is None or getattr(analysis, "score", None) is None:
+        return
+    old = float(analysis.score)
+    new_score = _clamp(new_score, policy)
+    if new_score == old:
+        return
+    analysis.score = new_score
+    reason = getattr(analysis, "reason", "") or ""
+    note = f"[release_policy {action} {old:.1f}->{new_score:.1f}]"
+    if note not in reason:
+        analysis.reason = f"{reason} {note}".strip()
+    _annotate(item, release_policy_action=action, release_policy_score=new_score)
+
+
+def apply_release_policy(
+    items: list[Any],
+    policy: dict[str, Any],
+    printer: Printer | None = None,
+) -> list[Any]:
+    """Same-day product dedupe, patch downweight, harness release cap."""
+    rp = policy.get("release_policy") or {}
+    if not rp.get("enabled", False):
+        return items
+
+    patch_penalty = float(rp.get("patch_penalty", 1.5))
+    patch_cap = float(rp.get("patch_score_cap", 5.5))
+    harness_cap = int(rp.get("harness_release_cap", 3))
+    do_dedupe = bool(rp.get("same_day_dedupe", True))
+
+    counts = {"patch_down": 0, "dedupe_drop": 0, "harness_cap_drop": 0}
+
+    # 1) Downweight pure patches first so dedupe/cap see adjusted scores.
+    if patch_penalty > 0:
+        for item in items:
+            if not is_release_like(item, policy):
+                continue
+            if not is_patch_release(item):
+                continue
+            analysis = _analysis(item)
+            if analysis is None or getattr(analysis, "score", None) is None:
+                continue
+            old = float(analysis.score)
+            new = min(old - patch_penalty, patch_cap)
+            if new < old:
+                _set_score(item, new, policy, "patch_down")
+                counts["patch_down"] += 1
+
+    # 2) Same calendar day + same product → keep highest score only.
+    if do_dedupe:
+        groups: dict[tuple[str, str], list[Any]] = {}
+        for item in items:
+            if not is_release_like(item, policy):
+                continue
+            key = (_published_day(item), release_product_key(item, policy))
+            groups.setdefault(key, []).append(item)
+        for _key, group in groups.items():
+            if len(group) < 2:
+                continue
+
+            def score_of(it: Any) -> float:
+                analysis = _analysis(it)
+                if analysis is None or getattr(analysis, "score", None) is None:
+                    return -1.0
+                return float(analysis.score)
+
+            ranked = sorted(group, key=score_of, reverse=True)
+            for loser in ranked[1:]:
+                _set_score(loser, 0.0, policy, "same_day_dedupe")
+                counts["dedupe_drop"] += 1
+
+    # 3) Cap how many release-like items can survive in the harness zone.
+    if harness_cap >= 0:
+        harness_releases = [
+            item
+            for item in items
+            if is_release_like(item, policy) and is_harness_zone(item, policy)
+        ]
+
+        def score_of(it: Any) -> float:
+            analysis = _analysis(it)
+            if analysis is None or getattr(analysis, "score", None) is None:
+                return -1.0
+            return float(analysis.score)
+
+        # Skip already-zeroed (deduped) items when counting survivors.
+        alive = [it for it in harness_releases if score_of(it) > 0]
+        ranked = sorted(alive, key=score_of, reverse=True)
+        for loser in ranked[harness_cap:]:
+            _set_score(loser, 0.0, policy, "harness_cap")
+            counts["harness_cap_drop"] += 1
+
+    if printer:
+        printer(
+            "release_policy: "
+            f"patch_down={counts['patch_down']} "
+            f"dedupe_drop={counts['dedupe_drop']} "
+            f"harness_cap_drop={counts['harness_cap_drop']}"
+        )
+    return items
+
+
 def apply_item(item: Any, policy: dict[str, Any]) -> dict[str, Any]:
     """Adjust one item. Returns a small decision record."""
     analysis = _analysis(item)
@@ -248,7 +487,7 @@ def apply_source_tiers(
             f"boost={counts['boost']} cap={counts['cap']} "
             f"drop={counts['drop']} unchanged={counts['unchanged']}"
         )
-    return items
+    return apply_release_policy(items, policy, printer=printer)
 
 
 def main() -> None:

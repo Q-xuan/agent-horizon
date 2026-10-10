@@ -569,35 +569,35 @@
       {
         "name": "Netflix TechBlog",
         "url": "https://netflixtechblog.com/feed",
-        "enabled": true,
+        "enabled": false,
         "category": "industry",
         "profile": "ai-daily"
       },
       {
         "name": "Engineering at Meta",
         "url": "https://engineering.fb.com/feed/",
-        "enabled": true,
+        "enabled": false,
         "category": "industry",
         "profile": "ai-daily"
       },
       {
         "name": "Node.js Blog",
         "url": "https://nodejs.org/en/feed/blog.xml",
-        "enabled": true,
+        "enabled": false,
         "category": "ai-tools",
         "profile": "agent-engineer"
       },
       {
         "name": "Python Insider",
         "url": "https://blog.python.org/feeds/posts/default",
-        "enabled": true,
+        "enabled": false,
         "category": "ai-tools",
         "profile": "agent-engineer"
       },
       {
         "name": "Apple Machine Learning Research",
         "url": "https://machinelearning.apple.com/rss.xml",
-        "enabled": true,
+        "enabled": false,
         "category": "papers",
         "profile": "agent-engineer"
       },
@@ -694,7 +694,7 @@
       {
         "name": "OpenAI News",
         "url": "https://openai.com/news/rss.xml",
-        "enabled": true,
+        "enabled": false,
         "category": "industry",
         "profile": "ai-daily"
       },
@@ -818,7 +818,7 @@
       {
         "name": "Claude Code Changelog",
         "url": "https://code.claude.com/docs/en/changelog/rss.xml",
-        "enabled": true,
+        "enabled": false,
         "category": "harness",
         "profile": "harness-arch"
       },
@@ -976,7 +976,7 @@
       {
         "name": "Discord Engineering",
         "url": "https://discord.com/blog/rss.xml",
-        "enabled": true,
+        "enabled": false,
         "category": "ai-tools",
         "profile": "agent-engineer",
         "content_extractor": "trafilatura"
@@ -984,7 +984,7 @@
       {
         "name": "Uber Engineering",
         "url": "https://www.uber.com/blog/engineering/rss/",
-        "enabled": true,
+        "enabled": false,
         "category": "ai-tools",
         "profile": "agent-engineer",
         "content_extractor": "trafilatura"
@@ -992,21 +992,21 @@
       {
         "name": "美团技术团队",
         "url": "https://tech.meituan.com/feed/",
-        "enabled": true,
+        "enabled": false,
         "category": "ai-tools",
         "profile": "agent-engineer"
       },
       {
         "name": "腾讯技术工程",
         "url": "https://wechat2rss.bestblogs.dev/feed/74768371190cf6113b29ae18600a9446f2571ff7.xml",
-        "enabled": true,
+        "enabled": false,
         "category": "ai-tools",
         "profile": "agent-engineer"
       },
       {
         "name": "字节跳动技术团队",
         "url": "https://wechat2rss.xlab.app/feed/8cb8bb1ae7c1b52bc664273c5cf8c39fa6a8b75f.xml",
-        "enabled": true,
+        "enabled": false,
         "category": "ai-tools",
         "profile": "agent-engineer"
       },

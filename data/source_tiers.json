@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "official_boost": 0.8,
   "score_min": 0.0,
   "score_max": 10.0,
@@ -20,14 +20,12 @@
     "Langfuse Blog",
     "Cloudflare AI",
     "Google DeepMind",
-    "OpenAI News",
     "Anthropic News",
     "Anthropic Engineering",
     "Anthropic Research",
     "Cursor Blog",
     "Cursor Changelog",
     "Cognition Blog",
-    "Claude Code Changelog",
     "OpenAI Engineering",
     "OpenAI Developer",
     "Thinking Machines",
@@ -42,16 +40,18 @@
     "Cohere",
     "BAIR",
     "GitHub Blog",
-    "Netflix TechBlog",
-    "Engineering at Meta",
-    "Node.js Blog",
-    "Python Insider",
-    "Apple Machine Learning Research",
     "DeepSeek",
     "Qwen Blog",
     "Cloudflare Engineering",
+    "OpenAI News",
+    "Claude Code Changelog",
+    "Netflix TechBlog",
+    "Node.js Blog",
+    "Python Insider",
+    "Engineering at Meta",
     "Discord Engineering",
     "Uber Engineering",
+    "Apple Machine Learning Research",
     "美团技术团队",
     "腾讯技术工程",
     "字节跳动技术团队"
@@ -203,5 +203,24 @@
     "appinn.com",
     "ifanr.com",
     "lobste.rs"
-  ]
+  ],
+  "release_policy": {
+    "enabled": true,
+    "same_day_dedupe": true,
+    "harness_release_cap": 3,
+    "patch_penalty": 1.5,
+    "patch_score_cap": 5.5,
+    "product_aliases": {
+      "Claude Code Changelog": "anthropics/claude-code",
+      "code.claude.com/claude-code": "anthropics/claude-code"
+    },
+    "harness_profiles": [
+      "harness-arch"
+    ],
+    "harness_categories": [
+      "harness",
+      "coding-agent",
+      "mcp"
+    ]
+  }
 }

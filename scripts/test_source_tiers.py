@@ -272,7 +272,120 @@ def test_batch_and_policy_file() -> None:
     apply_source_tiers(items, printer=logs.append)
     assert_true(items[0].processing.analysis.score == 6.8, items[0].processing.analysis.score)
     assert_true(items[1].processing.analysis.score == 0.0, items[1].processing.analysis.score)
-    assert_true(logs and "boost=1" in logs[0] and "drop=1" in logs[0], logs)
+    tier_logs = [line for line in logs if line.startswith("source_tiers:")]
+    assert_true(tier_logs and "boost=1" in tier_logs[0] and "drop=1" in tier_logs[0], logs)
+
+
+
+def test_release_policy_same_day_dedupe_and_cap() -> None:
+    from apply_source_tiers import (
+        apply_release_policy,
+        apply_source_tiers,
+        extract_semver,
+        is_patch_release,
+        load_policy,
+        release_product_key,
+    )
+
+    policy = load_policy()
+    assert_true(policy.get("release_policy", {}).get("enabled") is True, "release_policy on")
+
+    def release(
+        *,
+        title: str,
+        url: str,
+        score: float,
+        item_id: str,
+        day: str = "2026-10-09",
+        profile: str = "harness-arch",
+        feed_name: str | None = None,
+        category: str = "harness",
+        source_type: str = "github",
+    ):
+        meta = {"category": category, "event_type": "ReleaseEvent"}
+        if feed_name:
+            meta["feed_name"] = feed_name
+        analysis = SimpleNamespace(score=score, reason="ok")
+        classification = SimpleNamespace(profile=profile, method="source_override")
+        processing = SimpleNamespace(analysis=analysis, classification=classification)
+        return SimpleNamespace(
+            id=item_id,
+            source_type=source_type,
+            title=title,
+            url=url,
+            content="",
+            metadata=meta,
+            processing=processing,
+            profile=profile,
+            published_at=day,
+        )
+
+    assert_true(is_patch_release(
+        release(title="Claude Code v2.1.291 发布", url="https://github.com/anthropics/claude-code/releases/tag/v2.1.291", score=7, item_id="x")
+    ), "2.1.291 is patch")
+    assert_true(extract_semver("FastMCP v4.1.0 发布") == (4, 1, 0), "4.1.0 parsed")
+    assert_true(not is_patch_release(
+        release(title="FastMCP v4.1.0 发布", url="https://github.com/PrefectHQ/fastmcp/releases/tag/v4.1.0", score=7, item_id="y")
+    ), "4.1.0 is not a pure patch")
+
+    a = release(
+        title="Claude Code v2.1.291 发布",
+        url="https://github.com/anthropics/claude-code/releases/tag/v2.1.291",
+        score=7.8,
+        item_id="github:release:1",
+    )
+    b = release(
+        title="Claude Code v2.1.292 发布",
+        url="https://github.com/anthropics/claude-code/releases/tag/v2.1.292",
+        score=7.9,
+        item_id="github:release:2",
+    )
+    c = release(
+        title="Claude Code 2.1.281 发布",
+        url="https://code.claude.com/docs/en/changelog#2-1-281",
+        score=7.5,
+        item_id="rss:claude:1",
+        feed_name="Claude Code Changelog",
+        source_type="rss",
+    )
+    assert_true(
+        release_product_key(a, policy)
+        == release_product_key(c, policy)
+        == "anthropics/claude-code",
+        "changelog aliases to anthropics/claude-code",
+    )
+
+    # Dedupe only (disable cap for this assertion via a copy of policy).
+    dedupe_policy = json.loads(json.dumps(policy))
+    dedupe_policy["release_policy"]["harness_release_cap"] = 99
+    dedupe_policy["release_policy"]["patch_penalty"] = 0
+    apply_release_policy([a, b, c], dedupe_policy)
+    claude_alive = [x for x in (a, b, c) if (x.processing.analysis.score or 0) > 0]
+    assert_true(len(claude_alive) == 1, f"same-day dedupe keeps 1, got {len(claude_alive)}")
+    assert_true(claude_alive[0] is b, "highest score (7.9) kept")
+
+    # Cap: five distinct products → only 3 survive.
+    products = [
+        release(title=f"Proj{i} v1.{i}.0 发布", url=f"https://github.com/org/proj{i}/releases/tag/v1.{i}.0", score=8.0 - i * 0.2, item_id=f"github:release:p{i}")
+        for i in range(5)
+    ]
+    cap_policy = json.loads(json.dumps(policy))
+    cap_policy["release_policy"]["patch_penalty"] = 0
+    apply_release_policy(products, cap_policy)
+    alive = [x for x in products if (x.processing.analysis.score or 0) > 0]
+    assert_true(len(alive) == 3, f"harness cap keeps 3, got {len(alive)}")
+
+    # Patch downweight via full pipeline (official boost then patch).
+    patch = release(
+        title="claude-code v2.1.300 发布",
+        url="https://github.com/anthropics/claude-code/releases/tag/v2.1.300",
+        score=7.0,
+        item_id="github:release:patch",
+    )
+    apply_source_tiers([patch], policy)
+    # boost +0.8 → 7.8, then patch_down -1.5 and cap 5.5 → 5.5
+    assert_true(patch.processing.analysis.score == 5.5, patch.processing.analysis.score)
+
 
 
 def main() -> None:
@@ -280,6 +393,7 @@ def main() -> None:
     test_adjustments()
     test_config_rss_names_are_classified()
     test_batch_and_policy_file()
+    test_release_policy_same_day_dedupe_and_cap()
     print("ok")
 
 
