@@ -5,42 +5,44 @@ date: 2026-10-15
 lang: en
 ---
 
-> From 197 items, 10 important content pieces were selected
+> From 216 items, 12 important content pieces were selected
 
 ---
 
 **Agent Harness Architecture**
-1. [Mastra core 1.77.0 发布](#item-harness-arch-1) ⭐️ 8.8/10
+1. [Mastra Core 1.77.0 发布](#item-harness-arch-1) ⭐️ 8.8/10
 2. [Agent Framework 1.25.0](#item-harness-arch-2) ⭐️ 7.8/10
-3. [langgraph checkpointpostgres 3.2.0 adds prune](#item-harness-arch-3) ⭐️ 6.8/10
+3. [Graphiti v0.31.0 发布](#item-harness-arch-3) ⭐️ 6.8/10
 
 **AI Agent Engineer**
-1. [Zellige AI 开源 Tessera-27B-B-CJK](#item-agent-engineer-1) ⭐️ 6.0/10
+1. [HF 论文：CoSIR 多智能体训练](#item-agent-engineer-1) ⭐️ 7.0/10
+2. [Agent-Reflex 三阶段反思训练框架提出](#item-agent-engineer-2) ⭐️ 7.0/10
+3. [Tev-Gym 开源长时程 Agent 数据集](#item-agent-engineer-3) ⭐️ 7.0/10
+4. [Harness^2: Recursive Agent Harnessing Framework](#item-agent-engineer-4) ⭐️ 7.0/10
 
 **AI Daily**
-1. [GitHub 发布新版星标历史 API](#item-ai-daily-1) ⭐️ 6.8/10
-2. [SentinelOne 借助 OpenAI Daybreak 压缩恶意软件分析时间](#item-ai-daily-2) ⭐️ 6.3/10
-3. [Block 借助 OpenAI 构建 AI 安全运营](#item-ai-daily-3) ⭐️ 6.3/10
+1. [Block 用 OpenAI 技术构建 AI 安全](#item-ai-daily-1) ⭐️ 6.8/10
+2. [SentinelOne 恶意软件分析耗时从周降至小时](#item-ai-daily-2) ⭐️ 5.8/10
 
 **AI Deals**
-1. [Free Voronoi 拼图生成器可用](#item-ai-deals-1) ⭐️ 6.0/10
-2. [免费Remote Jobs API 无认证](#item-ai-deals-2) ⭐️ 6.0/10
-3. [Petal 开源免费屏幕共享工具上线](#item-ai-deals-3) ⭐️ 5.0/10
+1. [CoScreen 原团队开源 Petal 工具](#item-ai-deals-1) ⭐️ 9.0/10
+2. [Show HN 免费远程工作 API 上线](#item-ai-deals-2) ⭐️ 6.0/10
+3. [GoPuzzleGo 免费拼图生成器上线](#item-ai-deals-3) ⭐️ 5.0/10
 
 ---
 
 ## Agent Harness Architecture
 
 <a id="item-harness-arch-1"></a>
-### [Mastra core 1.77.0 发布](https://github.com/mastra-ai/mastra/releases/tag/%40mastra/core%401.77.0) ⭐️ 8.8/10
+### [Mastra Core 1.77.0 发布](https://github.com/mastra-ai/mastra/releases/tag/%40mastra/core%401.77.0) ⭐️ 8.8/10
 
-Mastra agent harness 发布 @mastra/core@1.77.0。本次引入 FactorySandbox 一等契约，内置 Docker、E2B、Mastra Platform 三种实现，支持可调设置、仓库模板和预构建环境。Factory 现支持多仓库会话与跨仓库源码控制工具，durable agent run fencing 扩展至 Cloudflare DO/D1、Convex、DynamoDB 等十多种存储后端。观测记忆新增并发冲突感知写入与跨系统链路追踪。
+Mastra Core 1.77.0 发布。新增 FactorySandbox 提供商契约，支持 Docker、E2B 和 Mastra Platform 三种实现，提供可调设置、仓库模板和预构建环境。Factory 支持多仓库会话管理和 source\_control\_\* 工具。Durable agent 跨 Cloudflare DO/D1、Convex、DynamoDB 等 11 种存储后端实现 run fencing，防止崩溃恢复后状态覆盖。观测记忆修复并发冲突，链路追踪新增 span links。
 
 github · PaulieScanlon · Oct 14, 08:29
 
-**「设计要点」** Factory 沙箱层抽象为 provider 实例契约，支持设置、模板、构建全生命周期管理，脱离回调式单会话创建。Durable agent 在存储适配器层实现 run fencing，通过所有权标记防止崩溃恢复后的状态覆写；观测记忆引入 generation 保护与块级写入 API，解决多进程重叠缓冲的竞态。
+**「设计要点」** FactorySandbox 将沙箱配置、模板和构建生命周期抽象为 provider 接口，provider 包实现该契约即可接入 Factory。多存储适配器统一实现 run fencing 语义，Observational Memory 引入 generation 保护和冲突感知写入，保证分布式部署状态一致性。
 
-**「改了什么」** 相对上一版，核心新增 FactorySandbox 契约及 Docker、E2B、Mastra Platform 三种内置实现、环境预构建与多仓库会话、跨存储后端的 durable run fencing，以及观测记忆的冲突感知写入。AgentController 的 steer 与 followUp 接口支持文件附件，工作流 HTTP 路由收紧为仅通过 agent 路由启动。
+**「改了什么」** AgentController 的 steer 和 followUp 方法新增文件附件支持，FactorySandbox 契约及 Docker、E2B、Mastra Platform 实现上线以支持预构建环境。Durable agent 在 Cloudflare DO/D1、Convex、DynamoDB 等 11 种存储后端启用 run fencing，@mastra/server 的 workflow HTTP 路由禁止启动内部工作流。
 
 **Tags**: `#sandbox`, `#tools`, `#runtime`, `#memory`
 
@@ -49,136 +51,162 @@ github · PaulieScanlon · Oct 14, 08:29
 <a id="item-harness-arch-2"></a>
 ### [Agent Framework 1.25.0](https://github.com/microsoft/agent-framework/releases/tag/dotnet-1.25.0) ⭐️ 7.8/10
 
-Microsoft 发布 Agent Framework .NET 1.25.0。A2A 协议升级至 1.0.0-preview3，运行时修复 SSE 流未正确终止、agent handoff 回弹及 reasoning 状态残留问题。新增 closed-list workflow question 支持，tool approval 增加无响应自动拒绝机制，purview 检查扩展至引用与错误详情。Cosmos chat 元数据与 partition-key 策略解耦，Foundry toolbox 响应缓存隔离，并回滚 Harness progress 简洁化 breaking change，同时修复 OpenTelemetry 包装下 continuation token 丢失。
+Microsoft Agent Framework .NET 1.25.0 发布。A2A 协议升级至 1.0.0-preview3，工具审批新增超时自动拒绝与复用逻辑，SSE 流修复终止帧，Purview 检查纳入引用与错误详情，子代理流程修复推理残留与 handoff 回弹。包含 Cosmos 聊天元数据与分区键策略解耦的 breaking change。
 
 github · dmytrostruk · Oct 14, 19:10
 
-**「设计要点」** Runtime 层修复 SSE 终止符与 agent 状态机残留，A2A 协议升级影响跨系统互操作。工具层引入 approval 复用与无响应超时拒绝，工作流层支持 closed-list 问题约束；存储层解耦 Cosmos partition-key，观测层修正 OpenTelemetry 包装下 continuation token 保持。
+**「改了什么」** A2A 包升级至 1.0.0-preview3；未响应工具审批请求超时后自动拒绝并支持复用；SSE 流以 data: \[DONE\] 正确终止；Purview 检查包含引用与错误详情；修复子代理 handoff 回弹与推理残留；Cosmos 聊天元数据与分区键策略解耦（breaking）。
 
-**「改了什么」** A2A 协议升级至 1.0.0-preview3，SSE 流终止符修复为 data: \[DONE\]，handoff 回弹与 reasoning 残留问题得到修正。新增 closed-list workflow question、tool approval 无响应自动拒绝、purview 检查扩展引用与错误详情；Cosmos chat 元数据与 partition-key 解耦，Foundry 缓存隔离，并回滚 Harness progress 简洁化 breaking change，同时修复 OpenTelemetry 包装下 continuation token 丢失。
-
-**Tags**: `#dotnet-agent-framework`, `#A2A-protocol`, `#agent-runtime`, `#tool-approval`, `#agent-workflow`
+**Tags**: `#runtime`, `#tools`, `#permissions`, `#subagents`, `#planning`
 
 ---
 
 <a id="item-harness-arch-3"></a>
-### [langgraph checkpointpostgres 3.2.0 adds prune](https://github.com/langchain-ai/langgraph/releases/tag/checkpointpostgres%3D%3D3.2.0) ⭐️ 6.8/10
+### [Graphiti v0.31.0 发布](https://github.com/getzep/graphiti/releases/tag/v0.31.0) ⭐️ 6.8/10
 
-langchain-ai/langgraph released checkpointpostgres 3.2.0 on October 14, 2026. The update adds a prune capability to PostgresSaver and AsyncPostgresSaver for managing checkpoint lifecycle. This enables production deployments to remove outdated checkpoints. No interface changes or operational limits are documented in the release notes.
+getzep/graphiti v0.31.0 将 MCP server 升级至 SDK 2.x，并新增按 group\_id 路由 MCP 工具到对应图实例的能力。版本同时引入 LLMRuntime 实现 prompt 与模型动态路由，并将默认 OpenAI 模型切换为 gpt-6-luna、关闭 prompt caching。此外，C2 prompt 成为默认组合提取提示，FalkorDB 6.x 全文索引修复，以及多项依赖安全更新。
 
-github · github-actions\[bot\] · Oct 14, 19:54
+github · pevans · Oct 14, 23:58
 
-**「What Changed」** checkpointpostgres 3.2.0 introduces prune functionality for PostgresSaver and AsyncPostgresSaver. This is the sole feature addition since version 3.1.3.
+**「设计要点」** MCP server 升级至 SDK 2.x 后，工具层协议与传输实现随之更新。group\_id 参数现在决定 MCP 工具路由到哪个图实例，实现多图隔离。LLMRuntime 将 prompt 模板与模型选择解耦，支持运行时动态路由。
 
-**Tags**: `#memory`, `#runtime`
+**「改了什么」** MCP server 从 SDK 1.x 升级至 2.x；MCP 工具现在按请求的 group\_id 路由到对应图实例；新增 LLMRuntime 支持 prompt 和模型动态路由；默认 OpenAI 调用从 gpt-4.1-nano 改为 gpt-6-luna 并关闭 prompt caching；C2 prompt 成为默认组合提取提示；FalkorDB 6.x 全文索引改用 DDL 形式创建；升级 pyjwt、sentence-transformers、urllib3、tornado 等依赖修复安全通告。
+
+**Tags**: `#mcp`, `#tools`, `#runtime`
 
 ---
 
 ## AI Agent Engineer
 
 <a id="item-agent-engineer-1"></a>
-### [Zellige AI 开源 Tessera-27B-B-CJK](https://www.reddit.com/r/LocalLLaMA/comments/1x5xm28/tessera27bbcjk_zellige_ais_new_finetune_of_qwen/) ⭐️ 6.0/10
+### [HF 论文：CoSIR 多智能体训练](https://huggingface.co/papers/2610.17893) ⭐️ 7.0/10
 
-2026年10月14日，Zellige AI发布开源Apache-2.0权重的Tessera-27B-B-CJK模型，该模型基于Qwen3.8-27B微调，面向编码智能体场景优化，内部思考采用混合英文、中文与符号的压缩CJK速记，输出保持英文/代码格式，兼容现有智能体harness。在11个held-out编码智能体任务、xhigh effort设置下，该模型每轮思考token为基座模型的0.50-0.64倍，典型轮次为0.496倍（90% CI 0.385-0.624），88轮匹配测试中工具调用有效率和基座一致，无重复循环，101K-131K输入长度下6/6工具调用有效。该模型在数学竞赛、硬算法编码场景表现弱于基座，GGUF与NVFP4量化版本尚未完成测试。
+2026年10月15日Hugging Face每日论文收录多智能体LLM协作训练研究论文，提出CoSIR后训练方法。该方法采用可验证的基于惊讶度的信息奖励机制，搭配贝叶斯评估器以团队惊讶度下降幅度评估共享信息价值，解决多智能体协作中最终任务反馈稀疏的痛点。训练出的协作行为可泛化至未见过的复杂任务，当前属于研究阶段成果，非生产级发布。
 
-reddit · r/LocalLLaMA · /u/ghgi\_ · Oct 14, 17:35
+rss · Hugging Face Daily Papers · Oct 15, 00:00
 
-**「为什么重要」** 该模型针对编码智能体循环的token消耗问题，提出了可复现的压缩CJK内部思考微调方案，且开源权重与训练流程，为智能体效率优化提供了新的参考方向。
+**「为什么重要」** 该研究针对多智能体LLM协作训练的核心反馈稀疏问题提出可验证的技术路径，为后续多智能体系统的训练方案与编排设计提供了研究层面的参考方向。
 
-**「可关注」** 可关注：针对编码智能体场景，可通过将内部思考替换为压缩CJK速记、同时保持输出兼容现有harness的微调思路降低token消耗，但需注意该方案在数学竞赛、硬算法编码场景表现弱于基座，且量化版本尚未验证。
+**「可关注」** 可关注：CoSIR通过可验证的信息奖励机制解决多智能体协作训练反馈稀疏问题，其贝叶斯评估器以团队惊讶度下降作为信息价值度量，为相关训练方案设计提供了可复现的研究参考。
 
-**Tags**: `#coding-agent`, `#harness`
+**Tags**: `#orchestration`, `#eval`
+
+---
+
+<a id="item-agent-engineer-2"></a>
+### [Agent-Reflex 三阶段反思训练框架提出](https://huggingface.co/papers/2610.17953) ⭐️ 7.0/10
+
+2026-10-15，Hugging Face Daily Papers 收录论文《Agent-Reflex: Teaching Language Agents to Act Reflectively》，提出同名三阶段训练框架。该框架教 LLM agent 在长程任务中主动反思，以处理 noisy MCP 工具反馈与用户纠正。第一阶段 Environment Reflection Skill Discovery \(RSD\) 向环境注入工具反馈扰动，从多样化 LLM 池采样，挖掘成功-失败配对并总结可复用反思元技能；后续阶段内容在提供的摘要中被截断。研究面向 coding agent 与 harness 工程师，但完整技术细节、性能指标及开源计划尚未公开。
+
+rss · Hugging Face Daily Papers · Oct 15, 01:51
+
+**「为什么重要」** 该论文针对 agent 部署中的高优先级痛点——MCP 工具反馈噪声与用户干预后的恢复能力，为 harness 设计与评估系统提供新训练范式参考。目前仅见框架概述，尚无可验证的性能数据或实现代码。
+
+**「可关注」** 可关注：RSD 阶段通过环境扰动自动挖掘成功-失败配对生成反思元技能的方法，可能为 agent 训练数据构造提供新思路。
+
+**Tags**: `#coding-agent`, `#mcp`, `#harness`, `#eval`
+
+---
+
+<a id="item-agent-engineer-3"></a>
+### [Tev-Gym 开源长时程 Agent 数据集](https://huggingface.co/papers/2610.18868) ⭐️ 7.0/10
+
+Hugging Face Daily Papers 于 2026-10-15 介绍论文《Tev: Scaling Long-Horizon Agentic Environments with Dense Progress Rewards》，提出 Tev-Gym。这是首个开源长时程 agent 训练数据集，提供可验证的密集渐进奖励，包含 1,170 个经验证的任务环境，覆盖 7 个领域。该数据集采用 latent-world-first 方法构建，旨在解决长时程 agent 开发中训练数据稀缺与奖励稀疏的核心瓶颈。目前未公开具体模型性能提升数据或使用限制。
+
+rss · Hugging Face Daily Papers · Oct 15, 01:51
+
+**「为什么重要」** 长时程 agent 是自动化发现和递归自我改进（RSI ）的关键能力，而开源模型在此类任务上表现不佳，主要受限于数据与奖励机制。Tev-Gym 提供了可规模化的训练与评估基础设施，可能降低长时程 agent 的研究门槛。
+
+**「可关注」** 可关注：Tev-Gym 的 latent-world-first 构建流程与密集奖励标注机制，可作为长时程 agent 训练数据集的工程模板，但需验证其任务环境在真实编码场景中的迁移效果。
+
+**Tags**: `#eval`, `#coding-agent`, `#harness`
+
+---
+
+<a id="item-agent-engineer-4"></a>
+### [Harness^2: Recursive Agent Harnessing Framework](https://huggingface.co/papers/2610.14224) ⭐️ 7.0/10
+
+On 2026-10-15, Hugging Face Daily Papers featured the paper &\#x27;Harness^2: Recursive Agent Harnessing for an Open World,&\#x27; proposing a plug-and-play recursive agent harnessing framework. The framework addresses two critical challenges in deploying recursive self-improvement \(RSI\) for agent harnesses in open-world settings: \(1\) open-world tasks are typically unseen during harness design and novel at test time, leaving no ground-truth verifiers to reliably guide online harness edits; \(2\) RSI processes remain highly task-specific and fail to generalize to novel scenarios. It introduces two interconnected levels of recursion, where task-level recursion refines the current task&\#x27;s harness using a contrastive Propose... \(abstract truncated\). The work targets agent engineers working on harness and orchestration design. Full technical details, implementation, and performance data are not available for verification from the provided abstract snippet.
+
+rss · Hugging Face Daily Papers · Oct 15, 01:51
+
+**「Why It Matters」** The framework directly targets core bottlenecks in scaling agent harnesses for open-world environments, though the complete mechanism and empirical results remain undisclosed.
+
+**「Engineer Takeaway」** Watch for: the separation of task-level recursion from contrastive verification, which may offer a new approach to online harness optimization without ground-truth verifiers.
+
+**Tags**: `#harness`, `#orchestration`, `#eval`
 
 ---
 
 ## AI Daily
 
 <a id="item-ai-daily-1"></a>
-### [GitHub 发布新版星标历史 API](https://github.blog/engineering/architecture-optimization/from-2500-requests-to-24-rebuilding-star-history-without-the-stargazers/) ⭐️ 6.8/10
+### [Block 用 OpenAI 技术构建 AI 安全](https://openai.com/index/block-ai-powered-security) ⭐️ 6.8/10
 
-GitHub has officially launched a new repository star history API. This API provides star trend data without returning individual user identities, cuts request volume from 2,500 to 24, avoids unbounded database operations, and the official team has disclosed corresponding engineering tradeoffs.
+OpenAI 官方博客公布，Block 正在采用 OpenAI 技术构建 AI 驱动的安全能力。其安全团队的威胁调查与补丁提案耗时已缩短至分钟级。
 
-rss · GitHub Blog · Oct 14, 19:11
+rss · OpenAI Blog · Oct 14, 07:00
 
-**「为什么重要」** GitHub serves as the core hosting platform for AI open-source projects. The privacy protection and performance optimization of this API will directly impact the efficiency and compliance of obtaining star trend data for AI open-source projects.
+**「可关注」** 可关注：Block 基于 OpenAI 技术将安全威胁调查与补丁提案耗时压缩至分钟级。
 
-**「可关注」** Watch for: The new star history API achieves a significant reduction in request volume and eliminates unbounded database operations by opting not to return individual user identities.
-
-**Tags**: `#industry`, `#product`, `#open-source`
+**Tags**: `#industry`, `#product`, `#lab`
 
 ---
 
 <a id="item-ai-daily-2"></a>
-### [SentinelOne 借助 OpenAI Daybreak 压缩恶意软件分析时间](https://openai.com/index/sentinelone) ⭐️ 6.3/10
+### [SentinelOne 恶意软件分析耗时从周降至小时](https://openai.com/index/sentinelone) ⭐️ 5.8/10
 
-OpenAI 官方博客发布短讯称，SentinelOne 借助 OpenAI Daybreak 将恶意软件分析时间从数周缩短至小时级。公告未披露具体技术实现或量化性能指标。效率提升使其有能力调查更多威胁。
+OpenAI 官方博客报道，网络安全公司 SentinelOne 使用 OpenAI Daybreak 将恶意软件分析时间从数周缩短至数小时，从而提升威胁调查容量。该报道仅一句话，未披露具体技术实现、量化指标或更广泛的行业影响。
 
 rss · OpenAI Blog · Oct 14, 12:00
 
-**「为什么重要」** 这显示生成式 AI 在安全运营分析环节的落地案例。若小时级分析可复现，安全团队可将人力重新分配至高优先级威胁。
-
-**「可关注」** 可关注：AI 辅助恶意软件分析的具体工作流集成与效果验证。
-
 **Tags**: `#industry`, `#product`
-
----
-
-<a id="item-ai-daily-3"></a>
-### [Block 借助 OpenAI 构建 AI 安全运营](https://openai.com/index/block-ai-powered-security) ⭐️ 6.3/10
-
-Block Inc. 正在使用 OpenAI 技术构建 AI 驱动的安全运营系统。其安全团队将威胁调查和补丁提案时间缩短至分钟级。该信息来自 OpenAI 官方博客 2026 年 10 月 14 日发布的客户案例，目前公开的技术细节有限。
-
-rss · OpenAI Blog · Oct 14, 07:00
-
-**「可关注」** 可关注：AI 辅助将安全威胁调查与补丁提案压缩到分钟级。
-
-**Tags**: `#lab`, `#industry`, `#product`
 
 ---
 
 ## AI Deals
 
 <a id="item-ai-deals-1"></a>
-### [Free Voronoi 拼图生成器可用](https://gopuzzlego.com/generator) ⭐️ 6.0/10
+### [CoScreen 原团队开源 Petal 工具](https://petal.live/) ⭐️ 9.0/10
 
-gopuzzlego.com provides a free, no-signup jigsaw puzzle generator that outputs SVG, PDF, and STL files with Voronoi-shaped pieces. It charges no fees, requires no account, and has no stated usage limits or expiration dates as of its 2026-10-14 launch.
+CoScreen 原团队成员 Jason Thomas 等人发布开源免费结对编程工具 Petal，替代已关停的 CoScreen 服务，无付费、绑卡等使用限制。用户可通过官方 GitHub 仓库 kiruna-labs/petal 或官网直接获取，支持 macOS、Windows 及网页端，Linux 版本后续上线；也可通过 docker-compose 自托管 LiveKit 服务端，将流量保留在内网。工具支持共享窗口以真实桌面窗口形式呈现，可移动调整大小，多人共享时带标注光标，支持点击共享窗口输入、滚动，房间持久化无需反复传递链接。
 
-rss · HN Free API / Credits · Oct 14, 11:02
+rss · HN Free API / Credits · Oct 14, 18:23
 
-**「为什么重要」** No public paid tiers or usage restrictions are announced, so it works for immediate free use. But its Hacker News post has only 1 point and 0 comments, with no details on long-term maintenance, so availability may shift without warning.
+**「为什么重要」** 过去 Screenhero、CoScreen、Around 等多人协作共享工具均因被收购后关停，Petal 采用开源免费模式且支持自托管、fork，可避免用户再次面临服务突然停用的问题，填补了 CoScreen 关停后的免费替代空白。
 
-**「可关注」** 可关注：The tool needs no account and supports SVG, PDF, STL exports, fitting users who need quick custom puzzle assets, but its long-term maintenance status is unannounced and availability may change.
+**「可关注」** 可关注：Petal 支持通过 docker-compose 自托管 LiveKit 服务端，可将流量保留在内网；Linux 版本仍在开发中，可参与贡献。
 
-**Tags**: `#free-tier`, `#no-account`, `#tool`
+**Tags**: `#free-tier`, `#open-source`, `#developer-tool`
 
 ---
 
 <a id="item-ai-deals-2"></a>
-### [免费Remote Jobs API 无认证](https://remote-jobs-api.tten.no/) ⭐️ 6.0/10
+### [Show HN 免费远程工作 API 上线](https://remote-jobs-api.tten.no/) ⭐️ 6.0/10
 
-HN用户earnnovadev发布免费远程工作API，提供63万条跨16个招聘板的实时职位数据。该API无需认证即可调用，未公开速率限制、有效期等使用规则，相关Show HN帖子仅获1赞0评论。
+开发者 earnnovadev 在 Show HN 发布免费无认证远程工作 API，收录 63 万条来自 16 个招聘板的实时职位列表，无公开使用限制，也未公布有效期。
 
 rss · HN Free API / Credits · Oct 14, 08:04
 
-**「为什么重要」** 若开发者有轻量级远程职位数据抓取需求，可免认证直接调用，但未披露使用限制，稳定性待验证，对多数AI/开发者场景价值有限。
+**「为什么重要」** 目前该 API 尚未经过社区验证，若后续稳定可用，可免去自行爬取多平台远程职位的成本。
 
-**「可关注」** 可关注：该API无需认证即可访问，但未公开速率限制与有效期，仅适合轻量测试，生产环境使用需自行验证稳定性。
+**「可关注」** 可关注：该 API 无公开使用限制与有效期，但作为未经验证的个人项目，稳定性待观察。
 
 **Tags**: `#api`, `#free-tier`
 
 ---
 
 <a id="item-ai-deals-3"></a>
-### [Petal 开源免费屏幕共享工具上线](https://petal.live/) ⭐️ 5.0/10
+### [GoPuzzleGo 免费拼图生成器上线](https://gopuzzlego.com/generator) ⭐️ 5.0/10
 
-前 CoScreen 创始团队发布开源免费协作屏幕共享工具 Petal，替代已停服的 CoScreen，完全免费且不商业化，支持 macOS、Windows 及网页端，核心功能包括多人共享可交互桌面窗口、持久化房间，可直接使用官方托管实例，或通过 docker-compose 自托管，无使用费用，无截止时间限制。
+GoPuzzleGo 上线免费拼图生成工具，支持导出 SVG、PDF、STL 三种格式，拼块基于 Voronoi 算法生成，无需注册账号即可直接使用，无明确使用限制与截止时间。
 
-rss · HN Free API / Credits · Oct 14, 18:23
+rss · HN Free API / Credits · Oct 14, 11:02
 
-**「为什么重要」** CoScreen 已于 2025 年 7 月 31 日停服，Petal 作为开源替代品不会被厂商单方面关停，适合有 pair programming 需求的开发者团队使用。
+**「为什么重要」** 若需定制拼图素材，该工具无需账号、无付费门槛，可直接导出多格式文件用于打印或 3D 建模，省去注册与付费步骤。
 
-**「可关注」** 可关注：Petal 首版开发仅用 8 周，使用了 Fable、Astra 等前沿模型辅助编写实时音视频与窗口捕获代码，支持对接自有 LiveKit 服务器将媒体流量保留在内网，Linux 版本正在开发中可参与贡献。
+**「可关注」** 可关注：工具支持导出 STL 格式，生成的 Voronoi 拼块可直接用于 3D 打印拼图，无需额外建模操作。
 
-**Tags**: `#open-source`, `#free-tier`, `#developer-tools`, `#screen-sharing`, `#collaboration`
+**Tags**: `#free-tier`, `#no-account`, `#utility`
 
 ---
