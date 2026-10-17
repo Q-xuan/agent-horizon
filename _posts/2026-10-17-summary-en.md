@@ -5,168 +5,170 @@ date: 2026-10-17
 lang: en
 ---
 
-> From 172 items, 9 important content pieces were selected
+> From 189 items, 9 important content pieces were selected
 
 ---
 
 **Agent Harness Architecture**
-1. [Mastra 1.78.0 发布](#item-harness-arch-1) ⭐️ 8.8/10
-2. [Goose v1.55.0 发布](#item-harness-arch-2) ⭐️ 8.3/10
-3. [pydantic-ai v2.57.0 发布](#item-harness-arch-3) ⭐️ 7.8/10
+1. [Mastra Core 1.78.0 发布](#item-harness-arch-1) ⭐️ 8.8/10
+2. [Goose v1.55.0 发布](#item-harness-arch-2) ⭐️ 7.8/10
+3. [pydantic-ai v2.58.0 发布](#item-harness-arch-3) ⭐️ 7.8/10
 
 **AI Agent Engineer**
-1. [Apple MLX 分布式推理跑通 Muse Spark](#item-agent-engineer-1) ⭐️ 7.0/10
-2. [Claude Code 代码审查流程调整](#item-agent-engineer-2) ⭐️ 7.0/10
-3. [Cognition 启动 American Forge 驻留计划](#item-agent-engineer-3) ⭐️ 5.8/10
+1. [MLX 支持 Mac Studio 集群推理](#item-agent-engineer-1) ⭐️ 7.0/10
+2. [Claude 优化量子电路 最高 17×](#item-agent-engineer-2) ⭐️ 6.0/10
+3. [Claude Code 调整代码评审流程](#item-agent-engineer-3) ⭐️ 6.0/10
 
 **AI Daily**
-1. [Itaú 银行生成式AI部署案例](#item-ai-daily-1) ⭐️ 6.8/10
+1. [Itaú 全量部署生成式 AI](#item-ai-daily-1) ⭐️ 7.8/10
 
 **AI Deals**
-1. [Epic本周免费领3款游戏](#item-ai-deals-1) ⭐️ 9.0/10
-2. [VideoProc V7.8 限时免费领](#item-ai-deals-2) ⭐️ 7.0/10
+1. [VideoProc Converter AI V7.8 限时免费领](#item-ai-deals-1) ⭐️ 7.0/10
+2. [Epic 本周免费领 2 款游戏](#item-ai-deals-2) ⭐️ 7.0/10
 
 ---
 
 ## Agent Harness Architecture
 
 <a id="item-harness-arch-1"></a>
-### [Mastra 1.78.0 发布](https://github.com/mastra-ai/mastra/releases/tag/%40mastra/core%401.78.0) ⭐️ 8.8/10
+### [Mastra Core 1.78.0 发布](https://github.com/mastra-ai/mastra/releases/tag/%40mastra/core%401.78.0) ⭐️ 8.8/10
 
-Mastra 1.78.0 发布，引入 Agent Scopes 多租户身份与记忆/线程隔离机制，以及端到端 Trace Aggregation API。Agent Scopes 采用 \`&lt;type&gt;:&lt;value&gt;\` 格式，支持按调用、Agent 配置或中间件注入，Mastra 合并三处来源；内存从 \`resource:\`/\`thread:\` 作用域派生资源与线程，冲突时返回 HTTP 400，恢复运行保留原始作用域。Trace Aggregation API 覆盖服务端 \`POST /observability/traces/aggregate\`、客户端 \`aggregateTraces\(\)\` 与 React \`useTraceAggregateAvailable\(\)\`，字段发现返回 \`aggregate\` schema。此外新增 \`Agent.queueSignal\(\)\` 类型化信号队列、存储预览字段，以及工作流可靠性修复。
+Mastra Core 1.78.0 引入多租户 agent scopes，将内存和线程路由与身份绑定，冲突时返回 HTTP 400。新增端到端 trace 聚合 API，支持服务端、客户端和 React 查询。同时增加 typed signal queueing，让 agent 可排队带类型的信号而不降级为普通消息。
 
 github · PaulieScanlon · Oct 16, 08:13
 
-**「设计要点」** 运行时通过 \`MASTRA\_SCOPES\_KEY\` 传递作用域，嵌套调用仅继承非 \`resource:\`/\`thread:\` 作用域以允许自主选择线程。存储层在写入时生成 100 字符预览，列表查询无需读取完整载荷，降低延迟与内存占用。
+**「设计要点」** 运行时通过 \`MASTRA\_SCOPES\_KEY\` 注入作用域，内存层从 \`resource:\`/\`thread:\` 前缀解析资源与线程，嵌套调用隔离线程作用域。Trace 聚合通过能力发现接口返回 \`aggregate\` schema，存储层统一生成输入输出错误预览。
 
-**「改了什么」** 新增 Agent Scopes 多租户路由、Trace Aggregation 全链路 API、\`queueSignal\(\)\` 类型化信号、存储预览字段，以及 \`.foreach\(\)\` 失败传播、\`suspendData\` 恢复等可靠性修复。破坏性变更包括：废弃 \`buildInputPreview\(\)\` 和 \`INPUT\_PREVIEW\_MAX\_LENGTH\`，工厂会话移除 Plan/Explore 模式，跨作用域凭证回退被移除。
+**「改了什么」** Agent 新增 \`scopes\` 配置与 \`queueSignal\(\)\` 方法，支持多租户路由和类型化信号；Trace 查询接口返回 \`outputPreview\`/\`errorPreview\`，存储层预生成预览减少延迟。工作流 \`.foreach\(\)\` 失败处理、持久化 agent 恢复和 \`suspendData\` 保持得到修复，预览 API 重命名、工厂会话模式移除和凭证作用域策略调整构成破坏性变更。
 
-**Tags**: `#memory`, `#permissions`, `#runtime`
+**Tags**: `#runtime`, `#memory`, `#permissions`, `#eval`
 
 ---
 
 <a id="item-harness-arch-2"></a>
-### [Goose v1.55.0 发布](https://github.com/aaif-goose/goose/releases/tag/v1.55.0) ⭐️ 8.3/10
+### [Goose v1.55.0 发布](https://github.com/aaif-goose/goose/releases/tag/v1.55.0) ⭐️ 7.8/10
 
-Goose v1.55.0 发布，强化 MCP 工具链可观测性、上下文管理和模型路由。新增 W3C trace context 从 ACP prompts 传播至 MCP tool calls，provider 响应与错误透出 x-request-id，auto-compaction 默认上限设为 225k tokens。运行时优先使用 OpenAI Responses API 并读取实时模型元数据驱动推理，同时修复 Claude Sonnet 与 Haiku 5.5 的 adaptive thinking，以及 Bedrock converse\_stream 的 ValidationException 重试逻辑。
+Goose agent harness 发布 v1.55.0。本次更新增强 ACP/MCP 互操作，默认将上下文自动压缩上限设为 225k tokens，新增 Aigateway 声明式 provider 配置，并修复多模型运行时问题。新增 W3C trace context 传播、provider x-request-id 透出、OpenAI reasoning 优先使用 Responses API 等能力。
 
 github · github-actions\[bot\] · Oct 16, 16:58
 
-**「设计要点」** 运行时移除 background subagents 与 orchestrator，Doctor 改为 session-only；子代理继承父级 hooks、mode 和 approvals。引入 ProviderManager 统一路由 session provider，工具操作层自主执行 tool call 检查，Stop 指令立即结束运行并保存已产生内容。
+**「设计要点」** 引入 ProviderManager 统一路由 session provider，删除 legacy agent loop 与 background subagents/orchestrator，Doctor 改为 session-only。子代理继承父级 hooks、mode 和 approvals，工具操作自持 tool call checks，Stop 立即结束运行并保存产出。
 
-**「改了什么」** 本版新增 W3C trace context 从 ACP 到 MCP 的传播、provider x-request-id 透出、vision 能力声明识别，以及 OpenAI Responses API 优先和实时元数据驱动推理。auto-compaction 默认上限设为 225k tokens。同时修复 pending tools 在 max turns 前完成、Bedrock 非上下文 ValidationException 不重试、Anthropic 未知 request\_params 透传等行为问题。
+**「改了什么」** 新增 Aigateway 声明式 provider 配置、W3C trace context 传播、默认 225k token 上下文压缩上限、OpenAI reasoning 优先 Responses API。修复多模型运行时问题，删除 legacy agent loop 与 background subagents/orchestrator 并引入 ProviderManager。
 
-**Tags**: `#mcp`, `#tools`, `#runtime`, `#memory`
+**Tags**: `#mcp`, `#memory`, `#runtime`, `#tools`
 
 ---
 
 <a id="item-harness-arch-3"></a>
-### [pydantic-ai v2.57.0 发布](https://github.com/pydantic/pydantic-ai/releases/tag/v2.57.0) ⭐️ 7.8/10
+### [pydantic-ai v2.58.0 发布](https://github.com/pydantic/pydantic-ai/releases/tag/v2.58.0) ⭐️ 7.8/10
 
-pydantic-ai v2.57.0 发布，重点改进 agent harness 的工具调用管控、权限模型与实时会话管理。新增 ApprovalReviewer 允许模型预审批低风险工具调用，Skills 增加 disable-model-invocation 与 user-invocable 权限标记。BackgroundTools 补全结果现在携带命名空间的 origin 与 tool\_call\_id 元数据。GPT-Live 与 Gemini Live 的实时历史、用量统计和回复等待逻辑统一迁入 session core。
+pydantic-ai v2.58.0 发布，包含实时事件生命周期、响应使用量统计、文件读取工具和原生工具检测的变更，以及多项运行时修复与功能增强。新增公共 \`pydantic\_ai.realtime.lifecycle\` 模块，\`read\_file\` 支持返回图片、PDF 及描述二进制文件，实时回复被用户切断后标记为 interrupted。同步调整使用量统计行为：恢复的 \`suspended\` 响应仅在其产生运行中计入 \`RunUsage\`、\`UsageLimits\` 和 \`SpendLimits\`。新增 \`DelegationTasks.steer\`、\`ModelSettings\[&\#x27;max\_retries&\#x27;\]\`、\`ModelSettings\[&\#x27;request\_timeout&\#x27;\]\`、整运行超时控制，以及 \`Skills\` 的 \`unknown\_names=&\#x27;skip&\#x27;\` 选项。
 
-github · dsfaccini · Oct 16, 03:35
+github · dsfaccini · Oct 17, 01:23
 
-**「设计要点」** 实时会话的历史、用量和回复等待从模型适配层下沉到 session core，统一了多提供方的生命周期管理。工具调用链引入模型级 ApprovalReviewer，形成“模型预审→人工审批”的两级控制；BackgroundTools 携带命名空间元数据，便于 harness 追踪异步任务归属。
+**「设计要点」** 框架通过 \`pydantic\_ai.realtime.lifecycle\` 模块公开实时连接生命周期事件，便于外部监听与恢复。\`SqliteStepStore\`、\`PostgresStepStore\` 和 \`MongoStepStore\` 改为单条消息单存储，消除快照重复携带完整历史的开销；DBOS 工作流使用 \`event\_stream\_handler\` 时，\`Planning\` 状态工具事件在存储读取后发出，运行中工作流需先完成或部署新版本。
 
-**「改了什么」** BackgroundTools 补全结果附加命名空间的 origin 与 tool\_call\_id 元数据。GPT-Live 与 Gemini Live 的实时历史、用量和回复等待迁入 session core。Skills 增加 disable-model-invocation 与 user-invocable 控制并跳过无效 skill 路径。新增 ApprovalReviewer 支持模型预审批低风险工具调用，新增 MetaProvider 支持 Meta Muse 模型，MCP Apps 工具结果与调用可转发至 AG-UI 与 Vercel AI 前端。
+**「改了什么」** 恢复的 \`suspended\` 响应的使用量归属调整至产生该响应的运行，影响 \`RunUsage\`、\`UsageLimits\` 和 \`SpendLimits\`。\`read\_file\` 工具扩展支持图片、PDF 及二进制文件描述。实时回复在用户生成完成后被切断时标记为 \`interrupted\`，播种时同步标记中断语音。模型无法应用原生工具的域名、使用次数或外部网页访问设置时，框架将其视为不支持。新增 \`DelegationTasks.steer\` 控制运行中委托任务，\`ModelSettings\` 增加 \`max\_retries\` 与 \`request\_timeout\`，整运行支持 \`timeout=\` 和 \`RunContext.deadline\` 超时绑定。新增请求级 \`SystemPromptPart\(scope=&\#x27;request&\#x27;\)\` 作为 Anthropic \`clear\_at\` 系统消息发送，\`ctx.enqueue\` 消息流式传输至 Vercel AI 和 AG-UI 前端。
 
-**Tags**: `#tools`, `#permissions`, `#runtime`, `#memory`
+**Tags**: `#runtime`, `#tools`, `#realtime`, `#usage`
 
 ---
 
 ## AI Agent Engineer
 
 <a id="item-agent-engineer-1"></a>
-### [Apple MLX 分布式推理跑通 Muse Spark](https://machinelearning.apple.com/research/mlx-distributed-inference) ⭐️ 7.0/10
+### [MLX 支持 Mac Studio 集群推理](https://machinelearning.apple.com/research/mlx-distributed-inference) ⭐️ 7.0/10
 
-Apple 于 2026-10-16 发布 MLX 分布式推理研究，展示在 Mac Studio 集群运行 Meta 的 Muse Spark Open 模型（约 1T 参数）。四台 Mac Studio 集群生成速度超 36 tokens/秒，单台最高支持 512GB 统一内存。该指标对应 8,192 token 上下文窗口，高于平均人类阅读速度。研究面向本地模型部署基础设施，未涉及编码智能体、评估框架或 harness 设计。
+Apple ML Research 于 2026-10-16 发布 MLX 分布式推理方案及对应工具链，支持在 Mac Studio 集群上运行约 1T 参数的 Muse Spark Open 模型。官方数据显示，4 台 Mac Studio 配置下生成速度超过 36 tokens/sec，单机最高支持 512GB 统一内存。该方案目前仅限 Apple Silicon 硬件。其面向评估本地推理基础设施的工程师。
 
 hackernews · antipaul · Oct 16, 13:43 · [Discussion](https://news.ycombinator.com/item?id=50118320)
 
-**「为什么重要」** 该研究证明 Apple Silicon 集群可运行近万亿参数模型并达到 36+ tok/s。对编码智能体工程师而言，自托管推理基础设施的可行性在提升，但 8,192 token 上下文与集群成本仍是实际落地的限制。
+**「为什么重要」** 这标志着前沿大模型首次在桌面级硬件集群上实现可量产的推理吞吐，为本地推理基础设施选型提供了 Apple Silicon 路径的实测参照。不过该方案目前仅支持 Apple Silicon，跨平台适用性尚未证实。
 
-**「可关注」** 可关注：36+ tok/s 指标基于 8,192 token 上下文与 4-bit 量化，更长上下文或 BF16 精度下的实际吞吐未披露，且社区指出与 Qwen 对比时精度基线不统一。
+**「可关注」** 可关注：社区指出官方 36+ tokens/sec 数据基于 8,192 token 上下文，且对比 Qwen 时采用 4-bit 量化对 BF16，实际选型需验证目标上下文与量化配置下的真实吞吐。
 
-**「评论」** 社区对基准公平性存在分歧：peri-cl 指出 Apple 以 4-bit 量化 Muse Spark 对比 Qwen 原生 BF16，属于精度基线不统一；mrboatshoepants 认为 8,192 token 上下文对当前任务不足。另有用户分享单台 M5 Ultra 运行 DeepSeek 与 GLM 模型的实际速度与质量基准数据。
+**「评论」** 社区对 benchmarks 公平性存在分歧：peri-cl 指出 Muse Spark 与 Qwen 的量化配置不一致（4-bit 对 BF16），质疑对比有效性；liuliu 则分享 M5 Ultra 与 M5 Max 运行 DeepSeek、GLM 的实际吞吐数据，认为同类硬件已有可替代方案。另有用户指出 8,192 token 上下文长度对当前应用场景不足。
 
-**Tags**: `#inference`, `#tooling`, `#orchestration`
+**Tags**: `#inference`, `#toolchain`, `#distributed-inference`, `#hardware`
 
 ---
 
 <a id="item-agent-engineer-2"></a>
-### [Claude Code 代码审查流程调整](https://simonwillison.net/2026/Oct/16/code-review/) ⭐️ 7.0/10
+### [Claude 优化量子电路 最高 17×](https://www.anthropic.com/research/designing-efficient-quantum-circuits) ⭐️ 6.0/10
 
-2026年10月16日Simon Willison发布博文转引Anthropic官方博客内容，Claude Code团队调整代码审查工作流，将原有PR阶段的人工门禁改为持续AI辅助审查模式。Claude会在人工审阅前自动修复常规错误，多数代码变更在人类介入前已至少被Claude完成一次审阅与修复，从而将人类注意力集中在更高层次的问题上。当前引用为二手转引，未展示完整效果数据与落地细节。
+Anthropic 于 2026-10-16 发布研究博客，详细说明 Claude 在八组模拟量子电路上完成优化，操作数显著减少，最高达 17 倍。该工作展示 LLM 在可验证的代码类优化任务中的能力，基于 Google Kickmix 语言在仿真环境中进行。博客署名 Andi Gu 主导，但社区指出 arXiv 论文致谢名单存在差异。对 coding agent 与 eval 框架的算法优化有参考价值，但直接适用性窄，未涉及物理量子硬件。
 
-rss · Simon Willison · Oct 16, 22:06
+hackernews · pretext · Oct 16, 18:00 · [Discussion](https://news.ycombinator.com/item?id=50121939)
 
-**「为什么重要」** 该实践提供了coding agent嵌入开发流程的参考路径，将AI审查前置到编码阶段而非PR末端门禁，对开发流程编排有直接参考价值；但当前未公开完整效果数据与落地细节，实际收益尚未完全证实。
+**「为什么重要」** 该工作验证了 LLM 在带即时反馈的代码类优化任务中可达到显著压缩比，为自动算法搜索提供了可复现基准。但 17 倍 reduction 仅在仿真环境确认，尚未在通用软件工程或物理量子硬件上验证。
 
-**「可关注」** 可关注：持续AI辅助审查替代人工PR门禁的工作流设计，以及AI在人工介入前自动修复常规错误的触发与校验逻辑。
+**「可关注」** 可关注：LLM 在带即时验证的代码优化任务中表现突出，可尝试将类似快速验证机制引入现有 agent 的算法搜索流程。
 
-**Tags**: `#coding-agent`, `#orchestration`, `#permissions`
+**「评论」** 社区认可该任务设计合理，LLM 在可验证环境中快速迭代的优势符合预期。部分用户指出论文署名与致谢名单不一致，另有评论将结果类比为“通用人工智能开发量子计算”的夸张解读。
+
+**Tags**: `#coding-agent`, `#eval`
 
 ---
 
 <a id="item-agent-engineer-3"></a>
-### [Cognition 启动 American Forge 驻留计划](https://cognition.ai/blog/american-forge-fellowship) ⭐️ 5.8/10
+### [Claude Code 调整代码评审流程](https://simonwillison.net/2026/Oct/16/code-review/) ⭐️ 6.0/10
 
-2026年10月16日，Cognition 联合 National Design Studio 启动为期6个月的 American Forge 驻留项目，招募工程师参与美国联邦遗留软件现代化工作。公开信息显示，使用 Devin 编码代理的团队已完成基础代码现代化积压任务，转向更复杂的工程挑战。当前美国联邦政府运营超过29000个过时遗留网站，National Design Studio 原本就负责美国政府数字界面的现代化工作。
+2026年10月16日，Simon Willison引用Anthropic官方博客内容，披露Claude Code团队调整代码评审流程：将原有PR提交后的人工终审门禁，改为开发过程中持续运行的AI辅助评审，类似写作时的拼写检查。多数代码变更在人工介入前已由Claude完成至少一次评审与 routine 问题修复，目标是 catching routine mistakes，释放团队注意力用于更高层级的代码审查。
 
-rss · Cognition Blog · Oct 16, 17:00
+rss · Simon Willison · Oct 16, 22:06
 
-**「为什么重要」** 该项目是编码代理在政府遗留系统现代化场景的公开落地用例，但目前未披露具体技术实现、评估指标或对代理工程、harness、eval、工具链的改进细节，暂无直接可复用的技术经验。
+**「为什么重要」** 该调整将代码评审节点从流程末端移到开发过程中，改变了人工评审的定位，为coding agent相关的工作流设计提供了可参考的流程前置思路，但尚未证实该模式对其他团队的可复制性。
 
-**「可关注」** 可关注：Devin 在代码现代化场景的落地已从清理基础积压转向承接复杂工程任务，可跟踪其在美国政府项目中的实际表现与问题反馈。
+**「可关注」** 可关注：将代码评审从PR终审门禁改为开发过程中持续运行的轻量检查，可优先过滤 routine 问题，释放人工评审资源聚焦高阶风险。
 
-**Tags**: `#coding-agent`
+**Tags**: `#coding-agent`, `#orchestration`, `#permissions`, `#observability`
 
 ---
 
 ## AI Daily
 
 <a id="item-ai-daily-1"></a>
-### [Itaú 银行生成式AI部署案例](https://openai.com/index/itau-generative-ai) ⭐️ 6.8/10
+### [Itaú 全量部署生成式 AI](https://openai.com/index/itau-generative-ai) ⭐️ 7.8/10
 
-OpenAI&\#x27;s official blog published a case study on generative AI deployment at Brazil&\#x27;s Itaú Bank. Itaú is rolling out its AI First strategy through the ia.i conversational interface and the IARA governance platform, covering both customers and employees in Brazil&\#x27;s highly regulated financial sector.
+Itaú 正在通过 ia.i 对话界面与 IARA 治理平台，向全量客户及员工落地生成式 AI。该部署属于其 AI First 战略，覆盖巴西监管最严格的金融行业之一。目前公开信息未披露具体用户规模或性能指标。
 
 rss · OpenAI Blog · Oct 16, 19:00
 
-**「为什么重要」** This is a publicly disclosed generative AI deployment case in the highly regulated financial sector from OpenAI, offering a reference for compliant implementation in similar scenarios.
+**「为什么重要」** 在高度监管的金融行业落地生成式 AI，意味着合规与治理框架必须与产品同步上线。Itaú 的案例展示了传统金融机构在严格监管下推进 AI First 的可行路径。
 
-**「可关注」** Watch for: generative AI deployment in highly regulated financial scenarios requires dedicated governance platforms.
+**「可关注」** 可关注：ia.i 对话界面与 IARA 治理平台的组合，提供了面向受监管金融行业的生成式 AI 落地参考架构。
 
-**Tags**: `#industry`, `#product`, `#lab`
+**Tags**: `#industry`, `#product`
 
 ---
 
 ## AI Deals
 
 <a id="item-ai-deals-1"></a>
-### [Epic本周免费领3款游戏](https://www.appinn.com/eggs-261016/) ⭐️ 9.0/10
+### [VideoProc Converter AI V7.8 限时免费领](https://www.appinn.com/videoproc-converter-ai-v7-8/) ⭐️ 7.0/10
 
-Epic本周（10.16~10.22）推出免费游戏福利，送出《烂奶酪 / Bad Cheese》《伪装游戏 / Agent A: A puzzle in disguise》共3款游戏，覆盖PC端及移动端，仅需Epic账号即可领取，领取有效期至10月22日。
+VideoProc Converter AI 官方推出 V7.8 周年庆限时赠送活动，用户可免费领取该工具。工具集成 AI 视频增强、图片修复、4K/10K 放大、视频转换、压缩、剪辑、下载功能。材料未明确标注具体领取条件与活动截止时间。
 
-rss · 小众软件 · Oct 16, 06:29
+rss · 小众软件 · Oct 16, 06:49
 
-**「为什么重要」** 本周限时福利无额外领取门槛，可立刻领取，适合偏好休闲、解谜类游戏的玩家及时领取。
+**「可关注」** 可关注：该工具为多功能音视频处理工具，当前限时免费活动具体规则与有效期未在公开信息中明确标注，领取前建议确认活动详情。
 
-**「可关注」** 可关注：Epic账号全端通用，PC端2款、移动端《伪装游戏》安卓iOS版本均可领取，截止时间为10月22日。
-
-**Tags**: `#free-tier`, `#promo`, `#limited-free`
+**Tags**: `#promo`, `#limited-free`
 
 ---
 
 <a id="item-ai-deals-2"></a>
-### [VideoProc V7.8 限时免费领](https://www.appinn.com/videoproc-converter-ai-v7-8/) ⭐️ 7.0/10
+### [Epic 本周免费领 2 款游戏](https://www.appinn.com/eggs-261016/) ⭐️ 7.0/10
 
-VideoProc Converter AI 官方推出V7.8周年庆限时赠送活动，用户可免费领取该款工具，其支持AI视频增强、图片修复、4K/10K放大，同时具备视频转换、压缩、剪辑、下载功能；当前未披露具体活动截止时间与领取限制。
+Epic 本周（10.16~10.22）推出免费游戏福利，可领取《烂奶酪/Bad Cheese》和《伪装游戏/Agent A: A puzzle in disguise》两款游戏，PC 端可领取全部两款，移动端可领取《伪装游戏》的 Android 及 iOS 版本，活动有效期至 10 月 22 日，领取无额外核验要求。
 
-rss · 小众软件 · Oct 16, 06:49
+rss · 小众软件 · Oct 16, 06:29
 
-**「可关注」** 可关注：该工具集成AI画质增强与全流程视频处理能力，适合有视频/图片修复、格式转换需求的用户，需等待官方公布具体领取限制与活动截止时间。
+**「为什么重要」** 本周为 Epic 常规限免福利周期，两款游戏领取渠道明确、无额外门槛，在 10 月 22 日活动截止前均可领取。
 
-**Tags**: `#promo`, `#limited-free`
+**「可关注」** 可关注：Epic 本周限免游戏支持 PC 及移动端多平台领取，无额外核验要求，10 月 22 日前可领。
+
+**Tags**: `#limited-free`, `#promo`, `#game`
 
 ---
