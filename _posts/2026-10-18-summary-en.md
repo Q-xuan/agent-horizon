@@ -5,28 +5,33 @@ date: 2026-10-18
 lang: en
 ---
 
-> From 129 items, 2 important content pieces were selected
+> From 141 items, 3 important content pieces were selected
 
 ---
 
 **Agent Harness Architecture**
-1. [Cline Desktop v0.0.48 发布](#item-harness-arch-1) ⭐️ 5.3/10
+1. [Cline SDK v0.0.95 发布](#item-harness-arch-1) ⭐️ 5.3/10
 
 **AI Agent Engineer**
 1. [DeepSeek V4.1-Flash-1017 发布](#item-agent-engineer-1) ⭐️ 7.0/10
+
+**AI Deals**
+1. [3DValley 免费浏览器3D工具集上线](#item-ai-deals-1) ⭐️ 6.0/10
 
 ---
 
 ## Agent Harness Architecture
 
 <a id="item-harness-arch-1"></a>
-### [Cline Desktop v0.0.48 发布](https://github.com/cline/cline/releases/tag/desktop-v0.0.48) ⭐️ 5.3/10
+### [Cline SDK v0.0.95 发布](https://github.com/cline/cline/releases/tag/sdk/sdk/v0.0.95) ⭐️ 5.3/10
 
-Cline Desktop v0.0.48 修复 OpenAI/Azure 兼容端点对 GPT-6 模型的请求失败问题。此前 Cline 发送 \`max\_tokens\` 导致全部请求被拒，现改为 \`max\_completion\_tokens\`。同时刷新模型目录，新增 CommandCode 与 Reflection 提供商，默认模型恢复为 Claude Sonnet 5.5。
+Cline SDK v0.0.95 patches model API compatibility, hub observability, and model catalog data. It switches request parameters for newer GPT models \(gpt-6-sol, gpt-6.1-sol, and gpt-5 through gpt-9 IDs\) from \`max\_tokens\` to \`max\_completion\_tokens\` to prevent OpenAI and Azure rejection, while retaining \`max\_tokens\` for Azure&\#x27;s \`gpt-35-turbo\`. The hub daemon now records launcher identity via \`CLINE\_HUB\_LAUNCHER\_CLIENT\`, \`CLINE\_HUB\_LAUNCHER\_VERSION\`, and \`CLINE\_HUB\_LAUNCHER\_TRANSPORT\` environment variables, publishing them as OTel resource attributes; \`@cline/shared\` adds \`withHubLauncherIdentity\`, \`claimHubLauncherIdentity\`, and \`readHubLauncherIdentity\` helpers. The telemetry self-check includes \`traces\_exporter\`, and the model catalog expanded from 6,952 to 7,041 models, adding CommandCode and Reflection providers and updating defaults for multiple existing providers.
 
-github · github-actions\[bot\] · Oct 17, 04:34
+github · github-actions\[bot\] · Oct 17, 03:00
 
-**「改了什么」** 修复 GPT-6 系列模型（\`gpt-6-sol\`、\`gpt-6.1-sol\`）在 OpenAI 及 Azure OpenAI 兼容端点上的兼容性错误，将参数从 \`max\_tokens\` 修正为 \`max\_completion\_tokens\`。将 Cline 提供商默认模型恢复为 Claude Sonnet 5.5。刷新模型目录，新增 CommandCode、Reflection 提供商，并更新 302.AI、Eden AI、Prime Inference、CoreWeave、NanoGPT、Pioneer、Scaleway 等提供商的默认模型。
+**「设计要点」** The hub daemon captures launcher metadata at startup and exposes it through OTel resource attributes for distributed tracing. SSH remote hubs report the local client with transport \`ssh\`, and the shared package provides typed helpers to propagate this identity across SDK boundaries.
+
+**「改了什么」** Request parameter compatibility fixed for GPT-6 and later model families to send \`max\_completion\_tokens\` instead of \`max\_tokens\`. Hub launcher identity tracking added via OTel resource attributes, telemetry self-check extended to include \`traces\_exporter\`, model catalog refreshed to 7,041 entries with CommandCode and Reflection providers added, \`cline\` provider default reverted to Claude Sonnet 5.5, defaults updated for 302.AI, Eden AI, Prime Inference, CoreWeave, NanoGPT, Pioneer, and Scaleway, and OpenCode Go base URL pinned.
 
 **Tags**: `#runtime`
 
@@ -37,16 +42,33 @@ github · github-actions\[bot\] · Oct 17, 04:34
 <a id="item-agent-engineer-1"></a>
 ### [DeepSeek V4.1-Flash-1017 发布](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) ⭐️ 7.0/10
 
-2026年10月17日DeepSeek发布V4.1-Flash-1017模型，官方描述其为V4.1-Flash的次要更新，但实现了推理、编码、智能体能力的大幅提升。社区报告该模型在11项编码基准测试中10项超过Sol 5.6，同时用户反馈其TTFT和token生成速度表现优异，且支持可见思维链、无随机内容拦截，对编码智能体工程师有参考价值。
+2026年10月17日DeepSeek发布V4.1-Flash-1017模型，官方新闻页显示其在11项编码基准测试中10项击败Sol 5.6；社区反馈该模型推理速度更快、TTFT更低、tokens per秒更高，且支持可见思维链，可提升AI agent的可观测性。当前对比基准为Sol 5.6，社区实际编码任务表现存在差异，该模型面向AI agent开发者和编码工具链使用者开放。
 
 hackernews · Hugging Face Trending Models · Oct 17, 08:21 · [Discussion](https://news.ycombinator.com/item?id=50129045)
 
-**「为什么重要」** 该模型已正式发布，社区反馈的编码和智能体场景实用性能优于部分现有竞品，但不同场景下的实际表现差异尚未得到大规模验证。
+**「为什么重要」** 该模型的编码基准提升和开放可观测特性，直接匹配AI agent开发对模型性能和调试透明度的需求；但实际生产环境中的稳定性、成本等表现尚未有大规模验证。
 
-**「可关注」** 可关注：DeepSeek V4.1-Flash-1017在社区测试中编码基准表现优于Sol 5.6，且支持可见思维链、低TTFT，可评估其适配编码智能体工作流的可行性。
+**「可关注」** 可关注：该模型支持可见思维链，可降低agent调试时的黑盒不确定性，同时社区反馈的推理速度优势能减少agent任务的等待耗时。
 
-**「评论」** 社区普遍认可该模型在编码和智能体场景的实用体验优于部分竞品，同时有用户强调模型生态多样性的价值；分歧在于不同代码审查场景下的效率表现存在差异，有用户实测其在200+文件C++代码库审查中耗时远高于Sol 5.6和6.1。
+**「评论」** 社区对该模型评价存在分歧：部分用户认可其推理速度和开放特性对agent开发的友好性，也有用户实测其在200+文件的大型C++代码库审查中效率低于Sol 6.1，还有用户认为现有付费模型已能满足日常开发需求。
 
-**Tags**: `#coding-agent`, `#eval`, `#harness`
+**Tags**: `#coding-agent`, `#eval`, `#observability`
+
+---
+
+## AI Deals
+
+<a id="item-ai-deals-1"></a>
+### [3DValley 免费浏览器3D工具集上线](https://3dvalley.com/) ⭐️ 6.0/10
+
+Developer lucak5s launched 3DValley, a free browser-based 3D tool collection. It supports AI image-to-3D model generation, model retexturing, mesh remeshing and other 3D utilities. Some tools run fully in-browser, while compute-heavy AI features use shared GPUs with free daily credits. No specific credit quota, validity period, region restrictions or usage limits are disclosed.
+
+rss · HN Free API / Credits · Oct 17, 06:29
+
+**「为什么重要」** As of the publication date, no detailed credit rules or expiration terms are announced, but the free daily shared GPU credit offer is available for users with light 3D processing needs to try without any payment barrier.
+
+**「可关注」** Compute-heavy AI features rely on shared GPU resources, and the free credit quota, validity and usage restrictions are not yet clarified, so it is suitable for trial use of light 3D model processing tasks.
+
+**Tags**: `#credits`, `#free-tier`, `#limited-free`
 
 ---
