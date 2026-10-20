@@ -5,22 +5,28 @@ date: 2026-10-20
 lang: zh
 ---
 
-> 从 157 条内容中筛选出 7 条重要资讯。
+> 从 191 条内容中筛选出 9 条重要资讯。
 
-<nav id="ah-toc" class="ah-toc" aria-label="目录"><span class="ah-toc-title">目录</span><ul><li><a href="#sec-harness-arch"><span class="ah-toc-name">Harness 架构</span><span class="ah-toc-count">5条</span></a></li><li><a href="#sec-ai-daily"><span class="ah-toc-name">AI 日报</span><span class="ah-toc-count">2条</span></a></li></ul></nav>
+<nav id="ah-toc" class="ah-toc" aria-label="目录"><span class="ah-toc-title">目录</span><ul><li><a href="#sec-harness-arch"><span class="ah-toc-name">Harness 架构</span><span class="ah-toc-count">2条</span></a></li><li><a href="#sec-agent-engineer"><span class="ah-toc-name">Agent 工程师日报</span><span class="ah-toc-count">5条</span></a></li><li><a href="#sec-ai-daily"><span class="ah-toc-name">AI 日报</span><span class="ah-toc-count">1条</span></a></li><li><a href="#sec-ai-deals"><span class="ah-toc-name">AI 羊毛</span><span class="ah-toc-count">1条</span></a></li></ul></nav>
 
 ---
 
 **[Harness 架构](#sec-harness-arch)**
-1. [modelcontextprotocol/servers v2.0.0 发布](#item-harness-arch-1) ⭐️ 6.8/10
-2. [OpenHands v1.28.0 发布](#item-harness-arch-2) ⭐️ 6.3/10
-3. [Cloudflare AI Reviewer 推理成本优化](#item-harness-arch-3) ⭐️ 5.8/10
-4. [Claude Code v2.1.304 发布](#item-harness-arch-4) ⭐️ 5.5/10
-5. [Claude Code 官方插件精选目录](#item-harness-arch-5) ⭐️ 5.0/10
+1. [MCP servers v2.0.0 发布](#item-harness-arch-1) ⭐️ 7.8/10
+2. [OpenHands v1.28.0 发布](#item-harness-arch-2) ⭐️ 6.8/10
+
+**[Agent 工程师日报](#sec-agent-engineer)**
+1. [HexaShell 薄 Harness 探索 VLM 机器人编码代理](#item-agent-engineer-1) ⭐️ 7.0/10
+2. [BizBench 商业长周期 Agent 基准发布](#item-agent-engineer-2) ⭐️ 7.0/10
+3. [HF 发布 Into the Unknown](#item-agent-engineer-3) ⭐️ 7.0/10
+4. [LiveMACEBench 发布：流程感知 Agent 评测](#item-agent-engineer-4) ⭐️ 7.0/10
+5. [inspect\_ai 0.3.282 发布](#item-agent-engineer-5) ⭐️ 5.5/10
 
 **[AI 日报](#sec-ai-daily)**
-1. [OpenAI 推进低资源编程语言优化](#item-ai-daily-1) ⭐️ 7.8/10
-2. [GitHub Copilot 应用会话可迁移至 VS Code](#item-ai-daily-2) ⭐️ 5.8/10
+1. [OpenAI 改进 ChatGPT 低资源编程语言支持](#item-ai-daily-1) ⭐️ 7.8/10
+
+**[AI 羊毛](#sec-ai-deals)**
+1. [免费工具检测 robots.txt 是否拦截 AI 爬虫](#item-ai-deals-1) ⭐️ 5.0/10
 
 ---
 
@@ -30,73 +36,110 @@ lang: zh
 <p class="ah-sec-meta"><a class="ah-anchor" href="#sec-harness-arch" aria-label="链接到本节">#</a><a class="ah-back" href="#ah-toc">↑ 回到目录</a></p>
 
 <a id="item-harness-arch-1"></a>
-### [modelcontextprotocol/servers v2.0.0 发布](https://github.com/modelcontextprotocol/servers/releases/tag/v2.0.0) ⭐️ 6.8/10
+### [MCP servers v2.0.0 发布](https://github.com/modelcontextprotocol/servers/releases/tag/v2.0.0) ⭐️ 7.8/10
 
-modelcontextprotocol/servers 发布 v2.0.0，所有服务器重构以支持现代 MCP 规范并保持旧版客户端兼容。TypeScript 服务器迁移至 TS SDK v2，Node 最低版本提升至 24。Python 服务器（mcp-server-fetch、mcp-server-git、mcp-server-time）改用 MCP Python SDK 高层 MCPServer，调整了错误格式与能力声明。
+modelcontextprotocol/servers 发布 v2.0.0。本次大版本将所有服务器重构为支持 modern era spec，同时保持对 legacy era 客户端的向后兼容。TypeScript 服务器完成 TypeScript SDK v2 迁移，Node 最低版本提升至 24。Python 服务器（fetch、git、time）切换至 MCP Python SDK 高层 MCPServer，统一错误格式与能力声明。
 
 github · cliffhall · 10月19日 06:46
 
-**「设计要点」** TypeScript 服务器统一运行在 Node 24+，通过 TS SDK v2 接入现代 MCP 协议；Python 服务器改用高层 MCPServer 抽象，错误处理与能力声明对齐规范。双栈兼容设计允许同时服务现代与旧版客户端。
+**「设计要点」** 运行时同时兼容 modern era 与 legacy era 协议，通过双协议响应实现向后兼容。TypeScript 服务端基于 TS SDK v2 构建，Python 服务端采用高层 MCPServer 抽象。CI 并行验证 Node 22、24、26 三个版本。
 
-**「改了什么」** TypeScript 服务器迁移至 TS SDK v2，Node 最低版本提升至 24。Python 服务器改用 MCP Python SDK 高层 MCPServer，未知工具改返 JSON-RPC -32602 错误，统一声明 prompts 与 resources 能力；time 服务器工具新增 outputSchema 与 structuredContent 返回。
+**「改了什么」** TypeScript 服务器迁移至 TS SDK v2，Node 最低版本从 22 提升至 24。Python 服务器统一采用 MCP Python SDK 高层 API，错误格式改为 JSON-RPC -32602（未知工具）和标准化工具错误信息，新增 prompts 与 resources 能力声明。filesystem 服务器修复 roots 更新并发与权限撤销逻辑，sequential-thinking 修复 thought box 头部对齐。
 
-**标签**: `#mcp`, `#tools`, `#runtime`
+**标签**: `#mcp`, `#tools`, `#runtime`, `#memory`
 
 ---
 
 <a id="item-harness-arch-2"></a>
-### [OpenHands v1.28.0 发布](https://github.com/OpenHands/OpenHands/releases/tag/v1.28.0) ⭐️ 6.3/10
+### [OpenHands v1.28.0 发布](https://github.com/OpenHands/OpenHands/releases/tag/v1.28.0) ⭐️ 6.8/10
 
-OpenHands 官方 2026-10-19 发布 v1.28.0 minor 版本，核心新增 agent 内联密钥请求能力与共享已知缺陷验证契约，同时包含印尼语 i18n 支持、多项 UI 交互优化及主题可读性修复，无重大架构变更或 breaking 更新。
+OpenHands v1.28.0 于 2026-10-19 发布。该 minor release 新增 agent 对话内联 secret 请求能力，并采用共享 known-bug contract 供 harness 验证。未引入重大架构变更或 breaking changes，主要包含 UI 主题修复与自动化改进。
 
 github · openhands-release-bot\[bot\] · 10月19日 14:29
 
-**「设计要点」** 新增共享已知缺陷验证契约，为外部评测 harness 提供标准化验证接口；agent 侧新增内联密钥请求流程，补充权限交互能力；云运行时相关修复调整了消息处理与沙箱唤醒逻辑。
-
-**「改了什么」** 核心新增两项能力：agent 可通过对话内弹窗向用户请求密钥；采用共享已知缺陷验证契约，支持可复现的缺陷修复证明。其余变更包含印尼语 locale 支持、UI 交互优化、主题可读性修复、自动化流程问题修复及云运行时稳定性调整。
+**「改了什么」** agent 现可在聊天中通过模态请求 secret；verify-openhands 采用共享 known-bug contract；聊天流式输出增加 word fade-in 效果；新增 Bahasa Indonesia locale；自托管实例隐藏与内置集成重叠的自动化模板。
 
 **标签**: `#permissions`, `#eval`
 
 ---
 
-<a id="item-harness-arch-3"></a>
-### [Cloudflare AI Reviewer 推理成本优化](https://blog.cloudflare.com/obsessive-inference-optimization/) ⭐️ 5.8/10
+## Agent 工程师日报
+{: #sec-agent-engineer .ah-section}
 
-Cloudflare 官方博客披露其内部 AI 代码审查系统的推理成本优化结果。该系统采用 coordinator 模式调度 specialist reviewers，按 risk tiers 决定审查强度。通过迁移至 OpenCode v2、重构 Anthropic prompt 前缀缓存共享策略、削减单次审查 LLM 调用次数（Codex reviewer 从 15.9 次降至 9.6 次）以及移除冗余工具调用，平均审查成本从 $2.46 降至 $0.77（降幅 68%），中位延迟从 4 分 09 秒降至 1 分 32 秒。缓存命中率从 85.7% 提升至 97%，但单次审查 token 消耗量从 0.91M 增至 2.99M。
+<p class="ah-sec-meta"><a class="ah-anchor" href="#sec-agent-engineer" aria-label="链接到本节">#</a><a class="ah-back" href="#ah-toc">↑ 回到目录</a></p>
 
-rss · Cloudflare AI · 10月19日 19:12
+<a id="item-agent-engineer-1"></a>
+### [HexaShell 薄 Harness 探索 VLM 机器人编码代理](https://huggingface.co/papers/2610.23479) ⭐️ 7.0/10
 
-**「设计要点」** 系统采用 coordinator 调度 specialist reviewers 并按 risk tiers 分配强度的多智能体架构。工具层通过 OpenCode v2 插件钩子拆分系统提示缓存断点以实现跨仓库 prompt 前缀共享；记忆层面利用 Anthropic 5 分钟前缀缓存机制，将静态工具定义与仓库特定信息分离。评测通过 shadow mode 验证 v1/v2 审批决策一致性（98%）后全量切换。
+2026 年 10 月 20 日 Hugging Face Daily Papers 收录介绍 HexaShell 的论文，该工具是面向 VLM 的极简机器人编码代理 Harness，仅负责将代理输出的命令行指令转换为机器人运动，当日获得 285 次 upvote。代理可通过命令行控制双臂机器人，依赖 3 个已知标定的 RGB 相机获取感知数据，执行失败后会读取日志定位问题，编写或修复仅能使用机器人观测数据的小工具，工具通过三角定位计算物体相对位置。当前公开摘录未披露性能对比基线、具体评估指标等细节，该研究面向做 Agent Harness 和编码代理架构的工程师群体。
 
-**「改了什么」** 在系统提示中插入缓存断点标记以共享跨仓库前缀缓存，并将 Codex reviewer 参考索引导入 prompt 消除前三次工具调用。同时移除子审查者无法使用的工具、实现并行文件读取、对重复审查跳过无变化审查者，并全量切换至 OpenCode v2。
+rss · Hugging Face Daily Papers · 10月20日 01:57
 
-**标签**: `#runtime`, `#tools`, `#planning`
+**「为什么重要」** 它首次提出了将编码代理的自调试能力迁移到机器人操控场景的极简 Harness 设计思路，把代理的学习产物固化为可复用的代码工具，仅依赖观测数据完成定位与任务修复。目前该设计的实际任务性能、工具编写开销对泛化性的影响尚未有公开评估数据支撑。
 
----
+**「可关注」** 可关注：Harness 仅做指令转运动的极简设计，将感知、任务调试、工具编写的逻辑全部交给 VLM 编码代理，且代理的学习产物以可复用代码工具形式固化的架构取舍。
 
-<a id="item-harness-arch-4"></a>
-### [Claude Code v2.1.304 发布](https://github.com/anthropics/claude-code/releases/tag/v2.1.304) ⭐️ 5.5/10
-
-Claude Code v2.1.304 发布，核心更新集中在 mod 权限模型、工具只读检测和 auto-mode 可用性扩展。新增 \`decider: &quot;person&quot;\` 强制人工审批、\`e.isReadOnly\` 标记只读工具调用，以及 \`/auto-mode-setup\` 和 \`/claude-api managed-agents-secure\` 两个命令。同时修复了 sandbox 路径解析、转录 GC、Remote Control 历史隔离等 30 余项缺陷。
-
-github · ashwin-ant · 10月19日 21:34
-
-**「设计要点」** mod 权限层现在支持按工具调用只读状态动态调整审批策略，且受管 mod 可通过 \`settings.read\` 钩子将组织配置设为硬上限。auto mode 的会话文件体积因安全分类器上下文去重而下降，长会话恢复时首包延迟降低。
-
-**「改了什么」** mod 系统新增 \`decider: &quot;person&quot;\` 强制人工审批接口和 \`e.isReadOnly\` 只读工具标记，\`/auto-mode-setup\` 与 \`/claude-api managed-agents-secure\` 两个命令分别扩展至多后端环境并提供托管代理配置审计。受管 mod 的 \`settings.read\` 钩子现在可逐层重写合并设置，将组织策略设为硬上限。
-
-**标签**: `#permissions`, `#tools`, `#sandbox`, `#memory`, `#subagents`
+**标签**: `#harness`, `#coding-agent`
 
 ---
 
-<a id="item-harness-arch-5"></a>
-### [Claude Code 官方插件精选目录](https://github.com/anthropics/claude-plugins-official) ⭐️ 5.0/10
+<a id="item-agent-engineer-2"></a>
+### [BizBench 商业长周期 Agent 基准发布](https://huggingface.co/papers/2610.20424) ⭐️ 7.0/10
 
-Anthropic 推出官方管理的 Claude Code 高质量插件精选目录，收录 MCP 服务器等第三方扩展。目录附带免责声明：Anthropic 不控制插件包含的软件，无法验证其功能或安全性，用户需自行承担风险。该目录对 coding agent 工具链和 MCP 集成有参考价值，但未披露技术实现细节、运行时变更或 harness 本身的能力增量。
+Hugging Face 每日论文于 2026-10-20 推介了面向高 stakes 商业场景的长周期 Agent 评测基准 BizBench。该基准核心评估 Agent 的中间执行有效性，而非仅看最终任务成功率，配套可执行环境集成 789 份知识文档与 601 个可发现商业工具，流程来自头部支付公司的真实业务。现有长周期 Agent 基准普遍忽略中间执行合规性，BizBench 填补了该评估空白，面向从事商业 Agent 开发、Agent 评测的工程师群体。
 
-rss · GitHub Trending Daily · 10月20日 01:27
+rss · Hugging Face Daily Papers · 10月20日 01:57
 
-**标签**: `#tools`, `#mcp`, `#ecosystem`
+**「为什么重要」** 当前主流长周期 Agent 基准普遍仅评估最终任务成功率，忽略中间执行的有效性与合规性，而支付等高 stakes 场景中中间违规可能直接造成财务损失或监管后果，BizBench 针对这类场景补齐了评估维度，对商业 Agent 的落地可靠性验证有直接参考价值。
+
+**「可关注」** 可关注：BizBench 配套的可执行环境集成了真实商业场景下的 789 份知识文档与 601 个可发现工具，可作为长周期商业 Agent 中间执行有效性验证的参考实现。
+
+**标签**: `#eval`, `#orchestration`, `#agent-benchmark`
+
+---
+
+<a id="item-agent-engineer-3"></a>
+### [HF 发布 Into the Unknown](https://huggingface.co/papers/2610.19159) ⭐️ 7.0/10
+
+2026 年 10 月 20 日 Hugging Face Daily Papers 推送联合美国能源部国家实验室科学家开发的 AI Agent 基准 Into the Unknown。该基准要求 Agent 基于给定科学论文与研究方向撰写后续论文，采用领域专家制定的评分规则评估无标准答案的研究类任务，已测试 9 个前沿 Agent，覆盖量子计算、等离子体物理、计算化学、材料科学等硬科学领域，每个 Agent 需完成 15 篇后续论文撰写。
+
+rss · Hugging Face Daily Papers · 10月20日 01:57
+
+**「为什么重要」** 它为无标准答案的开放科学研究类 Agent 任务提供了可落地的评估方案，解决了此前该类任务难以量化评估的痛点，给复杂 Agent 能力研究提供了新的实证基准。
+
+**「可关注」** 可关注：无标准答案的复杂任务可通过领域专家定义的可验证条件构建评估规则，替代传统参考答案式评测。
+
+**标签**: `#eval`, `#harness`
+
+---
+
+<a id="item-agent-engineer-4"></a>
+### [LiveMACEBench 发布：流程感知 Agent 评测](https://huggingface.co/papers/2610.09872) ⭐️ 7.0/10
+
+Hugging Face Daily Papers 于 2026-10-20 发布论文《LiveMACE: Process-Aware Evaluation of LLM Agent Capabilities in Evolving Markets》，提出流程感知评测基准 LiveMACEBench。该基准以实时金融市场作为自然演化的测试环境，在 Tool Use、Persistent Memory、Rule Following、Multi-Agent Collaboration 四种配置下连续运行 5 个前沿 LLM，通过完整决策轨迹同时评估 realized 结果与机制级诊断。30 天实时测试显示 realized 结果与底层能力存在显著差距（outcome-capability gap），但 realized returns 的具体 diverges 模式在源内容中被截断，尚不明确。
+
+rss · Hugging Face Daily Papers · 10月20日 01:57
+
+**「为什么重要」** 该基准首次在真实演化环境中通过完整决策轨迹对比 realized 结果与机制诊断，证明仅靠结果评估会掩盖 Agent 核心能力差异。论文称其可为 Harness 设计与 Agent 评测体系提供参考，但实际落地效果尚待社区验证。
+
+**「可关注」** 仅靠 realized 结果评估 Agent 会掩盖底层能力差异，Harness 设计需补充机制级诊断以捕捉工具使用、持久记忆等核心能力。
+
+**标签**: `#eval`, `#memory`, `#harness`
+
+---
+
+<a id="item-agent-engineer-5"></a>
+### [inspect\_ai 0.3.282 发布](https://github.com/UKGovernmentBEIS/inspect_ai/releases/tag/0.3.282) ⭐️ 5.5/10
+
+inspect\_ai 0.3.282 于 2026-10-19 发布。核心变更为单一样本内并发 agent 的 tool state 改为独立作用域（breaking change）。sharding 功能新增条件性 S3 写入、本地锁辅助，并在 inspect ctl --log-dir 中将分片运行显示为单个 task。修复 trio eval 取消时 rich display 崩溃、gemini-2.5-pro 重复 tool 调用、brotli 误安装、usage 计数偏低及 log viewer CSP enforcing。性能方面优化长 transcripts 的 events\_df\(\)。
+
+github · github-actions\[bot\] · 10月19日 21:33
+
+**「为什么重要」** tool state 作用域变更直接影响单样本多 agent 并发评估的隔离语义，现有 harness 需回归验证。sharding 改进降低大规模评估的存储与日志管理成本，但具体收益取决于工作流规模。
+
+**「可关注」** 单样本并发 agent 的 tool state 从共享切至隔离，属于 breaking change，需检查评估脚本中的状态依赖。分片运行在日志中聚合为单个 task，可能影响下游日志解析逻辑。
+
+**标签**: `#harness`, `#eval`
 
 ---
 
@@ -106,31 +149,36 @@ rss · GitHub Trending Daily · 10月20日 01:27
 <p class="ah-sec-meta"><a class="ah-anchor" href="#sec-ai-daily" aria-label="链接到本节">#</a><a class="ah-back" href="#ah-toc">↑ 回到目录</a></p>
 
 <a id="item-ai-daily-1"></a>
-### [OpenAI 推进低资源编程语言优化](https://openai.com/index/low-resource-programming-languages) ⭐️ 7.8/10
+### [OpenAI 改进 ChatGPT 低资源编程语言支持](https://openai.com/index/low-resource-programming-languages) ⭐️ 7.8/10
 
-OpenAI 发布官方博客，公布提升 ChatGPT 在低资源编程语言上性能的相关工作，同时新增软件工程、SQLite 及 COBOL 迁移任务的评估基准。
+OpenAI 官方博客于 2026 年 10 月 19 日发布公告，宣布改进 ChatGPT 对低资源编程语言的支持，新增软件工程、SQLite、COBOL 迁移三类专项评估。当前公开内容未披露具体性能指标或功能落地时间表。
 
 rss · OpenAI Blog · 10月19日 12:00
 
-**「为什么重要」** 此次公开的工作覆盖 SQLite、COBOL 迁移等实际长尾编程场景，可反映大模型对低资源编程语言需求的支持进展。
+**「为什么重要」** 低资源编程语言长期是大模型适配的薄弱环节，此次官方推出专项评估框架，为相关场景的能力迭代提供了可量化的基准。
 
-**「可关注」** 可关注：新增软件工程、SQLite、COBOL 迁移评估基准的公开内容与测试方法。
+**「可关注」** 可关注：新增评估覆盖的软件工程、SQLite、COBOL 迁移三类场景的后续公开基准测试结果。
 
-**标签**: `#model`, `#lab`, `#eval`, `#industry`
+**标签**: `#model`, `#lab`, `#eval`
 
 ---
 
-<a id="item-ai-daily-2"></a>
-### [GitHub Copilot 应用会话可迁移至 VS Code](https://github.blog/ai-and-ml/github-copilot/how-to-continue-a-github-copilot-app-session-in-vs-code/) ⭐️ 5.8/10
+## AI 羊毛
+{: #sec-ai-deals .ah-section}
 
-GitHub 官方博客发布操作教程，说明如何将 GitHub Copilot 应用的会话无缝迁移至 VS Code，迁移过程中可保留原有对话、代码变更与工作上下文。该内容仅面向 Copilot 用户提供使用指引，未涉及新模型发布、技术突破或行业政策类核心新事实。
+<p class="ah-sec-meta"><a class="ah-anchor" href="#sec-ai-deals" aria-label="链接到本节">#</a><a class="ah-back" href="#ah-toc">↑ 回到目录</a></p>
 
-rss · GitHub Blog · 10月19日 18:47
+<a id="item-ai-deals-1"></a>
+### [免费工具检测 robots.txt 是否拦截 AI 爬虫](http://crawl-check.user-sentry.com/) ⭐️ 5.0/10
 
-**「为什么重要」** 该教程可降低 Copilot 多端使用的切换成本，帮助用户保持编码会话的连续性，避免重复输入上下文。
+Hacker News 社区分享的免费公开工具 crawl-check.user-sentry.com，可用于检测站点 robots.txt 是否拦截 AI 爬虫，无使用费用、无使用限制、无需提交任何声明即可访问使用。
 
-**「可关注」** 可关注：GitHub Copilot 应用与 VS Code 的会话迁移可保留对话、代码变更及工作上下文。
+rss · HN Free API / Credits · 10月19日 16:08
 
-**标签**: `#product`, `#lab`
+**「为什么重要」** 对于需要管控 AI 爬虫访问的站点运营者、Web 开发者而言，该工具可快速验证 robots.txt 配置是否生效，省去手动校验步骤。
+
+**「可关注」** 可关注：该工具完全免费、无访问限制，无需注册或提交站点信息即可直接使用。
+
+**标签**: `#free-tool`, `#ai-utility`, `#hn`, `#web-dev`
 
 ---
