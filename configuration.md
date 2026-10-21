@@ -215,9 +215,11 @@ Recommended models: `MiniMax-M3.1-Flash` (default), `MiniMax-M3`.
 Existing configurations and explicitly entered model IDs are left unchanged,
 including when MiniMax is the configured provider in a fallback chain. Model
 availability still depends on the configured endpoint and account.
-Horizon leaves thinking and reasoning effort unset, using the API defaults;
-Flash uses adaptive thinking with maximum effort. The completion interface is
-single-turn and does not expose effort settings or tool conversations.
+By default Horizon leaves thinking and reasoning effort unset, using the API
+defaults; Flash uses adaptive thinking with maximum effort. The completion
+interface is single-turn and does not expose tool conversations; to send
+provider-specific fields such as effort settings, use
+[`ai.extra_body`](#extra-request-fields).
 
 Use the endpoint for your account region and preferred compatible API:
 
@@ -317,6 +319,34 @@ By default, AI scoring and enrichment run one item at a time. If your API endpoi
 - Preserve the existing retry behavior per item.
 - Result ordering is preserved regardless of concurrency.
 - If you also use `throttle_sec`, each concurrent task sleeps independently after finishing an item.
+
+### Extra request fields
+
+Some servers accept request fields that Horizon does not set itself. Use
+`ai.extra_body` to send them with every request. For example, to turn off the
+thinking phase of Qwen3-style models served by llama.cpp or vLLM, which
+otherwise return reasoning text instead of the requested JSON:
+
+```json
+{
+  "ai": {
+    "provider": "ollama",
+    "model": "qwen3",
+    "api_key_env": "",
+    "base_url": "http://127.0.0.1:8080",
+    "extra_body": {
+      "chat_template_kwargs": {"enable_thinking": false}
+    }
+  }
+}
+```
+
+- `extra_body`: Optional JSON object merged into the request body as is. Which
+  fields work depends on the server; Horizon does not validate them.
+- Supported for OpenAI-compatible, Azure OpenAI and Anthropic-compatible
+  providers. The `gemini` provider rejects it.
+- With `provider_chain`, it applies only to the configured `provider`, like
+  `base_url`.
 
 **Custom Base URL** (for proxies):
 
@@ -634,8 +664,12 @@ digest limits:
   `limit` and a non-empty `categories` list. Items within each group are kept by
   analysis score, highest first.
 - `category_groups.*.name`: Optional display name used in run logs
-- `default_group`: Group key for items whose category does not match any
-  configured group. Default is `other`.
+- `group_by`: What `category_groups` match. `"category"` (default) uses the
+  source category; `"profile"` uses the resolved processing profile, and the
+  `categories` lists then contain profile IDs.
+- `default_group`: Group key for items whose category (or profile, with
+  `group_by: "profile"`) does not match any configured group. Default is
+  `other`.
 - `default_group_limit`: Optional positive limit for unmatched items. If omitted,
   unmatched items are unlimited except for `max_items`.
 
@@ -652,10 +686,43 @@ All source types support a `category` field: `sources.rss[].category`,
 `sources.gdelt.category`, and `sources.google_news.category`.
 Sources without a category set enter the default group.
 
+With `"group_by": "profile"`, group matching uses the final resolved profile in
+`item.processing.classification.profile` instead, and each `categories` list
+contains profile IDs. This lets quotas follow the content domain rather than the
+source, for example with mixed feeds that use automatic or candidate-profile
+routing:
+
+```json
+{
+  "digest": {
+    "max_items": 18,
+    "group_by": "profile",
+    "category_groups": {
+      "tech": {
+        "name": "Technology",
+        "limit": 12,
+        "categories": ["tech-news", "tech-blog"]
+      },
+      "finance": {
+        "name": "Finance",
+        "limit": 5,
+        "categories": ["finance-news"]
+      }
+    },
+    "default_group_limit": 3
+  }
+}
+```
+
+Profiles in the same group share its limit: `tech-news` and `tech-blog` items
+together contribute at most 12 items. Profiles not listed in any group, such as
+`ai-creator`, enter the default group and its `default_group_limit`. Unknown
+profile IDs are rejected at startup and by MCP config validation.
+
 If the same category appears in multiple groups, Horizon logs a warning and uses
-the first group in configuration order. Omitting both `category_groups` and
-`max_items` disables balanced digest limits; configured profile thresholds still
-apply.
+the first group in configuration order. Omitting `category_groups`,
+`max_items`, and `default_group_limit` disables balanced digest limits;
+configured profile thresholds still apply.
 
 ## Environment Variable Substitution
 

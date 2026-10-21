@@ -12,9 +12,38 @@ AI pipeline with the model and credentials in its own configuration.
 
 ## Install
 
-Install Horizon following the README, then copy the **entire** `skills/horizon`
-directory into your agent's skill directory. The skill and Horizon checkout may
-live at different paths. Keep the checkout available for its runtime and docs.
+Choose one of the installation methods below. You can install the skill first,
+then ask your assistant to install and configure Horizon. With shell and network
+access, the assistant can prepare a checkout and its Python environment using
+the [README](https://github.com/Thysrael/Horizon#quick-start). Running tasks needs
+Python 3.11+ and Horizon's dependencies. The skill and checkout may live at
+different paths.
+
+### Install with Skills CLI
+
+With Node.js 22.20 or later, run:
+
+```bash
+npx skills add Thysrael/Horizon --skill horizon -g
+```
+
+The [Skills CLI](https://github.com/vercel-labs/skills) discovers the skill in this
+repository and installs it for supported assistants such as Claude Code, Codex,
+OpenCode, and OpenClaw. Follow the agent-selection prompts when shown; `-g`
+installs at user level. To target a specific assistant, add its agent flag, for
+example `-a opencode`.
+
+### Download a skill package
+
+[Download horizon-skill.zip](https://thysrael.github.io/Horizon/downloads/horizon-skill.zip).
+The archive contains the complete `horizon/` skill directory, including scripts,
+references, and the project license. Import it using your assistant's local-package
+installer, or extract it and place the `horizon/` directory in the destination
+listed below.
+
+### Copy from a checkout
+
+Copy the **entire** `skills/horizon` directory into your agent's skill directory:
 
 | Agent | Personal skill destination | Reference |
 | --- | --- | --- |
@@ -33,12 +62,32 @@ cp -R skills/horizon ~/.claude/skills/horizon
 Use your agent's project-level installation or extra-directory configuration if
 preferred. For example, OpenCode V2 can load the checkout directly by adding its
 absolute `skills` directory to the existing configuration's `skills` array.
-This avoids maintaining a second copy. Follow the host's refresh/reload behavior
-and verify that `horizon` appears in its available skills.
+This avoids maintaining a second copy.
 
-Tell the assistant where the checkout is, or set `HORIZON_PATH`. Python 3.11+
-and Horizon's installed dependencies are required to execute the helper. MCP is
-optional. A sandboxed agent needs access to the checkout and its runtime.
+### Start using the skill
+
+Follow the host's refresh/reload behavior and verify that `horizon` appears in
+its available skills. For a first-time setup, say:
+
+> Use the Horizon skill to install and configure Horizon in my workspace, then
+> help me set up a Chinese news radar for AI and open-source projects.
+
+The assistant checks for an existing installation, prepares missing prerequisites,
+and helps configure the model and sources. Importing the skill alone does not run
+an installer.
+
+For model setup, the assistant preserves existing Horizon settings and prefers
+reusing an available provider API key before asking for new credentials. The
+provider, model, API endpoint, and key environment variable must match. A key
+stored privately by the host agent needs to be supplied to Horizon's process;
+an OAuth or subscription login is not a drop-in API key. New model settings are
+checked with a minimal JSON completion, since configuration validation alone
+does not verify connectivity. Scheduled jobs and containers also need access
+to the credentials in their own runtime environment.
+
+If Horizon is already installed, tell the assistant where the checkout is, or set
+`HORIZON_PATH`. MCP is optional. A sandboxed agent needs access to the checkout
+and its runtime.
 
 ## Try it
 
@@ -69,6 +118,12 @@ existing subject docs, and pipeline behavior belongs in Horizon. The helper
 forwards native method parameters and results rather than maintaining another
 CLI schema or reimplementing the pipeline. Only its operation allowlist needs
 updating when intentionally exposing a new service method.
+
+The `Deploy Docs` workflow packages the tracked `skills/horizon` directory and
+project license with `git archive`, publishing `downloads/horizon-skill.zip`
+alongside the Pages site. Changes to the skill trigger a deployment; the workflow
+can also be run manually. The download link becomes available once that
+deployment completes.
 
 Run the adapter's offline regression tests after changing it:
 
