@@ -5,240 +5,308 @@ date: 2026-10-23
 lang: en
 ---
 
-> From 195 items, 14 important content pieces were selected
+> From 191 items, 18 important content pieces were selected
 
 ---
 
 **Agent Harness Architecture**
-1. [agent-framework python-1.23.0 发布](#item-harness-arch-1) ⭐️ 8.8/10
-2. [Cloudflare Agents 0.30.0 发布](#item-harness-arch-2) ⭐️ 7.8/10
-3. [gemini-cli v0.67.0-nightly 发布](#item-harness-arch-3) ⭐️ 7.8/10
-4. [Cloudflare security-audit-skill 登 GitHub Trending](#item-harness-arch-4) ⭐️ 5.0/10
+1. [Agent Framework 1.23.0](#item-harness-arch-1) ⭐️ 8.8/10
+2. [pydantic-ai v2.60.0 发布](#item-harness-arch-2) ⭐️ 7.8/10
+3. [cloudflare/agents 0.30.0 发布](#item-harness-arch-3) ⭐️ 7.8/10
+4. [Cloudflare security-audit-skill 开源](#item-harness-arch-4) ⭐️ 5.5/10
 
 **AI Agent Engineer**
-1. [Anthropic 发布 LLM 形式化验证规模化研究](#item-agent-engineer-1) ⭐️ 8.0/10
-2. [ThinkingBox-Training 开源 数据库校验作RL奖励](#item-agent-engineer-2) ⭐️ 7.8/10
-3. [Anthropic 将 Agent Skills 捐给 AAIF](#item-agent-engineer-3) ⭐️ 7.0/10
-4. [Anthropic 因 30k PR/日 自研 Scion](#item-agent-engineer-4) ⭐️ 7.0/10
-5. [datasette-mcp 0.3 发布](#item-agent-engineer-5) ⭐️ 6.8/10
-6. [Modal CEO 谈弹性 GPU 与智能体云经济](#item-agent-engineer-6) ⭐️ 5.5/10
+1. [ThinkingBox-Training 发布 数据库校验转RL奖励](#item-agent-engineer-1) ⭐️ 8.8/10
+2. [Anthropic：LLM 规模化形式化验证](#item-agent-engineer-2) ⭐️ 8.0/10
+3. [Anthropic 捐赠 Agent Skills 至 AAIF](#item-agent-engineer-3) ⭐️ 7.0/10
+4. [LGWM 提出 GUI Agent 过渡验证方案](#item-agent-engineer-4) ⭐️ 7.0/10
+5. [WildAWM 开源多接口环境合成](#item-agent-engineer-5) ⭐️ 7.0/10
+6. [SSL 方法实现可迁移 Agent 技能](#item-agent-engineer-6) ⭐️ 7.0/10
+7. [LASAGNA RAG Compositionality Study](#item-agent-engineer-7) ⭐️ 7.0/10
+8. [Anthropic 内部源码系统 Scion](#item-agent-engineer-8) ⭐️ 7.0/10
+9. [datasette-mcp 0.3 发布 支持MCP canned查询](#item-agent-engineer-9) ⭐️ 5.8/10
+10. [Granite 时间序列集成预测 r1 发布](#item-agent-engineer-10) ⭐️ 5.8/10
+11. [Nvidia Qwen3.8 FP4 模型登榜](#item-agent-engineer-11) ⭐️ 5.5/10
 
 **AI Daily**
-1. [OpenAI 发布 Decisions API](#item-ai-daily-1) ⭐️ 6.3/10
-2. [OpenAI 官方定义 FDE 角色](#item-ai-daily-2) ⭐️ 5.8/10
-3. [GitHub 专访 bug bounty 研究员 @r31n](#item-ai-daily-3) ⭐️ 5.8/10
+1. [OpenAI Decisions 新 API](#item-ai-daily-1) ⭐️ 6.8/10
+2. [OpenAI 博文阐释 FDE 角色定义](#item-ai-daily-2) ⭐️ 5.8/10
 
 **AI Deals**
-1. [CloudCone 限时充50%送云积分](#item-ai-deals-1) ⭐️ 8.0/10
+1. [CloudCone 24小时50%充值赠送](#item-ai-deals-1) ⭐️ 8.0/10
 
 ---
 
 ## Agent Harness Architecture
 
 <a id="item-harness-arch-1"></a>
-### [agent-framework python-1.23.0 发布](https://github.com/microsoft/agent-framework/releases/tag/python-1.23.0) ⭐️ 8.8/10
+### [Agent Framework 1.23.0](https://github.com/microsoft/agent-framework/releases/tag/python-1.23.0) ⭐️ 8.8/10
 
-Microsoft agent-framework 1.23.0 introduces breaking MCP 2.x protocol updates across transports, errors, schemas, and lifecycle handling. It adds allowlisted forwarding of function-invocation and client arguments from A2A request metadata, plus an opt-in synthetic trailing user turn for providers returning empty text after assistant-ending prompts. AG-UI endpoint registration now requires explicit authorization scope or single-user declaration, and the Docker shell extra\_run\_args parameter is renamed unsafe\_extra\_run\_args with explicit trust requirements.
+Microsoft Agent Framework Python SDK 1.23.0 released 2026-10-22. Introduces breaking MCP 2.x compatibility migration across core packages, A2A allowlisted forwarding of function-invocation and client arguments, an opt-in synthetic trailing user turn for empty provider responses, and breaking AG-UI authorization scope requirements. Docker shell tool \`extra\_run\_args\` renamed to \`unsafe\_extra\_run\_args\` to make trust explicit, with Python 3.15 support added for DuckDB, Hyperlight, and AG-UI A2UI extra.
 
 github · eavanvalkenburg · Oct 22, 17:05
 
-**「设计要点」** The release defines caller-owned and framework-owned MCP client lifecycles, removing DevUI&\#x27;s stale-connection workaround. Core and standard-install dependency pins advance to package versions released in this cut, with Python 3.15 support requiring DuckDB 2.0, Hyperlight 0.8, and A2UI toolkit 0.0.5.
+**「设计要点」** The release separates caller-owned and framework-owned MCP client lifecycles, isolates MCP task contexts, and removes DevUI stale-connection workarounds. AG-UI endpoint registration now mandates explicit authorization scope or single-user declaration, while Memory and Todo writes become atomic and background completion waits bind to execution identity.
 
-**「改了什么」** MCP 2.x compatibility foundation replaces the previous MCP implementation, affecting transport, error, schema, and lifecycle handling. AG-UI endpoint registration mandates explicit authorization scope or single-user declaration. Docker shell extra\_run\_args is renamed unsafe\_extra\_run\_args. Synthetic trailing user turn becomes opt-in for providers returning empty text after assistant-ending prompts. A2A request metadata forwarding is limited to allowlisted function-invocation and client arguments.
+**「改了什么」** Core packages migrate to MCP 2.x compatibility with breaking changes to transports, errors, schemas, and lifecycle handling. A2A forwarding allowlists function-invocation and client arguments from request metadata. Providers returning empty text after assistant-ending prompts can opt into synthetic trailing user turns. AG-UI authorization now requires explicit scope declaration. Docker shell tool argument renamed to clarify trust requirements.
 
 **Tags**: `#mcp`, `#a2a`, `#runtime`, `#permissions`
 
 ---
 
 <a id="item-harness-arch-2"></a>
-### [Cloudflare Agents 0.30.0 发布](https://github.com/cloudflare/agents/releases/tag/agents%400.30.0) ⭐️ 7.8/10
+### [pydantic-ai v2.60.0 发布](https://github.com/pydantic/pydantic-ai/releases/tag/v2.60.0) ⭐️ 7.8/10
 
-Cloudflare Agents 0.30.0 发布，新增 Pi 1.4 支持并改进 PiHarness 的运行时可靠性。核心变更包括：通过 onWake 回调实现 Durable Object 随 Pi 任务休眠、parked 任务状态、存储错误后自动恢复，以及修复 evicted Durable Object retained 在内存的问题。Pi 1.4 迁移 SQLite session storage schema，部署无法回滚至 1.3。
+pydantic-ai v2.60.0 发布，带来工具重试表示的 breaking change、模型选择运行时元数据扩展，以及上下文压缩行为调整。\`RetryPromptPart\` 正式弃用，由 \`ToolReturnPart\(outcome=&\#x27;retried&\#x27;\)\` 与 \`RetryFeedbackPart\` 替代。\`ModelSelectionContext\` 新增 \`usage\_limits\`、\`deadline\`、\`run\_id\`、\`conversation\_id\` 及重试计数与预算字段。\`SummarizingCompaction\` 将 harness 注入的用户频道内容标记为 \`&lt;harness\_data&gt;\` 而非普通用户消息。
 
-github · github-actions\[bot\] · Oct 22, 11:29
+github · dsfaccini · Oct 23, 01:44
 
-**「设计要点」** PiHarness 将 onWake 注入工厂函数，使 Durable Object 在 Pi 任务睡眠期间进入休眠而非常驻内存。Lifecycle 组件引入 fallback alarm 覆盖启动失败场景，防止队列任务因无唤醒而丢失。
+**「设计要点」** This release modifies runtime message flow through the tool retry representation change and \`sanitize\_messages\` adjustments that strip request-level instructions from untrusted history. The opt-in \`MetadataMemoryStore\` and \`Memory\(write\_metadata=...\)\` change memory persistence behavior, while \`SummarizingCompaction\` re-labels harness-injected content affecting context window accounting.
 
-**「改了什么」** PiHarness 新增 onWake 透传、parked 状态与 retry\(\) 支持，存储错误后自动重开 pi 而非持续失败。Wake job 在步骤失败时以最长 10 分钟退避重试，Lifecycle 停止保留 evicted 对象，pi-ai 将截断流报告为 transient 以触发 Pi 重试。
+**「改了什么」** Breaking: \`RetryPromptPart\` 弃用，替换为 \`ToolReturnPart\(outcome=&\#x27;retried&\#x27;\)\` 与 \`RetryFeedbackPart\`；\`ModelSelectionContext\` 新增 \`usage\_limits\`、\`deadline\`、\`run\_id\`、\`conversation\_id\` 及重试计数与预算；\`SummarizingCompaction\` 将 harness 注入的用户频道内容重标记为 \`&lt;harness\_data&gt;\`。同时新增 \`DockerSandbox\`、\`BoxLiteSandbox\`、\`SmartSearch\` 与 \`RelevanceCompaction\` 等 harness 能力。
 
-**Tags**: `#runtime`
+**Tags**: `#runtime`, `#tools`, `#memory`
 
 ---
 
 <a id="item-harness-arch-3"></a>
-### [gemini-cli v0.67.0-nightly 发布](https://github.com/google-gemini/gemini-cli/releases/tag/v0.67.0-nightly.20261022.g09d81bf11) ⭐️ 7.8/10
+### [cloudflare/agents 0.30.0 发布](https://github.com/cloudflare/agents/releases/tag/agents%400.30.0) ⭐️ 7.8/10
 
-gemini-cli 发布 v0.67.0-nightly.20261022.g09d81bf11。本次 nightly 新增 IDE companion 通过 exec stdio 接入 container sandbox 的能力。同时修复 duplicate agent loading、untrusted flag 权限范围、A2A server 路由注册、RFC 9110 头部解析、IDE 上下文过滤，以及 atomic writeTextFile 对只读文件和硬链接的处理。
+cloudflare/agents 0.30.0 发布，新增 Pi 1.4 支持并升级 PiHarness 运行时可靠性。PiHarness 现在在 Pi 任务休眠时让 Durable Object 进入休眠而非常驻内存，并通过单一 wake job 管理对象唤醒。存储错误恢复、eviction 后的内存泄漏修复、以及 fallback alarm 机制提升了容错能力。升级需将 @earendil-works/pi-durable、pi-ai、pi-agent-core 迁移至 ~1.4.0 并安装 @earendil-works/chord，且该迁移不可回滚。
 
-github · gemini-cli-robot · Oct 22, 01:23
+github · github-actions\[bot\] · Oct 22, 11:29
 
-**「设计要点」** exec stdio 桥接将 IDE companion 直接嵌入 container sandbox 运行时，改变工具层调用路径。untrusted flag 权限范围收紧至外部输出并记忆已批准标记，缩小权限面。A2A server 在 express.json\(\) 之后注册路由，确保请求体解析顺序正确。
+**「设计要点」** PiHarness 将 onWake 回调传入 Harness.open，使 Durable Object 能在 Pi 任务睡眠期间释放内存。Lifecycle 层通过 fallback alarm 和清理 evicted 对象的 pending promise，防止启动失败或驱逐后内存泄漏。Wake job 在步骤失败时以指数退避重试，最长等待 10 分钟。
 
-**「改了什么」** 新增 IDE companion 通过 exec stdio 桥接至 container sandbox。修复 workspace 为主目录时的 duplicate agent loading；IDE 设置与 GEMINI.md 文件被排除在 open file context 之外；untrusted flag 检查范围限定为外部输出并记忆批准结果；A2A SDK 路由注册移至 express.json\(\) 之后；custom header 分割遵守 RFC 9110 token 规则；atomic writeTextFile 尊重只读文件与硬链接。
+**「改了什么」** PiHarness 新增 Pi 1.4 兼容性，任务因重启限制停止后状态变为 parked 并支持 retry 重跑。存储错误触发 Pi 自动重开，不再持续失败调用。evicted Durable Object 内存泄漏问题修复，要求将 registry 从模块级移至类实例字段。pi-ai 将截断的模型流标记为瞬态错误，触发 Pi 重试。
 
-**Tags**: `#sandbox`, `#runtime`, `#permissions`, `#a2a`, `#context`
+**Tags**: `#runtime`, `#reliability`, `#task-management`
 
 ---
 
 <a id="item-harness-arch-4"></a>
-### [Cloudflare security-audit-skill 登 GitHub Trending](https://github.com/cloudflare/security-audit-skill) ⭐️ 5.0/10
+### [Cloudflare security-audit-skill 开源](https://github.com/cloudflare/security-audit-skill) ⭐️ 5.5/10
 
-这是 Cloudflare 官方开源的编码代理安全审计 skill，2026-10-23 登上 GitHub Trending。该 skill 可将编码代理转为安全审计器，通过编排隔离子代理完成多阶段安全审计流程，覆盖侦察、覆盖引导狩猎、候选验证、结构化输出、独立记录校验与目标中立报告等环节。它是 Cloudflare 漏洞发现 harness 的基础实现，相关设计在官方文章《Build your own vulnerability harness》中有所描述。
+Cloudflare open-sourced \`cloudflare/security-audit-skill\`, a coding-agent skill that turns an agent into a security auditor. It orchestrates isolated subagents through six phases: reconnaissance, coverage-led hunting, candidate validation, structured output, independent record verification, and target-neutral reporting. The skill seeded Cloudflare&\#x27;s vulnerability discovery harness described in &quot;Build your own vulnerability harness&quot;. It provides a reference for multi-agent harness design but lacks implementation details, code paths, or architecture depth.
 
-rss · GitHub Trending Daily · Oct 23, 01:08
+rss · GitHub Trending Daily · Oct 23, 01:49
 
-**「设计要点」** 该 skill 采用隔离子代理编排架构，各审计阶段由独立子代理执行，最终输出机器可读的审计结果，同时支持目标中立报告以避免审计偏差。
+**「设计要点」** The skill orchestrates isolated subagents across six phases: reconnaissance, coverage-led hunting, candidate validation, structured output, independent record verification, and target-neutral reporting. It produces machine-readable findings and seeded Cloudflare&\#x27;s vulnerability discovery harness.
 
-**Tags**: `#subagents`, `#sandbox`, `#tools`
+**Tags**: `#subagents`, `#tools`, `#sandbox`, `#eval`
 
 ---
 
 ## AI Agent Engineer
 
 <a id="item-agent-engineer-1"></a>
-### [Anthropic 发布 LLM 形式化验证规模化研究](https://www.anthropic.com/research/formal-verification) ⭐️ 8.0/10
+### [ThinkingBox-Training 发布 数据库校验转RL奖励](https://huggingface.co/blog/microsoft/thinkingbox-training) ⭐️ 8.8/10
 
-Anthropic 于 2026-10-22 发布研究，展示 LLM 可在更大规模上执行形式化软件验证。社区引用的附录指出，Agent 生成的证明与同一定理的其他证明同样有效，能证明等价定理；但冗长证明风格可能遭遇复杂度墙，MachCSL 等项目的经验表明向更复杂程序直接扩展存在不确定性。讨论同时提到向确定性声明式语言迁移的可能方向，以及 TLA+ 和 Roc 的相关实践。
-
-hackernews · johnbender · Oct 22, 22:54 · [Discussion](https://news.ycombinator.com/item?id=50202217)
-
-**「为什么重要」** 该研究直接关联 Agent 生成代码的可靠性验证。若 LLM 形式化验证确实可规模化，将提升自动化代码正确性证明的可行性；但复杂度墙的存在意味着当前技术仍存在明确边界。
-
-**「可关注」** 可关注：Agent 生成证明在等价定理层面有效，但冗长证明风格遭遇复杂度墙，MachCSL 经验提示直接扩展至复杂程序存在不确定性。
-
-**「评论」** 社区存在分歧：部分用户认为应转向确定性声明式语言以规避验证难题，另有用户引用 TLA+ 讨论及 Roc 实际验证经验作为对照。
-
-**Tags**: `#eval`, `#coding-agent`, `#harness`
-
----
-
-<a id="item-agent-engineer-2"></a>
-### [ThinkingBox-Training 开源 数据库校验作RL奖励](https://huggingface.co/blog/microsoft/thinkingbox-training) ⭐️ 7.8/10
-
-2026 年 10 月 22 日，微软与 Hugging Face 联合发布 ThinkingBox-Training 方案，将可执行的数据库终端状态校验作为强化学习奖励用于 agent 后训练，相关实现已开源至 GitHub。关键实验基于 Qwen3.8-27B 模型，使用离线策略相对难度筛选的训练池进行 50 步 GRPO 训练，在从未参与训练的 507 任务 ThinkingBox-Bench 上评估，pass@1 从 51.70% 提升至 60.78%，20 次尝试全通过的任务数从 38 个增至 107 个，但 pass@20 从 89.35% 小幅回落至 87.97%。该方案主要面向需要操作生产数据库记录的 agent 场景，解决 agent 声称完成任务但实际未正确修改数据库的问题，对开发相关 coding agent、构建 agent 评估 harness 的工程师有直接参考价值。
+2026年10月22日，Hugging Face与微软联合发布ThinkingBox-Training方法，将可执行的数据库终态校验转化为强化学习奖励，用于编码代理后训练。该方法基于507任务的ThinkingBox-Bench构建离线策略相对难度的训练池：先通过基座模型估计各任务成功率，筛选难度适配当前策略的任务并固定训练池，对Qwen3.8-27B开展50步GRPO微调后，pass@1从51.70%升至60.78%，全20次尝试均通过的任务数从38个增至107个。训练效果在分布外的ThinkingBox-Bench上验证，该基准的领域、数据库及大部分MCP工具未出现在训练集中，但pass@20（至少解出一次的任务占比）从89.35%微降至87.97%。
 
 rss · Hugging Face Blog · Oct 22, 22:24
 
-**「为什么重要」** 它首次将可执行的数据库终端状态校验落地为 agent 后训练的 RL 奖励，开源实现可直接复用；目前仅验证了 Qwen3.8-27B 在数据库任务上的效果，泛化性尚未公开。
+**「为什么重要」** 该方法首次将代理执行的数据库终态可验证信号同时作为评估标准与RL训练奖励，直接解决代理&quot;声称完成任务但实际未修改正确数据库记录&quot;的问题，同时验证了 headline 准确率（pass@1）无法反映生产所需的代理稳定性；目前尚未证实该范式可复现到其他模型架构或非数据库类任务场景中。
 
-**「可关注」** 可关注：用终端状态的可执行校验作为 RL 奖励、结合离线策略相对难度筛选训练池，可提升 agent 任务完成的可重复性，但可能牺牲部分至少成功一次的任务覆盖率。
+**「可关注」** 可关注：编码代理的可靠性评估不能仅看pass@1，需补充&quot;全尝试通过率&quot;指标以暴露稳定性缺口；可执行终态校验可作为低歧义奖励信号用于代理后训练。
 
 **Tags**: `#eval`, `#harness`, `#coding-agent`
 
 ---
 
-<a id="item-agent-engineer-3"></a>
-### [Anthropic 将 Agent Skills 捐给 AAIF](https://simonwillison.net/2026/Oct/22/donating-agent-skills/) ⭐️ 7.0/10
+<a id="item-agent-engineer-2"></a>
+### [Anthropic：LLM 规模化形式化验证](https://www.anthropic.com/research/formal-verification) ⭐️ 8.0/10
 
-2026年10月22日，Anthropic宣布将其Agent Skills标准捐赠给Linux Foundation旗下的Agentic AI Foundation（AAIF）。AAIF由Anthropic、Block和OpenAI于2025年联合创立，此前Anthropic已向该基金会捐赠过Model Context Protocol（MCP）。本次捐赠后，Agent Skills将作为厂商中立、社区驱动的开放标准运营，主要影响AI Agent工具链开发、编排相关的工程师与团队。
+Anthropic 2026-10-22 发布研究，证明 LLM 能把形式化验证扩展到更大代码库。Claude 可生成证明，由外部证明检查器验证程序行为符合形式化规约。社区指出两项未解限制：一是冗长证明风格存在复杂度墙，二是形式化规约与真实需求之间的对齐缺口。影响对象：构建代码正确性与可靠性工具的 agent 工程师。
+
+hackernews · johnbender · Oct 22, 22:54 · [Discussion](https://news.ycombinator.com/item?id=50202217)
+
+**「为什么重要」** 这项研究自动化了形式化验证的检查环节，但规约与真实意图的对齐仍是独立未解问题。agent 工程师可据此评估是否将验证工具链接入 LLM 工作流，同时需单独设计规约来源与维护机制。
+
+**「可关注」** 可关注：LLM 生成证明的复杂度墙与规约-现实对齐缺口，是当前接入形式化验证工具链的两处硬边界。
+
+**「评论」** 社区共识：LLM 能生成正确证明，但冗长证明风格难以直接扩展；规约与真实意图的错配是更根本的风险。分歧点：部分人认为应转向确定性声明式语言规避问题，另一部分人持怀疑态度，认为 LLM 应用常伴随最佳实践流失。
+
+**Tags**: `#coding-agent`, `#eval`
+
+---
+
+<a id="item-agent-engineer-3"></a>
+### [Anthropic 捐赠 Agent Skills 至 AAIF](https://simonwillison.net/2026/Oct/22/donating-agent-skills/) ⭐️ 7.0/10
+
+2026-10-22，Anthropic 宣布将 Agent Skills 标准捐赠给 Linux Foundation 旗下的 Agentic AI Foundation（AAIF）。AAIF 由 Anthropic、Block 和 OpenAI 于 2025 年联合创立，此前已接收 Anthropic 捐赠的 Model Context Protocol（MCP）。此次捐赠建立在 MCP 捐赠基础上，旨在建立厂商中立的 agent 互操作标准。目前未披露具体许可证细节、治理规则或技术规范修订时间表。
 
 rss · Simon Willison · Oct 22, 18:09
 
-**「为什么重要」** 本次治理变更让Agent Skills脱离单一厂商控制，为agent工程师评估长期工具链标准、跨厂商互操作性提供了更稳定的预期，具体规范后续的演进节奏与落地细节尚未由AAIF正式公布。
+**「为什么重要」** Agent Skills 与 MCP 同归 AAIF 管理，可能推动 agent 工具链描述格式的统一，直接影响 coding agent 和 harness 的互操作设计。但具体技术整合方式与时间表仍取决于 AAIF 后续发布，尚未证实。
 
-**「可关注」** 可关注：AAIF下MCP与Agent Skills的规范协同演进方向，以及两类标准在agent工具链中的互操作设计空间。
+**「可关注」** 可关注：AAIF 对 Agent Skills 的治理模式是否延续 MCP 的开放流程，以及现有 skill 实现的兼容性声明。
 
-**Tags**: `#harness`, `#mcp`, `#orchestration`, `#coding-agent`
+**Tags**: `#harness`, `#mcp`, `#orchestration`
 
 ---
 
 <a id="item-agent-engineer-4"></a>
-### [Anthropic 因 30k PR/日 自研 Scion](https://blog.pragmaticengineer.com/the-pulse-anthropic-builds-its-own-source-control-system/) ⭐️ 7.0/10
+### [LGWM 提出 GUI Agent 过渡验证方案](https://huggingface.co/papers/2610.11942) ⭐️ 7.0/10
 
-Pragmatic Engineer 2026-10-22 发布报道，基于对 Anthropic 工程团队的采访，披露该公司因 Git 无法处理每日 30,000 个 PR 的性能瓶颈，自研内部源代码控制系统 Scion。报道确认 Scion 目前未开源。材料未披露 Scion 的具体技术实现、性能对比数据或未来开源可能性。
+2026年10月23日Hugging Face Daily Papers收录的论文提出LGWM，这是一款无解码器、动作条件化的世界模型，直接预测下一屏幕的表示来验证GUI Agent的过渡，解决现有仅检查屏幕内容的安全监控可被复用合法屏幕绕过的漏洞，该论文在Hugging Face Daily Papers获得95次点赞。现有GUI世界模型输出文本、代码或图像，需额外模型做匹配判断，LGWM直接在观测编码空间做预测，无需二次判断模型。
 
-rss · The Pragmatic Engineer · Oct 22, 14:52
+rss · Hugging Face Daily Papers · Oct 23, 01:49
 
-**「为什么重要」** 这表明确保版本控制工具能支撑万级 PR/日已成为大规模 AI 研发的基础设施需求，可能影响 coding agent 工具链的规模设计。但 Scion 未开源，其方案尚无法被外部团队直接验证或复用。
+**「为什么重要」** 当前GUI Agent安全评估普遍存在仅校验单张屏幕的盲区，该研究提供了无需额外判断模型的过渡验证思路，对agent安全监控设计有直接参考价值。
 
-**「可关注」** 可关注：当团队 PR 量级接近万级/日时，应提前评估版本控制系统的扩展边界，避免成为研发瓶颈。
+**「可关注」** 可关注：GUI Agent的安全验证应针对动作过渡而非单张屏幕，直接在观测编码空间做预测可减少验证链路的额外模型依赖。
 
-**Tags**: `#coding-agent`
+**Tags**: `#coding-agent`, `#eval`
 
 ---
 
 <a id="item-agent-engineer-5"></a>
-### [datasette-mcp 0.3 发布](https://github.com/datasette/datasette-mcp/releases/tag/0.3) ⭐️ 6.8/10
+### [WildAWM 开源多接口环境合成](https://huggingface.co/papers/2610.26828) ⭐️ 7.0/10
 
-datasette-mcp 0.3 于 2026-10-22 由 simonw 发布。该版本新增可选支持：通过 MCP 执行 canned queries，需在配置中设置 \`canned\_queries: true\` 启用。该功能同时覆盖只读与可写查询，默认关闭。
+Hugging Face Daily Papers 于 2026-10-23  spotlight 了一篇提出 WildAWM 的论文。WildAWM 是一个开源 pipeline，用于合成可控的训练环境和任务，以训练通用计算机使用代理（CUA）。与现有方法通常只支持单一交互接口不同，WildAWM 联合支持图形用户界面（GUI）、模型上下文协议（MCP）服务和命令行接口（CLI），允许代理灵活组合视觉交互、工具使用和代码执行。该方案旨在解决在真实世界系统中直接训练带来的安全风险和扩展性难题，但公开内容未提供详细性能指标或实现细节。
 
-github · simonw · Oct 22, 21:24
+rss · Hugging Face Daily Papers · Oct 23, 01:49
 
-**「为什么重要」** 该版本通过配置开关扩展了 Datasette MCP 服务器的查询能力，使 MCP 工具可直接调用预定义查询。目前尚无社区反馈或采用数据，实际影响待观察。
+**「为什么重要」** 联合支持 GUI、MCP、CLI 三接口的训练环境合成，可能改变当前代理训练的数据获取方式。但具体效果和开源实现细节尚未公开，影响仍待验证。
 
-**「可关注」** 可关注：canned queries 通过单一配置开关同时覆盖只读与可写查询，接入路径一致。
+**「可关注」** 可关注：WildAWM 对 GUI、MCP、CLI 三接口的联合支持，可能为 coding agent 的端到端训练提供新数据管道，但需等待完整开源实现与性能基准。
 
-**Tags**: `#mcp`
+**Tags**: `#coding-agent`, `#mcp`, `#harness`
 
 ---
 
 <a id="item-agent-engineer-6"></a>
-### [Modal CEO 谈弹性 GPU 与智能体云经济](https://www.latent.space/p/modal-d) ⭐️ 5.5/10
+### [SSL 方法实现可迁移 Agent 技能](https://huggingface.co/papers/2610.17860) ⭐️ 7.0/10
 
-2026年10月22日，Latent Space发布对Modal CEO Erik Bernhardsson的访谈，主题覆盖弹性GPU、沙盒增长与智能体云经济。该材料为二级来源，未附官方文档，无版本号、性能数据或实现细节。标签指向harness与orchestration领域。
+Hugging Face Daily Papers 于 2026-10-23 发布论文摘要，提出 Socratic Skill Learning \(SSL\) 方法，通过专家教学与学生练习交替学习可迁移 LLM agent 技能。学生作为唯一环境操作者和技能作者，可质疑、测试并调整建议。配套 SkillTransferBench 含 35 任务家族、408 可执行案例，主 cohort（22 家族 155 案例）上 Fixed-Window SSL 达 0.801 utility，高于无技能基线 0.723。摘要被截断，非完整论文原文。
 
-rss · Latent Space · Oct 22, 17:40
+rss · Hugging Face Daily Papers · Oct 23, 01:49
 
-**「为什么重要」** 材料缺乏技术细节，无法确认工程影响。弹性GPU与沙盒增长属于智能体云基础设施议题，可能影响资源调度策略，但具体效果未证实。
+**「为什么重要」** SSL 直接针对 agent 技能跨会话复用问题，SkillTransferBench 提供标准化技能迁移评估框架，对 coding agent 技能系统设计有参考价值。但摘要 truncated，完整实验细节与泛化结论需读原文验证。
 
-**「可关注」** 可关注：弹性GPU与沙盒增长的工程权衡，但当前缺乏官方技术规格，无法形成具体实施建议。
+**「可关注」** 可关注：SkillTransferBench 的 35 家族 408 案例规模与 held-out 评估设计，可作为 agent 技能复用评估的参考模板，但摘要截断，完整实验细节需读原文。
 
-**Tags**: `#harness`, `#orchestration`
+**Tags**: `#eval`, `#coding-agent`
+
+---
+
+<a id="item-agent-engineer-7"></a>
+### [LASAGNA RAG Compositionality Study](https://huggingface.co/papers/2610.29722) ⭐️ 7.0/10
+
+On 2026-10-23, Hugging Face Daily Papers highlighted LASAGNA, an open-source RAG evaluation framework testing 450 pipeline configurations across eight benchmarks and corpora of 5K–200K documents. The framework studies whether isolated gains from individual RAG techniques—embedding, chunking, retrieval, reranking, query augmentation, context compression, and agentic verification—survive composition, pre-declaring three hypotheses on alignment of retrieval quality and answer faithfulness and on scalability of small-corpora conclusions. The provided content is truncated, leaving full findings and technical details inaccessible. The work targets agent RAG pipeline development and evaluation.
+
+rss · Hugging Face Daily Papers · Oct 23, 01:49
+
+**「Why It Matters」** The study addresses a gap in agent RAG evaluation by testing compositionality at scale, though the incomplete source material prevents verification of the specific results or their broader impact.
+
+**「Engineer Takeaway」** RAG evaluation frequently measures techniques in isolation; LASAGNA&\#x27;s 450-configuration sweep across 5K–200K document corpora offers a reproducible template for stress-testing whether those gains compose in agent workflows.
+
+**Tags**: `#eval`, `#harness`, `#memory`
+
+---
+
+<a id="item-agent-engineer-8"></a>
+### [Anthropic 内部源码系统 Scion](https://blog.pragmaticengineer.com/the-pulse-anthropic-builds-its-own-source-control-system/) ⭐️ 7.0/10
+
+Pragmatic Engineer 2026-10-22 报道，Anthropic 因 Git 在日均 3 万 PR 规模下出现性能瓶颈，自研内部源码控制系统 Scion。报道基于对项目团队的访谈，提及团队未开源该系统。文章缺乏 Scion 的深层技术实现细节，也未公开系统访问方式。
+
+rss · The Pragmatic Engineer · Oct 22, 14:52
+
+**「为什么重要」** 这显示在极高代码提交规模下，现有源码控制系统可能成为工程效率瓶颈。但文章未披露技术细节，Scion 的实际效果与可复制性仍不确定。
+
+**「可关注」** 可关注：日均 PR 量级达到数万时，需提前评估源码控制系统的性能扩展方案。
+
+**Tags**: `#coding-agent`, `#orchestration`, `#toolchain`
+
+---
+
+<a id="item-agent-engineer-9"></a>
+### [datasette-mcp 0.3 发布 支持MCP canned查询](https://github.com/datasette/datasette-mcp/releases/tag/0.3) ⭐️ 5.8/10
+
+2026年10月22日，simonw发布datasette-mcp 0.3版本，新增可选功能：支持通过MCP执行预设数据库查询，仅需在YAML配置中为datasette-mcp插件开启canned\_queries开关即可启用，该功能同时覆盖只读与可写查询场景，对应GitHub issue \#2。
+
+github · simonw · Oct 22, 21:24
+
+**「为什么重要」** 该功能为基于MCP的agent工具链补充了Datasette预设查询执行能力，但当前影响范围仅限使用datasette-mcp插件的用户群体，属于小范围功能补充而非架构级变更。
+
+**「可关注」** 可关注：datasette-mcp 0.3的canned查询能力通过配置开关即可启用，无需修改业务代码，已有Datasette与MCP集成场景的团队可按需评估接入成本。
+
+**Tags**: `#mcp`, `#harness`
+
+---
+
+<a id="item-agent-engineer-10"></a>
+### [Granite 时间序列集成预测 r1 发布](https://huggingface.co/blog/ibm-research/granite-timeseries-ensemble-r1) ⭐️ 5.8/10
+
+IBM Research 于 2026-10-22 发布 Granite Timeseries Ensemble r1 开源集成时间序列预测方案。该方案统一四个预训练 Granite 模型，通过 Probabilistic Ensemble（默认）或 IQR Ensemble 生成中位数和分位数预测，无需数据集特定重训练或拟合集成权重。在 97 个 GIFT-Eval 配置上，集成方案聚合 MASE 0.683 和平均 MASE Rank 47.175 均优于四个单个成员，但边际优势较小；CRPS/MWQL 指标上 PatchTST-FM-r2 仍保持最低 0.467。对需要时间序列预测能力的 AI Agent 工程师，该方案提供免调优默认基线，但首次运行需下载四个成员检查点，耗时较长。
+
+rss · Hugging Face Blog · Oct 22, 07:51
+
+**「为什么重要」** 对需要时间序列预测能力的 AI Agent 工程师，该方案降低了单模型选择成本，提供了一个无需先验知识的鲁棒预测起点。但分位数预测上未全面领先于最佳单模型，实际收益需结合具体序列和 horizon 验证。
+
+**「可关注」** 可关注：集成方案以 uniform probability pooling 为默认，无拟合权重，适合作为多序列预测的零配置基线；若分位数校准或极值预测关键，需单独对比 IQR Ensemble 或单模型 PatchTST-FM-r2。
+
+**Tags**: `#toolchain`
+
+---
+
+<a id="item-agent-engineer-11"></a>
+### [Nvidia Qwen3.8 FP4 模型登榜](https://huggingface.co/nvidia/Qwen3.8-Flash-Next-FP4-Local) ⭐️ 5.5/10
+
+Nvidia 官方 FP4 量化本地版 Qwen3.8 Flash 模型（nvidia/Qwen3.8-Flash-Next-FP4-Local）于 2026-10-23 登上 Hugging Face Trending 榜单，trendingScore 达 242，获 313 个 likes。模型标签显示采用 ModelOpt 与 safetensors 格式，属 qwen4\_exp 系列。当前列表页未披露技术规格、性能指标或 agent 特定用例，无法确认量化精度损失、硬件要求及本地推理后端兼容性。
+
+rss · Hugging Face Trending Models · Oct 23, 01:49
+
+**「为什么重要」** 该模型 listing 显示 Nvidia 已发布 Qwen3.8 的 FP4 本地推理变体，但列表页缺乏可验证指标，暂不能评估其对 coding agent 推理成本或延迟的实际影响。
+
+**「可关注」** 可关注：Nvidia ModelOpt 已产出 Qwen3.8 FP4 量化权重，但需访问模型卡确认精度损失、硬件要求及是否支持 llama.cpp、vLLM 等本地推理后端。
+
+**Tags**: `#coding-agent`, `#harness`
 
 ---
 
 ## AI Daily
 
 <a id="item-ai-daily-1"></a>
-### [OpenAI 发布 Decisions API](https://openai.com/index/decisions-api) ⭐️ 6.3/10
+### [OpenAI Decisions 新 API](https://openai.com/index/decisions-api) ⭐️ 6.8/10
 
-OpenAI 于 2026-10-22 发布 Decisions API，宣称可为任意应用提供快速、聚焦、低成本的决策能力。当前公开信息仅含一句标语，未披露技术架构、定价或具体功能边界。
+OpenAI 发布 Decisions API，宣称可为任意应用提供快速、聚焦且低成本的决策能力。本次官方披露内容仅限一句宣传语，未附带技术规格、定价、发布时间表或与现有产品的对比基线。目前无法从公开信息中判断该 API 的具体实现方式与适用场景边界。
 
 rss · OpenAI Blog · Oct 22, 19:00
+
+**「可关注」** 可关注：该 API 主打快速、聚焦、低成本的决策能力，面向任意应用，但官方暂未公开技术规格、定价与具体发布时间。
 
 **Tags**: `#lab`, `#product`, `#industry`
 
 ---
 
 <a id="item-ai-daily-2"></a>
-### [OpenAI 官方定义 FDE 角色](https://openai.com/index/forward-deployed-engineering-means) ⭐️ 5.8/10
+### [OpenAI 博文阐释 FDE 角色定义](https://openai.com/index/forward-deployed-engineering-means) ⭐️ 5.8/10
 
-OpenAI 官方博客发文。文章定义 FDE 角色。内容属组织架构说明。未涉及模型更新。未涉及产品发布。未涉及政策变化。对行业影响有限。
+OpenAI 官方博客于 2026-10-22 发布文章，阐释公司内部前向部署工程师（FDE）角色的定义与核心职责。该内容属于公司内部运营与文化类说明，未涉及模型发布、技术突破或重大政策变动。对行业整体影响面有限，属于边际行业短讯。
 
 rss · OpenAI Blog · Oct 22, 06:00
 
+**「可关注」** 可关注：文章明确了 OpenAI 内部 FDE 角色的定位与职责边界，可作为了解大厂工程岗位设置的参考。
+
 **Tags**: `#lab`, `#industry`
-
----
-
-<a id="item-ai-daily-3"></a>
-### [GitHub 专访 bug bounty 研究员 @r31n](https://github.blog/security/how-bug-bounty-sharpens-one-researchers-security-skills/) ⭐️ 5.8/10
-
-网络安全月期间，GitHub 官方博客发布对 bug bounty 研究员 @r31n 的专访。专访内容覆盖其漏洞研究思路、偏好的漏洞类型，以及给新人的相关建议。该内容未发布新的模型、产品或政策，信息增量有限。
-
-rss · GitHub Blog · Oct 22, 17:21
-
-**「为什么重要」** 该内容仅分享研究员个人研究经验与入门建议，无行业新规则、新工具或新政策发布，参考价值有限。
-
-**「可关注」** 可关注：该研究员分享的漏洞研究思路与新人建议，可作为 bug bounty 入门的参考方向。
-
-**Tags**: `#industry`, `#security`
 
 ---
 
 ## AI Deals
 
 <a id="item-ai-deals-1"></a>
-### [CloudCone 限时充50%送云积分](https://www.appinn.com/cloudcone-50p-26/) ⭐️ 8.0/10
+### [CloudCone 24小时50%充值赠送](https://www.appinn.com/cloudcone-50p-26/) ⭐️ 8.0/10
 
-CloudCone推出24小时限时充值优惠，充值5.1美元即可获得2.55美元赠送云积分，总可用额度为7.65美元，未使用额度支持申请退款，活动于2026年10月22日发布后24小时内有效。
+VPS 提供商 CloudCone 推出 24 小时限时充值赠送活动，用户充值 5.1 美元即可额外获得 2.55 美元云积分，总可用额度为 7.65 美元。未使用的信用额度可随时申请退款。活动自 2026 年 10 月 22 日发布起 24 小时内有效。
 
 rss · 小众软件 · Oct 22, 13:44
 
-**「为什么重要」** 该活动经作者实际验证真实有效，且未使用额度可退款，用户无实际损失风险。
+**「为什么重要」** 活动规则明确，已有参与用户验证赠送额度到账，当前仍处于活动有效期内可参与。
 
-**「可关注」** 可关注：该优惠为24小时限时活动，需在活动窗口内完成5.1美元充值，未使用额度可申请退款。
+**「可关注」** 可关注：活动未使用的额度支持退款，仅需在 24 小时活动期内完成 5.1 美元充值即可参与。
 
-**Tags**: `#promo`, `#credits`, `#limited-free`
+**Tags**: `#promo`, `#credits`, `#limited-free`, `#limited-time`
 
 ---
