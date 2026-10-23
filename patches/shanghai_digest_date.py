@@ -10,11 +10,9 @@ from pathlib import Path
 import sys
 
 IMPORT_NEEDLE = """from datetime import datetime, timedelta, timezone
-from pathlib import Path
 """
 IMPORT_PATCH = """from datetime import datetime, timedelta, timezone
 from zoneinfo import ZoneInfo
-from pathlib import Path
 """
 
 DATE_NEEDLE = 'datetime.now(timezone.utc).strftime("%Y-%m-%d")'
