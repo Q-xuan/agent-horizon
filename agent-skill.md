@@ -85,6 +85,10 @@ checked with a minimal JSON completion, since configuration validation alone
 does not verify connectivity. Scheduled jobs and containers also need access
 to the credentials in their own runtime environment.
 
+Eligible ChatGPT users can instead choose Horizon's dedicated
+[Sign in with ChatGPT](chatgpt.md) provider. The assistant can run the login and
+model-discovery commands while the user completes browser authorization.
+
 If Horizon is already installed, tell the assistant where the checkout is, or set
 `HORIZON_PATH`. MCP is optional. A sandboxed agent needs access to the checkout
 and its runtime.

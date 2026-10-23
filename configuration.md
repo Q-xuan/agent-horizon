@@ -112,6 +112,12 @@ rules, and block tool permissions.
 
 Configure which AI model analyzes and enriches your content.
 
+For eligible ChatGPT subscribers, [Sign in with ChatGPT](chatgpt.md) provides an
+optional `openai-chatgpt` provider using the official ChatGPT plan-usage flow.
+Run `uv run horizon-chatgpt login`, then select a model with
+`uv run horizon-chatgpt models`, or choose `openai-chatgpt` in `horizon-wizard`.
+This provider uses saved OAuth credentials instead of an API key.
+
 `api_key_env` is always an environment variable name, not the API key value.
 Store secrets in `.env` or your shell environment, then point `api_key_env` at
 that variable:
@@ -344,7 +350,7 @@ otherwise return reasoning text instead of the requested JSON:
 - `extra_body`: Optional JSON object merged into the request body as is. Which
   fields work depends on the server; Horizon does not validate them.
 - Supported for OpenAI-compatible, Azure OpenAI and Anthropic-compatible
-  providers. The `gemini` provider rejects it.
+  providers. The `gemini` and `openai-chatgpt` providers reject it.
 - With `provider_chain`, it applies only to the configured `provider`, like
   `base_url`.
 
