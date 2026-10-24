@@ -5,31 +5,34 @@ date: 2026-10-24
 lang: zh
 ---
 
-> 从 175 条内容中筛选出 12 条重要资讯。
+> 从 189 条内容中筛选出 15 条重要资讯。
 
-<nav id="ah-toc" class="ah-toc" aria-label="目录"><span class="ah-toc-title">目录</span><ul><li><a href="#sec-harness-arch"><span class="ah-toc-name">Harness 架构</span><span class="ah-toc-count">4条</span></a></li><li><a href="#sec-agent-engineer"><span class="ah-toc-name">Agent 工程师日报</span><span class="ah-toc-count">2条</span></a></li><li><a href="#sec-ai-daily"><span class="ah-toc-name">AI 日报</span><span class="ah-toc-count">3条</span></a></li><li><a href="#sec-ai-deals"><span class="ah-toc-name">AI 羊毛</span><span class="ah-toc-count">3条</span></a></li></ul></nav>
+<nav id="ah-toc" class="ah-toc" aria-label="目录"><span class="ah-toc-title">目录</span><ul><li><a href="#sec-harness-arch"><span class="ah-toc-name">Harness 架构</span><span class="ah-toc-count">4条</span></a></li><li><a href="#sec-agent-engineer"><span class="ah-toc-name">Agent 工程师日报</span><span class="ah-toc-count">6条</span></a></li><li><a href="#sec-ai-daily"><span class="ah-toc-name">AI 日报</span><span class="ah-toc-count">2条</span></a></li><li><a href="#sec-ai-deals"><span class="ah-toc-name">AI 羊毛</span><span class="ah-toc-count">3条</span></a></li></ul></nav>
 
 ---
 
 **[Harness 架构](#sec-harness-arch)**
-1. [Codex rust-v0.164.0 发布](#item-harness-arch-1) ⭐️ 8.3/10
-2. [Goose v1.56.0 发布](#item-harness-arch-2) ⭐️ 7.8/10
-3. [pydantic-ai v2.60.0 发布](#item-harness-arch-3) ⭐️ 7.8/10
-4. [Anthropic 开源 knowledge-work-plugins 插件集](#item-harness-arch-4) ⭐️ 5.0/10
+1. [Goose v1.56.0 发布](#item-harness-arch-1) ⭐️ 7.8/10
+2. [google/adk-python v2.13.0 发布](#item-harness-arch-2) ⭐️ 7.8/10
+3. [MCP TypeScript SDK v2.4.0 发布](#item-harness-arch-3) ⭐️ 7.8/10
+4. [Cloudflare 开源 security-audit-skill](#item-harness-arch-4) ⭐️ 5.0/10
 
 **[Agent 工程师日报](#sec-agent-engineer)**
 1. [Kimi K3.1 Pro 发布](#item-agent-engineer-1) ⭐️ 7.0/10
-2. [NVIDIA Nemotron 3.5 Bolt 4GB 发布](#item-agent-engineer-2) ⭐️ 6.0/10
+2. [IQuest-Q1 CLI 智能体模型发布](#item-agent-engineer-2) ⭐️ 7.0/10
+3. [DFM 分块参数记忆架构论文发布](#item-agent-engineer-3) ⭐️ 7.0/10
+4. [NVIDIA Nemotron-3.5-Bolt-E4B-4GB 发布](#item-agent-engineer-4) ⭐️ 6.5/10
+5. [OpenDS 基准评估开放网络深度搜索](#item-agent-engineer-5) ⭐️ 6.0/10
+6. [LitPivot 发布：文献语境研究辅助工具](#item-agent-engineer-6) ⭐️ 5.8/10
 
 **[AI 日报](#sec-ai-daily)**
-1. [OpenAI frontier 训练安全](#item-ai-daily-1) ⭐️ 7.8/10
-2. [OpenAI 披露 ChatGPT 亿级用户存储方案](#item-ai-daily-2) ⭐️ 6.8/10
-3. [ReasoningShield 获 NeurIPS 2026 录用](#item-ai-daily-3) ⭐️ 5.0/10
+1. [OpenAI Habitat 扩容服务 10 亿 ChatGPT 用户](#item-ai-daily-1) ⭐️ 7.8/10
+2. [OpenAI 升级 frontier 安全](#item-ai-daily-2) ⭐️ 7.8/10
 
 **[AI 羊毛](#sec-ai-deals)**
-1. [智谱 ZCode 1024 免费领 5 亿 Tokens](#item-ai-deals-1) ⭐️ 8.0/10
-2. [Epic 10.23~10.29 限免游戏汇总](#item-ai-deals-2) ⭐️ 8.0/10
-3. [Show HN：runtime.school 上线免费交互式 Python SQL 课](#item-ai-deals-3) ⭐️ 5.0/10
+1. [智谱 ZCode 1024 程序员节发额度](#item-ai-deals-1) ⭐️ 8.0/10
+2. [Epic 本周免费游戏 10.23~10.29](#item-ai-deals-2) ⭐️ 8.0/10
+3. [Show HN 免费无限制 AI 文本检测器发布](#item-ai-deals-3) ⭐️ 6.0/10
 
 ---
 
@@ -39,58 +42,56 @@ lang: zh
 <p class="ah-sec-meta"><a class="ah-anchor" href="#sec-harness-arch" aria-label="链接到本节">#</a><a class="ah-back" href="#ah-toc">↑ 回到目录</a></p>
 
 <a id="item-harness-arch-1"></a>
-### [Codex rust-v0.164.0 发布](https://github.com/openai/codex/releases/tag/rust-v0.164.0) ⭐️ 8.3/10
+### [Goose v1.56.0 发布](https://github.com/aaif-goose/goose/releases/tag/v1.56.0) ⭐️ 7.8/10
 
-OpenAI Codex CLI 发布 rust-v0.164.0。本次更新新增企业 MCP OAuth 认证、内联模型与权限控制、Kitty/Sixel 图像全屏预览、远程 Bash/Zsh 会话凭证掩码，以及 Amazon Bedrock 设置向导默认启用。修复 compaction 失败遗留部分摘要、会话恢复丢失压缩历史与线程设置、Windows 代理认证、多级配置覆盖保留，以及 macOS 沙盒路径检查加固。
+Goose v1.56.0 正式发布，补齐 subagent 生命周期管控：支持恢复失败或取消的委托任务、通过 \`GOOSE\_MAX\_CONCURRENT\_SUBAGENTS\` 限制并发数，并在 UI 提供只读子代理会话。运行时引入自动 thinking level 以改善模型推理，同时用 Boa JavaScript runtime 替换原有 PCTX code mode。新增 IO Intelligence provider 与 provider-defined cache pricing 支持，CLI 通过 OSC 7501 上报 session 状态。该版本还加入危险的 include history 选项与 Windows NSIS 桌面安装器。
 
-github · github-actions\[bot\] · 10月23日 04:48
+github · github-actions\[bot\] · 10月23日 15:49
 
-**「改了什么」** 新增 /presets 槽位、/model 与 /permissions 内联参数、企业 MCP OAuth 认证、远程会话凭证掩码及 Bedrock 向导默认启用。修复 compaction 残留部分摘要、resume 丢失压缩历史与线程设置、Windows 代理认证、多级 -c 配置覆盖保留，以及 macOS 沙盒路径检查加固。减少磁盘使用并更新嵌入式 JavaScript 运行时。
+**「设计要点」** Subagent 管控链覆盖创建、恢复、并发限制与只读审计，形成完整生命周期管理。MCP 工具层统一 provider-safe public names，GDK 下沉 skills discovery 与 foreground subagent 运行，权限与工具边界收紧。
 
-**标签**: `#mcp`, `#permissions`, `#memory`, `#sandbox`
+**「改了什么」** 相对上一版，subagent 支持失败/取消任务恢复与并发上限控制，代码执行模式从 PCTX 切换至 Boa JavaScript。provider 层新增缓存定价与 IO Intelligence 接入，CLI 增加 OSC 7501 状态上报。
+
+**标签**: `#subagents`, `#runtime`, `#permissions`, `#tools`, `#prefix-cache`
 
 ---
 
 <a id="item-harness-arch-2"></a>
-### [Goose v1.56.0 发布](https://github.com/aaif-goose/goose/releases/tag/v1.56.0) ⭐️ 7.8/10
+### [google/adk-python v2.13.0 发布](https://github.com/google/adk-python/releases/tag/v2.13.0) ⭐️ 7.8/10
 
-Goose v1.56.0 发布，核心改进覆盖 subagent 编排、运行时推理、缓存与记忆。新增自动 thinking level 调节、失败或取消 delegate subagent 恢复、UI 只读 subagent 会话链接。新增 GOOSE\_MAX\_CONCURRENT\_SUBAGENTS 并发限制、OSC 7501 会话状态上报、IO Intelligence provider、provider-defined cache prices、Boa JavaScript runtime 替代 PCTX code mode。同时修复 Windows 构建错误、Bedrock 空白文本、模型列表顺序等多项问题。
+google/adk-python v2.13.0 正式发布。本次升级将 12 项实验特性转稳定，新增基于 TypeSafe Jev 模型的非 LLM 工作流分类器 \`TypesafeClassifier\` 与 \`ClassifierNode\`，单次前向传播返回校准概率，路由速度快于 LLM。同时引入实时音频交互（支持 barge-in，集成 Gemini 语音转文字与文字转语音）、MongoDB 会话与记忆服务（\`MongoDbSessionService\`、\`MongoDbMemoryService\`），以及执行性能优化（字符串模型 agent 执行轮次提速最高 8 倍）。破坏性变更：遥测默认切换至 OpenTelemetry GenAI v2 \(\`otel\_semconv\_1\_44\`\) 并移除 \`call\_llm\` span，需设置 \`ADK\_TELEMETRY\_SCHEMA\_VERSION\_OPT\_IN=otel\_semconv\_1\_36\` 回退至 v1 schema。
 
-github · github-actions\[bot\] · 10月23日 15:49
+github · Jacksunwei · 10月23日 18:08
 
-**「设计要点」** subagent 运行时分入 GDK，全局 turn limit 作为 subagent 回退；MCP tools 提供 provider-safe 公开名称；prefix-cache 支持 provider-defined 价格；会话状态通过 OSC 7501 协议上报。
+**「设计要点」** 运行时优化事件加载开销，字符串模型 agent 执行轮次提速最高 8 倍；工具层 \`MongoDbToolset\` 支持序列化并直接部署至 Agent Engine，连接字符串无需打包进镜像。记忆层 \`MongoDbMemoryService\` 基于关键词匹配召回，无需向量索引或 embedding 模型；评测层将 invocation duration 拆分为 model、tool 和 framework 时间。
 
-**「改了什么」** 新增 GOOSE\_MAX\_CONCURRENT\_SUBAGENTS 环境变量控制 subagent 并发上限，支持恢复失败或取消的 delegate subagent，自动调节 thinking level 改善模型推理，以 Boa JavaScript runtime 替代原有 PCTX code mode，provider 可定义缓存价格，Windows 桌面端新增 NSIS 安装器，MCP tools 名称改为 provider-safe 公开名。
+**「改了什么」** 新增非 LLM 工作流分类器 \`TypesafeClassifier\` 与 \`ClassifierNode\`，支持基于 Jev 模型的单次前向传播路由。12 项实验特性转稳定，新增实时音频交互、MongoDB 会话/记忆/工具集集成、\`delete\_memory\` API 与 OpenSandbox 环境，执行性能提升最高 8 倍；遥测默认升级至 OpenTelemetry GenAI v2 并移除 \`call\_llm\` span。
 
-**标签**: `#subagents`, `#runtime`, `#memory`, `#prefix-cache`, `#tools`
+**标签**: `#planning`, `#runtime`
 
 ---
 
 <a id="item-harness-arch-3"></a>
-### [pydantic-ai v2.60.0 发布](https://github.com/pydantic/pydantic-ai/releases/tag/v2.60.0) ⭐️ 7.8/10
+### [MCP TypeScript SDK v2.4.0 发布](https://github.com/modelcontextprotocol/typescript-sdk/releases/tag/v2.4.0) ⭐️ 7.8/10
 
-pydantic-ai v2.60.0 发布，重构工具重试 API，弃用 RetryPromptPart，改用 ToolReturnPart\(outcome=&\#x27;retried&\#x27;\) 与 RetryFeedbackPart。SummarizingCompaction 将 harness 添加的用户频道内容标记为 &lt;harness\_data&gt; 而非用户消息。ModelSelectionContext 新增 usage\_limits、deadline、run\_id、conversation\_id，BedrockConverseModel 默认 maxTokens 设为 Claude 最大输出并后台流式。新增 DockerSandbox、BoxLiteSandbox、RelevanceCompaction 等 harness 能力。
+MCP TypeScript SDK v2.4.0 发布，包含与 2026-07-28 及 2025-11-25 规范对齐的破坏性变更。工具参数验证现在拒绝 \`number\` 类型上的 \`x-mcp-header\` 注解，客户端不再列出此类工具，服务器返回 \`-32020\`；\`outputSchema\` 结果不再包装在 \`\{ result \}\` 中，需直接读取 \`structuredContent\`。新增 Skills over MCP \(SEP-2640\) 支持，服务器可通过 \`loadSkills\(folder\)\` 和 \`skills.attach\(server\)\` 发布技能文件夹，客户端使用 \`SkillsClient\` 列出、读取和验证。OAuth 刷新令牌支持 opt-in \`scope\` 参数，\`ServerEvent\` 新增可选 \`params\` 字段以支持网关转发变更通知的 \`\_meta\`。
 
-github · dsfaccini · 10月23日 01:44
+github · felixweinberger · 10月23日 18:32
 
-**「设计要点」** 运行时层调整 Bedrock 默认 maxTokens 至 Claude 上限并后台流式。工具层弃用 RetryPromptPart，改用 ToolReturnPart\(outcome=&\#x27;retried&\#x27;\) 与 RetryFeedbackPart；记忆层在 SummarizingCompaction 中引入 &lt;harness\_data&gt; 标签隔离 harness 注入内容。
+**「改了什么」** 破坏性变更包括：\`number\` 参数上的 \`x-mcp-header\` 被客户端过滤、服务器返回 \`-32020\`；2025-11-25 连接的 \`outputSchema\` 结果去掉了 \`\{ result \}\` 包装；Ajv 验证器升级至 fast-uri 3.1.8，拒绝无效 URI 方案的 \`$id\`/\`$ref\`。新增 Skills over MCP、OAuth refresh scope 配置、ServerEvent params 支持，以及 v1 到 v2 升级指南作为可安装 skill。修复了资源更新列表显示、每请求传输绑定、HTTP 405 响应头及 \`@hono/node-server\` 兼容性问题。
 
-**「改了什么」** 工具重试 API 弃用 RetryPromptPart，改用 ToolReturnPart\(outcome=&\#x27;retried&\#x27;\) 与 RetryFeedbackPart；ModelSelectionContext 新增 usage\_limits、deadline、run\_id、conversation\_id。BedrockConverseModel 默认 maxTokens 提升至 Claude 上限并后台流式，同时新增 DockerSandbox、BoxLiteSandbox、RelevanceCompaction 等 harness 能力。
-
-**标签**: `#runtime`, `#tools`, `#memory`, `#model-selection`
+**标签**: `#mcp`, `#tools`, `#breaking-changes`, `#spec-compliance`
 
 ---
 
 <a id="item-harness-arch-4"></a>
-### [Anthropic 开源 knowledge-work-plugins 插件集](https://github.com/anthropics/knowledge-work-plugins) ⭐️ 5.0/10
+### [Cloudflare 开源 security-audit-skill](https://github.com/cloudflare/security-audit-skill) ⭐️ 5.0/10
 
-这是 Anthropic 官方开源的 knowledge-work-plugins 插件集，面向知识工作者适配 Claude Cowork 与 Claude Code。该插件集用于定制工作流、工具访问与数据集成规则，当前公开内容仅含高层描述，无技术实现、版本号与架构细节。
+这是 Cloudflare 开源的 coding agent 工具 security-audit-skill，用于多阶段自动化安全审计。该工具通过编排隔离子 agent 完成侦察、覆盖引导的漏洞狩猎、候选验证、结构化输出、独立记录校验、目标中立报告全流程，输出机器可读、经独立验证的安全发现结果。它是 Cloudflare 漏洞发现工具链的基础组件，相关实践出自官方文章《Build your own vulnerability harness》。
 
-rss · GitHub Trending Daily · 10月24日 01:19
+rss · GitHub Trending Daily · 10月24日 01:57
 
-**「改了什么」** Anthropic 首次公开该官方插件仓库，支持为 Claude 定制知识工作流、工具调用与数据集成规则，暂无版本号、接口规范与兼容性说明。
-
-**标签**: `#tools`
+**标签**: `#tools`, `#subagents`, `#sandbox`
 
 ---
 
@@ -102,32 +103,92 @@ rss · GitHub Trending Daily · 10月24日 01:19
 <a id="item-agent-engineer-1"></a>
 ### [Kimi K3.1 Pro 发布](https://www.kimi.ai/blog/kimi-k3-1-pro) ⭐️ 7.0/10
 
-2026 年 10 月 23 日，Kimi K3.1 Pro 上线 Kimi API，尚未开放权重，Moonshot 承诺 2026 年 11 月 4 日前发布完整模型权重；同步推出 Highspeed 版本，速度为普通版 2-3 倍，价格翻倍（输入缓存命中价格不变）。API 定价为输入 2 美元/百万 token、输出 10 美元/百万 token，与 GPT-6.1 Sol 持平，为 Claude Opus 5.5 的一半。Moonshot 自研基准显示该模型与 Opus 5.5、GPT-6 Astra 水平相当，Artificial Analysis 给出 55 分的评分，高于 Claude Fable 5.1、GPT-6 Astra、Gemini 4 Argon 的 53 分，低于 Opus 5.5 的 58 分，是首个接近前沿的待开源权重模型。社区反馈显示该模型存在推理痕迹身份泄露（自称 Kimi by moonshot、ChatGPT，提及“评估员”、系统指令等）、数据场景工具调用过量（73 次 vs 其他模型 18 次）的问题，另有用户反馈 99 美元/月订阅套餐 47 分钟即耗尽 5 小时配额。当前材料为 Hacker News 二手讨论，非官方技术博客原文。
+2026 年 10 月 23 日 Kimi K3.1 Pro 正式上线 Kimi API，当前未开源，Moonshot 承诺 2026 年 11 月 4 日前发布完整模型权重；同步推出 Highspeed 版本，推理速度为普通版 2-3 倍，价格翻倍，输入缓存命中场景定价不变。该模型输入定价为 2 美元/百万 token，输出为 10 美元/百万 token，与 GPT-6.1 Sol 持平，仅为 Claude Opus 5.5 的一半。Moonshot 自研基准显示其性能与 Opus 5.5、GPT-6 Astra 相当，Artificial Analysis 评分为 55，高于 Claude Fable 5.1、GPT-6 Astra、Gemini 4 Argon（均为 53），低于 Claude Opus 5.5（58），是首个达到该评分的即将开源模型。社区 Pac-Man 基准测试显示其与 Claude Sonnet 5.5 得分均为 93，成本 0.68 美元、耗时 11 分钟，低于 Sonnet 5.5 的 1.61 美元成本和 14 分钟耗时。社区反馈显示其订阅配额限制严苛，99 美元/月套餐单会话 47 分钟即触发 5 小时用量上限。
 
 hackernews · Jowsey · 10月23日 16:59 · [社区讨论](https://news.ycombinator.com/item?id=50212065)
 
-**「为什么重要」** 该模型是首个在公开基准上接近前沿的待开源权重模型，API 已上线且定价具备竞争力，Highspeed 版本提供速度选择；尚未证实的是社区报告的身份泄露、工具调用过量问题是否普遍，开源权重版本的能力是否会与 API 版本存在差异。
+**「为什么重要」** 这是首个评分接近主流 frontier 闭源编码模型的即将开源选项，定价低于同类竞品，且提供更高速度的付费版本，为编码 agent 的模型选型提供了新的可选方案；但其开源后的实际性能、安全策略落地效果尚未得到验证。
 
-**「可关注」** 可关注：Kimi K3.1 Pro API 已开放调用，待开源权重模型首次在基准上接近前沿，但社区已报告推理痕迹身份泄露、数据场景工具调用过量两类 agent 相关风险，可优先验证其对现有工具链的兼容性与行为稳定性。
+**「可关注」** K3.1 Pro API 兼容 OpenAI 格式，可直接接入现有 OpenAI 兼容的 agent harness，其定价与 Highspeed 版本的性价比选项可纳入编码场景的模型选型对比。
 
-**「评论」** 社区反馈呈现三类观察：一是模型回复风格更直接尖锐，推理痕迹存在自称不同身份、泄露系统指令的问题；二是数据场景工具调用次数远高于同类模型（73 次 vs 18 次）是普遍观察；三是用户关注到 Moonshot 声明不会开源超过当前前沿网络攻击能力的权重，会逐步提升开源权重的网络能力，引发对开源范围限制的讨论；另有用户反馈 99 美元/月订阅套餐 47 分钟即耗尽 5 小时配额。
+**「评论」** 社区反馈存在两类典型问题：一是模型回复风格偏直接，偶发身份混淆（自称 Kimi 或 ChatGPT）、引用模糊系统指令的情况；二是订阅配额限制严苛，高等级套餐短时间内即可触发用量上限。另有用户注意到 Moonshot 的开源策略声明，称会控制开源权重的网络攻击能力上限，后续逐步提升该能力。
 
-**标签**: `#coding-agent`, `#eval`, `#observability`, `#tool-use`, `#permissions`
+**标签**: `#coding-agent`, `#permissions`, `#harness`, `#eval`
 
 ---
 
 <a id="item-agent-engineer-2"></a>
-### [NVIDIA Nemotron 3.5 Bolt 4GB 发布](https://www.reddit.com/r/LocalLLaMA/comments/1xdiecx/nvidianvidianemotron35bolte4b4gb_hugging_face/) ⭐️ 6.0/10
+### [IQuest-Q1 CLI 智能体模型发布](https://huggingface.co/papers/2610.30949) ⭐️ 7.0/10
 
-2026 年 10 月 23 日，社区转发 NVIDIA 官方发布的 Nemotron 3.5 Bolt E4B 4GB 小语言模型。该模型基于 Gemma-4-E4B-it 进一步后训练，针对低内存、低首 Token 延迟（TTFT）场景优化，提升多轮工具调用、指令遵循与输入接地能力，面向本地/边缘低延迟 agent、设备端语音助手、嵌入式接口等场景。模型配套用于推测解码的 DFlash drafter，另有 BF16 全精度版本，权重已在 Hugging Face 公开，支持商用与非商用用途。当前无公开第三方性能基准数据，实际表现需开发者自行验证。
+2026 年 10 月 24 日 Hugging Face Daily Papers 收录编号为 2610.30949 的 IQuest-Q1 相关研究论文，提出面向 CLI 系统的稀疏 MoE 智能体基础模型，总参数 320B、激活参数 15B，该论文当日获得 54 次点赞。论文公开了三阶段训练流程的具体技术方案：预训练结合 Stable SplitNorm、Muon、muP，采用两阶段课程设计，第二阶段提升编码数据占比，同时保持安全与最优学习率的大稳定裕度；中训练扩展多领域、多格式数据混合、逐步延长上下文；后训练采用多脚手架、多版本方案，结合 SFT、领域专用 RL、MOPD 整合互补训练信号强化编码能力，末尾提及模型合并采用 diff 方案但内容截断。该研究为 CLI 智能体、编码智能体训练方向的工程师提供了可参考的训练框架设计。
+
+rss · Hugging Face Daily Papers · 10月24日 01:57
+
+**「为什么重要」** 该研究公开了面向 CLI 智能体的稀疏 MoE 模型可落地的三阶段训练框架，包含多项具体训练技术方案，对正在设计编码智能体训练流程的工程师有直接参考价值；但论文内容截断，模型完整技术细节、性能表现、开源情况等尚未公开。
+
+**「可关注」** 可关注：其预训练阶段两阶段课程设计中编码数据占比的动态调整策略、后训练阶段多脚手架多版本整合互补训练信号的方案，为智能体编码能力训练提供了可复用的设计参考。
+
+**标签**: `#coding-agent`
+
+---
+
+<a id="item-agent-engineer-3"></a>
+### [DFM 分块参数记忆架构论文发布](https://huggingface.co/papers/2610.25100) ⭐️ 7.0/10
+
+2026 年 10 月 24 日 Hugging Face Daily Papers 收录的论文提出 Deep Fusion Memory（DFM）分块级参数记忆架构，针对现有外部参数记忆训练数据构建工作量大、输出级融合浅的问题，通过因果记忆预测器结合语料块嵌入监督生成记忆，并将预测记忆融入中间隐状态，减少训练数据构建工作量，实现更深层记忆融合，该论文当前获得 39 次 upvote。当前公开内容未包含性能验证或实现细节。
+
+rss · Hugging Face Daily Papers · 10月24日 01:57
+
+**「为什么重要」** 该架构针对 LLM 外部知识使用中在线检索开销高、持续预训练易灾难性遗忘的痛点，其记忆融合思路可参考用于 Agent 记忆系统设计，但当前无公开实证效果，影响尚未证实。
+
+**「可关注」** 可关注分块级参数记忆将记忆注入中间隐状态而非仅输出层融合的设计思路，以及因果预测器结合检索嵌入监督降低训练数据构建成本的技术路径。
+
+**标签**: `#memory`
+
+---
+
+<a id="item-agent-engineer-4"></a>
+### [NVIDIA Nemotron-3.5-Bolt-E4B-4GB 发布](https://www.reddit.com/r/LocalLLaMA/comments/1xdiecx/nvidianvidianemotron35bolte4b4gb_hugging_face/) ⭐️ 6.5/10
+
+2026 年 10 月 23 日 Reddit r/LocalLLaMA 板块用户 jacek2023 发帖分享 NVIDIA 推出的小语言模型 NVIDIA-Nemotron-3.5-Bolt-E4B-4GB，该模型基于 Gemma-4-E4B-it 进一步后训练，优化多轮工具调用、指令遵循与输入接地能力，面向低延迟、低内存、低 TTFT 的边缘/设备 Agent 部署场景。帖子同时提供了配套用于推测解码的 DFlash 草稿模型、BF16 全精度版本链接，以及 Hugging Face 模型仓库与技术报告地址，模型支持商用与非商用用途。该内容为社区二手分享，非 NVIDIA 官方首发公告，主要面向端侧 Agent、低 TTFT 系统开发者。
 
 reddit · r/LocalLLaMA · /u/jacek2023 · 10月23日 16:13
 
-**「为什么重要」** 该模型是官方首次针对低延迟本地/边缘 agent 场景推出的商用授权小体量模型，配套推测解码组件可降低部署时的算力与延迟优化成本，但核心能力的实际表现尚未有公开基准验证。
+**「为什么重要」** 该模型专门针对端侧 Agent 的低 TTFT、多轮工具调用需求做优化，配套推测解码方案与多格式端侧版本；但实际运行性能、不同硬件下的适配效果尚未有公开第三方验证。
 
-**「可关注」** 可关注 DFlash drafter 与该 4GB 量化版本的适配效果，以及模型多轮工具调用能力在现有 coding agent harness 中的实际通过率。
+**「可关注」** 可关注：该模型针对低 TTFT、多轮工具调用场景优化，配套 DFlash 推测解码草稿模型，已提供 GGUF 等端侧部署格式。
 
-**标签**: `#coding-agent`, `#harness`
+**标签**: `#coding-agent`
+
+---
+
+<a id="item-agent-engineer-5"></a>
+### [OpenDS 基准评估开放网络深度搜索](https://huggingface.co/papers/2610.30181) ⭐️ 6.0/10
+
+2026-10-24，Hugging Face Daily Papers 发布论文《Deep Search in Real-World Web Environments》，提出 OpenDS 基准。该基准评估智能体在真实动态开放网络环境中执行多步深度搜索的能力，要求智能体通过网络搜索、浏览器交互自主探索并整合多源证据。当前源内容被截断，未披露基准规模、任务设计、评估指标及基线性能等具体技术细节。
+
+rss · Hugging Face Daily Papers · 10月24日 01:57
+
+**「为什么重要」** 现有智能体评估多依赖静态检索场景，OpenDS 试图填补实时开放网络环境下的评估空白。但完整论文未公开前，其任务设计合理性、可复现性及实际使用价值仍不确定。
+
+**「可关注」** 可关注：OpenDS 要求智能体在无预设数据分布的真实网络中完成多步搜索与证据整合，与静态检索基准的评估范式存在本质差异。
+
+**标签**: `#eval`, `#web-agent`, `#agent-benchmark`
+
+---
+
+<a id="item-agent-engineer-6"></a>
+### [LitPivot 发布：文献语境研究辅助工具](https://allenai.org/blog/litpivot) ⭐️ 5.8/10
+
+2026 年 10 月 23 日，Allen AI 发布 LitPivot 工具，该工具旨在帮助研究者打磨早期研究想法，通过文献支持的批判与修订，随研究提案演变动态提供文献语境化支持。当前公开信息仅包含官方博客的高层介绍，未披露技术架构、性能数据，也未提及与 AI Agent 工程工作流（如 harness 设计、eval 方法、工具链集成）相关的具体细节，对 AI Agent 工程师的直接可操作性有限。
+
+rss · Allen AI · 10月23日 08:00
+
+**「为什么重要」** LitPivot 的定位涉及文献检索、工具链编排方向，若后续公开技术实现细节，可能为研究类 AI Agent 的工作流设计提供参考。
+
+**「可关注」** 可关注 LitPivot 后续公开的技术架构与工具链集成方案，评估其对研究类 Agent 工作流的参考价值。
+
+**标签**: `#orchestration`, `#toolchain`, `#retrieval`
 
 ---
 
@@ -137,47 +198,32 @@ reddit · r/LocalLLaMA · /u/jacek2023 · 10月23日 16:13
 <p class="ah-sec-meta"><a class="ah-anchor" href="#sec-ai-daily" aria-label="链接到本节">#</a><a class="ah-back" href="#ah-toc">↑ 回到目录</a></p>
 
 <a id="item-ai-daily-1"></a>
-### [OpenAI frontier 训练安全](https://openai.com/index/securing-our-frontier-model-training-environment) ⭐️ 7.8/10
+### [OpenAI Habitat 扩容服务 10 亿 ChatGPT 用户](https://openai.com/index/scaling-storage-one-billion-users-part-two) ⭐️ 7.8/10
 
-OpenAI 官方博客于 2026-10-23 发布 frontier model 训练环境安全加固方案，重点加强训练与评估阶段的 containment。具体措施包括部署离线训练环境，以及开展高算力红队测试。材料未披露实施范围、受影响模型或具体技术参数。
-
-rss · OpenAI Blog · 10月23日 10:00
-
-**「为什么重要」** 这标志着 AI 实验室在模型训练阶段的安全隔离策略从理论框架走向具体落地。对关注 AI 安全与合规的从业者而言，这是可核对的官方政策更新。
-
-**「可关注」** 可关注：离线环境与算力红队测试作为 containment 增强手段的具体实现方式。
-
-**标签**: `#policy`, `#lab`, `#industry`
-
----
-
-<a id="item-ai-daily-2"></a>
-### [OpenAI 披露 ChatGPT 亿级用户存储方案](https://openai.com/index/scaling-storage-one-billion-users-part-two) ⭐️ 6.8/10
-
-OpenAI 发布技术博客，披露 ChatGPT 存储基础设施扩容至支持超 10 亿用户的实现细节。方案基于 Habitat 实现可靠多租户，搭配全局缓存与 Azure Cosmos DB 优化，实现读性能提升 12 倍。
+OpenAI 发布 Habitat 存储系统扩容技术深挖（Part II），披露其通过可靠多租户架构、全局缓存与 Azure Cosmos DB 组合方案，将 ChatGPT 读性能提升 12 倍，支撑超过 10 亿用户使用。
 
 rss · OpenAI Blog · 10月23日 17:00
 
-**「为什么重要」** 该方案是官方公开的超大规模用户存储架构工程实践，可为同类高并发场景的后端基础设施设计提供可落地的参考。
+**「为什么重要」** 该文是 OpenAI 首次公开超 10 亿用户规模下的存储系统扩容具体技术细节，为同量级互联网服务的存储架构设计提供了可参考的官方落地案例。
 
-**「可关注」** 可关注：超大规模多租户存储场景下，结合全局缓存与 Azure Cosmos DB 可实现读性能数量级提升。
+**「可关注」** 可关注：超大规模用户场景下，多租户架构搭配全局缓存与 Azure Cosmos DB 的存储组合方案对读性能的提升效果。
 
 **标签**: `#lab`, `#industry`, `#product`
 
 ---
 
-<a id="item-ai-daily-3"></a>
-### [ReasoningShield 获 NeurIPS 2026 录用](https://mp.weixin.qq.com/s?__biz=MzIwMTc4ODE0Mw==&amp;mid=2247723647&amp;idx=2&amp;sn=b2602c1652494088a4365422d4b76d88) ⭐️ 5.0/10
+<a id="item-ai-daily-2"></a>
+### [OpenAI 升级 frontier 安全](https://openai.com/index/securing-our-frontier-model-training-environment) ⭐️ 7.8/10
 
-上海创智学院与复旦大学团队提出 ReasoningShield，针对大推理模型思维链存在安全盲区的问题，首次定义思维链安全审核任务，构建专用数据集与评测基准，并开源 ReasoningShield-1B/3B 审核模型。该工作已被 NeurIPS 2026 Evaluations and Datasets Track 录用。当前信息来自科技媒体 PaperWeekly 的二手转述，未附官方一手发布链接，无更多可核实的核心事实细节。
+OpenAI 官方博客介绍 frontier model 训练与评估环境的 containment 强化措施，包括离线环境与高算力红队测试。材料未披露具体技术实现细节与覆盖范围。
 
-rss · PaperWeekly · 10月23日 12:20
+rss · OpenAI Blog · 10月23日 10:00
 
-**「为什么重要」** 大推理模型普及后，仅审核最终答案无法覆盖思维链中提前泄露的有害信息，ReasoningShield 首次针对该盲区提出审核方案，为推理模型安全评估提供了新方向。
+**「为什么重要」** 这属于实验室安全政策更新，对 AI 行业前沿模型的安全治理实践具有参考意义。
 
-**「可关注」** 可关注：ReasoningShield 已开源 1B/3B 审核模型、专用数据集，以及论文、项目主页与 GitHub 仓库，可复现其思维链安全审核方案。
+**「可关注」** 可关注：离线环境与高算力红队测试在 frontier model 安全评估中的具体应用方式。
 
-**标签**: `#eval`, `#safety`, `#research`
+**标签**: `#lab`, `#policy`, `#eval`, `#industry`
 
 ---
 
@@ -187,45 +233,46 @@ rss · PaperWeekly · 10月23日 12:20
 <p class="ah-sec-meta"><a class="ah-anchor" href="#sec-ai-deals" aria-label="链接到本节">#</a><a class="ah-back" href="#ah-toc">↑ 回到目录</a></p>
 
 <a id="item-ai-deals-1"></a>
-### [智谱 ZCode 1024 免费领 5 亿 Tokens](https://www.appinn.com/zcode-1024-free-500-million-tokens/) ⭐️ 8.0/10
+### [智谱 ZCode 1024 程序员节发额度](https://www.appinn.com/zcode-1024-free-500-million-tokens/) ⭐️ 8.0/10
 
-你看到的内容可能由第三方 AI 基于小众软件文章提炼总结而成，可能与原文真实意图存在偏差。不代表小众软件观点和立场。请点击链接阅读原文细致比对和校验。
-智谱 ZCode 推出 1024 程序员节活动，用户可免费领取 5 亿 Tokens 额度，适用于 GLM-5.3 与 GLM-5.3-Flash 模型。领取无新老用户限制，额度 2026 年 10 月 23 日 23:00 生效，10 月 26 日 09:00 到期，仅本周末有效。领取方式为下载 ZCode 客户端登录后，点击左下角活动入口打开礼包即可；领取成功后若未到生效时间，客户端会显示「待生效」。
+你看到的内容可能由第三方 AI 基于小众软件文章提炼总结而成，可能与原文真实意图存在偏差。不代表小众软件观点和立场。请&lt;a href=&quot;https://www.appinn.com/zcode-1024-free-500-million-tokens/&quot; target=&quot;\_blank&quot;&gt;点击链接阅读原文&lt;/a&gt;细致比对和校验。智谱 ZCode 推出 1024 程序员节活动，可免费领取 5 亿 Tokens 额度，支持 GLM-5.3 与 GLM-5.3-Flash 模型，未说明两款模型的额度分配方式，不可理解为每款模型各送 5 亿 Tokens。新老用户均可参与，需下载 ZCode 客户端登录后点击活动入口领取。额度 2026 年 10 月 23 日 23:00 生效，2026 年 10 月 26 日 09:00 到期，仅本周末有效。
 
 rss · 小众软件 · 10月23日 15:17
 
-**「为什么重要」** 该额度有效期仅覆盖本周末，若近期有 coding 相关调试、小项目测试需求，刚好可在有效期内消耗，避免过期浪费。
+**「为什么重要」** 当前处于可领取状态，额度有效期仅覆盖本周末，适合有短期模型调用需求的开发者测试小工具或旧项目。
 
-**「可关注」** 可关注：5 亿 Tokens 为两款模型的总额度，未公布单模型分配规则，领取时需注意不要和 ZCode Start Plan 的每日 300 万/500 万 Tokens 额度混淆。
+**「可关注」** 可关注：领取后需到「模型设置 → Start Plan」查看 ZCode 1024 Dev Day 活动套餐，注意区分其与日常 Start Plan 的每日 300 万/500 万 Tokens 额度，避免混淆。
 
 **标签**: `#credits`, `#free-tier`, `#promo`, `#limited-free`, `#api`
 
 ---
 
 <a id="item-ai-deals-2"></a>
-### [Epic 10.23~10.29 限免游戏汇总](https://www.appinn.com/eggs-261023/) ⭐️ 8.0/10
+### [Epic 本周免费游戏 10.23~10.29](https://www.appinn.com/eggs-261023/) ⭐️ 8.0/10
 
-你看到的内容可能由第三方 AI 基于小众软件文章提炼总结而成，可能与原文真实意图存在偏差。不代表小众软件观点和立场。请&lt;a href=&quot;https://www.appinn.com/eggs-261023/&quot; target=&quot;\_blank&quot;&gt;点击链接阅读原文&lt;/a&gt;细致比对和校验。&lt;br /&gt;&lt;br /&gt;Epic Games 于 2026 年 10 月 23 日至 29 日开展限时免费游戏领取活动，PC 端可领取《斯盖尔仪式 / Sker Ritual》《归家 / Home – A Unique Horror Adventure》共 2 款，移动端可领取《归家》1 款；《归家》的 PC、Android、iOS 三个平台版本需分别领取才可集齐，领取流程可在浏览器中完成。
+你看到的内容可能由第三方 AI 基于小众软件文章提炼总结而成，可能与原文真实意图存在偏差。不代表小众软件观点和立场。请&lt;a href=&quot;https://www.appinn.com/eggs-261023/&quot; target=&quot;\_blank&quot;&gt;点击链接阅读原文&lt;/a&gt;细致比对和校验。&lt;br /&gt;&lt;br /&gt;Epic Games 于 10 月 23 日至 29 日开展每周免费游戏赠送活动。PC 端可领取《斯盖尔仪式 / Sker Ritual》《归家 / Home – A Unique Horror Adventure》2 款游戏，移动端可领取《归家》1 款游戏，领取需前往对应 Epic 商店页面，活动截止时间为 10 月 29 日。
 
 rss · 小众软件 · 10月23日 07:34
 
-**「为什么重要」** 活动为本周限时福利，10 月 29 日后将无法免费领取；两款游戏分别主打多人合作波次生存、多结局像素恐怖叙事，可满足不同玩家的玩法需求。
+**「为什么重要」** 本次免费领取为限时活动，活动结束后游戏将恢复收费，两款可领游戏均支持中文，适合恐怖题材玩家收藏。
 
-**「可关注」** 可关注：《归家》三个平台版本需分别领取共 3 次才可集齐，无需安装对应客户端，浏览器即可完成领取流程。
+**「可关注」** 可关注：《归家》的 PC、Android、iOS 三个平台版本需分别领取，均可在浏览器端完成操作。
 
-**标签**: `#promo`, `#limited-free`
+**标签**: `#promo`, `#limited-free`, `#free-games`
 
 ---
 
 <a id="item-ai-deals-3"></a>
-### [Show HN：runtime.school 上线免费交互式 Python SQL 课](https://www.runtime.school/) ⭐️ 5.0/10
+### [Show HN 免费无限制 AI 文本检测器发布](https://kouh.me/ai-text-detector) ⭐️ 6.0/10
 
-Hacker News 用户 shadowdevil 发布 Show HN 帖，宣布 runtime.school 提供免费交互式 Python 与 SQL 课程，课程可直接在浏览器中运行。当前公开信息未披露课程具体范围、访问限制及免费时长。
+Show HN 用户 mrkn1 于 2026-10-23 发布一款宣称免费、无限制、私有的 AI 文本检测工具，链接为 https://kouh.me/ai-text-detector。目前无公开的使用限制、服务方背景及可信度验证信息，发布时仅获 1 个赞、0 条评论。
 
-rss · HN Free API / Credits · 10月23日 14:44
+rss · HN Free API / Credits · 10月23日 21:06
 
-**「可关注」** 可关注：目前公开信息未披露课程范围、访问限制及免费时长，暂不具备可操作领取价值。
+**「为什么重要」** 该工具未公开服务条款、隐私政策及实际运行规则，可靠性与数据安全风险均未得到验证，暂不适合作为正式检测方案使用。
 
-**标签**: `#promo`, `#free-course`, `#python`, `#sql`, `#show-hn`
+**「可关注」** 可关注：该工具宣称无使用限制，但无任何公开合规与安全说明，若尝试使用需自行承担数据泄露风险。
+
+**标签**: `#free-tier`
 
 ---
