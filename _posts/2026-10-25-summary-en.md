@@ -5,17 +5,19 @@ date: 2026-10-25
 lang: en
 ---
 
-> From 145 items, 5 important content pieces were selected
+> From 142 items, 7 important content pieces were selected
 
 ---
 
 **Agent Harness Architecture**
-1. [MCP servers v2.1.0 安全修复发布](#item-harness-arch-1) ⭐️ 7.8/10
-2. [pydantic-ai v2.61.0 发布](#item-harness-arch-2) ⭐️ 6.8/10
-3. [security-audit-skill launch](#item-harness-arch-3) ⭐️ 6.0/10
+1. [pydantic-ai v2.61.0 发布](#item-harness-arch-1) ⭐️ 7.8/10
+2. [MCP Servers v2.1.0 安全补丁](#item-harness-arch-2) ⭐️ 6.8/10
+3. [Cloudflare security-audit-skill 发布](#item-harness-arch-3) ⭐️ 5.0/10
 
 **AI Agent Engineer**
-1. [Sebastian Raschka 发布推理模型构建视频课程](#item-agent-engineer-1) ⭐️ 6.0/10
+1. [Battledrones v14 四人地图](#item-agent-engineer-1) ⭐️ 6.0/10
+2. [Raschka 发布推理模型从零构建视频课](#item-agent-engineer-2) ⭐️ 6.0/10
+3. [Kimi K3.1 Pro 发布 2.8T 开源权重](#item-agent-engineer-3) ⭐️ 5.5/10
 
 **AI Daily**
 1. [谷歌开源TorchTPU TPU成PyTorch原生设备](#item-ai-daily-1) ⭐️ 5.5/10
@@ -25,64 +27,86 @@ lang: en
 ## Agent Harness Architecture
 
 <a id="item-harness-arch-1"></a>
-### [MCP servers v2.1.0 安全修复发布](https://github.com/modelcontextprotocol/servers/releases/tag/v2.1.0) ⭐️ 7.8/10
+### [pydantic-ai v2.61.0 发布](https://github.com/pydantic/pydantic-ai/releases/tag/v2.61.0) ⭐️ 7.8/10
 
-Model Context Protocol 官方服务器仓库发布 v2.1.0，集中修复 8 个安全漏洞。\`@modelcontextprotocol/server-filesystem\` 升级至 2.0.1，堵住路径遍历、符号链接竞争条件、大小写绕过和目录列表信息泄露；\`@modelcontextprotocol/server-everything\` 同版本修复 HTTP/SSE 跨域请求风险；\`mcp-server-fetch\` 发布 2026.10.24，统一 IDNA 主机名校验、拒绝 NAT64 私有地址回绕、重定向后重新检查 robots.txt。TypeScript 服务器已切换语义版本，从日期版本升级需显式指定 2.0.1；Windows 平台 filesystem 写入边界仅部分修复，需参考 GHSA-53mr-w429-c597 配置规避。
+pydantic-ai v2.61.0 发布，修复运行时 thinking 配置作用域覆盖警告、Prefect 工作区并发运行隔离、CohereModel 工具返回文件处理、pydantic\_graph 布尔/整数 Literal 分支决策等核心问题。新增结构化引用、持久化引擎扩展公开 API、Kimi k3.1-pro 模型支持、RealtimeModelProfile.supports\_audio\_output 等能力。同步调整 MCP 托管能力异步 auth、CapabilityStore 创作检查、InputGuardrail 脱敏与故障开放路径、LocalStack 容器共享等兼容性行为。
 
-github · cliffhall · Oct 25, 00:03
+github · dsfaccini · Oct 24, 03:13
 
-**「设计要点」** 三个服务器分别运行在 Node.js 和 Python 运行时，通过 MCP 协议向 agent harness 暴露工具接口。filesystem 服务器在 Linux/macOS 上将访问检查与写操作绑定防止符号链接竞争，everything 服务器在传输层强制 Origin 校验，fetch 服务器在地址分类层统一 IDNA 与 IPv4 映射检查。
+**「改了什么」** 修复 thinking 配置作用域覆盖、Prefect 并发运行隔离、CohereModel 工具返回文件显式报错、pydantic\_graph Literal 分支决策、OpenRouter 流式 reasoning 缺失 details 等运行时问题。新增结构化引用、持久化引擎公开 API、Kimi k3.1-pro 模型、Realtime 音频输出支持，并调整 MCP 异步 auth、CapabilityStore 创作检查、InputGuardrail 脱敏等兼容性行为。
 
-**「改了什么」** TypeScript 服务器切换语义版本后，包管理器将 2.0.1 排于日期版本之后，需显式指定版本号安装。filesystem 服务器将路径检查与写操作绑定以消除竞争窗口，everything 服务器关闭跨域 wildcard，fetch 服务器统一主机名表示并扩展私有地址拒绝范围。
-
-**Tags**: `#mcp`, `#tools`, `#permissions`, `#sandbox`
+**Tags**: `#runtime`, `#tools`, `#planning`
 
 ---
 
 <a id="item-harness-arch-2"></a>
-### [pydantic-ai v2.61.0 发布](https://github.com/pydantic/pydantic-ai/releases/tag/v2.61.0) ⭐️ 6.8/10
+### [MCP Servers v2.1.0 安全补丁](https://github.com/modelcontextprotocol/servers/releases/tag/v2.1.0) ⭐️ 6.8/10
 
-Official pydantic-ai v2.61.0 release ships runtime configuration tweaks, tool handling fixes, a breaking change for Cohere model tool returns, and google\_multi\_speaker deprecation. CohereModel tool returns containing files now raise NotImplementedError instead of being silently dropped, and provider-specific thinking settings that override broader thinking configs now emit warnings. The release adds async auth support to hosted MCP capabilities, structured citations to TextPart, and makes the durable engine extension surface public, while tightening InputGuardrail redaction and closing fail-open paths. Engineers using Cohere, Google Realtime, MCP, or citation features should review compatibility notes.
+modelcontextprotocol/servers 发布 v2.1.0 安全补丁，修复 filesystem、everything 和 fetch 三个服务器的 8 个漏洞。filesystem 服务器修复符号链接竞争条件、路径尾部空白剥离绕过、大小写不敏感卷上的符号链接检查绕过，以及目录遍历泄露文件元数据等问题，Windows 上仅部分修复。everything 服务器强制 HTTP/SSE 传输检查 Origin 头并拒绝跨域请求。fetch 服务器统一 IDNA 主机名检查与连接使用的名称，拒绝 NAT64 封装的私有 IPv4 地址，并在每次重定向后重新检查 robots.txt。
 
-github · dsfaccini · Oct 24, 03:13
+github · cliffhall · Oct 25, 00:03
 
-**「设计要点」** The release makes the durable engine extension API public, exposing operation types, ParameterTransports, and DurableRunContext for stateful agent run management. It also hardens capability authoring by sharing CapabilityStore locks per directory, allowing runs to cancel in-progress authoring, retaining the last valid authored capability on failed re-author, and making InputGuardrail redact user prompts while eliminating fail-open paths.
+**「改了什么」** filesystem 服务器将写入限制在已检查目录内并修复路径检查绕过；everything 服务器关闭 HTTP/SSE 传输跨域访问。fetch 服务器统一地址校验与连接主机名，拒绝 NAT64 私有地址并在重定向链中逐跳检查 robots.txt，从日期版本升级需显式安装 2.0.1。
 
-**「改了什么」** CohereModel tool returns with files now raise NotImplementedError instead of being silently dropped. The google\_multi\_speaker parameter on GoogleRealtimeModel is deprecated, provider-specific thinking overrides now trigger warnings, and hosted MCP capabilities accept async auth functions.
-
-**Tags**: `#runtime`, `#tools`, `#subagents`
+**Tags**: `#security`, `#mcp`, `#sandbox`, `#tools`
 
 ---
 
 <a id="item-harness-arch-3"></a>
-### [security-audit-skill launch](https://github.com/cloudflare/security-audit-skill) ⭐️ 6.0/10
+### [Cloudflare security-audit-skill 发布](https://github.com/cloudflare/security-audit-skill) ⭐️ 5.0/10
 
-Cloudflare open-sourced \`security-audit-skill\`, a coding-agent skill that turns agents into security auditors. It orchestrates isolated sub-agents through six phases: reconnaissance, coverage-led hunting, candidate validation, structured output, independent record verification, and target-neutral reporting. The skill outputs independently verified, machine-readable findings and seeded Cloudflare&\#x27;s internal vulnerability discovery harness described in &quot;Build your own vulnerability harness&quot;.
+Cloudflare released security-audit-skill, an open-source coding-agent skill that transforms an agent into a security auditor. It orchestrates isolated subagents through a six-phase workflow: reconnaissance, coverage-led hunting, candidate validation, structured output, independent record verification, and target-neutral reporting. The skill produces independently verified, machine-readable findings and seeded Cloudflare&\#x27;s vulnerability discovery harness, described in Build your own vulnerability harness. The source provides no implementation details, API specifications, or performance data.
 
-rss · GitHub Trending Daily · Oct 25, 00:44
+rss · GitHub Trending Daily · Oct 25, 01:21
 
-**「Architecture Note」** The skill spawns sandboxed sub-agent proxies to execute distinct audit phases, isolating reconnaissance from validation to reduce false positives. It enforces structured output formats and independent record verification to maintain audit trail integrity across isolated execution contexts.
-
-**「What Changed」** This initial open-source release exposes the multi-phase sub-agent orchestration pattern and sandbox integration that previously powered Cloudflare&\#x27;s internal vulnerability discovery harness.
-
-**Tags**: `#tools`, `#subagents`, `#sandbox`
+**Tags**: `#tools`, `#subagents`, `#sandbox`, `#eval`
 
 ---
 
 ## AI Agent Engineer
 
 <a id="item-agent-engineer-1"></a>
-### [Sebastian Raschka 发布推理模型构建视频课程](https://magazine.sebastianraschka.com/p/building-reasoning-models) ⭐️ 6.0/10
+### [Battledrones v14 四人地图](https://simonwillison.net/2026/Oct/24/battledrones/) ⭐️ 6.0/10
 
-Sebastian Raschka 2026-10-24 发布 11 小时免费视频课程，配套同名书籍，用 PyTorch 从零实现推理模型。课程以 Qwen3 0.6B 为基座，覆盖评估、推理时缩放、强化学习、知识蒸馏与 KV 缓存。要求 Python 与 PyTorch 基础，后期实验需 GPU。内容聚焦底层 LLM 开发，不直接涉及 agent 工作流。
+Simon Willison 于 2026-10-24 发布 Battledrones v14，新增四人对战地图 &quot;Compass Rose&quot;。他使用单条 prompt 调用 Claude Opus 5.5，要求生成四向旋转对称地图并修改 WebSocket 非音频多人代码，将玩家上限从 2 人提升至 4 人（空位由 AI 填充）。地图采用寒冰 biome，新增紫、绿两队配色，玩家可通过分享链接或 QR 码加入对局。
+
+rss · Simon Willison · Oct 24, 03:59
+
+**「为什么重要」** 这是 Claude Opus 5.5 生成游戏地图并修改 WebSocket 多人代码的完整一手案例，包含实际使用的 prompt。对 coding agent 工程师而言，它提供了 agent 在游戏开发场景中端到端交付可运行特性的具体样本，但未提供性能数据或架构层面的深入分析。
+
+**「可关注」** 可关注：单条高层 prompt 同时驱动了地图资源生成与 WebSocket 多人代码修改，说明当前 coding agent 已具备跨资源类型与网络层的端到端实现能力。
+
+**Tags**: `#coding-agent`
+
+---
+
+<a id="item-agent-engineer-2"></a>
+### [Raschka 发布推理模型从零构建视频课](https://magazine.sebastianraschka.com/p/building-reasoning-models) ⭐️ 6.0/10
+
+Sebastian Raschka 于 2026-10-24 发布 11 小时免费视频课程，演示如何用 PyTorch 从零构建推理模型。课程以预训练 Qwen3 0.6B 为基线，覆盖评估、推理时缩放、强化学习与蒸馏，共 8 讲，配套同名书籍已由 Manning 和 Amazon 发售。前置要求仅需 Python 与 PyTorch 基础，早期文本生成与评估示例可在 CPU 运行，后续训练环节建议使用 GPU。
 
 rss · Sebastian Raschka · Oct 24, 11:14
 
-**「为什么重要」** 该课程提供从验证器到强化学习的全流程可运行代码，是理解推理模型内部机制的稀缺系统化资源。agent 工程师可通过掌握模型底层推理增强方式，优化 harness 层的上下文管理，但课程不覆盖工具链集成。
+**「为什么重要」** 对需要理解推理模型内部机制以编码或调试 agent 的工程师，这套材料提供了可验证的代码级学习路径。但课程不涉及新的技术突破或工具链更新，阅读优先级取决于个人是否需要深入原理。
 
-**「可关注」** 可关注：通过从零实现推理模型核心组件，可量化理解模型推理边界，进而更合理设定 agent 任务分解粒度与工具调用阈值。
+**「可关注」** 可关注：课程前两讲已展示 Qwen3 0.6B 加载、流式文本生成、KV 缓存与 torch.compile 的性能对比，第三讲实现数学答案验证器并在 MATH-500 上评估基座模型。
 
-**Tags**: `#coding-agent`, `#eval`, `#reasoning`
+**Tags**: `#eval`, `#coding-agent`
+
+---
+
+<a id="item-agent-engineer-3"></a>
+### [Kimi K3.1 Pro 发布 2.8T 开源权重](https://latent.space/p/ainews-kimi-31/) ⭐️ 5.5/10
+
+Moonshot 于 2026-10-24 发布 Kimi K3.1 Pro，2.8T 总参数、104B 激活参数、1M 上下文窗口的混合专家模型，Artificial Analysis Intelligence Index 得分 55 排名第四，官方声称超过 Fable 5.1。配套 Pro Highspeed API 速度提升 2–3 倍但价格翻倍，并推出 Kimi Hosted Agents 托管执行环境。开源权重承诺 2026-11-04 发布，当前技术细节有限，代理能力提升最显著，部分交互任务仍落后。
+
+rss · Latent Space · Oct 24, 07:18
+
+**「为什么重要」** 这是少数公开声称达到 Fable 5.1 级别性能的开源权重模型，可能扩大代理工程师的基座模型选择。但推理经济性、交互任务稳定性及评测呈现方式存在争议，实际影响尚未证实。
+
+**「可关注」** 可关注：K3.1 Pro 代理能力提升最显著，但 Highspeed API 两倍定价与部分交互任务落后提示需在速度、成本与任务适配性之间做权衡。
+
+**Tags**: `#coding-agent`, `#eval`, `#api`
 
 ---
 
@@ -91,13 +115,13 @@ rss · Sebastian Raschka · Oct 24, 11:14
 <a id="item-ai-daily-1"></a>
 ### [谷歌开源TorchTPU TPU成PyTorch原生设备](https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&amp;mid=2651069794&amp;idx=2&amp;sn=ae62dbad6234b3c4c7359543936974c7) ⭐️ 5.5/10
 
-2026年PyTorch Conference上，科技媒体机器之心报道谷歌联合Meta开源TorchTPU完整软件栈，将TPU变为PyTorch原生设备，与GPU、CPU并列，并非PyTorch/XLA类的转接方案。报道称该栈已对齐4917个模型、97%的GPU算子，vLLM、SGLang、Hugging Face、Ray、TorchTitan等主流开源项目已完成接入，在Hugging Face Transformers v5中部署模型到TPU仅需传入device\_map=&quot;tpu&quot;参数。目前该声明暂无谷歌官方来源佐证，仅可作为行业信息记录。
+据机器之心2026年10月24日转载，谷歌在PyTorch Conference 2026上宣布开源TorchTPU，这是一套让TPU成为PyTorch原生设备的完整软件栈，核心改动是支持通过&quot;device\_map=\\&quot;tpu\\&quot;&quot;参数直接将模型部署到TPU，由谷歌与Meta联合开发，vLLM、SGLang、Hugging Face、Ray、TorchTitan等主流开源项目已同步完成接入，配套23页技术报告已发布在arXiv。该报道未附谷歌官方发布链接，内容存在截断，仅提及TorchTPU基于PyTorch PrivateUse1接口实现C++后端，迁移代码改动类似将&quot;.to\(\\&quot;cuda\\&quot;\)&quot;改为&quot;.to\(\\&quot;tpu\\&quot;\)&quot;，还提到4917个模型、97%对齐GPU的相关表述，无更多可核对的官方细节。
 
 rss · 机器之心 · Oct 24, 04:30
 
-**「为什么重要」** PyTorch是全球使用最广泛的AI框架，此前长期与CUDA深度绑定，TPU此前仅能通过PyTorch/XLA等转接层支持PyTorch，用户需付出大量额外工程成本。过去一年Anthropic、Meta已签下大额TPU使用合约，硬件需求已验证，软件支持此前是TPU普及的最后短板，TorchTPU若落地将成为英伟达CUDA生态近十年来最正面的挑战。
+**「为什么重要」** PyTorch是全球使用最广泛的AI框架，此前长期与CUDA深度绑定，PyTorch用户使用TPU需经过PyTorch/XLA等转接层付出额外工程成本。TorchTPU让TPU与GPU、CPU并列成为PyTorch原生选项，是CUDA生态近十年来遭遇的最直接挑战之一；同时过去一年Anthropic、Meta已签署大额TPU租用协议，软件短板补齐后可能加速TPU在PyTorch生态的落地。
 
-**「可关注」** 可关注：TorchTPU基于PyTorch PrivateUse1接口注册为原生C++后端，项目已开源至google-pytorch/torch\_tpu仓库，配套23页技术报告发布在arXiv。
+**「可关注」** 可关注：TorchTPU基于PyTorch PrivateUse1接口实现原生C++后端，PyTorch用户迁移模型到TPU的代码改动接近仅修改设备指定参数，无需侵入式修改源码，且返回普通PyTorch张量无额外包装。
 
 **Tags**: `#model`, `#lab`, `#open-source`, `#industry`
 
