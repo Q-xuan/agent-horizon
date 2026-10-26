@@ -5,33 +5,33 @@ date: 2026-10-26
 lang: zh
 ---
 
-> 从 150 条内容中筛选出 1 条重要资讯。
+> 从 134 条内容中筛选出 1 条重要资讯。
 
-<nav id="ah-toc" class="ah-toc" aria-label="目录"><span class="ah-toc-title">目录</span><ul><li><a href="#sec-harness-arch"><span class="ah-toc-name">Harness 架构</span><span class="ah-toc-count">1条</span></a></li></ul></nav>
-
----
-
-**[Harness 架构](#sec-harness-arch)**
-1. [MCP Servers v2.1.0 安全修复发布](#item-harness-arch-1) ⭐️ 7.8/10
+<nav id="ah-toc" class="ah-toc" aria-label="目录"><span class="ah-toc-title">目录</span><ul><li><a href="#sec-ai-daily"><span class="ah-toc-name">AI 日报</span><span class="ah-toc-count">1条</span></a></li></ul></nav>
 
 ---
 
-## Harness 架构
-{: #sec-harness-arch .ah-section}
+**[AI 日报](#sec-ai-daily)**
+1. [NeurIPS&\#x27;26 大模型存在思考惯性](#item-ai-daily-1) ⭐️ 5.5/10
 
-<p class="ah-sec-meta"><a class="ah-anchor" href="#sec-harness-arch" aria-label="链接到本节">#</a><a class="ah-back" href="#ah-toc">↑ 回到目录</a></p>
+---
 
-<a id="item-harness-arch-1"></a>
-### [MCP Servers v2.1.0 安全修复发布](https://github.com/modelcontextprotocol/servers/releases/tag/v2.1.0) ⭐️ 7.8/10
+## AI 日报
+{: #sec-ai-daily .ah-section}
 
-MCP Servers v2.1.0 修复三个服务器的 8 个安全漏洞。@modelcontextprotocol/server-filesystem 2.0.1 堵住符号链接竞争条件、路径遍历和目录列表信息泄露，Windows 平台仅部分修复；@modelcontextprotocol/server-everything 2.0.1 阻断 HTTP/SSE 传输的跨域工具调用；mcp-server-fetch 2026.10.24 修复 SSRF 相关的地址校验缺陷。TypeScript 服务器已迁移到语义版本，包管理器不会自动从日期版本升级到 2.0.1，需手动指定版本安装。
+<p class="ah-sec-meta"><a class="ah-anchor" href="#sec-ai-daily" aria-label="链接到本节">#</a><a class="ah-back" href="#ah-toc">↑ 回到目录</a></p>
 
-github · cliffhall · 10月25日 00:03
+<a id="item-ai-daily-1"></a>
+### [NeurIPS&\#x27;26 大模型存在思考惯性](https://mp.weixin.qq.com/s?__biz=MzI3MTA0MTk1MA==&amp;mid=2652737830&amp;idx=3&amp;sn=cf5e7ed540f5f1f7bfeb87e8b3814cc1) ⭐️ 5.5/10
 
-**「设计要点」** 文件系统服务器在权限检查与写操作间保持路径字符串一致性，防止父目录被替换为符号链接导致的目录逃逸。传输层通过 Origin 头校验和移除通配符 CSP 隔离跨域来源，抓取服务器统一地址分类与连接使用的 hostname 形式。
+新智元 2026-10-25 报道，清华、牛津、斯坦福的研究团队将在 NeurIPS 2026 发表的研究提出大模型存在「思考惯性」：即使关闭思考模式、明确要求直接给出答案，模型仍可能在最终答案前输出计算或推导，且问题越开放该现象越显著。实验覆盖 Qwen3、DeepSeek、GPT、Gemini 四个家族共 6 个模型，在 6 个基准上测试，自动评判与 5 名人工标注者在「是否包含显式推理」二分类任务上的平均一致率为 98.8%。该内容为二手报道，未披露完整研究细节，无官方一手来源。
 
-**「改了什么」** 文件系统服务器新增：写操作前重新验证父目录未替换为符号链接；路径检查保留尾部空白与引号差异；大小写敏感文件系统上区分符号链接大小写；目录列表前过滤符号链接。抓取服务器统一 IDNA 主机名校验与连接、阻断 NAT64 包装的私有 IPv4 地址、每次重定向后重新检查 robots.txt。
+rss · 新智元 · 10月25日 04:17
 
-**标签**: `#mcp`, `#tools`, `#sandbox`, `#permissions`
+**「为什么重要」** 该研究揭示现有「关闭思考模式」的控制机制存在实际失效场景，对模型输出格式约束设计、推理相关评测的逻辑完善有参考价值。
+
+**「可关注」** 可关注：判断模型是否发生推理不能仅依赖思考开关或回答长度，需结合回答结构分层检查显式推理痕迹。
+
+**标签**: `#model`, `#eval`, `#research`
 
 ---
