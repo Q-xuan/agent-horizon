@@ -5,33 +5,36 @@ date: 2026-10-29
 lang: zh
 ---
 
-> 从 188 条内容中筛选出 16 条重要资讯。
+> 从 209 条内容中筛选出 17 条重要资讯。
 
-<nav id="ah-toc" class="ah-toc" aria-label="目录"><span class="ah-toc-title">目录</span><ul><li><a href="#sec-harness-arch"><span class="ah-toc-name">Harness 架构</span><span class="ah-toc-count">3条</span></a></li><li><a href="#sec-agent-engineer"><span class="ah-toc-name">Agent 工程师日报</span><span class="ah-toc-count">5条</span></a></li><li><a href="#sec-ai-daily"><span class="ah-toc-name">AI 日报</span><span class="ah-toc-count">8条</span></a></li></ul></nav>
+<nav id="ah-toc" class="ah-toc" aria-label="目录"><span class="ah-toc-title">目录</span><ul><li><a href="#sec-harness-arch"><span class="ah-toc-name">Harness 架构</span><span class="ah-toc-count">3条</span></a></li><li><a href="#sec-agent-engineer"><span class="ah-toc-name">Agent 工程师日报</span><span class="ah-toc-count">6条</span></a></li><li><a href="#sec-ai-daily"><span class="ah-toc-name">AI 日报</span><span class="ah-toc-count">6条</span></a></li><li><a href="#sec-ai-deals"><span class="ah-toc-name">AI 羊毛</span><span class="ah-toc-count">2条</span></a></li></ul></nav>
 
 ---
 
 **[Harness 架构](#sec-harness-arch)**
-1. [Mastra core 1.80.0 发布](#item-harness-arch-1) ⭐️ 8.3/10
-2. [block/goose v1.57.0 发布](#item-harness-arch-2) ⭐️ 7.8/10
-3. [pydantic-ai v2.63.0 发布](#item-harness-arch-3) ⭐️ 7.8/10
+1. [Mastra Core 1.80.0 发布](#item-harness-arch-1) ⭐️ 7.8/10
+2. [E2B SDK 2.62.0 发布](#item-harness-arch-2) ⭐️ 7.8/10
+3. [MCP servers v2.2.0 安全更新发布](#item-harness-arch-3) ⭐️ 7.8/10
 
 **[Agent 工程师日报](#sec-agent-engineer)**
-1. [Gemini 4 Carbon 官宣 下一代前沿模型](#item-agent-engineer-1) ⭐️ 7.8/10
-2. [Cursor Agent SDK 发布](#item-agent-engineer-2) ⭐️ 7.0/10
-3. [MPO 提升长时程 Agent 任务表现](#item-agent-engineer-3) ⭐️ 7.0/10
-4. [HF 每日论文：The Trinity 框架](#item-agent-engineer-4) ⭐️ 7.0/10
-5. [VibeVideoBench 发布：代码驱动视频生成 Agent 基准](#item-agent-engineer-5) ⭐️ 7.0/10
+1. [NVIDIA Nemotron 3.5 Transcribe 开源](#item-agent-engineer-1) ⭐️ 7.8/10
+2. [Gemini 4 Carbon 官宣](#item-agent-engineer-2) ⭐️ 7.8/10
+3. [MPO 优化 long-horizon LLM agents](#item-agent-engineer-3) ⭐️ 7.0/10
+4. [VibeVideoBench 基准发布](#item-agent-engineer-4) ⭐️ 7.0/10
+5. [HF 论文：Agent 记忆税研究](#item-agent-engineer-5) ⭐️ 7.0/10
+6. [GitHub Octoverse 2026 数据发布](#item-agent-engineer-6) ⭐️ 6.0/10
 
 **[AI 日报](#sec-ai-daily)**
-1. [LiteRT 在 Google Play 服务升级](#item-ai-daily-1) ⭐️ 8.8/10
-2. [GitHub Octoverse 2026 代码活动创新高](#item-ai-daily-2) ⭐️ 8.3/10
-3. [OpenAI 与 ServiceNow 扩展企业合作](#item-ai-daily-3) ⭐️ 7.8/10
-4. [GitHub Universe 2026 公布软件交付系统新规划](#item-ai-daily-4) ⭐️ 7.8/10
-5. [Anthropic AI for Science 扩 20 机构](#item-ai-daily-5) ⭐️ 7.8/10
-6. [Claude Enterprise 功能 GA](#item-ai-daily-6) ⭐️ 7.8/10
-7. [Claude for Legal 推出交互式法律工具库](#item-ai-daily-7) ⭐️ 7.8/10
-8. [IDC 全公司部署 Claude 并接入 Quanta](#item-ai-daily-8) ⭐️ 7.8/10
+1. [GitHub Octoverse 2026：代码活动量创历史新高](#item-ai-daily-1) ⭐️ 8.8/10
+2. [OpenAI ServiceNow 合作扩围](#item-ai-daily-2) ⭐️ 7.8/10
+3. [OpenAI 谈 AI 融入企业组织架构](#item-ai-daily-3) ⭐️ 7.8/10
+4. [GitHub Universe 2026 发布 AI 交付产品矩阵](#item-ai-daily-4) ⭐️ 7.8/10
+5. [Legora 构建法律工作智能体 OS](#item-ai-daily-5) ⭐️ 6.8/10
+6. [Genie 4 发布：首个原生音频实时世界模型](#item-ai-daily-6) ⭐️ 5.5/10
+
+**[AI 羊毛](#sec-ai-deals)**
+1. [ChatGPT Pro API 额度福利](#item-ai-deals-1) ⭐️ 6.0/10
+2. [IFTTT 免费计划取消无限运行权益](#item-ai-deals-2) ⭐️ 5.0/10
 
 ---
 
@@ -41,45 +44,47 @@ lang: zh
 <p class="ah-sec-meta"><a class="ah-anchor" href="#sec-harness-arch" aria-label="链接到本节">#</a><a class="ah-back" href="#ah-toc">↑ 回到目录</a></p>
 
 <a id="item-harness-arch-1"></a>
-### [Mastra core 1.80.0 发布](https://github.com/mastra-ai/mastra/releases/tag/%40mastra/core%401.80.0) ⭐️ 8.3/10
+### [Mastra Core 1.80.0 发布](https://github.com/mastra-ai/mastra/releases/tag/%40mastra/core%401.80.0) ⭐️ 7.8/10
 
-Mastra 发布 @mastra/core 1.80.0，引入 per-user OAuth 连接隔离、聊天内集成请求提示、ClickHouse/Postgres/DuckDB span 聚合 API，以及统一的 provider 错误分类与持久执行控制。新增 \`tools\(\{ resourceId \}\)\`、\`userConnectRoutes\(\)\`、\`request\_connection\` 工具、\`POST /observability/spans/aggregate\`、\`classifyProviderError\`、\`agent.abortRun\(runId\)\` 等接口。同时带来四项破坏性变更：\`queryTraceThreads\(\)\` 移除 \`model\`/\`provider\` 字段且 \`page.limit\` 上限 100；\`POST /connect/:provider/sessions\` 返回 \`launchUrl\`；\`@mastra/code-sdk\` 不再默认注册内置子代理；\`TracesExplorer\` 排序 API 改为 \`\{ field, direction \}\` 对象。
+这是 Mastra Core 1.80.0 的官方发布。引入用户级 OAuth 连接隔离（@mastra/connect 的 tools\(\{ resourceId \}\) 与 userConnectRoutes\(\)），内置 request\_connection 工具供聊天界面渲染连接卡片。新增 Span 聚合 API（POST /observability/spans/aggregate）及 ClickHouse/Postgres/DuckDB 存储后端，支持按 agent run、tool、workflow 分组统计延迟、错误率、token 和成本。同时统一 provider 错误分类（classifyProviderError）、支持 durable run 取消（agent.abortRun），新增 renderOnly 工具与线程运行状态订阅，并调整 trace 查询接口。
 
 github · PaulieScanlon · 10月28日 15:23
 
-**「设计要点」** 运行时通过 \`withRunStatus: true\` 订阅线程运行状态事件，\`agent.abortRun\(runId\)\` 显式取消持久执行且断开观察者不再默认中止任务；工具层新增 \`renderOnly: true\` 标记使调用仅用于前端渲染；权限模型通过 \`tools\(\{ resourceId \}\)\` 和 \`userConnectRoutes\(\)\` 实现 per-user OAuth 连接隔离，内置缓存并强制跨用户访问隔离。
+**「设计要点」** 连接层采用 resourceId 硬隔离，确保用户 OAuth 凭证不可跨用户复用；可观测层通过 span 聚合 API 将运行时指标外置到列式/关系型存储，降低 agent 运行时的查询耦合。错误处理统一到 provider 错误分类器，流式响应携带 provider 元数据，支持客户端持久化后复现一致错误语义。
 
-**「改了什么」** 新增 per-user OAuth 连接隔离与聊天内 \`request\_connection\` 提示，允许代理安全调用终端用户账户并自动引导连接缺失的集成。可观察性新增 span 聚合 API 及 ClickHouse/Postgres/DuckDB 后端，支持按运行、工具、工作流分组统计指标；错误处理统一 provider 错误分类，客户端与重试逻辑共享恢复动作定义。
+**「改了什么」** 新增用户级 OAuth 连接隔离与内置 request\_connection 工具，Span 聚合 API 支持 ClickHouse/Postgres/DuckDB 后端提供分组指标查询，统一 provider 错误分类与持久化，retry 逻辑对齐分类结果，并新增 durable run 取消（agent.abortRun）、线程运行状态订阅（withRunStatus: true）、按调用指定 agentModel 的实验能力及 renderOnly 工具。Breaking changes 包括：queryTraceThreads\(\) 移除 model/provider 字段且 page.limit 上限 100，connect-session 返回 launchUrl，code-sdk 不再默认注册内置子代理，playground-ui TracesExplorer 排序 API 改为 \{ field, direction \} 对象。
 
-**标签**: `#permissions`, `#tools`, `#eval`
+**标签**: `#permissions`, `#tools`, `#eval`, `#observability`
 
 ---
 
 <a id="item-harness-arch-2"></a>
-### [block/goose v1.57.0 发布](https://github.com/aaif-goose/goose/releases/tag/v1.57.0) ⭐️ 7.8/10
+### [E2B SDK 2.62.0 发布](https://github.com/e2b-dev/E2B/releases/tag/e2b%402.62.0) ⭐️ 7.8/10
 
-block/goose v1.57.0 正式发布。核心权限层新增 HTTPS-only allowlist，强制要求 HTTPS、验证重定向并在策略失败时阻止请求。运行时新增自定义 Goose session ID 支持。其余变更涵盖桌面、provider、调度器、语音等组件的 bug 修复，以及 zstd、@modelcontextprotocol/sdk 等依赖升级，未涉及核心 harness 架构大修。
+E2B SDK 2.62.0 针对沙箱内命令执行与文件操作引入内存优化。新增 \`retainOutput\`/\`retain\_output\` 选项（默认 true），设为 false 时 stdout/stderr 不再缓冲在内存。\`files.write\` 支持流式写入字节块，JS 接受 \`AsyncIterable&lt;Uint8Array&gt;\` 与 \`ReadableStream\`，Python 接受 \`Iterable\[bytes\]\` 与 \`AsyncIterable\[bytes\]\`。
 
-github · github-actions\[bot\] · 10月28日 19:26
+github · github-actions\[bot\] · 10月28日 20:24
 
-**「改了什么」** 权限层引入 HTTPS-only allowlist，强制 HTTPS、验证重定向并支持策略级阻止，构成 breaking change；运行时开放自定义 Goose session ID 注入。依赖层面升级 zstd 至 0.14.3、@modelcontextprotocol/sdk 至 1.32.0 并移除 jsonwebtoken，同时删除 ACP client-delegated developer tools，其余为桌面、provider、调度器、语音等组件的 bug 修复。
+**「设计要点」** 运行时通过输出回调（\`onStdout\`/\`onStderr\` 等）继续传递数据，但结果对象与句柄上的 \`stdout\`/\`stderr\` 字段在关闭缓冲时置为 undefined/None。流式上传强制使用 octet-stream，浏览器不支持流式请求体时抛出 \`InvalidArgumentError\`。
 
-**标签**: `#permissions`, `#runtime`
+**「改了什么」** \`commands.run\` 与 \`commands.connect\` 新增 \`retainOutput\`/\`retain\_output\` 参数（默认 true），设为 false 时停止内存缓冲 stdout/stderr，结果对象与句柄上的输出字段置为 undefined/None。\`files.write\` 改为流式传输字节块，JS 与 Python 分别接受同步/异步可迭代对象，不再全量缓冲。\`gzip: true\` 与 \`useOctetStream: false\` 的组合现在被显式拒绝。
+
+**标签**: `#sandbox`, `#tools`, `#memory`, `#runtime`
 
 ---
 
 <a id="item-harness-arch-3"></a>
-### [pydantic-ai v2.63.0 发布](https://github.com/pydantic/pydantic-ai/releases/tag/v2.63.0) ⭐️ 7.8/10
+### [MCP servers v2.2.0 安全更新发布](https://github.com/modelcontextprotocol/servers/releases/tag/v2.2.0) ⭐️ 7.8/10
 
-pydantic-ai v2.63.0 正式发布，调整 harness 运行时行为并扩展多 provider 支持。默认 CodeMode 启用 dynamic\_catalog，工具揭示后追加而非重写缓存提示词。Harness 的 LLMReminder 默认间隔改为 10 次请求，避免每次生成。支持向相同 canonical\_system 的 provider 重放签名加密的历史数据，并新增 IPython 代码模式与 GPT-6.1-terra 模型。
+modelcontextprotocol/servers 发布 v2.2.0，核心内容是应对 2026 年 10 月 eMudhra CA 私钥泄露事件的安全更新。TypeScript 服务器依赖 Node.js 24.22.1+ 或 26.12.1+ 运行时的 CA 证书 bundle，Python 服务器 mcp-server-fetch 升级 certifi 至 2026.10.23 以移除受影响的 eMudhra 根证书。本次发布同时包含 server-everything、server-filesystem、server-memory 的功能修复与 mcp-server-fetch 的网络行为加固。
 
-github · dsfaccini · 10月28日 00:55
+github · cliffhall · 10月28日 20:57
 
-**「设计要点」** 运行时层通过 LLMReminder 默认间隔控制提示词生成频率。工具层默认开启动态工具目录，记忆层支持跨 provider 的加密历史重放，权限与预算层新增 PostgreSQL 共享存储。
+**「设计要点」** TypeScript 服务器不内置 CA 证书，完全委托 Node.js 运行时做 TLS 验证；Python 服务器通过 httpx 依赖 certifi 包。网络边界按服务器隔离：server-everything 是唯一发起出站 HTTPS 请求的 TypeScript 服务器，server-filesystem、server-memory、server-sequential-thinking、mcp-server-git、mcp-server-time 无网络连接。
 
-**「改了什么」** CodeMode 默认改为 dynamic\_catalog=True，LLMReminder 默认 interval=10，历史数据重放需相同 canonical\_system。新增 IPythonCodeMode、DetectLoops 能力、PostgresSpendStore 及 ag-ui-protocol 1.0 支持。
+**「改了什么」** 安全层面：TypeScript 服务器要求 Node.js 24.22.1+ 或 26.12.1+，mcp-server-fetch 的 Dockerfile 锁定 certifi 2026.10.23。功能修复：server-everything 修复 gzip-file-as-resource 对 HTTP 错误的处理、环境变量掩码、非公网地址拒绝；server-filesystem 修复跨文件系统移动、路径大小写处理、realpath 超时；server-memory 修复未建模字段丢失与迁移失败处理；mcp-server-fetch 增加 --no-readability-js 选项、拒绝 IPv4 兼容 IPv6 地址、修复 HTML 解码与 robots.txt 5xx 拒绝。
 
-**标签**: `#runtime`, `#tools`, `#memory`, `#permissions`
+**标签**: `#mcp`, `#runtime`, `#tools`
 
 ---
 
@@ -89,79 +94,94 @@ github · dsfaccini · 10月28日 00:55
 <p class="ah-sec-meta"><a class="ah-anchor" href="#sec-agent-engineer" aria-label="链接到本节">#</a><a class="ah-back" href="#ah-toc">↑ 回到目录</a></p>
 
 <a id="item-agent-engineer-1"></a>
-### [Gemini 4 Carbon 官宣 下一代前沿模型](https://deepmind.google/blog/gemini-4-carbon-our-next-frontier-model/) ⭐️ 7.8/10
+### [NVIDIA Nemotron 3.5 Transcribe 开源](https://huggingface.co/blog/nvidia/nemotron-transcribe-granary) ⭐️ 7.8/10
 
-2026 年 10 月 28 日，Google DeepMind 官方博客宣布推出下一代前沿 AI 模型 Gemini 4 Carbon，目前未披露该模型的具体技术参数、性能基准、正式发布时间及定价等信息，暂无其对 AI agent 工程团队实际影响的验证数据。
+2026 年 10 月 28 日，Hugging Face 官方博客发布 NVIDIA 开源的 Nemotron 3.5 Transcribe 语音模型与 Granary v2 数据管道。该模型为单 checkpoint 集成转录、说话人分离、翻译、音频问答能力，支持 40 种语言转录、31 种语言与英语互译、13 种语言说话人标注，最长处理 1 小时音频、最多标注 8 位说话人，支持自然语言提示控制输出，仅支持录播音频处理，配套微调食谱与 Granary v2 多语言数据管道，已上线 Hugging Face 与 ModelScope，量化版本即将支持 RTX Spark、DGX Spark 等设备本地运行。该模型面向需要音频处理能力的 Agent 工具链、多语言转录场景开发者开放。
 
-rss · Google DeepMind · 10月28日 17:00
+rss · Hugging Face Blog · 10月28日 14:58 · [社区讨论](https://news.ycombinator.com/item?id=50275128)
 
-**「为什么重要」** 头部实验室的前沿模型官宣是 AI agent 生态的核心跟踪节点，后续披露的能力细节将直接影响工具链与编排方案的选型参考，目前仅官宣事件本身已确认，具体影响尚未证实。
+**「为什么重要」** 该模型已在多个公开基准验证领先性：英语转录为首个登顶 Hugging Face Open ASR Leaderboard 的开源权重模型，说话人分离指标在 David AI、VoiceArena 基准排名第一，仅约 4B 活跃参数即达到开源权重模型准确率-活跃参数帕累托前沿。配套开放的数据管道与微调方案降低了特定场景适配门槛，但实际落地效果仍需开发者根据自身场景验证。
 
-**「可关注」** 可关注：Google DeepMind 后续披露的 Gemini 4 Carbon 技术规格、agent 场景适配能力及 API 兼容性规划。
+**「可关注」** 可关注：该模型音频问答能力仅支持英语训练，词级时间戳、说话人分离等能力支持的语言范围与转录、翻译不同，使用时需对照模型卡的任务-语言矩阵确认支持情况。
 
-**标签**: `#coding-agent`, `#eval`, `#orchestration`
+**「评论」** 社区讨论集中在部署限制与实际体验：有用户指出模型仅支持录播音频不支持实时流，且需 NVIDIA GPU 运行；另有用户提到该模型是目前唯一开源支持近场说话人转录的语音 LLM，但日常使用仍有每几句出错的概率。
+
+**标签**: `#harness`, `#toolchain`, `#speech-model`, `#fine-tuning`, `#multimodal`
 
 ---
 
 <a id="item-agent-engineer-2"></a>
-### [Cursor Agent SDK 发布](https://cursor.com/blog/agent-sdk) ⭐️ 7.0/10
+### [Gemini 4 Carbon 官宣](https://deepmind.google/blog/gemini-4-carbon-our-next-frontier-model/) ⭐️ 7.8/10
 
-Cursor 于 2026-10-28 发布 Agent SDK，面向构建 AI agent harness 与工作流的工程师。该 SDK 是 Cursor 官方推出的新工具选项，但材料未披露具体版本号、功能边界或技术细节。影响范围主要覆盖正在选型或维护 coding agent 工具链的工程团队。
+Google DeepMind 于 2026-10-28 在官方博客宣布即将推出 Gemini 4 Carbon 前沿模型。该公告面向 AI agent 开发者群体，涉及 coding-agent、eval 与 harness 方向。目前公开材料未披露具体技术规格、性能基准或正式发布时间。这是该系列模型的下一代 frontier 版本，但细节待官方后续补充。
 
-hackernews · torutofu · 10月28日 14:02 · [社区讨论](https://news.ycombinator.com/item?id=50273731)
+rss · Google DeepMind · 10月28日 17:00
 
-**「为什么重要」** 这是主流 coding agent 厂商推出的官方 SDK 工具，标志工具链层竞争加剧。但具体技术优势、与开源 harness 的对比，以及是否解决社区反馈的产品体验问题，目前均无官方细节可验证。
+**「为什么重要」** frontier 模型更新通常意味着底层能力边界可能移动，对依赖模型能力的 agent harness 有潜在影响。但具体影响范围取决于后续披露的技术细节，目前尚无法验证。
 
-**「可关注」** 可关注：OpenAI、Anthropic 与 Vercel 已分别使用 &quot;Agent SDK&quot; 与 &quot;AI SDK&quot; 品牌，命名空间重叠可能增加选型与搜索成本。
+**「可关注」** 可关注：官方已确认下一代 frontier 模型存在，但当前无技术细节可做集成或适配规划，建议等待正式技术文档。
 
-**「评论」** 社区反应分化。部分用户将此次发布类比为 JS 框架迭代周期，质疑 2026 年 10 月仍选择闭源 SDK 而非开源 harness 的合理性；另有用户指出品牌命名与现有产品重复，同时有人反映 Cursor 自转向 agentic workflows 后产品体验持续下降。
-
-**标签**: `#coding-agent`, `#harness`
+**标签**: `#coding-agent`, `#eval`, `#harness`
 
 ---
 
 <a id="item-agent-engineer-3"></a>
-### [MPO 提升长时程 Agent 任务表现](https://huggingface.co/papers/2610.35013) ⭐️ 7.0/10
+### [MPO 优化 long-horizon LLM agents](https://huggingface.co/papers/2610.35013) ⭐️ 7.0/10
 
-Hugging Face Daily Papers 2026-10-28 介绍了一篇预印本，提出 Multiscale Policy Optimization \(MPO\)。MPO 针对长时程 LLM agent 的信用分配问题，结合 Multiscale Advantage Estimation \(MAE\) 与 turn-level importance sampling，将策略更新锚定在 turn 尺度。实验在搜索、工具使用和自动化任务上使用 4B 与 30B-A3B 模型，报告相比强 RL baseline 的一致性能提升。目前仅 abstract 公开，完整论文与官方实现细节尚未发布。
+2026-10-29 ， HF daily papers 收录预印本，提出 Multiscale Policy Optimization \(MPO\)。MPO 结合 Multiscale Advantage Estimation \(MAE\) 与 turn-level importance sampling，将 credit assignment 与 policy updates 对齐到 turn scale。在 search 、 tool-use 与 automation 任务上，4B 与 30B-A3B 模型均取得 consistent gains over strong RL baselines。该工作针对 long-horizon LLM agents 的 RL 训练，影响做 agent 性能优化的工程师。预印本尚未经 peer review 。
 
-rss · Hugging Face Daily Papers · 10月28日 00:00
+rss · Hugging Face Daily Papers · 10月29日 03:35
 
-**「为什么重要」** 长时程任务中 token-level 信用分配是 RL 训练的核心难点，MPO 提供了在 turn 尺度对齐的实证路径。论文跨三类任务报告 consistent gains，但完整复现效果与开源细节仍待验证。
+**「为什么重要」** 该工作直接针对 long-horizon LLM agents 的 credit assignment 难题，提供可复现的 RL 优化方案。实验覆盖 search 、 tool-use 与 automation 三类 agent 任务，对做 RL-based agent 训练的工程师有参考价值。尚未证实的影响：预印本结论需经 peer review 与更广泛复现。
 
-**「可关注」** 长时程 LLM agent 的 RL 训练中，critic 值主要随 turn 变化，将优化锚定在 turn 尺度并在 token 内做更细信用分配，可能比纯 token-level 方法更有效。
+**「可关注」** turn-level credit assignment 与 policy update scale 对齐，在 search 、 tool-use 与 automation 任务上带来 consistent gains over strong RL baselines。
 
 **标签**: `#coding-agent`
 
 ---
 
 <a id="item-agent-engineer-4"></a>
-### [HF 每日论文：The Trinity 框架](https://huggingface.co/papers/2610.36077) ⭐️ 7.0/10
+### [VibeVideoBench 基准发布](https://huggingface.co/papers/2610.35864) ⭐️ 7.0/10
 
-2026 年 10 月 28 日，Hugging Face 每日论文 feed 收录对应 arXiv 预印本，介绍多模态智能体递归自改进框架 The Trinity，该条目获 311 次 upvote。该框架针对异构可验证环境构建成本高、手动 Harness 迭代无法跟上任务多样性与复杂度增长的两大瓶颈，通过 Creator、Explorer、Evolver 三个专职角色，耦合世界生成与 Harness 进化，将任务组织基础从表面类别切换为共享底层能力需求以重组原始任务树。当前公开内容为截断摘要，缺少性能基准与实际生产部署细节，相关成果主要面向从事 agent 架构、Harness 设计、评估流程的工程师。
+VibeVideoBench 是评估多模态代理代码驱动视频生成能力的新基准。基准包含 239 个英语和汉语自包含任务，覆盖 12 个类别。任务要求代理在原生沙盒 harness 内运行，不使用图像或视频生成模型，在一小时内交付带声音的 MP4 文件。评估采用分层且基于证据的规则，检查程序规范与输出证据。Hugging Face Daily Papers 于 2026-10-29 整理发布该基准。
 
-rss · Hugging Face Daily Papers · 10月28日 00:00
+rss · Hugging Face Daily Papers · 10月29日 03:35
 
-**「为什么重要」** 该框架直接瞄准多模态智能体开发中 Harness 迭代滞后于任务多样性的核心痛点，为相关工程师提供了可参考的架构设计思路。但目前公开摘要缺少性能基准与生产部署验证，其实际效果尚未得到证实。
+**「为什么重要」** 该基准直接针对代码渲染视频的代理评估场景，为 agent 工程师提供标准化测试 harness 与任务集。材料显示其要求代理在无生成模型支持下完成视频交付，这区别于当前扩散视频模型路线，对 coding agent 与 multimodal agent 评估有直接参考价值。
 
-**「可关注」** 可关注：任务按共享底层能力需求而非表面类别重组的思路，以及 Creator、Explorer、Evolver 三角色耦合世界生成与 Harness 进化的递归自改进框架设计。
+**「可关注」** 可关注：基准强制要求原生沙盒 harness 且禁用图像视频生成模型，这为评估纯代码渲染代理提供了可复现的对比基线。
 
-**标签**: `#harness`, `#eval`, `#orchestration`
+**标签**: `#eval`, `#coding-agent`, `#harness`
 
 ---
 
 <a id="item-agent-engineer-5"></a>
-### [VibeVideoBench 发布：代码驱动视频生成 Agent 基准](https://huggingface.co/papers/2610.35864) ⭐️ 7.0/10
+### [HF 论文：Agent 记忆税研究](https://huggingface.co/papers/2610.34073) ⭐️ 7.0/10
 
-2026 年 10 月 28 日，Hugging Face Daily Papers 发布 VibeVideoBench 基准，专用于评估代码驱动视频生成的多模态 Agent 性能。该基准包含 239 个中英文自包含任务，覆盖 12 个类别，要求 Agent 在原生 Harness 沙箱中运行，不得调用图像或视频生成模型，需在 1 小时内交付带声音的 MP4 成品。评估规则采用分层证据式设计，包含交付规范的代码校验环节，但公开内容截断，未披露完整评估方法论与性能对比数据。
+2026 年 10 月 29 日 Hugging Face 每日论文发布论文《Memory Tax: Dissecting the Net Value of Agent Memory》的截断摘要，该论文在 HF 每日论文站获得 146 次点赞。该研究开展大规模多基准、多模型后端的 Agent 记忆系统评估，提出将记忆相对朴素 RAG 的净价值拆分为记忆收益与记忆税，实证发现多数专用记忆系统在多项基准上表现不及朴素 RAG，净价值为负。当前材料为聚合站摘要，缺少完整实验细节与原始论文全文。
 
-rss · Hugging Face Daily Papers · 10月28日 00:00
+rss · Hugging Face Daily Papers · 10月29日 03:35
 
-**「为什么重要」** 该基准首次针对代码驱动视频生成场景的 Agent 评测给出结构化设计，对多模态 Coding Agent 的评测体系与工具链设计有直接参考价值。但公开内容未披露完整评估规则与性能数据，其实际落地效果尚未证实。
+**「为什么重要」** 该研究首次系统拆解 Agent 记忆的净价值构成，为 Agent 记忆组件设计、记忆系统评测体系构建提供了可量化的参考框架，但完整实验结论尚未公开。
 
-**「可关注」** 可关注：VibeVideoBench 要求 Agent 完全通过代码生成视频与音频、不得调用现成生成模型的设计，可反向校验多模态 Coding Agent 的工具链完备性与代码生成鲁棒性。
+**「可关注」** 可关注：当前多数专用 Agent 记忆系统在多基准评估中表现弱于朴素 RAG，记忆系统选型前需先验证其在目标任务上的净收益。
 
-**标签**: `#eval`, `#harness`, `#coding-agent`
+**标签**: `#memory`, `#eval`
+
+---
+
+<a id="item-agent-engineer-6"></a>
+### [GitHub Octoverse 2026 数据发布](https://simonwillison.net/2026/Oct/28/github-octoverse-2026/) ⭐️ 6.0/10
+
+2026 年 10 月 28 日 GitHub Universe 大会上，GitHub 发布年度 Octoverse 2026 报告，现场公布核心指标：月合并 PR 达 2.2 亿，同比不到一年增长三倍；月提交数达 73.8 亿，同比超三倍，其中大部分增长来自 2026 年下半年；月新建仓库达 3030 万，同比翻倍。报告新增按行业分类的统计，以及涉及互操作性、逆向工程的仓库专项统计，其统计方法包括用 LLM 分类修正 VPN 导致的用户位置偏差、用多语言嵌入模型按 NAICS 标准对仓库做行业分类。现场分享将上述增长归因于代理工程（agentic engineering）的普及，相关数据可为开发者、编码 agent 工程师及生态分析人员提供参考。
+
+rss · Simon Willison · 10月28日 16:45
+
+**「为什么重要」** 这份报告提供了 2026 年 GitHub 生态的量化活动基准，其中提交、合并 PR 的集中增长趋势，可辅助编码 agent 工程师判断自身工具对开发者产出的实际影响，但增长与代理普及的因果关联尚未经独立验证。
+
+**「可关注」** 可关注：2026 年下半年提交量、合并 PR 量的集中增长幅度，可作为校验编码 agent 实际效率贡献的参考基准。
+
+**标签**: `#coding-agent`
 
 ---
 
@@ -171,121 +191,124 @@ rss · Hugging Face Daily Papers · 10月28日 00:00
 <p class="ah-sec-meta"><a class="ah-anchor" href="#sec-ai-daily" aria-label="链接到本节">#</a><a class="ah-back" href="#ah-toc">↑ 回到目录</a></p>
 
 <a id="item-ai-daily-1"></a>
-### [LiteRT 在 Google Play 服务升级](https://developers.googleblog.com/smaller-apps-and-faster-gpu-inference-with-litert-in-google-play-services/) ⭐️ 8.8/10
+### [GitHub Octoverse 2026：代码活动量创历史新高](https://github.blog/news-insights/octoverse/octoverse-commits-pushes-reach-new-highs-in-2026-as-developers-build-with-agents/) ⭐️ 8.8/10
 
-Google 今日宣布 LiteRT 在 Google Play 服务迎来迄今最大升级，新增基于 ML Drift 的 GPU 推理能力，速度较旧版 GPU delegate 提升约 1.4 倍，同时推出 CompiledModel API 替代旧版 Interpreter API。由于 LiteRT 运行时随 Google Play 服务统一分发，接入该服务的应用包体可缩小约 8MB，目前已有超 10 万款 Android 应用内置 LiteRT 或 TensorFlow Lite。旧版 GPU delegate、自定义 delegate API 已正式废弃，NNAPI 将从 2027 年起移除，旧版 SDK 后续仅接收关键安全修复。
+GitHub 发布 Octoverse 2026 报告，披露过去 12 个月（截至 2026 年 9 月 30 日，含公开及私有仓库）平台代码推送量达 179 亿次，超过 2024 与 2025 年总和；提交量达 343 亿次，为两年前的 3 倍以上；合并 PR 达 13 亿次，日均 350 万次。报告同时显示，含 agent 配置的新仓库平均提交量是无配置新仓库的 8 倍，9 月超过 40% 的 PR 由 agent 发起，该比例 3 月为 17%。过去 12 个月 GitHub Actions 每秒运行 1440 个任务，日均 1.24 亿次，为去年的 3 倍以上；开发者合并超 3000 万个 Dependabot PR 更新依赖，速度约为 2025 年的 2 倍。
 
-rss · Google Developers AI · 10月28日 00:00
+rss · GitHub Blog · 10月28日 16:07
 
-**「为什么重要」** 本次升级直接降低 Android 应用包体与端侧推理时延，同时明确了旧版推理 API 的废弃时间线，为开发者提供了清晰的迁移路径，覆盖超 10 万款已集成相关运行时的应用。
+**「为什么重要」** 报告显示 agent 已从开发者试玩工具转为日常开发协同工具，直接推动年中后 GitHub 活动量陡增，同时开发者跨医疗、农业等新领域、多模型使用 agent 的态势正在形成。
 
-**「可关注」** 可关注：通过 Android Studio 的 LiteRT 技能或手动修改依赖，将应用切换到 play-services-litert:17.0.0，用 CompiledModel API 替代旧版 Interpreter API 以启用 GPU 加速，同时移除应用内 bundled 的 LiteRT 依赖缩小包体。
+**「可关注」** 可关注：含 agent 配置的新仓库平均提交量是无配置新仓库的 8 倍，agent 已深度嵌入日常开发流程。
 
-**标签**: `#product`, `#industry`, `#inference`, `#android`
+**标签**: `#industry`, `#open-source`, `#product`
 
 ---
 
 <a id="item-ai-daily-2"></a>
-### [GitHub Octoverse 2026 代码活动创新高](https://github.blog/news-insights/octoverse/octoverse-commits-pushes-reach-new-highs-in-2026-as-developers-build-with-agents/) ⭐️ 8.3/10
+### [OpenAI ServiceNow 合作扩围](https://openai.com/index/openai-servicenow-partnership-expansion) ⭐️ 7.8/10
 
-GitHub 发布 2026 年 Octoverse 报告，披露过去 12 个月（截至 2026 年 9 月 30 日，含公开及私有仓库）开发者向 GitHub 推送代码 1790 亿次，超过 2024 与 2025 年总和；同期提交量达 343 亿次，为两年前的 3 倍以上，合并 PR 达 13 亿次，日均 350 万次。报告显示 agent 已深度嵌入开发者工作流：本年度新建带 agent 配置文件的仓库平均提交量是无配置仓库的 8 倍，9 月超过 40% 的 PR 由 agent 发起，较 3 月的 17% 大幅提升。此外 GitHub Actions 全年共运行 454 亿个任务，是去年的 3 倍以上，全年公共贡献量达 25 亿次，是去年的 2 倍以上。
+2026 年 10 月 28 日，OpenAI 与 ServiceNow 宣布扩大合作，实现双向集成：OpenAI 的模型与 agent 将接入 ServiceNow 平台，同时 ServiceNow 的工作流将嵌入 ChatGPT 与 Codex 产品中。
 
-rss · GitHub Blog · 10月28日 16:07
+rss · OpenAI Blog · 10月28日 13:15
 
-**「为什么重要」** 这是 GitHub 官方发布的一手行业数据，首次量化了 agent 对开发者构建效率的提升效果，同时披露的全球开发者增长速度已超出此前五年预测，是观察 AI 工具落地与开发者生态变化的核心参考。
+**「为什么重要」** 本次合作将 AI 能力与企业级 IT 服务流程打通，为双方企业用户提供更集成的自动化工作流支持，降低跨平台操作成本。
 
-**「可关注」** 可关注：带 agent 配置文件的新仓库提交量是无配置仓库的 8 倍，agent 已深度嵌入开发者日常构建流程。
+**「可关注」** 可关注：ServiceNow 工作流在 ChatGPT、Codex 中的具体集成方式与后续落地节奏。
 
-**标签**: `#industry`, `#open-source`, `#product`, `#agent`
+**标签**: `#lab`, `#industry`, `#product`, `#model`
 
 ---
 
 <a id="item-ai-daily-3"></a>
-### [OpenAI 与 ServiceNow 扩展企业合作](https://openai.com/index/openai-servicenow-partnership-expansion) ⭐️ 7.8/10
+### [OpenAI 谈 AI 融入企业组织架构](https://openai.com/index/the-future-of-the-firm) ⭐️ 7.8/10
 
-OpenAI 与 ServiceNow 于 2026 年 10 月 28 日通过官方博客宣布扩展企业级合作，双向打通产品能力：将 OpenAI 的模型与 agent 集成至 ServiceNow 平台，同时将 ServiceNow 的工作流嵌入 ChatGPT 与 Codex 产品中。
+OpenAI 官方博客发布文章，分析 AI 整合进企业组织架构的潜在模式。文章提出 AI 可能以三种方式进入企业组织架构：低于现有岗位层级、并行于现有岗位、填补现有岗位之间的空白，阐述 AI 在未来企业中的角色定位。
 
-rss · OpenAI Blog · 10月28日 13:15
+rss · OpenAI Blog · 10月28日 10:00
 
-**「为什么重要」** 本次合作覆盖企业核心 IT 服务与 AI 工作流场景，打通了通用 AI 能力与企业级业务系统的整合链路，为后续企业 AI 自动化部署提供了可落地的参考路径。
+**「为什么重要」** 作为头部 AI 实验室的官方视角，其对企业 AI 组织整合路径的分析可为行业 AI 落地提供可参考的行业洞察。
 
-**「可关注」** 可关注：ServiceNow 工作流在 ChatGPT 和 Codex 中的集成形态，以及 OpenAI agent 在企业 IT 服务场景的适配进展。
+**「可关注」** 可关注：AI 融入企业组织架构的三种潜在路径（低于、并行、介于现有岗位）的实际落地可行性。
+
+**标签**: `#lab`, `#industry`
+
+---
+
+<a id="item-ai-daily-4"></a>
+### [GitHub Universe 2026 发布 AI 交付产品矩阵](https://github.blog/news-insights/company-news/github-universe-2026-evolving-every-layer-of-the-stack/) ⭐️ 7.8/10
+
+GitHub 于 2026 年 10 月 28 日在 Universe 大会发布 AI 辅助软件交付体系及多款配套产品。核心更新包括支持跨项目 agent 编排的 GitHub Copilot app、多模型编排工具 Copilot Fusion、多仓库并行会话的 Copilot projects、跨端持续会话能力、可自学习的 Copilot automations 以及高危问题检出率最高的 Copilot code review Max。Copilot Fusion 在 Artificial Analysis Coding Agent Index 中得分接近 Opus 5.5 Max，成本降低 50%、单任务耗时减少 40%。GitHub Enterprise 客户无需单独订阅即可使用全部 Copilot 功能，按实际 AI 用量付费。
+
+rss · GitHub Blog · 10月28日 16:09
+
+**「为什么重要」** 这是全球主流开发者工具平台首次公开完整 agentic 软件交付产品矩阵，覆盖从需求提出到代码合并的全链路 AI 能力，同时通过多模型编排降低了企业使用 AI 编码工具的成本门槛，是行业 AI 软件交付路径的重要更新。
+
+**「可关注」** 可关注：GitHub Enterprise 客户现已无需单独订阅即可使用全量 Copilot 功能，按实际 AI 用量付费，可简化企业工具采购及使用流程。
 
 **标签**: `#lab`, `#industry`, `#product`
 
 ---
 
-<a id="item-ai-daily-4"></a>
-### [GitHub Universe 2026 公布软件交付系统新规划](https://github.blog/news-insights/company-news/github-universe-2026-evolving-every-layer-of-the-stack/) ⭐️ 7.8/10
-
-2026 年 10 月 28 日，GitHub 在 Universe 2026 活动上公布打造全球最全面软件交付系统的愿景，核心目标从&quot;产出更多代码&quot;转向&quot;交付完成的软件工作&quot;。活动上发布多款 AI 辅助开发相关产品与功能，包括 GitHub Copilot app、Copilot Fusion、Copilot projects、跨平台会话 continuity、Copilot automations、Copilot code review Max，其中 Copilot code review Max 在 ReviewBench 高严重性问题检测中取得最高 F1 分数；同时宣布 GitHub Enterprise 客户无需单独购买 Copilot 订阅，按 AI 使用量付费。官方披露 Copilot Fusion 在 Artificial Analysis Coding Agent Index 中得分比 Opus 5.5 Max 低不到 2 分，单任务成本降低 50%、耗时减少 40%。当前公开的源内容存在截断，未披露完整产品细节。
-
-rss · GitHub Blog · 10月28日 16:09
-
-**「为什么重要」** GitHub 将 AI 辅助开发的核心锚点从代码产出转向已完成软件工作的交付，同时推出的多模型自动编排、跨设备会话 continuity 等能力，直接匹配当前 coding agent 场景的核心需求；企业 Copilot 付费模式的调整也可能影响现有团队的开发工具成本结构。
-
-**「可关注」** 可关注：Copilot Fusion 的多模型自动编排能力，其在 Artificial Analysis Coding Agent Index 中得分接近 Opus 5.5 Max，同时单任务成本降低 50%、耗时减少 40%。
-
-**标签**: `#product`, `#lab`, `#industry`
-
----
-
 <a id="item-ai-daily-5"></a>
-### [Anthropic AI for Science 扩 20 机构](https://www.anthropic.com/news/ai-for-science-expands-foundations-research-institutions) ⭐️ 7.8/10
+### [Legora 构建法律工作智能体 OS](https://openai.com/index/legora) ⭐️ 6.8/10
 
-2026 年 10 月 28 日，Anthropic 宣布扩展 2025 年 5 月启动的 AI for Science 项目，覆盖 20 家全球科研机构、基金会与科研团体，向参与高影响力科研项目的研究者提供免费 Claude 使用额度，同时推出面向科研人员的折扣 Team 方案。过去数月该项目已支持数百个生物学、医学、物理学、气候科学等领域的科研项目，多数合作仍处于早期阶段，部分合作已产出公开数据集、开源软件、开放标准等公共产品。
+OpenAI 官方博客发布行业案例，介绍法律科技公司 Legora 正基于 OpenAI 模型、ChatGPT 及 Codex 构建面向法律工作的智能体操作系统，用于加速法律流程、拓展合同分析能力，释放律师精力聚焦更高价值工作。
 
-rss · Anthropic News · 10月28日 00:00
+rss · OpenAI Blog · 10月28日 09:30
 
-**「为什么重要」** 该项目从支持个体研究者升级为与机构共建合作项目，产出的开放标准、公开数据集等公共产品将惠及更广泛的科研社区，部分合作已实现科研效率的显著提升。
+**「为什么重要」** 该案例是 OpenAI 官方披露的垂直行业落地动态，可参考其产品栈在法律科技场景的适配路径。
 
-**「可关注」** 可关注：Anthropic 与 HHMI Janelia 合作开发的 Model Hardware Standard（MHS）已进入研究预览阶段，该规范支持 AI 代理安全操作实验室仪器。
+**「可关注」** 可关注：垂直行业智能体操作系统对通用模型、交互工具、编码工具的集成范式。
 
 **标签**: `#lab`, `#industry`, `#product`
 
 ---
 
 <a id="item-ai-daily-6"></a>
-### [Claude Enterprise 功能 GA](https://claude.com/resources/articles/smart-reports-surveys-pooled-budgets) ⭐️ 7.8/10
+### [Genie 4 发布：首个原生音频实时世界模型](https://mp.weixin.qq.com/s?__biz=MzIwNzc2NTk0NQ==&amp;mid=2247622879&amp;idx=1&amp;sn=aed85a9a679302016c4300873ec91f32) ⭐️ 5.5/10
 
-Anthropic 宣布 Claude Enterprise 的三项企业功能正式 GA，分别是智能报告、应用内调查与共享团队预算。智能报告支持管理员选择团队、日期范围和包含的产品，分析团队会话样本并归类为不同工作流，展示各工作流的支出、交付物与常见摩擦点（如缺失连接器或工具调用失败），还可将高频工作流转化为可复用的技能与代码仓库规则，该功能不用于评估个人绩效或做出雇佣决定。应用内调查支持管理员自定义问题、投放对象与时间，成员会在日常使用的工具收到回复后看到短卡片形式的调查，响应数据按组织统一保留策略删除，同时支持使用客户管理加密密钥的组织启用，调查数据归客户所有，Anthropic 仅在运营服务必需时访问。共享团队预算为团队设置每月共享额度，系统会根据团队近期使用情况建议额度金额，成员个人额度仍作为异常高使用的兜底，所有请求同时消耗两类额度，任一额度耗尽即停止服务，额度耗尽后可提交申请由管理员审核，额度使用至 50%、75%、95%、100% 时管理员会收到邮件提醒。上述功能在 HIPAA 配置或客户管理加密密钥的组织中可用性存在差异，需查看帮助中心确认资格与设置步骤。
+Google DeepMind 于 2026-10-28 发布 Genie 4 世界模型，官方定位为迄今最具交互性的世界模型。这是 DeepMind 首个原生生成音频的实时世界模型，支持通过文本输入实时生成带环境声的交互场景，并提升了物理运动与人物动作的自然度。
 
-rss · Claude Blog · 10月28日 00:00
+rss · 夕小瑶科技说 · 10月28日 10:11
 
-**「为什么重要」** 这些功能补齐了 Claude 企业版在团队使用可见性、反馈收集与预算管控上的能力，帮助企业将已验证的高价值工作流规模化推广到全组织，降低 AI 工具落地的管理成本。
+**「为什么重要」** Genie 4 首次将音频生成集成到实时世界模型中，实现了文本驱动的多模态交互，使世界模型从纯视觉生成迈向音频-视觉联合生成。
 
-**「可关注」** 可关注：智能报告可将团队高频工作流直接转化为可复用的技能与代码仓库规则，减少重复开发成本。
+**「可关注」** 可关注：实时世界模型中音频与视觉的联合生成能力，以及文本指令对场景元素的实时控制能力。
 
-**标签**: `#product`, `#lab`, `#industry`
-
----
-
-<a id="item-ai-daily-7"></a>
-### [Claude for Legal 推出交互式法律工具库](https://claude.com/resources/articles/introducing-artifacts-for-legal-work) ⭐️ 7.8/10
-
-Anthropic 为 Claude for Legal 上线可定制交互式 artifacts 法律工具库，覆盖合同审查、监管变化追踪、法律请求受理等法律团队最高频需求场景。工具库预设 6 类核心工具，支持接入 60 余款法律系统 connectors（含 Bloomberg Law、Filevine 等），用户可上传自有数据适配、配置跨组织共享权限。此外 Anthropic 还资助公益法律组织开发司法援助类 artifacts，并启动 Legal Ambassadors Program 促进法律从业者经验交流。
-
-rss · Claude Blog · 10月28日 00:00
-
-**「为什么重要」** 这是 Claude for Legal 自 2026 年 5 月上线后首次针对法律团队「简化配置、方便跨团队协作」两大核心需求的重大功能更新，将法律 AI 能力从单点问答延伸至可复用的标准化工作流。
-
-**「可关注」** 可关注：Claude for Legal 的 artifacts 所有输出均附带来源链接，且支持对接 60 余款法律系统 connectors 实现数据自动同步，无需手动上传文档。
-
-**标签**: `#lab`, `#product`, `#industry`
+**标签**: `#model`, `#lab`, `#industry`
 
 ---
 
-<a id="item-ai-daily-8"></a>
-### [IDC 全公司部署 Claude 并接入 Quanta](https://claude.com/resources/articles/idc-brings-quanta-into-claude-and-adopts-claude-across-the-company) ⭐️ 7.8/10
+## AI 羊毛
+{: #sec-ai-deals .ah-section}
 
-IDC 将其 Quanta 市场研究平台通过 MCP 连接器接入 Claude，面向客户开放自然语言查询能力，同时 Claude 已在 IDC 全公司范围落地使用。客户描述市场、采购或战略问题后，可快速获取基于 IDC 验证数据的研究分析，包括竞品简报、供应商评分卡、自有数据与行业预测对比等结果，原有需数小时至一天的工作可缩短至分钟级，客户上传的自有数据全程私密，该能力支持在 Claude 桌面端、移动端、Cowork 及 Microsoft Office 插件中使用。IDC 内部工程团队用 Claude Code 重构分析师数据仓库，耗时从预估 3 个月缩短至 3 周，代码评审时长从 5 天压缩到约 30 分钟，规划冲刺周期从 3 周缩短至 3 天，产品经理用 Claude Code 构建原型后功能落地周期从数月缩至数周，发布代码的 bug 数量显著下降，其研究库覆盖超 150 亿个数据点。
+<p class="ah-sec-meta"><a class="ah-anchor" href="#sec-ai-deals" aria-label="链接到本节">#</a><a class="ah-back" href="#ah-toc">↑ 回到目录</a></p>
 
-rss · Claude Blog · 10月28日 00:00
+<a id="item-ai-deals-1"></a>
+### [ChatGPT Pro API 额度福利](https://help.openai.com/en/articles/20001626-api-credits-benefit-for-eligible-chatgpt-subscriptions#credit-amounts) ⭐️ 6.0/10
 
-**「为什么重要」** 这是传统科技情报机构将自有验证数据通过 MCP 接入大模型、面向客户提供 AI 增强服务的典型落地案例，同时 IDC 内部全公司部署的效率数据也为其他企业提供了可参考的落地效果。
+OpenAI 官方帮助文档显示，符合条件的 ChatGPT Pro 订阅用户可获 100/200/500 美元额度的 API credits，当前未披露具体领取条件、额度有效期及截止时间，无额外可操作信息。
 
-**「可关注」** 可关注：MCP 连接器将垂直领域验证数据接入 Claude 的落地路径，以及 Claude Code 在内部工程重构、测试、代码评审环节的提效表现。
+rss · HN Free API / Credits · 10月29日 02:36
 
-**标签**: `#model`, `#lab`, `#industry`, `#product`
+**「可关注」** 可关注：该 API 额度福利仅面向符合条件的 ChatGPT Pro 订阅用户，额度分 100/200/500 美元三档，具体领取规则与有效期暂未公开。
+
+**标签**: `#credits`, `#api`, `#promo`
+
+---
+
+<a id="item-ai-deals-2"></a>
+### [IFTTT 免费计划取消无限运行权益](https://ifttt.com/explore/put-ai-to-work-for-you) ⭐️ 5.0/10
+
+IFTTT 官方宣布终止其免费计划的无限运行权益，具体调整后的免费额度、限制规则、生效时间等细则未在给定内容中披露。
+
+rss · HN Free API / Credits · 10月28日 18:39
+
+**「为什么重要」** 该权益收缩会影响依赖免费方案使用 IFTTT 自动化流程的用户，后续需关注官方公布的具体规则。
+
+**「可关注」** 可关注：IFTTT 后续发布的免费计划细则，评估现有自动化流程的适配或成本调整。
+
+**标签**: `#free-tier`, `#promo`, `#limited-free`
 
 ---
