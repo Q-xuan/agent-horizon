@@ -5,33 +5,32 @@ date: 2026-10-31
 lang: zh
 ---
 
-> 从 123 条内容中筛选出 14 条重要资讯。
+> 从 191 条内容中筛选出 13 条重要资讯。
 
-<nav id="ah-toc" class="ah-toc" aria-label="目录"><span class="ah-toc-title">目录</span><ul><li><a href="#sec-harness-arch"><span class="ah-toc-name">Harness 架构</span><span class="ah-toc-count">4条</span></a></li><li><a href="#sec-agent-engineer"><span class="ah-toc-name">Agent 工程师日报</span><span class="ah-toc-count">5条</span></a></li><li><a href="#sec-ai-daily"><span class="ah-toc-name">AI 日报</span><span class="ah-toc-count">3条</span></a></li><li><a href="#sec-ai-deals"><span class="ah-toc-name">AI 羊毛</span><span class="ah-toc-count">2条</span></a></li></ul></nav>
+<nav id="ah-toc" class="ah-toc" aria-label="目录"><span class="ah-toc-title">目录</span><ul><li><a href="#sec-harness-arch"><span class="ah-toc-name">Harness 架构</span><span class="ah-toc-count">4条</span></a></li><li><a href="#sec-agent-engineer"><span class="ah-toc-name">Agent 工程师日报</span><span class="ah-toc-count">5条</span></a></li><li><a href="#sec-ai-daily"><span class="ah-toc-name">AI 日报</span><span class="ah-toc-count">2条</span></a></li><li><a href="#sec-ai-deals"><span class="ah-toc-name">AI 羊毛</span><span class="ah-toc-count">2条</span></a></li></ul></nav>
 
 ---
 
 **[Harness 架构](#sec-harness-arch)**
-1. [Agent Framework 1.24.0](#item-harness-arch-1) ⭐️ 7.8/10
-2. [Gemini CLI v0.67.0-nightly 发布](#item-harness-arch-2) ⭐️ 5.8/10
-3. [Claude Code v2.1.314 发布](#item-harness-arch-3) ⭐️ 5.5/10
-4. [Claude Code Action 发布](#item-harness-arch-4) ⭐️ 5.0/10
+1. [pydantic-ai v2.64.0 发布](#item-harness-arch-1) ⭐️ 7.8/10
+2. [Agent Framework 1.24.0 发布](#item-harness-arch-2) ⭐️ 7.8/10
+3. [Claude Code v2.1.316 发布](#item-harness-arch-3) ⭐️ 5.3/10
+4. [microsoft/mcp-for-beginners 登 GitHub Trending](#item-harness-arch-4) ⭐️ 5.0/10
 
 **[Agent 工程师日报](#sec-agent-engineer)**
-1. [HF Daily Paper: 基准测度框架](#item-agent-engineer-1) ⭐️ 7.0/10
-2. [Youtu-Parsing-Omni 全模态解析器提出](#item-agent-engineer-2) ⭐️ 7.0/10
-3. [WorkFactory 可扩展智能体训练框架](#item-agent-engineer-3) ⭐️ 7.0/10
-4. [Co-Design Bench 多模态编码 Agent 评测基准](#item-agent-engineer-4) ⭐️ 7.0/10
-5. [Qwen3.5-4B 权重嵌入 NES 6502 模拟器](#item-agent-engineer-5) ⭐️ 6.0/10
+1. [HF Daily 论文提出基准测试度量框架](#item-agent-engineer-1) ⭐️ 7.0/10
+2. [Youtu-Parsing-Omni 多模态解析论文发布](#item-agent-engineer-2) ⭐️ 7.0/10
+3. [WorkFactory 论文：构建 112k 可执行专业任务](#item-agent-engineer-3) ⭐️ 6.5/10
+4. [Nemotron Halloween 语音代理项目落地](#item-agent-engineer-4) ⭐️ 6.3/10
+5. [LOWN 论文：扩散 VLM 视觉路由](#item-agent-engineer-5) ⭐️ 6.0/10
 
 **[AI 日报](#sec-ai-daily)**
-1. [OpenAI 将支持共享 robots.txt 训练偏好信号](#item-ai-daily-1) ⭐️ 7.8/10
-2. [OpenAI 发布社区安全报告与青少年保护](#item-ai-daily-2) ⭐️ 7.8/10
-3. [OpenAI 公开 AI 训练合理使用支持书摘](#item-ai-daily-3) ⭐️ 6.8/10
+1. [OpenAI 将支持 robots.txt 训练偏好标注](#item-ai-daily-1) ⭐️ 8.8/10
+2. [OpenAI 更新 ChatGPT 青少年安全规则](#item-ai-daily-2) ⭐️ 7.8/10
 
 **[AI 羊毛](#sec-ai-deals)**
-1. [本周 Epic 限免 2 款游戏](#item-ai-deals-1) ⭐️ 7.0/10
-2. [ChatGPT Pro 额度翻倍 Plus 不适用](#item-ai-deals-2) ⭐️ 6.0/10
+1. [Epic Games 10.30~11.5 限免两款游戏](#item-ai-deals-1) ⭐️ 7.0/10
+2. [AppDoesIt 提供 155 款免费程序员工具](#item-ai-deals-2) ⭐️ 5.0/10
 
 ---
 
@@ -41,56 +40,60 @@ lang: zh
 <p class="ah-sec-meta"><a class="ah-anchor" href="#sec-harness-arch" aria-label="链接到本节">#</a><a class="ah-back" href="#ah-toc">↑ 回到目录</a></p>
 
 <a id="item-harness-arch-1"></a>
-### [Agent Framework 1.24.0](https://github.com/microsoft/agent-framework/releases/tag/python-1.24.0) ⭐️ 7.8/10
+### [pydantic-ai v2.64.0 发布](https://github.com/pydantic/pydantic-ai/releases/tag/v2.64.0) ⭐️ 7.8/10
 
-Microsoft Agent Framework 发布 python-1.24.0。本次更新将 Python 支持基线提升至 3.11，3.10 不再保证兼容性，下一版本将移除其安装资格。RedisContextProvider 发生破坏性变更，旧版 raw-scope 索引需手动删除并重新摄取上下文数据，overwrite\_index=True 不执行迁移。核心新增本地 MCP 工具的显式默认审批模式，以及实验性 agent 触发的运行时压缩与 skill 卸载策略。
+这是 pydantic-ai v2.64.0 的官方发布，引入工具、运行时、状态管理和上下文处理改进。关键变更包括：重试传输放弃后错误类型改为 ModelHTTPError；服务器状态按创建端点隔离返回；json-repair 变为可选依赖；Coder 工具默认关闭 strict schema；RepoContext 暴露所有嵌套指令文件；新增 BoxdSandbox、ModelFallback sticky 模式、first\_event\_timeout 等能力。同时包含多项兼容性调整和 bug 修复。
 
-github · eavanvalkenburg · 10月30日 21:52
+github · dsfaccini · 10月30日 23:27
 
-**「设计要点」** 运行时层新增 async chat-client contexts 与所有权感知连接清理，确保不关闭调用方传入的资源。记忆层通过专用 scope token 实现大小写敏感、标点安全的上下文范围身份隔离，替代 legacy raw-scope 索引。
+**「设计要点」** 框架采用能力驱动架构，通过 RunContext.load\_capability 和 ModelFallback 等机制实现运行时扩展。状态管理引入 durable run 与 scoped server state，确保 endpoint 隔离；安全层面新增 ArtifactScanner 扫描 Memory 和 Skills 的 agent artifact。
 
-**「改了什么」** Redis 上下文索引迁移至严格 scope 身份校验，旧索引需手动重建；Python 基线提升至 3.11，多个子包提升依赖下限（python-oracledb 3.0、PyMongo 4.15、Claude Agent SDK 0.2.140、OpenAI 1.18）。核心新增 MCP 工具默认审批模式、共享 telemetry 资源属性、switch-case 异步条件、host 声明加载 Agent Hooks、FoundryChatClient 超时参数，以及 NVIDIA NIM 嵌入客户端（alpha）。
+**「改了什么」** 重试传输放弃后错误状态改为 ModelHTTPError，fallback 继续；服务器状态通过 Model.accepts\_server\_state 按创建 endpoint 隔离返回。Coder 默认关闭 strict schema，json-repair 变为可选依赖，同时新增 BoxdSandbox、ModelFallback sticky 模式、first\_event\_timeout 流超时及 Reminder\(scope=&\#x27;conversation&\#x27;\) 等能力，RepoContext 在 nested\_traversal 开启时暴露所有嵌套指令文件。
 
-**标签**: `#mcp`, `#permissions`, `#runtime`, `#memory`
+**标签**: `#tools`, `#runtime`, `#permissions`, `#memory`
 
 ---
 
 <a id="item-harness-arch-2"></a>
-### [Gemini CLI v0.67.0-nightly 发布](https://github.com/google-gemini/gemini-cli/releases/tag/v0.67.0-nightly.20261030.gb633c0703) ⭐️ 5.8/10
+### [Agent Framework 1.24.0 发布](https://github.com/microsoft/agent-framework/releases/tag/python-1.24.0) ⭐️ 7.8/10
 
-Gemini CLI 发布 v0.67.0-nightly.20261030.gb633c0703 nightly 构建。本次更新以 bug 修复为主，新增 extension validation 命令及配套评估测试，未涉及 agent harness 运行时架构层面的重大变更。
+这是微软开源 agent-framework 的 Python 1.24.0 正式版本，包含多项能力更新与两项破坏性变更。核心新能力包括本地 MCP 工具显式默认审批控制、异步工作流条件支持、实验性运行时压缩与技能卸载策略、多模型客户端异步上下文支持等。关键限制包括 Redis 上下文提供程序需手动迁移旧索引、Python 3.10 支持将在下一版本移除、当前版本安装 Python 3.10 不保证兼容性。
 
-github · gemini-cli-robot · 10月30日 01:22
+github · eavanvalkenburg · 10月30日 21:52
 
-**「改了什么」** 新增 extension validation 命令与评估测试。同时修复终端宽度变化时内联历史重渲染溢出、sanitizeForDisplay 截断时代理对处理、Windows 路径大小写不敏感校验、Gemini 3 点分模型识别、@ 自动完成前导斜杠规范化、dynamicModelConfiguration 启用时 /model 列出 Auto、\\n 转义行为、429 限流冷却倒计时显示、.git 后缀移除锚定、LLM 提示模板 $ 模式损坏、Expandable 截断与切换行为、背景日志流生命周期门控、Windows IDE 进程查找 PowerShell CIM 回退等问题；重构 ToolGroupMessage 与内部类型守卫解耦；更新 README 澄清 CLI 范围与工具生态。
+**「设计要点」** 运行时层新增异步聊天客户端上下文与所有权感知连接清理机制，不会关闭调用方传入的资源；核心层新增 Agent Hooks 中间件主机声明加载能力，以及实验性的运行时触发压缩与技能卸载策略。
 
-**标签**: `#tools`, `#eval`
+**「改了什么」** 破坏性变更方面，Redis 上下文提供程序改为保留大小写敏感、标点安全的上下文作用域标识，拒绝旧版原始作用域索引，需手动删除旧索引及其上下文哈希，由提供程序创建新索引后重新摄入数据，\`overwrite\_index=True\` 无法完成不兼容索引迁移；权限与运行时方面，新增本地 MCP 工具及不在逐工具审批列表内的提示的显式默认审批模式，\`never\_require\_approval\` 保留原有回退逻辑，最低支持基线调整为 Python 3.11，当前版本 \`Requires-Python\` 仍允许安装 Python 3.10 但不保证兼容性，下一版本将移除其安装资格；依赖方面，多个子包提升底层依赖版本要求，如 Claude Agent SDK 要求 0.2.140 及以上、PyMongo 要求 4.15 及以上、python-oracledb 要求 3.0 及以上。
+
+**标签**: `#mcp`, `#permissions`, `#memory`, `#runtime`
 
 ---
 
 <a id="item-harness-arch-3"></a>
-### [Claude Code v2.1.314 发布](https://github.com/anthropics/claude-code/releases/tag/v2.1.314) ⭐️ 5.5/10
+### [Claude Code v2.1.316 发布](https://github.com/anthropics/claude-code/releases/tag/v2.1.316) ⭐️ 5.3/10
 
-Claude Code v2.1.314 发布。新增 \`permissions.blockWritesOutsideWorkingDirectories\`，在所有权限模式下拦截工作目录外写入。Claude apps gateway 支持 IdP 组 gating 与 Bedrock \`guardrail\_trace\`。VS Code 和 Claude Desktop 引入空闲压缩：200K+ token 对话在 prompt cache 过期时自动摘要。修复 effort level capping 自动降级、\`claude -p\` 启动失败退出码、Bedrock 多图压缩失败、Microsoft Foundry 模型回退等运行时问题。
+这是 Anthropic 官方 Claude Code agent harness 的 v2.1.316 版本发布，新增子代理 effort 独立配置、Claude apps 网关分层权限策略与池化组预算、Bedrock 护栏提示标签支持、两项运行时行为开关，同时修复 Shell 命令残留、Bash/PowerShell 工具异常、云会话状态错误等大量问题；Opus 4.8 fast 模式已于 2026 年 10 月 30 日弃用，11 月 30 日移除后请求将直接报错，需迁移至 Opus 5.5 保留加速效果。
 
-github · ashwin-ant · 10月30日 01:06
+github · ashwin-ant · 10月31日 01:01
 
-**「设计要点」** 运行时在 permission modes 层统一拦截 Write、Edit、NotebookEdit 路径。Gateway upstreams 支持 IdP 组级流量分发与 Bedrock guardrail 追踪。Prompt cache 过期时通过摘要维持上下文连续性。
+**「设计要点」** Claude apps 网关新增分层权限合并策略与池化组共享预算机制，运行时通过环境变量控制子代理 effort、ultrathink 开关与跨证书保留行为，云会话与自托管运行器针对会话迁移、MCP 服务状态保持做了适配修复。
 
-**「改了什么」** 新增工作目录外写入拦截、IdP 组 gating、guardrail trace、空闲压缩。修复 effort level capping 自动降级重试、\`claude -p\` 启动失败退出码、Bedrock 多图压缩、Microsoft Foundry 模型回退、TLS 证书链、MCP 认证状态、沙箱 worktree 保护等多项问题。
+**「改了什么」** 新增\`CLAUDE\_CODE\_SUBAGENT\_EFFORT\`环境变量可独立设置子代理运行 effort 等级，网关支持分层权限策略、池化组预算与 Bedrock 护栏输入标签，新增\`CLAUDE\_CODE\_DISABLE\_ULTRATHINK\`、\`CLAUDE\_CODE\_DISABLE\_LOOPED\_CROSS\_CERT\_DROP\`两个运行时开关；Opus 4.8 fast 模式已弃用，11 月 30 日后请求将直接报错，需迁移至 Opus 5.5；修复 Shell 命令残留、Bash/PowerShell 工具异常、云会话状态错误等 20 余项问题。
 
-**标签**: `#permissions`, `#sandbox`, `#memory`, `#runtime`, `#prefix-cache`
+**「评论」** 暂无社区评论可用。
+
+**标签**: `#subagents`, `#permissions`, `#runtime`
 
 ---
 
 <a id="item-harness-arch-4"></a>
-### [Claude Code Action 发布](https://github.com/anthropics/claude-code-action) ⭐️ 5.0/10
+### [microsoft/mcp-for-beginners 登 GitHub Trending](https://github.com/microsoft/mcp-for-beginners) ⭐️ 5.0/10
 
-Anthropic 发布 Claude Code GitHub Action，面向 GitHub PR 与 Issue 提供智能响应与代码实现。该 Action 根据工作流上下文自动激活，支持 @claude 提及、issue 分配及显式提示触发。认证方式覆盖 Anthropic 直接 API、Amazon Bedrock、Google Vertex AI，以及 Microsoft Foun（原文截断）。当前公开信息仅限功能简介，无技术实现细节。
+微软开源 Model Context Protocol（MCP）入门教程仓库 microsoft/mcp-for-beginners 于 2026 年 10 月 31 日登上 GitHub Trending。该仓库是面向 agent 工具集成的 MCP 协议学习资源，面向开发者提供 .NET、Java、TypeScript、JavaScript、Rust、Python 六种语言的真实案例，讲解 MCP 基础，覆盖从会话搭建到服务编排的模块化、可扩展、安全 AI 工作流构建方法。
 
-rss · GitHub Trending Daily · 10月30日 23:00
+rss · GitHub Trending Daily · 10月31日 01:57
 
-**标签**: `#tools`, `#github`, `#automation`
+**标签**: `#mcp`, `#tools`
 
 ---
 
@@ -100,77 +103,77 @@ rss · GitHub Trending Daily · 10月30日 23:00
 <p class="ah-sec-meta"><a class="ah-anchor" href="#sec-agent-engineer" aria-label="链接到本节">#</a><a class="ah-back" href="#ah-toc">↑ 回到目录</a></p>
 
 <a id="item-agent-engineer-1"></a>
-### [HF Daily Paper: 基准测度框架](https://huggingface.co/papers/2610.29927) ⭐️ 7.0/10
+### [HF Daily 论文提出基准测试度量框架](https://huggingface.co/papers/2610.29927) ⭐️ 7.0/10
 
-2026-10-30，Hugging Face Daily Papers 推荐论文《Your Benchmark Is an Empirical Measure Over Difficulty》。该文提出基于测度的基准评估视角，形式化定义测度不匹配（measure mismatch）与覆盖缺口（coverage gaps）两类失效模式，给出两个带理论保证的诊断指标，并在 25 个跨 7 领域的基准上实证分析难度分布。结果对改进 Agent 评测体系有直接参考价值，但原文部分结论被截断。
+2026-10-31 发布的论文提出基于度量的基准测试评估框架，形式化定义度量不匹配与覆盖缺口两种核心失败模式，并给出具有理论保证的诊断指标。研究团队分析 25 个跨 7 个领域的流行基准测试，验证这些问题的普遍性。该框架为 AI 智能体评测套件设计者提供构建更可靠测试框架的可落地指导。
 
-rss · Hugging Face Daily Papers · 10月30日 00:00
+rss · Hugging Face Daily Papers · 10月31日 01:57
 
-**「为什么重要」** 该论文将基准从试题集合重构为难度经验测度，首次形式化两类核心失效模式。这为诊断现有基准的系统性偏差提供了可操作指标，但具体落地效果尚需后续验证。
+**「为什么重要」** 该研究首次系统形式化基准测试的两种核心失败模式，并提供带理论保证的诊断工具。对正在设计或选择智能体评测套件的工程师而言，这提供了识别基准测试缺陷的可操作路径。
 
-**「可关注」** 可关注：测度不匹配与覆盖缺口两类失效模式，以及对应的诊断指标，可作为评估现有 Agent 基准有效性的检查清单。
+**「可关注」** 可关注：基准测试的难度分布是否与预期场景一致，以及难度轴上是否存在未覆盖区域，这两个维度可能影响训练进展的检测灵敏度。
 
-**标签**: `#eval`
+**标签**: `#eval`, `#harness`, `#benchmark-design`
 
 ---
 
 <a id="item-agent-engineer-2"></a>
-### [Youtu-Parsing-Omni 全模态解析器提出](https://huggingface.co/papers/2610.39301) ⭐️ 7.0/10
+### [Youtu-Parsing-Omni 多模态解析论文发布](https://huggingface.co/papers/2610.39301) ⭐️ 7.0/10
 
-2026-10-30，Hugging Face Daily Papers 收录论文 Youtu-Parsing-Omni，提出一种全模态解析器。该解析器采用统一共享权重编码器 Youtu-Omni-Encoder 与统一任务 Schema OmniSchema，支持文档、图像、音频、视频的跨模态读取、定位与引用。编码器初始化自预训练语言模型，在统一时空坐标系统中编码所有模态，并通过融合层实现视频帧与并发音频的跨模态对齐。目前仅见论文摘要，完整技术细节与实验对比基线未披露。
+2026 年 10 月 31 日 Hugging Face Daily Papers 收录对应 arXiv 编号 2610.39301 的 Youtu-Parsing-Omni 多模态解析器论文，该研究提出单编码器搭配统一任务 Schema 的设计，可对文档、图像、音频、视频进行时空结构化解析，为 Agent 的多模态感知层提供技术方案。目前该研究仍处于研究阶段，未发布可直接复用的生产级工具或开源代码。
 
-rss · Hugging Face Daily Papers · 10月30日 00:00
+rss · Hugging Face Daily Papers · 10月31日 01:57
 
-**「为什么重要」** 该论文提出面向 Agent 的统一跨模态感知架构，为多模态证据推理提供可参考的技术路径。其共享权重编码器与统一 Schema 设计，可能降低 Agent 处理异构输入的工程复杂度，但实际效果尚待完整论文验证。
+**「为什么重要」** 该研究瞄准 Agent 跨模态感知、跨模态证据定位的需求提出统一技术路径，若后续落地可降低多模态解析模块的重复开发成本，但目前仍为研究阶段，无已验证的生产可用成果。
 
-**「可关注」** 可关注：统一共享权重编码器与单 Schema 多任务输出的设计，可能为 Agent 多模态输入处理提供架构简化思路，但需验证跨模态对齐效果与计算开销。
+**「可关注」** 可关注其单编码器统一多模态编码、时空统一坐标系统、跨模态融合层的设计思路，以及后续是否公开可复用的实现。
 
-**标签**: `#harness`, `#eval`, `#multi-modal`, `#agent-perception`, `#unified-architecture`
+**标签**: `#multi-modal-perception`, `#agent-architecture`, `#cross-modal-fusion`
 
 ---
 
 <a id="item-agent-engineer-3"></a>
-### [WorkFactory 可扩展智能体训练框架](https://huggingface.co/papers/2610.37161) ⭐️ 7.0/10
+### [WorkFactory 论文：构建 112k 可执行专业任务](https://huggingface.co/papers/2610.37161) ⭐️ 6.5/10
 
-2026-10-30，Hugging Face Daily Papers 介绍 WorkFactory 框架。该框架针对专业意图到可执行智能体任务的转换问题，通过信息级规划构建信息支持图，并利用探针执行修复识别支持失败与指导修复。研究团队发布 112,686 条任务数据集，覆盖 612 个职业，用于智能体微调。原文提及使用收集的教师轨迹微调 Qwen 模型，但模型名称未完整显示。
+2026-10-31，Hugging Face Daily Papers 介绍 WorkFactory 框架，该框架从专业意图出发，通过信息支持图规划任务所需信息的依赖与位置，并利用探测执行修复识别支持失败。研究团队据此构建 112,686 个任务，覆盖 612 个职业，并使用收集的教师轨迹微调 Qwen 模型。当前材料为二次摘要且内容截断，未披露微调后 agent 的完整性能结果，无法直接验证训练效果。
 
-rss · Hugging Face Daily Papers · 10月30日 00:00
+rss · Hugging Face Daily Papers · 10月31日 01:57
 
-**「为什么重要」** 该工作针对智能体训练数据 pipeline 中因任务信息缺失或不一致导致教师执行受阻的核心瓶颈，提供了系统化解决方案。公开的大规模职业任务数据集对 agent harness 构建与评测体系有直接参考价值。
+**「为什么重要」** 该框架提出了一种规模化构建专业任务流水线的思路，信息支持图与探测修复的组合对 agent 训练数据构造有参考价值。但受限于摘要完整性，实际训练收益与泛化能力尚待原始论文验证。
 
-**「可关注」** 可关注：信息支持图对任务信息依赖关系的显式建模方式，以及探针执行修复在保持原始意图前提下的自动化修复机制。
+**「可关注」** 可关注：信息支持图对任务信息依赖的显式建模方式，以及探测执行修复在保持任务意图前提下修复执行失败的机制设计。
 
-**标签**: `#eval`, `#orchestration`, `#harness`
+**标签**: `#eval`, `#harness`
 
 ---
 
 <a id="item-agent-engineer-4"></a>
-### [Co-Design Bench 多模态编码 Agent 评测基准](https://huggingface.co/papers/2610.35138) ⭐️ 7.0/10
+### [Nemotron Halloween 语音代理项目落地](https://huggingface.co/blog/nvidia/nemotron-halloween) ⭐️ 6.3/10
 
-2026 年 10 月 30 日 Hugging Face 每日论文发布 Co-Design Bench 多模态编码 Agent 评测基准。该基准为无参考型，从 26314 个真实用户编码会话的 37463 条去重查询中整理出 273 个任务，包含多模态编辑（ME）、仓库编辑（RE）两条赛道，覆盖 Grounded Understanding、UI Transformation、Functional Implementation 三个能力维度，配套 2331 条隐藏专家编写的验收标准，采用 judge-then-refute 评分协议，通过源码与浏览器证据完成评分。
+2026 年 10 月 30 日 Hugging Face 博客发布 NVIDIA 员工开发的 MonsterHouse 万圣节互动语音代理项目，基于 Nemotron 开放模型栈构建，以暴躁海盗人格回应来访的 trick-or-treaters，支持单工作站离线运行。项目核心组件包括 Nemotron 3 ASR、Nemotron 3.5 Bolt E4B 4GB、Magpie TTS Zeroshot、Audio2Face-3D，搭配 2 张 NVIDIA RTX PRO 系列 Blackwell 显卡运行，测试了未公开的 Bolt E4B 模型，最终选用 4GB 量化版本，footprint 小于 Qwen3 30B-A3B、Qwen 3.6 35B-A3B 等前序选项。项目未公开性能基准、评估方法，也未提出通用架构创新，实测流式输出 median 端到语音延迟为 1.70 秒，缓存预生成内容延迟为 0.72 秒，仅作为单工作站语音代理编排的具象参考。
 
-rss · Hugging Face Daily Papers · 10月30日 00:00
+rss · Hugging Face Blog · 10月30日 17:57
 
-**「为什么重要」** 该基准直接采自真实用户编码场景，填补了多模态编码 Agent 协同设计能力评测的空白，为编码 Agent 评测与 Harness 工程师提供了可复用的结构化评测资源；但当前公开内容未披露完整评分细则与基线性能对比，相关细节待后续补充。
+**「为什么重要」** 这是目前公开的首个完整落地 Nemotron 开放语音代理栈的单工作站案例，验证了开源小模型+本地编排在轻量互动语音场景的可行性，为需要离线运行的语音角色开发提供了可参考的组件组合与落地方案。
 
-**「可关注」** 可关注：该基准的双赛道划分方式与 judge-then-refute 评分协议的具体实现，待完整协议公开后可对照适配现有编码 Agent 评测流程。
+**「可关注」** 本地离线语音代理场景可参考其组件选型，选用 4GB 量化版本的 Bolt E4B 搭配 LoRA 适配人格，通过预生成内容缓存、流式文本输出降低交互延迟。
 
-**标签**: `#eval`, `#coding-agent`
+**标签**: `#orchestration`
 
 ---
 
 <a id="item-agent-engineer-5"></a>
-### [Qwen3.5-4B 权重嵌入 NES 6502 模拟器](https://simonwillison.net/2026/Oct/30/nesformer/) ⭐️ 6.0/10
+### [LOWN 论文：扩散 VLM 视觉路由](https://huggingface.co/papers/2610.36671) ⭐️ 6.0/10
 
-Drew Breunig 将可运行的 NES 6502 CPU 模拟器 baked 进 Qwen3.5-4B 模型权重，支持直接运行《超级马里奥兄弟》等 NES ROM，但运行速度极慢。该项目由 Claude Opus 5.5 提示词驱动开发，源码托管于 dbreunig/nesformer 仓库，开发过程中使用了 Christopher Pow 发布的 NES CPU 一致性测试套件。当前该成果更偏向研究趣味性，对 coding agent harness、eval 及工具链的直接改进空间较窄。
+2026-10-31，Hugging Face Daily Papers 收录论文提出 LOWN，一种扩散视觉语言模型（DVLMs）解码时视觉路由方法。DVLMs 在每次去噪步骤重复处理整张图像，视觉 token 占输入 89–97%，导致冗余计算。论文在 LLaDA-V 上测量发现，移除图像仅改变 22.8%（平均）至 7.9% 步骤的 token 解掩码结果。LOWN 在每一步动态决定是否处理图像，该研究目前仅提供论文摘要，无生产工具或代码发布。
 
-rss · Simon Willison · 10月30日 21:59
+rss · Hugging Face Daily Papers · 10月31日 01:57
 
-**「为什么重要」** 该成果是模型权重可承载可运行逻辑组件的直观演示，目前已有公开源码可验证，但尚未证实其对生产级 agent 工具链的实际提升价值。
+**「为什么重要」** 该工作提供了 DVLMs 解码阶段视觉冗余的量化证据，证明多数步骤图像并非必需。对构建多模态 agent 的工程师而言，这提示解码时视觉路由存在效率优化空间，但论文范围狭窄且无可用实现，尚无法直接迁移到生产工作流。
 
-**「可关注」** 可关注：权重内嵌可运行逻辑组件的可行性已得到验证，但当前运行速度限制使其距离生产可用仍有明显距离。
+**「可关注」** 可关注：DVLMs 解码阶段视觉 token 占比 89–97%，但实际影响输出的步骤仅约 22.8%，提示按需视觉路由具备理论优化空间，需等待开源实现验证工程可行性。
 
-**标签**: `#coding-agent`, `#architecture`, `#weights`
+**标签**: `#vlm-efficiency`, `#decoding-optimization`, `#multimodal-agent`
 
 ---
 
@@ -180,47 +183,32 @@ rss · Simon Willison · 10月30日 21:59
 <p class="ah-sec-meta"><a class="ah-anchor" href="#sec-ai-daily" aria-label="链接到本节">#</a><a class="ah-back" href="#ah-toc">↑ 回到目录</a></p>
 
 <a id="item-ai-daily-1"></a>
-### [OpenAI 将支持共享 robots.txt 训练偏好信号](https://openai.com/index/helping-websites-express-ai-training-preferences) ⭐️ 7.8/10
+### [OpenAI 将支持 robots.txt 训练偏好标注](https://openai.com/index/helping-websites-express-ai-training-preferences) ⭐️ 8.8/10
 
-OpenAI 宣布将支持一项共享的 robots.txt 信号，帮助网站运营者向参与该机制的服务商传达自身对 AI 训练的数据使用偏好。目前仅公开了这一政策方向，未公布信号具体规范、参与方范围及落地时间表。
+OpenAI 宣布将支持共享 robots.txt 信号，允许网站运营者向参与该机制的服务提供商表达 AI 训练偏好。目前该机制仅覆盖参与协议的服务商，具体技术规范尚未公开。
 
 rss · OpenAI Blog · 10月30日 09:30
 
-**「为什么重要」** 该政策调整明确了 AI 服务商对网站数据训练偏好的响应机制，为行业数据使用合规提供了新的可参考路径。
+**「为什么重要」** 这是头部 AI 实验室首次公开承诺遵循统一的爬虫偏好标注信号，为行业建立训练数据合规沟通的通用标准提供了参考。
 
-**「可关注」** 可关注：后续该共享 robots.txt 信号的具体技术规范及参与服务商的落地安排。
+**「可关注」** 可关注：后续需跟踪该 robots.txt 信号的具体技术规范及参与服务商的覆盖范围。
 
-**标签**: `#policy`, `#lab`, `#industry`
+**标签**: `#lab`, `#policy`, `#industry`
 
 ---
 
 <a id="item-ai-daily-2"></a>
-### [OpenAI 发布社区安全报告与青少年保护](https://openai.com/index/community-safety-report-and-new-protections-for-teens) ⭐️ 7.8/10
+### [OpenAI 更新 ChatGPT 青少年安全规则](https://openai.com/index/community-safety-report-and-new-protections-for-teens) ⭐️ 7.8/10
 
-OpenAI 发布社区安全报告，宣布加强 ChatGPT 的暴力预防机制。更新包括扩展安全保障、早期干预机制，以及一项新的公共安全报告承诺，重点保护青少年用户。报告未披露具体技术实现细节或生效时间。
+OpenAI 宣布升级 ChatGPT 暴力内容预防体系，扩大防护范围、提前干预风险，同时新增青少年专属保护机制。OpenAI 同时承诺推进公共安全报告相关工作。
 
 rss · OpenAI Blog · 10月30日 09:00
 
-**「为什么重要」** 官方博客发布具体安全政策更新，涉及青少年保护与暴力预防机制扩展。此类顶层调整可能影响产品后续安全策略走向。
+**「为什么重要」** 本次更新直接面向 ChatGPT 未成年用户安全与公共暴力风险防控，是平台安全治理的明确落地动作。
 
-**「可关注」** 可关注：扩展安全保障、早期干预机制与公共安全报告承诺的具体落地方式。
+**「可关注」** 可关注：ChatGPT 后续安全策略迭代中暴力内容识别与青少年防护规则的落地细节。
 
-**标签**: `#policy`, `#lab`, `#product`
-
----
-
-<a id="item-ai-daily-3"></a>
-### [OpenAI 公开 AI 训练合理使用支持书摘](https://openai.com/index/fair-use-benefits-everyone) ⭐️ 6.8/10
-
-OpenAI 官方博客公开了创作者、学者、无障碍倡导者、法律专家等各方支持 AI 训练适用合理使用原则的法庭书摘。
-
-rss · OpenAI Blog · 10月30日 00:00
-
-**「为什么重要」** 合理使用原则是当前 AI 训练版权争议的核心焦点，公开这些书摘可呈现支持方核心论点，为行业政策讨论提供参考。
-
-**「可关注」** 可关注：AI 训练版权合规的司法论证动态，可能影响后续训练数据使用规范。
-
-**标签**: `#policy`, `#industry`, `#lab`
+**标签**: `#policy`, `#product`, `#lab`
 
 ---
 
@@ -230,31 +218,31 @@ rss · OpenAI Blog · 10月30日 00:00
 <p class="ah-sec-meta"><a class="ah-anchor" href="#sec-ai-deals" aria-label="链接到本节">#</a><a class="ah-back" href="#ah-toc">↑ 回到目录</a></p>
 
 <a id="item-ai-deals-1"></a>
-### [本周 Epic 限免 2 款游戏](https://www.appinn.com/eggs-261030/) ⭐️ 7.0/10
+### [Epic Games 10.30~11.5 限免两款游戏](https://www.appinn.com/eggs-261030/) ⭐️ 7.0/10
 
-你看到的内容可能由第三方 AI 基于小众软件文章提炼总结而成，可能与原文真实意图存在偏差。不代表小众软件观点和立场。请&lt;a href=&quot;https://www.appinn.com/eggs-261030/&quot; target=&quot;\_blank&quot;&gt;点击链接阅读原文&lt;/a&gt;细致比对和校验。&lt;br /&gt;&lt;br /&gt;Epic Games Store 本周（10.30~11.5）限时免费送出 2 款游戏：PC 端可领取单人生存恐怖游戏《抱歉我们打烊了 / Sorry We’re Closed》，移动端可领取街机卡丁车竞速游戏《银河卡丁车 / Galaxy Kart》的 Android 和 iOS 版本，领取截止时间为 11 月 5 日。
+你看到的内容可能由第三方 AI 基于小众软件文章提炼总结而成，可能与原文真实意图存在偏差。不代表小众软件观点和立场。请&lt;a href=&quot;https://www.appinn.com/eggs-261030/&quot; target=&quot;\_blank&quot;&gt;点击链接阅读原文&lt;/a&gt;细致比对和校验。&lt;br /&gt;&lt;br /&gt;Epic Games 于 10 月 30 日至 11 月 5 日限时免费赠送两款游戏，PC 端可领取单人生存恐怖游戏《抱歉我们打烊了 / Sorry We’re Closed》，Android 及 iOS 移动端可领取街机卡丁车竞速游戏《银河卡丁车 / Galaxy Kart》，领取后永久持有，无额外领取门槛。
 
 rss · 小众软件 · 10月30日 07:34
 
-**「为什么重要」** 《抱歉我们打烊了》Steam 总体好评率达 98% 且支持中文，《银河卡丁车》上线仅 1 天即开启限免，两款游戏均无额外领取门槛，适合对应喜好的玩家入库。
+**「为什么重要」** 《抱歉我们打烊了》Steam 总体评价为好评如潮（1684 篇评测，98% 好评），且支持简体中文，限免窗口仅一周，错过后续需付费获取。
 
-**「可关注」** 可关注：《银河卡丁车》iOS 与 Android 版本需分别进入对应平台限免地址领取，且该游戏不支持中文；《抱歉我们打烊了》支持中文，Steam 总体好评率 98%。
+**「可关注」** 可关注：《抱歉我们打烊了》支持简体中文，《银河卡丁车》移动端不支持中文，两款游戏领取后均永久有效，需在 11 月 5 日前完成领取。
 
-**标签**: `#limited-free`, `#promo`, `#game`
+**标签**: `#promo`, `#limited-free`, `#game`
 
 ---
 
 <a id="item-ai-deals-2"></a>
-### [ChatGPT Pro 额度翻倍 Plus 不适用](https://www.ifanr.com/1686830?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=) ⭐️ 6.0/10
+### [AppDoesIt 提供 155 款免费程序员工具](https://appdoesit.com/category/programmer) ⭐️ 5.0/10
 
-OpenAI 产品负责人 Tibo 宣布，即日起 ChatGPT Pro 100、Pro 200、Pro 500 及 Business Premium 订阅用户的使用额度翻倍，现有订阅自动生效、无需手动申请，同时撤销此前备受争议的 Pro 200 额度下调计划：原额度较低的 Pro 200 用户提升至与高额度老用户一致的水平，高额度老用户保留原有额度。ChatGPT Plus 用户不适用本次调整，过往不定时免费重置额度的机制或面临取消。官方未公布各套餐具体可核对的额度数值、地区限制及调整是否限时。
+HN 用户 paq85 分享 AppDoesIt 网站程序员分类下的 155 款免费浏览器工具，所有工具无需注册、纯客户端运行，无使用限制，可立即使用。未提及领取截止时间。
 
-rss · 爱范儿 · 10月30日 00:29
+rss · HN Free API / Credits · 10月30日 11:07
 
-**「为什么重要」** 此次调整是 OpenAI 对前期争议订阅政策的直接纠偏，可提升使用 Codex、Work 等功能的 Pro 重度用户的可用计算资源；Tibo 提出的「从重置额度的公司毕业」宣言，也暗示过往非定期的免费重置机制可能成为历史，现有订阅用户的权益规则发生明确变化。
+**「为什么重要」** 这批工具不属于限时促销类羊毛福利，是长期可用的开发者工具资源，全客户端特性降低了敏感数据处理时的隐私风险，对日常开发工作有实际帮助。
 
-**「可关注」** 可关注：Pro 100、Pro 500 的 Codex 编写代码、Work 执行任务额度翻倍，但 ChatGPT 聊天界面的 GPT-6 Pro 周消息上限保持不变；实际可完成的任务数量还受所选模型、上下文长度、推理设置、工具调用情况影响，额度翻倍不保证任务量翻倍。
+**「可关注」** 可关注：所有工具均为纯客户端实现，无需注册即可使用，处理敏感代码或数据时无需上传至服务端。
 
-**标签**: `#credits`, `#promo`, `#api`
+**标签**: `#free-tools`, `#developer-resources`, `#no-sign-up`
 
 ---
