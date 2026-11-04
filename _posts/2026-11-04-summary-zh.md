@@ -5,35 +5,34 @@ date: 2026-11-04
 lang: zh
 ---
 
-> 从 180 条内容中筛选出 16 条重要资讯。
+> 从 194 条内容中筛选出 15 条重要资讯。
 
-<nav id="ah-toc" class="ah-toc" aria-label="目录"><span class="ah-toc-title">目录</span><ul><li><a href="#sec-harness-arch"><span class="ah-toc-name">Harness 架构</span><span class="ah-toc-count">3条</span></a></li><li><a href="#sec-agent-engineer"><span class="ah-toc-name">Agent 工程师日报</span><span class="ah-toc-count">9条</span></a></li><li><a href="#sec-ai-daily"><span class="ah-toc-name">AI 日报</span><span class="ah-toc-count">3条</span></a></li><li><a href="#sec-ai-deals"><span class="ah-toc-name">AI 羊毛</span><span class="ah-toc-count">1条</span></a></li></ul></nav>
+<nav id="ah-toc" class="ah-toc" aria-label="目录"><span class="ah-toc-title">目录</span><ul><li><a href="#sec-harness-arch"><span class="ah-toc-name">Harness 架构</span><span class="ah-toc-count">3条</span></a></li><li><a href="#sec-agent-engineer"><span class="ah-toc-name">Agent 工程师日报</span><span class="ah-toc-count">9条</span></a></li><li><a href="#sec-ai-daily"><span class="ah-toc-name">AI 日报</span><span class="ah-toc-count">2条</span></a></li><li><a href="#sec-ai-deals"><span class="ah-toc-name">AI 羊毛</span><span class="ah-toc-count">1条</span></a></li></ul></nav>
 
 ---
 
 **[Harness 架构](#sec-harness-arch)**
-1. [Cloudflare Agents 0.33.0 发布](#item-harness-arch-1) ⭐️ 8.3/10
-2. [pydantic-ai v2.65.0 发布](#item-harness-arch-2) ⭐️ 6.8/10
-3. [openai-agents-js v0.22.0-alpha.1 发布](#item-harness-arch-3) ⭐️ 5.8/10
+1. [FastMCP v4.2.0a3 发布](#item-harness-arch-1) ⭐️ 7.8/10
+2. [Cloudflare Agents 0.33.0 发布](#item-harness-arch-2) ⭐️ 7.8/10
+3. [openai-agents-js v0.22.0-alpha.1 发布](#item-harness-arch-3) ⭐️ 6.8/10
 
 **[Agent 工程师日报](#sec-agent-engineer)**
-1. [CWE-bench v2 发布 含 100 项安全漏洞评测任务](#item-agent-engineer-1) ⭐️ 8.8/10
-2. [StateBench 长上下文状态跟踪基准上线](#item-agent-engineer-2) ⭐️ 7.8/10
-3. [Qwen 3.8 27B 实现权重解读](#item-agent-engineer-3) ⭐️ 7.0/10
-4. [CUA-Master 论文提出嵌套双循环改进框架](#item-agent-engineer-4) ⭐️ 7.0/10
-5. [NorthCUA 技术报告：规模化经验加速 GUI 智能体](#item-agent-engineer-5) ⭐️ 7.0/10
-6. [datasette-agent 0.5a0 发布](#item-agent-engineer-6) ⭐️ 6.8/10
-7. [Transformers 发布 MIC 捕获 SDPA 注意力 bug](#item-agent-engineer-7) ⭐️ 6.8/10
-8. [CoworkOS 长期自动化 harness 提出](#item-agent-engineer-8) ⭐️ 6.0/10
-9. [uni-robot-agent 开源框架论文](#item-agent-engineer-9) ⭐️ 6.0/10
+1. [Allen AI 发布 StateBench 基准](#item-agent-engineer-1) ⭐️ 7.8/10
+2. [CUA-Master 嵌套双循环框架提出](#item-agent-engineer-2) ⭐️ 7.0/10
+3. [SWE-Trail 历史引导轨迹收集框架发布](#item-agent-engineer-3) ⭐️ 7.0/10
+4. [datasette-apps 0.3a0 发布](#item-agent-engineer-4) ⭐️ 6.8/10
+5. [datasette-agent 0.5a0 发布](#item-agent-engineer-5) ⭐️ 6.8/10
+6. [权重空间编程与 DeepSeek Super-Agent 原型](#item-agent-engineer-6) ⭐️ 6.0/10
+7. [RoboColosseum 论文提出野外评估框架](#item-agent-engineer-7) ⭐️ 6.0/10
+8. [Palette 小模型生成自定义幻灯片](#item-agent-engineer-8) ⭐️ 5.8/10
+9. [Cognition 发布 2026 年 11 月安全指南](#item-agent-engineer-9) ⭐️ 5.8/10
 
 **[AI 日报](#sec-ai-daily)**
-1. [Heimstaden 落地 ChatGPT Enterprise 与 Codex 改造物业](#item-ai-daily-1) ⭐️ 6.8/10
-2. [OpenAI 任命 Jill Hazelbaker 为企业事务官](#item-ai-daily-2) ⭐️ 6.8/10
-3. [Google 用轻量分类器路由 Gemini 降本](#item-ai-daily-3) ⭐️ 6.8/10
+1. [思科整合 OpenAI 模型强化企业安全](#item-ai-daily-1) ⭐️ 6.8/10
+2. [OpenAI 博客：ChatGPT 与 Codex 加速实体工程](#item-ai-daily-2) ⭐️ 6.3/10
 
 **[AI 羊毛](#sec-ai-deals)**
-1. [Epic 13 款小游戏限免 11 月 9 日截止](#item-ai-deals-1) ⭐️ 9.0/10
+1. [E 宝 13 款小游戏限免 11 月 9 日截止](#item-ai-deals-1) ⭐️ 9.0/10
 
 ---
 
@@ -43,49 +42,45 @@ lang: zh
 <p class="ah-sec-meta"><a class="ah-anchor" href="#sec-harness-arch" aria-label="链接到本节">#</a><a class="ah-back" href="#ah-toc">↑ 回到目录</a></p>
 
 <a id="item-harness-arch-1"></a>
-### [Cloudflare Agents 0.33.0 发布](https://github.com/cloudflare/agents/releases/tag/agents%400.33.0) ⭐️ 8.3/10
+### [FastMCP v4.2.0a3 发布](https://github.com/PrefectHQ/fastmcp/releases/tag/v4.2.0a3) ⭐️ 7.8/10
 
-Cloudflare Agents 0.33.0 正式发布，核心变更为新增 Pi 1.5 全链路支持（覆盖 PiHarness、pi-ai 模型、Pi 工具），运行时优化实现流式存储事务最多降低 27 倍、2048 并发会话下 agent 运行吞吐从 88 次/秒提升至 459 次/秒；同时迭代会话 API，session.watch\(\) 替代 session.events\(\)、新增 session.continue\(\) 续跑能力与 defaults.maxTurns 工具轮次限制，移除 retry\(\)、parked 状态等旧逻辑。该版本存在 breaking changes，Pi 依赖需统一升级至 ~1.5.0，升级后无法回滚至 1.4 版本，需按官方指南调整代码。
+PrefectHQ 官方发布 FastMCP v4.2.0a3 alpha 预发布版本，核心调整为整合实验性 skills 子系统，新增带严格目录加载验证的 SkillsDirectoryProvider，弃用 4.1 版 skills 提供者并计划于 4.3 版本移除，同时修复代理发现缓存、OpenAPI Schema 处理、客户端连接恢复、技能安全验证等多项运行时问题。该版本仍将 skills 支持标记为实验性，仅面向集成测试场景。
 
-github · github-actions\[bot\] · 11月3日 13:14
+github · zzstoatzz · 11月3日 23:39
 
-**「设计要点」** 流式输出改为按最长 1 秒间隔批量写入存储，避免逐更新触发写库；调度器移除每次提交全量重检所有会话的逻辑，批量提交共享存储调用，正常运行无存储读；大内容流式采用追加写入而非全量拷贝，降低内存峰值。
+**「设计要点」** skills 子系统围绕 Skill、SkillCatalogProvider、SkillsDirectoryProvider 重构，目录加载阶段逐技能验证后才发布，支持结构化元数据或 YAML allowed-tools 列表的技能无需修改值即可接受；legacy 4.1 skills 提供者与旧版 Skill 构造仍兼容但触发警告，experimental\_skills 路径重定向到新提供者并拒绝子类以保留访问控制，线缆层用 MCPSkill 处理条目、注解与检查，Skill 用于编写；ClientGroup 退出上下文后保留已知工具路由，OAuth 同意绑定支持并发批准，异常中间件匹配子类，空日志方法过滤器表示不记录日志。
 
-**「改了什么」** \1. 完成 Pi 1.5 适配，覆盖 PiHarness、pi-ai 模型、Pi 工具全链路，支持运行中断后无需新消息即可续跑；2. 流式存储批处理、调度器逻辑优化，带来存储事务、吞吐、内存的量化提升；3. 会话 API 迭代，session.watch\(\) 替代 session.events\(\) 返回实时会话视图，新增 session.continue\(\)、defaults.maxTurns，移除 retry\(\) 和 parked 状态；4. 浏览器工具新增 Browser.functionDocs\(\)、作用域锁等能力，browserTool 支持 harness 中止调用。
+**「改了什么」** 相对上一版本，新增严格 SkillsDirectoryProvider 实现目录加载验证，整合 skills 相关提供者，明确弃用 4.1 版 skills 提供者并预告 4.3 移除；新增 Client.read\_skill、fastmcp list --skills、ClientGroup 技能发现等能力，修复代理发现缓存过期、OpenAPI Schema 引用与显式空值保留、客户端连接恢复、keep-alive stdio 传输忽略客户端超时、技能前置内容验证与文件读取限制等多项运行时与安全问题，旧版 skills API 与 Skill 构造仍兼容但触发警告。
 
-**「评论」** 暂无社区评论内容。
+**「评论」** 无可用社区评论。
 
-**标签**: `#runtime`, `#tools`, `#scalability`
+**标签**: `#mcp`, `#tools`, `#runtime`
 
 ---
 
 <a id="item-harness-arch-2"></a>
-### [pydantic-ai v2.65.0 发布](https://github.com/pydantic/pydantic-ai/releases/tag/v2.65.0) ⭐️ 6.8/10
+### [Cloudflare Agents 0.33.0 发布](https://github.com/cloudflare/agents/releases/tag/agents%400.33.0) ⭐️ 7.8/10
 
-pydantic-ai 官方 v2.65.0 版本于 2026 年 11 月 3 日发布，面向 agent harness 工程师提供运行时、工具、权限相关的增量更新。新增 OpenAI Responses 的 WebSocket 传输、ConversationStore 会话日志存储、Anthropic web 工具调用方配置、AskUserAnswer 多模态备注、12 小时 OpenAI 提示缓存保留、OpenRouter 与 Claude 模型的原生中途系统提示发送能力。修复模型回退逻辑、多提供商错误分类、工具调用统计、Temporal 重试策略、会话捕获保护等多项问题，同时调整了 Bedrock、Google 等模型提供商的兼容性与错误处理逻辑。
+Cloudflare Agents 0.33.0 发布，核心升级 PiHarness 至 Pi 1.5。通过存储批处理、调度器优化和追加式内存管理，SQLite 存储事务减少最多 27 倍，2048 会话吞吐量从 88 提升至 459 agent runs/秒，大答案内存占用从 &gt;100 MB 大幅降低。新增 session.watch\(\)、session.continue\(\)、defaults.maxTurns 等接口，支持继续运行和轮次限制。Pi 1.4 无法读取 Pi 1.5 对话，部署后无法回滚。
 
-github · dsfaccini · 11月3日 01:25
+github · github-actions\[bot\] · 11月3日 13:14
 
-**「设计要点」** 运行时新增 non\_retryable\_model\_errors 配置，默认禁止 Temporal 重试不可恢复的模型错误；工具层新增 ConversationStore 单次存储会话日志与 revision 冲突检测机制，gh-aw 规范会话捕获受工具层保护，FileSystem 工具支持在 PrefixTools 下转发事件；模型层细化错误分类，区分内容过滤、配额超限等场景的触发逻辑。
+**「设计要点」** PiHarness 采用批量存储写入（每秒最多一次）和追加式文本更新，替代逐事件复制，降低 SQLite 事务和堆内存压力。调度器改为按提交聚合检查会话状态，正常 run 零存储读取，session.watch\(\) 分离活跃状态流与持久化转录分页。
 
-**「改了什么」** 相对 v2.64.0，新增 OpenAI Responses WebSocket 传输、ConversationStore 会话存储、Anthropic web 工具 allowed\_callers 配置、AskUserAnswer 多模态备注、12 小时 OpenAI 提示缓存保留、OpenRouter 与 Claude 模型的原生中途系统提示发送能力；修复模型回退逻辑、多提供商错误分类、工具调用统计、Temporal 默认重试策略、会话捕获保护等多项问题。
+**「改了什么」** PiHarness 升级至 Pi 1.5，存储批处理使 SQLite 事务减少最多 27 倍，调度器优化使 2048 会话吞吐量从 88 提升至 459 agent runs/秒，大答案内存占用从 &gt;100 MB 降至接近线性增长。API 层面：session.watch\(\) 替换 session.events\(\)，新增 session.continue\(\) 和 defaults.maxTurns，移除 retry\(\) 和 parked 状态；浏览器工具新增作用域锁与外部访问能力。
 
-**标签**: `#runtime`, `#tools`, `#permissions`
+**标签**: `#runtime`, `#memory`
 
 ---
 
 <a id="item-harness-arch-3"></a>
-### [openai-agents-js v0.22.0-alpha.1 发布](https://github.com/openai/openai-agents-js/releases/tag/v0.22.0-alpha.1) ⭐️ 5.8/10
+### [openai-agents-js v0.22.0-alpha.1 发布](https://github.com/openai/openai-agents-js/releases/tag/v0.22.0-alpha.1) ⭐️ 6.8/10
 
-这是 OpenAI 官方发布的 openai-agents-js（JavaScript/TypeScript 版 OpenAI Agents SDK）的首个 alpha 版本 v0.22.0-alpha.1。本次发布核心新增内嵌 Codex harness，同时提供 Linux x64、macOS Apple silicon、Windows x64 三个平台的预置启动归档包，安装需使用 Node.js 24 及其自带 npm，校验归档 SHA-256 校验和后解压，配置 OPENAI\_API\_KEY 即可运行示例，还支持将四个预构建 SDK 包集成到现有应用。
+OpenAI 发布 openai-agents-js v0.22.0-alpha.1，这是其 JavaScript/TypeScript Agent SDK 的官方 alpha 版本。本次更新引入嵌入式 Codex harness，为 JS/TS agent 开发提供新的运行支持。发布包覆盖 Linux x64、macOS Apple silicon 和 Windows x64 三套平台，要求 Node.js 24 环境并设置 OPENAI\_API\_KEY。该版本为不稳定 alpha，未提供详细架构分解或破坏性变更说明。
 
 github · markstuart-oai · 11月3日 15:36
 
-**「设计要点」** 该 alpha 将 Codex harness 直接内嵌到 OpenAI Agents JS/TS SDK 中，同时提供可集成到现有应用的四个预构建 SDK 包，是官方首次推出的 JS/TS 端 Agent harness 集成方案。
-
-**「改了什么」** 本次 alpha 发布首次在 OpenAI Agents JS/TS SDK 中内嵌 Codex harness，新增三个平台的预置启动归档包，同时公开安装指南、alpha 版更新日志与构建测试结果链接。
-
-**标签**: `#runtime`, `#tools`
+**标签**: `#runtime`, `#subagents`
 
 ---
 
@@ -95,139 +90,137 @@ github · markstuart-oai · 11月3日 15:36
 <p class="ah-sec-meta"><a class="ah-anchor" href="#sec-agent-engineer" aria-label="链接到本节">#</a><a class="ah-back" href="#ah-toc">↑ 回到目录</a></p>
 
 <a id="item-agent-engineer-1"></a>
-### [CWE-bench v2 发布 含 100 项安全漏洞评测任务](https://huggingface.co/blog/cwe-bench) ⭐️ 8.8/10
+### [Allen AI 发布 StateBench 基准](https://allenai.org/blog/statebench) ⭐️ 7.8/10
 
-2026 年 11 月 3 日，Hugging Face 博客发布由 Collinear AI 开发的 CWE-bench v2，公开 100 项面向编码智能体的安全漏洞评测任务，所有任务基于真实开源仓库，要求智能体定位并修复安全漏洞且不破坏原有功能。关键细节包括：评分全程序化可复现，LLM 评审团参与校验校验器的难度与公平性，保留未公开 held-out 集用于追踪模型在未见过任务上的进展（需联系 cyber@collinear.ai 申请），100 项任务覆盖 91 种不同 CWE 漏洞类型，任务环境同时可用于训练防御型智能体的奖励信号；当前公开评测中，Gemini 4 Argon 以 67.8% pass@1、81.0% pass@4 位列第一，11 个被评测模型中已有 95 项任务被至少一个模型解决，但榜首模型仍有 19%的任务无法完成，长尾问题尚未解决。该基准面向 coding agent 开发者、安全研究者开放，数据集需在 Hugging Face 页面接受访问条件后获取，支持通过 Harbor 工具直接运行评测。
+Allen AI 于 2026 年 11 月 3 日发布 StateBench 基准，用于评估大语言模型在长文档中跟踪实体状态变化的能力，包含 4 个难度等级，对应不同复杂度的变量赋值操作。测试覆盖开源预训练模型、前沿闭源模型及针对任务直接训练的模型，结果显示循环架构与混合架构在长序列状态跟踪任务上的泛化距离远优于 Transformer，前沿模型在更高难度任务上随输入长度增长准确率骤降，最长通用有限难度下准确率跌至 13%以下。该基准面向长运行 AI Agent 开发、模型选型、记忆系统研发的工程师。
 
-rss · Hugging Face Blog · 11月3日 00:00
+rss · Allen AI · 11月3日 08:00
 
-**「为什么重要」** 这是目前少数聚焦真实仓库安全漏洞修复场景的编码智能体公开基准，程序化评分+held-out 集的设计可减少评测中的记忆化水分，方便社区客观对比不同模型在安全防御场景的实际能力。
+**「为什么重要」** StateBench 填补了长上下文状态跟踪多难度分层的评估空白，首次系统对比了不同架构在各类状态跟踪任务上的性能边界，为长运行 AI Agent 的状态管理、记忆系统设计提供了可直接参考的评估框架。
 
-**「可关注」** 可关注：公开任务采用 Harbor 容器化环境+确定性校验器，可直接通过\`harbor run\`命令从 Hugging Face 仓库拉取运行，无需手动克隆代码；若使用 Git 拉取任务，需提前通过\`hf auth login\`将 HF token 添加到 Git 凭据助手，降低评测接入成本。
+**「可关注」** 可关注：针对状态跟踪任务做定向训练可显著提升循环及混合架构的长序列状态跟踪表现，同时需注意同一底层问题不同表述格式会对模型得分产生明显干扰。
 
-**标签**: `#eval`, `#coding-agent`
+**标签**: `#eval`, `#memory`
 
 ---
 
 <a id="item-agent-engineer-2"></a>
-### [StateBench 长上下文状态跟踪基准上线](https://huggingface.co/blog/allenai/statebench) ⭐️ 7.8/10
+### [CUA-Master 嵌套双循环框架提出](https://huggingface.co/papers/2611.03126) ⭐️ 7.0/10
 
-2026 年 11 月 3 日 Hugging Face 官方博客发布 StateBench 长上下文状态跟踪基准，配套公开技术报告、数据集与代码，包含 4 个递进难度等级，覆盖从不可变赋值到变量引用赋值的不同状态更新场景。测试显示循环架构与混合架构（如 Gated DeltaNet）在超长序列状态跟踪任务上泛化性显著优于 Transformer，前沿大模型在更长输入下的高难度状态跟踪任务上准确率跌至 13%以下；所有测试的预训练模型最长训练上下文不超过 64000 token，测试输入远长于该长度。该基准直接对应 AI Agent 开发中的核心状态跟踪需求，可为 Agent 评估 harness 提供标准化测试能力。
+2026-11-04，Hugging Face Daily Papers 收录论文提出 CUA-Master，一个嵌套双循环递归改进框架，用于扩展计算机使用代理（CUA）。该框架针对现有 CUA 开发中交互数据多样性、可控性与可靠性有限，以及传统优化管道缺乏迭代反馈、自生成经验方法收益递减等问题，设计两层飞轮结构。外层系统级 world-data-model 飞轮持续纳入开放世界语料库，并利用模型弱点指导后续数据构建与优化迭代；内层数据级飞轮耦合开放世界播种与自催化传播。论文标签为 coding-agent、orchestration、eval。
 
-rss · Hugging Face Blog · 11月3日 17:15
+rss · Hugging Face Daily Papers · 11月4日 02:51
 
-**「为什么重要」** StateBench 首次系统化覆盖不同复杂度的长上下文状态跟踪任务，填补了该领域标准化评估工具的空白，直接匹配 AI Agent 对状态跟踪能力的核心需求。当前无公开社区案例证明其已被集成到主流 Agent 评估 harness 中，实际落地效果待验证。
+**「为什么重要」** 该框架针对 CUA 开发中的数据与优化瓶颈提出双循环方案，与 coding-agent 的构建、优化与评估流程相关。但材料未提供实验数据或性能基准，实际收益尚未验证。
 
-**「可关注」** 可关注：StateBench 同时提供多种问题格式（如 RULER 风格、电子表格编辑格式）与 4 个难度等级，可针对性补充现有 Agent 评估 harness 的状态跟踪测试覆盖。
+**「可关注」** 可关注：现有 CUA 递归改进多依赖自生成经验且收益递减，CUA-Master 改用开放世界语料库与模型弱点驱动迭代，这一数据获取策略转变值得跟踪其可复现性。
 
-**标签**: `#eval`, `#coding-agent`, `#memory`, `#harness`
+**标签**: `#coding-agent`, `#orchestration`, `#eval`
 
 ---
 
 <a id="item-agent-engineer-3"></a>
-### [Qwen 3.8 27B 实现权重解读](https://simonwillison.net/2026/Nov/3/qwen-can-interpret-model-weights/) ⭐️ 7.0/10
+### [SWE-Trail 历史引导轨迹收集框架发布](https://huggingface.co/papers/2611.02074) ⭐️ 7.0/10
 
-2026 年 11 月 3 日，Simon Willison 发布实测记录，显示本地运行的 Qwen 3.8 27B（采用 lmstudio-community/Qwen3.8-27B-GGUF 的 Q4\_K\_M 量化版，体积 17GB）可复现论文《Sparks of Weight-Space Programming》中仅前沿模型展示的权重空间编程能力：在无代码执行、无计算工具辅助的前提下，仅通过输入原始权重文本即可识别对应训练的简化 Atari 游戏类型，最长单任务推理耗时 46 分 12 秒、消耗 43506 个推理 token，可正确识别 Pac-Man 等任务，输出置信度 72%。该能力此前仅 GPT-6 Astra 等前沿模型被证实具备，目前仅验证了游戏识别场景，未公开权重修改能力的实测结果。
+SWE-Trail 论文提出历史引导的轨迹收集框架，用于 coding agent 训练。该框架通过复用已采样轨迹指导后续收集，降低独立采样冗余。同时避免将推理时不可用的历史建议作为模型输入，消除训练-测试不匹配。论文 2026-11-04 发布，获 34 次 upvote，具体方法细节在材料中未完全展示。
 
-rss · Simon Willison · 11月3日 16:29 · [社区讨论](https://news.ycombinator.com/item?id=50355251)
+rss · Hugging Face Daily Papers · 11月4日 02:51
 
-**「为什么重要」** 该实测首次证明小尺寸开源模型也可原生读取模型权重，打破了该能力仅前沿模型垄断的认知，为 AI agent 工程师低成本研究模型内部可解释性提供了可行路径。目前该能力的泛化性、结果正确性尚未得到独立验证，实际工程价值仍待观察。
+**「为什么重要」** coding agent 训练数据质量直接决定模型行为。独立采样策略既浪费计算资源，又因历史建议依赖导致分布偏移，该框架针对这两点提出系统化方案。
 
-**「可关注」** 当前小模型完成权重解读任务依赖超过默认 8192 的长上下文支持，单任务推理耗时可达 40 分钟以上，token 消耗超 4 万，结果正确性尚无独立验证，距离实际工程应用仍有距离。
+**「可关注」** 可关注：轨迹收集阶段的历史利用需与推理阶段信息条件对齐，否则训练数据会引入模型无法依赖的偏差。
 
-**「评论」** 社区对该能力存在明显分歧，部分用户认为 Qwen 3.8 27B 已具备接近前沿模型的权重处理能力，仅需高层架构指导即可替代付费前沿模型；另一部分用户质疑权重解读的正确性，认为当前演示仅复现了人类研究者可完成的常规步骤，未证明模型真正理解权重逻辑，且未验证同代模型的权重修改能力。
-
-**标签**: `#observability`, `#memory`
+**标签**: `#coding-agent`
 
 ---
 
 <a id="item-agent-engineer-4"></a>
-### [CUA-Master 论文提出嵌套双循环改进框架](https://huggingface.co/papers/2611.03126) ⭐️ 7.0/10
+### [datasette-apps 0.3a0 发布](https://github.com/datasette/datasette-apps/releases/tag/0.3a0) ⭐️ 6.8/10
 
-Hugging Face Daily Papers 于 2026-11-03 介绍 CUA-Master 论文，提出嵌套双循环递归改进框架以扩展计算机使用代理（CUA）开发。外层系统级循环采用 world-data-model 飞轮，持续纳入开放世界语料库并利用模型弱点指导数据构建与优化迭代；内层数据级循环耦合开放世界播种与自催化传播。该框架针对现有 CUA 交互数据多样性、可控性和可靠性有限，以及传统优化管道缺乏迭代反馈的问题。当前材料为截断摘要，完整技术细节与性能数据未提供。
+2026 年 11 月 4 日 simonw 发布 datasette-apps 0.3a0 alpha 版本，核心改进围绕 Datasette Agent 的应用创建与编辑能力，发布内容存在截断迹象。新增聊天输入\#触发已授权应用自动补全打标签功能，新增 app\_add\_stored\_queries、app\_remove\_stored\_queries 两个工具用于管理应用可调用的存储查询，授权写查询需用户先审批；app\_create 现在会校验请求的存储查询是否存在且用户可查看，创建应用前需用户审批写查询。此外，应用查看按钮与\#引用链接现在全屏在 Datasette Agent 面板打开，工具结果新增应用相对路径，该版本要求 Datasette≥1.0a41，支持 Python 3.15、不再支持 Python 3.10。
 
-rss · Hugging Face Daily Papers · 11月3日 00:00
+github · simonw · 11月4日 00:29
 
-**「为什么重要」** 现有 CUA 开发受限于数据质量与优化管道迭代能力，该框架提供了系统化的递归改进思路。但具体效果与可复现性需等待完整论文验证。
+**「为什么重要」** 该版本是 Datasette 生态内针对 Agent 工具链的官方 alpha 更新，首次落地权限管控的存储查询管理、写操作审批流与聊天内应用标签能力，但改进范围仅覆盖 Datasette Agent 相关场景，且发布内容存在截断迹象。
 
-**「可关注」** 可关注：嵌套双循环中&quot;利用模型弱点指导数据构建&quot;的机制，可能为 coding agent 的自我改进数据 pipeline 提供新思路。
+**「可关注」** 可关注：该版本将写查询授权与用户审批流程绑定，同时收窄 Python 版本支持范围（仅支持 3.15+，要求 Datasette≥1.0a41），升级时需注意依赖兼容性。
 
-**标签**: `#coding-agent`, `#eval`, `#orchestration`
+**标签**: `#permissions`, `#orchestration`, `#agent`
 
 ---
 
 <a id="item-agent-engineer-5"></a>
-### [NorthCUA 技术报告：规模化经验加速 GUI 智能体](https://huggingface.co/papers/2611.02102) ⭐️ 7.0/10
+### [datasette-agent 0.5a0 发布](https://github.com/datasette/datasette-agent/releases/tag/0.5a0) ⭐️ 6.8/10
 
-2026 年 11 月 3 日 HF 每日论文收录 NorthCUA 技术报告，该条目获得 30 次点赞；报告提出面向 GUI 操作的计算机使用智能体系统 NorthCUA，核心设计包括经验飞轮、专用智能体 Harness、递归自改进机制与分阶段学习 pipeline，目标是提升长时程 GUI 任务的表现。Experience Flywheel 为 NorthCUA Harness 提供多样可执行任务，Harness 负责维持长交互、记录决策、校验任务结果，飞轮基于这些记录整理验证通过的轨迹；针对未解决任务，递归自改进机制演化可复用技能，同时保留已验证里程碑，供后续尝试复用前期进展；分阶段学习结合飞轮经验与 grounding 数据，通过中间训练和长时程监督微调提升 GUI 能力。目前公开的摘要内容被截断，未披露性能评估数据，相关设计覆盖 harness、eval、memory 等 coding agent 核心环节，主要面向 GUI 智能体、coding agent 工程师群体。
+2026 年 11 月 3 日，simonw 发布 datasette-agent 0.5a0 版本，该工具属于 Datasette 数据探索生态的 alpha 阶段 AI agent 工具。本次更新新增会话级模型锁定、\# 引用标签（带权限感知的上下文注入）、自定义引用类型插件钩子、Datasette 页面侧边栏渲染、停止按钮、会话后台运行等能力，同时优化了系统提示逻辑、SQL 查询工具功能与 UI 细节。该版本要求 Python 3.11 及以上，最低依赖为 datasette&gt;=1.0a41、datasette-llm&gt;=0.1a9、llm&gt;=0.37.1，仅对使用 Datasette 做数据探索的用户有直接价值。
 
-rss · Hugging Face Daily Papers · 11月3日 00:00
+github · simonw · 11月3日 23:13
 
-**「为什么重要」** 这是目前公开较少完整披露计算机使用智能体经验流转链路、递归自改进与分阶段学习全流程设计的技术报告，对 GUI 智能体与 coding agent 工程有直接参考价值；但当前公开内容缺少性能验证数据，实际效果尚未得到证实。
+**「为什么重要」** 该版本的功能迭代聚焦 Datasette 生态内的 agent 交互体验，其中自定义引用类型的插件钩子设计具备跨场景的可迁移性，适合做 agent 扩展能力的参考。但作为 alpha 阶段的 niche 工具，其功能对通用 AI agent 工程师的直接影响有限，尚未形成大范围验证的行业影响。
 
-**「可关注」** NorthCUA 将经验飞轮、任务执行 Harness、递归自改进、分阶段学习串为完整的 GUI 智能体训练流程，其中保留已验证里程碑供后续尝试复用的设计，对长时程 GUI 任务的 agent 工程有直接参考价值。
+**「可关注」** 可关注：自定义引用类型的 register\_agent\_reference\_types\(\) 插件钩子，支持扩展 \# 引用的搜索、上下文注入逻辑，可作为 agent 工具扩展能力的参考实现。
 
-**标签**: `#harness`, `#coding-agent`, `#eval`, `#memory`
+**标签**: `#coding-agent`, `#orchestration`, `#permissions`, `#memory`, `#harness`
 
 ---
 
 <a id="item-agent-engineer-6"></a>
-### [datasette-agent 0.5a0 发布](https://github.com/datasette/datasette-agent/releases/tag/0.5a0) ⭐️ 6.8/10
+### [权重空间编程与 DeepSeek Super-Agent 原型](https://latent.space/p/ainews-llms-can-read-write-neural-network-weights-weight-space-programming-cuts-autoresearch-out-of/) ⭐️ 6.0/10
 
-2026 年 11 月 3 日，simonw 正式发布 datasette-agent 0.5a0，面向 Datasette 生态的 AI 代理工具。本次更新新增会话级模型选择能力，模型在会话创建时锁定并随会话标题展示，模型列表来自 datasette-llm 的 agent 配置；新增 \# 引用标签功能，支持自动补全关联表、数据库、存储查询，权限校验跟随发送消息的用户执行，标签可点击跳转至对应 Datasette 页面并为模型提供 schema、查询详情等上下文；新增 register\_agent\_reference\_types\(\) 插件钩子，支持插件自定义 \# 引用类型的搜索、链接、模型指令与上下文逻辑，search 和 context 函数支持异步实现；新增 Datasette 页面侧边栏，代理可通过 show\_in\_panel 工具在侧边栏打开页面，窄屏下支持 Chat 与 Panel 切换。该版本要求 Python 3.11 及以上，最低依赖为 datasette&gt;=1.0a41、datasette-llm&gt;=0.1a9、llm&gt;=0.37.1，新增停止按钮、会话后台运行、消息框运行时可编辑等交互特性，修复了系统提示未传递到部分模型的兼容问题，增强了 SQL 工具的参数与统计能力，移除了原「Explore with AI agent」功能及对应权限。
+2026 年 11 月 3 日 AINews 汇总两项 AI Agent 相关进展：一是新研究论文提出“权重空间编程（Weight Space Programming）”能力，支持大模型直接读写更小模型的神经网络权重，可完成权重缺陷修复、单步生成完整网络权重等任务，已有独立复现案例，绕开了此前自动化模型研究需编写 PyTorch/Jax 代码、运行实验监控指标的流程，被视为 0 到 1 突破的新型递归自我改进（RSI）相关能力，目前仅验证于简单游戏与强化学习策略场景，无生产级实现；二是 DeepSeek 开源 super-agent harness 原型仓库\`dsh-superagent-prototype\`，采用长生命周期路由会话对接人类、分发任务给隔离并行 worker 的架构，官方测试显示 p95 任务完成时间较单会话子代理方案从 29.5 分钟降至 15.7 分钟，当前无内置跨会话长期记忆，状态/计算/环境分离、安全隐私、agent 间通信等仍为未实现项。
 
-github · simonw · 11月3日 22:58
+rss · Latent Space · 11月3日 05:35
 
-**「为什么重要」** 本次更新提供的用户级权限校验、插件化引用类型扩展等模式，对通用 agent 工程有参考价值；但目前功能影响主要局限于 Datasette 生态，暂无更广泛的性能或落地数据。
+**「为什么重要」** 权重空间编程首次验证了大模型直接操作神经网络权重的可行性，为未来 agent 自适配、模型自动化研究、eval 工具提供了新路径，但目前仍处于早期研究阶段，无生产级落地；DeepSeek 开源的 super-agent harness 原型是少有的公开长生命周期多 agent 路由架构实现，其性能数据与未实现项清单可为 coding agent harness 设计提供直接参考。
 
-**「可关注」** 可关注：新增的 register\_agent\_reference\_types\(\) 插件钩子支持自定义 \# 引用类型的搜索、上下文注入逻辑，为 agent 上下文扩展提供了可复用的插件化模式。
+**「可关注」** 可关注：DeepSeek super-agent 原型明确将跨任务连续性与吞吐量作为核心权衡，其未实现的长期记忆、状态隔离等项可对应到现有 harness 的待补全能力；权重空间编程的独立复现已出现，可跟踪其后续场景扩展进展。
 
-**标签**: `#permissions`, `#memory`, `#coding-agent`, `#orchestration`
+**标签**: `#coding-agent`, `#eval`
 
 ---
 
 <a id="item-agent-engineer-7"></a>
-### [Transformers 发布 MIC 捕获 SDPA 注意力 bug](https://huggingface.co/blog/transformers-mic) ⭐️ 6.8/10
+### [RoboColosseum 论文提出野外评估框架](https://huggingface.co/papers/2611.02497) ⭐️ 6.0/10
 
-2026 年 11 月 3 日 Hugging Face 发布 Transformers 模型集成契约（MIC）规范，该规范源于 2026 年 7 月 30 日 Transformers 为 T5 启用 PyTorch 缩放点积注意力（SDPA）后引入的回归 bug：UMT5 解码器可在训练时关注未来 token，且无崩溃报错，在 main 分支留存近两个月未检出。MIC 通过将真实模型配置缩小为 CPU 可运行的 fixture，搭配使用路径和人工审核的基线输出，重放 5 个月 Transformers 提交时成功捕获该回归，对应 T5 契约的 CPU runner 单步耗时 13.4 秒（不含 setup）。关键细节包括：该 bug 仅出现在 SDPA 路径，仅运行 eager 注意力路径无法检出；fixture 保留原始 tokenizer、processor 字节级文件和权重格式，覆盖加载转换代码；UMT5 fixture 仅 66MB，远小于原始 1.227GB checkpoint。
+2026-11-04，Hugging Face Daily Papers 介绍 RoboColosseum  preprint。该框架在本地运营的异构机器人网络上，通过统一策略服务与标准化协议，测试视觉-语言-动作策略与前沿 AI agent。研究评估 5 个 VLA 策略与 3 个前沿 agent，横跨 SO-101、Franka、Bimanual-YAM、G1 Humanoid 四种形态，设置 Open Track（blinded pairwise，无任务特定适配）与 Fine-tune Track（20 个任务跨形态适配）两个赛道。当前材料截断，未披露完整技术细节、性能指标或官方代码链接。
 
-rss · Hugging Face Blog · 11月3日 00:00
+rss · Hugging Face Daily Papers · 11月4日 00:00
 
-**「为什么重要」** Transformers 当前支持 750+模型类型，全量 GPU 集成测试无法在 PR 阶段全量运行，回归往往在定时跑完才进入 main 分支。MIC 将大模型缩小为 CPU 可运行的 fixture，可在 PR 阶段提前捕获回归，同时覆盖过大无法放入标准 GPU runner 的超大模型测试场景。
+**「为什么重要」** 它针对具身 AI 测试的可复现性缺口提出标准化方案，但完整技术细节与性能数据尚未公开，实际影响需待全文验证。
 
-**「可关注」** 可关注：模型测试 fixture 必须覆盖实际使用的执行路径（如 SDPA 而非仅 eager 注意力），且需保留原始预处理、权重加载逻辑，否则会漏掉对应路径的回归。
+**「可关注」** RoboColosseum 的 Open Track 采用 blinded pairwise 设计，Fine-tune Track 覆盖 20 任务与 4 种形态，可参考其赛道划分做对照实验。
 
-**标签**: `#eval`, `#harness`, `#observability`
+**标签**: `#eval`
 
 ---
 
 <a id="item-agent-engineer-8"></a>
-### [CoworkOS 长期自动化 harness 提出](https://huggingface.co/papers/2611.03178) ⭐️ 6.0/10
+### [Palette 小模型生成自定义幻灯片](https://huggingface.co/blog/ibm-research/palette-deck-building) ⭐️ 5.8/10
 
-2026-11-03，Hugging Face Daily Papers 收录 CoworkOS 论文，提出面向长期 horizon 的通用 agent coworker 自动化 harness。该系统采用三层架构，将任务策略（模型决定动作、委托与接受）与执行管理（运行时维护状态与反馈）分离，支持直接执行或同步/异步子代理委托。论文内容被截断，未披露性能数据、评估结果或完整实现细节，实际工程可用性待验证。
+IBM Research 发布 Palette，通过 LoRA 微调 20B 开放权重模型，使其按 IBM Design Language 生成 pptxgenjs 代码构建幻灯片。项目合成约 1000 套 deck、约 10,000 张 slide 的训练数据，并为每步决策附带反事实推理标注。推理阶段引入 harness，先做规则修复，再经几何检查器检测重叠与溢出，最后由编辑器模型重写问题 slide。在 PresentBench 评测中，该方法在三个领域中的两个排名第一。用户可在计划中插入 \[\[directives\]\] 控制布局、语气、受众等设计选择。
 
-rss · Hugging Face Daily Papers · 11月3日 00:00
+rss · Hugging Face Blog · 11月3日 16:35
 
-**「为什么重要」** 该设计将策略决策与运行时状态管理解耦，对构建 agent harness 与 orchestration 系统具有参考价值。但缺乏性能基准与实现细节，其实际效果尚未证实。
+**「为什么重要」** Frontier 模型生成多 slide deck 时风格固化，且敏感内容无法出域。Palette 证明通过合成数据、双角色分解与 harness 检查，小模型可在保持设计语言所有权的同时接近 frontier 质量。
 
-**「可关注」** 可关注：CoworkOS 三层架构中模型决策与运行时状态管理的分离方式，以及同步/异步子代理委托的职责划分。
+**「可关注」** 可关注：将复杂生成任务拆成&quot;规划-编码&quot;两阶段，用结构化 brief 隔离 editorial 与 geometry 决策，可降低小模型单次推理负担并支持并行。
 
-**标签**: `#harness`, `#orchestration`
+**标签**: `#eval`, `#harness`
 
 ---
 
 <a id="item-agent-engineer-9"></a>
-### [uni-robot-agent 开源框架论文](https://huggingface.co/papers/2611.01560) ⭐️ 6.0/10
+### [Cognition 发布 2026 年 11 月安全指南](https://cognition.ai/blog/practical-guide-to-security-november-2026) ⭐️ 5.8/10
 
-2026 年 11 月 3 日 HF 每日论文收录机器人使用代理（RUA）领域开源统一框架 uni-robot-agent，该框架支持开源权重 RUA 的进一步训练。无特权输入条件下，开箱即用的 Qwen3.8-Flash-Next 在 RoboDojo 基准获得 31.39 分，超过此前 GPT-6 Astra-RoboProbe 的 28.97 分及多数 VLA/WAM 基线，在 19 项真实任务上表现有竞争力。研究同时总结出驱动 RUA 有效运作的 4 项通用能力，提示后续训练需联合发展这 4 项能力。
+2026 年 11 月 3 日，Cognition 发布 11 月安全实践指南，汇总了近期多起安全事件，包括 10 月 29 日披露的恶意 Claude Code Cursor 扩展入侵事件：Cursor 指出该扩展版本与 Open VSX registry 上的官方版本存在差异，推测攻击者入侵了 Open VSX 下游的扩展发布流程，该恶意版本试图在开发者机器上安装持久化后门以允许攻击者 SSH 访问，Cursor 报告安装量不足 5000。指南同时提及 Binance 63.4 亿美元被盗、PHP2Shell、GitLab 未授权远程代码执行等漏洞，将安全措施分为即时执行和 30 天内落地两类，但当前公开内容为截断版，缺乏深度技术细节、可复现分析及完整可操作指引。
 
-rss · Hugging Face Daily Papers · 11月3日 00:00
+rss · Cognition Blog · 11月3日 17:00
 
-**「为什么重要」** 该开源框架降低了机器人使用代理的研究门槛，开源模型在 RoboDojo 基准超越此前专有模型 SOTA 的结果具备可复现性；但研究场景仅覆盖机器人代理领域，对通用代理工程的参考价值需结合具体需求判断。
+**「为什么重要」** 已证实的针对编码 Agent 生态（Cursor 扩展、MCP 服务器、本地 AI 代理）的攻击表明相关工具链已是攻击者目标，指南提出的攻击面审计、扩展白名单、密钥脱离开发者机器等措施直接对应这类风险；但当前公开内容为截断版，未提供完整技术验证方法与可复现的分析路径，措施的实际落地效果尚未得到充分验证。
 
-**「可关注」** 可关注：uni-robot-agent 开源框架支持开源权重机器人使用代理的进一步训练，其跨模型分析结论提示后续 RUA 训练可联合发展关联有效性的 4 项通用能力。
+**「可关注」** 可关注：编码 Agent 相关扩展、MCP 服务器的发布流程完整性，以及对文件系统、shell、凭证有访问权限的插件的审计优先级。
 
-**标签**: `#harness`, `#eval`
+**标签**: `#coding-agent`, `#permissions`
 
 ---
 
@@ -237,47 +230,30 @@ rss · Hugging Face Daily Papers · 11月3日 00:00
 <p class="ah-sec-meta"><a class="ah-anchor" href="#sec-ai-daily" aria-label="链接到本节">#</a><a class="ah-back" href="#ah-toc">↑ 回到目录</a></p>
 
 <a id="item-ai-daily-1"></a>
-### [Heimstaden 落地 ChatGPT Enterprise 与 Codex 改造物业](https://openai.com/index/heimstaden) ⭐️ 6.8/10
+### [思科整合 OpenAI 模型强化企业安全](https://openai.com/index/cisco-cyber) ⭐️ 6.8/10
 
-OpenAI 官方博客发布案例，欧洲住宅地产管理公司 Heimstaden 落地 ChatGPT Enterprise 与 Codex 改造物业管理业务，声称实现降本、提升员工工作效率。该案例未披露具体量化指标，也未提及更广泛的行业落地影响。
+OpenAI 官方博客 2026 年 11 月 3 日发布行业合作案例，介绍思科将网络情报与 OpenAI 模型结合，用于构建更自适应的企业安全防御体系。该案例未披露具体技术实现、性能数据或落地范围等细节。
 
 rss · OpenAI Blog · 11月3日 08:00
 
-**「为什么重要」** 这是 OpenAI 官方发布的首个物业场景企业级 AI 落地案例，验证了 ChatGPT Enterprise 与 Codex 在非科技行业的应用可能性，但未披露具体效果数据，暂无法评估实际落地价值。
+**「可关注」** 可关注：思科结合网络情报与 OpenAI 模型的企业安全防御方案后续公开的技术细节与落地效果。
 
-**「可关注」** 可关注：非科技行业企业落地 ChatGPT Enterprise 与 Codex 的场景适配与效果验证进展。
-
-**标签**: `#lab`, `#industry`, `#product`
+**标签**: `#industry`, `#product`, `#lab`
 
 ---
 
 <a id="item-ai-daily-2"></a>
-### [OpenAI 任命 Jill Hazelbaker 为企业事务官](https://openai.com/index/jill-hazelbaker-chief-corporate-affairs-officer) ⭐️ 6.8/10
+### [OpenAI 博客：ChatGPT 与 Codex 加速实体工程](https://openai.com/index/accelerating-engineering-for-the-physical-world) ⭐️ 6.3/10
 
-2026 年 11 月 3 日，OpenAI 官方博客发布人事任命公告，宣布 Jill Hazelbaker 出任公司首席企业事务官，负责领导全球沟通与企业定位相关工作。
+OpenAI 官方博客发布文章，介绍 ChatGPT 与 Codex 正被用于加速 CAD、PCB 设计、仿真等实体工程相关的工作流。该文未提及具体新功能、版本更新或独立产品发布信息。
 
-rss · OpenAI Blog · 11月3日 00:00
+rss · OpenAI Blog · 11月3日 12:00
 
-**「为什么重要」** 该信息为 OpenAI 官方公开的一手人事任命，可核对官方原文，属于公司治理层面的人事变动，并非模型或行业新事实，影响面一般。
+**「为什么重要」** 该文是 OpenAI 官方公开的 AI 实体工程落地案例，覆盖设计到仿真的全流程场景，可作为相关领域从业者的参考。
 
-**「可关注」** 可关注：OpenAI 后续全球沟通与企业定位相关的官方发布动态。
+**「可关注」** 可关注：ChatGPT 与 Codex 在 CAD、PCB 设计、仿真等实体工程场景的落地进展。
 
-**标签**: `#lab`, `#industry`, `#policy`
-
----
-
-<a id="item-ai-daily-3"></a>
-### [Google 用轻量分类器路由 Gemini 降本](https://developers.googleblog.com/cost-per-task-using-cheap-classifiers-to-route-across-gemini-models-and-thinking-levels/) ⭐️ 6.8/10
-
-Google Developers 官方博客发布面向自主编码 agent 的成本优化方案，提出用轻量级分类器（以 TypeSafe Jev 为例）前置在 Google Antigravity 的模型调用层前，在 Gemini 模型与不同推理级别间路由请求，将核心经济性指标从「每 token 价格」切换为「每成功任务成本」。Jev 是专为高吞吐决策流水线设计的结构化输出分类器，单次前向传播即可完成选项选择、数值评分、Noul 二元概率判断等原子分类任务。在 50 题的编码 agent 基准测试中，Jev 路由方案与全量使用低推理配置的 Gemini 3.8 Flash 均达成 100%任务正确率，且相比全量低推理方案可同时降低成本和响应时延。测试为单轮实验，实际生产中的延迟、token 消耗与成本会随提示长度、上下文缓存、生产负载波动；若路由的低成本选项无法减少简单任务的模型思考量，哪怕零成本的完美路由器也无法降低总成本。Google 同时声明与 TypeSafe 无合作，该路由模式也可用其他分类器实现。
-
-rss · Google Developers AI · 11月3日 00:00
-
-**「为什么重要」** 当前 token 单价持续下降，但自主编码 agent 的工程成本仍在上涨，「每成功任务成本」正成为更核心的经济性指标，该方案给出了可落地的轻量路由实践。
-
-**「可关注」** 可关注：路由分类器需拆分为原子判断，宽泛分类易导致简单任务误判；给推理模型设低输出上限不会降低简单任务的思考 token 消耗，反而可能中断复杂任务推理。
-
-**标签**: `#model`, `#industry`, `#product`
+**标签**: `#model`, `#lab`, `#industry`, `#product`
 
 ---
 
@@ -287,16 +263,16 @@ rss · Google Developers AI · 11月3日 00:00
 <p class="ah-sec-meta"><a class="ah-anchor" href="#sec-ai-deals" aria-label="链接到本节">#</a><a class="ah-back" href="#ah-toc">↑ 回到目录</a></p>
 
 <a id="item-ai-deals-1"></a>
-### [Epic 13 款小游戏限免 11 月 9 日截止](https://www.appinn.com/eggs-261103/) ⭐️ 9.0/10
+### [E 宝 13 款小游戏限免 11 月 9 日截止](https://www.appinn.com/eggs-261103/) ⭐️ 9.0/10
 
-你看到的内容可能由第三方 AI 基于小众软件文章提炼总结而成，可能与原文真实意图存在偏差。不代表小众软件观点和立场。请&lt;a href=&quot;https://www.appinn.com/eggs-261103/&quot; target=&quot;\_blank&quot;&gt;点击链接阅读原文&lt;/a&gt;细致比对和校验。&lt;br /&gt;&lt;br /&gt;Epic 商店正在免费发放 Yash Future Tech Solutions 旗下的 13 款小游戏，领取后永久入库，无需立即下载安装，截止时间为北京时间 2026 年 11 月 9 日凌晨 2:30。
+你看到的内容可能由第三方 AI 基于小众软件文章提炼总结而成，可能与原文真实意图存在偏差。不代表小众软件观点和立场。请&lt;a href=&quot;https://www.appinn.com/eggs-261103/&quot; target=&quot;\_blank&quot;&gt;点击链接阅读原文&lt;/a&gt;细致比对和校验。&lt;br /&gt;&lt;br /&gt;Epic 商店开启 13 款由 Yash Future Tech Solutions 开发的小游戏限时免费领取活动，领取后游戏永久入库，无消费门槛，截止时间为北京时间 2026 年 11 月 9 日凌晨 2:30，支持网页端操作。
 
 rss · 小众软件 · 11月3日 13:13
 
-**「为什么重要」** 这批限免游戏覆盖射气球、横版解谜、闯关、赛车、走迷宫、数学答题等多品类，已确认可 0 元入库，适合想扩充轻量游戏库的用户在截止前领取。
+**「为什么重要」** 这批免费游戏覆盖赛车、平台跳跃、解谜、数学益智等多品类，领取后永久入库且无需即时下载安装，适合补充轻量休闲游戏库。
 
-**「可关注」** 可关注：网页版领取时若遇设备不兼容提示仍可继续完成入库，下载安装可后续操作。
+**「可关注」** 可关注：网页端领取时若遇“与当前设备不兼容”提示仍可完成入库，操作时需注意区分免费游戏本体与 Demo，确认金额为 0 元后再添加到库。
 
-**标签**: `#limited-free`, `#promo`, `#free-tier`
+**标签**: `#free-tier`, `#promo`, `#limited-free`, `#game`
 
 ---
