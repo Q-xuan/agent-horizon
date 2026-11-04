@@ -5,262 +5,262 @@ date: 2026-11-04
 lang: en
 ---
 
-> From 194 items, 15 important content pieces were selected
+> From 176 items, 15 important content pieces were selected
 
 ---
 
 **Agent Harness Architecture**
-1. [FastMCP v4.2.0a3 发布](#item-harness-arch-1) ⭐️ 7.8/10
-2. [Cloudflare Agents 0.33.0 发布](#item-harness-arch-2) ⭐️ 7.8/10
+1. [Agents 0.33.0 发布](#item-harness-arch-1) ⭐️ 8.8/10
+2. [FastMCP v4.2.0a3 发布](#item-harness-arch-2) ⭐️ 6.8/10
 3. [openai-agents-js v0.22.0-alpha.1 发布](#item-harness-arch-3) ⭐️ 6.8/10
 
 **AI Agent Engineer**
-1. [StateBench 发布 长文档状态追踪基准](#item-agent-engineer-1) ⭐️ 7.8/10
-2. [CUA-Master 嵌套双循环框架提出](#item-agent-engineer-2) ⭐️ 7.0/10
-3. [SWE-Trail 历史引导轨迹收集框架发布](#item-agent-engineer-3) ⭐️ 7.0/10
-4. [Datasette-apps 0.3a0 发布](#item-agent-engineer-4) ⭐️ 6.8/10
-5. [Datasette-agent 0.5a0 发布](#item-agent-engineer-5) ⭐️ 6.8/10
-6. [LLM 读写权重与 DeepSeek 代理](#item-agent-engineer-6) ⭐️ 6.0/10
-7. [RoboColosseum 提出具身 AI 评估框架](#item-agent-engineer-7) ⭐️ 6.0/10
-8. [IBM Palette 小模型幻灯片生成](#item-agent-engineer-8) ⭐️ 5.8/10
-9. [Cognition 发布 11 月安全实践指南](#item-agent-engineer-9) ⭐️ 5.8/10
+1. [datasette-apps 0.3a0 发布](#item-agent-engineer-1) ⭐️ 7.8/10
+2. [Datasette-agent 0.5a0 发布](#item-agent-engineer-2) ⭐️ 7.8/10
+3. [StateBench 发布 长文档状态追踪基准](#item-agent-engineer-3) ⭐️ 7.8/10
+4. [ParetoSaddler 提出联合质量成本优化方法](#item-agent-engineer-4) ⭐️ 7.0/10
+5. [HF每日论文：Mage-VL-Cowork 混合CUA方案](#item-agent-engineer-5) ⭐️ 7.0/10
+6. [HF 论文：近零词嵌入致门控模型训练静默停滞](#item-agent-engineer-6) ⭐️ 7.0/10
+7. [Palette 小模型生成设计语言幻灯片](#item-agent-engineer-7) ⭐️ 5.8/10
+8. [Cognition 发布 11 月安全指南](#item-agent-engineer-8) ⭐️ 5.8/10
 
 **AI Daily**
-1. [思科结合OpenAI模型强化企业安全](#item-ai-daily-1) ⭐️ 6.8/10
-2. [OpenAI 博客：Codex 加速物理工程](#item-ai-daily-2) ⭐️ 6.3/10
+1. [OpenAI 展示 Codex 工程应用案例](#item-ai-daily-1) ⭐️ 6.8/10
+2. [Cisco 携手 OpenAI 强化企业安全](#item-ai-daily-2) ⭐️ 6.8/10
+3. [Heimstaden 用 Codex 管物业](#item-ai-daily-3) ⭐️ 6.8/10
 
 **AI Deals**
-1. [Epic 13款小游戏限免 11月9日截止](#item-ai-deals-1) ⭐️ 9.0/10
+1. [Epic 13款小游戏限免 11.9截止](#item-ai-deals-1) ⭐️ 8.0/10
 
 ---
 
 ## Agent Harness Architecture
 
 <a id="item-harness-arch-1"></a>
-### [FastMCP v4.2.0a3 发布](https://github.com/PrefectHQ/fastmcp/releases/tag/v4.2.0a3) ⭐️ 7.8/10
+### [Agents 0.33.0 发布](https://github.com/cloudflare/agents/releases/tag/agents%400.33.0) ⭐️ 8.8/10
 
-FastMCP 发布 v4.2.0a3 alpha 预发布版本，整合实验性 skills 子系统，将 \`Skill\` 改为存储中性对象并引入严格目录加载验证。新增 \`SkillsDirectoryProvider\`，弃用 4.1 版 skills 提供者并计划 4.3 移除。修复代理发现缓存过期、OpenAPI Schema 引用与显式 null 值保留、客户端连接恢复等运行时问题。skills 功能仍处实验阶段，面向集成测试。
+Cloudflare Agents 0.33.0 将 PiHarness 运行时升级至 Pi 1.5，流式输出存储改为批处理（最长 1 秒间隔），并优化调度器减少冗余检查。SQLite 存储事务减少约 27 倍，2,048 会话吞吐量从 88 提升至 459 runs/sec，但崩溃可能丢失约 1 秒数据。API 层面 \`session.watch\(\)\` 替代 \`session.events\(\)\`，新增 \`session.continue\(\)\` 与 \`defaults.maxTurns\`，移除 \`retry\(\)\` 和 \`parked\` 状态。Pi 1.4 不再受支持，升级后无法回滚。
 
-github · zzstoatzz · Nov 3, 23:39
+github · github-actions\[bot\] · Nov 3, 13:14
 
-**「设计要点」** Skills 子系统以存储中性的 \`Skill\` 对象为核心，目录加载时逐项验证后发布；\`experimental\_skills=True\` 重定向到新提供者并拒绝子类以保留访问控制。客户端通过 \`client.read\_skill\(\)\` 下载并校验完整 skill，资源型服务器通过 \`skill://&lt;name&gt;/\_manifest\` 读取清单元数据。
+**「设计要点」** Pi 1.5 运行时将流式文本追加改为增量写入，避免每次更新全量复制，500 KB 工具调用内存占用从 100 MB 大幅下降。调度器将并发提交合并为单次存储调用，常规运行零存储读取。浏览器工具层引入 \`browser.session\(\{ lock: true \}\)\` 与 \`BrowserSession\`，使 harness 外部代码可复用同一浏览器实例。
 
-**「改了什么」** 相对 a2，\`Skill\` 变为存储中性对象，新增严格 \`SkillsDirectoryProvider\`、\`ClientGroup\` 技能发现、\`Client.read\_skill\(\)\` 接口及 \`--skills\` CLI 参数。修复 OpenAPI 工具输入 omit \`readOnly\` 属性、OAuth 同意绑定并发保持、异常中间件匹配子类等问题，同时将 4.1 skills API 标记为弃用。
+**「改了什么」** PiHarness 升级至 Pi 1.5，流式输出批处理存储，调度器并发性能提升约 5 倍。会话 API 替换为 \`session.watch\(\)\` 与 \`session.entries\(\)\`，新增 \`continue\(\)\` 和 \`maxTurns\` 限制，移除 \`retry\(\)\` 与 \`parked\` 状态，浏览器工具增加 \`functionDocs\(\)\`、作用域锁及外部调用支持。
 
-**「评论」** 无可用社区评论。
-
-**Tags**: `#mcp`, `#tools`, `#runtime`
+**Tags**: `#runtime`, `#memory`, `#performance`
 
 ---
 
 <a id="item-harness-arch-2"></a>
-### [Cloudflare Agents 0.33.0 发布](https://github.com/cloudflare/agents/releases/tag/agents%400.33.0) ⭐️ 7.8/10
+### [FastMCP v4.2.0a3 发布](https://github.com/PrefectHQ/fastmcp/releases/tag/v4.2.0a3) ⭐️ 6.8/10
 
-Cloudflare Agents 0.33.0 upgrades the Pi harness to Pi 1.5, introducing batched storage writes that cut SQLite transactions by about 27x and CPU by approximately 25%. The scheduler eliminates per-commit conversation rechecks and batches concurrent commits into single storage calls, raising throughput from 88 to 459 agent runs per second with 2048 sessions. New APIs include \`session.watch\(\)\` for live conversation views, \`session.continue\(\)\` for resuming runs after model errors or turn limits, and \`defaults.maxTurns\` to cap tool rounds. Streaming large answers now appends text instead of copying it, preventing heap spikes above 100 MB, though a crash can lose up to roughly one second of streamed output.
+FastMCP v4.2.0a3 发布，将 skills 子系统统一到 \`Skill\`、\`SkillCatalogProvider\` 和严格 \`SkillsDirectoryProvider\`。目录加载在发布前验证每个 skill，支持 YAML \`allowed-tools\` 列表。修复代理发现缓存、OpenAPI 引用保留和客户端连接恢复。skills 仍为实验性，仅用于集成测试。
 
-github · github-actions\[bot\] · Nov 3, 13:14
+github · zzstoatzz · Nov 3, 23:39
 
-**「设计要点」** The Pi harness batches streamed answers and tool output at 1-second intervals rather than on every update, and appends text instead of copying it to reduce heap usage. The scheduler removes per-commit conversation rechecks and batches concurrent commits into single storage calls, while crash-looping tasks now end with an error result or \`restart\_limit\` reason instead of parking.
+**「设计要点」** \`SkillsDirectoryProvider\` 在启动时验证 skill 目录，验证失败即抛出异常。legacy 4.1 skills providers 保留原有行为但输出弃用警告，计划 4.3 移除；\`experimental\_skills=True\` 重定向到新 provider 并拒绝子类以维持访问控制。
 
-**「改了什么」** Pi 1.5 support replaces \`session.events\(\)\` with \`session.watch\(\)\` and adds \`session.entries\(\)\` for paging, while \`session.continue\(\)\` resumes runs without new messages and \`submit\(\)\` gains \`whenIdle: &quot;reject&quot;\`. \`retry\(\)\` and the \`parked\` status are removed, Pi tool schemas now require \`@earendil-works/pi-schema\` instead of TypeBox exports from \`pi-ai\`, and browser tools gain \`Browser.functionDocs\(\)\`, scope locks, and \`conversationScope\(\)\`.
+**「改了什么」** skills 加载从宽松变为启动时严格验证，引入 \`SkillsDirectoryProvider\` 和 \`SkillCatalogProvider\` 替代旧 provider。legacy 4.1 skills API 进入弃用倒计时，\`list\_skills\` 重命名为 \`list\_skill\_summaries\`，新增 \`Client.read\_skill\` 和 \`fastmcp list --skills\`。
 
-**Tags**: `#runtime`, `#memory`
+**Tags**: `#tools`, `#permissions`, `#runtime`, `#mcp`
 
 ---
 
 <a id="item-harness-arch-3"></a>
 ### [openai-agents-js v0.22.0-alpha.1 发布](https://github.com/openai/openai-agents-js/releases/tag/v0.22.0-alpha.1) ⭐️ 6.8/10
 
-OpenAI 发布 openai-agents-js v0.22.0-alpha.1，这是其 JavaScript 与 TypeScript Agents SDK 的官方 alpha 版本。该版本引入嵌入式 Codex harness 支持，用于 agent 开发。发布包要求 Node.js 24 及其自带 npm，提供 Linux x64、macOS Apple silicon 与 Windows x64 三套 starter 压缩包及对应 SHA-256 校验和。部署时需设置 OPENAI\_API\_KEY，执行 npm ci --ignore-scripts，再运行 node hello.mjs 启动示例，示例会发起一次在线模型请求并打印问候语。
+这是 OpenAI 官方发布的 JavaScript/TypeScript Agents SDK v0.22.0-alpha.1 预览版本，核心新增嵌入式 Codex 执行 harness。该版本要求使用 Node.js 24 及其自带 npm，提供 Linux x64、macOS Apple silicon、Windows x64 三平台 starter 压缩包及对应 SHA-256 校验和，部署流程为校验压缩包、解压后设置 OPENAI\_API\_KEY，执行 npm ci --ignore-scripts 后运行 node hello.mjs 即可调用示例模型接口，SDK 还支持将四个预构建包添加到现有应用中使用。
 
 github · markstuart-oai · Nov 3, 15:36
 
-**「改了什么」** 本次 alpha 在 openai-agents-js SDK 中新增嵌入式 Codex harness 支持，覆盖 JavaScript 与 TypeScript 场景。发布物包含三平台预构建 starter 压缩包及校验和文件，配套示例程序可执行在线模型调用。
+**「改了什么」** 本次 alpha 相对前一版本明确披露的唯一能力变更为新增面向 JavaScript/TypeScript Agents SDK 的嵌入式 Codex harness，其余技术实现细节、架构调整未在发布内容中说明。
 
-**Tags**: `#runtime`, `#subagents`
+**Tags**: `#harness`, `#openai-agents-sdk`, `#alpha-release`
 
 ---
 
 ## AI Agent Engineer
 
 <a id="item-agent-engineer-1"></a>
+### [datasette-apps 0.3a0 发布](https://github.com/datasette/datasette-apps/releases/tag/0.3a0) ⭐️ 7.8/10
+
+2026年11月4日，simonw发布datasette-apps 0.3a0 alpha版本，核心优化Datasette Agent的应用创建与编辑能力。新增\#标签自动补全用户有权限查看的应用，新增app\_add\_stored\_queries、app\_remove\_stored\_queries两个工具管理应用可调用的存储查询，授予写查询需先获得用户审批；app\_create\(\)会校验请求的存储查询是否存在且用户有查看权限，创建前需用户审批写查询。工具结果新增应用相对路径，支持全屏打开应用，该版本要求Datasette≥1.0a41，支持Python 3.15并移除Python 3.10支持，主要影响使用Datasette Agent构建应用的开发者与agent工具权限设计工程师。
+
+github · simonw · Nov 4, 00:29
+
+**「为什么重要」** 该版本在Datasette生态内落地了agent工具的细粒度权限校验与写操作用户审批流，为其他agent harness设计工具安全模式提供了可参考的实现样本；目前这套模式在其他场景的适配效果尚未得到验证。
+
+**「可关注」** 可关注：agent工具对写操作的权限前置校验与用户审批流的实现方式，以及工具结果返回相对路径替代自造URL的设计。
+
+**Tags**: `#agent`, `#tools`, `#permissions`, `#harness`, `#datasette`
+
+---
+
+<a id="item-agent-engineer-2"></a>
+### [Datasette-agent 0.5a0 发布](https://github.com/datasette/datasette-agent/releases/tag/0.5a0) ⭐️ 7.8/10
+
+simonw 于 2026-11-03 发布 datasette-agent 0.5a0 正式 alpha 版本，面向数据场景的 AI agent 工具链迎来多项功能更新。核心变更包括：新建对话时可选择并锁定模型（模型列表来自 datasette-llm 的 agent 配置，可通过 \`/-/agent/api/models\` 获取）；新增 \`\#\` 引用标签，支持自动补全，可注入表结构、查询详情等上下文，权限跟随发送消息的用户；新增异步插件钩子 \`register\_agent\_reference\_types\(\)\`，支持插件扩展自定义 \`\#\` 引用类型；新增侧边栏面板，可通过 \`show\_in\_panel\` 工具渲染 Datasette 页面，窄屏支持 Chat \| Panel 切换。此外新增停止按钮、后台对话恢复、\`list\_tables\`/\`describe\_query\` 工具、\`sql\_query\` 命名参数与耗时统计，移除了“Explore with AI agent”功能及对应权限，最低依赖要求提升至 Python 3.11+、\`datasette&gt;=1.0a41\`、\`datasette-llm&gt;=0.1a9\`、\`llm&gt;=0.37.1\`，新增 Python 3.15 支持。该版本面向数据类 AI agent 开发者、插件架构工程师及工具调用模式研究者。
+
+github · simonw · Nov 3, 23:13
+
+**「为什么重要」** 该版本首次在数据类 agent 中落地按对话锁定模型、异步扩展引用类型、侧边栏渲染关联页面的交互模式，这些设计可直接复用于其他领域的 agent 工具链开发；目前尚未有公开案例验证这些模式在非数据场景下的适配效果。
+
+**「可关注」** 可关注：\`register\_agent\_reference\_types\(\)\` 钩子支持异步函数扩展 \`\#\` 引用类型，为数据类 agent 的自定义上下文注入提供了低侵入的插件扩展路径。
+
+**Tags**: `#harness`, `#permissions`, `#observability`, `#coding-agent`
+
+---
+
+<a id="item-agent-engineer-3"></a>
 ### [StateBench 发布 长文档状态追踪基准](https://allenai.org/blog/statebench) ⭐️ 7.8/10
 
-Allen AI 于 2026-11-03 发布 StateBench，一个含四个难度层级的基准，用于评估大语言模型在长文档中追踪实体状态变化的能力。四个层级分别为 R-trivial（不可变赋值）、Aperiodic（按值重赋值）、Soluble（自引用更新）和 General finite（按引用赋值），对应 Krohn–Rhodes 理论中的不同复杂度类别。测试基线包括 Olmo 3（Transformer）、Olmo Hybrid 及 2.75 亿、2.7B 与 7B 参数模型，这些模型训练时未见超过 64,000 token 的上下文。结果显示，预训练模型在 R-trivial 上表现良好，但在 General finite 上准确率降至随机水平；前沿模型 Gemini 3.8 Flash、Claude Opus 5.5、GPT-6 Sol 与 Luna 在最长 General finite 问题上准确率降至 13% 以下。定向训练的循环与混合架构（如 Gated DeltaNet）在长序列状态追踪上显著优于 Transformer。
+Allen AI 于 2026-11-03 发布 StateBench 基准，评估语言模型在长文档中追踪实体状态变化的能力。基准设 4 个难度等级（R-trivial、Aperiodic、Soluble、General finite），对应从不可变赋值到引用赋值的状态更新操作。测试显示，预训练 Transformer 在 General finite 级别接近随机水平；循环与混合架构（如 Gated DeltaNet）经直接训练后可显著提升长序列表现。Gemini 3.8 Flash、Claude Opus 5.5、GPT-6 Sol 与 Luna 在输入增长时，Soluble 与 General finite 准确率骤降，最长 General finite 问题降至 13% 以下。所有预训练模型训练上下文不超过 64k token，测试输入远超该长度。基准附带技术报告、数据集与代码。
 
 rss · Allen AI · Nov 3, 08:00
 
-**「为什么重要」** 状态追踪是长运行 AI Agent 的核心能力，StateBench 提供了可对比的难度梯度来诊断架构瓶颈。定向训练结果直接表明，Transformer 在硬状态追踪任务上的局限可通过架构选择缓解，这对 Agent 评估设计、模型选型和记忆系统开发有直接影响。尚未证实的是，这些实验室结果能否迁移到真实 Agent 工作流中。
+**「为什么重要」** 状态追踪是 AI Agent 处理代码、多步推理等长程任务的基础能力。StateBench 将理论难度分层并系统对比架构差异，为长上下文模型选型与记忆系统设计提供了可复现的评估框架。
 
-**「可关注」** 在构建需要跨长上下文追踪实体状态的 Agent 时，除常规上下文长度测试外，应补充 StateBench 的 Soluble 与 General finite 难度评估，因为现有预训练 Transformer 与前沿 API 模型在这些层级上存在显著性能断崖。
+**「可关注」** 可关注：任务表述格式显著影响模型得分，同一底层问题以 RULER 风格或电子表格编辑形式呈现时，混合模型与 Gated DeltaNet 表现差距明显，评估长上下文记忆能力需控制输入格式。
 
 **Tags**: `#eval`, `#memory`
 
 ---
 
-<a id="item-agent-engineer-2"></a>
-### [CUA-Master 嵌套双循环框架提出](https://huggingface.co/papers/2611.03126) ⭐️ 7.0/10
-
-2026-11-04，Hugging Face Daily Papers 推送论文 CUA-Master（arXiv:2611.03126），提出嵌套双循环递归改进框架，用于扩展 computer-use agents。该框架外层为世界-数据-模型飞轮，持续纳入开放世界语料并利用模型弱点指导数据构建与优化迭代；内层耦合开放世界播种与自催化传播。论文指出现有 CUA 开发受限于交互数据多样性、可控性与可靠性不足，且传统优化 pipeline 缺乏迭代反馈，自生成经验改进方法已现回报递减。该工作与 coding-agent、orchestration、eval 标签相关，但摘要被截断，具体实验设计与效果未披露。
-
-rss · Hugging Face Daily Papers · Nov 4, 02:51
-
-**「为什么重要」** 论文直指 CUA 规模化开发的核心瓶颈——数据与反馈机制，提出的双循环结构试图从开放世界语料和模型自身弱点两端同时撬动改进。这为 agent 工程师提供了除自生成经验之外的另一条优化思路，但框架实际效果与可复现性仍有待完整论文验证。
-
-**「可关注」** 可关注：现有基于自生成经验的 CUA 改进已出现回报递减，新框架尝试通过开放世界语料挖掘与模型弱点分析构建外循环，可能改变数据飞轮的构建方式。
-
-**Tags**: `#coding-agent`, `#orchestration`, `#eval`
-
----
-
-<a id="item-agent-engineer-3"></a>
-### [SWE-Trail 历史引导轨迹收集框架发布](https://huggingface.co/papers/2611.02074) ⭐️ 7.0/10
-
-2026-11-04，Hugging Face Daily Papers 收录论文《SWE-Trail: History-Guided Trajectory Collection for Coding Agent Training》（arXiv:2611.02074）。该论文提出历史引导的轨迹收集框架，针对 coding agent 训练中独立多轨迹采样导致的冗余问题，以及因在训练中引入推理时不可用的历史建议而产生的 train-test mismatch。论文主张利用历史轨迹指导后续收集，而非将其作为模型输入，但具体实现细节未在提供的摘要中完全展示。主要影响 coding agent 训练数据管道的构建者。
-
-rss · Hugging Face Daily Papers · Nov 4, 02:51
-
-**「为什么重要」** 当前 coding agent 训练普遍采用独立多轨迹采样，该框架直接针对这一主流范式的效率与泛化缺陷。论文指出的 train-test mismatch 问题在现有 pipeline 中客观存在，但解决方案的实际效果与采纳成本尚未有广泛验证。
-
-**「可关注」** 可关注：在构建 coding agent 训练数据收集 pipeline 时，需区分「利用历史轨迹指导采样策略」与「将历史信息作为模型输入」两种做法，后者可能引入推理时不可用的依赖。
-
-**Tags**: `#coding-agent`
-
----
-
 <a id="item-agent-engineer-4"></a>
-### [Datasette-apps 0.3a0 发布](https://github.com/datasette/datasette-apps/releases/tag/0.3a0) ⭐️ 6.8/10
+### [ParetoSaddler 提出联合质量成本优化方法](https://huggingface.co/papers/2611.02079) ⭐️ 7.0/10
 
-2026年11月4日，simonw 发布 Datasette-apps 0.3a0 官方alpha版本，核心优化Datasette Agent的应用创建与管理能力。新增聊天内输入\`\#\`自动补全有权限的应用 tagging 能力；新增\`app\_add\_stored\_queries\(\)\`、\`app\_remove\_stored\_queries\(\)\`两个工具，支持agent管理应用可调用的存储查询，授予写查询需用户先审批；\`app\_create\(\)\`现在会校验请求的存储查询是否存在、用户是否有查看权限，创建应用前需用户审批写查询。UI层面，应用工具结果新增相对路径字段，agent可直接生成应用链接，查看应用按钮与\`\#\`引用链接现在会在Datasette Agent面板全屏打开应用。该版本要求Datasette 1.0a41及以上，新增支持Python 3.15，停止支持Python 3.10。
+ParetoSaddler 是一种新提出的 LLM agent harness 优化方法，旨在同时优化响应质量与执行成本，对 harness 工程师有参考意义。该方法通过分离中间候选推广与最终部署选择，解决现有方法在联合优化时过早拒绝有价值候选的问题。每次迭代中，优化器更新父 harness 产生候选，通过多次执行比较两者，并使用 Bayesian bootstrap Pareto support 推广在质量或成本上显示可信进展的候选。该工作目前为 2026 年 11 月 4 日发布的 arXiv 预印本，来源内容截断，且无已确认的生产工具或版本号。
 
-github · simonw · Nov 4, 00:29
+rss · Hugging Face Daily Papers · Nov 4, 00:00
 
-**「为什么重要」** 这是Datasette Agent生态的官方alpha迭代，首次将存储查询的细粒度权限管控、写操作审批流和聊天内应用 tagging 能力落地到agent工具链，但当前改进仅覆盖Datasette 生态内的应用创建与管理场景，且发布内容存在截断迹象，未涉及通用agent工作流。
+**「为什么重要」** 现有 harness 优化主要关注响应质量，而实际部署需权衡质量与成本。ParetoSaddler 的分离机制为联合优化提供了新思路，可能影响后续 harness 工程实践。但该研究尚未正式发布，实际效果与可用性待验证。
 
-**「可关注」** 可关注：Datasette Agent 的工具调用已开始将存储查询权限管控与写操作用户审批耦合，这类权限-审批联动的工具设计模式可参考。
+**「可关注」** 联合质量-成本优化中，将中间候选推广与最终部署选择解耦，可能缓解过早拒绝问题。
 
-**Tags**: `#permissions`, `#orchestration`, `#agent`
+**Tags**: `#harness`, `#eval`, `#coding-agent`
 
 ---
 
 <a id="item-agent-engineer-5"></a>
-### [Datasette-agent 0.5a0 发布](https://github.com/datasette/datasette-agent/releases/tag/0.5a0) ⭐️ 6.8/10
+### [HF每日论文：Mage-VL-Cowork 混合CUA方案](https://huggingface.co/papers/2610.40747) ⭐️ 7.0/10
 
-simonw 于 2026-11-03 发布 datasette-agent 0.5a0（alpha 版本），新增会话级模型锁定、\# 标签权限感知上下文注入、自定义引用类型插件钩子、Datasette 页面侧边栏渲染、停止按钮、会话后台运行、系统提示优化、SQL 查询工具增强等特性；该版本最低要求 Python 3.11，支持 Python 3.15，依赖版本为 datasette&gt;=1.0a41、datasette-llm&gt;=0.1a9、llm&gt;=0.37.1，面向 Datasette 数据探索生态的用户与开发者。
+2026年11月4日Hugging Face Daily Papers收录一篇预印本，介绍4B参数的混合计算机使用代理Mage-VL-Cowork：该代理从通用多模态对齐检查点出发，通过涵盖中训练、SFT、RL的5阶段渐进式课程端到端训练。配套工具Mage-CUA-Forge用可复用的技能条件生成工作流与应用专属准备器替代逐任务构建，合成293806个桌面及网页任务、覆盖6915个技能，单任务重复成本降低82.6%。研究团队还通过进化教师harness、部署专用CUA harness生成高质量训练轨迹。
 
-github · simonw · Nov 3, 23:13
+rss · Hugging Face Daily Papers · Nov 4, 00:00
 
-**「为什么重要」** 该版本深化了 agent 与 Datasette 数据资产的交互能力，其中自定义引用类型的插件钩子设计可复用到其他 agent 的上下文扩展场景；但 datasette-agent 仍属 niche 的 alpha 阶段工具，对通用 AI agent 工程师的直接影响尚未证实。
+**「为什么重要」** 该预印本提供了混合CUA训练全流程的可落地技术细节，包括降本数据合成工具与进化harness方案，对从事代理训练、harness设计的工程师有直接参考价值；但内容为未同行评审的预印本，且摘要存在截断，相关结论尚未经社区验证。
 
-**「可关注」** 可关注：其 \`register\_agent\_reference\_types\(\)\` 插件钩子将自定义引用类型的搜索、上下文注入能力开放给插件，是 agent 上下文扩展的一种可参考实现。
+**「可关注」** 可关注：技能条件化的可复用生成工作流可显著降低CUA训练数据的逐任务合成成本，渐进式5阶段课程是混合CUA端到端训练的可选路径。
 
-**Tags**: `#coding-agent`, `#orchestration`, `#permissions`, `#memory`, `#harness`
+**Tags**: `#coding-agent`, `#harness`, `#orchestration`
 
 ---
 
 <a id="item-agent-engineer-6"></a>
-### [LLM 读写权重与 DeepSeek 代理](https://latent.space/p/ainews-llms-can-read-write-neural-network-weights-weight-space-programming-cuts-autoresearch-out-of/) ⭐️ 6.0/10
+### [HF 论文：近零词嵌入致门控模型训练静默停滞](https://huggingface.co/papers/2611.04449) ⭐️ 7.0/10
 
-2026-11-03 的 AI 新闻汇总两项研究进展。论文 &quot;Weight Space Programming&quot; 展示大模型可直接读写小模型权重，实现单步修复 bug、50 步内定向优化，甚至从零写出完整网络权重并超越部分独立训练模型；但目前仅验证于简单游戏和强化学习策略，尚未证明可扩展至更复杂任务。DeepSeek 开源 \`dsh-superagent-prototype\` 代理 harness，采用长生命周期路由器会话加隔离 worker 架构，自称 p95 完成时间从 29.5 分钟降至 15.7 分钟；但跨会话长期记忆、状态/计算/环境分离、安全隐私及 agent 间通信仍为未解决问题。
+2026年11月4日Hugging Face每日论文收录一项实证研究，揭示非独立门控序列模型存在普遍近零输入词嵌入故障模式，可导致训练静默停滞。研究 surveyed 291个开源权重模型仓库（共280个独立嵌入表），52.6%的非独立门控/混合检查点（20/38个）存在范数低于10^-6的可达输入词嵌入，权重绑定模型的该比例为0%。故障根因为预训练中未见稀有/模板token获得零输入梯度，AdamW权重衰减持续缩小非独立嵌入；在Mamba、Gated DeltaNet、xLSTM等门控序列模型中，近零token可将输入嵌入梯度放大超30个数量级（最高达35），抑制历史状态读取，最终导致训练停滞。Transformer配置中非初始位置或BOS token可规避该故障，研究同时提供了根因分析与缓解策略，对训练/微调这类模型的工程师有直接参考价值。
 
-rss · Latent Space · Nov 3, 05:35
+rss · Hugging Face Daily Papers · Nov 4, 00:00
 
-**「为什么重要」** 权重空间编程将模型操作从代码层推进到参数层，若可扩展，可能改变代理自优化和评估工具链的构建方式。DeepSeek harness 的并行 worker 架构针对代理任务吞吐量提出具体优化路径，但两者均处于原型阶段，缺乏生产环境验证。
+**「为什么重要」** 该故障模式在Mamba、xLSTM等agent常用高效门控序列模型中普遍存在，超半数 surveyed 非独立门控检查点受影响，是训练/微调这类模型时需提前排查的静默风险。目前未证实该故障在闭源或更大规模模型中的普遍程度。
 
-**「可关注」** 可关注：权重空间编程世界首次实现 LLM 直接读写权重，但材料明确其当前仅适用于简单游戏和强化学习策略，尚未验证在通用编码任务中的有效性。
+**「可关注」** 可关注：训练或微调Mamba、xLSTM等非独立门控序列模型时，优先检查输入嵌入层的范数分布，排查是否存在近零行故障。
 
-**Tags**: `#coding-agent`, `#eval`
+**Tags**: `#coding-agent`, `#sequence-model-training`, `#failure-mode-analysis`, `#embedding-stability`
 
 ---
 
 <a id="item-agent-engineer-7"></a>
-### [RoboColosseum 提出具身 AI 评估框架](https://huggingface.co/papers/2611.02497) ⭐️ 6.0/10
+### [Palette 小模型生成设计语言幻灯片](https://huggingface.co/blog/ibm-research/palette-deck-building) ⭐️ 5.8/10
 
-2026-11-04，Hugging Face Daily Papers 介绍预印本 RoboColosseum，提出分布式 in-the-wild 评估框架，用于标准化测试视觉-语言-动作（VLA）机器人大模型与前沿 AI agent。该框架在多样环境本地运营的机器人网络上提供统一策略服务与标准化协议，初始研究评估 5 个 VLA 策略与 3 个前沿 agent，跨 SO-101、Franka、Bimanual-YAM、G1 Humanoid 四种本体。Open Track 在匹配本地条件下以 blinded、pairwise 方式比较无任务特定适配的模型；Fine-tune Track 测量 VLA 策略在 20 个任务上跨四种本体的适应能力。当前材料文本截断，未提供完整技术细节、性能指标或代码链接。
+IBM Research 推出 Palette 项目，尝试训练可自托管的小开源模型按自定义设计语言生成幻灯片，解决大模型风格固化、生成内容无法对齐自有模板、数据不能出域的问题。项目采用 LoRA 微调 20B 基础模型，将任务拆分为设计师（输出结构化 JSON 简报）和编码器（生成 pptxgenjs 代码绘制单页）两个角色，训练数据为合成数据，包含设计决策的反事实推理，且每份合成数据都会经过 harness 检查重叠、溢出等问题并修复。训练中发现编码器示例长度约为设计师的5倍，未过采样设计师示例会导致其训练不足，且通过参考样例而非 prompt 规则可更有效解决生成内容与输入不一致的问题。该模型在 PresentBench 三个测量领域中的两个排名第一，支持用户通过 \[\[ \]\] 包裹的指令调整设计选择。
 
-rss · Hugging Face Daily Papers · Nov 4, 00:00
+rss · Hugging Face Blog · Nov 3, 16:35
 
-**「为什么重要」** 该框架试图解决具身 AI 测试的可复现性缺口，通过标准化协议与分布式真实机器人网络，可能缩小实验室到真实世界的评估差距。但框架的实际可复现性提升、成本效益与社区采纳效果尚未证实，需等待完整论文与代码发布。
+**「为什么重要」** 该项目验证了小模型在垂直生成场景下，通过合成数据构造、分角色任务拆分、检查修复链路可接近大模型效果，其中的合成数据逻辑、harness 设计对 coding agent 的垂直场景适配有参考价值，但当前仅覆盖幻灯片生成场景，通用性尚未得到验证。
 
-**「可关注」** 可关注：RoboColosseum 的 Open Track 采用 blinded pairwise 设计与匹配本地条件，为跨本体 VLA 策略比较提供了可复用的协议模板，但需等待完整论文验证其标准化程度与执行开销。
+**「可关注」** 可关注：小模型垂直生成任务可通过分角色拆分降低单步推理压力、用带反事实推理的合成数据提升决策质量、搭配检查修复 harness 过滤低级错误，LoRA 微调可大幅降低实验成本。
 
-**Tags**: `#eval`
+**Tags**: `#harness`, `#eval`
 
 ---
 
 <a id="item-agent-engineer-8"></a>
-### [IBM Palette 小模型幻灯片生成](https://huggingface.co/blog/ibm-research/palette-deck-building) ⭐️ 5.8/10
+### [Cognition 发布 11 月安全指南](https://cognition.ai/blog/practical-guide-to-security-november-2026) ⭐️ 5.8/10
 
-IBM Research 发布 Palette 项目，通过 LoRA 微调 20B 开放权重模型，使其能按 IBM Design Language 生成 pptxgenjs 代码绘制幻灯片。项目将工作分为设计师与编码器两个角色：设计师输出包含调色板、字体系统和每页布局的结构化 JSON 简报，编码器并行生成各页代码，再由 harness 检查渲染错误并修复。训练数据约 1000 套幻灯片（约 10,000 页），采用反事实推理标注设计决策，模型在 PresentBench 三个领域中的两个排名第一。用户可在计划中插入 \[\[directive\]\] 指令控制布局、语气等设计选择。
-
-rss · Hugging Face Blog · Nov 3, 16:35
-
-**「为什么重要」** 该项目验证了通过合成数据与 harness 检查训练小模型，可在保持设计语言所有权的同时接近前沿系统效果。对需要本地部署、数据不出域的团队而言，这提供了一条可复现的评测与训练路径。但当前仅展示 PresentBench 部分领域结果，尚未证实泛化到其他设计语言或更大规模部署的稳定性。
-
-**「可关注」** 小模型生成结构化代码时，将编辑判断与几何计算拆分为两个阶段，并在推理时加入渲染检查与自动修复，可降低布局错误率。
-
-**Tags**: `#eval`, `#harness`
-
----
-
-<a id="item-agent-engineer-9"></a>
-### [Cognition 发布 11 月安全实践指南](https://cognition.ai/blog/practical-guide-to-security-november-2026) ⭐️ 5.8/10
-
-Cognition 于 2026-11-03 发布 11 月安全实践指南，汇总近两周多起重大安全事件。指南提到，攻击者通过伪造面试和篡改安装程序入侵 Binance 工程师笔记本，进而窃取 63.4 亿美元；10 月 29 日 Cursor 披露 Claude Code 扩展遭投毒，恶意版本试图在开发者机器上安装持久化后门并开启 SSH 访问，安装量低于 5,000，且该版本与 Open VSX registry 上的版本不一致，提示扩展发布流程下游可能被篡改。此外，PHP2Shell、GitLab 远程代码执行、KVM 逃逸、Linux 多路径 TCP 栈 CVE-2026-98432 等漏洞也被列出。文章给出立即执行和 30 天内完成的安全加固建议，但所提供摘录为截断版，缺乏技术深度、可复现分析或超出高层评论的可操作指导。
+2026 年 11 月 3 日，Cognition 发布安全指南，盘点近期多起安全事件，包括 10 月 29 日披露的 Claude Code Cursor 扩展被投毒（安装量低于 5,000，利用自动更新传播，发布版本与 Open VSX registry 不一致），以及 Binance 遭窃取 63.4 亿美元事件（攻击者通过虚假面试和篡改安装程序入侵工程师笔记本）。文章还提及 PHP2Shell、GitLab 未授权远程代码执行、eMudhra 证书机构私钥设为 4、KVM 虚拟机逃逸、Linux 多路径 TCP 栈 CVE-2026-98432（Go 1.24+ 默认启用）等漏洞。Cognition 建议企业立即启用防钓鱼多因素认证、审计公开攻击面、部署密码管理器和广告拦截器，30 天内完成设备管理/终端检测响应、扩展白名单、密钥扫描，并迁移至云端编码代理或远程开发环境。该博文未提供技术细节、评估数据或架构层面的深入分析。
 
 rss · Cognition Blog · Nov 3, 17:00
 
-**「为什么重要」** 开发环境依赖的编辑器扩展、MCP 服务器与本地 AI agent 若遭投毒，即可继承开发者全部权限。该指南将 Claude Code 扩展事件与 Binance 黑客案并列，强调基础攻击面依然有效，但攻击紧迫性已提升；然而摘录仅提供高层评论，未给出技术根因或验证方法。
+**「为什么重要」** 该文出自 Devin 开发商 Cognition，直接点名编码代理生态中的扩展供应链风险（如 Claude Code Cursor 扩展投毒）及开发机失陷导致的生产环境入侵路径，对构建编码代理的工程师有直接参考价值。但博文停留在通用安全建议层面，未提供漏洞机理、复现步骤或代理权限模型的评估数据，因此其 actionable 程度有限。
 
-**「可关注」** 编辑器扩展的自动更新机制与发布流程下游被篡改的风险，以及开发机上的 MCP 服务器、本地 AI agent 等第三方组件可能继承开发者全部权限。
+**「可关注」** 可关注：扩展自动更新与注册表发布流程的下游信任链，Cursor 事件表明即使上游 Open VSX registry 未受污染，发布管道下游仍可能被篡改并推送恶意版本。
 
-**Tags**: `#coding-agent`, `#permissions`
+**Tags**: `#security`, `#coding-agent`, `#permissions`
 
 ---
 
 ## AI Daily
 
 <a id="item-ai-daily-1"></a>
-### [思科结合OpenAI模型强化企业安全](https://openai.com/index/cisco-cyber) ⭐️ 6.8/10
+### [OpenAI 展示 Codex 工程应用案例](https://openai.com/index/accelerating-engineering-for-the-physical-world) ⭐️ 6.8/10
 
-OpenAI官方博客2026年11月3日发布行业合作案例，介绍思科将网络情报与OpenAI模型结合，用于构建更自适应的企业安全防御体系。该案例未披露具体技术实现细节与性能对比数据。
+OpenAI 发布官方博客，介绍 ChatGPT 与 Codex 在 CAD、PCB 设计、仿真等物理工程工作流中的应用。分析指出该文主要定位为用例展示，未涉及新模型发布、政策变更或技术突破。文章未披露具体性能数字或限制条件。
 
-rss · OpenAI Blog · Nov 3, 08:00
+rss · OpenAI Blog · Nov 3, 12:00
 
-**「为什么重要」** 该案例呈现了生成式AI在企业安全防御场景的落地实践，为同类安全产品的技术迭代提供了可参考的行业方向。
+**「为什么重要」** 该文呈现了 AI 编码工具向物理工程领域渗透的具体场景，为相关自动化工作流构建提供参考。
 
-**「可关注」** 可关注：网络情报与大模型结合构建自适应安全防御的落地路径。
+**「可关注」** 可关注：Codex 在 CAD、PCB 设计及仿真等物理工程工作流中的实际应用案例。
 
-**Tags**: `#industry`, `#product`, `#lab`
+**Tags**: `#lab`, `#product`, `#industry`
 
 ---
 
 <a id="item-ai-daily-2"></a>
-### [OpenAI 博客：Codex 加速物理工程](https://openai.com/index/accelerating-engineering-for-the-physical-world) ⭐️ 6.3/10
+### [Cisco 携手 OpenAI 强化企业安全](https://openai.com/index/cisco-cyber) ⭐️ 6.8/10
 
-OpenAI 官方博客发布文章，介绍 ChatGPT 与 Codex 在物理工程领域的应用。文章展示这两款工具如何帮助工程师加速 CAD、PCB 设计、仿真等工作流。本次发布未涉及具体新功能、版本更新或产品公告。
+OpenAI 官方博客发布的案例研究显示，思科正将网络智能与 OpenAI 模型结合，用于构建更自适应的企业安全防御体系。该案例不涉及新模型发布或重大政策调整，影响范围相对有限。材料未披露具体性能指标、部署规模或时间表。
 
-rss · OpenAI Blog · Nov 3, 12:00
+rss · OpenAI Blog · Nov 3, 08:00
 
-**「可关注」** ChatGPT 与 Codex 正被用于加速 CAD、PCB 设计、仿真等物理工程工作流。
+**「为什么重要」** 这是 OpenAI 企业级安全场景的又一落地案例，对关注 AI 安全应用的团队具有参考价值。
 
-**Tags**: `#model`, `#lab`, `#industry`, `#product`
+**「可关注」** 可关注：思科将网络智能与 OpenAI 模型结合，构建自适应企业安全防御解决方案的案例。
+
+**Tags**: `#product`, `#industry`, `#lab`
+
+---
+
+<a id="item-ai-daily-3"></a>
+### [Heimstaden 用 Codex 管物业](https://openai.com/index/heimstaden) ⭐️ 6.8/10
+
+OpenAI 官方博客宣布，欧洲住宅房地产运营商 Heimstaden 正在其欧洲业务中部署 ChatGPT Enterprise 与 Codex，用于优化物业管理工作并降低成本。该案例展示了 OpenAI 企业级产品在房地产行业的应用，但未披露具体效率提升或成本节约数字，也未发布新模型或功能。
+
+rss · OpenAI Blog · Nov 3, 08:00
+
+**「为什么重要」** 这是 OpenAI 企业产品在传统房地产行业的实际应用案例，可作为企业级 AI 部署的参考。
+
+**「可关注」** 可关注：ChatGPT Enterprise 与 Codex 在物业管理场景中的实际应用方式。
+
+**Tags**: `#lab`, `#industry`, `#product`
 
 ---
 
 ## AI Deals
 
 <a id="item-ai-deals-1"></a>
-### [Epic 13款小游戏限免 11月9日截止](https://www.appinn.com/eggs-261103/) ⭐️ 9.0/10
+### [Epic 13款小游戏限免 11.9截止](https://www.appinn.com/eggs-261103/) ⭐️ 8.0/10
 
-你看到的内容可能由第三方 AI 基于小众软件文章提炼总结而成，可能与原文真实意图存在偏差。不代表小众软件观点和立场。请&lt;a href=&quot;https://www.appinn.com/eggs-261103/&quot; target=&quot;\_blank&quot;&gt;点击链接阅读原文&lt;/a&gt;细致比对和校验。&lt;br /&gt;&lt;br /&gt;Epic 商店开启 13 款 Yash Future Tech Solutions 出品的小游戏限时免费领取活动，领取后永久入库，截止时间为北京时间 2026 年 11 月 9 日凌晨 2:30。用户登录 Epic 账户进入对应游戏页面，点击获取确认金额为 0 元后即可入库，无需立即下载安装。
+你看到的内容可能由第三方 AI 基于小众软件文章提炼总结而成，可能与原文真实意图存在偏差。不代表小众软件观点和立场。请&lt;a href=&quot;https://www.appinn.com/eggs-261103/&quot; target=&quot;\_blank&quot;&gt;点击链接阅读原文&lt;/a&gt;细致比对和校验。&lt;br /&gt;&lt;br /&gt;Epic商店当前发放13款Yash Future Tech Solutions出品的小游戏限免福利，涵盖赛车、平台跳跃、解谜、数学问答等品类，领取后永久入库无需立即下载。领取条件为登录Epic账户，在对应游戏页面点击「获取」并确认金额为0元即可添加到库，北京时间2026年11月9日凌晨2:30截止。
 
 rss · 小众软件 · Nov 3, 13:13
 
-**「为什么重要」** 这批游戏均为永久入库资格，错过本次限免后后续大概率需付费获取，且截止时间临近，剩余领取窗口不足一周。
+**「为什么重要」** 这批限免均为轻量小游戏，品类覆盖休闲、竞速、解谜、教育等场景，永久入库规则无后续消费要求，适合想低成本扩充游戏库的玩家在截止前领取。
 
-**「可关注」** 可关注：网页版领取时若遇到「与当前设备不兼容」提示仍可继续完成入库，下载安装操作可后续再进行。
+**「可关注」** 可关注：网页版领取时若弹出「与当前设备不兼容」提示，仍可继续完成入库操作，下载安装可延后处理。
 
-**Tags**: `#free-tier`, `#promo`, `#limited-free`, `#game`
+**Tags**: `#promo`, `#limited-free`
 
 ---
