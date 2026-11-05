@@ -5,296 +5,302 @@ date: 2026-11-05
 lang: en
 ---
 
-> From 202 items, 17 important content pieces were selected
+> From 219 items, 17 important content pieces were selected
 
 ---
 
 **Agent Harness Architecture**
-1. [Mastra core 1.82.0 发布](#item-harness-arch-1) ⭐️ 7.8/10
-2. [pydantic-ai v2.66.0 安全修复发布](#item-harness-arch-2) ⭐️ 6.8/10
-3. [gemini-cli v0.67.0 Released](#item-harness-arch-3) ⭐️ 6.8/10
+1. [Mastra Core 1.82.0 发布](#item-harness-arch-1) ⭐️ 8.8/10
+2. [pydantic-ai v2.66.0 发布](#item-harness-arch-2) ⭐️ 6.8/10
+3. [Gemini CLI v0.67.0 发布](#item-harness-arch-3) ⭐️ 6.8/10
 
 **AI Agent Engineer**
-1. [Anthropic 发布 LLM 可证明推理研究](#item-agent-engineer-1) ⭐️ 8.0/10
-2. [Cognition 发布 SWE-2 Flash 编码模型](#item-agent-engineer-2) ⭐️ 7.8/10
-3. [Kimi K3.1 Pro 权重发布](#item-agent-engineer-3) ⭐️ 7.0/10
-4. [ToolSpace 提出工具中心 MCP 环境合成框架](#item-agent-engineer-4) ⭐️ 7.0/10
-5. [YANAMI 多模态多轮有状态基准发布](#item-agent-engineer-5) ⭐️ 7.0/10
-6. [Dharma 字段提取器 2B 发布](#item-agent-engineer-6) ⭐️ 6.8/10
-7. [Route Anything 模型路由框架](#item-agent-engineer-7) ⭐️ 6.0/10
-8. [LoCo 本地偏好学习减少推理过度思考](#item-agent-engineer-8) ⭐️ 6.0/10
-9. [OpenAI 拟收购 Pierre Computer](#item-agent-engineer-9) ⭐️ 5.5/10
+1. [Cognition 推出 SWE-2 Flash](#item-agent-engineer-1) ⭐️ 8.8/10
+2. [Anthropic ZK 可证明推理进展](#item-agent-engineer-2) ⭐️ 8.0/10
+3. [Kimi K3.1 Pro 开源权重发布](#item-agent-engineer-3) ⭐️ 7.0/10
+4. [OpenAI 修复 948 个 Linux 内核提权漏洞](#item-agent-engineer-4) ⭐️ 7.0/10
+5. [LoCo 本地偏好学习压缩推理链](#item-agent-engineer-5) ⭐️ 7.0/10
+6. [Dharma Field Extractor 2B 发布](#item-agent-engineer-6) ⭐️ 6.8/10
+7. [OpenAI Images 2.6 发布](#item-agent-engineer-7) ⭐️ 6.0/10
+8. [Route Anything 框架论文发布](#item-agent-engineer-8) ⭐️ 6.0/10
 
 **AI Daily**
-1. [OpenAI 自主流水线修复 948 个 Linux 内核提权漏洞](#item-ai-daily-1) ⭐️ 8.8/10
-2. [OpenAI 收购 Pierre Computer Co](#item-ai-daily-2) ⭐️ 7.8/10
-3. [Daybreak Red 登陆 AWS GovCloud \(US-East\)](#item-ai-daily-3) ⭐️ 6.8/10
-4. [Lion-ER-35B-A3B 具身模型发布](#item-ai-daily-4) ⭐️ 5.0/10
-5. [ReTerm 探索失败驱动 Code Agent RSI](#item-ai-daily-5) ⭐️ 5.0/10
+1. [OpenAI 收购 Pierre](#item-ai-daily-1) ⭐️ 7.8/10
+2. [Daybreak Red 上线 AWS GovCloud](#item-ai-daily-2) ⭐️ 7.8/10
+3. [OpenAI 自主流水线修复 948 个内核漏洞](#item-ai-daily-3) ⭐️ 7.8/10
+4. [Lion-ER-35B-A3B 具身模型发布](#item-ai-daily-4) ⭐️ 5.5/10
+5. [Seq-Drifting 实现扩散语言模型单步生成](#item-ai-daily-5) ⭐️ 5.5/10
+
+**AI Deals**
+1. [Samewindow 免费备份 AI 对话](#item-ai-deals-1) ⭐️ 7.0/10
 
 ---
 
 ## Agent Harness Architecture
 
 <a id="item-harness-arch-1"></a>
-### [Mastra core 1.82.0 发布](https://github.com/mastra-ai/mastra/releases/tag/%40mastra/core%401.82.0) ⭐️ 7.8/10
+### [Mastra Core 1.82.0 发布](https://github.com/mastra-ai/mastra/releases/tag/%40mastra/core%401.82.0) ⭐️ 8.8/10
 
-Mastra core 1.82.0 发布，核心升级 Knowledge v2 页面树模型。新增 knowledge.upsertPage\(\)、removePage\(\) 等服务端同步 API，支持向量/混合搜索与长页面分块嵌入。配套只读 Knowledge HTTP 路由、SSE 变更流及 @mastra/client-js 匹配 API，采用 scope/FGA 权限控制。事件化持久化代理修复 API 重启中断问题，后台任务支持断点续传，可观测性新增流式延迟指标。
+Mastra Core 1.82.0 发布，Knowledge 子系统重构为 v2 page-tree 模型（pages/notes/pins）。新增服务器端同步 API（knowledge.upsertPage/removePage）、向量/混合搜索与分块嵌入，配套只读 HTTP/JS 客户端 API 及 SSE 变更流。Evented durable agents 获得跨 API 重启连续性，需配合 fencing 共享存储（如 @mastra/pg 的 PostgresStore）。后台任务支持可恢复的 &quot;input required&quot; 流程，MCP 工具结果扩展支持图片/音频/文件。
 
 github · PaulieScanlon · Nov 4, 10:59
 
-**「设计要点」** Knowledge 升级为一级页面树，支持链接索引与分块嵌入。持久化代理跨进程连续性依赖支持 run fencing 的共享存储（如 @mastra/pg 的 PostgresStore）及共享 pubsub，只读 Knowledge 路由采用 scope/FGA 权限门控。
+**「设计要点」** Knowledge v2 采用 page-tree 架构分离服务器端写入与客户端只读访问，SSE 流推送变更。Durable agent 连续性依赖 fencing 共享存储与共享 pubsub，worker 进程独立于 API 进程。权限控制通过 Agent scopes 函数动态 narrowing，FGA-aware 范围门控保护只读 Knowledge 路由。
 
-**「改了什么」** Knowledge v2 引入 pages/notes/pins 页面树模型，新增 upsertPage/removePage 等服务端同步 API 及可选向量/混合搜索。事件化持久化代理修复 API 重启中断问题，需共享存储实现跨进程连续性；移除实验性 subconscious 与 knowledge.reindex\(\)，@mastra/temporal 步骤默认校验输入模式。
+**「改了什么」** Knowledge 从内存结构升级为 page-tree 模型，新增 knowledge\_list、knowledge\_read（行/节/grep 读取）、列表固定（kind: &\#x27;list&\#x27;）与链接索引。Evented durable agents 在 API 关闭后 worker 继续运行完成清理，需 fencing 存储实现跨进程连续性。工作流新增 getStepResultAsync 替代 getStepResult，为按需加载 step 结果做准备。@mastra/temporal 0.5.0 开始验证 inputSchema 与 requestContextSchema。
 
-**Tags**: `#memory`, `#tools`, `#permissions`
+**Tags**: `#memory`, `#tools`, `#api`, `#permissions`, `#runtime`
 
 ---
 
 <a id="item-harness-arch-2"></a>
-### [pydantic-ai v2.66.0 安全修复发布](https://github.com/pydantic/pydantic-ai/releases/tag/v2.66.0) ⭐️ 6.8/10
+### [pydantic-ai v2.66.0 发布](https://github.com/pydantic/pydantic-ai/releases/tag/v2.66.0) ⭐️ 6.8/10
 
-pydantic-ai v2.66.0 发布，核心为 8 项安全修复（2 高危、5 中危、1 低危）及沙箱/记忆/持久化功能扩展。高危修复针对 \`web\_fetch\_tool\` 本地回退的事件循环内存耗尽（GHSA-m5vj-8mcw-82qx）和 harness \`private\_key\` 正则回溯（GHSA-mfx5-pc32-32m8）；中危修复覆盖腾讯云元数据泄露、OpenTelemetry 凭据暴露、AG-UI/DecisionModel schema 指数膨胀、适配器二次复杂度、反序列化文件类型混淆及 allowlist DNS 泄露。新功能包括 \`OpenSandbox\`、\`RenderSandbox\` 自托管工作区，\`Pydantic AI Harness\` 的 Azure Durable Task 持久化，\`Pixeltable\` 工具与记忆存储，\`MCP\` 能力 \`include\_instructions\` 选项，以及 xAI Grok Voice \`output\_speech\_timestamps\` 报告。兼容性变更涉及 Anthropic web 工具直接调用、\`FunctionToolset\(requires\_approval=True\)\` 应用于 \`Tool\` 实例、实时会话指令每轮重新解析及 \`SummarizingCompaction\` 副本识别。
+pydantic-ai v2.66.0 正式发布，集中修复 2 个高危与 6 个中危安全漏洞。\`web\_fetch\_tool\` 本地回退在事件循环中重新缩进 JSON 后再应用返回内容限制，深度嵌套文档可膨胀数百倍，导致内存耗尽或事件循环延迟。\`private\_key\` 密钥脱敏正则存在指数级回溯，数百字符即可阻塞事件循环数分钟，该修复位于 \`pydantic-ai-harness\` 0.66.0。中危修复包括腾讯云元数据地址漏blocklist、OpenTelemetry 嵌入向量跨度泄露凭据、工具 schema 内联爆炸、DecisionModel \`$ref\` 重复解析、Vercel AI/AG-UI 适配器消息加载 O\(n²\)、反序列化工具结果文件类型混淆、MCP URL 路径凭据泄露、DNS 白名单先解析后检查。同步新增 OpenSandbox、Azure Durable Task、Pixeltable 工具与记忆存储、RenderSandbox 等功能。
 
 github · adtyavrdhn · Nov 4, 11:51
 
-**「设计要点」** 多个修复指向事件循环阻塞模式：JSON 重缩进、正则回溯、schema 内联展开及二次复杂度均在事件循环同步执行，导致内存或 CPU 耗尽。AG-UI、Vercel AI 适配器及 Temporal/DBOS/Prefect 持久执行是受影响的集成点。
+**「设计要点」** 所有高危与中危修复均指向事件循环阻塞或内存耗尽：\`web\_fetch\_tool\` 在事件循环中重新缩进 JSON 后才截断；密钥脱敏正则直接运行于事件循环；AG-UI 适配器在事件循环中处理客户端提交的 schema 与消息。 Harness 对不可信输入缺乏前置大小校验与复杂度保护。
 
-**「改了什么」** v2.66.0 以安全补丁为主：修复 \`web\_fetch\_tool\` 本地回退在事件循环重缩进 JSON 导致的内存耗尽（GHSA-m5vj-8mcw-82qx），以及 harness \`private\_key\` 正则回溯（GHSA-mfx5-pc32-32m8）；同时新增 \`OpenSandbox\`、\`RenderSandbox\` 自托管工作区，\`Pydantic AI Harness\` 的 Azure Durable Task 持久化，\`Pixeltable\` 工具与记忆存储，\`MCP\` 能力 \`include\_instructions\` 选项。
+**「改了什么」** \`web\_fetch\_tool\` 修复本地回退在事件循环中重缩进 JSON 的漏洞，改为先截断或避免重缩进。\`private\_key\` 脱敏正则指数回溯已在 \`pydantic-ai-harness\` 0.66.0 修复。腾讯云元数据地址 \`169.254.0.23\` 加入 cloud-metadata blocklist。OpenTelemetry 嵌入向量跨度不再记录 \`extra\_headers\` 与 \`extra\_body\`。工具 schema 内联与 DecisionModel \`$ref\` 解析增加防膨胀保护。Vercel AI/AG-UI 适配器消息加载从 O\(n²\) 改为线性。消息历史反序列化增加文件类型形状校验。MCP 能力标识符不再从 URL 路径派生。\`allowed\_domains\` 与 PlaywrightBrowser 在 DNS 解析前检查域名列表。
 
-**Tags**: `#tools`, `#permissions`
+**Tags**: `#tools`, `#runtime`, `#permissions`
 
 ---
 
 <a id="item-harness-arch-3"></a>
-### [gemini-cli v0.67.0 Released](https://github.com/google-gemini/gemini-cli/releases/tag/v0.67.0) ⭐️ 6.8/10
+### [Gemini CLI v0.67.0 发布](https://github.com/google-gemini/gemini-cli/releases/tag/v0.67.0) ⭐️ 6.8/10
 
-Official release of \`google-gemini/gemini-cli\` v0.67.0. Introduces a bridge between the IDE companion and container sandboxes over exec stdio. Fixes duplicate agent loading when the workspace is the home directory, excludes IDE settings and \`GEMINI.md\` from open file context, and scopes untrusted flag checks to external output. Also addresses A2A server route registration order, RFC 9110 header splitting, and CLI signal handling stability.
+Google Gemini CLI v0.67.0 adds container sandbox support for the IDE companion via exec stdio bridging. The release fixes duplicate agent loading when the workspace is the home directory, excludes IDE settings and GEMINI.md from open file context, and scopes untrusted flag checks to external output with approval memory. Additional fixes cover A2A server route registration, RFC 9110 token rules for custom headers, atomic writeTextFile respecting read-only files and hard links, and introduces a \`models\` command with \`--list-models\` flag for model discovery. No major architectural overhauls or breaking changes appear in the truncated changelog.
 
 github · gemini-cli-robot · Nov 4, 20:27
 
-**「Architecture Note」** The exec stdio bridge lets the IDE companion run inside container sandboxes without opening extra network surfaces. Untrusted flag checks now only fire on external output, and approved flags are remembered for the session, reducing permission prompt noise.
+**「设计要点」** Container sandbox integration runs the IDE companion over exec stdio, avoiding a new transport layer. Untrusted flag checks now scope to external output and persist approval state, reducing permission prompts without altering the core permission model.
 
-**「What Changed」** Added IDE companion to container sandbox bridging via exec stdio. Fixed duplicate agent loading in home directory workspaces. Excluded IDE settings and \`GEMINI.md\` from open file context. Scoped untrusted flag checks to external output and persisted approvals. Fixed A2A server middleware ordering and RFC 9110 custom header tokenization. Improved atomic \`writeTextFile\` to respect read-only files and hard links.
+**「改了什么」** IDE companion bridges into container sandboxes via exec stdio. Core fixes prevent duplicate agent loading in home-directory workspaces, filter context to exclude IDE settings and GEMINI.md, scope untrusted flag checks with approval memory, and add \`models\` command and \`--list-models\` flag.
 
-**Tags**: `#sandbox`, `#runtime`, `#permissions`, `#memory`
+**Tags**: `#sandbox`, `#runtime`, `#permissions`
 
 ---
 
 ## AI Agent Engineer
 
 <a id="item-agent-engineer-1"></a>
-### [Anthropic 发布 LLM 可证明推理研究](https://www.anthropic.com/research/provable-inference) ⭐️ 8.0/10
+### [Cognition 推出 SWE-2 Flash](https://cognition.ai/blog/swe-2-flash) ⭐️ 8.8/10
 
-2026 年 11 月 4 日，Anthropic 发布基于零知识证明的 LLM 可证明推理研究。社区讨论援引的具体参数包括：90–100 倍计算开销、约 6.5 MB 的承诺文件（有效期约 1600 万次请求）、证明验证在 24 线程下需 17 秒、单线程 21 秒。有评论者指出该工作基于此前 VerInf 项目且引用不足，并对比认为闭源模型提供方采用四家独立推理的概率性证明成本更低，而开源权重模型通过确定性重算仍更快更便宜。
+Cognition 于 2026-11-04 发布 SWE-2 Flash 编码模型。模型基于 Inkling-Small，总参数 276B，激活参数 12B。训练流程新增预强化学习阶段的 mid-training。Terminal-Bench 4.0 从 0.9% 升至 20.0%。FrontierCode 2.0 从 3.2% 升至 24.0%。ExploitBench 从 11.3% 升至 34.8%。在主流评估中，SWE-2 Flash 超越所有美国开源权重模型。该模型甚至超过规模大三倍的模型。模型已在 Devin Desktop 和 CLI 上线。价格为 SWE-2 的五分之一，速度三倍。权重暂不公开，计划向行业伙伴与研究机构安全共享。免费试用至 2026-11-30。
+
+rss · Cognition Blog · Nov 4, 18:00
+
+**「为什么重要」** SWE-2 Flash 展示新增 mid-training 阶段对编码基准的显著提升。该模型已可直接在 Devin 平台使用。这为构建编码智能体提供新选项。权重共享计划尚未落地，实际安全性与可复现性待验证。
+
+**「可关注」** SWE-2 Flash 采用预 RL mid-training，编码基准提升显著。已可在 Devin 平台试用，权重暂不公开。
+
+**Tags**: `#coding-agent`, `#eval`
+
+---
+
+<a id="item-agent-engineer-2"></a>
+### [Anthropic ZK 可证明推理进展](https://www.anthropic.com/research/provable-inference) ⭐️ 8.0/10
+
+Anthropic 于 2026-11-04 发布官方研究，展示零知识可证明 LLM 推理的进展。实测指标包括：承诺大小约 6.5 MB，24 线程下验证耗时 17 秒，计算开销约 90–100 倍。该成果相比此前 ZK 方案有显著改进，面向需要验证模型执行的可靠 LLM 代理系统工程师。当前细节仅来自分析摘要，原文内容未直接提供。
 
 hackernews · ltononro · Nov 4, 17:17 · [Discussion](https://news.ycombinator.com/item?id=50368626)
 
-**「为什么重要」** 该研究提供了闭源 LLM 可证明推理的首批具体性能基准，直接影响 agent 系统对模型输出的验证策略选择。但秒级验证延迟与近百倍计算开销表明，当前方案更适用于离线审计而非实时推理链路。
+**「为什么重要」** 该研究首次给出可证明推理的实测性能边界，让工程师能评估在 agent harness 中引入验证层的实际成本。但 90–100 倍开销与 17 秒验证时延表明，当前方案更适合对可验证性要求极高且能承受计算成本的场景，尚未成为通用基础设施。
 
-**「可关注」** 闭源模型可证明推理当前需承受 90–100 倍计算开销与约 17 秒验证延迟，而开源权重模型通过确定性重算仍保持更优成本。
+**「可关注」** 可关注：闭源模型提供者的零知识可证明推理需承受 90–100 倍计算开销，而开源模型可通过确定性重跑以更低成本实现类似验证，工程选型时需优先权衡模型开放性与验证需求。
 
-**「评论」** 社区出现对 VerInf 前期工作引用不足的争议，同时就闭源与开源模型验证路径形成技术分歧：一方认为多独立提供方概率证明更廉价，另一方指出开源模型重算无需复杂密码学且速度更快。
+**「评论」** 社区对工作归属存在争议，有评论指其基于 VerInf 但署名不足；技术讨论聚焦闭源模型可证明推理的 90–100 倍开销与 17 秒验证时延，相比开源模型确定性重跑方案成本更高。
 
 **Tags**: `#observability`, `#eval`, `#harness`
 
 ---
 
-<a id="item-agent-engineer-2"></a>
-### [Cognition 发布 SWE-2 Flash 编码模型](https://cognition.ai/blog/swe-2-flash) ⭐️ 7.8/10
-
-2026年11月4日，Cognition AI 发布编码模型 SWE-2 Flash，基于 Thinking Machines 的 Inkling-Small（276B 总参数、12B 激活参数），首次在训练流程中加入强化学习前的中间训练阶段。官方自测显示，该模型在 Terminal-Bench 4.0 上的得分从基线的 0.9% 提升至 20.0%，FrontierCode 2.0 从 3.2% 提升至 24.0%，网络安全基准 ExploitBench 得分从 11.3% 提升至 34.8%，超过所有美国开源权重模型，甚至性能优于 3 倍参数量的模型。SWE-2 Flash 目前已上线 Devin Desktop 和 CLI，价格为更大模型 SWE-2 的 1/5，速度为 3 倍，但权重暂不公开，仅计划向可信行业伙伴和研究机构安全共享，相关 benchmark 结果尚未经第三方验证。
-
-rss · Cognition Blog · Nov 4, 18:00
-
-**「为什么重要」** 该模型首次在编码模型训练中落地中间训练阶段，官方自测显示其软件工程与网络安全能力均达到当前美国开源模型前列，为编码智能体的模型选型提供了新选项；但相关性能数据尚未经第三方验证，权重共享方案也还未正式落地。
-
-**「可关注」** 可关注：SWE-2 Flash 通过中间训练阶段迭代数据混合、扩充高质量多样化强化学习任务实现性能提升，其训练流程设计可作为编码模型优化的参考。
-
-**Tags**: `#coding-agent`, `#eval`, `#training`, `#llm`
-
----
-
 <a id="item-agent-engineer-3"></a>
-### [Kimi K3.1 Pro 权重发布](https://huggingface.co/moonshotai/Kimi-K3.1-Pro) ⭐️ 7.0/10
+### [Kimi K3.1 Pro 开源权重发布](https://huggingface.co/moonshotai/Kimi-K3.1-Pro) ⭐️ 7.0/10
 
-2026年11月4日，Moonshot AI在HuggingFace发布Kimi K3.1 Pro开源模型权重，该模型发布后成为HuggingFace热门趋势模型，trendingScore达534，获546个赞。社区讨论围绕本地部署硬件成本、第三方推理服务商吞吐差异、与DeepSeek、Claude的基准对比展开，影响本地模型部署者、推理服务优化者及coding agent研发人员。目前该模型无公开技术报告、架构细节或可复现的评估突破数据。
+2026年11月4日Moonshot AI在HuggingFace平台正式发布Kimi K3.1 Pro大模型开源权重，该模型为多模态（图像-文本-文本）类型，支持文本生成、对话任务。社区反馈显示第三方推理服务商已开始托管该模型，同时围绕其本地部署算力需求、与DeepSeek V4.1-Flash等竞品的基准表现、以及agent工作负载的实际适用性展开讨论，部分观点认为其存在基准刷分倾向，也有实测者反馈其通用表现优秀，适配多数使用场景。
 
 hackernews · Hugging Face Trending Models · Nov 4, 15:30 · [Discussion](https://news.ycombinator.com/item?id=50366999)
 
-**「为什么重要」** 该模型是近期新发布的开权重大模型，社区已开始围绕实际部署与推理成本展开讨论，但缺乏可复现的评估数据，暂时无法判断其对coding agent等场景的实质提升。
+**「为什么重要」** 这是Moonshot AI首次公开Kimi K3.1 Pro的模型权重，为AI agent团队、eval套件开发者新增了可选基座模型；同时社区已出现不同推理服务商的性能与成本差异，可帮助团队评估部署与调优方向。
 
-**「可关注」** 可关注：第三方推理服务商（Together、Modal、OpenRouter）的吞吐优化空间，以及该模型在coding agent场景下的实际基准表现，目前尚无公开可复现的评估数据。
+**「可关注」** 可关注第三方推理服务商对Kimi K3.1 Pro的吞吐优化空间，以及该模型在coding agent、eval场景下的实际任务表现与算力消耗比。
 
-**「评论」** 社区观点存在分歧，部分用户质疑其“开源权重”属性，也有用户认为该模型存在刷榜嫌疑，性能未明显超过DeepSeekV4.1-Flash；也有实测用户反馈其作为开源模型表现强劲，适配多数场景；同时讨论指出本地部署需8xB300级别硬件，也有用户通过双RTX PRO 4000搭配NVFP4量化版本运行450k上下文，第三方推理服务商存在明显吞吐差异。
+**「评论」** 社区对该模型评价存在分歧：部分用户认为其基准表现未明显超过DeepSeek V4.1-Flash，存在&quot;benchmaxxed&quot;倾向；也有实测者反馈其通用表现优秀，适配多数场景；另有用户指出本地部署该模型需要约8xB300节点级别的算力门槛。
 
-**Tags**: `#coding-agent`, `#eval`, `#orchestration`
+**Tags**: `#coding-agent`, `#eval`, `#harness`
 
 ---
 
 <a id="item-agent-engineer-4"></a>
-### [ToolSpace 提出工具中心 MCP 环境合成框架](https://huggingface.co/papers/2611.05036) ⭐️ 7.0/10
+### [OpenAI 修复 948 个 Linux 内核提权漏洞](https://openai.com/index/a-thousand-fewer-paths-to-root/) ⭐️ 7.0/10
 
-2026-11-05，Hugging Face Daily Papers 推介 arXiv 论文《ToolSpace: Scaling Tool-Centric Environment Synthesis for Long-Horizon Agents》。该论文提出以工具为中心的 MCP 环境合成框架，逆转现有以数据为中心的方法顺序：从真实 MCP 服务执行轨迹与开放智能体语料库中，使用确定性规则挖掘相邻调用的数据、状态与重试依赖，构建加权工具组合图并聚类为环境，再反向合成数据库。相比现有方法，ToolSpace 旨在解决工具接口不匹配、工具组合未基于实际执行、任务难以跨环境等问题。当前摘要内容不完整，未提供性能验证或实现细节，实际效果待确认。
+OpenAI 安全团队 2026-11-04 宣布发现并协调修复 948 个 Linux 内核权限提升漏洞。这些漏洞加固 AI agent 与 harness 依赖的底层基础设施权限边界。具体漏洞编号、受影响版本及修复方式未在材料中披露。
 
-rss · Hugging Face Daily Papers · Nov 5, 03:01
+hackernews · dangelosaurus · Nov 4, 23:33 · [Discussion](https://news.ycombinator.com/item?id=50372929)
 
-**「为什么重要」** 该框架直接针对 MCP 工具链、agent 评估与长程编排中的环境缩放痛点，但摘要未给出实验数据，实际收益尚未证实。
+**「为什么重要」** 底层内核权限边界收紧，直接缩小 agent 运行环境的提权攻击面。社区讨论转向 AI 驱动漏洞发现的规模与成本，但尚未形成定论。
 
-**「可关注」** 可关注：ToolSpace 用确定性规则从执行轨迹挖掘工具依赖，而非依赖 LLM 生成，这可能降低合成环境中工具接口失配风险。
+**「可关注」** 可关注：AI 辅助漏洞挖掘已产出可观的 Linux 内核提权漏洞批量修复，但社区对这是否代表安全研究范式转移或仅是资金与意愿问题仍有分歧。
 
-**Tags**: `#mcp`, `#eval`, `#orchestration`
+**「评论」** 社区对 948 个漏洞的数量感到震惊，讨论 Linux 内核安全模型复杂性、现实世界缓解因素及 AI 漏洞发现的成本效益。原帖作者确认团队工作并开放答疑，同时发布招聘信息。
+
+**Tags**: `#permissions`, `#harness`, `#eval`
 
 ---
 
 <a id="item-agent-engineer-5"></a>
-### [YANAMI 多模态多轮有状态基准发布](https://huggingface.co/papers/2611.05280) ⭐️ 7.0/10
+### [LoCo 本地偏好学习压缩推理链](https://huggingface.co/papers/2611.04814) ⭐️ 7.0/10
 
-2026年11月5日，Hugging Face Daily Papers发布YANAMI相关论文，这是首个面向多模态多轮有状态交互的大规模数据集与基准，包含YANAMI-400K（40万条多轮多模态对话）和YANAMI-Bench两部分，该论文当日获得27次点赞。现有统一多模态数据集与基准多聚焦单轮任务，即便部分多轮数据集也无需跨轮跟踪信息，无法满足多模态有状态交互对模型理解、维护、更新对话状态的要求。该资源面向构建或评估多轮有状态（尤其是多模态）AI Agent能力的工程师。
+2026-11-05，Hugging Face Daily Papers 推荐了 LoCo（Local Preference Learning for Reasoning Compression）论文。LoCo 从模型自身推理轨迹中检测过思考状态，冻结对应推理前缀，从同一状态重新生成更短且经过验证的续写，并用 DPO 训练状态条件偏好对，以教会模型判断何时应停止推理。该方法针对推理模型过长的思维链导致的高推理成本问题，对 coding agent 效率优化有潜在价值。当前来源内容截断，缺少完整性能验证数据与对比基线。
 
-rss · Hugging Face Daily Papers · Nov 5, 03:01
+rss · Hugging Face Daily Papers · Nov 5, 04:00
 
-**「为什么重要」** 它填补了现有多模态基准在跨轮对话状态跟踪评估上的空白，为AI Agent工程师评估多轮有状态交互能力提供了可用的公开资源。
+**「为什么重要」** 推理模型的长思维链带来显著推理开销，LoCo 提供了一种状态级别而非轨迹级别的推理压缩新思路，可能降低 coding agent 的推理成本。但完整效果与泛化能力尚需论文全文验证。
 
-**「可关注」** 可关注：当前统一多模态模型的评估体系尚未覆盖跨轮对话状态跟踪需求，YANAMI可作为对应能力的验证参考。
+**「可关注」** 可关注：LoCo 通过冻结前缀、对检测到的过思考状态生成短续写并用 DPO 训练状态条件偏好对，提供了一种降低推理链长度的工程路径，但需验证其压缩率与准确率在不同任务上的权衡。
 
-**Tags**: `#eval`, `#memory`
+**Tags**: `#coding-agent`
 
 ---
 
 <a id="item-agent-engineer-6"></a>
-### [Dharma 字段提取器 2B 发布](https://huggingface.co/blog/Dharma-AI/dharma-field-extractor) ⭐️ 6.8/10
+### [Dharma Field Extractor 2B 发布](https://huggingface.co/blog/Dharma-AI/dharma-field-extractor) ⭐️ 6.8/10
 
-Hugging Face 的 Dharma AI 团队于 2026-11-04 发布 Dharma Field Extractor，一个 20 亿参数的文档字段提取模型。该模型基于 DharmaOCR-LITE v1.1，通过 LoRA 适配器在 43,384 个训练样本上训练，支持开放提取和 schema 定向提取两种模式，输出结构化 JSON。官方博客称其在 546 份文档、1,638 个测试用例的基准上取得 0.834 的字段级 F1 分数，高于测试的 Claude Opus 5（0.816）和 GPT-5.6 Luna（0.741），单 L40S 上运行成本据称为 frontier API 的 1/6 到 1/147。材料未提供完整技术细节、独立复现数据或生产环境部署指南，性能声明仅基于官方自测基准。
+2026年11月4日Hugging Face官方博客发布Dharma Field Extractor，一款20亿参数的文档字段提取模型，输入任意文档可输出符合要求的结构化JSON字段，支持开放提取、schema定向两种请求模式。该模型基于DharmaOCR-LITE v1.1 checkpoint训练LoRA适配器，训练数据覆盖英、巴西葡语等多语言多领域文档，包含发票、表单、身份证件等类型。官方benchmark覆盖546份文档共1638个用例，字段级F1得分0.834，高于测试的Claude Opus 5（0.816）、GPT-5.6 Luna（0.741）等四个前沿LLM配置；单L40S GPU自托管成本比 frontier API 低6至147倍，对比基于单L40S每小时2.24美元的GPU定价，实际成本随硬件、吞吐量、延迟需求变化。该模型面向高吞吐量文档结构化处理场景，如发票录入、医疗调度、合规合同字段提取。
 
 rss · Hugging Face Blog · Nov 4, 17:50
 
-**「为什么重要」** 该模型将文档字段提取从通用 LLM 调用拆分为专用小模型任务，对需要高吞吐、低延迟文档处理的 agent 流水线是可行选项。但成本对比基于自托管 GPU 时间与 API 定价的估算，实际生产环境中的延迟、吞吐和硬件利用率尚未有第三方验证。
+**「为什么重要」** 该发布验证了小参数领域专用模型在文档结构化任务上可实现质量、成本双优于前沿API的路径，为高吞吐量文档处理场景提供了可自托管的替代选项；目前尚无第三方公开复现结果，长尾文档类型的适配效果也未得到验证。
 
-**「可关注」** 官方自测显示 2B 参数模型在字段提取任务上质量高于测试的 frontier LLM 且成本更低，但基准方法和自托管成本估算需独立验证。
+**「可关注」** 可关注：该模型基于 DharmaOCR-LITE v1.1 加LoRA适配器的训练方案，在文档字段提取任务上实现了比测试的四个前沿LLM配置更高的字段级F1，同时自托管成本仅为 frontier API 的1/6到1/147，可参考其任务拆解思路评估自有文档处理管线的模型选型。
 
-**Tags**: `#eval`, `#tooling`, `#document-extraction`
+**Tags**: `#toolchain`, `#eval`
 
 ---
 
 <a id="item-agent-engineer-7"></a>
-### [Route Anything 模型路由框架](https://huggingface.co/papers/2611.05275) ⭐️ 6.0/10
+### [OpenAI Images 2.6 发布](https://openai.com/index/introducing-images-2-6/) ⭐️ 6.0/10
 
-2026-11-05，Hugging Face Daily Papers 收录论文《Route Anything: A Study of Model and Policy Routing for General-Purpose AI Systems》（arXiv:2611.05275）。该论文提出 Route Anything 统一框架，旨在为通用 AI 系统动态选择与协调专门模型、工具和策略，在性能与计算成本间取得平衡。当前材料仅为截断摘要，未披露具体技术细节、性能数据或实现参考，影响做 agent 编排与任务特定资源选择的工程师。需完整论文审查后方可提取可落地的工程见解。
+OpenAI 2026年11月4日正式发布Images 2.6图像生成模型，新增网格提示生成一致动画帧、原生SVG输出两项官方能力。社区对生成质量反馈不一，有用户指出近期生成效果退化、帧间一致性仍存问题。该更新仅对将图像生成集成到Agent工具链、或评估含图像生成能力Agent的工程师有直接影响。
 
-rss · Hugging Face Daily Papers · Nov 5, 03:01
+hackernews · davidbarker · Nov 4, 23:35 · [Discussion](https://news.ycombinator.com/item?id=50372945)
 
-**「为什么重要」** 该论文直接针对 agent orchestration 中的核心张力：如何在异构候选池中动态路由。目前仅确认理论框架存在，尚未证实其在实际系统中的性能收益或部署可行性。
+**「为什么重要」** 已发生的变化是OpenAI首次将动画帧网格提示、原生SVG输出作为官方能力明确提供；尚未证实的是这些能力能否解决社区反馈的生成质量、帧间一致性差的问题，对更广泛受众的参考价值有限。
 
-**「可关注」** 可关注：当前公开材料仅包含理论框架描述，无可用代码、基准测试或成本-质量权衡的具体数值，不宜立即纳入生产路由设计。
+**「可关注」** 可关注：集成图像生成能力的Agent工具链需先验证Images 2.6的帧间一致性、SVG输出合规性及生成质量稳定性，再评估是否接入。
 
-**Tags**: `#orchestration`
+**「评论」** 社区对图像生成质量普遍持负面态度，认为该领域近年进步有限甚至出现退化，对新增的动画帧、SVG功能也持怀疑态度，有用户反馈近期生成效果明显下降。
+
+**Tags**: `#eval`, `#toolchain`, `#image-generation`
 
 ---
 
 <a id="item-agent-engineer-8"></a>
-### [LoCo 本地偏好学习减少推理过度思考](https://huggingface.co/papers/2611.04814) ⭐️ 6.0/10
+### [Route Anything 框架论文发布](https://huggingface.co/papers/2611.05275) ⭐️ 6.0/10
 
-2026 年 11 月 5 日，Hugging Face Daily Papers 收录 arXiv 论文《Think Less, Locally: Local Preference Learning for Reasoning Compression》，提出 LoCo 方法。LoCo 从模型自身推理轨迹中检测候选过度思考状态，冻结对应前缀，重新生成较短验证延续，并以状态条件偏好对通过 DPO 训练，旨在减少长链式思考后的不必要推理。当前公开内容仅为截断摘要，未披露具体性能基准、实现细节或消融实验，因此对 coding agent 推理效率的实际提升幅度尚未证实。
+2026年11月5日Hugging Face Daily Papers分享通用AI系统路由框架Route Anything相关论文，该框架聚焦动态选择模型、工具与策略候选以平衡性能与计算成本，当前公开内容截断，未包含完整技术细节、评测结果与可复现实现，需查阅原文评估落地价值。
 
-rss · Hugging Face Daily Papers · Nov 5, 03:01
+rss · Hugging Face Daily Papers · Nov 5, 04:00
 
-**「为什么重要」** 该工作直接针对 LLM 推理中的过度思考问题，若验证有效，可降低 coding agent 等应用的推理成本。但目前仅见方法框架，缺乏可复现的 benchmark 数据，实际收益仍不确定。
+**「为什么重要」** 该研究方向直接关联Agent编排与任务路由的核心需求，若框架完整落地，有望为异构模型、工具协同的AI系统提供动态调度基础，但当前缺乏完整技术细节与性能数据，实际价值尚未证实。
 
-**「可关注」** 可关注：状态条件 DPO 偏好对构造方式，以及冻结前缀与重新生成短延续的具体实现细节，这些将决定该方法在 agent 场景中的可迁移性。
+**「可关注」** 可关注：该框架的理论基础与路由策略设计，若公开完整实现与评测数据，可评估其对现有Agent编排系统调度逻辑的优化空间。
 
-**Tags**: `#coding-agent`, `#reasoning-compression`, `#dpo`
-
----
-
-<a id="item-agent-engineer-9"></a>
-### [OpenAI 拟收购 Pierre Computer](https://openai.com/index/openai-to-acquire-pierre/) ⭐️ 5.5/10
-
-2026年11月4日Hacker News出现二手报道，称OpenAI可能收购运营Code.Storage的Pierre Computer Company，该基础设施被Lovable、Bolt等编码代理用于git格式的代码与产物存储，目前仅有一条推文作为信源，无官方确认。
-
-hackernews · itunpredictable · Nov 4, 15:21 · [Discussion](https://news.ycombinator.com/item?id=50366863)
-
-**「为什么重要」** 若收购落地，OpenAI将直接获得支撑大规模编码代理工作负载的git基础设施能力，可能改变编码代理生态的存储服务供给格局；但目前仅为未证实的传闻，无官方动作。
-
-**「可关注」** 可关注OpenAI后续是否公开git基础设施相关技术规划，以及依赖Code.Storage的编码代理需提前评估服务商变更的合规与可用性风险。
-
-**「评论」** 社区讨论将该传闻与OpenAI此前发布的git扩容文章关联，提及Pierre由Bootstrap原始开发者创立、其diff库获得好评，同时有人关注大厂收购小型工具团队是否是为了获取产品开发过程数据集。
-
-**Tags**: `#coding-agent`, `#harness`, `#orchestration`, `#memory`
+**Tags**: `#orchestration`, `#eval`
 
 ---
 
 ## AI Daily
 
 <a id="item-ai-daily-1"></a>
-### [OpenAI 自主流水线修复 948 个 Linux 内核提权漏洞](https://openai.com/index/a-thousand-fewer-paths-to-root) ⭐️ 8.8/10
+### [OpenAI 收购 Pierre](https://openai.com/index/openai-to-acquire-pierre) ⭐️ 7.8/10
 
-OpenAI 宣布构建了一套自主流水线，可自动完成 Linux 内核本地权限提升漏洞的发现、验证与补丁生成。该流水线共处理了 948 个漏洞。这一成果由 OpenAI 官方博客发布，属于实验室向产业输出的技术案例。
-
-rss · OpenAI Blog · Nov 4, 08:00
-
-**「为什么重要」** 这展示了 AI 在自动化安全漏洞修复流程中的端到端能力，从发现到补丁生成无需人工介入。对于维护大规模基础设施的团队，这类自动化工具可显著缩短漏洞响应周期。
-
-**「可关注」** 可关注：自主流水线在 Linux 内核安全维护中实现了漏洞发现、验证、补丁生成的全链路自动化。
-
-**Tags**: `#lab`, `#industry`
-
----
-
-<a id="item-ai-daily-2"></a>
-### [OpenAI 收购 Pierre Computer Co](https://openai.com/index/openai-to-acquire-pierre) ⭐️ 7.8/10
-
-OpenAI 宣布将收购 Pierre Computer Company, Inc.，以扩展 Codex 在代码构建、理解和审查方面的工具能力。目前公开细节有限，仅确认了收购意向与战略方向。
+OpenAI 宣布计划收购 Pierre Computer Company, Inc.。此次收购旨在扩展 Codex 的代码构建、理解与审查工具。目前公告未披露交易金额、具体时间表及后续整合计划。
 
 rss · OpenAI Blog · Nov 4, 14:30
 
-**「为什么重要」** 这宗收购表明 OpenAI 正在加码代码 AI 工具链的垂直整合。对做 coding agent 的团队而言，需关注 Codex 能力边界后续如何变化。
+**「为什么重要」** Codex 是 OpenAI 面向开发者的核心代码工具，此次收购直接指向其代码理解与审查能力的增强。
 
-**「可关注」** 可关注：Codex 工具链后续的集成节奏与 API 兼容性变化。
+**「可关注」** 可关注：Codex 后续代码理解与审查功能的整合进展。
 
 **Tags**: `#lab`, `#industry`, `#product`
 
 ---
 
-<a id="item-ai-daily-3"></a>
-### [Daybreak Red 登陆 AWS GovCloud \(US-East\)](https://openai.com/index/daybreak-red-aws-govcloud) ⭐️ 6.8/10
+<a id="item-ai-daily-2"></a>
+### [Daybreak Red 上线 AWS GovCloud](https://openai.com/index/daybreak-red-aws-govcloud) ⭐️ 7.8/10
 
-OpenAI 的 Daybreak Red 服务现已登陆 AWS GovCloud \(US-East\)。客户可通过 Amazon Bedrock 调用 GPT-5.6 Cyber，但需事先获得 OpenAI 批准。该服务仅限用于授权网络安全用途。
+Daybreak Red（GPT-5.6 Cyber）模型现已在 AWS GovCloud（US-East）的 Amazon Bedrock 平台上线。该服务仅对批准客户开放，且限定用于授权网络安全工作。OpenAI 官方博客发布了这一产品可用性更新。
 
 rss · OpenAI Blog · Nov 4, 07:00
 
-**「可关注」** 可关注：Daybreak Red 在 AWS GovCloud 的调用入口为 Amazon Bedrock，使用前需完成 OpenAI 客户审批，且模型输出仅适用于预先授权的网络安全工作负载。
+**「可关注」** 可关注：AWS GovCloud 上的 Amazon Bedrock 新增 Daybreak Red 模型访问渠道，需注意其批准客户与授权用途限制。
 
-**Tags**: `#model`, `#lab`, `#product`, `#industry`
+**Tags**: `#model`, `#lab`, `#product`
+
+---
+
+<a id="item-ai-daily-3"></a>
+### [OpenAI 自主流水线修复 948 个内核漏洞](https://openai.com/index/a-thousand-fewer-paths-to-root) ⭐️ 7.8/10
+
+OpenAI 官方宣布其研发的自主流水线已完成 948 个 Linux 内核本地权限提升漏洞的发现、验证与补丁生成。该成果属于 AI 在网络安全领域的实质性应用进展，无公开的后续落地限制说明。
+
+rss · OpenAI Blog · Nov 4, 08:00
+
+**「为什么重要」** 这是 AI 自动化在网络安全领域落地的实质性进展，为大规模内核漏洞的快速响应提供了可复用的技术路径。
+
+**「可关注」** 可关注：自主流水线在 Linux 内核漏洞全链路处理（发现、验证、补丁生成）的落地实践与效果。
+
+**Tags**: `#lab`, `#industry`
 
 ---
 
 <a id="item-ai-daily-4"></a>
-### [Lion-ER-35B-A3B 具身模型发布](https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&amp;mid=2247939340&amp;idx=2&amp;sn=25a664251ec6cb5820f1268911de9141) ⭐️ 5.0/10
+### [Lion-ER-35B-A3B 具身模型发布](https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&amp;mid=2247939340&amp;idx=2&amp;sn=25a664251ec6cb5820f1268911de9141) ⭐️ 5.5/10
 
-2026年11月4日，招商局先进技术研究院下属狮子山人工智能实验室发布具身推理视觉语言模型「驭物™ Lion-ER-35B-A3B」。该模型采用MoE混合专家架构，总参数约35B，每Token仅激活约3B参数，研发方宣称其在十项主流具身相关基准上实现全部指标上涨，走不堆砌训练数据的技术路线。当前仅能获取二手报道内容，缺乏官方一手发布信息及可核对的核心细节（如具体基准名称、与同类模型的具体对比数据等）。
+量子位报道称招商局先进技术研究院下属狮子山人工智能实验室发布具身推理视觉语言模型「驭物™ Lion-ER-35B-A3B」。该模型采用MoE混合专家架构，总参数约35B，每Token仅激活约3B参数。报道称其在十项主流具身相关基准上实现全部指标上涨，技术路线区别于大规模堆砌训练数据的传统做法，通过能力牵引的具身数据引擎，围绕模型所需能力正向设计数据，经评测发现短板后闭环迭代优化。
 
 rss · 量子位 · Nov 4, 05:33
 
-**「为什么重要」** 具身推理是机器人落地现实场景的核心能力瓶颈，该模型宣称的低激活参数、不依赖海量数据堆砌的技术路线，若验证属实，或为行业提供新的研发思路。
+**「为什么重要」** 该模型提出的能力牵引数据闭环迭代思路，为低参数开销下提升机器人三维空间理解、状态捕捉等具身推理能力提供了不同于堆砌数据的可行路径，有助于解决视角变化混淆物体身份、误判相机运动等机器人执行难题。
 
-**「可关注」** 可关注：该模型采用的「能力牵引数据闭环迭代」研发路线，以及MoE架构在具身推理场景下的低激活参数表现。
+**「可关注」** 可关注：该MoE架构模型以约3B的激活参数实现十项具身基准全提升，其围绕能力正向设计数据、评测闭环迭代的思路可参考。
 
 **Tags**: `#model`, `#lab`, `#industry`
 
 ---
 
 <a id="item-ai-daily-5"></a>
-### [ReTerm 探索失败驱动 Code Agent RSI](https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&amp;mid=2651072104&amp;idx=3&amp;sn=72caa8c3d846ccf53820d188e298acec) ⭐️ 5.0/10
+### [Seq-Drifting 实现扩散语言模型单步生成](https://mp.weixin.qq.com/s?__biz=MzIwMTc4ODE0Mw==&amp;mid=2247723829&amp;idx=2&amp;sn=50729365492d766992fa8bf441dac962) ⭐️ 5.5/10
 
-机器之心2026年11月4日发布报道，介绍复旦大学、香港中文大学MMLab、上海交通大学联合提出的ReTerm方法，探索失败驱动的递归自我改进（RSI）路径，使Code Agent可从自身执行错误中进化。该报道为二手行业资讯，暂无官方一手来源可核对。ReTerm核心包含两部分设计：一是构建含约1万条恢复轨迹的ReTerm-10K数据集，由强教师模型在基础模型失败现场生成恢复示范用于冷启动；二是提出ReTerm-GRPO框架，让Agent从自身失败现场尝试多种修复方案，依据任务验证器结果更新参数，形成「遇错-恢复-学习」闭环。在覆盖终端操作与软件工程的三个主要评测中，ReTerm-9B相比基础模型提升超13个百分点。
+香港城市大学、深圳大学、中国科学技术大学、牛津大学联合团队提出Seq-Drifting方法，将扩散语言模型的多轮去噪生成过程压缩为单步完成，核心是引入依赖当前生成上下文的漂移场，训练时根据已生成内容为每个位置构造候选词元作为优化目标，协调不同位置的词元选择。在无条件128-token生成任务中，该方法生成困惑度（Gen-PPL）达36.01，相较四步蒸馏基线FMLM实现11.2倍实际运行时间加速。目前该方法已在条件续写、机器翻译、摘要生成及推理任务完成验证，论文、代码与模型权重已公开。以上信息来自科技媒体PaperWeekly的报道，暂未找到可公开核对的一手官方来源。
 
-rss · 机器之心 · Nov 4, 04:00
+rss · PaperWeekly · Nov 4, 04:05
 
-**「为什么重要」** 当前Code Agent在复杂终端任务中遇错后易陷入重复无效操作，ReTerm的失败驱动RSI路径绕开了人工注入错误、干净环境学习覆盖度不足的问题，为终端智能体自主进化提供了可参考的技术方向。
+**「为什么重要」** 扩散语言模型长期受多轮去噪导致的生成效率低问题限制，Seq-Drifting提出的一步生成框架若验证成立，有望突破该瓶颈，为文本生成场景提供新的效率优化路径。
 
-**「可关注」** 可关注：ReTerm 以 Agent 自身失败现场为训练起点，通过教师模型恢复示范冷启动、在线强化学习迭代的闭环设计，实现终端任务错误恢复能力的持续提升。
+**「可关注」** 可关注：Seq-Drifting的论文、代码与模型权重已公开，可复现其一步生成框架在条件续写、机器翻译等任务的表现。
 
-**Tags**: `#industry`, `#model`, `#eval`
+**Tags**: `#model`, `#research`, `#paper`
+
+---
+
+## AI Deals
+
+<a id="item-ai-deals-1"></a>
+### [Samewindow 免费备份 AI 对话](https://www.samewindow.com/) ⭐️ 7.0/10
+
+HN用户gsngsn分享免费的Samewindow Chrome扩展，分别适配ChatGPT、Claude平台，支持备份对应AI对话、创建文件夹，可直接通过Chrome商店安装，无显性付费限制。
+
+rss · HN Free API / Credits · Nov 4, 13:04
+
+**「为什么重要」** 当前无额外使用成本，用户可立即安装使用，满足AI对话数据备份与整理的实用需求。
+
+**「可关注」** 可关注：该扩展目前仅支持Chrome浏览器，需通过Chrome商店对应链接安装，未提及其他浏览器适配计划。
+
+**Tags**: `#free-tier`, `#chrome-extension`, `#ai-tool`, `#promo`
 
 ---
