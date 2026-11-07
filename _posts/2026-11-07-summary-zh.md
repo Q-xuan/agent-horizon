@@ -5,31 +5,31 @@ date: 2026-11-07
 lang: zh
 ---
 
-> 从 204 条内容中筛选出 12 条重要资讯。
+> 从 180 条内容中筛选出 12 条重要资讯。
 
-<nav id="ah-toc" class="ah-toc" aria-label="目录"><span class="ah-toc-title">目录</span><ul><li><a href="#sec-harness-arch"><span class="ah-toc-name">Harness 架构</span><span class="ah-toc-count">3条</span></a></li><li><a href="#sec-agent-engineer"><span class="ah-toc-name">Agent 工程师日报</span><span class="ah-toc-count">5条</span></a></li><li><a href="#sec-ai-daily"><span class="ah-toc-name">AI 日报</span><span class="ah-toc-count">2条</span></a></li><li><a href="#sec-ai-deals"><span class="ah-toc-name">AI 羊毛</span><span class="ah-toc-count">2条</span></a></li></ul></nav>
+<nav id="ah-toc" class="ah-toc" aria-label="目录"><span class="ah-toc-title">目录</span><ul><li><a href="#sec-harness-arch"><span class="ah-toc-name">Harness 架构</span><span class="ah-toc-count">3条</span></a></li><li><a href="#sec-agent-engineer"><span class="ah-toc-name">Agent 工程师日报</span><span class="ah-toc-count">6条</span></a></li><li><a href="#sec-ai-daily"><span class="ah-toc-name">AI 日报</span><span class="ah-toc-count">2条</span></a></li><li><a href="#sec-ai-deals"><span class="ah-toc-name">AI 羊毛</span><span class="ah-toc-count">1条</span></a></li></ul></nav>
 
 ---
 
 **[Harness 架构](#sec-harness-arch)**
-1. [google/adk-python v2.14.0 发布](#item-harness-arch-1) ⭐️ 8.8/10
-2. [Agent Framework dotnet-1.28.0 发布](#item-harness-arch-2) ⭐️ 7.8/10
-3. [OpenHands v1.37.0 发布](#item-harness-arch-3) ⭐️ 5.8/10
+1. [adk-python v2.14.0 发布](#item-harness-arch-1) ⭐️ 8.8/10
+2. [OpenHands v1.37.0 发布](#item-harness-arch-2) ⭐️ 6.3/10
+3. [Agent Framework 1.28.0](#item-harness-arch-3) ⭐️ 5.8/10
 
 **[Agent 工程师日报](#sec-agent-engineer)**
-1. [Harness-S 提升 agent 泛化](#item-agent-engineer-1) ⭐️ 8.0/10
-2. [Arete-27B 开源发布](#item-agent-engineer-2) ⭐️ 7.0/10
-3. [BestRand 实现稳定低成本基准压缩](#item-agent-engineer-3) ⭐️ 6.0/10
-4. [EvoMemState 状态中心记忆框架提出](#item-agent-engineer-4) ⭐️ 6.0/10
-5. [VisSearch-Bench 多模态视觉搜索评测基准](#item-agent-engineer-5) ⭐️ 6.0/10
+1. [Harness-S 框架提出通用 Agent 训练方法](#item-agent-engineer-1) ⭐️ 7.0/10
+2. [Drex 非自回归决策模型发布](#item-agent-engineer-2) ⭐️ 7.0/10
+3. [ChatGPT 静默路由工具调用 赏金需 ID 验证](#item-agent-engineer-3) ⭐️ 6.0/10
+4. [BestRand 缓解基准评估随机采样不稳定性](#item-agent-engineer-4) ⭐️ 6.0/10
+5. [VisSearch-Bench 视觉搜索评估基准发布](#item-agent-engineer-5) ⭐️ 6.0/10
+6. [NousResearch 发布 Arete-27B 微调模型](#item-agent-engineer-6) ⭐️ 6.0/10
 
 **[AI 日报](#sec-ai-daily)**
-1. [OpenAI 与 Hacktron 开展安全测试合作](#item-ai-daily-1) ⭐️ 8.8/10
-2. [GitHub 发布 Copilot 智能体工程指南](#item-ai-daily-2) ⭐️ 7.8/10
+1. [OpenAI 与 Hacktron 合作开展漏洞测试](#item-ai-daily-1) ⭐️ 7.8/10
+2. [GitHub 发布智能体工程开发者指南](#item-ai-daily-2) ⭐️ 6.8/10
 
 **[AI 羊毛](#sec-ai-deals)**
-1. [本周 Epic 限免 11.6~11.12](#item-ai-deals-1) ⭐️ 8.0/10
-2. [Handbrake 免费无追踪驾驶日志上线](#item-ai-deals-2) ⭐️ 6.0/10
+1. [本周 Epic 免费游戏 11.6~11.12](#item-ai-deals-1) ⭐️ 8.0/10
 
 ---
 
@@ -39,45 +39,45 @@ lang: zh
 <p class="ah-sec-meta"><a class="ah-anchor" href="#sec-harness-arch" aria-label="链接到本节">#</a><a class="ah-back" href="#ah-toc">↑ 回到目录</a></p>
 
 <a id="item-harness-arch-1"></a>
-### [google/adk-python v2.14.0 发布](https://github.com/google/adk-python/releases/tag/v2.14.0) ⭐️ 8.8/10
+### [adk-python v2.14.0 发布](https://github.com/google/adk-python/releases/tag/v2.14.0) ⭐️ 8.8/10
 
-google/adk-python v2.14.0 将核心运行时、执行环境、A2A 和评估模块从实验性提升至稳定，新增多运行评估（\`adk eval --num\_runs\` 与 \`--parallelism\`）、语义工具参数匹配（\`ToolArgsMatcher\`）以及分块文件流式传输（\`BaseEnvironment.read\_file\_stream\`）。多轮工作流性能提升，30 节点 200 轮运行耗时降低 23%，峰值内存降低 9%。同时新增 Microsoft Teams、OpenAI Decisions 集成及 MongoDB 记忆服务的向量搜索与 TTL 支持。破坏性变更包括：\`Enum\` 工具参数现在以枚举成员形式传递，\`VertexAiSessionService.create\_session\` 仅接受 \`display\_name\`、\`ttl\`、\`expire\_time\` 和 \`labels\` 关键字参数，\`RunSkillScriptTool\` 在环境模式下不再接受 \`command\` 参数。
+google/adk-python v2.14.0 正式发布，将核心运行时、沙箱执行环境、A2A 协议支持和评估模块从实验状态转为稳定。新增分块文件流式传输（\`BaseEnvironment.read\_file\_stream\`）、多轮评估（\`MultiRunConfig\`）、语义工具参数匹配（\`ToolArgsMatcher\`），以及 Microsoft Teams 和 OpenAI Decisions 集成。长多轮工作流性能提升，30 节点 200 轮运行耗时降低 23%，峰值内存降低 9%。同时引入破坏性变更：Enum 工具参数现在以成员形式传递，\`VertexAiSessionService.create\_session\` 限制额外关键字参数，\`RunSkillScriptTool\` 在环境模式下不再接受 \`command\`。
 
 github · haranrk · 11月7日 00:58
 
-**「设计要点」** 核心运行时与执行环境稳定化，\`BaseEnvironment.read\_file\_stream\` 采用分块流式传输避免大文件全量加载，\`ContainerCodeExecutor\` 与 \`RunSkillScriptTool\` 改为基于验证路径和参数的执行模型。评测层引入 \`MultiRunConfig\` 并发多跑与 \`ToolArgsMatcher\` 多策略匹配，记忆层通过 \`MongoDbMemoryService\` 支持向量检索与 TTL 过期。
+**「设计要点」** 运行时核心与沙箱环境稳定，通过 \`BaseEnvironment.read\_file\_stream\` 分块流式传输降低大文件内存占用。评测层支持 \`MultiRunConfig\` 并发多轮运行与 \`ToolArgsMatcher\` 语义匹配，记忆服务新增向量检索与 TTL；工具执行从自由格式 shell 命令转向验证路径参数（\`RunSkillScriptTool\`）。
 
-**「改了什么」** 相对 v2.13.0，v2.14.0 将执行环境、A2A、评估和核心运行时模块从实验性转为稳定，新增多运行评估、语义工具参数匹配、分块文件流式传输、Microsoft Teams 与 OpenAI Decisions 集成，以及 MongoDB 记忆服务的向量搜索与 TTL。同时优化长多轮工作流性能（30 节点 200 轮快 23%、内存低 9%），并引入三项破坏性变更：\`Enum\` 工具参数改为枚举成员传递、\`VertexAiSessionService.create\_session\` 限制关键字参数、\`RunSkillScriptTool\` 移除 \`command\` 参数。
+**「改了什么」** 核心运行时、沙箱环境、A2A 和评估模块从实验状态转为稳定，新增分块文件流式读取、多轮并发评估、语义工具参数匹配及 Teams、OpenAI Decisions、MongoDB 向量记忆集成。工作流执行效率提升，30 节点 200 轮场景耗时降低 23%；破坏性变更包括 Enum 工具参数改为传递成员对象、\`VertexAiSessionService.create\_session\` 限制关键字参数、\`RunSkillScriptTool\` 移除 \`command\` 参数。
 
 **标签**: `#runtime`, `#sandbox`, `#a2a`, `#eval`, `#tools`
 
 ---
 
 <a id="item-harness-arch-2"></a>
-### [Agent Framework dotnet-1.28.0 发布](https://github.com/microsoft/agent-framework/releases/tag/dotnet-1.28.0) ⭐️ 7.8/10
+### [OpenHands v1.37.0 发布](https://github.com/OpenHands/OpenHands/releases/tag/v1.37.0) ⭐️ 6.3/10
 
-Microsoft Agent Framework 发布 dotnet-1.28.0。本次更新覆盖 .NET 与 Python 双运行时，核心变更包括 MCP 协议支持并发调用且携带请求级 headers、收紧未作用域 URL session 的审批权限、修复 .NET 声明式工作流公式的 InvariantCulture 解析，以及为 Python 3.15 启用 Redis 集成。版本同时包含多项 \[BREAKING\] 变更，涉及 A2A agent 创建简化、MCP 会话按调用作用域隔离、声明式 MCP 会话作用域调整，以及 .NET 侧强制要求配置允许的 HTTP 主机。
+OpenHands v1.37.0 于 2026-11-06 发布。本次更新为自动化流程新增 Mermaid 图解释，优化聊天历史扫描性能，并修复会话恢复、首页路径等 bug。无架构变更或运行时重写，改动集中在 UI/UX 与稳定性。
 
-github · dmytrostruk · 11月6日 22:00
+github · openhands-release-bot\[bot\] · 11月6日 12:54
 
-**「设计要点」** 框架采用多语言运行时设计，.NET 与 Python 侧共享 MCP 协议层与会话管理抽象。权限模型通过 invocation-scoped 作用域隔离收紧 MCP 客户端与 URL session 的访问边界，工作流引擎在 .NET 侧采用 InvariantCulture 保证公式解析的跨文化一致性。
+**「改了什么」** 自动化流程新增 Mermaid 图解释。聊天历史扫描性能优化，避免实时更新时重复扫描；会话恢复、首页路径等 bug 修复；依赖升级与代码清理。
 
-**「改了什么」** MCP 协议层新增并发调用能力，请求可携带独立 headers；Python 侧未作用域 URL session 的自动审批权限被收紧；.NET 工作流公式解析修复为使用 InvariantCulture；Python 3.15 获得 Redis 集成支持。多项 \[BREAKING\] 变更落地，包括 .NET 强制配置 allowed HTTP hosts、A2A agent 创建与 payload 处理简化、MCP 客户端与会话按调用作用域隔离。
-
-**标签**: `#mcp`, `#permissions`, `#runtime`, `#tools`
+**标签**: `#chat`, `#session-management`, `#performance`, `#automations`, `#memory`
 
 ---
 
 <a id="item-harness-arch-3"></a>
-### [OpenHands v1.37.0 发布](https://github.com/OpenHands/OpenHands/releases/tag/v1.37.0) ⭐️ 5.8/10
+### [Agent Framework 1.28.0](https://github.com/microsoft/agent-framework/releases/tag/dotnet-1.28.0) ⭐️ 5.8/10
 
-OpenHands 发布 v1.37.0。本次更新为自动化流程新增 Mermaid 图表可视化功能。聊天模块优化历史扫描逻辑，提升实时更新性能。同时修复会话恢复、标题显示、首页路径等 UI 问题。
+Microsoft Agent Framework .NET 发布 dotnet-1.28.0。本次 minor 更新包含 .NET 运行时修复、Python 侧增量功能及跨语言维护修正。.NET 端修复声明式工作流公式解析的 InvariantCulture 问题，并引入 A2A 代理创建简化、HTTP 主机白名单、MCP 客户端调用级作用域等 \[BREAKING\] 变更。Python 端新增并发 MCP 调用支持、收窄未作用域 URL 会话批准规则，并修复 Python 3.15 的 Redis 集成。
 
-github · openhands-release-bot\[bot\] · 11月6日 12:54
+github · dmytrostruk · 11月6日 22:00
 
-**「改了什么」** 自动化流程新增 Mermaid 图表解释。聊天历史实时更新避免重复扫描以提升性能，同时修复恢复会话排序、标题可见性、空建议等待及首页 trailing slash 等 UI 问题。
+**「设计要点」** 框架采用多语言 SDK 统一发版策略，.NET 与 Python 共享版本号但独立迭代。权限模型向最小特权收紧：MCP 会话、URL 批准、HTTP 主机及授权范围均从全局改为按调用或显式配置作用域。
 
-**标签**: `#runtime`, `#tools`
+**「改了什么」** .NET 端修复工作流公式解析的区域性依赖，简化 A2A 代理创建与负载处理，强制配置允许的 HTTP 主机，并将工作流 MCP 客户端范围限定到单次调用。Python 端支持并发 MCP 请求、收窄未作用域 URL 会话自动批准规则，并恢复 Python 3.15 的 Redis 集成支持。
+
+**标签**: `#runtime`, `#mcp`, `#permissions`, `#memory`
 
 ---
 
@@ -87,77 +87,94 @@ github · openhands-release-bot\[bot\] · 11月6日 12:54
 <p class="ah-sec-meta"><a class="ah-anchor" href="#sec-agent-engineer" aria-label="链接到本节">#</a><a class="ah-back" href="#ah-toc">↑ 回到目录</a></p>
 
 <a id="item-agent-engineer-1"></a>
-### [Harness-S 提升 agent 泛化](https://huggingface.co/papers/2611.04277) ⭐️ 8.0/10
+### [Harness-S 框架提出通用 Agent 训练方法](https://huggingface.co/papers/2611.04277) ⭐️ 7.0/10
 
-2026-11-07 Hugging Face Daily Papers 收录论文 2611.04277，提出 Harness-S。该方法通过 Directional Harness Evolution 构建可重用的 Sibling Harness Pool，并在 Complementary Harness Rescue Training 中仅在基础 harness 所有初始尝试失败时调用该池，将救援能力迁移到单一策略。论文指出 harness 从共同基础演化表现出 Locality、Complementarity 和 Nonstationarity，即不同变体修复不同失败，且效用随策略学习变化。目标策略在原始 harness 下仍保持有效。该方法面向 coding agent 与 harness 开发者，标签：harness、coding-agent、orchestration。
+2026 年 11 月 7 日，Hugging Face Daily Papers 收录论文《Harness-S: Learning from Sibling Harnesses for Generalizable Agent Training》。该论文提出 Harness-S 训练框架，观察到从共同基础演化的 harness 具备 Locality、Complementarity 和 Nonstationarity 性质，据此构建固定 Sibling Harness Pool，并通过 Complementary Harness Rescue Training 在基础执行系统全部失败时调用 sibling harnesses rescue 失败，再将能力迁移回单一策略。框架通过 Directional Harness Evolution 沿不同修复方向生成 specialized harnesses，训练期间保持 pool 不变。论文未公开具体实验基准或性能数字，实际泛化效果待验证。
 
-rss · Hugging Face Daily Papers · 11月7日 02:30
+rss · Hugging Face Daily Papers · 11月7日 03:13
 
-**「为什么重要」** 该论文提供了与 agent harness 及训练系统设计直接相关的具体技术组件，但尚未证实其在实际 harness 工程中的落地效果或性能增益。
+**「为什么重要」** 该工作直接针对 agent 训练中 harness 设计痛点，提出可复用的 sibling harness 池与 rescue 训练范式，可能减少对单一 harness 优化的依赖。但论文未提供跨环境泛化实验，实际效果待验证。
 
-**「可关注」** 可关注：Harness-S 将 sibling harness 的救援能力迁移到单一策略，且救援池在策略训练期间保持固定，这为 harness 设计与策略训练的解耦提供了可验证路径。
+**「可关注」** 可关注：Harness-S 将 harness 演化性质（Locality、Complementarity、Nonstationarity）转化为固定 sibling pool 与按需 rescue 的训练流程，为多 harness 协作提供新思路。
 
-**标签**: `#harness`, `#coding-agent`, `#orchestration`
+**标签**: `#harness`
 
 ---
 
 <a id="item-agent-engineer-2"></a>
-### [Arete-27B 开源发布](https://www.reddit.com/r/LocalLLaMA/comments/1xpmj33/nousresearcharete27b_hugging_face_qwen_finetune/) ⭐️ 7.0/10
+### [Drex 非自回归决策模型发布](https://huggingface.co/papers/2611.07854) ⭐️ 7.0/10
 
-2026 年 11 月 6 日，NousResearch 发布开源 Arete-27B 模型，基于阿里巴巴 Qwen3.8-27B 做监督微调（SFT），未使用强化学习、偏好优化或架构修改，训练上下文长度为 64k，仅使用文本数据。模型方自评估显示，事实得分从 2.32/5 提升至 2.98/5，含宣传内容的回答占比从 22%降至 0.9%，7 个价值类别均有所改善，通用能力与智能体基准无显著回退。目前 Hugging Face 已提供该模型的 GGUF 版本供本地使用，但评估数据为模型方自报告，相关博客链接已失效，未经过独立第三方验证，模型定位为面向需要调整价值倾向的通用辅助、智能体工作及价值对齐研究场景。
+2026 年 11 月 7 日 Hugging Face Daily Papers 发布开源非自回归决策模型家族 Drex，包含 8B（DLM）、9B（v1.5）、35B 含 3B 激活（v2.0）、27B（Max）四款参数规模的模型，原生支持智能体上下文作为输入，旨在替代自回归 LLM 用于智能体决策任务，解决输出不一致、强制解析、成本高、延迟高的生产痛点。当前公开内容被截断，暂未披露性能基准与详细架构拆解，主要面向 AI 智能体工程师群体。
 
-reddit · r/LocalLLaMA · /u/jacek2023 · 11月6日 19:58
+rss · Hugging Face Daily Papers · 11月7日 03:13
 
-**「为什么重要」** 它给需要特定价值倾向的本地智能体部署提供了新的开源基座选项，也展示了仅通过 SFT 调整大模型价值倾向的可行性；但所有性能指标均为 NousResearch 自报告，尚未得到独立第三方验证。
+**「为什么重要」** 该模型直接针对智能体决策环节中自回归 LLM 的普遍生产痛点，提供了开源的替代方案选项；但当前缺乏公开性能验证，实际落地效果尚未证实。
 
-**「可关注」** 可关注：仅通过监督微调（无强化学习、偏好优化、架构修改）调整 27B 级模型价值倾向，且未造成通用与智能体基准显著回退的结论，需要社区独立复现验证。
+**「可关注」** 可关注：原生接受智能体上下文的非自回归决策模型 Drex，可作为智能体决策组件的潜在替代方案，减少输出解析开销与推理延迟。
 
-**标签**: `#eval`, `#coding-agent`
+**标签**: `#coding-agent`, `#harness`, `#eval`
 
 ---
 
 <a id="item-agent-engineer-3"></a>
-### [BestRand 实现稳定低成本基准压缩](https://huggingface.co/papers/2611.00883) ⭐️ 6.0/10
+### [ChatGPT 静默路由工具调用 赏金需 ID 验证](https://community.openai.com/t/security-follow-up-tool-call-silently-routed-to-a-different-connector/1413053) ⭐️ 6.0/10
 
-2026-11-07，Hugging Face Daily Papers 介绍论文《Random Is Almost Enough? Stable and Low-Cost Benchmark Compression via BestRand》。该论文提出 BestRand 方法，旨在解决随机采样选择评估子集时的长尾不稳定性问题。研究推导出从子集估计全基准分数的误差分布解析近似，证明大多数子集误差小但少数产生大误差，形成长尾分布；随机采样虽能以高概率取得好效果，但罕见大误差导致不稳定。该不稳定性被证明是现代基础模型固有特性，且随评估模型数量增加仍持续存在。论文内容在材料中截断，未披露 BestRand 具体技术实现与性能对比数据。
+2026 年 11 月 6 日 Hacker News 讨论引用的 OpenAI 社区安全帖指出，ChatGPT 可静默将工具调用路由到不同连接器；评论者澄清该行为是 OpenAI 与 MCP 系统的预期表现，因二者未对独立工具调用设置作用域或绑定限制。同时 OpenAI 托管漏洞赏金计划（MBB）已要求所有提交报告的研究者完成身份验证（IDV），以减少低质量提交。该事件涉及 AI Agent 开发者、MCP 工具集成方及漏洞赏金提交者。
 
-rss · Hugging Face Daily Papers · 11月7日 02:30
+hackernews · Aldipower · 11月6日 22:50 · [社区讨论](https://news.ycombinator.com/item?id=50399569)
 
-**「为什么重要」** 该研究揭示了随机采样在基准压缩中的固有局限，为评估工作流提供了理论依据。若 BestRand 经复现验证有效，可降低 AI Agent 评估的样本量与计算成本。
+**「为什么重要」** 该路由行为揭示当前 OpenAI 与 MCP 工具调用无作用域绑定的设计特性，对 Agent 权限控制逻辑设计有直接参考价值；赏金计划 ID 验证要求则直接适用于所有计划提交 OpenAI 托管漏洞赏金的研究者。
 
-**「可关注」** 可关注：随机采样在基准压缩中虽能以高概率接近全基准结果，但长尾大误差导致结果不稳定，且该现象在现代基础模型上具有固有性。
+**「可关注」** 可关注：OpenAI 与 MCP 当前未对独立工具调用设置作用域或绑定限制，设计 Agent 工具调用逻辑时需避免依赖未绑定的调用上下文做权限判断。
+
+**「评论」** 社区评论普遍认为工具调用静默路由是 OpenAI 与 MCP 系统设计限制而非安全漏洞，同时有评论指出赏金计划 ID 验证要求源于 Bugcrowd 平台减少低质量提交的政策，与制裁合规无关。
+
+**标签**: `#mcp`, `#orchestration`, `#permissions`
+
+---
+
+<a id="item-agent-engineer-4"></a>
+### [BestRand 缓解基准评估随机采样不稳定性](https://huggingface.co/papers/2611.00883) ⭐️ 6.0/10
+
+2026-11-07，Hugging Face Daily Papers 收录论文《Random Is Almost Enough? Stable and Low-Cost Benchmark Compression via BestRand》。该论文提出 BestRand 基准压缩方法，通过解析近似子集评估误差分布，缓解纯随机采样的长尾不稳定性。研究表明，随机采样在概率上能取得小误差，但少数子集会产生大误差，形成长尾分布；该不稳定性是现代基础模型固有特性，不会随评估模型数量增加而消失。当前摘要被截断，缺少具体性能对比数据与完整算法细节，需阅读原文获取完整信息。
+
+rss · Hugging Face Daily Papers · 11月7日 03:13
+
+**「为什么重要」** 基准评估成本高是 agent 工程中的常见痛点。BestRand 若验证有效，可在降低评估成本的同时提升结果稳定性，但当前仅为论文摘要，实际效果需阅读原文确认。
+
+**「可关注」** 纯随机采样在基准压缩中概率上表现良好，但长尾大误差导致不稳定，BestRand 通过误差分布建模试图解决该问题。
 
 **标签**: `#eval`
 
 ---
 
-<a id="item-agent-engineer-4"></a>
-### [EvoMemState 状态中心记忆框架提出](https://huggingface.co/papers/2611.03743) ⭐️ 6.0/10
+<a id="item-agent-engineer-5"></a>
+### [VisSearch-Bench 视觉搜索评估基准发布](https://huggingface.co/papers/2611.04894) ⭐️ 6.0/10
 
-2026-11-07，Hugging Face Daily Papers 介绍论文《EvoMemState: Evolving Memory State for Personal Agents》。该研究针对 LLM 个人智能体长期记忆，提出状态中心（state-centric）框架 EvoMemState。框架在持久事实基础上增加两类状态：关系状态（Relational States）捕获事实随记忆演化的有效性及相互关系；推理状态（Reasoning State）决定事实应用方式。传统事实中心（fact-centric）记忆将记忆视为独立事实，可能忽略新事实对旧事实的更新、约束或冲突关系。当前提供内容为截断摘要，无完整技术细节、性能数据或实现资源。
+2026 年 11 月 7 日 Hugging Face Daily Papers 公开了多模态智能体评估基准 VisSearch-Bench 的摘要信息，该基准包含 204 个人工编写的任务，覆盖 7 个主领域、25 个子领域，核心评估智能体的长程视觉搜索与跨模态视觉上下文管理能力。当前公开内容仅为不完整摘要，未披露技术细节、性能基线及明确的资源可用性信息，主要面向关注多模态智能体视觉搜索能力评估的工程师群体。
 
-rss · Hugging Face Daily Papers · 11月7日 02:30
+rss · Hugging Face Daily Papers · 11月7日 03:13
 
-**「为什么重要」** 该框架代表 LLM 智能体长期记忆从事实存储向状态建模的转向，可能影响个人智能体记忆系统的设计思路。但具体性能提升与实现成本尚未证实。
+**「为什么重要」** 当前多数多模态智能体视觉搜索类评估仅测试单步实体识别后的文本检索能力，VisSearch-Bench 聚焦的长程跨模态视觉上下文管理是此前评估覆盖较少的维度，但具体任务设计、难度梯度及对现有模型的区分效果尚未公开。
 
-**「可关注」** 传统事实中心记忆将事实视为独立单元，EvoMemState 通过关系状态显式建模事实间的动态约束与演化，这为长期记忆系统的状态更新机制提供了新参考。
+**「可关注」** 现有视觉搜索类智能体评估多聚焦单步实体识别，VisSearch-Bench 针对长程跨模态视觉上下文管理能力设计测试集，可补充当前评估维度的不足。
 
-**标签**: `#memory`
+**标签**: `#eval`, `#memory`
 
 ---
 
-<a id="item-agent-engineer-5"></a>
-### [VisSearch-Bench 多模态视觉搜索评测基准](https://huggingface.co/papers/2611.04894) ⭐️ 6.0/10
+<a id="item-agent-engineer-6"></a>
+### [NousResearch 发布 Arete-27B 微调模型](https://www.reddit.com/r/LocalLLaMA/comments/1xpmj33/nousresearcharete27b_hugging_face_qwen_finetune/) ⭐️ 6.0/10
 
-2026 年 11 月 7 日 Hugging Face Daily Papers 汇总了 arXiv 论文 2611.04894 提出的 VisSearch-Bench 评测基准，用于评估多模态智能体的长程视觉搜索与跨步骤视觉上下文管理能力，该日报条目获得 17 次用户点赞。该基准包含 204 个人工编写的任务，覆盖 7 大领域、25 个子领域，涵盖集合式视觉搜索、序列式视觉搜索、混合宽深搜索、竞争性视觉消歧四类任务类型，对多模态智能体能力评测与迭代工作有参考价值。当前仅公开二次聚合的截断摘要，无基准访问方式、完整技术细节或落地使用信息，需查阅全文获取可落地内容，影响面目前较窄。
+2026 年 11 月 6 日 Reddit 用户转发 NousResearch 官方发布的 Arete-27B，该模型为基于阿里 Qwen3.8-27B 的监督微调（SFT）版本，未使用强化学习、偏好优化或架构修改，训练数据为纯文本，上下文长度 64k，针对言论自由、意识形态等 7 个价值类别调整价值取向。官方自评显示模型事实得分从 2.32 提升至 2.98（满分 5），含宣传内容的回答占比从 22%降至 0.9%，称通用能力与智能体基准无显著回退，已发布 GGUF 格式版本，官方博客的评估链接当前失效，暂无第三方验证相关声明。
 
-rss · Hugging Face Daily Papers · 11月7日 02:30
+reddit · r/LocalLLaMA · /u/jacek2023 · 11月6日 19:58
 
-**「为什么重要」** 该基准针对现有多模态智能体评测缺少跨图像、跨步骤视觉信息关联评估维度的空白设计，若后续公开完整测试集与评分规则，可成为相关能力迭代的参考标尺，但目前该影响尚未证实。
+**「为什么重要」** 该模型面向通用辅助与智能体场景，若自评基准结果可复现，可为需要特定价值取向的编码智能体提供新的基座选择，但目前无第三方验证，相关性能结论需交叉官方材料确认。
 
-**「可关注」** 可关注：当前多模态智能体视觉能力评测普遍未覆盖跨图像、跨步骤的视觉信息关联评估，VisSearch-Bench 的任务设计可作为相关能力补全的参考。
+**「可关注」** 可关注：该模型仅通过 SFT 完成价值对齐，未引入 RL 或架构修改，若基准结果可复现，可作为轻量价值对齐方案的参考样本。
 
-**标签**: `#eval`, `#memory`, `#multimodal-agent`
+**标签**: `#coding-agent`, `#eval`
 
 ---
 
@@ -167,32 +184,32 @@ rss · Hugging Face Daily Papers · 11月7日 02:30
 <p class="ah-sec-meta"><a class="ah-anchor" href="#sec-ai-daily" aria-label="链接到本节">#</a><a class="ah-back" href="#ah-toc">↑ 回到目录</a></p>
 
 <a id="item-ai-daily-1"></a>
-### [OpenAI 与 Hacktron 开展安全测试合作](https://openai.com/index/partnering-with-hacktron) ⭐️ 8.8/10
+### [OpenAI 与 Hacktron 合作开展漏洞测试](https://openai.com/index/partnering-with-hacktron) ⭐️ 7.8/10
 
-OpenAI 官方宣布与安全厂商 Hacktron 达成合作，将开展系统漏洞扫描、第三方服务连接验证工作，同时借助前沿 AI 技术强化自身安全防御体系。本次合作暂未公开披露测试时间表与具体覆盖范围细节。
+OpenAI 宣布与安全厂商 Hacktron 达成合作，核心任务包括排查自身系统安全漏洞、测试第三方服务连接链路、强化前沿 AI 系统的防御能力。
 
 rss · OpenAI Blog · 11月6日 08:00
 
-**「为什么重要」** 这是头部 AI 实验室首次公开披露与专业安全厂商开展系统性漏洞测试合作，测试范围覆盖第三方服务连接，对 AI 系统安全防护的落地实践有参考价值。
+**「为什么重要」** 这是前沿 AI 实验室公开安全合作动作的典型案例，为行业 AI 系统安全运营提供了可参考的实践样本。
 
-**「可关注」** 可关注：头部 AI 厂商将前沿 AI 能力纳入安全防御体系的落地实践。
+**「可关注」** 可关注：前沿 AI 系统的第三方服务连接安全与公开漏洞测试的合作模式。
 
-**标签**: `#lab`, `#policy`, `#industry`
+**标签**: `#lab`, `#industry`, `#policy`
 
 ---
 
 <a id="item-ai-daily-2"></a>
-### [GitHub 发布 Copilot 智能体工程指南](https://github.blog/ai-and-ml/github-copilot/beyond-code-generation-a-developers-guide-to-agentic-engineering/) ⭐️ 7.8/10
+### [GitHub 发布智能体工程开发者指南](https://github.blog/ai-and-ml/github-copilot/beyond-code-generation-a-developers-guide-to-agentic-engineering/) ⭐️ 6.8/10
 
-GitHub 官方博客发布面向 Copilot 用户的智能体工程开发者指南，提出从单一代码生成转向覆盖软件全生命周期的端到端智能体工作流。指南引用的数据显示，2026 年 10 月单周 GitHub 提交量达 12 亿次，同比提升超 400%，超过 2025 年全年提交总量；Faros AI 研究显示高 AI 采用率团队的 PR 审查时长上升了 441%。指南围绕 Plan、Build、Verify、Observe 四个阶段，给出了 Copilot 对应的功能用法，包括跨设备会话续接、云沙箱运行任务、共享记忆复用项目知识等。
+2026 年 11 月 6 日 GitHub 官方博客发布面向开发者的智能体工程指南，梳理覆盖规划、构建、验证、观测全流程的智能体工程工作流。关键数据：2026 年 10 月 GitHub 单周提交量达 12 亿次，同比提升 400%，超过 2025 年全年提交总量；Faros AI 研究显示团队 AI 采用率从低到高时，PR 平均审查时长增加 441%。该指南为指导性内容，并非模型发布、政策变更或正式产品公告。
 
 rss · GitHub Blog · 11月6日 22:15
 
-**「为什么重要」** 当前 AI 编码普及已带来提交量暴涨但 PR 审查效率下滑的新瓶颈，该指南是 GitHub 官方给出的面向全开发流程的智能体工程实操方案，配套最新行业 adoption 数据，对做 coding agent 的开发者有参考价值。
+**「为什么重要」** 当前 AI 编码工具普及但开发者效率感知未同步提升，PR 审查耗时激增已成为行业普遍痛点，该指南回应了软件开发从纯代码生成向全流程智能体协作转型的实际需求。
 
-**「可关注」** 可关注：Copilot 已支持会话跨设备续接、云沙箱异步运行任务、共享记忆复用项目知识，可覆盖 Plan 到 Observe 的全开发流程智能体工作流。
+**「可关注」** 可关注：GitHub Copilot 已落地跨设备会话 continuity、云沙箱任务运行、仓库级共享记忆、企业级托管配置等能力，覆盖规划到观测的全开发流程。
 
-**标签**: `#product`, `#industry`
+**标签**: `#lab`, `#industry`, `#product`
 
 ---
 
@@ -202,33 +219,16 @@ rss · GitHub Blog · 11月6日 22:15
 <p class="ah-sec-meta"><a class="ah-anchor" href="#sec-ai-deals" aria-label="链接到本节">#</a><a class="ah-back" href="#ah-toc">↑ 回到目录</a></p>
 
 <a id="item-ai-deals-1"></a>
-### [本周 Epic 限免 11.6~11.12](https://www.appinn.com/eggs-261106/) ⭐️ 8.0/10
+### [本周 Epic 免费游戏 11.6~11.12](https://www.appinn.com/eggs-261106/) ⭐️ 8.0/10
 
-你看到的内容可能由第三方 AI 基于小众软件文章提炼总结而成，可能与原文真实意图存在偏差。不代表小众软件观点和立场。请点击链接阅读原文细致比对和校验。
-
-本周（11.6~11.12）Epic 平台开展限时免费福利活动，电脑端可免费领取《浮游世界/Flotsam》，移动端可免费领取锁区的《巴别塔圣歌/Chants of Sennaar》；《遗忘国度：放置勇士/Idle Champions of the Forgotten Realms》本体长期免费，此前曾免费提供过，本周登录 Epic 版可领取限时 Morte’s Renown Pack 礼包，内含 Morte 等 5 名角色、每名角色 32 个白金宝箱、药水及专属魔宠，需进入游戏内领取，活动截止时间为 11 月 12 日。
+你看到的内容可能由第三方 AI 基于小众软件文章提炼总结而成，可能与原文真实意图存在偏差。不代表小众软件观点和立场。请&lt;a href=&quot;https://www.appinn.com/eggs-261106/&quot; target=&quot;\_blank&quot;&gt;点击链接阅读原文&lt;/a&gt;细致比对和校验。&lt;br /&gt;&lt;br /&gt;本周（11.6~11.12）Epic 平台推出 3 款游戏相关福利：电脑端可免费领取《浮游世界/Flotsam》完整版，手机端可免费领取《巴别塔圣歌/Chants of Sennaar》的 Android 和 iOS 版本；《遗忘国度：放置勇士/Idle Champions of the Forgotten Realms》本体长期免费，本周登录 Epic 版本可领取限时 Morte’s Renown Pack 礼包，内含 5 名角色、每名角色 32 个白金宝箱及药水、专属魔宠。领取条件为登录对应平台 Epic 账号操作，《巴别塔圣歌》存在锁区限制，材料未明确具体截止时间。
 
 rss · 小众软件 · 11月6日 08:21
 
-**「为什么重要」** 三款游戏在 Steam 平台均获得玩家正面评价，其中《浮游世界》支持简体中文、《巴别塔圣歌》支持繁体中文，且均为近年上线的新作，限免窗口期短，值得优先领取。
+**「为什么重要」** 本周福利覆盖 PC 与移动端，包含两款完整免费游戏及一款高口碑放置游戏的限时登录礼包，无需额外付费即可获取，适合不同平台的游戏玩家领取。
 
-**「可关注」** 可关注：《巴别塔圣歌》移动端领取存在区域锁限制，需提前确认 Epic 账号所在区域是否在可领取范围内；《遗忘国度：放置勇士》限时礼包仅需登录 Epic 版本游戏即可领取，无额外付费门槛。
+**「可关注」** 可关注：《巴别塔圣歌》手机版为 Epic 限免，锁区用户需确认自身地区是否可领取；《遗忘国度：放置勇士》的限时礼包需登录 Epic 版本游戏内领取，其他平台版本无法获取。
 
-**标签**: `#promo`, `#limited-free`, `#game`
-
----
-
-<a id="item-ai-deals-2"></a>
-### [Handbrake 免费无追踪驾驶日志上线](https://apps.apple.com/us/app/handbrake-driving-log/id6822426461) ⭐️ 6.0/10
-
-开发者 hcabral 在 Hacker News 分享自研的 iOS 驾驶日志应用 Handbrake，完全免费、无广告无追踪，所有驾驶数据存储于用户个人 iCloud 账户，iOS 用户可直接免费下载使用，无明确失效时间与付费限制说明。
-
-rss · HN Free API / Credits · 11月6日 23:02
-
-**「为什么重要」** 当前面向普通用户的免费无广告驾驶日志工具供给较少，Handbrake 的隐私优先设计可避免用户驾驶数据被第三方获取，适合有驾驶记录或新手学车需求的 iOS 用户。
-
-**「可关注」** 可关注：该应用仅适配 iOS 平台，数据存储完全依赖用户 iCloud，无公开的付费或广告规划说明。
-
-**标签**: `#free-tier`, `#limited-free`
+**标签**: `#limited-free`, `#promo`, `#game`
 
 ---
