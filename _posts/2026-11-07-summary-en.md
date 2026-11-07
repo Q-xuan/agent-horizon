@@ -5,256 +5,216 @@ date: 2026-11-07
 lang: en
 ---
 
-> From 195 items, 15 important content pieces were selected
+> From 204 items, 12 important content pieces were selected
 
 ---
 
 **Agent Harness Architecture**
-1. [Codex CLI rust-v0.167.0 发布](#item-harness-arch-1) ⭐️ 7.8/10
-2. [dotnet-1.28.0 发布](#item-harness-arch-2) ⭐️ 6.8/10
-3. [Anthropic 发布 Agent Memory 架构概念](#item-harness-arch-3) ⭐️ 6.8/10
-4. [Claude Code 2.1.319 发布](#item-harness-arch-4) ⭐️ 5.5/10
+1. [google/adk-python v2.14.0 发布](#item-harness-arch-1) ⭐️ 8.8/10
+2. [Agent Framework dotnet-1.28.0 发布](#item-harness-arch-2) ⭐️ 7.8/10
+3. [OpenHands v1.37.0 发布](#item-harness-arch-3) ⭐️ 5.8/10
 
 **AI Agent Engineer**
-1. [Anthropic 发布 Agent 记忆组件研究](#item-agent-engineer-1) ⭐️ 8.8/10
-2. [Harness-S 论文：同级 Harness 救援训练](#item-agent-engineer-2) ⭐️ 7.0/10
-3. [HF Daily Papers 发布 Drex 决策模型](#item-agent-engineer-3) ⭐️ 7.0/10
-4. [ASR 榜单新增埃及、尼日利亚英语测试集](#item-agent-engineer-4) ⭐️ 6.8/10
-5. [HF daily paper: Random Is Almost Enough? Stable and Low-Cost Benchmark Compression via BestRand](#item-agent-engineer-5) ⭐️ 6.0/10
+1. [Harness-S: Sibling Harness Pool for Agent Training](#item-agent-engineer-1) ⭐️ 8.0/10
+2. [Arete-27B 开源发布 基于Qwen3.8-27B微调](#item-agent-engineer-2) ⭐️ 7.0/10
+3. [BestRand 实现稳定低成本基准压缩](#item-agent-engineer-3) ⭐️ 6.0/10
+4. [EvoMemState 状态中心记忆框架](#item-agent-engineer-4) ⭐️ 6.0/10
+5. [VisSearch-Bench 多模态视觉搜索评测基准发布](#item-agent-engineer-5) ⭐️ 6.0/10
 
 **AI Daily**
-1. [OpenAI 合作 Hacktron 挖漏洞](#item-ai-daily-1) ⭐️ 7.8/10
-2. [OpenAI 发布 BioBasicsBench 湿实验室基准](#item-ai-daily-2) ⭐️ 7.8/10
-3. [AI编程代理易被过时TODO分心](#item-ai-daily-3) ⭐️ 7.8/10
-4. [GitHub 发布代理工程开发者指南](#item-ai-daily-4) ⭐️ 5.8/10
-5. [GPT-6 Cyber 传闻发布](#item-ai-daily-5) ⭐️ 5.5/10
+1. [OpenAI 与 Hacktron 合作开展系统漏洞测试](#item-ai-daily-1) ⭐️ 8.8/10
+2. [GitHub Copilot 智能体工程指南发布](#item-ai-daily-2) ⭐️ 7.8/10
 
 **AI Deals**
-1. [本周Epic免费游戏 11.6~11.12](#item-ai-deals-1) ⭐️ 8.0/10
+1. [Epic 11.6-11.12 限免游戏汇总](#item-ai-deals-1) ⭐️ 8.0/10
+2. [Handbrake 免费iOS驾驶日志上线](#item-ai-deals-2) ⭐️ 6.0/10
 
 ---
 
 ## Agent Harness Architecture
 
 <a id="item-harness-arch-1"></a>
-### [Codex CLI rust-v0.167.0 发布](https://github.com/openai/codex/releases/tag/rust-v0.167.0) ⭐️ 7.8/10
+### [google/adk-python v2.14.0 发布](https://github.com/google/adk-python/releases/tag/v2.14.0) ⭐️ 8.8/10
 
-OpenAI Codex CLI rust-v0.167.0 正式发布。新功能包括 agent 命令中心（\`codex agents --daemon\`）、跨后端切换并保留草稿、审批流程体验改进，以及通过 \`gcp\_setup\_wizard\` 接入 GCP Vertex AI。技术层面新增 bounded Code Mode 输出收集与渲染、服务端输出截断、共享 MCP 连接的 per-chat 租约，以及 \`\[permissions.network\]\` 下的托管网络约束。未进行重大架构重构，改动聚焦于 harness 可用性与功能完整性。
+google/adk-python v2.14.0 正式发布。本次将核心运行时、执行环境、A2A 和评估模块从实验性转为稳定 API，新增多轮评估并行执行（\`adk eval --num\_runs\` 配合 \`--parallelism\`）、语义工具参数匹配（\`ToolArgsMatcher\`）、沙箱工具分块文件流式读取，以及 Microsoft Teams、OpenAI Decisions 和 MongoDB 记忆服务集成。长多轮工作流性能优化后，30 节点 200 轮场景耗时降低 23%、峰值内存降低 9%。包含枚举工具参数传递方式、Vertex AI 会话服务配置限制和 \`RunSkillScriptTool\` 命令参数的破坏性变更。
 
-github · github-actions\[bot\] · Nov 6, 01:40
+github · haranrk · Nov 7, 00:58
 
-**「设计要点」** 本次发布引入共享 MCP 连接的 per-chat 租约与独立 web 搜索的 turn-scoped 权限，收窄 agent 运行时的资源隔离粒度。服务端输出截断与 bounded Code Mode 集合将渲染限制从客户端移至服务端，降低长会话下的 TUI 内存压力。
+**「设计要点」** 核心运行时与执行环境抽象层稳定化，\`BaseEnvironment\` 提供跨本地与远程沙箱的分块文件流式读取。长多轮工作流通过内部状态管理优化，在 30 节点 200 轮场景下耗时降低 23%、峰值内存降低 9%。
 
-**「改了什么」** 新增带未读标记的 agent 命令中心、会话选择器中的跨后端草稿保留，以及审批提示时的内联补丁审查。引入 GCP Vertex AI 配置、实验性系统代理支持、保留 realtime V3 语音转录，并修复跨模型提供商切换时的聊天可见性与网络审批并发问题，同时通过减少 allocator arenas 降低 Linux musl 空闲内存。
+**「改了什么」** 相对 v2.13.0，v2.14.0 将执行环境、A2A、评估和核心运行时模块从实验性转为稳定，新增多轮评估并行执行、语义工具参数匹配、分块文件流式读取，以及 Microsoft Teams 和 OpenAI Decisions 集成。同时调整枚举工具参数传递行为、Vertex AI 会话服务配置限制和 RunSkillScriptTool 命令参数，构成破坏性变更。
 
-**Tags**: `#runtime`, `#permissions`, `#subagents`
+**Tags**: `#runtime`, `#sandbox`, `#a2a`, `#eval`, `#tools`
 
 ---
 
 <a id="item-harness-arch-2"></a>
-### [dotnet-1.28.0 发布](https://github.com/microsoft/agent-framework/releases/tag/dotnet-1.28.0) ⭐️ 6.8/10
+### [Agent Framework dotnet-1.28.0 发布](https://github.com/microsoft/agent-framework/releases/tag/dotnet-1.28.0) ⭐️ 7.8/10
 
-Microsoft Agent Framework .NET 1.28.0 发布。本次为官方小版本更新，以琐碎提交为主。.NET 运行时修复声明式工作流公式解析的 InvariantCulture 问题。Python SDK 新增并发 MCP 调用支持（请求级头部）、收窄无作用域 URL 会话审批范围，并支持 Python 3.15 的 Redis 集成。无重大架构或破坏性变更。
+Microsoft Agent Framework dotnet-1.28.0 发布。本次更新核心包括 MCP 协议并发调用支持、URL 会话权限收紧、.NET 工作流公式解析修复，以及 Python 3.15 Redis 集成。同时引入多项 BREAKING 变更，涉及 MCP 会话作用域、A2A 代理创建简化及 HTTP 主机限制，升级时需评估兼容性。
 
 github · dmytrostruk · Nov 6, 22:00
 
-**「改了什么」** .NET 修复工作流公式解析的区域性依赖。Python 实现并发 MCP 调用、收紧 URL 会话审批策略、添加 Python 3.15 Redis 集成支持。其余变更包括拼写修正、依赖升级及仓库管理调整。
+**「设计要点」** MCP 客户端和会话默认按调用作用域，减少跨请求状态泄漏；.NET Foundry Hosting 启用源生成日志；内存状态文件不可读时隔离处理而非直接失败。
 
-**Tags**: `#mcp`, `#runtime`, `#permissions`, `#tools`
+**「改了什么」** Python 端新增 MCP 并发调用支持，请求携带独立 headers；收紧未作用域 URL 会话的自动审批范围；修复 .NET 声明式工作流公式解析的 InvariantCulture 问题；新增 Python 3.15 Redis 集成。同时引入多项 BREAKING 变更：声明式 MCP 会话按调用作用域、A2A 代理创建与负载处理简化、要求配置允许的 HTTP 主机、工作流 MCP 客户端按调用作用域、AG-UI 工作流代理执行器绑定单一授权作用域、MCP 目录发现行为强化。
+
+**Tags**: `#mcp`, `#permissions`, `#runtime`, `#tools`
 
 ---
 
 <a id="item-harness-arch-3"></a>
-### [Anthropic 发布 Agent Memory 架构概念](https://www.anthropic.com/research/components-of-agent-memory) ⭐️ 6.8/10
+### [OpenHands v1.37.0 发布](https://github.com/OpenHands/OpenHands/releases/tag/v1.37.0) ⭐️ 5.8/10
 
-Anthropic Engineering 发布概念文章，提出受生物记忆启发的 agent memory 架构。系统分实时编码与离线整合两个阶段，通过 salience tagging 组织跨 session 持久化知识。文章以 CL-Bench 1.0 与 Pokémon Red 两项评测，展示从 Sonnet 3.7 到 Opus 5.5 在记忆管理上的行为差异，但未披露具体实现代码或接口。
+OpenHands v1.37.0 于 2026-11-06 发布，属于小版本迭代。automation 模块新增 Mermaid 图可视化能力，可解释自动化流程。chat 模块优化 live 历史更新性能，避免重复扫描；同时修复会话恢复、标题显示、空建议加载和首页路径问题。发布说明未提供实现细节、代码路径或架构解释。
 
-rss · Anthropic Engineering · Nov 6, 00:00
+github · openhands-release-bot\[bot\] · Nov 6, 12:54
 
-**「设计要点」** Memory 以文件系统外存持久化，排除权重更新、in-context learning 与 compaction。Dreaming 利用交互间隙重放会话日志，提炼验证规则并修正错误。评测 harness 通过跨 session memory directory 测试 agent 长时序任务学习能力。
+**「改了什么」** 相对 v1.36.0，automation 增加 Mermaid 图解释功能，chat 历史 live 更新避免重复扫描；同时修复 resumed session 排序、conversation title 启动可见性、replay 前空建议及 base path 首页加载。依赖升级 lucide-react 至 1.64.0、driver.js 至 1.10.2、@types/node 至 26.6.6。
 
-**Tags**: `#memory`, `#runtime`
-
----
-
-<a id="item-harness-arch-4"></a>
-### [Claude Code 2.1.319 发布](https://github.com/anthropics/claude-code/releases/tag/v2.1.319) ⭐️ 5.5/10
-
-Claude Code v2.1.319 调整了 auto mode 在关闭遥测或功能标志、以及位于 LLM 网关后的行为：服务器无法检查的调用会被询问或拒绝，不再回退到内置分类器，可通过 \`CLAUDE\_CODE\_AUTO\_MODE\_SERVER=0\` 保留旧行为（Bedrock、Vertex 和 Foundry 不受影响）。新增 MCP 任务后台运行支持，配置开关 \`CLAUDE\_CODE\_DISABLE\_MCP\_TASK\_BACKGROUND\` 可改为同步等待。同时引入 \`permissions.denyInsteadOfPrompting\` 设置，使工具调用在权限提示时直接拒绝并继续回合，适用于终端会话、子代理和队友。
-
-github · claude-code-publisher\[bot\] · Nov 6, 17:04
-
-**「设计要点」** Auto mode 的检查逻辑从客户端迁移到服务端，通过 \`CLAUDE\_CODE\_AUTO\_MODE\_SERVER\` 环境变量控制回退。MCP 任务后台化通过配置开关切换，影响终端、子代理和队友会话中的权限处理流程。
-
-**「改了什么」** Auto mode 在遥测或功能标志关闭、以及 LLM 网关后默认启用服务端检查，不再回退到内置分类器。MCP 工具调用作为任务时立即转入后台，完成后通知 Claude；新增 \`permissions.denyInsteadOfPrompting\` 设置，在终端、子代理和队友会话中直接拒绝权限请求而非弹出提示。
-
-**Tags**: `#runtime`, `#mcp`, `#permissions`, `#tools`
+**Tags**: `#runtime`, `#tools`
 
 ---
 
 ## AI Agent Engineer
 
 <a id="item-agent-engineer-1"></a>
-### [Anthropic 发布 Agent 记忆组件研究](https://www.anthropic.com/research/components-of-agent-memory) ⭐️ 8.8/10
+### [Harness-S: Sibling Harness Pool for Agent Training](https://huggingface.co/papers/2611.04277) ⭐️ 8.0/10
 
-On November 6, 2026, Anthropic Research published a study on AI agent memory architecture inspired by human neuroscience, proposing a division of labor between real-time event tagging and offline &quot;sleep-time compute \(dreaming\)&quot; for consolidating experiences into long-term knowledge. Key verifiable details include two evaluation scenarios: on the CL-Bench 1.0 benchmark, Claude Opus 5 became the first model to close the learning loop by capturing validated rules for future questions, while on the Pokémon Red gameplay test, Claude Fable 5 outperformed Claude Sonnet 3.7 by writing only 9 targeted memory files \(compared to Sonnet 3.7&\#x27;s 413 indiscriminate files\) and earning 4 badges \(compared to Sonnet 3.7&\#x27;s 1\). The research explicitly excludes weight updates, in-context learning, and context compaction from its definition of agent memory, and targets engineers building long-horizon AI agents.
+The Hugging Face Daily Papers feed \(2026-11-07\) highlights the paper &quot;Harness-S: Learning from Sibling Harnesses for Generalizable Agent Training&quot; \(arXiv:2611.04277, 55 upvotes\). The authors identify three properties of harness evolution from a common base: Locality, Complementarity, and Nonstationarity—variants repair different failure types, and their utility shifts as the policy learns. Harness-S maintains a reusable Sibling Harness Pool of specialized harnesses developed along distinct repair directions via Directional Harness Evolution. During training, Complementary Harness Rescue Training invokes this pool only when all initial attempts under the base harness fail, then transfers the rescued capabilities into a single policy that remains effective under the original harness. The pool stays fixed throughout policy training.
 
-rss · Anthropic Research · Nov 6, 00:00
+rss · Hugging Face Daily Papers · Nov 7, 02:30
 
-**「为什么重要」** The published neuroscience-inspired memory architecture and validated sleep-time compute mechanism provide concrete design references for reducing context redundancy and improving knowledge consolidation in long-horizon agent systems. The actual performance impact of implementing these patterns in custom agent frameworks remains unverified as of now.
+**「Why It Matters」** The work provides a concrete architecture for failure-specific rescue in agent training systems, directly relevant to coding agent harness design. The Nonstationarity finding—that harness utility changes during learning—challenges static harness selection and implies training pipelines must account for evolving environment-policy interactions.
 
-**「可关注」** 可关注：sleep-time compute \(dreaming\) workflows and salient event filtering logic, as the research shows they directly reduce unnecessary memory overhead and improve long-horizon task performance for agents.
+**「Engineer Takeaway」** The fixed Sibling Harness Pool during policy training enforces a separation between environment diversification and policy optimization, which may simplify the engineering of distributed training pipelines for coding agents.
 
-**Tags**: `#memory`, `#architecture`, `#research`
+**Tags**: `#harness`, `#coding-agent`, `#orchestration`
 
 ---
 
 <a id="item-agent-engineer-2"></a>
-### [Harness-S 论文：同级 Harness 救援训练](https://huggingface.co/papers/2611.04277) ⭐️ 7.0/10
+### [Arete-27B 开源发布 基于Qwen3.8-27B微调](https://www.reddit.com/r/LocalLLaMA/comments/1xpmj33/nousresearcharete27b_hugging_face_qwen_finetune/) ⭐️ 7.0/10
 
-Hugging Face Daily Papers 于 2026-11-06 收录论文《Harness-S: Learning from Sibling Harnesses for Generalizable Agent Training》。该论文提出 Harness-S 框架，通过 Directional Harness Evolution 沿不同修复方向演化出专业同级 harness 并形成固定池，再经 Complementary Harness Rescue Training 在基础 harness 所有初始尝试失败时选择性调用该池救援。研究表明从共同基础演化的 harness 表现出局部性、互补性和非平稳性——变体修复不同失败，且效用随策略学习变化。该方法面向 coding agent 训练，旨在将救援获得的能力迁移到在原始 harness 下仍有效的单一策略。
+2026年11月6日，NousResearch发布开源Arete-27B模型，该模型基于Alibaba Qwen3.8-27B做监督微调（SFT）后训练，针对原模型在政治敏感话题的回避、CCP框架回答等问题调整价值对齐，面向需要对应价值偏好的通用辅助和智能体场景，同时支持研究用途。发布方自评显示，模型事实得分从2.32/5提升至2.98/5，含宣传内容的回答占比从22%降至0.9%，7个价值类别均有提升，通用能力与智能体基准无显著回退。训练仅使用SFT，未采用强化学习、偏好优化或架构修改，提供GGUF格式供本地部署；博客中的评估链接已失效，所有指标均为发布方自评，未经过独立验证。
 
-rss · Hugging Face Daily Papers · Nov 6, 00:00
+reddit · r/LocalLLaMA · /u/jacek2023 · Nov 6, 19:58
 
-**「为什么重要」** 该论文提供了 directional harness evolution 与 rescue training 的具体技术细节，直接关联 agent harness 设计与训练流水线优化。不同于追求普遍最优 harness，Harness-S 接受 harness 效用随策略学习非平稳变化的事实，通过固定同级池选择性救援失败，可能为训练 pipeline 提供新思路。
+**「为什么重要」** 这是目前公开少数针对Qwen系列完成西方价值对齐调整的开源27B模型，为需要调整模型价值偏好的本地智能体部署提供了可选基座。但其对齐效果、基准表现及价值调整的普适性仍需社区独立验证，尚未形成共识。
 
-**「可关注」** 可关注：Harness-S 的 sibling harness 池在策略训练期间固定，且仅在基础 harness 所有初始尝试失败时触发救援，这种&quot;失败即救援&quot;机制可能改变训练流水线的资源分配与延迟预期。
+**「可关注」** 可关注：Arete-27B仅通过SFT实现价值对齐调整，未使用RL或架构修改，若自评指标属实，可作为轻量价值对齐的参考实现。
 
-**Tags**: `#harness`, `#coding-agent`, `#eval`
+**Tags**: `#eval`, `#coding-agent`
 
 ---
 
 <a id="item-agent-engineer-3"></a>
-### [HF Daily Papers 发布 Drex 决策模型](https://huggingface.co/papers/2611.07854) ⭐️ 7.0/10
+### [BestRand 实现稳定低成本基准压缩](https://huggingface.co/papers/2611.00883) ⭐️ 6.0/10
 
-2026年11月6日，Hugging Face Daily Papers发布论文，介绍开源非自回归决策模型家族Drex，包含4个规格：8B（DLM）、9B（v1.5）、35B含3B激活参数（v2.0）、27B（Max）。该模型针对自回归LLM在决策任务中的生产痛点（输出不一致、需解析输出、成本与延迟高）设计，输入支持状态（文档、记录、智能体上下文，可选配图像）及带选项的问题，直接输出选项的概率分布，无需自回归解码。当前公开内容未包含详细性能基准与实现细节，主要面向需要决策模块的AI应用（含coding agent场景）开发者。
+2026-11-07，Hugging Face Daily Papers 分享论文 2611.00883，提出 BestRand 方法。该方法针对随机采样选择评估子集时的长尾不稳定性问题，通过分析误差分布发现大多数子集误差小但少数产生大误差，导致随机采样虽成本低却不稳定。BestRand 旨在提供稳定且低成本的基准压缩方案，但摘要未披露具体实现细节、性能对比数据或使用指南，完整信息需查阅原文。该研究对 AI Agent 工程师的模型评估工作流有潜在价值。
 
-rss · Hugging Face Daily Papers · Nov 6, 00:00
+rss · Hugging Face Daily Papers · Nov 7, 02:30
 
-**「为什么重要」** Drex作为开源非自回归决策模型，明确支持智能体上下文输入，为coding agent等场景的决策模块提供了绕开自回归LLM生产痛点的可选方案；但当前公开内容缺少性能基准与实现细节，实际生产表现尚未得到验证。
+**「为什么重要」** 基准压缩直接影响模型评估的时间与成本。BestRand 若验证有效，可为 agent 评估提供更可靠的子集选择策略，减少随机采样带来的结果波动，但具体效果仍需原文确认。
 
-**「可关注」** 可关注：Drex 支持智能体上下文输入，可评估其适配 coding agent 决策模块的可行性。
+**「可关注」** 随机采样在基准压缩中存在固有长尾不稳定性，BestRand 提供稳定替代方案，但具体实现与效果需参考论文 2611.00883。
 
-**Tags**: `#coding-agent`
+**Tags**: `#eval`
 
 ---
 
 <a id="item-agent-engineer-4"></a>
-### [ASR 榜单新增埃及、尼日利亚英语测试集](https://huggingface.co/blog/open-asr-leaderboard-liva) ⭐️ 6.8/10
+### [EvoMemState 状态中心记忆框架](https://huggingface.co/papers/2611.03743) ⭐️ 6.0/10
 
-2026年11月6日，Hugging Face官方博客宣布与Liva AI合作，向Open ASR Leaderboard新增两套私有对话式自发语音测试数据集，分别对应埃及英语、尼日利亚英语口音，时长1.34小时、1.55小时，转录格式为带标点、区分大小写、保留口吃等不流畅表达。本次是该榜单扩充口音覆盖的增量更新，此前已覆盖5种口音的脚本化与对话式语音数据，以及印度口音英语测试集。新增数据集上线后，榜单将基于Kachru的三圈理论拆分口音类别呈现更细粒度的性能 breakdown，面向ASR模型评估、语音AI Agent开发场景开放，用于补充低资源口音的评估覆盖。
+2026 年 11 月 7 日发布的研究提出 EvoMemState 状态中心记忆框架，通过引入关系状态与推理状态优化 LLM 个人智能体的长期记忆能力。该框架将记忆从独立事实升级为动态状态，显式建模新事实对旧事实的更新、约束与冲突关系。材料未提供完整技术细节、性能数据或实现资源。
 
-rss · Hugging Face Blog · Nov 6, 00:00
+rss · Hugging Face Daily Papers · Nov 7, 02:30
 
-**「为什么重要」** 本次更新填补了Open ASR Leaderboard在埃及、尼日利亚英语口音上的评估空白，新增的私有held-out数据集可降低基准刷分行为，让ASR模型性能对比更可信。
+**「为什么重要」** 该框架将记忆表示从静态事实转向动态状态，可能改变个人智能体的记忆管理方式。但材料未提供实验数据或落地资源，实际效果待验证。
 
-**「可关注」** 可关注：Open ASR Leaderboard新增的埃及、尼日利亚英语对话式测试集已开放用于ASR模型评估，可补充现有评估 harness 对低资源口音的覆盖。
+**「可关注」** 可关注：传统事实中心记忆忽略事实间的动态约束与优先级，EvoMemState 通过关系状态和推理状态显式建模这些维度。
 
-**Tags**: `#eval`
+**Tags**: `#memory`
 
 ---
 
 <a id="item-agent-engineer-5"></a>
-### [HF daily paper: Random Is Almost Enough? Stable and Low-Cost Benchmark Compression via BestRand](https://huggingface.co/papers/2611.00883) ⭐️ 6.0/10
+### [VisSearch-Bench 多模态视觉搜索评测基准发布](https://huggingface.co/papers/2611.04894) ⭐️ 6.0/10
 
-A research paper proposes BestRand, a stable and low-cost benchmark compression method for model evaluation, based on the finding that random subset sampling for benchmarks yields small errors with high probability but rare large errors due to a long-tailed error distribution.
+2026年11月7日Hugging Face Daily Papers汇总了arXiv论文2611.04894提出的VisSearch-Bench评测基准，该基准用于评估多模态智能体的长程视觉搜索与跨步骤视觉上下文管理能力，包含204个人工编写的7大领域、25个子领域任务，覆盖集合式视觉搜索、序列视觉搜索等任务类型。当前公开信息仅为二次聚合的截断摘要，无基准访问方式、完整技术细节或落地使用信息，需查阅全文才能获取可落地内容，影响面目前较窄，主要面向多模态智能体评测研究者。
 
-rss · Hugging Face Daily Papers · Nov 6, 00:00
+rss · Hugging Face Daily Papers · Nov 7, 02:30
 
-**Tags**: `#eval`
+**「为什么重要」** 该基准针对现有智能体评测在跨图像、跨步骤视觉信息关联能力评估上的空白设计，对多模态智能体评测工作有参考价值；但具体基准可用性、实际评测效果等尚未证实，需查阅全文确认。
+
+**「可关注」** 可关注：当前多数多模态智能体视觉搜索任务仅用图像识别初始实体后转向文本检索，对跨图像、跨步骤的视觉上下文关联能力评估覆盖不足，VisSearch-Bench针对该空白设计。
+
+**Tags**: `#eval`, `#memory`, `#multimodal-agent`
 
 ---
 
 ## AI Daily
 
 <a id="item-ai-daily-1"></a>
-### [OpenAI 合作 Hacktron 挖漏洞](https://openai.com/index/partnering-with-hacktron) ⭐️ 7.8/10
+### [OpenAI 与 Hacktron 合作开展系统漏洞测试](https://openai.com/index/partnering-with-hacktron) ⭐️ 8.8/10
 
-OpenAI 官方宣布与安全厂商 Hacktron 达成合作，将开展系统漏洞挖掘、第三方服务连接测试工作，以此强化前沿 AI 系统的安全防御能力。
+OpenAI 官方宣布与安全厂商 Hacktron 达成合作，将开展系统漏洞扫描、第三方服务连接测试两项核心工作，同时借助前沿 AI 技术强化自身安全防御能力。本次合作暂无公开的测试范围、时间周期及漏洞披露细则。
 
 rss · OpenAI Blog · Nov 6, 08:00
 
-**「为什么重要」** 本次是 OpenAI 官方公开的前沿 AI 安全防御新动作，反映出行业对 AI 系统安全性的重视程度持续提升。
+**「为什么重要」** 这是 OpenAI 首次公开披露与外部安全厂商开展系统性漏洞测试合作，直接指向前沿 AI 系统的供应链安全与防御能力建设，对行业安全实践有参考意义。
 
-**「可关注」** 可关注：OpenAI 后续公开的漏洞挖掘规则、测试范围及相关安全改进公告。
+**「可关注」** 可关注：第三方安全厂商参与前沿 AI 系统漏洞测试的协作模式与披露边界。
 
 **Tags**: `#lab`, `#policy`, `#industry`
 
 ---
 
 <a id="item-ai-daily-2"></a>
-### [OpenAI 发布 BioBasicsBench 湿实验室基准](https://openai.com/index/measuring-how-ai-agents-handle-wet-lab-science) ⭐️ 7.8/10
+### [GitHub Copilot 智能体工程指南发布](https://github.blog/ai-and-ml/github-copilot/beyond-code-generation-a-developers-guide-to-agentic-engineering/) ⭐️ 7.8/10
 
-OpenAI 官方发布 100 任务基准 BioBasicsBench，用于测量 AI agent 解读原始实验数据、处理日常湿实验室科学任务的能力。
-
-rss · OpenAI Blog · Nov 6, 00:00
-
-**「为什么重要」** 当前针对 AI agent 湿实验室能力的标准化评估工具稀缺，该基准为相关能力量化对比提供了可复用的框架。
-
-**「可关注」** 可关注：BioBasicsBench 的 100 项任务覆盖日常湿实验室场景，可作为相关 AI agent 湿实验室能力的量化评估参考。
-
-**Tags**: `#eval`, `#lab`, `#industry`
-
----
-
-<a id="item-ai-daily-3"></a>
-### [AI编程代理易被过时TODO分心](https://developers.googleblog.com/agent-distraction/) ⭐️ 7.8/10
-
-Google开发者博客发布内容指出，AI编程代理会将代码中的过时规格、已解决bug的TODO注释、滞后文档等误判为有效指令，导致执行分心，浪费token、时间甚至引发错误逻辑与决策。由于每月数百万次代理会话中手动统计分心频率不可行，Google团队提出通过TODO注释与对应bug工单状态的交叉比对，作为可自动提取的客观信号度量该问题，多变量回归分析（控制开发者、代码库复杂度等变量）显示无提示的bug绕路会带来统计显著的开销（p&lt;0.0001）。团队通过数千名工程师、数亿次代理步骤的分布式追踪量化了该问题，两类典型分心场景包括：代理调查无关bug时被2023年已修复的遗留TODO分心绕路，以及代理在调查目标bug时无提示“修复”关联旧bug导致范围蔓延，均需人类介入纠正。团队开发的TODO清理代理过去6个月已删除数千个确认过时的TODO引用，人类审核通过率超95%。
-
-rss · Google Developers AI · Nov 6, 00:00
-
-**「为什么重要」** 随着AI编程代理承担更复杂的编码任务，代码库中被长期遗忘的过时内容会给代理执行带来可量化的额外成本，此前因感知价值低被搁置的遗留TODO清理工作需重新评估优先级。
-
-**「可关注」** 可关注：通过TODO\(bug/...\)注释与对应bug工单状态的交叉比对，可客观度量AI编程代理的分心问题，全代码库扫描器、presubmit分析器与自动化清理代理是当前可落地的解决方案。
-
-**Tags**: `#agent`, `#industry`, `#eval`
-
----
-
-<a id="item-ai-daily-4"></a>
-### [GitHub 发布代理工程开发者指南](https://github.blog/ai-and-ml/github-copilot/beyond-code-generation-a-developers-guide-to-agentic-engineering/) ⭐️ 5.8/10
-
-GitHub 发布《Beyond code generation: A developer&\#x27;s guide to agentic engineering》开发者指南，提出将 AI 代理整合进软件开发生命周期的 Plan、Build、Verify、Observe 四阶段。文章引用数据称，2026 年 10 月 GitHub 单周提交量超过 12 亿次，同比增长 400%，超过 2025 全年总量；同时引用 Faros AI 研究指出，团队从低 AI 采用转向高 AI 采用时，PR 评审耗时增加 441%。该指南为思想领导力文章，未发布新模型或产品。
+GitHub 官方博客发布面向 Copilot 用户的智能体工程开发者指南。文章称 2026 年 10 月单周 GitHub 提交量达 12 亿次，同比增长超 400%，超过 2025 全年总量；Faros AI 研究显示高 AI 采用团队的 PR 审查时长上升 441%。指南建议将工作流从独立代码生成扩展至 Plan、Build、Verify、Observe 全阶段，以缓解 AI 加速实现后出现的审查与运维瓶颈。文中未对引用的统计数据提供第三方验证。
 
 rss · GitHub Blog · Nov 6, 22:15
 
-**「为什么重要」** 这篇指南用提交量增长和 PR 评审延迟数据，论证了单纯代码生成不等于生产力提升，代理工程可能解决 AI 采用带来的流程瓶颈。对正在评估 AI 代理落地策略的团队，它提供了一个可操作的四阶段框架。
+**「为什么重要」** 这标志着 GitHub 将 Copilot 定位从代码补全工具推向全生命周期智能体协作，同时用 adoption 与审查效率的负相关数据，为团队重新评估 AI 工作流提供参考。
 
-**「可关注」** 可关注：GitHub 将代理工程拆分为 Plan、Build、Verify、Observe 四阶段，并配套 Copilot 会话连续性、云沙箱、共享记忆、Copilot Dreaming 等特性，支撑跨设备、跨任务的持续开发。
+**「可关注」** 可关注：Copilot 云沙箱与会话连续性允许任务在关闭本机后继续执行，并在多客户端间恢复同一会话。
 
-**Tags**: `#industry`, `#agent`, `#product`
-
----
-
-<a id="item-ai-daily-5"></a>
-### [GPT-6 Cyber 传闻发布](https://mp.weixin.qq.com/s?__biz=MzIwNzc2NTk0NQ==&amp;mid=2247623182&amp;idx=1&amp;sn=1e4cc2b38d10ed51b771c1772c2770f6) ⭐️ 5.5/10
-
-自媒体夕小瑶科技说称OpenAI正式发布网络安全专用模型GPT-6 Cyber，该模型基于GPT-6 Astra打造，是上一代GPT-5.6 Cyber的继任者。据其描述，GPT-6 Cyber在Firefox代码审查中发现81个此前未知的高危漏洞，还为30个已知漏洞标注了更高严重程度并提供候选补丁；在Linux内核研究中复现了1724个漏洞，其中948个产出可用提权利用程序。但目前无OpenAI官方发布信息佐证，相关内容属于传闻。
-
-rss · 夕小瑶科技说 · Nov 6, 01:50
-
-**「为什么重要」** 若该模型能力属实，其在高危漏洞挖掘、验证及补丁辅助生成上的表现，将体现AI在网络安全工程场景的实用化进展，为代码安全审计、漏洞响应流程提供新参考。但需注意当前信息未获官方验证。
-
-**「可关注」** 可关注：OpenAI官方后续是否会对GPT-6 Cyber的发布及能力做公开说明，以核实相关传闻的真实性。
-
-**Tags**: `#model`, `#lab`, `#industry`
+**Tags**: `#product`, `#industry`
 
 ---
 
 ## AI Deals
 
 <a id="item-ai-deals-1"></a>
-### [本周Epic免费游戏 11.6~11.12](https://www.appinn.com/eggs-261106/) ⭐️ 8.0/10
+### [Epic 11.6-11.12 限免游戏汇总](https://www.appinn.com/eggs-261106/) ⭐️ 8.0/10
 
-你看到的内容可能由第三方 AI 基于小众软件文章提炼总结而成，可能与原文真实意图存在偏差。不代表小众软件观点和立场。请&lt;a href=&quot;https://www.appinn.com/eggs-261106/&quot; target=&quot;\_blank&quot;&gt;点击链接阅读原文&lt;/a&gt;细致比对和校验。&lt;br /&gt;&lt;br /&gt;本周（11.6~11.12）Epic平台开放限时免费领取活动：电脑端可领取《浮游世界/Flotsam》，安卓及iOS端可领取《巴别塔圣歌/Chants of Sennaar》（本次移动端限免存在锁区情况）；《遗忘国度：放置勇士/Idle Champions of the Forgotten Realms》全端本体长期免费，本周登录Epic版本可领取限时Morte’s Renown Pack礼包，内含5名角色、每名角色32个白金宝箱、药水及专属魔宠，需进入游戏内领取。活动截止时间为11月12日。
+你看到的内容可能由第三方 AI 基于小众软件文章提炼总结而成，可能与原文真实意图存在偏差。不代表小众软件观点和立场。请点击链接阅读原文细致比对和校验。
+
+本周（11.6-11.12）Epic平台开展限时免费福利活动：电脑端可免费领取支持中文的《浮游世界/Flotsam》；移动端可免费领取锁区的《巴别塔圣歌/Chants of Sennaar》Android及iOS版本，该作Epic页面列有繁体中文支持；《遗忘国度：放置勇士/Idle Champions of the Forgotten Realms》本体长期免费，电脑版不支持中文，本周登录Epic版本可领取限时Morte’s Renown Pack礼包，内含5名角色、每名角色32个白金宝箱、药水及专属魔宠，礼包需在游戏内领取。活动周期为11月6日至11月12日，具体截止时间以Epic平台页面为准。
 
 rss · 小众软件 · Nov 6, 08:21
 
-**「为什么重要」** 本次限免及礼包领取窗口仅11月6日至12日有效，《浮游世界》《巴别塔圣歌》为平时需付费购买的游戏，《遗忘国度》的限时角色礼包也为周期性免费获取，错过本次机会后将无法免费领取。
+**「为什么重要」** 三款游戏在Steam均获得玩家正向评价，《巴别塔圣歌》好评率97%，《浮游世界》好评率88%，偏好对应品类的玩家可零成本体验。
 
-**「可关注」** 可关注：Epic平台本周限免的《巴别塔圣歌》移动端支持繁体中文，《浮游世界》PC端支持简体中文，领取后永久入库可离线游玩；《遗忘国度：放置勇士》本体全端长期免费，需登录Epic版本游戏内领取限时礼包。
+**「可关注」** 可关注：《巴别塔圣歌》移动端锁区，领取前需确认Epic账号所在区域是否在支持范围内；《遗忘国度：放置勇士》本体长期免费，可常驻持有，本次限时礼包需登录Epic版游戏内领取。
 
-**Tags**: `#promo`, `#limited-free`, `#free-game`
+**Tags**: `#promo`, `#limited-free`, `#game`
+
+---
+
+<a id="item-ai-deals-2"></a>
+### [Handbrake 免费iOS驾驶日志上线](https://apps.apple.com/us/app/handbrake-driving-log/id6822426461) ⭐️ 6.0/10
+
+HN用户hcabral分享免费iOS驾驶日志应用Handbrake，该应用由开发者受家中孩子开始开车的启发制作，无广告、无追踪、无分析工具，所有数据存储于用户个人iCloud账号，iOS用户可直接免费下载使用，材料未提及付费限制与失效时间。
+
+rss · HN Free API / Credits · Nov 6, 23:02
+
+**「为什么重要」** 该应用完全由用户掌控数据所有权，无第三方数据采集与广告干扰，同时支持加速、刹车、地图等驾驶数据记录，适配注重隐私的iOS驾驶者需求。
+
+**「可关注」** 可关注：该应用仅适配iOS平台，数据存储依赖用户iCloud账号，无安卓版本及本地存储选项。
+
+**Tags**: `#free-tier`, `#limited-free`
 
 ---
