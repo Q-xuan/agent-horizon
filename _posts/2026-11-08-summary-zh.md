@@ -5,24 +5,23 @@ date: 2026-11-08
 lang: zh
 ---
 
-> 从 158 条内容中筛选出 7 条重要资讯。
+> 从 158 条内容中筛选出 6 条重要资讯。
 
-<nav id="ah-toc" class="ah-toc" aria-label="目录"><span class="ah-toc-title">目录</span><ul><li><a href="#sec-harness-arch"><span class="ah-toc-name">Harness 架构</span><span class="ah-toc-count">2条</span></a></li><li><a href="#sec-agent-engineer"><span class="ah-toc-name">Agent 工程师日报</span><span class="ah-toc-count">2条</span></a></li><li><a href="#sec-ai-deals"><span class="ah-toc-name">AI 羊毛</span><span class="ah-toc-count">3条</span></a></li></ul></nav>
+<nav id="ah-toc" class="ah-toc" aria-label="目录"><span class="ah-toc-title">目录</span><ul><li><a href="#sec-harness-arch"><span class="ah-toc-name">Harness 架构</span><span class="ah-toc-count">2条</span></a></li><li><a href="#sec-agent-engineer"><span class="ah-toc-name">Agent 工程师日报</span><span class="ah-toc-count">2条</span></a></li><li><a href="#sec-ai-deals"><span class="ah-toc-name">AI 羊毛</span><span class="ah-toc-count">2条</span></a></li></ul></nav>
 
 ---
 
 **[Harness 架构](#sec-harness-arch)**
-1. [Agent Framework python-1.25.0 发布](#item-harness-arch-1) ⭐️ 7.8/10
-2. [Cloudflare security-audit-skill 发布](#item-harness-arch-2) ⭐️ 5.0/10
+1. [Microsoft Agent Framework Python 1.25.0 发布](#item-harness-arch-1) ⭐️ 7.8/10
+2. [Cloudflare security-audit-skill 开源](#item-harness-arch-2) ⭐️ 5.0/10
 
 **[Agent 工程师日报](#sec-agent-engineer)**
-1. [Claude Code 配置泄露 1122 文件](#item-agent-engineer-1) ⭐️ 7.0/10
-2. [Anthropic 发布 Agent 记忆组件研究](#item-agent-engineer-2) ⭐️ 7.0/10
+1. [Anthropic 发布 Agent Memory 组件研究](#item-agent-engineer-1) ⭐️ 7.0/10
+2. [Claude Code 本地设置密钥泄露事件](#item-agent-engineer-2) ⭐️ 6.0/10
 
 **[AI 羊毛](#sec-ai-deals)**
-1. [Quiz Toolkit 免费答题工具上线](#item-ai-deals-1) ⭐️ 7.0/10
-2. [RenderPixels 提供 50 次免费 AI 生图额度](#item-ai-deals-2) ⭐️ 6.0/10
-3. [Certadomain 免费域名安全检测工具上线](#item-ai-deals-3) ⭐️ 5.0/10
+1. [RenderPixels 开放 50 次免费 AI 图像生成额度](#item-ai-deals-1) ⭐️ 7.0/10
+2. [Certadomain 免费域名安全检测上线](#item-ai-deals-2) ⭐️ 6.0/10
 
 ---
 
@@ -32,34 +31,30 @@ lang: zh
 <p class="ah-sec-meta"><a class="ah-anchor" href="#sec-harness-arch" aria-label="链接到本节">#</a><a class="ah-back" href="#ah-toc">↑ 回到目录</a></p>
 
 <a id="item-harness-arch-1"></a>
-### [Agent Framework python-1.25.0 发布](https://github.com/microsoft/agent-framework/releases/tag/python-1.25.0) ⭐️ 7.8/10
+### [Microsoft Agent Framework Python 1.25.0 发布](https://github.com/microsoft/agent-framework/releases/tag/python-1.25.0) ⭐️ 7.8/10
 
-Microsoft agent-framework 发布 python-1.25.0。本次更新在 agent-framework-core 和 agent-framework-foundry-hosting 中新增可调用 MCP 发现批准策略，并支持 Foundry Toolbox 工具权限控制，包括工具名与只读过滤器、显式调用者覆盖及保留工具策略刷新。同时多个包发生重大变更：最低 Python 版本要求升至 3.11，MCP 发现限制为每目录 100 页/1000 项，工作流执行器绑定单一授权范围，OpenTelemetry 跨度命名对齐 GenAI 约定，Foundry Local 迁移至 SDK 2.3.1，Hyperlight 沙箱异常详情脱敏，并扩展 Redis 支持至 Python 3.15。
+Microsoft Agent Framework Python 1.25.0 正式发布。核心新增可调用 MCP 发现审批策略与 Foundry Toolbox 审批元数据处理，支持工具名/只读过滤、显式调用者覆盖及保留工具策略刷新。本版本包含多项破坏性变更：最低 Python 版本提升至 3.11，MCP 发现限制为 100 页/1000 项，工作流执行器绑定单一授权范围，OpenTelemetry 跨度命名对齐 GenAI 约定，Hyperlight 异常详情脱敏，Foundry Local 迁移至 SDK 2.3.1。
 
 github · eavanvalkenburg · 11月7日 15:52
 
-**「设计要点」** MCP 工具发现与权限控制下沉至 agent-framework-core，通过可调用批准策略和 Foundry Toolbox 元数据实现细粒度访问控制。工作流执行器绑定单一授权范围并在模型调用前拦截跨范围执行，Hyperlight 沙箱隔离主机工具异常详情与缓存策略。
+**「设计要点」** MCP 工具审批层引入可调用策略接口，允许 harness 注入自定义授权逻辑；发现阶段默认 30 秒超时与页数上限防止失控扫描。工作流执行器与会话强制绑定单一授权域，在模型调用前拦截跨范围复用，减少横向权限扩散。
 
-**「改了什么」** 新增可调用 MCP 发现批准策略与 Foundry Toolbox 细粒度工具权限控制。最低 Python 版本要求升至 3.11，MCP 发现限制为每目录 100 页/1000 项且默认超时 30 秒，工作流执行器绑定单一授权范围并拒绝跨范围执行，OpenTelemetry 跨度命名对齐 GenAI 约定，Foundry Local 迁移至 SDK 2.3.1，Hyperlight 默认脱敏异常详情，Redis 集成支持扩展至 Python 3.15。
+**「改了什么」** 新增可调用 MCP discovery approval policy 与 Foundry Toolbox approval metadata 处理能力。Python 3.10 支持移除，MCP 发现上限收紧至 100 页/1000 项，工作流执行器绑定单一授权范围，OpenTelemetry 跨度重命名，Hyperlight 异常脱敏，Foundry Local SDK 升级至 2.3.1。
 
-**标签**: `#mcp`, `#tools`, `#permissions`
+**标签**: `#mcp`, `#permissions`, `#tools`
 
 ---
 
 <a id="item-harness-arch-2"></a>
-### [Cloudflare security-audit-skill 发布](https://github.com/cloudflare/security-audit-skill) ⭐️ 5.0/10
+### [Cloudflare security-audit-skill 开源](https://github.com/cloudflare/security-audit-skill) ⭐️ 5.0/10
 
-Cloudflare 发布面向安全审计的 coding-agent skill。该 skill 通过编排隔离子代理，依次完成侦察、覆盖引导搜寻、候选验证、结构化输出、独立记录验证、目标中立报告全流程，可输出经独立验证的机器可读审计发现。它是 Cloudflare 漏洞发现 harness 的底层基础，相关设计出自《Build your own vulnerability harness》。
+Cloudflare 开源 security-audit-skill，一个将 coding agent 转为安全审计员的 skill。它编排隔离 subagent 依次执行侦察、覆盖引导搜索、候选验证、结构化输出、独立记录验证和目标中性报告六阶段审计流程。该 skill 构成 Cloudflare 内部漏洞发现 harness 的基础，对应其 &\#x27;Build your own vulnerability harness&\#x27; 一文描述。当前材料仅提供高层功能描述，未披露具体技术实现细节、代码路径或架构分解。
 
-rss · GitHub Trending Daily · 11月8日 01:59
+rss · GitHub Trending Daily · 11月8日 02:38
 
-**「设计要点」** 运行时采用隔离子代理编排模式，按多阶段流水线执行审计任务，构成 Cloudflare 漏洞发现 harness 的核心组件。
+**「设计要点」** skill 采用多阶段流水线架构，通过隔离 subagent 实现侦察、覆盖引导搜索、候选验证等阶段，输出机器可读且独立验证的发现结果。材料未披露具体运行时隔离机制、subagent 通信协议或权限边界设计。
 
-**「改了什么」** 新增面向安全审计场景的 coding-agent skill，支持多阶段隔离子代理编排与机器可读审计发现输出。
-
-**「评论」** 暂无社区评论内容。
-
-**标签**: `#subagents`, `#sandbox`, `#tools`, `#eval`
+**标签**: `#subagents`, `#sandbox`, `#tools`
 
 ---
 
@@ -69,36 +64,36 @@ rss · GitHub Trending Daily · 11月8日 01:59
 <p class="ah-sec-meta"><a class="ah-anchor" href="#sec-agent-engineer" aria-label="链接到本节">#</a><a class="ah-back" href="#ah-toc">↑ 回到目录</a></p>
 
 <a id="item-agent-engineer-1"></a>
-### [Claude Code 配置泄露 1122 文件](https://apiiro.com/blog/coding-agents-leaking-secrets-github-dont-ask-again) ⭐️ 7.0/10
+### [Anthropic 发布 Agent Memory 组件研究](https://www.anthropic.com/research/components-of-agent-memory) ⭐️ 7.0/10
 
-2026 年 11 月 7 日公开的安全报告显示，1,122 个公开 GitHub 文件中存在 Claude Code 相关本地配置泄露的密码等敏感信息。Claude Code 团队回应称，.claude/settings.local.json 本应保留在本地，工具创建该文件时会自动加入.gitignore，本次泄露源于用户手动创建并提交该文件到公开仓库。该事件影响使用 Claude Code 的开发者，暴露了 coding agent 本地配置的敏感信息管理风险。
+2026 年 11 月 7 日 Anthropic 发布《The Components of Agent Memory》研究，系统梳理 Agent 记忆的核心组件与实现逻辑。HN 讨论聚焦当前编码 Agent（如 Claude Code、Cursor）的实际落地痛点：跨项目记忆能力缺失、自动生成的记忆条目易造成上下文膨胀，多数用户会删除 95%的自动记忆。研究提出「记忆可视为对未来需求的预测」，但社区对该定义存在争议，同时讨论指出 wiki+搜索的记忆方案效果优于 dreaming 方案。
 
-hackernews · shmulc · 11月7日 20:45 · [社区讨论](https://news.ycombinator.com/item?id=50407882)
+hackernews · geoffbp · 11月7日 06:39 · [社区讨论](https://news.ycombinator.com/item?id=50402212)
 
-**「为什么重要」** 该事件是 coding agent 本地配置敏感信息泄露的明确公开实例，值得开发者警惕本地配置的提交风险。目前 Claude Code 团队尚未推出密钥自动清理功能，后续防护机制仍不明确。
+**「为什么重要」** 该研究是 Anthropic 首次系统输出 Agent 记忆架构的官方框架，直接对应当前编码 Agent 在生产环境中的记忆管理痛点，为后续记忆方案选型提供了可参考的依据。
 
-**「可关注」** 可关注：Claude Code 当前不会自动清理配置中的密钥，需手动确保.claude/settings.local.json 等本地配置不提交到公开仓库，也可参考社区方案通过临时运行环境、密码管理器调用、API 代理限制 agent 权限降低风险。
+**「可关注」** 可关注：当前主流编码 Agent 普遍存在跨项目记忆能力缺失、自动记忆条目信噪比低的问题，wiki+搜索的记忆方案在社区实测中效果优于 dreaming 方案。
 
-**「评论」** 社区用户澄清标题存在误导，单独点击“Don&\#x27;t Ask Again”不会直接泄露密码，泄露前提是用户手动提交了包含已批准含密钥命令的本地配置到公开仓库。另有用户分享通过临时 VM、API 代理限制 agent 权限，或使用密码管理器避免 agent 直接接触凭证的实践。
+**「评论」** 社区共识是当前 Agent 记忆的跨项目限制、自动记忆实用性低是普遍痛点，实际使用中用户会删除大部分自动生成的记忆条目；分歧在于研究提出的「记忆是预测未来需求」的定义存在争议，部分开发者认为该定义既回避了模型无法持续学习的核心问题，也混淆了人类记忆与机器记忆的本质差异。
 
-**标签**: `#coding-agent`, `#permissions`, `#observability`
+**标签**: `#memory`, `#harness`, `#coding-agent`, `#observability`
 
 ---
 
 <a id="item-agent-engineer-2"></a>
-### [Anthropic 发布 Agent 记忆组件研究](https://www.anthropic.com/research/components-of-agent-memory) ⭐️ 7.0/10
+### [Claude Code 本地设置密钥泄露事件](https://apiiro.com/blog/coding-agents-leaking-secrets-github-dont-ask-again) ⭐️ 6.0/10
 
-2026 年 11 月 7 日，Anthropic 发布《The Components of Agent Memory》研究，提出代理记忆组成框架。社区讨论围绕该理论与当前编码代理、harness 的实际记忆限制 gap 展开，涉及跨项目记忆缺失、自动生成记忆实用性低、不同记忆方案成本收益对比等具体问题，直接影响面向 coding agent 和 harness 的工程师群体。
+2026 年 11 月 7 日，第三方安全机构 Apiiro 发布研究称，Claude Code 用于持久化“不再询问”命令批准的本地设置文件.claude/settings.local.json，已被提交至 1122 个公开 GitHub 仓库，其中部分文件包含用户手动输入的密钥或密码，存在敏感信息暴露风险。Claude Code 团队回应称该文件本应仅保留在本地，工具创建时会自动加入.gitignore，本次事件系用户手动创建并提交文件导致，团队正在评估新增密钥清理功能。影响范围为使用 Claude Code 并误提交本地设置的开发者，以及公开仓库中可能暴露的对应服务密钥。
 
-hackernews · geoffbp · 11月7日 06:39 · [社区讨论](https://news.ycombinator.com/item?id=50402212)
+hackernews · shmulc · 11月7日 20:45 · [社区讨论](https://news.ycombinator.com/item?id=50407882)
 
-**「为什么重要」** 该研究是 Anthropic 官方输出的代理记忆架构理论框架，配套社区讨论直接反映当前 coding agent harness 的落地痛点，是少有的理论输出与工程实践反馈同时可参考的材料。目前讨论尚未形成统一结论，但已明确暴露出现有记忆方案的共性短板。
+**「为什么重要」** 这是少有的针对 coding agent 本地设置持久化的第三方安全研究，且获得官方团队公开回应，揭示了“不再询问”权限记忆机制与密钥存储的潜在冲突，对 agent 权限与记忆设计有直接参考价值。目前密钥清理功能尚未落地，实际修复效果待验证。
 
-**「可关注」** 可关注：当前主流 harness 的自动记忆生成质量偏低、跨项目记忆能力缺失，是社区反馈最集中的工程痛点；研究指出的 wiki+搜索组合记忆方案边际收益高于 dreaming，可作为记忆方案选型的参考方向。
+**「可关注」** 可关注：coding agent 的“不再询问”类权限记忆若持久化到本地文件，需配套密钥清理或强制本地存储校验机制，避免用户误提交导致敏感信息泄露。
 
-**「评论」** 社区讨论存在明显分歧：部分用户认为研究回避了模型无法持续学习权重的核心问题，另一部分用户聚焦工程落地，普遍反馈当前记忆能力仅限单项目、自动生成的记忆实用性低，跨代理会话转录是更可靠的记忆来源；还有用户从研究图表推断 wiki+搜索组合的记忆效果优于 dreaming 方案，且搜索成本可能更低。
+**「评论」** 社区认为研究标题存在误导，泄露的前提是用户手动提交了.claude 目录及含密钥的命令批准记录，而非“不再询问”功能本身直接导致密钥泄露；另有用户分享通过临时虚拟机+API 代理限制 agent 外部服务权限的实践。
 
-**标签**: `#memory`, `#harness`, `#coding-agent`
+**标签**: `#coding-agent`, `#permissions`, `#memory`
 
 ---
 
@@ -108,46 +103,31 @@ hackernews · geoffbp · 11月7日 06:39 · [社区讨论](https://news.ycombina
 <p class="ah-sec-meta"><a class="ah-anchor" href="#sec-ai-deals" aria-label="链接到本节">#</a><a class="ah-back" href="#ah-toc">↑ 回到目录</a></p>
 
 <a id="item-ai-deals-1"></a>
-### [Quiz Toolkit 免费答题工具上线](https://quiztoolkit.com/) ⭐️ 7.0/10
+### [RenderPixels 开放 50 次免费 AI 图像生成额度](https://renderpixels.com/) ⭐️ 7.0/10
 
-Show HN 用户 thepolymoth 发布免费网页答题主持应用 Quiz Toolkit，无账号、无订阅要求，所有数据存储于用户本地浏览器，支持现场/线上答题、抢答环节、音视频线索，还提供主持人手机端远程控制功能，无明确使用期限或额度限制。
+开发者 vivgui 在 HN 发布 RenderPixels 工具，提供 50 次免费 AI 图像生成额度，支持通过 MCP 调用各类 AI 模型生成图像，当前可领取，材料未提及有效期、地区等限制说明。
 
-rss · HN Free API / Credits · 11月7日 19:27
+rss · HN Free API / Credits · 11月8日 01:12
 
-**「为什么重要」** 对于偶尔有亲友聚会、线下活动答题主持需求的用户，该工具无需支付订阅费、无需注册，避免了订阅制工具的闲置成本，开箱即可使用。
+**「为什么重要」** 该工具支持通过 MCP 调用多类 AI 模型生成图像，50 次免费额度可降低开发者测试 MCP 图像生成能力的成本。
 
-**「可关注」** 可关注：该工具所有数据仅存于本地浏览器，换设备或清空浏览器缓存会导致数据丢失，仅适合单次临时使用场景。
+**「可关注」** 可关注：该工具需通过 MCP 调用图像生成模型，适合有 MCP 集成需求的开发者测试使用，当前无明确领取限制说明。
 
-**标签**: `#free-tier`, `#promo`, `#web-app`, `#no-subscription`
+**标签**: `#credits`, `#promo`, `#limited-free`, `#api`
 
 ---
 
 <a id="item-ai-deals-2"></a>
-### [RenderPixels 提供 50 次免费 AI 生图额度](https://renderpixels.com/) ⭐️ 6.0/10
+### [Certadomain 免费域名安全检测上线](https://certadomain.com/en/index.html) ⭐️ 6.0/10
 
-Show HN 用户 vivgui 发布 RenderPixels 服务，支持通过 MCP 调用任意 AI 生成图像，提供 50 次免费生成额度；目前未公开领取方式、有效期、地区限制等规则，也未提及截止时间。
-
-rss · HN Free API / Credits · 11月8日 01:12
-
-**「为什么重要」** 目前仅确认存在 50 次免费额度公告，具体领取与使用规则未公开，暂无法判断长期可用性。
-
-**「可关注」** 可关注：该服务基于 MCP 协议对接多 AI 生图模型，但免费额度的使用限制与合规规则尚未公开。
-
-**标签**: `#credits`, `#free-tier`, `#promo`
-
----
-
-<a id="item-ai-deals-3"></a>
-### [Certadomain 免费域名安全检测工具上线](https://certadomain.com/en/index.html) ⭐️ 5.0/10
-
-HN 用户 ytkoka 在 Show HN 板块分享 Certadomain 工具，宣称提供免费的 DMARC 检查、子域名接管检测、相似域名检查功能，面向有域名管理需求的开发者。目前该工具未公开具体使用额度、限制及有效期，也无公开信息验证其功能真实性。
+Hacker News 用户 ytkoka 发布 Show HN 帖子，介绍免费域名安全检测服务 Certadomain，官方站点为 certadomain.com，支持 DMARC 校验、子域名接管检测、相似域名检查三项功能。目前该服务未公开额度上限、领取条件、截止时间及详细使用限制说明。
 
 rss · HN Free API / Credits · 11月7日 14:47
 
-**「为什么重要」** 该 HN 帖子仅获 1 个点赞、0 评论，尚无社区使用反馈，工具也未披露详细使用规则，实际可用性与合规性均待验证，暂无明显优先领取价值。
+**「为什么重要」** 域名安全检测类工具多为付费产品，Certadomain 免费开放三项核心检测能力，可满足开发者、运维人员快速排查域名基础安全风险的需求。
 
-**「可关注」** 可关注：该工具暂未公开使用限制、额度及有效期，使用前需自行验证功能可用性与服务合规性。
+**「可关注」** 可关注：该服务目前未公开服务可持续性、隐私政策及具体使用限制，使用前建议先核实相关条款，避免数据或使用风险。
 
-**标签**: `#free-tier`
+**标签**: `#free-tier`, `#promo`, `#limited-free`
 
 ---
