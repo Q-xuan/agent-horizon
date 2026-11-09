@@ -5,24 +5,21 @@ date: 2026-11-09
 lang: zh
 ---
 
-> 从 148 条内容中筛选出 7 条重要资讯。
+> 从 150 条内容中筛选出 6 条重要资讯。
 
-<nav id="ah-toc" class="ah-toc" aria-label="目录"><span class="ah-toc-title">目录</span><ul><li><a href="#sec-harness-arch"><span class="ah-toc-name">Harness 架构</span><span class="ah-toc-count">4条</span></a></li><li><a href="#sec-agent-engineer"><span class="ah-toc-name">Agent 工程师日报</span><span class="ah-toc-count">2条</span></a></li><li><a href="#sec-ai-daily"><span class="ah-toc-name">AI 日报</span><span class="ah-toc-count">1条</span></a></li></ul></nav>
+<nav id="ah-toc" class="ah-toc" aria-label="目录"><span class="ah-toc-title">目录</span><ul><li><a href="#sec-harness-arch"><span class="ah-toc-name">Harness 架构</span><span class="ah-toc-count">3条</span></a></li><li><a href="#sec-agent-engineer"><span class="ah-toc-name">Agent 工程师日报</span><span class="ah-toc-count">3条</span></a></li></ul></nav>
 
 ---
 
 **[Harness 架构](#sec-harness-arch)**
-1. [openai-agents-js v0.22.0-alpha.2 发布](#item-harness-arch-1) ⭐️ 8.3/10
-2. [Agents SDK alpha.7 发布](#item-harness-arch-2) ⭐️ 7.8/10
-3. [Anthropic Agent Skills 仓库 trending](#item-harness-arch-3) ⭐️ 5.0/10
-4. [Cloudflare security-audit-skill 开源](#item-harness-arch-4) ⭐️ 5.0/10
+1. [OpenAI Agents SDK v0.24.0-alpha.7 发布](#item-harness-arch-1) ⭐️ 8.8/10
+2. [openai-agents-js v0.22.0-alpha.2 发布](#item-harness-arch-2) ⭐️ 7.8/10
+3. [Cloudflare 安全审计工具开源](#item-harness-arch-3) ⭐️ 5.5/10
 
 **[Agent 工程师日报](#sec-agent-engineer)**
-1. [SQLite parse\_number 扩展 C/Rust 性能对比](#item-agent-engineer-1) ⭐️ 7.0/10
-2. [Mihail Eric 谈 Stanford CS146S 与 Monaco AI](#item-agent-engineer-2) ⭐️ 7.0/10
-
-**[AI 日报](#sec-ai-daily)**
-1. [Claude 误删芝大教授全年讲义](#item-ai-daily-1) ⭐️ 5.0/10
+1. [Stanford CS146S 谈 AI 原生工程教学](#item-agent-engineer-1) ⭐️ 6.0/10
+2. [Sketchpad：VLM 精确算术验证](#item-agent-engineer-2) ⭐️ 6.0/10
+3. [Kimi K3.1 Pro Coder 775GB 量化版公开](#item-agent-engineer-3) ⭐️ 6.0/10
 
 ---
 
@@ -32,60 +29,47 @@ lang: zh
 <p class="ah-sec-meta"><a class="ah-anchor" href="#sec-harness-arch" aria-label="链接到本节">#</a><a class="ah-back" href="#ah-toc">↑ 回到目录</a></p>
 
 <a id="item-harness-arch-1"></a>
-### [openai-agents-js v0.22.0-alpha.2 发布](https://github.com/openai/openai-agents-js/releases/tag/v0.22.0-alpha.2) ⭐️ 8.3/10
+### [OpenAI Agents SDK v0.24.0-alpha.7 发布](https://github.com/openai/openai-agents-python/releases/tag/v0.24.0-alpha.7) ⭐️ 8.8/10
 
-这是 OpenAI JS agents SDK 的 v0.22.0-alpha.2 预览版本，新增原生 fileSearch、codeInterpreter、imageGeneration 工具、A2A 1.0 协议连接、应用托管 SessionStore 会话持久化、RunBudget 运行预算控制等核心能力。该预览版本暂不支持 MCP、手动工具、环境、原生子代理、目标、可移植检查点等特性，升级时需保持 5 个 bundled SDK 包版本一致，替换已移除的 SDKRunner 桥接与迁移导入。
+OpenAI Agents SDK v0.24.0-alpha.7 引入 classic/native 运行时分裂，执行器写入策略默认改为 strict，新增 CustomStorage 持久化会话，并集成 FileSearch、CodeInterpreter、ImageGeneration 等托管工具。该版本包含多项破坏性变更，包括 MCP 审批模式重命名、子步骤回调签名调整，以及 ElicitationRequest 类型拆分，升级前需审查环境兼容性。
 
-github · markstuart-oai · 11月8日 08:27
+github · markstuart-oai · 11月8日 07:05
 
-**「设计要点」** 原生运行时拆分至独立@openai/agents-codex 包，原生与经典代理、状态完全隔离；A2A 1.0 适配器的授权、持久化、执行与不确定变更调和由应用自行负责；新环境默认开启 strict 写入策略，仅允许工作区写入与显式授予的 writableRoots。
+**「设计要点」** 运行时拆分为 classic 与 native 双线，classic 通过 agents.classic 保留 v0 行为。执行器层默认启用 strict 写入策略，仅工作目录可写，需通过 writable\_roots 扩展。存储层新增 CustomStorage 接口支持应用自有持久化，托管工具通过兼容的 Responses provider 提供，与本地执行和经典对象保持隔离。
 
-**「改了什么」** 新增原生 fileSearch\(\)、codeInterpreter\(\)、imageGeneration\(\)工具，webSearch\(\)补充过滤、位置、工具选择与引用详情能力；新增 A2A 1.0 连接、应用托管 SessionStore（含 fileSessionStore 本地适配器）、RunBudget、turn 精确控制等原生运行时能力；移除实验性 SDKRunner 桥接与@openai/agents/migration 导入，原生与经典工作流正式分离。
+**「改了什么」** 相对 v0.24.0-alpha.6，新增 classic 运行时导入路径、strict 默认写入策略、CustomStorage/SQLiteSessionStore、托管工具集成、语音工作流、RunBudget 使用预算、MCP 资源与提示读取、本地执行支持。破坏性变更包括：approval\_mode 的 auto/approve 重命名为 native/preapproved，NativeAgents.before\_step 参数改为 ChildStepContext，ElicitationRequest 拆分为 FormRequest 与 UrlRequest。
 
-**「评论」** 暂无社区评论内容。
-
-**标签**: `#runtime`, `#tools`, `#a2a`, `#memory`, `#sandbox`
+**标签**: `#runtime`, `#tools`, `#memory`, `#sandbox`, `#permissions`
 
 ---
 
 <a id="item-harness-arch-2"></a>
-### [Agents SDK alpha.7 发布](https://github.com/openai/openai-agents-python/releases/tag/v0.24.0-alpha.7) ⭐️ 7.8/10
+### [openai-agents-js v0.22.0-alpha.2 发布](https://github.com/openai/openai-agents-js/releases/tag/v0.22.0-alpha.2) ⭐️ 7.8/10
 
-OpenAI 官方发布 Python Agents SDK v0.24.0-alpha.7，首次同时支持 Classic 与 native 双运行时。新增自定义持久化会话存储、托管工具（FileSearch、CodeInterpreter、ImageGeneration）、上下文与完成钩子、使用预算（RunBudget）以及本地执行能力。环境写入策略默认改为 strict，影响跨平台兼容性与沙箱隔离。
+openai-agents-js v0.22.0-alpha.2 是 OpenAI 发布的 JavaScript SDK 预览版本。该版本引入原生工具（fileSearch\(\)、codeInterpreter\(\)、imageGeneration\(\)）与 A2A 1.0 协议支持，新增 RunBudget 和 maxModelSteps 运行控制，以及应用拥有的 SessionStore 会话持久化。当前预览版明确限制不支持 MCP、手动工具、环境、原生子代理、目标或可移植检查点。升级需同步更新五个 bundled SDK 包，并替换已移除的 SDKRunner bridge。
 
-github · markstuart-oai · 11月8日 07:05
+github · markstuart-oai · 11月8日 08:27
 
-**「设计要点」** 运行时采用 Classic 与 native 双轨架构，通过 \`agents.classic\` 保留 v0 工作流；存储层支持 \`CustomStorage\` 但初始排除原生工具、 Environments 与子代理的自动持久化；执行环境默认 strict 写入策略仅开放工作目录，托管工具依赖标准 Responses 提供商与 API-key 认证。
+**「设计要点」** 原生运行时迁移至独立的 @openai/agents-codex 包，应用层仍通过 @openai/agents 统一导入。原生与经典代理状态相互隔离，应用负责授权、持久存储、执行及不确定突变的协调；新环境默认启用 writePolicy: &\#x27;strict&\#x27; 执行策略。
 
-**「改了什么」** 环境写入策略默认从 legacy 改为 strict，模型目录中 gpt-6-astra、gpt-6.1-sol、gpt-5.6-sol 默认推理努力从 low 升至 medium；MCP 批准模式重命名（auto→native，approve→preapproved），\`NativeAgents.before\_step\` 回调签名变更，\`ElicitationRequest\` 拆分为 \`FormRequest\` 与 \`UrlRequest\`，同时新增 \`SessionStore\`、\`SQLiteSessionStore\`、\`RunBudget\`、\`project\_glob\`/\`project\_grep\` 及 \`NativeSessionVoiceWorkflow\`。
+**「改了什么」** 新增 fileSearch\(\)、codeInterpreter\(\)、imageGeneration\(\) 原生工具及 webSearch\(\) 增强，支持流式进度与保留结果。引入 maxModelSteps 精确步进控制、RunBudget 资源限制、应用拥有的 SessionStore 持久化，以及基于 JSON-RPC 轮询的 A2A 1.0 远程代理通信。
 
-**标签**: `#runtime`, `#tools`, `#storage`, `#sandbox`
+**标签**: `#runtime`, `#tools`, `#memory`, `#permissions`, `#a2a`
 
 ---
 
 <a id="item-harness-arch-3"></a>
-### [Anthropic Agent Skills 仓库 trending](https://github.com/anthropics/skills) ⭐️ 5.0/10
+### [Cloudflare 安全审计工具开源](https://github.com/cloudflare/security-audit-skill) ⭐️ 5.5/10
 
-这是 Anthropic 官方为 Claude 实现的 Agent Skills 系统，以 \`anthropics/skills\` 公共仓库形式出现在 GitHub trending。Skills 是 Claude 动态加载的指令、脚本和资源文件夹，用于提升专门任务的性能，并以可重复方式完成特定任务。当前公开内容仅提供高层概述，缺乏技术实现细节、接口规范或版本信息，无法用于 agent harness 架构评估。
+这是 Cloudflare 于 2026-11-09 登上 GitHub Trending 的开源编码代理安全审计工具。该工具可将普通编码代理转化为安全审计器，通过多阶段流程编排隔离子代理完成审计任务，输出经独立验证、机器可读的标准化安全发现，是其内部漏洞发现 harness 的基础组件。
 
-rss · GitHub Trending Daily · 11月9日 02:18
+rss · GitHub Trending Daily · 11月9日 02:48
 
-**标签**: `#tools`, `#runtime`
+**「设计要点」** 该工具采用分阶段编排隔离子代理的架构，审计流程覆盖侦察、覆盖引导狩猎、候选验证、结构化输出、独立记录验证、目标中性报告六个环节，最终输出可被机器解析的审计结果。
 
----
+**「改了什么」** 本次为 Cloudflare 首次将该工具开源，此前该工具仅作为内部漏洞发现 harness 的基础组件使用，未对外公开。
 
-<a id="item-harness-arch-4"></a>
-### [Cloudflare security-audit-skill 开源](https://github.com/cloudflare/security-audit-skill) ⭐️ 5.0/10
-
-Cloudflare 开源了面向 coding-agent 的安全审计 skill，可将普通 agent 转化为安全审计员。该 skill 通过编排隔离子 agent 完成多阶段安全审计流程，是 Cloudflare 漏洞发现 harness 的基础组件，当前公开内容仅包含高层能力描述，未披露技术实现细节、接口与版本信息。
-
-rss · GitHub Trending Daily · 11月9日 02:18
-
-**「设计要点」** 运行时通过编排独立隔离的子 agent 执行多阶段审计流程，阶段覆盖侦察、覆盖引导狩猎、候选验证、结构化输出、独立记录验证与目标中性报告，作为 Cloudflare 漏洞发现 harness 的底层能力基础。
-
-**「改了什么」** 该 skill 此前为 Cloudflare 内部漏洞发现 harness 的专属组件，本次为首次公开开源，当前仅披露高层能力边界，未开放技术实现细节与使用接口。
-
-**标签**: `#tools`, `#subagents`, `#sandbox`, `#planning`
+**标签**: `#subagents`, `#eval`, `#planning`, `#tools`
 
 ---
 
@@ -95,53 +79,46 @@ rss · GitHub Trending Daily · 11月9日 02:18
 <p class="ah-sec-meta"><a class="ah-anchor" href="#sec-agent-engineer" aria-label="链接到本节">#</a><a class="ah-back" href="#ah-toc">↑ 回到目录</a></p>
 
 <a id="item-agent-engineer-1"></a>
-### [SQLite parse\_number 扩展 C/Rust 性能对比](https://simonwillison.net/2026/Nov/8/sqlite-parse-number-c-vs-rust/) ⭐️ 7.0/10
+### [Stanford CS146S 谈 AI 原生工程教学](https://latent.space/p/cs146s/) ⭐️ 6.0/10
 
-2026 年 11 月 8 日，Simon Willison 发布 SQLite parse\_number\(\)扩展的 C 与 Rust 实现对比研究，使用 Claude Opus 5.5 辅助完成开发与迭代。研究对比两类实现的性能、代码复杂度与二进制体积：初始 C 实现仅 14KB，Rust 实现（rusqlite 321KB、sqlite-loadable-rs 298KB）体积远大于 C，但性能更高，原因是 Rust 的 strtod 等价实现速度是 C 标准库的两倍；后续优化 C 实现后，混合数据、整数、小数场景的每行处理耗时分别为 19ns、16ns、18ns，均优于 Rust 实现的 41-55ns、32-36ns、47-55ns。该研究面向构建 SQLite 扩展与使用 AI 辅助底层工具开发的工程师提供可参考基准。
+2026 年 11 月 8 日，Latent Space 发布对 Stanford CS146S（AI 原生工程课程）讲师、Monaco AI 负责人 Mihail Eric 的访谈，分享 AI 原生工程的教学思路与工业界实践。CS146S 上一轮授课时已发现绝大多数学生日常使用 coding agent，本轮课程将部分作业调整为向开源项目提交 PR 并由维护者评审，要求学员补全 agent 难以独立完成的需求沟通、影响面评估等环节；Monaco 团队评估后保留 Devin 承担代码评审，自研 agent 专属工作区用于运行产品、复现故障和测试补丁，同时搭建 Hal 系统同时服务工程师排查故障和销售向客户解释产品逻辑。目前未公开该课程调整或 Monaco 自研工具的具体效果数据，相关经验主要面向 AI agent 工程师、coding agent 教学者提供参考。
 
-rss · Simon Willison · 11月8日 22:26
+rss · Latent Space · 11月8日 21:41
 
-**「为什么重要」** 该研究首次提供 SQLite 自定义函数 C/Rust 实现的量化性能与体积对比基准，同时展示 AI 辅助完成底层 C/Rust 工具开发与迭代的可行工作流；目前对比结论仅针对 parse\_number\(\)扩展，其他类型扩展的适用性尚未验证。
+**「为什么重要」** 这是高校首次系统性将 coding agent 使用、开源协作能力纳入 AI 原生工程核心课程体系，同时工业界给出了「采购工具学习、自研工具留存」的 coding agent 选型逻辑，对 AI agent 工程师的工具选型和能力建设有直接参考价值；但这些经验是否能适配不同规模、不同领域的工程团队，目前没有公开的跨场景验证数据。
 
-**「可关注」** 可关注：SQLite 扩展开发中，Rust 实现初始性能占优但二进制体积远大于 C，经优化后的 C 实现可在性能与体积维度同时胜出，AI 辅助可大幅降低两类实现的对比与迭代成本。
+**「可关注」** 可关注：用可视化 diff 讲解工具验证 agent 产出的逻辑合理性，以及为 agent 搭建可运行、可复现故障的专属工作区，都是当前教学和工业场景中已验证的落地方向。
 
-**标签**: `#toolchain`, `#coding-agent`, `#performance`
+**标签**: `#coding-agent`, `#orchestration`, `#eval`, `#harness`
 
 ---
 
 <a id="item-agent-engineer-2"></a>
-### [Mihail Eric 谈 Stanford CS146S 与 Monaco AI](https://latent.space/p/one_million_ai_engineer_special_how_stanford_teaches_ai-native_engineering_mihail_eric_monaco/) ⭐️ 7.0/10
+### [Sketchpad：VLM 精确算术验证](https://huggingface.co/papers/2611.04434) ⭐️ 6.0/10
 
-2026 年 11 月 8 日，Latent.Space 发布对 Mihail Eric 的访谈，后者是 Stanford CS146S《The Modern Software Developer》课程讲师、Monaco AI 负责人。访谈披露 Stanford CS146S 第二期因 coding agent 可一键完成往年作业，调整课程设计，将开源项目真实贡献纳入作业，由对应开源维护者评审学生补丁；同时披露 Monaco 工程团队的 agent 落地实践，包括为每个 agent 建独立工作区、采购代码审查工具、给 on-call agent 开放 Datadog 与 GitHub 权限，以及「采购用于学习、自研用于留存」的工具决策框架。本次内容为 AI agent 工程师、coding harness 构建者、高校计算机教育从业者提供了一手参考，但材料仅为访谈内容，无官方发布文档或深度性能基准数据，相关细节以访谈披露内容为准。
+2026-11-09，Hugging Face Daily Papers 收录预印本 Sketchpad，提出用小型 VLM 实现精确算术的形式化验证方法，区别于普通语言模型的无保证准确与工具调用的计算外移。该方法以 Qwen3.5-0.8B 加 low-rank adapter 在渲染 sheet 上执行算术，每次前向传播仅读取三单元有界外部工作记忆视图，并输出一步（数字、进位或借位、下一操作），固定运行时移动视图且不写入结果数字。研究者在 Lean 中证明：模型在所有长度输入上精确，当且仅当它在有限视图集上精确。该工作目前仅覆盖算术任务，尚无生产工具或对 agent 工程工作流的直接变更，需进一步适配才能对多数 agent 开发者产生可操作影响。
 
-rss · Latent Space · 11月8日 21:23
+rss · Hugging Face Daily Papers · 11月9日 00:00
 
-**「为什么重要」** 本次访谈是少有的同时覆盖高校 AI 原生工程课程设计、企业级 coding agent 工具链落地实践的亲历者分享，为构建 coding agent harness、编排工具链、设计 eval 的工程师提供了可参考的决策逻辑；目前无公开性能基准数据验证相关课程效果与 Monaco 工具链的实际效率提升。
+**「为什么重要」** 该工作将可验证逐步推理从算术扩展到 agent 设计的潜在原理，但当前证据仅支持算术场景，尚未证实对通用 agent 工作流的实际增益。
 
-**「可关注」** 可关注：Mihail Eric 提出的「采购用于学习、自研用于留存」的工具决策框架，Monaco 为 on-call agent 开放 Datadog、GitHub 权限的落地实践，以及 Stanford CS146S 将开源项目真实贡献纳入作业的课程设计思路。
+**「可关注」** 可关注：有界外部工作记忆视图将模型精确性转化为有限可检查属性，这一机制或可迁移到 agent 记忆设计与逐步推理评估。
 
-**标签**: `#coding-agent`, `#harness`, `#orchestration`, `#eval`
+**标签**: `#eval`, `#memory`
 
 ---
 
-## AI 日报
-{: #sec-ai-daily .ah-section}
+<a id="item-agent-engineer-3"></a>
+### [Kimi K3.1 Pro Coder 775GB 量化版公开](https://www.reddit.com/r/LocalLLaMA/comments/1xr777l/kimik31procoder_28t_177_tb_775_gb_56_368_tps/) ⭐️ 6.0/10
 
-<p class="ah-sec-meta"><a class="ah-anchor" href="#sec-ai-daily" aria-label="链接到本节">#</a><a class="ah-back" href="#ah-toc">↑ 回到目录</a></p>
+2026 年 11 月 8 日，Reddit 用户 Grawnch 公开了 2.8T 参数 Kimi K3.1 Pro Coder MoE 模型的实验性 3 层量化方案，将模型体积从原生 1.77TB 压缩至 775GB，支持单 GPU+系统 RAM+NVMe 运行。方案对每层 384 个路由专家做 3 档量化（2.81/2.56/1.44 bpw，平均约 1.92bpw），共享专家、注意力层、嵌入层保留 BF16/F32 精度，配套自研 Strata 三级卸载引擎和 dr-triton 融合反量化内核，路由器预取有效命中率达 97.9%。发布者自报告在单张 RTX PRO 6000 Blackwell（96GB 显存）+176GB RAM 环境下，该量化版与原生 1.77TB 版本的 AIME 2025、LiveCodeBench 评测得分完全一致（均为 96.67%），Batch 吞吐量 36.8 TPS、单流解码吞吐量 10.8 TPS。该方案为实验性实现，未获官方验证，自定义路由专家张量布局无法直接兼容 llama.cpp、vLLM 等主流推理框架。
 
-<a id="item-ai-daily-1"></a>
-### [Claude 误删芝大教授全年讲义](https://mp.weixin.qq.com/s?__biz=MzI3MTA0MTk1MA==&amp;mid=2652741306&amp;idx=2&amp;sn=ca3a968dc876193340e7e0975c1248e5) ⭐️ 5.0/10
+reddit · r/LocalLLaMA · /u/Grawnch · 11月8日 19:45
 
-芝加哥大学法学院教授 William Baude 委托 Claude 更新旧讲义页码，仅吃午饭的间隙，Claude 误删了他一年的宪法课讲义及本学期教学大纲。Claude 自查发现引用页码存在 485 页与 484 页的偏差，承认误删是自身粗心导致。最终被删文件通过 Dropbox 恢复功能找回。该事件来自新智元转载报道，无官方一手来源可核对。
+**「为什么重要」** 这是目前公开的首个将 2.8T 级 MoE coding 模型压缩至单卡可运行体量的实验方案，验证了分层专家量化+三级卸载在 coding/math 推理场景的可行性。但该方案的复现性、长期稳定性以及对其他 MoE coding 模型的迁移效果尚未得到社区验证。
 
-rss · 新智元 · 11月8日 09:47
+**「可关注」** 可关注：该方案的自定义路由专家张量布局无法直接接入 llama.cpp、vLLM 等主流推理框架，但可单独复用 dr-triton 反量化模块适配自定义推理管线，且三级卸载的显存/内存/NVMe 分配比例可根据硬件配置调整。
 
-**「为什么重要」** 该事件暴露了 AI 代理执行文件操作时的容错缺陷，对日常使用 AI 处理文档的用户、开发 coding agent 的团队均有警示意义。
-
-**「可关注」** 可关注：AI 代理执行文件修改类任务时，需配套操作确认与备份机制，降低误删核心文件的风险。
-
-**「评论」** 网友调侃 AI 成为新版「作业被狗吃了」的借口，也有声音吐槽 Claude 回应「你生气有道理」像是在批准用户情绪，还有用户建议将 Dropbox 接入 AI 代理以实现全文件操作。
-
-**标签**: `#model`, `#industry`, `#product`
+**标签**: `#eval`, `#coding-agent`, `#model-quantization`
 
 ---
