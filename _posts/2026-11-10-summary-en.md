@@ -5,274 +5,294 @@ date: 2026-11-10
 lang: en
 ---
 
-> From 215 items, 16 important content pieces were selected
+> From 195 items, 17 important content pieces were selected
 
 ---
 
 **Agent Harness Architecture**
-1. [browser-use 1.0.0rc4 发布](#item-harness-arch-1) ⭐️ 8.8/10
-2. [Goose v1.58.0 发布](#item-harness-arch-2) ⭐️ 6.8/10
-3. [Claude Code v2.1.321 发布](#item-harness-arch-3) ⭐️ 5.5/10
-4. [Google Agent Skills 仓库登 GitHub Trending](#item-harness-arch-4) ⭐️ 5.0/10
+1. [browser-use 1.0.0rc2 发布](#item-harness-arch-1) ⭐️ 9.8/10
+2. [browser-use 1.0.0 发布](#item-harness-arch-2) ⭐️ 7.8/10
+3. [FastMCP v4.2.0a4 发布](#item-harness-arch-3) ⭐️ 7.8/10
 
 **AI Agent Engineer**
-1. [HF Daily Paper: Agent Harness 进化权衡](#item-agent-engineer-1) ⭐️ 7.0/10
-2. [Frontier3DBench 统一 3D 编码智能体评估](#item-agent-engineer-2) ⭐️ 7.0/10
-3. [Nemotron 日本金融合成数据集发布](#item-agent-engineer-3) ⭐️ 6.3/10
-4. [FinDendro Benchmark Tests LLM Temporal Knowledge](#item-agent-engineer-4) ⭐️ 6.0/10
-5. [HF 每日论文：权重空间编程研究](#item-agent-engineer-5) ⭐️ 6.0/10
+1. [HOPE 高阶专家剪枝方法发布](#item-agent-engineer-1) ⭐️ 7.8/10
+2. [Claude Fable 5.2 与 Mythos 5.2 发布](#item-agent-engineer-2) ⭐️ 7.0/10
+3. [Google 发布 TPU 8tx 与 8i Max](#item-agent-engineer-3) ⭐️ 7.0/10
+4. [ReproBridge 提出 ML 复现智能体工作流](#item-agent-engineer-4) ⭐️ 7.0/10
+5. [Agent Harness 自演化：隐藏权衡](#item-agent-engineer-5) ⭐️ 7.0/10
+6. [Nemotron-Personas-Finance-Japan 发布](#item-agent-engineer-6) ⭐️ 6.3/10
+7. [llm-anthropic 0.31 支持 Fable 5.2 与 Mythos 5.2](#item-agent-engineer-7) ⭐️ 6.0/10
+8. [Flide 提出决策推理精确分叉引擎](#item-agent-engineer-8) ⭐️ 6.0/10
+9. [PCBRouteAgent 论文提出工具代理编排模式](#item-agent-engineer-9) ⭐️ 6.0/10
 
 **AI Daily**
-1. [Anthropic 发布 Claude Fable 5.2 与 Mythos 5.2](#item-ai-daily-1) ⭐️ 9.8/10
-2. [Pathways 单控制器训练系统 GA](#item-ai-daily-2) ⭐️ 8.8/10
-3. [OpenAI 发布 Control Room](#item-ai-daily-3) ⭐️ 8.3/10
-4. [ChatGPT Enterprise 上线 AWS Marketplace](#item-ai-daily-4) ⭐️ 7.8/10
-5. [Google AI Studio 支持自然语言构建地图应用](#item-ai-daily-5) ⭐️ 7.8/10
-6. [MaxText 支持 TPU 长上下文训练](#item-ai-daily-6) ⭐️ 7.8/10
-7. [Kuken 搜70年图纸降至4.5分钟](#item-ai-daily-7) ⭐️ 6.3/10
+1. [ChatGPT Enterprise 上线 AWS Marketplace](#item-ai-daily-1) ⭐️ 7.8/10
+2. [OpenAI Control Room 上线](#item-ai-daily-2) ⭐️ 7.8/10
+3. [CodeRabbit 基于 Codex 交付量提升 20 倍](#item-ai-daily-3) ⭐️ 6.8/10
+4. [OpenAI API 加速 Kuken 图纸检索](#item-ai-daily-4) ⭐️ 6.8/10
+5. [Claude Fable 5.2 体验与 Jagged AGI 讨论](#item-ai-daily-5) ⭐️ 5.5/10
 
 ---
 
 ## Agent Harness Architecture
 
 <a id="item-harness-arch-1"></a>
-### [browser-use 1.0.0rc4 发布](https://github.com/browser-use/browser-use/releases/tag/1.0.0rc4) ⭐️ 8.8/10
+### [browser-use 1.0.0rc2 发布](https://github.com/browser-use/browser-use/releases/tag/1.0.0rc2) ⭐️ 9.8/10
 
-browser-use 发布 1.0.0rc4，这是 1.0 首个可用候选版本。核心运行时从逐步 DOM 快照动作选择重写为持久 Python REPL 代码执行，基于 browser-harness 助手、原始 CDP 与 Pydantic AI。常用 0.x 公开 API（Agent、Browser、Tools、run\(\)、final\_result\(\)）保持向后兼容。需 Python 3.11+，显式安装 \`--pre\` 或 \`--prerelease allow\`，默认 pip 仍安装 0.13.14 直至 1.0.0 正式发布。
+browser-use 1.0.0rc2 将 agent 引擎从“DOM dump → 逐步选动作”改为持久化 Python REPL，基于 browser-harness 和 raw CDP 运行在 Pydantic AI 上。代码库从 68,815 行压缩至 13,154 行，削减约 80%，同时保留 0.x 的 Agent、Browser、Tools、run\(\)、final\_result\(\) 表面接口。默认行为变更：浏览器改为 Browser Use Cloud，默认模型为 bu-fast，模式为 ultrafast，run\(\) 默认 max\_steps=100（原 500）。需显式安装预发布版本，普通 pip install browser-use 仍安装 0.13.14。
 
-github · gregpr07 · Nov 9, 20:55
+github · gregpr07 · Nov 9, 16:52
 
-**「设计要点」** 运行时改为持久 REPL，模型通过 Pydantic AI 驱动，浏览器控制混合使用 browser-harness 助手与原始 CDP。默认走 Browser Use Cloud 浏览器，本地 Chromium 需显式指定 \`Browser\(&\#x27;chromium&\#x27;\)\`。结果对象统一携带 structured\_output、downloads、cost\_usd 等字段，工具结果始终保留在对话中，不再支持 include\_in\_memory 过滤。
+**「设计要点」** agent 在持久化 REPL 中直接编写 Python 代码调用 browser-harness 助手和 CDP，替代原有每步从 DOM 快照选择动作的循环。运行时底层切换至 Pydantic AI，配置校验在浏览器启动和计费前完成，运行时错误统一通过 result.error 返回，不再静默忽略。
 
-**「改了什么」** 核心执行模型从逐步 DOM 转储改为持久 Python REPL，代码行数从 68,815 降至 13,154。默认浏览器切至云端，模型默认改为 bu-fast，max\_steps 默认值从 500 降至 100，timeout 1700 秒。认证统一为 Browser Use key（BROWSER\_USE\_API\_KEY）。新增结构化输出、文件上传下载、敏感数据脱敏、域名限制、联网搜索，CLI 与 MCP 工具集重构，console 脚本从 bu/browser 合并为 browser-use/browseruse。
+**「改了什么」** 默认浏览器切至云端，本地或 localhost 任务需显式指定 Browser\(&\#x27;chromium&\#x27;\)。新增结构化输出 output\_model\_schema、文件上传下载、sensitive\_data 密钥脱敏、域名黑白名单、联网搜索。CLI 入口统一为 browser-use，移除 bu/browser 脚本和 browser-use init。流式响应最长支持 930 秒，增加一次瞬态重试，上下文溢出时自动压缩一次。
+
+**Tags**: `#runtime`, `#tools`, `#mcp`, `#planning`
+
+---
+
+<a id="item-harness-arch-2"></a>
+### [browser-use 1.0.0 发布](https://github.com/browser-use/browser-use/releases/tag/1.0.0) ⭐️ 7.8/10
+
+browser-use 发布 1.0.0。项目重写运行时，改为基于 Chrome DevTools Protocol 的持久化 Python REPL，删除 DOM 序列化、action schema 等中间抽象层，代码量减少 80%（136,866 行）。模型直接编写 Python 代码调用 \`bu\` 命名空间 API 操作浏览器，官方宣称得分高 33 点、成本降 2.7–5.2 倍、速度快 2–3 倍。默认切换为 Browser Use Cloud 托管浏览器与 \`bu-fast\` 模型，\`max\_steps\` 默认从 500 降至 100，超时 1700 秒。
+
+github · gregpr07 · Nov 10, 02:04
+
+**「设计要点」** 运行时简化为单层：模型输出 Python 代码，经持久化 REPL 直连 CDP 执行，结果回传模型。中间层全部移除，工具调用不再经过 DOM 序列化或 schema 校验。默认走 Browser Use Cloud 网关，本地浏览器需显式指定 \`Browser\(&\#x27;chromium&\#x27;\)\`。
+
+**「改了什么」** 相对 0.x，运行时从多抽象层重写为 CDP + Python REPL 单层架构并删除 80% 代码，默认模型、浏览器、认证全部切换为 Browser Use Cloud 托管服务，原 0.x 配置项不兼容并直接报错。新增结构化输出、文件上传下载、敏感数据脱敏、域名限制、web search 与 Docker 镜像，\`max\_steps\` 默认从 500 降至 100。
 
 **Tags**: `#runtime`, `#tools`
 
 ---
 
-<a id="item-harness-arch-2"></a>
-### [Goose v1.58.0 发布](https://github.com/aaif-goose/goose/releases/tag/v1.58.0) ⭐️ 6.8/10
-
-Goose agent harness 发布 v1.58.0。本次更新新增上下文相关性操作、上下文窗口报告与查看器，以及 AIHubMix、RouterPlex、Lemonade 三个声明式模型提供商支持。运行时修复了工具轮次推理重放、会话重放快速路径、Bedrock 无文档块模型回退、429 Retry-After 处理等 bug，并将 Agent 与 AgentManager 合并为每进程一个 StateMachineServices。桌面端新增 thinking 折叠默认设置，同时移除 jsonwebtoken 依赖并升级 zstd 至 0.14.3。
-
-github · github-actions\[bot\] · Nov 9, 19:07
-
-**「设计要点」** 每进程将 Agent 与 AgentManager 合并为单一 StateMachineServices，简化状态管理。桌面端会话重放保留快速路径，ACP 客户端委托开发工具被移除，工具调用标题去特定化。
-
-**「改了什么」** 新增上下文相关性操作、上下文窗口报告、三个新提供商及 thinking 折叠默认开关。修复工具轮次推理重放、会话重放性能、Bedrock 回退逻辑、429 限流处理、OpenRouter 上下文溢出分类等运行时问题，移除 jsonwebtoken 依赖。
-
-**Tags**: `#runtime`, `#tools`, `#context`, `#providers`
-
----
-
 <a id="item-harness-arch-3"></a>
-### [Claude Code v2.1.321 发布](https://github.com/anthropics/claude-code/releases/tag/v2.1.321) ⭐️ 5.5/10
+### [FastMCP v4.2.0a4 发布](https://github.com/PrefectHQ/fastmcp/releases/tag/v4.2.0a4) ⭐️ 7.8/10
 
-Claude Code v2.1.321 发布，默认模型切换至 Claude Fable 5.2（1M 上下文，$8/$40 per Mtok）。修复 MCP OAuth 重定向泄露 refresh token 的安全漏洞，以及多例 sandbox 逃逸、权限判断错误、网络路径编辑异常等 bug。新增 \`claude remote-control --settings &lt;file&gt;\` 支持批量应用会话配置。
+FastMCP 4.2.0a4 是 PrefectHQ 发布的 MCP 服务器框架 alpha 预演版本，最低 Python 版本要求提升至 3.11。本次更新核心新增 Annotated 依赖注入支持，允许 Depends\(...\) 与 CurrentContext\(\) 等依赖以 Annotated 元数据形式声明，并统一作用于 tools、resources 和 prompts。修复了技能发现逻辑，避免将嵌套的 SKILL.md 误列为独立技能，同时补上了 OAuth 相关依赖（joserfc、Authlib）的安全漏洞，以及 OpenAPI 请求体、多选 elicitation 架构、文档字符串解析等核心缺陷。技能支持仍标记为实验性，仅建议用于集成测试。
 
-github · claude-code-publisher\[bot\] · Nov 9, 19:22
+github · zzstoatzz · Nov 10, 01:59
 
-**「设计要点」** Claude Code 通过 MCP 协议扩展工具生态，使用 sandbox 隔离 Bash 执行，以 PreToolUse/PostToolUse hook 链实现权限拦截。Remote Control 维持 WebSocket 长连接，支持会话级设置继承与后台子代理报告传递。
+**「改了什么」** 相对上一 alpha，Skill 对象重构为存储中立，技能发现扩展至挂载服务器与代理链路，并新增 Client.read\_skill 与 fastmcp list --skills 接口；依赖系统原生支持 Annotated 元数据，Depends 与 CurrentContext 可直接标注在类型上。安全修复覆盖 Authlib/joserfc 版本下限、重定向 URI 浏览器级规范化、技能 frontmatter 校验及目录读取限额，同时修正 OpenAPI 请求体、多选 elicitation 架构、文档字符串解析等回归缺陷。
 
-**「改了什么」** 默认模型切换至 Claude Fable 5.2，上下文窗口扩至 1M。MCP 客户端修复 OAuth 重定向时向第三方主机发送 refresh token 的漏洞。sandbox 层修复只读 Bash 无提示逃逸、权限判断目录错位、\`cp\`/\`mv\` 目标文件未受保护文件规则约束等问题。Remote Control 新增 \`--settings\` 参数实现配置热加载。
-
-**「评论」** 无社区评论。
-
-**Tags**: `#runtime`, `#mcp`, `#sandbox`, `#permissions`, `#tools`
-
----
-
-<a id="item-harness-arch-4"></a>
-### [Google Agent Skills 仓库登 GitHub Trending](https://github.com/google/skills) ⭐️ 5.0/10
-
-2026年11月9日，Google 开源的 \`google/skills\` 仓库登上 GitHub Trending，该仓库提供面向 Google 产品与技术的 Agent Skills，支持将 Google 服务集成到各类 agent 系统中，当前已覆盖 Google Cloud 等产品。公开资料仅披露基础安装与更新指引，未提供技术架构、代码实现或官方变更日志。用户可通过 \`npx skills add google/skills\` 完成安装，安装时可选择特定技能、目标 agent 及安装范围（项目级或全局），无 npx 环境需先安装 Node.js。
-
-rss · GitHub Trending Daily · Nov 9, 23:00
-
-**Tags**: `#tools`
+**Tags**: `#mcp`, `#tools`, `#permissions`
 
 ---
 
 ## AI Agent Engineer
 
 <a id="item-agent-engineer-1"></a>
-### [HF Daily Paper: Agent Harness 进化权衡](https://huggingface.co/papers/2611.07624) ⭐️ 7.0/10
+### [HOPE 高阶专家剪枝方法发布](https://huggingface.co/blog/amazon/higher-order-pruning-experts) ⭐️ 7.8/10
 
-A Hugging Face Daily Paper from 2026-11-09 analyzes agent harness evolution enabling recursive self-improvement without model weight updates. Evaluating four methods across harnesses, general tasks, and coding tasks, the study finds all sixteen evolved agents gained previously uncovered tasks while losing previously covered ones. In one general-task case, reliability rose by 5.2 points despite losing ten previously covered tasks, and most reliability gains increased deployment cost. Specific interventions usually outperformed generic reminders, though their benefits changed when combined.
+2026年11月9日Hugging Face官方博客发布HOPE（高阶专家剪枝）方法，针对MoE模型推理时全部专家MLP驻留内存、多数专家闲置的问题，通过建模专家 pairwise 交互作用优化剪枝决策。该方法在Qwen3.5-122B、Qwen3.5-35B、GLM-4.5-Air三个模型、10%-50%剪枝率范围内测试，相比REAP、MAN等4种一阶基线方法取得最优平均排名（2.07/5），在agentic coding任务上比次优方法最高提升6.1%。当前验证仅覆盖代码类任务场景，对更大规模MoE模型、非代码类任务的适配效果尚未给出结论，主要面向MoE模型推理优化、Agent部署选型的工程师群体。
 
-rss · Hugging Face Daily Papers · Nov 9, 00:00
+rss · Hugging Face Blog · Nov 9, 12:34
 
-**「为什么重要」** This research provides empirical evidence that benchmark score improvements in agent harnesses often involve tradeoffs with task coverage and deployment cost, directly relevant to engineers designing and evaluating coding agents. The finding that specific changes outperform generic reminders offers a concrete optimization direction, while the variable effects of combining interventions indicate unresolved complexity in harness design.
+**「为什么重要」** 已发生的部分是HOPE突破了传统一阶专家剪枝忽略专家协作关系的瓶颈，在激进剪枝率下仍能保持模型性能；尚未证实的影响是该方法的通用性，目前仅验证了代码类agentic任务，其他场景的收益需要进一步实测。
 
-**「可关注」** When optimizing agent harnesses, specific component interventions generally outperform generic reminders, but combined effects should be validated as benefits may shift with different combinations.
+**「可关注」** 可关注：HOPE的F矩阵对角线可完美复现REAP等一阶方法的专家重要性排序，其性能增益完全来自 off-diagonal 项捕获的专家 pairwise 交互，现有MoE推理优化流程可复用原有校准环节验证剪枝收益，额外开销仅为每层1-2秒的二次规划求解时间。
 
-**Tags**: `#harness`, `#eval`, `#coding-agent`, `#orchestration`
+**Tags**: `#memory`, `#moe`, `#pruning`, `#optimization`, `#architecture`
 
 ---
 
 <a id="item-agent-engineer-2"></a>
-### [Frontier3DBench 统一 3D 编码智能体评估](https://huggingface.co/papers/2611.09017) ⭐️ 7.0/10
+### [Claude Fable 5.2 与 Mythos 5.2 发布](https://www.anthropic.com/claude-fable-and-mythos-5-2) ⭐️ 7.0/10
 
-Frontier3DBench 是一个统一基准，覆盖 145 个任务、9 个类别，面向对象、场景和交互式开放世界 3D 创建。它联合评估外观、结构和行为，测试 11 个模型-harness 配置。实验显示 GPT-6.1-sol 在对象和场景层级领先，总分 66.02/100。该基准面向编码智能体、harness 及评估开发者，填补现有碎片化基准的空白。
+Anthropic 于 2026-11-09 发布 Claude Fable 5.2 与 Mythos 5.2。Hacker News 帖子链接官方公告，社区用户报告 Fable 5.2 在 60 万行 Fortran 代码库上实现 36 倍加速，另有用户称其与 Opus 5.5 在普通编码任务上差异有限。当前无官方技术规格或完整基准数据可引用，社区对基准测试方法论亦存疑问。
 
-rss · Hugging Face Daily Papers · Nov 9, 00:00
+hackernews · lairv · Nov 9, 18:01 · [Discussion](https://news.ycombinator.com/item?id=50429068)
 
-**「为什么重要」** 现有 3D 编码智能体基准碎片化，缺乏跨层级统一评估。Frontier3DBench 提供可复现的对比基线，但 11 个配置的性能差异是否稳定仍需更多实验验证。
+**「为什么重要」** 对 coding agent 开发者，Fable 5.2 若在大型遗留代码库上保持强推理能力，可能影响模型选型。但社区报告未经官方验证，实际效果待观察。
 
-**「可关注」** 可关注：Frontier3DBench 的 11 个模型-harness 配置在对象、场景和交互式开放世界层级表现分化，提示评估结果依赖具体组合。
+**「可关注」** 可关注：Fable 5.2 在超大型代码库上的实际任务完成率，以及 5.2 与 5.5 的命名差异是否反映 Anthropic 的产品分层策略。
 
-**Tags**: `#eval`, `#coding-agent`, `#harness`
+**「评论」** 社区报告呈现两极：有用户称 Fable 5.2 在 60 万行 Fortran 代码库上实现 36 倍加速，另有引用称其 agent 集群用 30 小时完成费马大定理形式化；但部分用户认为其与 Opus 5.5 在普通编码任务上差异有限。另有评论者对官方基准测试的模型对位选择提出质疑。
+
+**Tags**: `#coding-agent`, `#eval`
 
 ---
 
 <a id="item-agent-engineer-3"></a>
-### [Nemotron 日本金融合成数据集发布](https://huggingface.co/blog/nvidia/nemotron-personas-finance-japan) ⭐️ 6.3/10
+### [Google 发布 TPU 8tx 与 8i Max](https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/tpu-8i-max-and-8tx/) ⭐️ 7.0/10
 
-2026年11月9日，NVIDIA与Elith联合发布开源合成数据集Nemotron-Personas-Finance-Japan，这是首个百万级日本金融领域开放合成人格数据集，基于日本官方人口、劳动力、家庭财务及金融素养统计数据生成，采用NeMo SDG-PGMs与NeMo Data Designer构建，所有记录均为完全合成、不映射真实个人以降低隐私风险，单数据集含900万条人格记录、50个字段，总token约15亿，较前代Nemotron-Personas-Japan记录量多50%、字段数从22个提升至50个，采用CC BY 4.0许可可商用，主要面向日本金融机构、相关初创企业及集成商，用于金融AI开发、用户模拟、模型评测等场景，同时可与NeMo User Sim框架无缝集成。
+2026年11月9日Google官方发布专为智能体工作负载优化的TPU 8tx与8i Max两款新芯片，相关公告首发于Google博客，HackerNews社区同步讨论。社区反馈指出底层TPUSync技术已被开源智能体工具（如适配Qwen系列的Strata项目）采用，同时有用户提到Colab平台目前最高仅支持v6e-1 TPU，尚未上线新款型号，公告未披露具体性能、功耗、成本及与NVIDIA竞品的对比数据。
 
-rss · Hugging Face Blog · Nov 9, 15:05
+hackernews · \_benx\_ · Nov 9, 21:56 · [Discussion](https://news.ycombinator.com/item?id=50432831)
 
-**「为什么重要」** 该数据集填补了日本金融场景大规模开源合成人格数据的空白，采用CC BY 4.0许可可商用，降低了金融AI开发过程中使用真实数据的隐私合规门槛；其对日本金融Agent的实际评测与开发效果，仍有待后续用户验证。
+**「为什么重要」** 这是Google首次推出专为智能体场景优化的TPU产品线，其底层TPUSync技术已被开源智能体工具链采用，直接影响AI Agent工程师的基础设施与部署工具链选型。但当前公告未公开具体性能、成本及竞品对比数据，实际落地价值仍需后续参数披露验证。
 
-**「可关注」** 可关注：该数据集可与NeMo User Sim框架直接集成，支持基于真实世界分布的用户模拟，适合需要合规测试日本金融场景AI Agent的团队快速搭建评测环境。
+**「可关注」** 可关注：TPUSync技术已被开源智能体工具链采用，新款TPU的Colab支持进度与公开性能/成本参数将直接影响工具链选型决策。
 
-**Tags**: `#eval`, `#synthetic-data`, `#finance`
+**「评论」** 社区讨论聚焦四个方向：一是确认TPUSync技术已被Strata等开源Qwen系列工具采用，推荐相关技术博客；二是呼吁Google Colab尽快上线新款TPU，现有v6e-1算力不足以支撑严肃开发；三是要求公开新款TPU的功耗、成本及与NVIDIA竞品的对比数据，目前官方尚未回应；四是有用户询问Google为何不直接销售新款TPU，暂无官方答复。
+
+**Tags**: `#coding-agent`, `#inference`, `#cloud-infrastructure`, `#toolchain`
 
 ---
 
 <a id="item-agent-engineer-4"></a>
-### [FinDendro Benchmark Tests LLM Temporal Knowledge](https://huggingface.co/papers/2611.06808) ⭐️ 6.0/10
+### [ReproBridge 提出 ML 复现智能体工作流](https://huggingface.co/papers/2611.08452) ⭐️ 7.0/10
 
-On 2026-11-09, Hugging Face Daily Papers highlighted FinDendro, a new benchmark of 2,226 dated U.S. facts spanning 1999–2026 to evaluate LLM temporal self-knowledge for financial backtesting. The benchmark covers monthly macroeconomic series, month-end stock prices, and Federal Reserve decisions, generating four prompt types per fact: value questions, Recall and Predict questions without declared dates, and Predict questions with historical dates. The source material is truncated and drawn from a curated feed rather than the original paper, limiting actionable detail.
+Hugging Face Daily Papers 于 2026 年 11 月 10 日介绍 ReproBridge，一种用于构建标准化可复现 ML 研究工件的智能体工作流，以及配套的 ReproBridge-Bench 基准。该基准包含 1,029 个任务，覆盖 36 篇论文的 387 个实验，每个任务提供 5 项人工验证的参考分数。ReproBridge 研究保留恢复的实验流程与决策是否有助于提升后续独立复现成功率。此成果面向构建智能体评测或研究型编码智能体工作流的团队，但属于研究输出，非生产工具变更。
 
-rss · Hugging Face Daily Papers · Nov 9, 00:00
+rss · Hugging Face Daily Papers · Nov 10, 00:00
 
-**「Why It Matters」** The work addresses a reliability gap for time-sensitive agent tasks by testing whether standard safeguards—vendor-stated knowledge cutoffs, self-reported knowledge, or date-conditioned prompting—actually prevent data leakage in financial backtesting. However, the niche financial use case and truncated source content constrain immediate broad applicability without access to the full paper.
+**「为什么重要」** 该基准提供大规模、人工验证的复现任务集，为评估智能体在真实 ML 实验复现中的能力提供了可量化参照。目前此类资源稀缺，尤其缺少带人类验证参考分数的规模化评测。
 
-**「Engineer Takeaway」** Time-sensitive agent tasks require explicit temporal boundary validation rather than reliance on vendor-stated knowledge cutoffs or self-reported awareness.
+**「可关注」** 可关注：ReproBridge 将复现过程结构化为标准化工件（精炼代码库、环境配置、实验启动器、复现指南），其任务设计可参考用于构建编码智能体的评测场景。
 
-**Tags**: `#eval`
+**Tags**: `#eval`, `#orchestration`, `#coding-agent`
 
 ---
 
 <a id="item-agent-engineer-5"></a>
-### [HF 每日论文：权重空间编程研究](https://huggingface.co/papers/2611.09382) ⭐️ 6.0/10
+### [Agent Harness 自演化：隐藏权衡](https://huggingface.co/papers/2611.07624) ⭐️ 7.0/10
 
-2026年11月9日Hugging Face每日论文频道公开了一篇关于Weight-Space Programming（WSP，无梯度模型适配方法）的预印本研究截断摘要。该研究在Qwen3.5-0.8B与Qwen3.5-9B两个模型规模上，通过16条编辑轨迹覆盖7个基准开展系统性实验，结果显示仅修改1023个参数即可在MATH-500上实现最高29.45个百分点的准确率提升，同时在GPQA Diamond、IFEval、SciBench等基准上也取得4.42至36.72个百分点的性能增益。当前公开摘要未呈现完整核心洞见与详细限制，该研究目前仅对从事模型适配、推理评估的agent工程师有初步参考价值，生产端落地采用度极窄。
+该论文（2026-11-10，arXiv:2611.07624）实证检验无模型权重更新的 Agent Harness 递归自演化（RSI）。实验对 4 种方法、16 个演化后 Agent 在通用与编码任务上评估，发现所有 Agent 均获得新任务覆盖同时丢失原有覆盖任务；某通用任务案例可靠性提升 5.2 分，但丢失 10 个原有任务。多数可靠性增益伴随部署成本上升，且具体改动通常优于通用提醒，但组合效果会变化。最高分 Agent 未产生最大……（原文截断）。
 
-rss · Hugging Face Daily Papers · Nov 9, 00:00
+rss · Hugging Face Daily Papers · Nov 10, 04:27
 
-**「为什么重要」** 该研究首次公开了无梯度参数级模型适配在多类推理与指令遵循基准上的量化提升结果，为agent工程师提供了模型适配的新思路参考；但受限于摘要内容截断，其泛化能力、实际落地限制等关键信息尚未公开，暂无法评估生产可用性。
+**「为什么重要」** 对 Agent 工程师而言，该研究提供了 benchmark 分数、任务覆盖、可靠性与部署成本之间的具体权衡数据，直接关联 Harness 开发与评估系统设计。研究指出高分不等于全面改进，提醒工程师在迭代时需同时监控任务覆盖变化与成本。
 
-**「可关注」** 无梯度权重空间编程已展现出通过极少量参数修改实现推理与指令遵循基准显著提升的潜力，但完整实验边界与局限性需待全文公开后进一步验证。
+**「可关注」** 可关注：Harness 自演化存在任务覆盖丢失与部署成本上升的张力，评估时需同时监控覆盖度与成本。
 
-**Tags**: `#eval`
+**Tags**: `#harness`, `#eval`, `#coding-agent`
+
+---
+
+<a id="item-agent-engineer-6"></a>
+### [Nemotron-Personas-Finance-Japan 发布](https://huggingface.co/blog/nvidia/nemotron-personas-finance-japan) ⭐️ 6.3/10
+
+2026 年 11 月 9 日，NVIDIA、Elith 联合 Hugging Face 发布开源合成数据集 Nemotron-Personas-Finance-Japan，这是首个百万级日本金融领域合成人格数据集。数据集由日本多家头部金融机构与行业协会参与设计，采用 NVIDIA NeMo Data Designer 与 NeMo SDG-PGMs 框架生成，基于日本官方统计、家庭金融与金融素养数据构建，共 900 万条人格记录，每条含 50 个字段，覆盖人口属性、职业、资产分布、金融行为等维度，采用 CC BY 4.0 许可支持商用。所有记录均为合成数据，不涉及真实个人隐私，主要面向日本金融行业的 AI 开发与评估团队，也可用于日语 AI 项目的训练测试，原生兼容 NeMo User Sim 用户模拟框架，同天还发布了配套的合成日本商业文档 PII 数据集 Nemotron-PII-Japan，影响范围主要集中于日本金融领域 AI 开发者及日语 AI 项目团队。
+
+rss · Hugging Face Blog · Nov 9, 15:05
+
+**「为什么重要」** 该数据集填补了日本金融领域开源百万级合成人格数据的空白，解决了金融 AI 开发中真实数据隐私合规门槛高、本地化高质量数据不足的痛点，为相关团队提供了可商用的合规数据基础。
+
+**「可关注」** 可关注：该数据集原生兼容 NeMo User Sim 用户模拟框架，配套同天发布的 Nemotron-PII-Japan 数据集可直接用于测试金融 Agent 对用户敏感信息的保护能力。
+
+**Tags**: `#eval`, `#harness`, `#synthetic-data`
+
+---
+
+<a id="item-agent-engineer-7"></a>
+### [llm-anthropic 0.31 支持 Fable 5.2 与 Mythos 5.2](https://simonwillison.net/2026/Nov/9/llm-anthropic/) ⭐️ 6.0/10
+
+2026年11月9日，Simon Willison 发布 llm-anthropic 0.31，为 llm CLI 的 Anthropic 插件新增对 Anthropic 当日发布的 Fable 5.2、Mythos 5.2 模型的支持，可配置 low、medium、high、xhigh、max 五档推理强度。作者实测五档推理生成鹈鹕骑自行车 SVG，xhigh 档效果最佳，max 档因消耗 128000 token 思考后耗尽 token 未返回图像，该问题为 Fable 系列首次出现，此前 Fable 5、5.1 的 max 档可正常生成，故障是否普遍存在尚未证实。该更新面向 llm CLI 的 Anthropic 模型用户。
+
+rss · Simon Willison · Nov 9, 23:58
+
+**「为什么重要」** 该更新让 llm CLI 用户可直接调用 Anthropic 最新发布的两款模型，同时实测暴露了 Fable 5.2 max 推理档的 token 耗尽问题，该问题与 Opus 5.5 的过思考故障模式一致，目前尚未确认是否会影响其他使用场景。
+
+**「可关注」** 可关注：Fable 5.2 的 max 推理档存在因过度思考耗尽 token 的已知问题，该故障模式与 Opus 5.5 一致，且为 Fable 系列首次出现。
+
+**Tags**: `#harness`
+
+---
+
+<a id="item-agent-engineer-8"></a>
+### [Flide 提出决策推理精确分叉引擎](https://huggingface.co/papers/2610.42148) ⭐️ 6.0/10
+
+2026-11-10，Hugging Face Daily Papers 收录论文摘要，提出 Flide。该引擎面向 LLM agent 决策模型，将逻辑树结构与单层扁平 token 流的物理执行解耦。ForkAttention 用 GPU resident indices 导航请求依赖，覆盖标准注意力与 Gated DeltaNet 循环层，解决 prefix 重计算与概率失真问题。当前仅为截断摘要，缺少完整性能数据、评估结果和发布细节。
+
+rss · Hugging Face Daily Papers · Nov 10, 00:00
+
+**「为什么重要」** 决策模型（如 Jev）正成为 LLM agent 快速执行的新范式。现有生成式推理引擎对其支持不足。若 Flide 的 decoupled execution 与 exact arithmetic 在完整论文中验证，可能影响 agent harness 的推理后端设计。
+
+**「可关注」** 可关注：ForkAttention 在单层扁平 token 流中通过 GPU resident indices 维护跨标准注意力与 Gated DeltaNet 层的请求依赖，这一设计为 agent 多分支决策推理的 prefix 重计算问题提供了新的实现路径。
+
+**Tags**: `#harness`
+
+---
+
+<a id="item-agent-engineer-9"></a>
+### [PCBRouteAgent 论文提出工具代理编排模式](https://huggingface.co/papers/2611.08175) ⭐️ 6.0/10
+
+2026-11-10，Hugging Face Daily Papers 推送论文 PCBRouteAgent，提出一种多模态 PCB 路由代理。该代理采用全局-局部分层架构：Global Routing Planner 结合板图图像与电气几何信息制定连接拓扑、布线顺序、通道及层间过渡；Detailed Routing Executor 调用 KiCad 原生引擎执行布线，并在局部失败时进行有界恢复，未解决失败以结构化反馈返回以修正路由指南。当前公开材料仅提供截断摘要，未披露性能指标、评估数据集或完整实现细节，且问题域局限于 PCB 布线，其编排模式向其他领域的可迁移性尚未证实。
+
+rss · Hugging Face Daily Papers · Nov 10, 04:27
+
+**「为什么重要」** 该论文展示了全局规划与本地执行分离、原生工具集成及结构化失败反馈的代理编排模式，对工具使用 agent 设计有参考价值；但其狭窄领域和缺失的量化结果意味着该模式的有效性尚未得到广泛验证。
+
+**「可关注」** 可关注：全局-局部分层编排与结构化失败反馈在工具使用代理中的复用潜力，但需等待完整论文验证其泛化能力。
+
+**Tags**: `#orchestration`
 
 ---
 
 ## AI Daily
 
 <a id="item-ai-daily-1"></a>
-### [Anthropic 发布 Claude Fable 5.2 与 Mythos 5.2](https://www.anthropic.com/claude-fable-and-mythos-5-2) ⭐️ 9.8/10
+### [ChatGPT Enterprise 上线 AWS Marketplace](https://openai.com/index/chatgpt-enterprise-aws-marketplace) ⭐️ 7.8/10
 
-Anthropic 于 2026-11-09 发布 Claude Fable 5.2 与 Claude Mythos 5.2。两者基于同一底层模型，但 Fable 内置网络安全与生物安全防护，面向所有用户开放；Mythos 需通过生命科学与网络安全验证计划申请。新模型生成速度较 5.1 快 30%，标准定价为每百万输入 token 8 美元、输出 40 美元，fast mode 以双倍价格提供 2.5 倍速度。绝大多数基准测试显示 Fable 5.2 超过 Opus 5.5。内部测试中曾用其将 Python 服务迁移至 Rust，启动速度提升 26 倍，并协调千余子代理在 8 天内设计出可启动的原型操作系统。
+OpenAI 于 2026 年 11 月 9 日宣布，ChatGPT Enterprise 正式上线 AWS Marketplace。企业用户可通过现有 AWS 采购与计费关系直接购买该服务，简化采购流程。目前未披露具体定价、区域限制等额外采购细则。
 
-rss · Anthropic News · Nov 9, 00:00
+rss · OpenAI Blog · Nov 9, 19:00
 
-**「为什么重要」** 这是 Anthropic 首次通过安全与访问策略区分同源模型，同时以 30% 提速和降价降低高投入推理门槛，fast mode 进一步提供可选的加速层。
+**「为什么重要」** 企业无需额外开通独立采购通道，可直接复用现有 AWS 账单体系完成服务采购与结算，降低企业采购门槛。
 
-**「可关注」** 可关注：Fable 5.2 在 High effort 下以约一半任务成本达到 Opus 5.5 Max effort 水平，fast mode 以 2 倍价格提供 2.5 倍速度；Mythos 5.2 网络安全能力最强但需通过验证计划申请。
+**「可关注」** 可关注：企业用户现可通过 AWS Marketplace 复用现有采购与计费关系获取 ChatGPT Enterprise，采购流程进一步简化。
 
-**Tags**: `#model`, `#lab`, `#product`
+**Tags**: `#lab`, `#product`, `#industry`
 
 ---
 
 <a id="item-ai-daily-2"></a>
-### [Pathways 单控制器训练系统 GA](https://developers.googleblog.com/what-is-pathways-single-controller-training-for-large-models/) ⭐️ 8.8/10
+### [OpenAI Control Room 上线](https://openai.com/index/control-room) ⭐️ 7.8/10
 
-Google 宣布 Pathways 在 Google Cloud 正式 GA。Pathways 是 Google 自研的分布式训练系统，用于训练 Gemini 等大模型，采用单控制器架构：一个客户端将整个计算描述为图，由分布式运行时负责节点放置、张量移动和依赖排序。相比 SPMD，Pathways 处理非均匀任务（如流水线并行、RL 循环）和硬件故障更高效——Gemini 2.5 训练期间每小时因硬件故障中断多次，SPMD 下单机故障会阻塞所有进程并回滚到检查点，而 Pathways 允许作业继续。系统已在 Google Cloud 上线，支持 TPU 上运行 JAX 程序，用户通过虚拟设备编写代码，由资源管理器映射到物理芯片。
+OpenAI 发布 Control Room 中央系统，用于跟踪研究基础设施中的模型 workload。该系统可在安全或安全问题出现时快速停止相关 workload。这是 OpenAI 内部研究基础设施的安全监控组件。
 
-rss · Google Developers AI · Nov 9, 00:00
+rss · OpenAI Blog · Nov 9, 13:00
 
-**「为什么重要」** 这标志着大模型训练从锁步 SPMD 向图式单控制器架构的转变正式进入生产可用阶段。对于需要处理非均匀任务（如流水线并行、RL 后训练）的团队，Pathways 提供了减少协调代码、提升硬件利用率的具体路径。
+**「为什么重要」** 这体现了 AI 实验室对模型安全监控的工程化投入，提供了从监控到紧急停止的完整响应链路。
 
-**「可关注」** 可关注：单控制器架构通过将计算声明为图并集中管理依赖，绕开 SPMD 跨组 collectives 的带宽瓶颈——以 TPU v5p 为例，片内带宽 1,200 GB/s，跨数据中心网络仅约 6 GB/s，差两个数量级。
+**「可关注」** 可关注：内部安全监控系统的 workload 追踪与紧急停止机制设计。
 
-**Tags**: `#model`, `#lab`, `#product`, `#industry`
+**Tags**: `#lab`, `#industry`, `#policy`, `#product`
 
 ---
 
 <a id="item-ai-daily-3"></a>
-### [OpenAI 发布 Control Room](https://openai.com/index/control-room) ⭐️ 8.3/10
+### [CodeRabbit 基于 Codex 交付量提升 20 倍](https://openai.com/index/coderabbit-codex-daybreak) ⭐️ 6.8/10
 
-OpenAI 发布 Control Room，一套用于监控研究基础设施中模型工作负载的中央系统。该系统可在出现安全或安保顾虑时快速停止相关模型工作负载。这是 OpenAI 研究基础设施中的安全系统组件。
+OpenAI 官方博客发布案例研究，披露代码开发工具 CodeRabbit 基于 OpenAI 模型实现 AI 生成代码的治理与信任校验，同时依托 Codex 帮助同规模工程团队提升软件交付量 20 倍。当前公开材料未披露该指标的计算方式、合作范围及落地时间，无法验证数据准确性。
 
-rss · OpenAI Blog · Nov 9, 13:00
+rss · OpenAI Blog · Nov 9, 08:00
 
-**「为什么重要」** 这为 AI 安全治理提供了工程化的基础设施样本。对于关注 AI 安全的从业者，这种集中式监控与中断机制值得跟踪。
+**「为什么重要」** 这是 OpenAI 官方公开的 Codex 与 OpenAI 模型产业落地案例，为 AI 编码工具的代码治理、交付提效效果提供了可参考的实证样本。
 
-**「可关注」** 可关注：Control Room 作为中央监控与中断系统的设计。
+**「可关注」** 可关注：Codex 已在产业端出现同规模团队交付量提升 20 倍的落地案例。
 
-**Tags**: `#lab`, `#industry`, `#safety`, `#policy`
+**Tags**: `#lab`, `#industry`, `#product`
 
 ---
 
 <a id="item-ai-daily-4"></a>
-### [ChatGPT Enterprise 上线 AWS Marketplace](https://openai.com/index/chatgpt-enterprise-aws-marketplace) ⭐️ 7.8/10
+### [OpenAI API 加速 Kuken 图纸检索](https://openai.com/index/kuken) ⭐️ 6.8/10
 
-OpenAI 正式将 ChatGPT Enterprise 上架 AWS Marketplace。企业可通过现有 AWS 采购与计费关系完成该服务的采购，无需额外对接新的供应商流程。目前未披露具体定价、可用区域等额外限制信息。
+Kuken Industries 使用 OpenAI API 检索 70 年历史冷却塔图纸。工程师单次检索耗时从近 1 小时降至 4.5 分钟。该案例来自 OpenAI 官方博客，无新模型或产品发布。
 
-rss · OpenAI Blog · Nov 9, 19:00
+rss · OpenAI Blog · Nov 9, 08:00
 
-**「为什么重要」** 企业级 AI 服务的采购门槛降低，已在 AWS 生态内的组织可复用现有采购体系，无需额外走供应商准入流程，加快 ChatGPT Enterprise 的落地速度。
+**「为什么重要」** 该案例展示了 OpenAI API 在工业图纸检索中的具体效率提升，为类似场景提供可量化的参考。
 
-**「可关注」** 可关注：已在 AWS 生态内部署业务的企业可优先评估通过 AWS Marketplace 采购 ChatGPT Enterprise 的流程适配性。
+**「可关注」** OpenAI API 将 70 年历史工程图纸的检索时延从近 1 小时压缩至 4.5 分钟。
 
-**Tags**: `#product`, `#industry`, `#lab`
+**Tags**: `#industry`, `#lab`, `#product`
 
 ---
 
 <a id="item-ai-daily-5"></a>
-### [Google AI Studio 支持自然语言构建地图应用](https://developers.googleblog.com/from-prompt-to-app-build-with-google-maps-in-ai-studio/) ⭐️ 7.8/10
+### [Claude Fable 5.2 体验与 Jagged AGI 讨论](https://www.oneusefulthing.org/p/fable-52-and-jagged-agi) ⭐️ 5.5/10
 
-Google 宣布 Google Maps Platform 现已接入 Google AI Studio，开发者可通过自然语言提示直接构建带地理空间功能的应用，平台自动完成配置与 API 密钥管理，无需信用卡即可免费试用。内置示例包括 3D 城市漫游、多站点路线规划、门店查找等场景。免费试用受每日配额限制，配额每 24 小时自动重置，生产环境需绑定付费 Cloud 账单账户。
+Ethan Mollick在其个人博客中分享了Claude Fable 5.2的早期非官方使用体验，该模型承接已发布的Opus 5.5的能力，他在单次提示下完成了视频创作、硬件破解、商业方案设计、人文课程重建、学术研究等跨领域任务。他认为该模型接近其定义的AGI标准但未达标，存在「锯齿状AGI（Jagged AGI）」的能力短板，包括自主发现审美与判断问题、持续运营复杂系统等。
 
-rss · Google Developers AI · Nov 9, 00:00
+rss · One Useful Thing · Nov 9, 19:04
 
-**「为什么重要」** 这一集成降低了地理空间应用的原型开发门槛，开发者无需手动配置 Maps API 即可快速验证产品想法。
+**「为什么重要」** 这篇文章提供了当前大模型能力的多领域非官方实测样本，覆盖从创意生成到学术研究的多种场景，为评估大模型与AGI的边界提供了可参考的实测依据。
 
-**「可关注」** 可关注：AI Studio 画廊已提供可 remix 的 Maps 应用示例，可直接复用快速启动开发。
+**「可关注」** 可关注：当前大模型可在单次提示下完成跨领域复杂任务，但在自主识别审美、判断类问题，以及长期稳定运行复杂多环节系统方面仍存在明显短板。
 
-**Tags**: `#product`, `#industry`, `#lab`
-
----
-
-<a id="item-ai-daily-6"></a>
-### [MaxText 支持 TPU 长上下文训练](https://developers.googleblog.com/announcing-long-context-training-on-tpus-with-maxtext-context-parallelism/) ⭐️ 7.8/10
-
-Google 在开源 JAX 框架 MaxText 中新增长上下文训练支持，提供四种上下文并行策略：All-gather、A2A/Ulysses、P2P/Ring Attention 及 USP 混合方案，均基于 Tokamax Splash Attention 内核运行于 Cloud TPU。基准测试显示，Llama 3.1 8B 在 TPU 5p 上处理 400 万 token 序列时达到 70% MFU；TPU 7 可将上下文扩展至 1400 万 token，在 600 万 token 以下维持 50% MFU，1400 万 token 时达到 48.7% MFU。该功能已随 MaxText v0.2.4 发布，但 Ulysses 策略的上下文并行度受模型 KV 头数量上限约束。
-
-rss · Google Developers AI · Nov 9, 00:00
-
-**「为什么重要」** 长上下文训练正从数十万 token 向千万级扩展，系统效率成为 frontier 模型的核心瓶颈。MaxText 在 TPU 上提供四种可选的上下文并行方案，为开源社区提供了可验证的长上下文训练路径。
-
-**「可关注」** 可关注：P2P（Ring Attention）在 64K 至 14M token 范围内多数场景下优于 All-gather，且 TPU 7 凭借更大 HBM 在 1400 万 token 下达到 48.7% MFU；内存不足时优先 offload attention 输出，可隐藏传输开销并维持 MFU 平稳。
-
-**Tags**: `#lab`, `#open-source`, `#product`
-
----
-
-<a id="item-ai-daily-7"></a>
-### [Kuken 搜70年图纸降至4.5分钟](https://openai.com/index/kuken) ⭐️ 6.3/10
-
-OpenAI Blog 发布案例研究，Kuken Industries 使用 OpenAI API 检索 70 年历史冷却塔图纸。工程师查找维修图纸的时间从近一小时降至 4.5 分钟。该案例仅展示单一客户实施效果，未涉及新模型能力或行业推广。
-
-rss · OpenAI Blog · Nov 9, 08:00
-
-**「为什么重要」** 该案例展示了生成式 API 在工业文档检索中的效率提升，但影响范围目前仅限单一客户实施。
-
-**「可关注」** 可关注：OpenAI API 在非结构化工程图纸检索中实现了从近一小时到 4.5 分钟的量级优化。
-
-**Tags**: `#industry`, `#product`
+**Tags**: `#model`, `#industry`, `#eval`
 
 ---
