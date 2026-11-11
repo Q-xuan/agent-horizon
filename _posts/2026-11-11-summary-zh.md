@@ -5,36 +5,37 @@ date: 2026-11-11
 lang: zh
 ---
 
-> 从 196 条内容中筛选出 17 条重要资讯。
+> 从 207 条内容中筛选出 18 条重要资讯。
 
-<nav id="ah-toc" class="ah-toc" aria-label="目录"><span class="ah-toc-title">目录</span><ul><li><a href="#sec-harness-arch"><span class="ah-toc-name">Harness 架构</span><span class="ah-toc-count">4条</span></a></li><li><a href="#sec-agent-engineer"><span class="ah-toc-name">Agent 工程师日报</span><span class="ah-toc-count">7条</span></a></li><li><a href="#sec-ai-daily"><span class="ah-toc-name">AI 日报</span><span class="ah-toc-count">4条</span></a></li><li><a href="#sec-ai-deals"><span class="ah-toc-name">AI 羊毛</span><span class="ah-toc-count">2条</span></a></li></ul></nav>
+<nav id="ah-toc" class="ah-toc" aria-label="目录"><span class="ah-toc-title">目录</span><ul><li><a href="#sec-harness-arch"><span class="ah-toc-name">Harness 架构</span><span class="ah-toc-count">5条</span></a></li><li><a href="#sec-agent-engineer"><span class="ah-toc-name">Agent 工程师日报</span><span class="ah-toc-count">6条</span></a></li><li><a href="#sec-ai-daily"><span class="ah-toc-name">AI 日报</span><span class="ah-toc-count">6条</span></a></li><li><a href="#sec-ai-deals"><span class="ah-toc-name">AI 羊毛</span><span class="ah-toc-count">1条</span></a></li></ul></nav>
 
 ---
 
 **[Harness 架构](#sec-harness-arch)**
-1. [block/goose v1.59.0 发布](#item-harness-arch-1) ⭐️ 8.8/10
-2. [DSPy 3.5.0 发布](#item-harness-arch-2) ⭐️ 8.8/10
-3. [pydantic-ai v2.67.0 发布](#item-harness-arch-3) ⭐️ 7.8/10
-4. [Cursor Projects 多玩家协作发布](#item-harness-arch-4) ⭐️ 6.8/10
+1. [Goose v1.59.0 发布](#item-harness-arch-1) ⭐️ 7.8/10
+2. [pydantic-ai v2.67.0 发布](#item-harness-arch-2) ⭐️ 7.8/10
+3. [stanfordnlp/dspy 3.5.0 发布](#item-harness-arch-3) ⭐️ 7.8/10
+4. [Anthropic Agent Skills 实现公开](#item-harness-arch-4) ⭐️ 6.0/10
+5. [Cursor Projects 升级多玩家协作](#item-harness-arch-5) ⭐️ 5.8/10
 
 **[Agent 工程师日报](#sec-agent-engineer)**
-1. [持久执行模式 面向长时程智能体](#item-agent-engineer-1) ⭐️ 8.0/10
-2. [Meta 发布 Muse Ember 1.0](#item-agent-engineer-2) ⭐️ 7.0/10
-3. [Claude Fable 5.2 代码所有权提示](#item-agent-engineer-3) ⭐️ 7.0/10
-4. [Naive-N0.5-Flash 2100 TPS 实测](#item-agent-engineer-4) ⭐️ 7.0/10
-5. [Gemini 4 Carbon 正式可用](#item-agent-engineer-5) ⭐️ 6.8/10
-6. [DeepMind AlphaProof Code 引 HN 讨论](#item-agent-engineer-6) ⭐️ 6.0/10
-7. [Deletion Tuning 删除权重微调方法发布](#item-agent-engineer-7) ⭐️ 6.0/10
+1. [Gemini 4 Carbon 正式上线](#item-agent-engineer-1) ⭐️ 7.8/10
+2. [DeepMind 发布 AlphaProof Code](#item-agent-engineer-2) ⭐️ 7.0/10
+3. [Meta Muse Ember 1.0 发布](#item-agent-engineer-3) ⭐️ 7.0/10
+4. [ReproBridge 发布 1029 任务基准](#item-agent-engineer-4) ⭐️ 7.0/10
+5. [llm-gemini 0.36 发布 支持 Gemini 4 Carbon](#item-agent-engineer-5) ⭐️ 6.0/10
+6. [Sage-Taiyi 科学发现架构发布](#item-agent-engineer-6) ⭐️ 6.0/10
 
 **[AI 日报](#sec-ai-daily)**
-1. [ChatGPT 上线企业信息管理功能](#item-ai-daily-1) ⭐️ 7.8/10
-2. [OpenAI 与 Upwork 发布 AI 对自由职业影响研究](#item-ai-daily-2) ⭐️ 7.8/10
-3. [Git 2.56.1 修复 6 个安全漏洞](#item-ai-daily-3) ⭐️ 7.8/10
-4. [OpenAI 为看护者开免费 ChatGPT 工作坊](#item-ai-daily-4) ⭐️ 6.8/10
+1. [OpenAI 上线 ChatGPT 企业功能](#item-ai-daily-1) ⭐️ 7.8/10
+2. [OpenAI 发布教育 AI 指导研究](#item-ai-daily-2) ⭐️ 7.8/10
+3. [OpenAI Upwork 自由职业研究发布](#item-ai-daily-3) ⭐️ 7.8/10
+4. [Gilbert + Tobin 律所 AI 转型访谈](#item-ai-daily-4) ⭐️ 6.8/10
+5. [OpenAI 为护理人员推出免费 ChatGPT 培训](#item-ai-daily-5) ⭐️ 6.8/10
+6. [Git 2.56.1 修复 6 个安全漏洞](#item-ai-daily-6) ⭐️ 6.8/10
 
 **[AI 羊毛](#sec-ai-deals)**
-1. [小渔排班 iOS 永久免费](#item-ai-deals-1) ⭐️ 8.0/10
-2. [切问学术双十一积分翻倍福利](#item-ai-deals-2) ⭐️ 7.0/10
+1. [小渔排班 宣布永久免费](#item-ai-deals-1) ⭐️ 8.0/10
 
 ---
 
@@ -44,64 +45,71 @@ lang: zh
 <p class="ah-sec-meta"><a class="ah-anchor" href="#sec-harness-arch" aria-label="链接到本节">#</a><a class="ah-back" href="#ah-toc">↑ 回到目录</a></p>
 
 <a id="item-harness-arch-1"></a>
-### [block/goose v1.59.0 发布](https://github.com/aaif-goose/goose/releases/tag/v1.59.0) ⭐️ 8.8/10
+### [Goose v1.59.0 发布](https://github.com/aaif-goose/goose/releases/tag/v1.59.0) ⭐️ 7.8/10
 
-block/goose v1.59.0 正式发布，新增最小化延迟 MCP 工具、子代理委托恢复、GDK 代理钩子操作及 ACP 客户端标签会话过滤。ToolExecutionOperation 引入 deferred MCP 支持，工具调用不再强制同步阻塞；subagent 支持已完成委托的后续跟进；goose-agent 通过 GDK 暴露 stop、approval、tool hook 接口；ACP 客户端可按标签过滤会话列表。版本同时修复 Databricks OAuth 令牌自动刷新、Gemini thinking level 传递、会话数据库初始化隔离等问题。
+Goose v1.59.0 发布，新增延迟 MCP 工具执行、子代理恢复、Agent 钩子控制及会话管理改进。ToolExecutionOperation 支持最小化延迟 MCP 工具；goose-agent \(GDK\) 新增 stop、approval 和 tool hook 操作；已完成委托支持后续跟进恢复。同时修复会话数据库与应用池隔离、Databricks OAuth 令牌自动刷新、Gemini thinking level 传递及 cargo-deny advisory 等问题。
 
 github · github-actions\[bot\] · 11月10日 17:17
 
-**「设计要点」** ToolExecutionOperation 的 deferred MCP 工具将执行模型从同步阻塞改为延迟调度。goose-agent 通过 GDK 暴露 stop/approval/tool hook，将权限控制点下沉到代理运行时；会话层新增 client tag 过滤，支持多租户或 ACP 场景下的会话隔离。
+**「设计要点」** 会话数据库与应用池隔离初始化。goose-agent \(GDK\) 暴露 stop、approval、tool hook 控制面，ToolExecutionOperation 承载延迟 MCP 工具执行。
 
-**「改了什么」** 相对上一版，核心能力变更包括：ToolExecutionOperation 支持最小化延迟 MCP 工具；subagent 委托支持 resume 并携带后续跟进；goose-agent 新增 stop、approval、tool hook 操作接口；ACP 客户端可按标签过滤会话列表。Bug 修复覆盖 Databricks OAuth 自动刷新、Gemini 参数传递修正、会话数据库初始化隔离等。
+**「改了什么」** 新增延迟 MCP 工具执行、子代理恢复、Agent 钩子控制、实时语音指令配置、GPT-Live 端点配置及按客户端标签过滤会话。修复会话数据库初始化隔离、Databricks OAuth 令牌刷新、Gemini 参数传递、Opus 5.5 压缩提示词适配及 cargo-deny advisory 等问题。
 
-**「评论」** 无社区评论。
-
-**标签**: `#mcp`, `#tools`, `#subagents`, `#permissions`, `#runtime`
+**标签**: `#MCP`, `#subagent`, `#tool-execution`, `#session-management`, `#release`
 
 ---
 
 <a id="item-harness-arch-2"></a>
-### [DSPy 3.5.0 发布](https://github.com/stanfordnlp/dspy/releases/tag/3.5.0) ⭐️ 8.8/10
+### [pydantic-ai v2.67.0 发布](https://github.com/pydantic/pydantic-ai/releases/tag/v2.67.0) ⭐️ 7.8/10
 
-DSPy 3.5.0 发布，prompts、defaults 与 APIs 存在破坏性变更，核心变更包括轻量 lm15 运行时、graduated 核心模块、ReActV2 与多模态工具结果。LiteLLM 与 OpenAI Python 库变为可选，默认安装包从 206.7 MiB 降至 30.9 MiB，依赖从 65 个减至 25 个，导入时间从 1.01 s 降至 0.49 s。ReActV2 替换 ReAct 成为默认 dspy.ReAct，提供结构化 History 与类型化 submit 工具；RLM、Flex、GEPA 从实验性模块毕业。XMLAdapter 成为默认 Adapter，model\_type=&quot;auto&quot; 成为默认，磁盘缓存默认安全，RLM 支持图像裁剪与混合文本/图像子查询，原生推理优先。
+pydantic-ai 正式发布 v2.67.0 版本，核心更新覆盖持久化执行、上下文加载、工具链、权限控制四大方向。本次版本新增持久化执行下动态子代理支持，优化 RepoContext 默认递归加载每目录嵌套指令文件并设置 32000 字符上限，调整 ArtifactScanner 匹配逻辑以支持隐藏变体选择器，扩展文档工具支持标准库 mimetypes 识别的全部媒体类型。同时完成多项兼容性调整，包括原生工具字段迁移至 provider\_settings、CodeMode 禁止使用 Python 内置名作为工具名、OpenAI 响应无 history\_digest 时停止续传等。
 
-github · isaacbmiller · 11月10日 16:25
+github · dsfaccini · 11月10日 23:11
 
-**「设计要点」** DSPy 3.5.0 以轻量 lm15 引擎替换原有 LM 层，LiteLLM 与 OpenAI Python 库变为可选依赖。RLM 与 Flex 基于 Deno 运行时，支持 InterpreterPool 预热、History 持久化（不恢复实时解释器变量）及多模态工具结果返回；磁盘缓存默认限制加载且以纯 NumPy 数组存储，禁用 pickle。
+**「设计要点」** 本次更新围绕 agent 运行时的持久化、上下文管理、工具调用、权限控制四个核心维度展开：运行时层覆盖子代理、guardrail、judge、Prefect 重试的 durable 记录与 gRPC 远程沙箱支持；上下文层优化仓库指令的递归加载与字符上限控制；工具层扩展文档媒体类型支持并重构原生工具配置结构；权限层新增路径级工作区权限与 operator 权限校验。
 
-**「改了什么」** ReActV2 替换 ReAct 成为默认 dspy.ReAct，引入结构化 History 与类型化 submit 工具，旧名称在 3.6 前弃用。RLM、Flex、GEPA 从实验性模块毕业，XMLAdapter 成为默认 Adapter，model\_type=&quot;auto&quot; 成为默认，RLM 支持图像裁剪与混合文本/图像子查询，磁盘缓存默认限制加载且禁用 pickle，原生推理优先。
+**「改了什么」** 相对上一版本，本次新增持久化执行下动态子代理、DBOS 子工作流并行执行能力，支持 guardrail 与 judge 结果 durable 记录、Prefect 流重试时重放含二进制内容的历史消息，CodeMode 远程沙箱可通过 gRPC 运行（依赖 pydantic-monty 1.5.0）；RepoContext 默认递归加载每目录嵌套指令文件，新增 walk\_up 参数与 32000 字符上限配置，Coder 基于嵌套指令构建，模型写入/编辑目录时自动 surfaced 嵌套指令；ArtifactScanner 匹配前剥离默认可忽略字符并标记隐藏变体选择器，文档工具支持标准库 mimetypes 识别的全部媒体类型，原生工具字段迁移至 provider\_settings，新增消息队列 dequeue 与优先级调整能力，CodeMode 禁止使用 Python 内置名作为工具名；新增路径级工作区权限、operator 权限校验，禁止低于 operator 权限创建 CapabilityCreation 运行，OpenAI 响应无 history\_digest 时停止通过 openai\_previous\_response\_id 续传，聊天模板特殊 token 在内容中拆分、输出中恢复，流式运行结束时 StreamedRunResult.result 抛出 UserError。
 
-**标签**: `#runtime`, `#tools`, `#memory`
+**标签**: `#runtime`, `#subagents`, `#memory`, `#tools`, `#sandbox`
 
 ---
 
 <a id="item-harness-arch-3"></a>
-### [pydantic-ai v2.67.0 发布](https://github.com/pydantic/pydantic-ai/releases/tag/v2.67.0) ⭐️ 7.8/10
+### [stanfordnlp/dspy 3.5.0 发布](https://github.com/stanfordnlp/dspy/releases/tag/3.5.0) ⭐️ 7.8/10
 
-pydantic-ai v2.67.0 发布，重点强化 durable execution 能力与代码上下文处理。动态子代理 SubAgents\(dynamic\_agents=...\) 现可在 durable execution 下运行，RepoContext 默认按目录加载嵌套指令文件并设 32,000 字符上限，ArtifactScanner 在匹配前剥离默认忽略字符。此外，provider-specific 原生工具字段迁至 provider\_settings，文档发送扩展至 mimetypes 已知的任意媒体类型，guardrail 判定与 TrajectoryJudge 评估均支持持久化记录。
+DSPy 3.5.0 发布，核心模块 RLM、Flex、GEPA 脱离实验阶段。ReAct 被 ReActV2 替换，引入结构化 History 与类型化 submit 工具；工具结果支持图片、文件等富媒体。RLM 新增对话历史持久化与图像能力，优先使用原生推理并支持显式计划；lm15 引擎使 LiteLLM 与 OpenAI 库变为可选依赖，默认安装体积从 206.7 MiB 降至 30.9 MiB。本版本变更 prompts、默认值与 API，存在破坏性变更，需参照升级指南迁移。
 
-github · dsfaccini · 11月10日 23:11
+github · isaacbmiller · 11月10日 16:25
 
-**「设计要点」** 运行时通过 DBOS 子工作流与 Prefect 任务重放增强 durable execution 可靠性；工具层将 provider 专属字段统一收口至 provider\_settings，远程 CodeMode 沙盒改用 gRPC 调用；权限模型新增 Workspace.authority\_of  per-path  authority 与 CapabilityCreation 权限校验，上下文记忆通过 RepoContext 嵌套指令上限控制膨胀。
+**「设计要点」** 运行时基于 Deno，通过预编译标准库、缓存启动快照与 InterpreterPool 预热降低冷启动开销；工具层采用结构化 History 与类型化 submit，支持富媒体结果，RLM History 提供对话持久化但不恢复实时变量。LM 层改用轻量 lm15 引擎，默认自动路由 API 族，磁盘缓存默认禁用 pickle 并限制加载。
 
-**「改了什么」** durable execution 新增动态子代理与 task\_control 支持，RepoContext 默认递归加载目录指令文件并引入 nested\_max\_chars 上限，ArtifactScanner 修复隐藏变体选择器与忽略字符问题。provider 专属字段迁移至 provider\_settings 并扩展 Anthropic 网络工具支持，guardrail 与 judge 评估结果持久化，CodeMode 拒绝 Python 内置函数名工具，pydantic-ai-harness 将 httpx 替换为 httpx2。
+**「改了什么」** ReActV2 替换 ReAct，提供结构化 History 与类型化 submit 工具；RLM、Flex、GEPA 脱离实验阶段，工具结果支持富媒体且 RLM 新增对话历史持久化与图像能力。LiteLLM 与 OpenAI 库变为可选，XMLAdapter 与 model\_type=&quot;auto&quot; 成为默认，磁盘缓存禁用 pickle 并限制加载；本版本变更 prompts、默认值与 API。
 
-**标签**: `#subagents`, `#runtime`, `#tools`
+**标签**: `#runtime`, `#tools`, `#memory`, `#planning`
 
 ---
 
 <a id="item-harness-arch-4"></a>
-### [Cursor Projects 多玩家协作发布](https://cursor.com/blog/projects-multiplayer) ⭐️ 6.8/10
+### [Anthropic Agent Skills 实现公开](https://github.com/anthropics/skills) ⭐️ 6.0/10
 
-Cursor Projects 升级为多玩家协作模式，支持团队与智能体 fleet 在同一工作区共享上下文、记忆和任务板。系统保留成员级本地一对一聊天，同时新增团队级共享上下文层，存放需求文档、技术规格和设计稿。智能体可跨成员实时协调，在检测到工作重叠或依赖时自动同步，避免后期重构和合并冲突。该功能以 Beta 形式向所有 Cursor 用户推出。
+这是 Anthropic 公开的 Agent Skills 标准实现仓库\`anthropics/skills\`，对应\`agentskills.io\`定义的通用标准，用于扩展 Claude 的能力边界。技术上新点在于支持动态加载包含指令、脚本、资源的技能文件夹，以可复现的方式提升 Claude 完成特定专业任务的表现，适用场景包括按企业品牌规范生成文档、使用组织内部工具分析数据等。
+
+rss · GitHub Trending Daily · 11月11日 03:12
+
+**标签**: `#tools`, `#runtime`
+
+---
+
+<a id="item-harness-arch-5"></a>
+### [Cursor Projects 升级多玩家协作](https://cursor.com/blog/projects-multiplayer) ⭐️ 5.8/10
+
+Cursor Projects 在 2026-11-10 宣布升级为多玩家（multiplayer）协作工作区。此前 Projects 仅支持单人多 agent 协调，现在团队可邀请成员加入同一 Project，与 agent fleet 共享上下文、记忆和任务看板。新增跨团队成员 agent 实时通信，使不同工程师的 agent 能提前协调工作顺序、避免合并冲突。该功能目前以 beta 形式向所有 Cursor 用户推出。
 
 rss · Cursor Blog · 11月10日 12:00
 
-**「设计要点」** 采用双层上下文架构：成员级本地上下文保持不变，叠加团队级共享上下文层。智能体通过协调器实现跨成员通信，任务板作为统一视图同时服务于人类和智能体。
+**「改了什么」** Projects 从单人多 agent 工作区升级为团队级多玩家工作区，新增共享上下文层、共享任务板、跨 teammate agent 实时通信，以及新成员加入时的上下文预配置。beta 阶段已向所有 Cursor 用户开放。
 
-**「改了什么」** 新增团队共享上下文系统，项目内决策可被所有智能体访问；新增统一任务板，同时显示人类和智能体的工作状态及关联 PR；新增跨成员智能体通信，支持实时协调和依赖顺序规划；新成员加入时自动预配置完整上下文，无需重复搭建。
-
-**标签**: `#memory`, `#planning`, `#subagents`
+**标签**: `#memory`, `#subagents`, `#planning`
 
 ---
 
@@ -111,109 +119,94 @@ rss · Cursor Blog · 11月10日 12:00
 <p class="ah-sec-meta"><a class="ah-anchor" href="#sec-agent-engineer" aria-label="链接到本节">#</a><a class="ah-back" href="#ah-toc">↑ 回到目录</a></p>
 
 <a id="item-agent-engineer-1"></a>
-### [持久执行模式 面向长时程智能体](https://martinfowler.com/articles/durable-execution-agents.html) ⭐️ 8.0/10
+### [Gemini 4 Carbon 正式上线](https://deepmind.google/blog/gemini-4-carbon-is-now-available/) ⭐️ 7.8/10
 
-2026 年 11 月 10 日，Martin Fowler 网站发布 Kiran Prakash 撰写的技术文章，介绍面向长时程智能体的持久执行（durable execution）新兴架构模式。该模式针对长时程智能体运行中可能出现的进程崩溃、网络故障等异常，由运行时记录所有与外部交互的步骤结果，故障后重跑程序时可跳过已完成步骤、基于记录重建状态，实现故障恢复。该模式对智能体编排、coding agent harness 设计有直接参考价值。
+Google DeepMind 于 2026-11-10 发布官方公告，确认 Gemini 4 Carbon 模型即日起正式上线（general availability）。该模型面向 AI agent 工程师、harness 开发者及 eval 工作流提供新的底层模型选项。当前公告未披露具体技术性能指标、能力细节或与前一版本的对比基准。
 
-rss · Martin Fowler · 11月10日 14:10
+rss · Google DeepMind · 11月10日 16:03
 
-**「为什么重要」** 该模式直接解决长时程智能体运行时的故障恢复问题，为当前 coding agent / harness 的长任务可靠性设计提供了可参考的架构范式。
+**「为什么重要」** Gemini 4 Carbon 来自主流 AI 实验室，其可用性扩展了 agent 系统的底层模型选型空间。但具体能力提升、成本结构及 API 兼容性尚未公开，实际影响需等待进一步技术文档。
 
-**「可关注」** 可关注：长时程智能体 harness 可参考该模式，在运行时层面对外部交互步骤做持久化记录，降低故障后状态重建成本。
+**「可关注」** 可关注：Gemini 4 Carbon 已进入 GA 阶段，但技术细节与定价尚未公开，建议暂缓接入生产 harness，待官方发布基准测试与 API 文档后再评估迁移成本。
 
-**标签**: `#orchestration`, `#harness`, `#coding-agent`, `#memory`
+**标签**: `#harness`, `#coding-agent`, `#eval`
 
 ---
 
 <a id="item-agent-engineer-2"></a>
-### [Meta 发布 Muse Ember 1.0](https://simonwillison.net/2026/Nov/10/muse-ember/) ⭐️ 7.0/10
+### [DeepMind 发布 AlphaProof Code](https://deepmind.google/blog/introducing-alphaproof-code/) ⭐️ 7.0/10
 
-2026 年 11 月 10 日，Meta AI 发布面向 agent 任务的小模型 Muse Ember 1.0，官方描述其优化了 tool calls、coding 子任务、routing、extraction、长文档解析等 agent 高频重复工作，提供 minimal、low、medium、high、xhigh、max 六个推理等级。短提示场景下定价与 GPT-6 Luna、Claude Haiku 5.5 一致，为输入 $0.10/百万 token、输出 $0.50/百万 token；长提示阈值分别为 200k、272k、100k，超过阈值后 Ember 定价介于两者之间。同天发布的 Claude Fable 5.2 定价为 Ember 短提示场景的 80 倍。Artificial Analysis 的 Intelligence Index vs 成本 per task 图表显示，Muse Ember 1.0 的 xhigh、max 推理等级位于 Pareto 线，同 Intelligence Index 约 34 的 Claude Haiku 5.5 xhigh 相比，成本低约 44%。当前内容来自 Simon Willison 的二次报道，非 Meta 官方公告，且原文存在截断，提及推理等级与生成质量未呈现 clean 映射。
+据 Hacker News 讨论，DeepMind 于 2026 年 11 月 10 日发布 AlphaProof Code 形式化代码验证证明代理，核心机制为迭代遍历代码库编写并运行 Lean/Rocq 证明，工作模式与经典编码代理高度相似。社区讨论提到该代理此前验证过存在历史 bug 的人类编写代码库时未发现缺陷，引发对证明范围是否过窄、AI 生成证明本身是否存在错误的质疑，目前无公开完整技术规格、性能基准与详细架构信息。
+
+hackernews · Google DeepMind · 11月10日 12:11 · [社区讨论](https://news.ycombinator.com/item?id=50439193)
+
+**「为什么重要」** 这是面向代码场景的形式化验证 AI 证明代理首次进入公众讨论，其与现有编码代理高度相似的工作模式，以及社区提出的 AI 证明可靠性、验证范围过窄等实际风险，对 coding agent 设计、代码正确性 eval 工具链开发有直接参考价值。
+
+**「可关注」** 可关注 AI 生成形式化证明本身的可靠性风险，以及当前验证代理可能仅覆盖窄代码属性而非全量正确性的限制，避免在 eval 场景中过度信任其验证结果。
+
+**「评论」** 社区普遍认可该代理与经典编码代理的工作模式相似性，均通过迭代代码库生成并运行证明代码；同时存在分歧，有用户质疑其此前验证零 bug 的结果可能源于证明范围过窄，或 AI 生成的证明本身存在未被发现的错误，也有用户看好其长期改变软件验证范式的潜力。
+
+**标签**: `#coding-agent`, `#eval`
+
+---
+
+<a id="item-agent-engineer-3"></a>
+### [Meta Muse Ember 1.0 发布](https://simonwillison.net/2026/Nov/10/muse-ember/) ⭐️ 7.0/10
+
+2026 年 11 月 10 日，Meta AI 发布 Muse Ember 1.0，定位为面向 agent 工作流的小型高效模型，主打 tool calls、编码子任务、路由、信息提取、长文档解析等重复性推理场景。该模型提供 minimal、low、medium、high、xhigh、max 共 6 个推理等级，支持 1M token 上下文；短提示词（≤200k 输入 token）定价为$0.10/百万输入 token、$0.50/百万输出 token，与 GPT-6 Luna、Claude Haiku 5.5 持平；超过 200k 输入 token 后输入价涨至$0.30/百万，输出价涨至$1.50/百万。Artificial Analysis 的 Intelligence Index vs Cost per Task 图表显示，Muse Ember 的 xhigh、max 推理等级位于效率帕累托前沿，同 Intelligence Index 下成本比 Claude Haiku 5.5 xhigh 低约一半。公开测试显示其 high 推理等级生成 SVG 时未返回完整结果，推理等级与输出质量无明确线性映射关系。目前公开材料未提供该模型的性能基准或生产环境实测数据，主要影响做 coding agent 选型、成本优化的工程师。
 
 rss · Simon Willison · 11月10日 07:28
 
-**「为什么重要」** 该模型是目前 Claude Haiku/GPT Luna 类中效率 Pareto 前沿的成员，对需要控制 agent 子任务成本的工程师有直接参考价值；其在具体 coding agent 场景的实际推理质量与稳定性尚未得到大规模验证。
+**「为什么重要」** 当前 agent 工作流对低推理成本、高执行效率的小模型需求明确，Muse Ember 的帕累托前沿定位为工具调用、编码子任务等场景的模型选型提供了新的成本优化选项。
 
-**「可关注」** 可关注：Muse Ember 1.0 在 Artificial Analysis 的效率 Pareto 线上，同 Intelligence Index 下成本低于 Claude Haiku 5.5 xhigh 约 44%，可作为 agent 高频子任务的低成本备选模型。
+**「可关注」** 可关注：若 agent 工作流以 tool calls、编码子任务、长文档解析为核心场景，可对比测试 Muse Ember xhigh/max 等级与现有同价位模型的单任务成本、延迟及输出稳定性表现。
 
 **标签**: `#coding-agent`, `#orchestration`
 
 ---
 
-<a id="item-agent-engineer-3"></a>
-### [Claude Fable 5.2 代码所有权提示](https://simonwillison.net/2026/Nov/10/prompting-claude-fable-52/) ⭐️ 7.0/10
-
-2026 年 11 月 10 日，Simon Willison 的博客引用 Anthropic 官方文档，披露 Claude Fable 5.2 在编码任务中对代码所有权提示的响应规律。测试场景为小型编码任务，无所有权相关提示时，模型合并重复代码的比例不到 10%；添加指定所有权提示后，该比例提升至约 50%。
-
-rss · Simon Willison · 11月10日 05:34
-
-**「为什么重要」** 该技巧来自 Anthropic 官方可验证测试，无需调整模型即可直接应用于 coding agent 的 prompt 优化。目前暂无公开数据证实该效果在复杂编码任务、多轮协作场景中的普适性。
-
-**「可关注」** 可关注：在 coding agent 的任务 prompt 中明确声明代码归模型所有，可能以极低成本提升其重构重复代码的概率。
-
-**标签**: `#coding-agent`, `#eval`
-
----
-
 <a id="item-agent-engineer-4"></a>
-### [Naive-N0.5-Flash 2100 TPS 实测](https://latent.space/p/naiveai/) ⭐️ 7.0/10
+### [ReproBridge 发布 1029 任务基准](https://huggingface.co/papers/2611.08452) ⭐️ 7.0/10
 
-2026 年 11 月 10 日，第三方博客 latent.space 发布无偏评测系列首文，评估 NaiveAI 开源编码模型 Naive-N0.5-Flash，该模型官方承诺最高 2100 tokens/秒，由 AI 主导开发，长期目标是实现递归自我改进，基于小米 310B 参数稀疏 MoE 模型 MiMo-V2.5（15B 激活参数，原生训练 48T tokens）继续训练，新增约 3.25T 训练 tokens（其中 3T 采用 1M 固定上下文长度、恒定学习率训练），搭配自研 NaiveRT 推理引擎。评测将 Naive-N0.5-Flash 的极速模式与 OpenRouter 热门 Flash 类编码模型 DeepSeek V4.1 Flash 1017、GLM-5.3 Flash 对比，使用相同应用构建提示词测试。官方 benchmark 显示 Naive-N0.5-Flash 的 NL2Repo-Bench 得分 71.9，高于两款对比模型，但 DeepSWE v1.1 得分 67.8、Agent&\#x27;s Last Exam 得分 32.4 均低于 DeepSeek V4.1 Flash 1017；第三方实测发现其处理难题推理时间更长，但整体回答速度仍更快，单题成本略高。截至发稿时，Artificial Analysis 平台尚无 NaiveAI 模型的性能统计数据，其 Intelligence Index 得分也未公布，官方 benchmark 的测试条件未完全披露。
+2026-11-11 ，Hugging Face Daily Papers 介绍 ReproBridge，一个用于构建可复现机器学习研究工件的标准化代理工作流，配套 ReproBridge-Bench 基准。该基准包含 1,029 个任务，覆盖 387 个实验、36 篇论文，每个任务提供 5 个人工验证的参考分数。材料未包含代理性能对比数据。
 
-rss · Latent Space · 11月10日 18:56
+rss · Hugging Face Daily Papers · 11月11日 03:12
 
-**「为什么重要」** 这是目前公开可查的首份针对 Naive-N0.5-Flash 编码能力的第三方评测，既验证了其高吞吐速度的核心卖点，也披露了速度与推理质量、成本的权衡关系；该模型在真实编码代理工作流中的稳定性、长上下文任务表现尚未有公开验证。
+**「为什么重要」** 它为 coding agent 评估与 harness 开发提供了标准化资源，直接针对 ML 实验复现这一具体场景。目前材料未披露代理在该基准上的实际表现数据。
 
-**「可关注」** 可关注：若团队编码场景优先考虑首字延迟与整体吞吐，可参考其 NaiveRT 推理引擎与 DeepSeek 稀疏注意力层的适配方案，但需自行验证复杂推理、长上下文场景下的实际表现与成本。
+**「可关注」** 可关注：ReproBridge-Bench 的 1,029 个任务及人工验证参考分数可作为 coding agent 复现能力的评估素材。
 
-**标签**: `#coding-agent`, `#eval`, `#performance`
+**标签**: `#eval`, `#coding-agent`, `#harness`
 
 ---
 
 <a id="item-agent-engineer-5"></a>
-### [Gemini 4 Carbon 正式可用](https://deepmind.google/blog/gemini-4-carbon-is-now-available/) ⭐️ 6.8/10
+### [llm-gemini 0.36 发布 支持 Gemini 4 Carbon](https://simonwillison.net/2026/Nov/10/llm-gemini/) ⭐️ 6.0/10
 
-2026 年 11 月 10 日，Google DeepMind 官方宣布 Gemini 4 Carbon 模型正式对外可用。当前公开材料未披露该模型的技术规格、性能基准或面向编码智能体的专项优化信息。
+llm-gemini 0.36 于 2026-11-10 发布，新增对 Gemini 4 Carbon 的支持。该模型初始定价为输入 $2/百万 token、输出 $10/百万 token，12 月 1 日将翻倍至 $4/$20。本次更新新增可配置的 thinking effort 参数，默认值为 medium。作者实测该模型可生成基于 OpenStreetMap 数据的 Three.js 动画，并可通过追加提示转为无外部依赖的独立 HTML 文件。
 
-rss · Google DeepMind · 11月10日 16:03
+rss · Simon Willison · 11月10日 20:09
 
-**「为什么重要」** 该模型是 Gemini 系列新增的可用变体，但当前公开信息不足以评估其对编码智能体工程的实际价值，需等待后续技术细节披露。
+**「为什么重要」** 这是 llm-gemini 插件对最新公开可用 Gemini 模型的适配，临时定价窗口与可配置思考强度为 coding agent 的成本调控与输出质量调整提供了新选项，12 月 1 日模型涨价后相关成本结构将发生变化。
 
-**「可关注」** 可关注：后续跟进官方披露的技术细节，评估其与现有编码智能体工作流的适配性。
+**「可关注」** 可关注：llm-gemini 0.36 新增的 thinking effort 参数可针对 coding agent 场景调整模型思考强度，Gemini 4 Carbon 当前临时定价窗口（12 月 1 日涨价前）可评估成本收益。
 
-**标签**: `#coding-agent`
+**标签**: `#coding-agent`, `#harness`
 
 ---
 
 <a id="item-agent-engineer-6"></a>
-### [DeepMind AlphaProof Code 引 HN 讨论](https://deepmind.google/blog/introducing-alphaproof-code/) ⭐️ 6.0/10
+### [Sage-Taiyi 科学发现架构发布](https://huggingface.co/papers/2611.12762) ⭐️ 6.0/10
 
-2026 年 11 月 10 日 HN 社区讨论 DeepMind 发布的代码形式化验证代理 AlphaProof Code，社区提及该代理可通过生成 Lean/Rocq 形式化证明验证代码实现，工作流与经典编码代理类似，对编码代理设计、代码正确性评测相关从业者有潜在参考价值。目前无官方公告的完整技术细节与性能数据公开。
+2026 年 11 月 11 日 HF 每日论文收录 Sage-Taiyi 元认知科学发现架构，该架构通过显式监控与调控机制，基于积累的科学认知调整研究目标与推理方法。配套的 Taiyi-Bench 是覆盖 10 个学科、265 个任务的 AI 协同科学创想基准，Sage-Taiyi 在该基准全部 8 项历史复现与开放创想指标上排名第一，总体得分 54.0，高于最强基线 AI Scientist-v2 的 47.9。当前公开材料为截断版本，未披露实现细节，领域适配性有限。
 
-hackernews · Google DeepMind · 11月10日 12:11 · [社区讨论](https://news.ycombinator.com/item?id=50439193)
+rss · Hugging Face Daily Papers · 11月11日 03:12
 
-**「为什么重要」** 该讨论首次公开了 DeepMind 形式化验证代理的社区认知，已确认其对编码代理设计有参考价值；但代理的实际验证能力、与经典编码代理的差异尚未有官方技术细节支撑，相关影响仍待验证。
+**「为什么重要」** 该工作提出的显式元认知监控、可复用推理方法选择机制，对智能体编排与记忆设计有可迁移参考价值；但当前公开内容截断、领域聚焦科学发现，尚未证实对通用 AI Agent 工程的实际落地价值。
 
-**「可关注」** 可关注：AI 生成的形式化证明可能存在“作弊”或定理定义偏差问题，编码代理的输出即使通过测试/验证也不代表逻辑正确。
+**「可关注」** 可关注：元认知驱动的显式监控与调控机制、配套的 Taiyi-Bench 评估框架，对智能体记忆设计与效果验证有参考价值。
 
-**「评论」** 社区存在分歧：部分用户质疑形式化验证零 bug 结果的合理性，怀疑定理定义或验证范围存在偏差；也有用户指出该代理工作流与经典编码代理高度相似，仅输出形式化证明代码而非普通实现代码。另有用户分享 AI 生成形式化证明易“作弊”、编码代理输出通过测试但逻辑错误的实际踩坑经验。
-
-**标签**: `#coding-agent`, `#eval`
-
----
-
-<a id="item-agent-engineer-7"></a>
-### [Deletion Tuning 删除权重微调方法发布](https://www.reddit.com/r/LocalLLaMA/comments/1xswmb7/the_surprising_effectiveness_of_deleting_weights/) ⭐️ 6.0/10
-
-2026 年 11 月 10 日 Reddit 社区分享 Deletion Tuning LLM 后训练技术，核心为学习 transformer 块门控投影的二值掩码，仅零化不到 0.05%的模型权重，即可在基于可验证奖励的强化学习、监督微调、on-policy 蒸馏三个场景下匹配全量微调（FFT）的规模性能。该方法掩码检查点体积仅为对应 FFT 检查点的数百分之一到数千分之一，强化学习场景下旧任务准确率接近基座水平，对比的 FFT、LoRA、随机稀疏微调旧任务准确率最多下降 5.4 个百分点；稳定秩、谱漂移、主权重重叠三项几何分析显示其权重变化特征与 FFT 最接近。最初社区分享未附官方一手验证材料，后续发帖人补充了对应 GitHub 仓库、HuggingFace 模型库、项目博客及 NeurIPS 2026 海报链接，目前无独立复现结果公开。
-
-reddit · r/LocalLLaMA · /u/Thrumpwart · 11月10日 19:44
-
-**「为什么重要」** 该方法针对 LLM 后训练检查点体积过大、灾难性遗忘严重的核心痛点，给出了量化上显著的优化方案；但其在真实 AI agent 工作流中的泛化性、独立复现结果及实际部署收益尚未得到验证。
-
-**「可关注」** 可关注：仅修改&lt;0.05%权重的 Deletion Tuning 方法在多个后训练场景下匹配全量微调性能，同时检查点体积缩小数百倍且灾难性遗忘显著降低，可验证其在自定义 agent 微调场景中的实际收益与兼容性。
-
-**标签**: `#coding-agent`, `#eval`, `#post-training`
+**标签**: `#eval`, `#orchestration`, `#memory`
 
 ---
 
@@ -223,62 +216,88 @@ reddit · r/LocalLLaMA · /u/Thrumpwart · 11月10日 19:44
 <p class="ah-sec-meta"><a class="ah-anchor" href="#sec-ai-daily" aria-label="链接到本节">#</a><a class="ah-back" href="#ah-toc">↑ 回到目录</a></p>
 
 <a id="item-ai-daily-1"></a>
-### [ChatGPT 上线企业信息管理功能](https://openai.com/index/introducing-businesses-chatgpt) ⭐️ 7.8/10
+### [OpenAI 上线 ChatGPT 企业功能](https://openai.com/index/introducing-businesses-chatgpt) ⭐️ 7.8/10
 
-2026 年 11 月 10 日，OpenAI 在 ChatGPT 中上线名为 Businesses 的企业专属功能。该功能支持企业自主管理自身公开信息、查看自身在 ChatGPT 中的展示相关洞察，还可将用户对企业的兴趣转化为可落地的行动。目前仅披露基础能力框架，未公开具体使用限制与开放范围。
+2026 年 11 月 10 日，OpenAI 发布 ChatGPT 面向企业的「Businesses in ChatGPT」功能。该功能支持企业方管理自身在 ChatGPT 内的业务信息、获取自身业务在 ChatGPT 中的展示相关洞察，还可将用户对企业的兴趣转化为实际转化动作。本次更新为产品功能扩展，未涉及底层模型调整。
 
 rss · OpenAI Blog · 11月10日 10:00
 
-**「为什么重要」** 这是 OpenAI 在 ChatGPT 主产品中新增的面向企业的信息管理与转化工具，将影响企业在 ChatGPT 生态中的信息展示与用户转化路径。
+**「为什么重要」** 该功能为企业在 ChatGPT 生态内提供了官方运营与转化通道，是 OpenAI 面向 B 端场景的产品能力补充。
 
-**「可关注」** 可关注：ChatGPT Businesses 功能的信息管理、展示洞察、兴趣转化三类能力的后续落地规则与接口开放情况。
+**「可关注」** 可关注：企业可通过该功能直接管理在 ChatGPT 中展示的业务信息。
 
-**标签**: `#product`, `#lab`, `#industry`
+**标签**: `#product`, `#industry`, `#lab`
 
 ---
 
 <a id="item-ai-daily-2"></a>
-### [OpenAI 与 Upwork 发布 AI 对自由职业影响研究](https://openai.com/index/ai-effect-on-freelance-work) ⭐️ 7.8/10
+### [OpenAI 发布教育 AI 指导研究](https://openai.com/index/closing-ai-guidance-gap-education) ⭐️ 7.8/10
 
-OpenAI 与 Upwork 联合发布最新研究，披露 AI 对自由职业市场的实际影响。研究显示 AI 正推动自由职业需求结构转移，催生新的技能组合要求，同时 AI 相关自由职业项目的预算与工作时长均呈增长态势。
+2026 年 11 月 10 日，OpenAI 官方博客发布新内容，公布 ThinkYoung 相关研究与 EMEA 地区教育合作项目的经验总结，聚焦教师支持、AI 素养提升与自主学习三个核心方向。
 
-rss · OpenAI Blog · 11月10日 07:00
+rss · OpenAI Blog · 11月10日 09:00
 
-**「为什么重要」** 该研究由头部 AI 实验室与主流自由职业平台联合产出，数据来自真实交易场景，可直观反映 AI 对实际劳动力市场的影响，为相关从业者提供趋势参考。
+**「为什么重要」** 当前教育场景的 AI 应用规范仍处于探索阶段，该研究成果与合作经验可为教育从业者提供可参考的落地方向。
 
-**「可关注」** 可关注：AI 相关自由职业项目的预算、工时增长趋势，以及市场新增的技能组合要求。
+**「可关注」** 可关注：教育场景下 AI 素养培育与教师支持工具的设计方向。
 
-**标签**: `#lab`, `#industry`
+**标签**: `#lab`, `#industry`, `#policy`
 
 ---
 
 <a id="item-ai-daily-3"></a>
-### [Git 2.56.1 修复 6 个安全漏洞](https://github.blog/open-source/git/git-security-vulnerabilities-announced-7/) ⭐️ 7.8/10
+### [OpenAI Upwork 自由职业研究发布](https://openai.com/index/ai-effect-on-freelance-work) ⭐️ 7.8/10
 
-Git 项目正式发布 Git 2.56.1 及 2.55.1、2.54.1 等 6 个维护分支的 backport 版本，共修复 6 个已公开 CVE 安全漏洞。漏洞覆盖递归克隆任意代码执行、路径遍历、堆栈/堆内存损坏、二进制补丁越界读取等风险场景，攻击者可利用部分漏洞在克隆恶意仓库、处理恶意合并请求或补丁时触发代码执行或拒绝服务。官方建议所有用户升级至 Git 2.56.1 或对应维护分支的修复版本，同时更新捆绑 Git 的应用程序。
+OpenAI 与 Upwork 联合发布新研究，披露 AI 对自由职业市场的影响。研究发现 AI 推动自由职业需求发生转移，新的技能组合不断涌现，AI 相关自由职业项目的预算与工时均呈增长态势，未披露具体增幅数值。
 
-rss · GitHub Blog · 11月10日 18:00
+rss · OpenAI Blog · 11月10日 07:00
 
-**「为什么重要」** Git 是代码托管、CI/CD、开发工具链的核心基础组件，本次漏洞覆盖克隆、合并、补丁处理等高频操作场景，对依赖 Git 的工程工具、自动化流水线及 coding agent 存在直接供应链攻击风险。
+**「为什么重要」** 该研究为自由职业从业者、相关企业提供了 AI 冲击下自由职业市场变化的直接参考依据，有助于把握技能需求与项目机会的变化方向。
 
-**「可关注」** 可关注：升级 Git 至对应修复版本，同时检查并更新捆绑 Git 的依赖应用；处理不可信 fast-import 流时禁止开启--allow-unsafe-features 参数。
+**「可关注」** 可关注：AI 相关自由职业项目的技能需求与预算投入均呈增长趋势，可针对性储备对应技能组合。
 
-**标签**: `#industry`, `#open-source`
+**标签**: `#lab`, `#industry`, `#research`
 
 ---
 
 <a id="item-ai-daily-4"></a>
-### [OpenAI 为看护者开免费 ChatGPT 工作坊](https://openai.com/index/helping-caregivers-use-ai-in-everyday-life) ⭐️ 6.8/10
+### [Gilbert + Tobin 律所 AI 转型访谈](https://openai.com/index/gilbert-tobin-sam-nickless) ⭐️ 6.8/10
 
-OpenAI Academy 面向美国五座城市的看护者推出免费、实操性 ChatGPT 工作坊，旨在帮助其掌握日常场景可用的 AI 技能。
+OpenAI 博客发布对 Gilbert + Tobin CEO Sam Nickless 的采访，讨论该律所如何通过 AI 进行业务转型。这是一篇客户成功案例，未涉及具体技术模型发布或产品更新。
+
+rss · OpenAI Blog · 11月12日 00:00
+
+**标签**: `#industry`, `#lab`, `#product`
+
+---
+
+<a id="item-ai-daily-5"></a>
+### [OpenAI 为护理人员推出免费 ChatGPT 培训](https://openai.com/index/helping-caregivers-use-ai-in-everyday-life) ⭐️ 6.8/10
+
+OpenAI 宣布其 OpenAI Academy 项目正在美国 5 个城市面向护理人员推出免费 ChatGPT 实操培训，帮助其掌握日常实用的 AI 技能。该项目暂无进一步扩展规模的公开信息。
 
 rss · OpenAI Blog · 11月10日 12:00
 
-**「为什么重要」** 这是面向非技术从业者的 AI 普及尝试，覆盖看护这类高时间压力、低技术接触度的群体，可观察 AI 工具在非职场场景的落地适配情况。
+**「为什么重要」** 这是 OpenAI 拓展 AI 普惠覆盖群体的新动作，护理人员此前较少成为 AI 技能培训的目标受众，该项目的落地可观察垂直场景的 AI 工具适配路径。
 
-**「可关注」** 可关注：非技术群体使用 AI 工具的实操需求与场景适配方向。
+**「可关注」** 可关注：护理等垂直场景的 AI 实操培训项目的用户反馈，为同类场景的 AI 工具设计提供参考。
 
 **标签**: `#lab`, `#product`, `#industry`
+
+---
+
+<a id="item-ai-daily-6"></a>
+### [Git 2.56.1 修复 6 个安全漏洞](https://github.blog/open-source/git/git-security-vulnerabilities-announced-7/) ⭐️ 6.8/10
+
+Git 项目今日发布 Git 2.56.1 及 2.50.2 至 2.55.1 共 6 个旧维护版本的向后移植补丁，修复 6 个安全漏洞。漏洞涵盖递归克隆任意代码执行、路径遍历、内存损坏等风险，其中 CVE-2026-111760 可通过恶意仓库的递归克隆触发代码执行。项目方建议用户升级至 Git 2.56.1 或对应维护系列的补丁版本，同时更新所有捆绑 Git 的应用程序。
+
+rss · GitHub Blog · 11月10日 18:00
+
+**「为什么重要」** 该安全公告覆盖所有使用 Git 的 AI 开发场景，恶意构造的仓库可在递归克隆时触发任意代码执行，对代码托管、自动化流水线等环节的代码安全构成直接威胁。
+
+**「可关注」** 可关注：升级至 Git 2.56.1 或对应维护系列的补丁版本，同步更新捆绑 Git 的应用程序，处理不可信仓库时避免使用存在漏洞的旧版本。
+
+**标签**: `#open-source`, `#security`, `#dev-tools`
 
 ---
 
@@ -288,31 +307,16 @@ rss · OpenAI Blog · 11月10日 12:00
 <p class="ah-sec-meta"><a class="ah-anchor" href="#sec-ai-deals" aria-label="链接到本节">#</a><a class="ah-back" href="#ah-toc">↑ 回到目录</a></p>
 
 <a id="item-ai-deals-1"></a>
-### [小渔排班 iOS 永久免费](https://www.appinn.com/xiaoyu-shift-calendar-free/) ⭐️ 8.0/10
+### [小渔排班 宣布永久免费](https://www.appinn.com/xiaoyu-shift-calendar-free/) ⭐️ 8.0/10
 
-你看到的内容可能由第三方 AI 基于小众软件文章提炼总结而成，可能与原文真实意图存在偏差。不代表小众软件观点和立场。请&lt;a href=&quot;https://www.appinn.com/xiaoyu-shift-calendar-free/&quot; target=&quot;\_blank&quot;&gt;点击链接阅读原文&lt;/a&gt;细致比对和校验。&lt;br /&gt;&lt;br /&gt;iOS 轮班日历应用小渔排班自 2026 年 10 月起永久免费，所有功能无广告、无订阅开放，仅保留自愿支持开发者的选项。该应用 2018 年上线，曾为付费工具，支持班次闹钟、工时薪资统计、班表导出、iCloud 同步等功能，适配 iPhone、iPad、Apple Watch 等多设备。
+你看到的内容可能由第三方 AI 基于小众软件文章提炼总结而成，可能与原文真实意图存在偏差。不代表小众软件观点和立场。请&lt;a href=&quot;https://www.appinn.com/xiaoyu-shift-calendar-free/&quot; target=&quot;\_blank&quot;&gt;点击链接阅读原文&lt;/a&gt;细致比对和校验。&lt;br /&gt;&lt;br /&gt;小渔排班是面向轮班、倒班工作者（如医护、制造业从业者）的日历应用，2018 年为开发者家人初衷开发，已迭代 8 年，2026 年 10 月起全功能永久免费，无广告、无订阅，仅保留自愿支持开发者的选项，用户可直接前往 App Store 下载使用。该应用支持班次闹钟、工时薪资统计、班表导出（PDF/图片/CSV）、iCloud 同步备份，适配 iPhone、iPad、Apple Watch 等多设备，开发者承诺长期维护更新。
 
 rss · 小众软件 · 11月10日 14:48
 
-**「为什么重要」** 该应用此前为付费工具，曾位列国区 App Store 效率付费榜第 2 名，此次永久免费开放全功能，对轮班、倒班工作者而言可零成本获取长期维护的排班工具。
+**「为什么重要」** 该应用此前为付费工具，曾登上国区 App Store 效率付费榜第 2 名，如今全功能无广告无订阅永久免费，对轮班、倒班人群是零成本的排班管理工具福利，且开发者明确会持续更新维护。
 
-**「可关注」** 可关注：该应用仅支持 iOS 平台，需通过 App Store 下载，提供 iCloud 同步、多设备小组件及班表导出功能，适合有轮班需求的 iOS 用户使用。
+**「可关注」** 可关注：小渔排班全功能永久免费，无广告无订阅，支持 iCloud 同步、多格式班表导出，适配苹果全系设备，适合有轮班排班需求的用户使用。
 
 **标签**: `#free-tier`, `#promo`
-
----
-
-<a id="item-ai-deals-2"></a>
-### [切问学术双十一积分翻倍福利](https://www.appinn.com/qiewenpaper-1111/) ⭐️ 7.0/10
-
-复旦大学 NLP 团队推出的学术工具「切问学术」（被称为学术版 Codex）开启双十一限时福利，活动期间订阅任意会员套餐，每月到账积分均为平时的 2 倍。全套餐（Plus、Pro、Max X2、Max X5，月付、年付均可）参与，老会员升级也可享受该福利，单个账号最多可购买 12 个月会员。活动结束后已购时长的双倍积分仍会正常每月发放，当前下载并登录客户端还可额外获赠 1 万积分。
-
-rss · 小众软件 · 11月10日 06:46
-
-**「为什么重要」** 年付套餐本身立省 15%，叠加双倍积分后是全年入手成本最低的时机，且已购会员时长的双倍积分在活动结束后仍正常发放，额外下载客户端获赠的 1 万积分可让新用户无成本体验核心功能。
-
-**「可关注」** 可关注：活动期间订阅任意会员套餐（含老会员升级）均可享每月积分翻倍，单个账号最多可购买 12 个月会员，年付套餐叠加 15%立省优惠后性价比最高。
-
-**标签**: `#promo`, `#credits`, `#limited-time`
 
 ---
