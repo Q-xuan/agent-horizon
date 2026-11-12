@@ -5,304 +5,298 @@ date: 2026-11-12
 lang: en
 ---
 
-> From 198 items, 18 important content pieces were selected
+> From 211 items, 17 important content pieces were selected
 
 ---
 
 **Agent Harness Architecture**
-1. [Pydantic AI v2.67.0 发布](#item-harness-arch-1) ⭐️ 7.8/10
-2. [MCP Servers v2.4.0 Release](#item-harness-arch-2) ⭐️ 7.8/10
-3. [langchain-core 1.8.0 发布](#item-harness-arch-3) ⭐️ 6.8/10
-4. [Claude Agent Skills 公开](#item-harness-arch-4) ⭐️ 5.0/10
+1. [Model Context Protocol servers v2.4.0 发布](#item-harness-arch-1) ⭐️ 7.8/10
+2. [pydantic-ai v2.68.0 发布](#item-harness-arch-2) ⭐️ 6.8/10
+3. [OpenAI Codex rust-v0.167.2 发布](#item-harness-arch-3) ⭐️ 5.3/10
 
 **AI Agent Engineer**
-1. [AWS 官方 aws-emulator 发布](#item-agent-engineer-1) ⭐️ 8.0/10
+1. [llm 0.37.2 修复密钥泄漏漏洞](#item-agent-engineer-1) ⭐️ 8.0/10
 2. [Gemini Decisions API 发布](#item-agent-engineer-2) ⭐️ 7.0/10
-3. [Anthropic IPO路演披露多芯片训练策略](#item-agent-engineer-3) ⭐️ 7.0/10
-4. [Tree-Ising 位级权重修复方案提出](#item-agent-engineer-4) ⭐️ 7.0/10
-5. [WikiTrace 证据链接记忆系统提出](#item-agent-engineer-5) ⭐️ 7.0/10
-6. [Tests as Data 框架提出](#item-agent-engineer-6) ⭐️ 7.0/10
-7. [BotPsy 0.8B 开源端侧智能体发布](#item-agent-engineer-7) ⭐️ 6.8/10
-8. [Hugging Face 发布分词池化感知训练方案](#item-agent-engineer-8) ⭐️ 6.8/10
-9. [Apple 研究更快的 RAG 检索](#item-agent-engineer-9) ⭐️ 6.0/10
-10. [llm 0.37.2 安全补丁发布](#item-agent-engineer-10) ⭐️ 6.0/10
-11. [FINCOSMOS 金融智能体开放评估论文](#item-agent-engineer-11) ⭐️ 6.0/10
-12. [Embodied First Exam 机器人评估框架发布](#item-agent-engineer-12) ⭐️ 6.0/10
+3. [AWS 官方本地模拟器 aws-emulator 发布](#item-agent-engineer-3) ⭐️ 7.0/10
+4. [HF Daily Paper: WikiTrace 缓解记忆退化](#item-agent-engineer-4) ⭐️ 7.0/10
+5. [Embodied First Exam 框架](#item-agent-engineer-5) ⭐️ 7.0/10
+6. [HF 每日论文：BioAgent-DF 审计框架](#item-agent-engineer-6) ⭐️ 7.0/10
+7. [Tests as Data 测试策略提出](#item-agent-engineer-7) ⭐️ 7.0/10
+8. [Apple 高效 RAG 检索研究引讨论](#item-agent-engineer-8) ⭐️ 6.0/10
+9. [Anthropic IPO路演披露多芯片训练策略](#item-agent-engineer-9) ⭐️ 6.0/10
+10. [FINCOSMOS 金融智能体开放评估范式](#item-agent-engineer-10) ⭐️ 6.0/10
+11. [BotPsy 0.8B 端侧 Agent 模型开源](#item-agent-engineer-11) ⭐️ 5.8/10
+12. [Inflect v3 本地 TTS 发布](#item-agent-engineer-12) ⭐️ 5.5/10
 
 **AI Daily**
-1. [A2UI 1.0 稳定版发布](#item-ai-daily-1) ⭐️ 7.8/10
-2. [ChatGPT Plus 向退伍军人免费开放](#item-ai-daily-2) ⭐️ 6.8/10
+1. [OpenAI 退伍军人免费 ChatGPT Plus 申领破 2 万](#item-ai-daily-1) ⭐️ 5.8/10
+
+**AI Deals**
+1. [Mu3ic 1.8.0 送码 双11优惠](#item-ai-deals-1) ⭐️ 7.0/10
 
 ---
 
 ## Agent Harness Architecture
 
 <a id="item-harness-arch-1"></a>
-### [Pydantic AI v2.67.0 发布](https://github.com/pydantic/pydantic-ai/releases/tag/v2.67.0) ⭐️ 7.8/10
+### [Model Context Protocol servers v2.4.0 发布](https://github.com/modelcontextprotocol/servers/releases/tag/v2.4.0) ⭐️ 7.8/10
 
-pydantic-ai v2.67.0 发布，增强 durable execution 运行时、RepoContext 记忆加载和工件扫描能力。\`SubAgents\(dynamic\_agents=...\)\` 现支持 durable execution；\`RepoContext\` 默认按目录加载指令文件，新增 \`walk\_up\` 参数，嵌套指令默认上限 32,000 字符。\`ArtifactScanner\` 剥离默认可忽略字符并标记隐藏变体选择器；文档发送支持 \`mimetypes\` 已知的任意媒体类型。provider-specific 原生工具字段迁至 \`provider\_settings\`，并新增 \`framing\_announcement\` 设置控制 \`&lt;system&gt;\` 语音标签播报。
+Model Context Protocol servers v2.4.0 发布，修复 filesystem、git、fetch 三个 MCP 服务器的 6 个关键安全漏洞。filesystem 服务器将读操作绑定到已检查目录，消除符号链接竞争条件，并拒绝 FIFO、socket 和 device 文件；Windows 平台仅缩小竞争窗口而未完全关闭。git 服务器覆盖仓库本地配置（core.fsmonitor、diff.external、hooks、filter 和 merge drivers、signing），防止任意程序执行，并拒绝 Git 低于 2.31 的仓库。fetch 服务器将 IPv6 站点本地地址视为私有，修复 robots.txt 路径绕过。升级目标：@modelcontextprotocol/server-filesystem 2.3.0、mcp-server-git 2026.11.11、mcp-server-fetch 2026.11.11。
 
-github · dsfaccini · Nov 10, 23:11
+github · cliffhall · Nov 11, 07:07
 
-**「设计要点」** Durable execution 成为核心运行时：guardrail 裁决、工具调用和轨迹评估均记录为持久化操作，DBOS 子工作流支持并行执行。工具层将 provider-specific 字段迁入 \`provider\_settings\`；\`RepoContext\` 改为按目录加载指令并设 32,000 字符上限，改变 agent harness 构建上下文窗口的方式。
+**「设计要点」** filesystem 服务器读工具和文件资源现在相对于已检查目录打开文件，与写入行为一致。git 服务器强制覆盖仓库配置并拒绝旧版 Git。fetch 服务器私有地址检查扩展至 IPv6 站点本地地址，robots.txt 匹配同时检查站点解析路径和原始路径。
 
-**「改了什么」** 相对上一版，pydantic-ai v2.67.0 在 durable execution 中启用动态子代理 \`SubAgents\(dynamic\_agents=...\)\`，并改造 \`RepoContext\` 为按目录加载指令、支持 \`walk\_up\` 及 32,000 字符上限。\`ArtifactScanner\` 改进字符归一化与变体选择器检测，文档发送支持任意 \`mimetypes\` 媒体类型，provider-specific 原生工具字段迁入 \`provider\_settings\`。
+**「改了什么」** 修复 6 个 CVE：filesystem 符号链接竞争条件（GHSA-p9cv-8g75-4xcg）、move\_file 路径穿越（GHSA-7m4x-rv66-mxhh）、git 仓库配置命令注入（GHSA-6hqx-gqrx-c5r2）、git 仓库隔离绕过（GHSA-q74p-4wrc-q7w6）、fetch IPv6 私有地址误判（GHSA-3rxj-6jhw-qfv7）、fetch robots.txt 绕过（GHSA-f9hh-cmx9-2f23）。filesystem 新增 --read-only-dir 参数，拒绝 NTFS 备用数据流及 Windows 设备名路径。server-everything 默认将 HTTP 传输绑定到回环地址，Docker 镜像以非 root 用户运行。server-memory 更新至 2.1.1。
 
-**Tags**: `#subagents`, `#runtime`, `#memory`, `#tools`
+**Tags**: `#mcp`, `#tools`, `#permissions`, `#sandbox`
 
 ---
 
 <a id="item-harness-arch-2"></a>
-### [MCP Servers v2.4.0 Release](https://github.com/modelcontextprotocol/servers/releases/tag/v2.4.0) ⭐️ 7.8/10
+### [pydantic-ai v2.68.0 发布](https://github.com/pydantic/pydantic-ai/releases/tag/v2.68.0) ⭐️ 6.8/10
 
-The modelcontextprotocol/servers v2.4.0 release patches six security vulnerabilities across three MCP servers. The @modelcontextprotocol/server-filesystem 2.3.0 update anchors read and move operations to pre-checked directories to prevent symlink races, refuses FIFOs, sockets, devices, NTFS alternate data streams, and Windows device paths, and adds per-directory read-only access via --read-only-dir. The mcp-server-git 2026.11.11 release overrides repository Git configuration to prevent arbitrary command execution and blocks access to alternate object stores, linked worktrees, and symlinks outside the allowed repository. The mcp-server-fetch 2026.11.11 release treats IPv6 site-local addresses as private and normalizes robots.txt matching against resolved URL paths.
+pydantic-ai v2.68.0 发布，新增输出 token 超限时的模型回退机制、延迟用户输入管道、委托任务发现与修复，以及工作区后端进程存活要求。运行时层面支持 Temporal 和 DBOS 持久化子工作流，并将提示注入防御器语义分类改为持久化操作。Harness 侧新增 \`RefineOutput\` 能力、对话存储接口，并重命名多个事件与字段以统一命名规范。
 
-github · cliffhall · Nov 11, 07:07
+github · dsfaccini · Nov 12, 01:56
 
-**「设计要点」** Permission enforcement occurs within each server&\#x27;s tool implementation: filesystem calls resolve relative to access-checked directories, git commands inject safe configuration overrides before execution, and fetch validates both literal and resolved URL paths. These mitigations require no harness-side modifications but leave Windows directory junctions uncovered in git and partial symlink race coverage in filesystem writes.
+**「设计要点」** 工作区后端必须保持分离进程存活，测试套件会校验重连能力。委托任务与用户交互均支持持久化执行，子代理事件统一加 \`Event\` 后缀并携带 \`agent\_name\` 与 \`parent\_task\_id\`。
 
-**「改了什么」** The filesystem server adds per-directory read-only mode, rejects special file types and NTFS alternate data streams, and closes symlink race conditions for reads and moves. The git and fetch servers both advance to date version 2026.11.11 with hardened repository confinement and IPv6 private address filtering respectively. TypeScript server packages have transitioned to semantic versioning, requiring explicit installation of 2.3.0 for users on date versions.
+**「改了什么」** 新增 \`OutputTokenLimitExceeded\` 异常，\`ModelFallback\` 在 \`max\_tokens\` 截断时自动切换模型。\`AskUser\` 移至延迟管道，新增 \`RequestInput\` 支持运行内审批与问答。\`DelegationTasks\` 增加 \`discover\(\)\` 方法，单条损坏任务不再阻塞 \`opened\(\)\`。工作区后端强制要求分离进程持续运行，harness 字段与事件命名规范化并新增 \`RefineOutput\` 能力。
 
-**Tags**: `#mcp`, `#permissions`, `#sandbox`, `#tools`
+**Tags**: `#runtime`, `#tools`, `#subagents`, `#sandbox`
 
 ---
 
 <a id="item-harness-arch-3"></a>
-### [langchain-core 1.8.0 发布](https://github.com/langchain-ai/langchain/releases/tag/langchain-core%3D%3D1.8.0) ⭐️ 6.8/10
+### [OpenAI Codex rust-v0.167.2 发布](https://github.com/openai/codex/releases/tag/rust-v0.167.2) ⭐️ 5.3/10
 
-langchain-core 1.8.0 正式发布，最低 Python 版本要求从 3.10 提升至 3.11。Python 3.10 用户将继续解析 1.7.x 版本。本次更新新增 decision models 功能，但 release notes 未提供任何技术细节或代码路径。该版本包含 breaking change，影响使用 Python 3.10 的 agent harness 部署。
+OpenAI Codex agent harness发布patch版本rust-v0.167.2。本次更新将Google Cloud Vertex AI部署的工具更新默认行为改为增量发送，替代旧版非增量模式。用户可在\`config.toml\`的\`\[features\]\`段设置\`incremental\_tools\_legacy\_gcp = false\` opting out，回退到旧版行为。变更仅针对GCP Vertex AI，不影响其他provider。
 
-github · github-actions\[bot\] · Nov 11, 15:22
+github · github-actions\[bot\] · Nov 11, 22:44
 
-**「改了什么」** 移除已终止支持的 Python 3.10，最低运行版本变为 3.11。新增 decision models 特性，但无可用实现细节。
+**「改了什么」** 相对上一版，本版本在Google Cloud Vertex AI上默认启用增量工具更新。新增配置项\`incremental\_tools\_legacy\_gcp\`（位于\`config.toml\`的\`\[features\]\`段），设为\`false\`可恢复非增量更新。相关实现见PR \#60617与\#60848。
 
-**Tags**: `#runtime`, `#planning`
-
----
-
-<a id="item-harness-arch-4"></a>
-### [Claude Agent Skills 公开](https://github.com/anthropics/skills) ⭐️ 5.0/10
-
-Anthropic 公开 Claude Agent Skills 标准实现仓库。Skills 是 Claude 动态加载的指令、脚本与资源文件夹，用于提升 specialized 任务重复完成能力。分析指出其对 agent harness 架构工程师有潜在参考价值，但未提供具体实现细节、代码路径或限制条件。
-
-rss · GitHub Trending Daily · Nov 11, 23:00
-
-**Tags**: `#tools`
+**Tags**: `#tools`, `#runtime`
 
 ---
 
 ## AI Agent Engineer
 
 <a id="item-agent-engineer-1"></a>
-### [AWS 官方 aws-emulator 发布](https://simonwillison.net/2026/Nov/11/aws-emulator/) ⭐️ 8.0/10
+### [llm 0.37.2 修复密钥泄漏漏洞](https://simonwillison.net/2026/Nov/11/llm/) ⭐️ 8.0/10
 
-2026年11月11日，AWS发布官方本地模拟器 aws-emulator，填补了此前无官方AWS服务本地模拟工具的空白，支持开发者无需付费API密钥即可开展相关测试。该项目由大量AI agent参与开发，上线前三周累计提交29684次，代码采用 Rust 编写。当前版本在macOS与Windows平台运行需依赖 Docker，作者Simon Willison提及希望后续支持单二进制部署，以便集成到其他语言的标准测试套件。
+llm 0.37.2 于 2026-11-11 发布，修复两个安全漏洞（GHSA-v9h7-jj4g-f862、GHSA-r639-rr7r-x72w）。通过 extra-openai-models.yaml 配置 OpenAI 兼容端点时，若 api\_key\_name 未存储，或对 responses: true 模型使用 -o chat\_completions 1，OPENAI\_API\_KEY 环境变量或已存储的 openai 密钥可能泄漏至第三方。修复后上述场景返回 No key found 错误而非发送密钥。影响所有使用 llm openai endpoint add 或手动编辑 extra-openai-models.yaml 的用户。
 
-rss · Simon Willison · Nov 11, 21:18
+rss · Simon Willison · Nov 11, 17:19
 
-**「为什么重要」** 该工具直接补全了 coding agent 云集成测试的工具链缺口，可降低AWS服务测试的密钥与调用成本。AI agent主导开发的项目实践也为行业提供了可参考的规模化协作案例。
+**「为什么重要」** 这值得今天看，因为 llm 常作为 coding agent 的底层工具链组件，密钥泄漏风险直接影响代理执行环境的安全边界。已发生的修复明确了第三方端点调用时的密钥发送逻辑，但尚未证实实际泄漏事件或下游代理框架的受影响范围。
 
-**「可关注」** 当前版本运行依赖 Docker，跨平台单二进制部署尚未落地，若需将 aws-emulator 集成到多语言测试套件，可关注后续适配进展。
+**「可关注」** 可关注：llm 0.37.2 收紧了 OpenAI 兼容端点的密钥发送逻辑，api\_key\_name 缺失或 responses: true 模型强制切换格式时，工具链不再隐式传递环境变量中的密钥，而是显式报错。
 
-**Tags**: `#harness`, `#eval`, `#coding-agent`
+**Tags**: `#permissions`, `#security`, `#toolchain`, `#release`
 
 ---
 
 <a id="item-agent-engineer-2"></a>
 ### [Gemini Decisions API 发布](https://blog.google/innovation-and-ai/technology/developers-tools/gemini-decisions-api/) ⭐️ 7.0/10
 
-2026年11月11日，Google发布Gemini Decisions API（对应模型为Gemini Decision 1），正式入局决策模型赛道。该API支持是/否、选择、rubric-scoring三类问题，复用Jev的“Noul”术语指代是/否问题，支持文本、图像、音频、视频、PDF多模态输入；定价与GPT-6 Luna决策模型一致，为每百万输入token 10美分、输出免费，高于最便宜的Jev（每百万输入token 4.2美分）。公开测试显示其对是/否问题返回概率值而非0/1的确定结果，目前社区已讨论其在编码代理工作流、音视频决策场景的潜在适用性，但官方未公开完整技术规格与性能基准数据。
+2026年11月11日Google发布Gemini Decisions API，配套模型Gemini Decision 1正式进入决策模型赛道，与Jev、OpenAI决策模型形成竞争。该模型支持是/否、多选、rubric评分三类问题，复用Jev的“Noul”术语指代是/否问题；定价为每百万输入token 10美分、输出免费，高于Jev的4.2美分/百万输入token，与OpenAI同档位决策模型定价一致。Gemini Decision 1支持文本、图片、音频、视频、PDF输入，覆盖模态多于仅支持文本的Jev、支持文本和图片的OpenAI。测试显示其对视频的yes/no问题返回连续概率值而非0/1二元结果，例如识别视频中机器人的概率为0.9234。该API主要面向需要结构化决策输出的agent编排、coding harness、评估场景的开发者。
 
 hackernews · iamdelirium · Nov 11, 18:32 · [Discussion](https://news.ycombinator.com/item?id=50456791)
 
-**「为什么重要」** 这是Google首次推出决策模型类API，多模态输入能力填补了同类产品在音视频决策场景的空白；社区已开始关注其在编码代理工具链中的价值，但实际效果与成本收益比尚未得到验证。
+**「为什么重要」** 当前决策模型赛道刚兴起，Gemini Decision 1的全模态输入是现有同类产品没有的能力，可能覆盖视频、音频相关的agent校验场景；但其实际效果、成本收益比尚未有大规模验证，是否能在coding harness等场景替代现有方案仍不明确。
 
-**「可关注」** 可关注：Gemini Decision 1的多模态输入能力是否能在音视频相关的编码代理场景中带来比纯文本决策模型更高的任务收益，以及其定价与同类产品的成本差是否值得为多模态能力付费。
+**「可关注」** 可关注：Gemini Decision 1的多模态输入能力是否能在音视频相关的agent校验、评估场景中提供比多步推理更高效的方案，同时需权衡其比Jev高出一倍多的输入成本。
 
-**「评论」** 社区讨论围绕三类决策模型的适用场景、成本与本地替代方案展开：有用户认为其音视频输入能力在特定场景下价值极高，也有用户指出其定价高于Jev等竞品；同时有用户关注决策模型输出概率的计算逻辑，还有用户推荐了可本地部署的私有化分类工具作为替代。
+**「评论」** 社区普遍认可决策模型是刚被验证有用的赛道，Gemini的全模态输入是核心差异点；但对其高于Jev的定价存在争议，部分用户认为多模态场景下成本可接受，也有用户提到基于Gemma微调的span-02决策模型表现不错，对Gemini的实际效果持观望态度。
 
-**Tags**: `#coding-agent`, `#harness`, `#orchestration`
+**Tags**: `#orchestration`, `#coding-agent`, `#harness`, `#eval`
 
 ---
 
 <a id="item-agent-engineer-3"></a>
-### [Anthropic IPO路演披露多芯片训练策略](https://simonwillison.net/2026/Nov/11/anthropic-ipo-roadshow/) ⭐️ 7.0/10
+### [AWS 官方本地模拟器 aws-emulator 发布](https://simonwillison.net/2026/Nov/11/aws-emulator/) ⭐️ 7.0/10
 
-2026年11月10日Anthropic启动IPO路演，其路演视频披露了此前未公开的多芯片策略等技术细节，11日Simon Willison发布报道梳理相关内容并公开提取的文字稿。联合创始人Tom Brown披露Claude的训练与推理已覆盖AWS Trainium、谷歌TPU、英伟达、AMD四大芯片家族，该能力源于早期押注的多芯片策略。关键细节包括：过去接入新芯片平台需要数十名工程师数月工作量，2026年Anthropic首次接入AMD GPU时，内部工具Mythos仅用3天、几乎无人工干预就完成Claude在AMD平台的适配，近100%的内核由Claude自行移植或编写；路演还披露其总有效算力为物理算力与算力乘数的乘积，算力乘数可叠加，并预期接近递归自我改进阶段时Claude可自主发现算力乘数。该信息面向AI基础设施从业者、模型服务部署工程师及AI agent工具链开发者公开。
+AWS 发布官方 aws-emulator，支持本地克隆 AWS 服务进行测试，无需付费 API 密钥。项目主要由 AI agents 构建，三周内累计 29,684 次提交，使用 Rust 编写。当前版本要求 macOS 或 Windows 环境运行 Docker，尚未提供单二进制分发。
 
-rss · Simon Willison · Nov 11, 15:11
+rss · Simon Willison · Nov 11, 21:18
 
-**「为什么重要」** 这是Anthropic首次公开完整的多芯片落地细节，包括新芯片接入效率与算力乘数框架，此前仅有多芯片策略的零星公开线索；算力乘数叠加效果及递归自我改进下的自主发现能力尚未有公开基准验证，但为理解其基础设施竞争力提供了新的公开参考。
+**「为什么重要」** 本地模拟器可直接替代付费 API 密钥进行 AWS 服务测试。AI agents 在三周内完成近三万次提交的工程实践，提供了大规模自动化编码的实证样本。
 
-**「可关注」** Anthropic披露其内部工具Mythos可在3天内完成新芯片平台的Claude适配，近100%内核由模型自行生成，这反映了AI辅助基础设施适配的工程化进展。
+**「可关注」** 可关注：Docker 依赖与单二进制需求的矛盾，以及 Rust 实现是否扩展至其他平台。
 
-**Tags**: `#infrastructure`, `#compute`, `#toolchain`
+**Tags**: `#harness`, `#eval`, `#coding-agent`, `#permissions`
 
 ---
 
 <a id="item-agent-engineer-4"></a>
-### [Tree-Ising 位级权重修复方案提出](https://huggingface.co/papers/2611.14210) ⭐️ 7.0/10
+### [HF Daily Paper: WikiTrace 缓解记忆退化](https://huggingface.co/papers/2611.14320) ⭐️ 7.0/10
 
-2026年11月11日Hugging Face Daily Papers更新了一篇arXiv预印本论文介绍，提出Tree-Ising无梯度位级权重修复方法，可用于修复语言模型行为（如智能体推理循环故障）且无需重训练。该方法将修复任务建模为对模型BF16权重的稀疏离散优化问题，仅通过位级符号翻转和指数偏移修改权重，目标为削弱循环方向、强化收束方向并保留 productive tokens 上的层输出。对比此前MIT Takehi等人提出的权重空间编程方案（修复Qwen3.5-0.8B推理循环需158轮智能体交互、8970万token、50次前向请求），Tree-Ising的编辑操作更轻量。当前给出的源内容被截断，未包含性能基准数据，实际效果待验证。
+2026-11-12，Hugging Face Daily Papers 推送论文《Don&\#x27;t Just Trust Your Memory》，提出 WikiTrace 证据链接记忆系统。该系统让 LLM agent 在应用 lessons 前可回溯核对原始轨迹，减少因错误或误用记忆导致的性能退化。论文指出，现有记忆系统仅以任务成败标注轨迹，却不附带轨迹来源，导致 agent 无法验证记忆正确性。该研究为 agent 记忆工程提供设计思路，但具体实现与实验规模未完全披露。
 
-rss · Hugging Face Daily Papers · Nov 11, 00:00
+rss · Hugging Face Daily Papers · Nov 12, 03:33
 
-**「为什么重要」** 该方法针对智能体模型故障修复场景，试图替代此前需要极高交互与token成本的权重修复方案，若后续基准验证通过，可降低模型行为修正的资源门槛。
+**「为什么重要」** 该论文直接针对 agent 记忆系统的一个常见失效模式给出可验证的缓解方案，而非仅停留在问题描述。对构建依赖外部记忆的 coding agent 而言，证据链接机制可能改变记忆检索与验证的工程边界，但实际收益仍需复现实验确认。
 
-**「可关注」** 可关注：Tree-Ising将模型权重修复转化为BF16权重的稀疏离散优化，仅用位级符号翻转和指数偏移即可修改行为，无需重训练，若后续基准验证通过，或可降低智能体推理循环等故障的修复成本。
+**「可关注」** 可关注：记忆系统若仅提供 lessons 而不保留轨迹来源，agent 将无法识别错误记忆，WikiTrace 的交叉验证设计提示记忆模块需同步存储证据链路。
 
-**Tags**: `#coding-agent`
+**Tags**: `#memory`, `#llm-agent`, `#agent-architecture`
 
 ---
 
 <a id="item-agent-engineer-5"></a>
-### [WikiTrace 证据链接记忆系统提出](https://huggingface.co/papers/2611.14320) ⭐️ 7.0/10
+### [Embodied First Exam 框架](https://huggingface.co/papers/2611.12177) ⭐️ 7.0/10
 
-2026 年 11 月 11 日，Hugging Face Daily Papers 发布论文摘要（arXiv:2611.14320，45 次 upvote），介绍 WikiTrace 证据链接记忆系统。该系统针对 LLM agent 的记忆诱导退化（memory-induced degradation）问题：agent 从仅标注成功或失败的任务轨迹中蒸馏出经验教训（lessons），但通常不提供原始轨迹，导致 agent 无法验证 lessons 的正确性，从而在后续任务中误用错误 lessons 或误读有效 lessons。WikiTrace 通过将每条 lesson 与其原始支持轨迹关联，使 agent 能够回溯检查。该论文目前仅提供摘要，完整方法细节与实验效果未在材料中展开。
+Hugging Face Daily Papers 于 2026-11-12 发布论文 arXiv:2611.12177，提出 Embodied First Exam 评估框架。该框架面向 coding agents 控制物理机器人，覆盖 47 个机器人、35 个套件、1,156 个任务，支持直接控制、code-to-control 与训练策略控制三种范式，并包含 9 个新任务套件。现有 robotics 基准多围绕 visuomotor policy learning 构建，本框架首次提供 agent-native 替代方案，供 coding agents 在进入物理世界前接受统一考核。源内容截断，未披露完整动态任务细节，社区采纳情况尚不确定。
 
-rss · Hugging Face Daily Papers · Nov 11, 00:00
+rss · Hugging Face Daily Papers · Nov 12, 03:33
 
-**「为什么重要」** 记忆诱导退化是 LLM agent 从经验中学习时的普遍痛点。WikiTrace 提出的证据链接机制为 agent 记忆架构设计提供了可验证的改进方向，但实际效果与实现成本仍需等待完整论文验证。
+**「为什么重要」** 该框架首次将 coding agents 的评估范围从软件任务延伸到物理机器人控制，填补了 agent-native 具身评估空白。是否成为社区标准、实际接入 harness 的成本与任务难度，仍需后续验证。
 
-**「可关注」** 可关注：外部记忆系统在蒸馏轨迹为 lessons 时，保留原始轨迹作为可验证证据，可能减少因错误或误用 lessons 导致的性能退化。
+**「可关注」** 可关注：其直接控制、code-to-control 与训练策略控制三种范式与现有 visuomotor 基准的接口差异，评估接入 harness 的额外成本。
 
-**Tags**: `#memory`
+**Tags**: `#eval`, `#coding-agent`
 
 ---
 
 <a id="item-agent-engineer-6"></a>
-### [Tests as Data 框架提出](https://martinfowler.com/articles/tests-as-data.html) ⭐️ 7.0/10
+### [HF 每日论文：BioAgent-DF 审计框架](https://huggingface.co/papers/2611.01527) ⭐️ 7.0/10
 
-Martin Fowler 于 2026-11-11 发文，介绍 Matteo Vaccari 提出的「测试即数据」框架。该框架主张将测试定义为人类可读的数据契约而非可执行代码，以应对 AI 编码代理同时修改生产代码与测试代码时破坏评估基准的风险。Vaccari 提出三点主张：AI 编写代码时开发者成为其客户，客户测试应成为人机间主要契约，且将契约置于测试数据而非测试代码中更易保护其不被意外修改。文章指出 AI 降低了自定义 DSL 与测试运行器的实现成本，但未提供具体实施案例或效果数据。
+2026年11月12日HF每日论文收录BioAgent-DF审计框架相关研究，该框架针对生物医学研究智能体的决策溯源问题，通过在相同科学计算位点保存配对参考与候选值、恢复或移植后运行智能体，测试证据与输出的分离性。实验覆盖8个SciFact批次，Qwen3.5-4B在3组捕获-声明组合出现可重复引用变化，Gemma 3 4B IT在4组组合出现可重复读取与引用变化，共覆盖2个声明；完全恢复参考证据集时判决结果不变，基线提示词下的判决变化在显式示例提示词下未复现，另有补充工具与优化器实验但内容被截断。该研究目前仅针对生物医学研究智能体，可推广性未验证。
 
-rss · Martin Fowler · Nov 11, 15:17
+rss · Hugging Face Daily Papers · Nov 12, 03:33
 
-**「为什么重要」** 当编码代理同时修改生产与测试代码时，自动化测试作为质量门禁的可靠性存在被自我削弱的根本风险。该框架为 eval 与 harness 设计提供了保护人类定义评估标准的一种思路，但尚未有实际部署效果可供验证。
+**「为什么重要」** 该研究提供了可操作的智能体决策鲁棒性审计方法，验证了工具状态证据摆放位置对输出的影响，以及显式示例提示词的缓解作用，对智能体harness设计与工具链开发有参考价值；但领域限定在生物医学研究场景，通用性尚未验证。
 
-**「可关注」** 可关注：在 harness 设计中，将核心评估标准编码为人类可读的数据契约而非可执行测试代码，可能降低 AI 代理在重构时意外破坏评估基准的风险。
+**「可关注」** 可关注工具状态证据的摆放位置对智能体输出的影响，显式示例提示词可缓解非预期的判决变化，可用于智能体鲁棒性测试与工具链设计参考。
 
-**Tags**: `#coding-agent`, `#eval`, `#harness`
+**Tags**: `#eval`, `#harness`
 
 ---
 
 <a id="item-agent-engineer-7"></a>
-### [BotPsy 0.8B 开源端侧智能体发布](https://huggingface.co/blog/qvac/botpsy) ⭐️ 6.8/10
+### [Tests as Data 测试策略提出](https://martinfowler.com/articles/tests-as-data.html) ⭐️ 7.0/10
 
-2026年11月11日，Hugging Face Blog 官宣由 Tether AI Research 推出的开源端侧智能体模型 BotPsy，参数规模 0.8B，基于 Qwen3.5-0.8B 经四阶段后训练（SFT、多教师策略蒸馏、两轮强化学习）得到，针对函数调用、端侧个人助理场景优化，支持 Apache 2.0 协议，提供 safetensors 与 GGUF（bf16/Q8/Q4）格式权重，可适配 QVAC SDK、llama.cpp 等端侧推理框架。发布方自测显示其在 ≤1.2B 参数区间的 6 项工具调用、智能体基准测试中均达到 SOTA，在 5 项测试中超过 2.5 倍其参数规模的 Qwen3.5-2B-Think，推理 token 消耗较基座模型降低约 60%-70%，但仅适合低到中等难度任务，不适合高风险场景；当前公开内容存在截断，缺少完整训练细节、性能基准测试方法与集成指南。
+2026-11-11，Martin Fowler 网站发布 Matteo Vaccari 文章《Tests as data: ensuring AI-generated code does what we want》。文章提出：AI 编码助手同时生成生产代码与测试代码时，开发者应将测试视为人类可读的数据契约，而非开发者编写的测试代码，以保留测试对意外 AI 修改的防护价值。文章提出三项主张：AI 写代码时开发者成为其客户；客户测试而非开发者测试成为人机间主要契约；将该契约置于测试数据而非测试代码中，更易保护其不被编码代理意外修改。文章指出过去 DSL 解析器与自定义测试运行器成本高昂，而 AI 使其变得廉价，但当前摘录为概念性阐述，未提供实证基准、代码示例或突破性技术变更。
 
-rss · Hugging Face Blog · Nov 11, 05:01
+rss · Martin Fowler · Nov 11, 15:17
 
-**「为什么重要」** 端侧轻量智能体开源选项长期稀缺，BotPsy 若性能属实，可为低成本、数据不出端的个人助理、轻量 coding agent 部署提供新选择；但当前所有性能数据仅来自发布方自测，尚未有第三方复现验证，实际效果待观察。
+**「为什么重要」** 该文直接关联 AI agent 的 eval 与 harness 设计，提出将测试从“代码”重新定义为“数据契约”的概念框架，可能影响未来 coding agent 的验证策略。但当前材料仅为概念摘录，未提供可复现实验或对比基线，实际影响尚未证实。
 
-**「可关注」** 可关注：BotPsy 在 ≤1.2B 参数下实现了工具调用、多轮对话的 SOTA 性能，且推理效率较基座模型大幅提升，可优先验证其在端侧轻量智能体、隐私敏感场景的适配效果。
+**「可关注」** 可关注：当 AI 同时生成生产代码与测试代码时，传统测试代码的防护假设失效，需考虑将测试规范表达为人类可读的数据契约而非可执行代码。
 
-**Tags**: `#coding-agent`
+**Tags**: `#eval`, `#harness`, `#coding-agent`
 
 ---
 
 <a id="item-agent-engineer-8"></a>
-### [Hugging Face 发布分词池化感知训练方案](https://huggingface.co/blog/token-pooling) ⭐️ 6.8/10
+### [Apple 高效 RAG 检索研究引讨论](https://machinelearning.apple.com/research/faster-retrieval) ⭐️ 6.0/10
 
-2026年11月11日Hugging Face官方博客发布分词池化感知训练方法，面向多向量嵌入模型优化存储-质量权衡。核心实现为基于Ward层次聚类的HierarchicalTokenPooling模块，可合并相似词元向量；设置pool\_factor=4时，普通训练模型可在NanoBEIR nDCG@10上保留94.6%的未压缩检索质量，实现4倍文档向量压缩。经池化感知训练后，同存储预算下的质量保留率提升至97.8%。该方法主要对构建RAG检索组件的工程师有参考价值，对Agent架构、Harness或评测框架的直接影响较窄。
+2026-11-11，HackerNews 用户 zerop 分享 Apple 官方机器学习研究《Faster Retrieval for Better, More Efficient RAG》。原帖未附论文核心技术细节，仅提供外部链接。社区评论提及 Spotify 的 Parallel Fusion Router 等 learned retrieval 方案，并讨论检索速度与输出质量的权衡。该研究关联 agent 记忆与知识系统构建，但完整技术价值需查阅原文确认。
 
-rss · Hugging Face Blog · Nov 11, 00:00
+hackernews · zerop · Nov 11, 16:57 · [Discussion](https://news.ycombinator.com/item?id=50455633)
 
-**「为什么重要」** 该方法为多向量嵌入模型的存储-质量权衡提供了可复现的优化路径，RAG检索组件开发者可直接参考其压缩比与质量保留率的对应关系，调整向量存储预算配置。
+**「为什么重要」** RAG 检索效率决定 agent 响应速度与成本。Apple 以平台厂商身份布局该领域，可能推动端侧推理与本地知识检索整合，但具体技术方案与性能数据尚未公开。
 
-**「可关注」** 可关注Sentence Transformers已提供HierarchicalTokenPooling模块与MultiVectorTokenPoolingLoss损失封装，支持直接对现有多向量模型做池化感知微调以降低存储开销。
+**「可关注」** 可关注：社区反馈显示 embedding 模型在代码库检索场景下效果有限，传统搜索（如 grep）在该场景仍具竞争力。
 
-**Tags**: `#eval`, `#memory`
+**「评论」** 社区对 learned retrieval 与传统检索的适用边界存在分歧。部分开发者基于代码库经验质疑 embedding 模型效果，另有观点指出此类方法更适用于超大规模索引场景。
+
+**Tags**: `#memory`, `#harness`, `#coding-agent`
 
 ---
 
 <a id="item-agent-engineer-9"></a>
-### [Apple 研究更快的 RAG 检索](https://machinelearning.apple.com/research/faster-retrieval) ⭐️ 6.0/10
+### [Anthropic IPO路演披露多芯片训练策略](https://simonwillison.net/2026/Nov/11/anthropic-ipo-roadshow/) ⭐️ 6.0/10
 
-2026年11月11日Hacker News讨论引用Apple机器学习研究院关于更快RAG检索的研究，该工作属于learned retrieval范式，核心目标是优化RAG检索环节效率。当前公开材料仅包含研究标题与社区评论，无具体技术细节、基准测试数据或架构说明，无法评估其实际落地效果。该话题直接关联AI agent记忆模块与工具链检索设计，面向相关工程群体。
+2026年11月11日，Simon Willison发布对Anthropic IPO路演视频的非官方转录总结，披露Anthropic联合创始人Tom Brown介绍Claude已实现跨AWS Trainium、Google TPU、NVIDIA GPU、AMD GPU四类芯片的训练与推理，源于其早期押注的多芯片策略。关键细节包括：此前接入新芯片平台需数十名工程师耗时数月，2026年首次接入AMD GPU时，内部工具Mythos仅用3天、几乎无人工干预即完成Claude的AMD适配，近100%的内核由Claude自行编写或移植。路演还提及Anthropic通过发现“计算倍率”提升总有效算力，并预期接近递归自我改进阶段时，Claude可自行发现计算倍率。当前信息来自非官方转录，无官方完整文本，内容存在截断，主要影响AI基础设施、大模型训练推理工程团队及关注Anthropic技术路线的从业者。
 
-hackernews · zerop · Nov 11, 16:57 · [Discussion](https://news.ycombinator.com/item?id=50455633)
+rss · Simon Willison · Nov 11, 15:11
 
-**「为什么重要」** RAG检索效率是AI agent记忆与工具链设计的核心瓶颈之一，Apple该研究方向与工业界已出现的learned retrieval范式同属一个技术路线，其后续公开的技术细节将直接影响相关工程方案的选型。
+**「为什么重要」** 已发生的部分是公开了Anthropic跨多芯片适配的多年工程成果，以及用AI辅助完成新芯片平台迁移的实际实践；尚未证实的是其提出的计算倍率叠加效应、递归自我改进加速算力增长的论断暂无公开验证，对行业的具体影响仍需观察。
 
-**「可关注」** 可关注：learned retrieval类方案当前讨论多指向超大规模检索场景，中小规模代码库场景下传统检索方案与embedding方案的效能对比仍存在争议。
+**「可关注」** 可关注：大模型跨多芯片架构适配的工程化沉淀，以及用模型自身完成底层内核移植的实践路径。
 
-**「评论」** 社区共识为RAG检索存在速度与质量的固有权衡，learned retrieval是当前工业界探索的技术路线之一；分歧点在于中小规模场景下embedding类检索方案的实际效果是否优于传统规则方案，有从业者分享经验称无偏探索的检索质量通常更高。
-
-**Tags**: `#memory`, `#orchestration`, `#retrieval`
+**Tags**: `#observability`
 
 ---
 
 <a id="item-agent-engineer-10"></a>
-### [llm 0.37.2 安全补丁发布](https://simonwillison.net/2026/Nov/11/llm/) ⭐️ 6.0/10
+### [FINCOSMOS 金融智能体开放评估范式](https://huggingface.co/papers/2611.07464) ⭐️ 6.0/10
 
-llm 0.37.2 于 2026 年 11 月 11 日发布，是安全补丁版本，修复两个 GHSA 安全公告（GHSA-v9h7-jj4g-f862、GHSA-r639-rr7r-x72w）。该漏洞存在于 \`extra-openai-models.yaml\` 配置机制与 \`llm openai endpoint add\` 命令中，可导致用户配置的 OpenAI API key 被意外发送至第三方 OpenAI 兼容服务提供商，触发条件为：\`api\_key\_name\` 对应的密钥从未被存储，或运行 \`responses: true\` 的模型时附加 \`-o chat\_completions 1\` 参数。影响人群为使用 llm CLI 对接第三方 OpenAI 兼容服务的用户。
+2026年11月12日Hugging Face Daily Papers推送FINCOSMOS相关论文（获22次upvote），该研究提出面向金融领域智能体的开放世界评估范式，旨在解决现有封闭式基准无法测量智能体静默失败的痛点。核心设计为：隐藏的用户策略由组合语法采样生成，仅在被询问时透露，智能体需自行从网络获取数据并匹配该策略，现有基准通过固定任务、数据或时间线规避了相关失败场景。该范式主要面向金融智能体研发与评估方向的工程师。
 
-rss · Simon Willison · Nov 11, 17:19
+rss · Hugging Face Daily Papers · Nov 12, 03:33
 
-**「为什么重要」** 该漏洞直接涉及 API key 泄露风险，对使用 llm CLI 构建 LLM 调用 agent 的工程师存在实际安全威胁，需及时升级规避风险。
+**「为什么重要」** 现有金融智能体评估基准普遍封闭化，无法覆盖开放网络环境下的静默失败场景，FINCOSMOS的范式设计为相关评估工作提供了新的思路。但该研究的完整技术细节、性能验证结果尚未公开，实际落地价值还需进一步确认。
 
-**「可关注」** 可关注：使用 llm 0.37.0 及以上版本、配置了 \`extra-openai-models.yaml\` 或使用过 \`llm openai endpoint add\` 命令的用户需尽快升级至 0.37.2，避免 API key 意外泄露。
-
-**Tags**: `#permissions`, `#harness`, `#security`, `#tooling`
-
----
-
-<a id="item-agent-engineer-11"></a>
-### [FINCOSMOS 金融智能体开放评估论文](https://huggingface.co/papers/2611.07464) ⭐️ 6.0/10
-
-2026年11月11日Hugging Face每日论文栏目收录arXiv编号2611.07464的论文，提出FINCOSMOS金融智能体开放世界评估范式。该范式针对现有封闭世界智能体基准无法测量静默失败的问题，这类失败包括未验证数据、非用户预期的策略、使用未来数据的回测等，现有基准通过固定任务、数据或时间线规避了这类失败而非测量。FINCOSMOS的设计中，模拟用户持有从组合语法采样的隐藏策略，仅在智能体询问时披露，且不为智能体提供预置数据，要求其自行从Web获取数据完成金融任务，覆盖静默失败场景。该范式主要面向金融智能体研发与评估领域的工程师。
-
-rss · Hugging Face Daily Papers · Nov 11, 00:00
-
-**「为什么重要」** 现有封闭世界智能体基准普遍通过约束任务、数据、时间线规避静默失败，无法反映金融场景下智能体的真实风险。FINCOSMOS针对该缺口提出开放世界评估框架，为金融智能体的可靠性评估提供了新的设计思路。目前仅公开论文核心框架，尚未有公开的性能验证数据或落地实现信息。
-
-**「可关注」** 可关注：现有封闭世界金融智能体基准会主动规避静默失败场景，FINCOSMOS通过隐藏用户策略、要求智能体自主获取Web数据的范式尝试直接测量这类失败，可参考其场景设计思路补全自身评估集的覆盖度。
+**「可关注」** 可关注：现有封闭式金融智能体基准会掩盖执行错误策略、使用未验证数据、回测数据泄露等静默失败，若需设计开放环境下的智能体评估用例，可参考FINCOSMOS对数据来源、策略对齐的要求。
 
 **Tags**: `#eval`
 
 ---
 
+<a id="item-agent-engineer-11"></a>
+### [BotPsy 0.8B 端侧 Agent 模型开源](https://huggingface.co/blog/qvac/botpsy) ⭐️ 5.8/10
+
+Hugging Face Blog 于 2026-11-11 发布 BotPsy，一款 0.8B 参数端侧 Agentic LLM，基于 Qwen3.5-0.8B 并专攻 function calling。模型以 Apache 2.0 开源，提供 bf16、Q8、Q4 三种精度权重，面向低至中等难度任务。Tether AI Research 声称其在 BFCL v4、ACEBench、τ-bench 等六个 tool-use 与 agentic 基准上达到 ≤1.2B 参数级别 SOTA，并在五项测试中超过 2.5 倍大的 Qwen3.5-2B-Think。文章同时指出模型仍会犯错，不适合高风险场景，且未提供完整技术规格、训练数据细节或独立基准验证。
+
+rss · Hugging Face Blog · Nov 11, 05:01
+
+**「为什么重要」** 端侧小模型持续逼近更大模型的 tool-use 能力，可能降低自托管 Agent 的算力成本与数据隐私风险。但当前信息仅来自官方博客，缺少独立复现、真实延迟数据和硬件适配细节，实际影响尚未证实。
+
+**「可关注」** 可关注：BotPsy 的四阶段训练流程（SFT → MOPD → 两轮 RL）及其声称的推理 token 压缩（GPQA Diamond 约为基座模型的 1/3）可作为轻量级 Agent 模型设计的参考基线，但需等待权重发布与独立验证。
+
+**Tags**: `#coding-agent`, `#on-device`, `#function-calling`
+
+---
+
 <a id="item-agent-engineer-12"></a>
-### [Embodied First Exam 机器人评估框架发布](https://huggingface.co/papers/2611.12177) ⭐️ 6.0/10
+### [Inflect v3 本地 TTS 发布](https://www.reddit.com/r/LocalLLaMA/comments/1xtzwxf/i_released_inflect_v3_lightweight_local_tts_in/) ⭐️ 5.5/10
 
-Hugging Face Daily Papers 于 2026-11-11 发布 Embodied First Exam，一个面向 coding agent 控制物理机器人的统一评估框架。该框架包含 1,156 个任务、35 个套件、47 台机器人，其中 9 个新套件覆盖空间谜题、灵巧操作、多机器人交互等超越传统 pick-and-place 的任务类型。Coding agents 可选择直接控制、代码控制或训练策略控制三种方式。目前仅公开摘要，未提供完整技术细节、性能基准或开源实现。
+Inflect v3 发布，包含 Mini（34.31M 参数，6 种音色）、Micro（11.79M 参数）、Atom（157K 参数）三款本地 TTS 模型。Mini 支持参考音色调优、8 种声学事件标签（\[laugh\]、\[sigh\] 等），可在 CPU 与 CUDA 上运行，权重与推理代码采用 Apache 2.0 许可。公告未提供延迟、RTF 或主观听感对比数据。
 
-rss · Hugging Face Daily Papers · Nov 11, 00:00
+reddit · r/LocalLLaMA · /u/b111ue · Nov 12, 01:36
 
-**「为什么重要」** 现有机器人基准聚焦 visuomotor 策略学习，未覆盖 coding agent 在物理约束下的控制能力，该框架首次系统性填补这一空白。但当前仅发布摘要，缺乏可复现的基准数据与实现，实际影响待后续完整论文验证。
+**「为什么重要」** 该模型系列为 agent 工具链提供本地语音输出选项，34M 参数规模与 CPU 运行能力降低了部署门槛，但缺乏公开性能基准，实际效果待验证。
 
-**「可关注」** 若团队涉及 embodied agent 开发，可跟踪该框架后续开源的 47 台机器人适配接口与任务 suite 定义，评估其控制抽象层是否与现有代码生成工作流兼容。
+**「可关注」** 可关注：声学事件标签与参考音色调优可作为 agent 语音交互的差异化能力，但需在目标硬件上实测 RTF 与音质是否满足产品要求。
 
-**Tags**: `#eval`, `#coding-agent`
+**Tags**: `#toolchain`
 
 ---
 
 ## AI Daily
 
 <a id="item-ai-daily-1"></a>
-### [A2UI 1.0 稳定版发布](https://developers.googleblog.com/a2ui-10-build-delightful-fast-reliable-agentic-experiences/) ⭐️ 7.8/10
+### [OpenAI 退伍军人免费 ChatGPT Plus 申领破 2 万](https://openai.com/index/chatgpt-plus-for-veterans) ⭐️ 5.8/10
 
-Google 于 2026 年 11 月 11 日发布 A2UI 1.0 稳定版开放协议，支持 AI 智能体以交互式 UI 替代纯文本作为回应，解决当前 agent 交互仅能输出文本墙的痛点。配套开源 Web、Android、iOS 渲染器 SDK 及 Python、TypeScript、Dart 智能体 SDK 已开放使用，Atlassian、Bloomberg、ByteDance 等企业已开始基于该协议开发功能。
-
-rss · Google Developers AI · Nov 11, 00:00
-
-**「为什么重要」** 当前 AI 智能体交互普遍停留在纯文本输出阶段，复杂操作需要多轮对话完成，A2UI 1.0 提供了跨平台原生渲染交互 UI 的开放标准，可降低开发者构建多端一致 agentic 体验的门槛。
-
-**「可关注」** 可关注：A2UI 1.0 配套多端开源 SDK 已开放，支持与 MCP Apps 结合使用，Jetpack Compose 支持即将上线。
-
-**Tags**: `#lab`, `#industry`, `#open-source`, `#product`
-
----
-
-<a id="item-ai-daily-2"></a>
-### [ChatGPT Plus 向退伍军人免费开放](https://openai.com/index/chatgpt-plus-for-veterans) ⭐️ 6.8/10
-
-OpenAI 官方推出面向退伍军人及在役过渡人员的免费一年 ChatGPT Plus 计划。截至官方博客报道，已有超 2 万人完成领取，该权益用于辅助领取者准备平民职业生涯。
+OpenAI 官方博客宣布，已有超过 2 万名退伍军人及正在过渡的服役人员申领了为期一年的免费 ChatGPT Plus，用于辅助准备平民职业。该里程碑属于现有公益项目，未伴随新模型发布、功能更新或政策调整。
 
 rss · OpenAI Blog · Nov 11, 08:00
 
-**「为什么重要」** 该计划属于OpenAI的产品普惠类行业举措，并非重大模型或技术突破，覆盖了退伍军人职业过渡的细分场景，是AI工具落地公共服务领域的尝试。
+**「为什么重要」** 该项目是 OpenAI 面向特定群体的 AI 工具福利计划，覆盖超 2 万目标用户，为 AI 在职业过渡、公共服务等场景的落地提供了可参考的实践案例。
 
-**Tags**: `#lab`, `#product`, `#policy`, `#industry`
+**「可关注」** 可关注：AI 工具在职业过渡、技能提升等公共服务场景的落地进展与用户反馈。
+
+**Tags**: `#product`, `#lab`
+
+---
+
+## AI Deals
+
+<a id="item-ai-deals-1"></a>
+### [Mu3ic 1.8.0 送码 双11优惠](https://www.v2ex.com/t/1256202#reply46) ⭐️ 7.0/10
+
+V2EX用户aslehx分享称Mu3ic迎来1.8.0史诗级更新，定位最强音频内容消费终端，支持音乐、电台、播客、听书全场景，深度优化第三方大体量音乐服的曲库同步、浏览、搜索与加载体验，同时升级横屏唱机皮肤与智能标签检索。福利方面：前50名用户可免费领取激活码，该激活码不支持1年2次换机权益，其余权益不变；后续用户留邮箱可获6元优惠券，叠加持续1个月的双11优惠后，软件售价为26元（原价48元）；进官方Telegram群可获取iOS端内测资格。
+
+rss · V2EX Hot · Nov 11, 08:16
+
+**「为什么重要」** 当前双11优惠持续1个月，前50名送激活码活动仍在进行，现在参与可享受免费权益或26元的优惠价格，同时可进群获取iOS端内测资格。
+
+**「可关注」** Mu3ic 1.8.0支持对接Navidrome、Jellyfin、Emby、Audiobookshelf等第三方音频服务，新增拼音模糊搜索能力，针对数十万首级别的大曲库做了性能优化，横屏唱机皮肤支持随应用明暗模式自动切换木色与彩胶纹理。
+
+**Tags**: `#promo`, `#coupon`, `#limited-free`
 
 ---
