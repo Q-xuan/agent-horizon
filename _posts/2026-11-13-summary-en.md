@@ -5,102 +5,80 @@ date: 2026-11-13
 lang: en
 ---
 
-> From 197 items, 18 important content pieces were selected
+> From 207 items, 18 important content pieces were selected
 
 ---
 
 **Agent Harness Architecture**
-1. [pydantic-ai v2.68.0 发布](#item-harness-arch-1) ⭐️ 7.8/10
-2. [OpenClaw 持久代理安全架构](#item-harness-arch-2) ⭐️ 5.8/10
-3. [Claude Code v2.1.323 发布](#item-harness-arch-3) ⭐️ 5.5/10
-4. [browser-use 1.0.3rc1 发布](#item-harness-arch-4) ⭐️ 5.3/10
-5. [browser-use/browser-use GitHub Trending](#item-harness-arch-5) ⭐️ 5.0/10
+1. [FastMCP 4.2.0a5 发布](#item-harness-arch-1) ⭐️ 8.8/10
+2. [openai-agents-js 0.22.0 发布](#item-harness-arch-2) ⭐️ 8.8/10
+3. [Claude Code v2.1.323](#item-harness-arch-3) ⭐️ 5.5/10
 
 **AI Agent Engineer**
-1. [Gemini 4 Hydrogen 发布](#item-agent-engineer-1) ⭐️ 7.8/10
-2. [16B LLM 跑进 1GB 内存边缘设备](#item-agent-engineer-2) ⭐️ 7.0/10
-3. [SteerDistill 提升低比特 Agent 任务成功率](#item-agent-engineer-3) ⭐️ 7.0/10
-4. [PISA 自适应推理路由论文](#item-agent-engineer-4) ⭐️ 7.0/10
-5. [HF Daily Paper: RL 自学习](#item-agent-engineer-5) ⭐️ 6.0/10
+1. [LLMON 集成 Granite 4.1 3B 8B 预览版](#item-agent-engineer-1) ⭐️ 7.8/10
+2. [Gemini 4 Hydrogen 上线](#item-agent-engineer-2) ⭐️ 7.0/10
+3. [16B 模型实现 sub-1GB 内存运行](#item-agent-engineer-3) ⭐️ 7.0/10
+4. [Apple Foundation Models 框架发布](#item-agent-engineer-4) ⭐️ 7.0/10
+5. [llm-gemini 0.37 支持 Gemini 4 Hydrogen](#item-agent-engineer-5) ⭐️ 7.0/10
+6. [SteerDistill 闭环蒸馏修复量化 Agent 偏差](#item-agent-engineer-6) ⭐️ 7.0/10
+7. [GTAGym 发布 GTA V Agent 评估环境](#item-agent-engineer-7) ⭐️ 7.0/10
+8. [SparseRead 为 AI Agent 引入模型无关阅读层](#item-agent-engineer-8) ⭐️ 6.0/10
+9. [Evolving Infra 论文提出 Agent-Adaptive LLM Serving](#item-agent-engineer-9) ⭐️ 6.0/10
+10. [腾讯 Qwen3 DSpine 模型登 HF Trending](#item-agent-engineer-10) ⭐️ 5.5/10
 
 **AI Daily**
-1. [Claude Opus 5.5 成付费默认模型](#item-ai-daily-1) ⭐️ 8.8/10
-2. [Claude Managed Agents 推出自托管版本](#item-ai-daily-2) ⭐️ 8.8/10
-3. [Claude Meetings Beta 发布](#item-ai-daily-3) ⭐️ 8.8/10
-4. [Claude for Manufacturing 插件发布](#item-ai-daily-4) ⭐️ 8.8/10
-5. [OpenAI 投200万美元支持AI儿童安全研究](#item-ai-daily-5) ⭐️ 7.8/10
-6. [GitHub 发布 agent skills 实践指南](#item-ai-daily-6) ⭐️ 7.8/10
-7. [J.Crew 以 Claude 构建 Style Advisor](#item-ai-daily-7) ⭐️ 7.8/10
-8. [Claude Tag 发布初创企业使用指南](#item-ai-daily-8) ⭐️ 7.8/10
+1. [GitHub Launches Agent Skills](#item-ai-daily-1) ⭐️ 7.8/10
+2. [Amplitude Wave 基于 OpenAI 1–2 天交付产品改进](#item-ai-daily-2) ⭐️ 5.8/10
+3. [Codex 助 Gondola 营收翻倍](#item-ai-daily-3) ⭐️ 5.8/10
+4. [GitHub 10月可用性报告发布](#item-ai-daily-4) ⭐️ 5.8/10
+
+**AI Deals**
+1. [谷歌发 Gemini 4 Hydrogen](#item-ai-deals-1) ⭐️ 5.0/10
 
 ---
 
 ## Agent Harness Architecture
 
 <a id="item-harness-arch-1"></a>
-### [pydantic-ai v2.68.0 发布](https://github.com/pydantic/pydantic-ai/releases/tag/v2.68.0) ⭐️ 7.8/10
+### [FastMCP 4.2.0a5 发布](https://github.com/PrefectHQ/fastmcp/releases/tag/v4.2.0a5) ⭐️ 8.8/10
 
-pydantic-ai v2.68.0 于 2026-11-12 发布。新增 \`OutputTokenLimitExceeded\` 异常，使 \`ModelFallback\` 在响应达到 \`max\_tokens\` 时自动回退到下一模型。\`AskUser\` 迁入延迟管线，由 \`RequestInput\` 在运行内处理审批与回答，并标记 \`kind\` 与 \`answered\_by\`。新增 \`DelegationTasks.discover\(\)\`，要求工作区后端保持分离进程存活，\`WorkspaceBackendSuite\` 增加重连检查。\`PromptInjectionDefender\` 语义分类改为 Temporal 兼容的持久化操作，子代理控制事件统一添加 \`Event\` 后缀与 \`agent\_name\`、\`parent\_task\_id\` 字段。
+FastMCP 4.2.0a5 发布，这是 4.2.0 前的最后一个预发布版本。核心变更包括新增 SkillManifestProvider，通过技能清单（frontmatter、文件摘要与大小）实现惰性加载，客户端读取时才加载文件内容，使存储桶或数据库中的技能无需全量加载即可响应 skills/list。SkillCatalogProvider 基于该清单构建，消除每次请求的重复哈希计算。破坏性变更包括 Skill 变为存储中立对象，以及 Python 版本要求提升至 3.11。
 
-github · dsfaccini · Nov 12, 01:56
+github · zzstoatzz · Nov 13, 00:34
 
-**「设计要点」** 运行时通过 \`ModelFallback\` 在输出令牌超限时自动切换模型。工作区后端强制要求分离进程持续运行，并在 \`WorkspaceBackendSuite\` 中增加重连检查。Harness 层将 \`num\_results\` 重命名为 \`max\_results\`，\`max\_duration\_secs\` 重命名为 \`max\_duration\_seconds\`，并新增 \`RefineOutput\` 能力。
+**「设计要点」** SkillManifestProvider 将技能元数据与文件内容分离，清单仅包含 frontmatter、digest 和 size，客户端访问时才读取实际文件。SkillCatalogProvider 复用该清单避免每次请求重新哈希。CallArgument 让依赖项拥有工具参数所有权，改变参数解析与补全的边界。
 
-**「改了什么」** 相对 v2.67.0，本次将用户交互从同步调用改为延迟管线处理，新增模型回退机制，扩展子代理委托至 Temporal/DBOS 子工作流，并强化工作区沙箱的进程生命周期管理。Harness 事件体系重命名为 \`&lt;Subject&gt;&lt;PastParticiple&gt;Event\` 格式，并新增 \`STEP\_PERSISTENCE\_EVENTS\`。
+**「改了什么」** 相对 4.2.0a4，新增 SkillManifestProvider 和 SkillCatalogProvider 优化技能服务性能，Skill 对象改为存储中立，Python 最低版本要求升至 3.11。CallArgument 将工具参数所有权移交给依赖项，补全逻辑不再提示调用者不可见的提示词或模板值。日志辅助函数现可在后台任务中工作。
 
-**Tags**: `#runtime`, `#tools`, `#subagents`, `#sandbox`, `#permissions`
+**Tags**: `#tools`, `#mcp`, `#runtime`
 
 ---
 
 <a id="item-harness-arch-2"></a>
-### [OpenClaw 持久代理安全架构](https://developers.openai.com/blog/securing-persistent-agents-like-openclaw-at-openai) ⭐️ 5.8/10
+### [openai-agents-js 0.22.0 发布](https://github.com/openai/openai-agents-js/releases/tag/%40openai/agents-core%400.22.0) ⭐️ 8.8/10
 
-OpenAI 开发者博客发布 OpenClaw 安全架构预览，介绍持久代理内部部署的管控措施。持久代理 24/7 运行且可动态生成代码，威胁来自内部误操作而非外部攻击。OpenAI 在公司内部部署数百个 OpenClaw 代理，通过分离可信与不可信执行、多层沙箱、模型级自动审查、独立代理身份及全链路日志构建安全边界。本文为高层设计概述，未披露具体实现细节。
+@openai/agents-core@0.22.0 发布，引入破坏性类型变更并修复沙箱、MCP、工具审批与权限相关缺陷。类型层面，保留有界 JSON 用量元数据并复用 OpenAI wire 类型，导致 usage 详情、Realtime 图像内容、MCP 描述、schema/tracing 元数据及转录明细等类型需收窄；保存状态兼容时沿用 schema 1.23，更丰富的元数据或嵌套运行时改用 1.24。运行时层面，Docker 会话新增资源以沙箱用户权限物化并限制拷贝；MCP 发现注解暴露给转换后的函数工具；待审批工具触发 Responses 自动压缩延迟执行；UnixLocal 沙箱保留仅大小写变更的编辑文件；Zod 升级至 4.6.6 并保留 guardrail 检查点。
 
-rss · OpenAI Developer · Nov 12, 00:00
+github · openai-sdks\[bot\] · Nov 12, 23:57
 
-**「设计要点」** 运行时将 OpenClaw Gateway 与 agent harness 分离至不同集群，网关作为可信控制面，harness 作为不可信工作负载。权限边界由 codex linux sandbox 实现进程隔离，network 模块通过 managed allowed domains 与显式 denied domains（含 169.254.169.254）控制访问，filesystem 仅开放工作区写入，secrets 经 credential broker 注入且对代理不可见；模型层采用 Auto-review 由第二代理审查主代理动作；每个代理拥有独立身份并关联 ChatGPT Service Account，与用户身份解耦以支持审计和吊销。
+**「设计要点」** 运行时权限模型：Docker 沙箱以沙箱用户权限物化新增资源并限制拷贝。保存状态按 schema 1.23（兼容）与 1.24（更丰富的元数据/嵌套运行）分层；MCP 工具转换层暴露发现注解；tracing 在敏感数据捕获时暴露工具定义，托管导出省略。
 
-**Tags**: `#runtime`, `#permissions`, `#sandbox`, `#persistent-agents`
+**「改了什么」** 破坏性类型变更收窄 usage 详情、Realtime 图像内容、MCP 描述等类型，保存状态 schema 分层为 1.23（兼容）与 1.24（更丰富的元数据/嵌套运行）。沙箱层面，Docker 资源以沙箱用户权限物化并限制拷贝，UnixLocal 保留仅大小写变更文件；MCP 发现注解暴露给函数工具，待审批工具延迟 Responses 压缩；gpt-6-sol/gpt-6-luna 函数工具默认推理强度改为 none；Zod 升级至 4.6.6 并保留 guardrail 检查点。
+
+**Tags**: `#sandbox`, `#mcp`, `#tools`, `#permissions`
 
 ---
 
 <a id="item-harness-arch-3"></a>
-### [Claude Code v2.1.323 发布](https://github.com/anthropics/claude-code/releases/tag/v2.1.323) ⭐️ 5.5/10
+### [Claude Code v2.1.323](https://github.com/anthropics/claude-code/releases/tag/v2.1.323) ⭐️ 5.5/10
 
-Claude Code v2.1.323 发布，引入实验性 Code Mode 让 Claude 用 JavaScript 编写工具调用代码，并在 \`plugin.json\` 中新增 \`engines\[&quot;claude-code&quot;\]\` 字段以强制插件版本兼容。\`claude plugin validate\` 现在会对插件的 TypeScript hooks 模块做类型检查，并报告 \`$\` 名词的增删改。本版还修复了内存峰值、后台会话认证漂移、Bash 权限检查绕过等多项问题，并新增多个环境变量与 UI 改进。
+Anthropic released Claude Code v2.1.323. The patch introduces experimental Code Mode, which generates JavaScript to invoke tools, alongside plugin engine version constraints and TypeScript hook validation. It also fixes memory spikes on large file edits, Bash permission prompt regressions, background session credential leaks, and MCP token expiry handling.
 
 github · claude-code-publisher\[bot\] · Nov 12, 22:12
 
-**「设计要点」** 运行时新增实验性 JS 工具调用路径，插件系统引入版本门控机制，长任务 hook 增加 30 秒心跳防止宿主判定 hung。权限层修复了 Bash 通配符规则和敏感路径写入的检查逻辑。
+**「Architecture Note」** Code Mode runs generated JavaScript in a sandboxed execution context to call tools, while the plugin system now enforces semantic version ranges and type-checks TypeScript hook modules during validation.
 
-**「改了什么」** 实验性 Code Mode 允许 Claude 编写 JavaScript 直接调用工具；插件安装、更新和加载现在受 \`engines\[&quot;claude-code&quot;\]\` 版本范围约束，自动选择符合条件的最新版本；\`claude plugin validate\` 增加 TypeScript 类型检查（\`--strict\` 下报错）和 \`$\` 名词变更报告。修复涵盖内存泄漏、后台会话认证状态错乱、Bash 权限绕过及 UI 渲染异常。
-
-**Tags**: `#runtime`, `#tools`, `#plugins`
-
----
-
-<a id="item-harness-arch-4"></a>
-### [browser-use 1.0.3rc1 发布](https://github.com/browser-use/browser-use/releases/tag/1.0.3rc1) ⭐️ 5.3/10
-
-browser-use 1.0.3rc1 patches MCP CLI pipe handling, container/cloud runtime browser execution, CDP URL validation, and ActionResult deprecation warnings. The release candidate requires explicit installation via \`pip install &\#x27;browser-use==1.0.3rc1&\#x27;\`; plain installs still resolve to 1.0.2.
-
-github · gregpr07 · Nov 12, 02:11
-
-**「设计要点」** The CLI self-launches Chromium when no remote debugging browser exists or no display is present. Cancelled cloud runs now copy downloads within 10 seconds instead of holding the browser for up to 300 seconds per pass.
-
-**「改了什么」** \`--cli-mcp\` exits cleanly if the client closes the pipe before the reply. \`BU\_CDP\_URL\` validation fails in 3 seconds with one clear message when nothing listens. Chrome in another PID namespace \(containers, Cursor on Linux\) accepts via DevToolsActivePort. \`ActionResult\` warns about every ignored 0.x field, not only the first \(\#6379\).
-
-**Tags**: `#mcp`, `#runtime`, `#sandbox`
-
----
-
-<a id="item-harness-arch-5"></a>
-### [browser-use/browser-use GitHub Trending](https://github.com/browser-use/browser-use) ⭐️ 5.0/10
-
-browser-use/browser-use is an open-source Python library for AI browser agents, accompanied by Browser Use Cloud offering stealth browsers and a hosted agent API. The system uses a persistent REPL session where the LLM writes Python code to drive a real browser via raw Chrome DevTools Protocol \(CDP\). It runs on any LLM, either locally or through Browser Use Cloud, and is MIT licensed. Example tasks such as &quot;book the earliest driving test&quot; produce generated code like \`new\_tab\(url\); bu.click\(41\); js\(...\)\`.
-
-rss · GitHub Trending Daily · Nov 12, 23:00
+**「What Changed」** Added experimental Code Mode, engines\[&quot;claude-code&quot;\] version pinning in plugin.json, TypeScript hook validation with --strict mode, and .docx artifact support. Fixed memory spikes after editing large files, permission prompt bypasses, background session sign-in state corruption, and MCP authentication failures on expired tokens.
 
 **Tags**: `#runtime`, `#tools`, `#sandbox`
 
@@ -109,202 +87,236 @@ rss · GitHub Trending Daily · Nov 12, 23:00
 ## AI Agent Engineer
 
 <a id="item-agent-engineer-1"></a>
-### [Gemini 4 Hydrogen 发布](https://deepmind.google/blog/introducing-gemini-4-hydrogen/) ⭐️ 7.8/10
+### [LLMON 集成 Granite 4.1 3B 8B 预览版](https://huggingface.co/blog/ibm-granite/llmon-an-llm-native-markup-language-now-in-granite) ⭐️ 7.8/10
 
-Google DeepMind 于 2026-11-12 在官方博客发布新基础模型 Gemini 4 Hydrogen。源材料未披露具体技术参数、能力基准或定价细节。社区反馈显示该模型已在 Search 中上线，取代 3.8 Flash，官方宣称速度提升 2.5 倍；另有用户指出其定价与未打折的 3.8 Flash 持平，高于当前 3.8 Flash 与 3.5 Flash Lite 的实际成交价。对 AI agent 开发者的具体影响尚不明确。
+IBM 于 2026-11-12 在 Hugging Face 博客发布 LLMON（LLM Object Notation），一种为因果语言模型设计的标记语言，通过保留特殊标记分隔符显式传递上下文结构与语义。该技术已集成至 Granite 4.1 3B 与 8B 的实验预览模型 granite-4.1-3b-LLMON-preview、granite-4.1-8b-LLMON-preview，并配套发布 GitHub 工具库及 JSON 无损转换工具。LLMON 将指令与数据分离，在 OPI 基准测试中将间接提示注入攻击成功率降至接近零，较测试中最佳前沿模型多规避 47% 攻击，较最佳开源模型多规避 95%。模型通用能力与 Granite 4.1 Instruct 持平，但实验预览阶段的自适应攻击鲁棒性尚未验证。
 
-rss · Google DeepMind · Nov 12, 18:00
+rss · Hugging Face Blog · Nov 12, 19:07
 
-**「为什么重要」** 这是 Gemini 系列首次以化学元素命名，可能标志 Google 调整模型分层策略。社区已关注到“快速廉价” tier 是否被放弃的信号，但官方未确认定价与定位变更。
+**「为什么重要」** LLMON 的指令-数据绑定机制直接针对 agent 系统中检索文档、工具返回与用户数据混排引发的提示注入风险。对 coding agent 而言，显式结构可减少无关上下文对输出的污染，但长轨迹下的 token 开销与层级稳定性仍需实际 harness 测试。
 
-**「可关注」** 可关注：Gemini 4 Hydrogen 的 API 定价与速率限制细节尚未公布，现有 agent 管道若依赖 3.5 Flash Lite 或 3.8 Flash 的低成本高吞吐特性，需评估迁移成本。
+**「可关注」** 可关注：LLMON 的 exec 块通过唯一 ID 将指令绑定到特定数据载荷，类似函数调用的参数绑定，这可能为 agent 工具调用与权限边界设计提供新的上下文组织范式，但需验证其 token 开销与长上下文下的层级追踪成本。
 
-**「评论」** 社区对元素命名方案分歧明显：部分用户认为氢、氩等命名在对比时造成认知负担；另有用户指出该模型定位模糊——速度提升但价格持平，可能挤压“快速廉价” tier。另有用户反馈 Gemini iPhone 应用不稳定、Work 功能弱于 ChatGPT，以及命令行工具 \`agy\` 遭无说明封禁。
-
-**Tags**: `#coding-agent`, `#eval`
+**Tags**: `#memory`, `#permissions`, `#harness`
 
 ---
 
 <a id="item-agent-engineer-2"></a>
-### [16B LLM 跑进 1GB 内存边缘设备](https://github.com/hyperionaidev/smolmaxxing/) ⭐️ 7.0/10
+### [Gemini 4 Hydrogen 上线](https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-hydrogen/) ⭐️ 7.0/10
 
-开源项目 smolmaxxing 宣布可在内存不足 1GB 的消费级边缘设备（第一代 iPad Air、小米电视盒子）上运行 16B 参数大语言模型。项目已开源优化内核与修改后的模型（托管于 Hugging Face），目标为可复现的低资源 LLM 部署。该进展对构建本地推理、无需云依赖的 AI Agent 工程师有直接参考价值，但公告未提供具体推理速度（如 tokens/s）等性能指标。
+Google 于 2026-11-12 发布 Gemini 4 Hydrogen，替代 Gemini 3.8 Flash，官方宣称推理速度提升 2.5 倍。社区反馈新模型定价高于此前 3.8 Flash 折扣价，且出现命令行接口因违反服务条款被停用的案例。目前未公开完整技术规格与评测基准，agent 迁移需评估兼容性与成本变化。
 
-hackernews · mrashad74 · Nov 12, 15:23 · [Discussion](https://news.ycombinator.com/item?id=50468888)
+hackernews · dvaplima · Nov 12, 18:01 · [Discussion](https://news.ycombinator.com/item?id=50471431)
 
-**「为什么重要」** 边缘设备本地推理能力提升，直接降低 AI Agent 对云端算力的依赖。但具体推理延迟与能耗数据尚未公开，实际落地效果仍需社区验证。
+**「为什么重要」** 模型 tier 调整直接改变 coding agent 的调用成本与延迟预算。CLI 访问限制若扩大，将冲击本地 harness 与自动化流水线的稳定性。
 
-**「可关注」** 可关注：项目开源的优化内核与修改后模型是否能在其他亚 1GB 内存硬件上复现 16B 模型的推理结果。
+**「可关注」** 可关注：Gemini 4 Hydrogen 的速率提升是否伴随上下文窗口或输出限制变化，以及命令行访问受限是否与特定调用模式相关。
 
-**「评论」** 社区对低资源 LLM 进展总体乐观，但对其实际任务效用存在分歧。部分用户指出硬件获取与 SSH 接入已成为新瓶颈，另有评论质疑亚 1GB 设备上运行模型的实用智能水平。
+**「评论」** 社区对元素命名方案与能力排序表达困惑，同时集中质疑新定价是否放弃低价入口。有用户实测命令行工具遭自动封禁且申诉流程不透明。
 
-**Tags**: `#inference-optimization`, `#edge-deployment`, `#open-source-tooling`, `#low-resource-llm`
+**Tags**: `#coding-agent`, `#harness`, `#permissions`
 
 ---
 
 <a id="item-agent-engineer-3"></a>
-### [SteerDistill 提升低比特 Agent 任务成功率](https://huggingface.co/papers/2611.13410) ⭐️ 7.0/10
+### [16B 模型实现 sub-1GB 内存运行](https://github.com/hyperionaidev/smolmaxxing/) ⭐️ 7.0/10
 
-2026-11-12，Hugging Face Daily Papers 收录论文《SteerDistill: Quantizing LLM Agents via Closed-Loop Teacher Steering》。该论文提出 SteerDistill 迭代式量化感知蒸馏方法，针对低比特量化 LLM agent 任务成功率下降问题，通过全精度教师指导学生修订失败响应，并利用学生执行反馈迭代修正行为偏差。实验对比全精度参考，该方法在低比特量化场景下实现局部验证的行为修正。论文摘要被截断，完整实验数据与性能指标未披露。
+开源项目 smolmaxxing 发布自定义内核与可复现结果，实现 16B 参数 LLM 在 iPad Air 1 代、小米电视盒子等 sub-1GB 内存旧设备上运行。作者 mrashad74 已将修改模型上传至 Hugging Face。项目未公开吞吐量或延迟指标，生产可行性待验证。
 
-rss · Hugging Face Daily Papers · Nov 12, 00:00
+hackernews · mrashad74 · Nov 12, 15:23 · [Discussion](https://news.ycombinator.com/item?id=50468888)
 
-**「为什么重要」** 该工作直接针对 coding-agent 推理成本与任务成功率的权衡，提供了一种可验证的蒸馏框架。但论文摘要截断，完整基准测试与落地约束尚未公开，实际收益待复现确认。
+**「为什么重要」** 项目证明 16B 模型可下探至资源极度受限的 legacy 硬件，为边缘智能体部署提供新路径。硬件稀缺背景下，这或延长旧设备服役周期，但具体性能数据缺失，尚无法确认 harness 集成成本。
 
-**「可关注」** 可关注：低比特量化 agent 的失败常源于忽略任务要求或环境条件，离线数据难以覆盖这些失败上下文，迭代式教师引导可能比静态蒸馏更有效。
+**「可关注」** 可关注：自定义内核与可复现实验为 sub-1GB 内存场景提供工程基线，但缺少吞吐量与延迟数据，无法评估实际推理延迟对 agent 循环的影响。
 
-**Tags**: `#coding-agent`, `#quantization`, `#distillation`
+**「评论」** 社区存在分歧：Farmadupe2 认为 opus 与 fable 已实现类似能力五月，推理瓶颈在于硬件获取而非算法；cjdell 与 nico 则对老旧硬件榨取性能表示兴奋，呼应当前硬件稀缺下的优化趋势。
+
+**Tags**: `#coding-agent`, `#memory`
 
 ---
 
 <a id="item-agent-engineer-4"></a>
-### [PISA 自适应推理路由论文](https://huggingface.co/papers/2611.10193) ⭐️ 7.0/10
+### [Apple Foundation Models 框架发布](https://developer.apple.com/foundation-models-framework/) ⭐️ 7.0/10
 
-2026-11-12，Hugging Face Daily Papers 收录论文 arXiv:2611.10193。该文提出 PISA 与 PISA-E 两种推理路由方法。PISA 结合软聚类成员度与模型特定预测器做单模型路由；PISA-E 扩展为集成路由，支持推理时调整成本-质量权衡且无需重训练。摘要提及可处理集成成功替代物与高效候选选择，但内容截断，未披露评估指标、对比基线或生产部署表现；该论文当日获 14 次 upvote，暂无社区评论。
+Apple 发布 Foundation Models 框架，面向 iOS/macOS 应用提供端侧推理与 Private Cloud Compute 集成。符合条件的小型开发者（App Store Small Business Program 且首次下载量低于 200 万）可免费使用 PCC。模型访问强制采用 App Attest 认证。该框架仅适用于 Apple 生态系统。
 
-rss · Hugging Face Daily Papers · Nov 12, 00:00
+hackernews · kermatt · Nov 12, 21:13 · [Discussion](https://news.ycombinator.com/item?id=50474361)
 
-**「为什么重要」** 对 agent 推理优化，PISA-E 提供了推理时动态调整成本-质量权衡的具体机制，其软聚类成员度与模型预测器组合可直接复用。但论文截断，完整评估与生产可用性尚未证实。
+**「为什么重要」** 这是 Apple 官方提供的端侧 AI 集成框架，为 iOS/macOS 应用部署 AI 代理提供原生支持。免费 PCC 额度可降低小型开发者成本，但适用范围限于 Apple 生态系统。
 
-**「可关注」** 可关注：PISA-E 支持推理时按偏好调整集成组成与基数，无需重训练，可用于优化 agent 推理成本。
+**「可关注」** 可关注：App Attest 认证流程、PCC 特殊权限申请条件，以及 M1 8GB 设备上本地推理的内存边界。
+
+**「评论」** 社区确认免费 PCC 资格要求开发者加入 App Store Small Business Program 且首次下载量低于 200 万。有用户反馈 M1 8GB 是本地 AI 运行的最低硬件配置。另有开发者指出 Claude 已支持 App Attest 数月但普及度有限，Firebase 曾是 iOS 应用直接调用 LLM 的实用方案。部分应用（如 Noodle）已接入 Foundation Models，但 PCC 功能目前仅限具备特殊权限的 Siri 桌面类应用使用。
+
+**Tags**: `#harness`, `#permissions`, `#coding-agent`
+
+---
+
+<a id="item-agent-engineer-5"></a>
+### [llm-gemini 0.37 支持 Gemini 4 Hydrogen](https://simonwillison.net/2026/Nov/12/llm-gemini/) ⭐️ 7.0/10
+
+2026年11月12日，Simon Willison发布llm-gemini 0.37，新增对Gemini 4 Hydrogen模型的支持，同时公开Gemini 4全系列官方定价。Gemini 4 Carbon与Argon在2026年11月30日前输入定价为2美元/百万token、缓存输入0.1美元/百万token、输出10美元/百万token，12月1日起全面翻倍；其中Argon官方说明每任务token消耗低于同价位的Carbon。Gemini 4 Hydrogen定价为输入1.5美元/百万token、缓存输入0.075美元/百万token、输出7.5美元/百万token，12月1日后相对Carbon/Argon折扣升至75%，当前折扣仅25%，仍比Claude Haiku 5.5、GPT-6 Luna贵15倍。该更新面向使用llm-gemini工具链的AI agent工程师，可支持其成本优化工作，但Hydrogen实际任务表现与定价匹配度仍有待验证。
+
+rss · Simon Willison · Nov 12, 22:55
+
+**「为什么重要」** 已发生的变化是llm-gemini作为主流LLM工具链正式接入Gemini 4 Hydrogen，同时公开了全系列定价、调价时间节点及模型定位说明，为agent工程师的成本测算与模型选型提供了可验证依据。尚未证实的影响是Hydrogen作为Google免费层主力模型及Google Search AI功能底层模型的实际稳定性、复杂任务完成率是否满足agent工作流要求，需进一步实测确认。
+
+**「可关注」** 可关注：llm-gemini 0.37已支持Gemini 4 Hydrogen，12月1日前其价格仅比Carbon/Argon低25%，若用于高输出agent任务成本优势有限，12月1日调价后折扣升至75%可重新评估适配性。
+
+**Tags**: `#toolchain`
+
+---
+
+<a id="item-agent-engineer-6"></a>
+### [SteerDistill 闭环蒸馏修复量化 Agent 偏差](https://huggingface.co/papers/2611.13410) ⭐️ 7.0/10
+
+低比特量化降低 LLM 智能体推理成本，但会损害任务成功率。2026-11-13 Hugging Face 每日论文介绍的 SteerDistill（arXiv:2611.13410）是一种量化感知蒸馏方法，通过全精度教师模型闭环引导学生模型修正失败响应，并利用学生执行反馈迭代优化引导策略。该方法针对量化智能体在环境交互中产生的行为偏差，提供局部验证的行为修正。当前摘要内容被截断，缺少完整技术细节与性能验证数据，无法完全评估实际落地效果。
+
+rss · Hugging Face Daily Papers · Nov 13, 03:05
+
+**「为什么重要」** 该论文直接针对低比特量化导致 LLM 智能体任务成功率下降的行业痛点，提出的闭环教师引导机制对智能体部署优化有明确参考价值。但当前信息仅包含方法概述，尚未提供完整实验数据与对比基线，实际效果待验证。
+
+**「可关注」** 可关注：量化感知蒸馏中，教师模型利用学生执行反馈迭代修正引导策略的闭环机制，以及该方法在保留任务成功率的同时降低推理成本的具体性能数据。
+
+**Tags**: `#coding-agent`
+
+---
+
+<a id="item-agent-engineer-7"></a>
+### [GTAGym 发布 GTA V Agent 评估环境](https://huggingface.co/papers/2611.13028) ⭐️ 7.0/10
+
+GTAGym 是基于 GTA V 的 agent 评估与强化学习环境，2026-11-13 由 Hugging Face Daily Papers 介绍。其基准 GTAVBench 包含 103 个在线任务（覆盖 9 个任务家族）和 47 个 image-based 射击与狙击任务，均从 GTA V 主线任务重建。环境通过 web 服务器提供，支持截图与键鼠操作的并行测试及自动验证，解决 AAA 游戏任务评估依赖人工标注的痛点。
+
+rss · Hugging Face Daily Papers · Nov 13, 03:05
+
+**「为什么重要」** 此前 AAA 游戏任务评估因结果难以自动验证而依赖人工标注，阻碍规模化评估与强化学习训练。GTAGym 提供可自动验证的基准，直接降低评估门槛。
+
+**「可关注」** GTAVBench 从 GTA V 主线任务重建 103 个在线任务，覆盖 9 个任务家族，并配套 web 服务器支持截图与键鼠操作的并行自动测试。
+
+**Tags**: `#eval`
+
+---
+
+<a id="item-agent-engineer-8"></a>
+### [SparseRead 为 AI Agent 引入模型无关阅读层](https://huggingface.co/papers/2608.22237) ⭐️ 6.0/10
+
+Hugging Face Daily Papers 于 2026-11-13 介绍了论文 SparseRead（arXiv:2608.22237）。该工作提出一个模型无关的可重用阅读控制层，在不修改 agent 模型的前提下，通过 Read Intent Protocol 跟踪需求变化、Adaptive Reader Backends 选择证据暴露方式、Budgeted Read Gate 限制每 episode 累积原始读取量，并提供 faithful full-view fallback。评估覆盖六个模型（含 Claude Opus 5）和五个场景。当前摘要未披露具体 token 节省比例或延迟数据，需查阅全文获取可量化指标。
+
+rss · Hugging Face Daily Papers · Nov 13, 03:05
+
+**「为什么重要」** Agent 与外部内容交互时的过度读取是 harness 工程中 token 成本与上下文稀释的常见痛点。SparseRead 将读取控制抽象为独立于模型的可插拔层，为现有 agent 系统提供了一种不依赖模型内部修改的上下文优化路径。该思路对设计高成本敏感的多步 agent 有直接参考价值，但具体收益幅度仍需等待全文数据验证。
+
+**「可关注」** 可关注：SparseRead 的架构表明，agent 的外部内容摄入可通过 intent-tracked 的 budget gate 进行显式约束，这为 harness 中的上下文管理模块提供了可复用的设计模式，尤其适合需要控制 token 消耗的长链路 agent。
+
+**Tags**: `#harness`, `#orchestration`, `#eval`
+
+---
+
+<a id="item-agent-engineer-9"></a>
+### [Evolving Infra 论文提出 Agent-Adaptive LLM Serving](https://huggingface.co/papers/2611.12304) ⭐️ 6.0/10
+
+Hugging Face Daily Papers 于 2026-11-13 收录论文《Evolving Infra: Agent-Adaptive LLM Serving at Scale》。该框架针对 agentic 工作负载在现有 prefill--decode disaggregated serving 系统中 compute allocation 灵活性不足、KV cache 管理依赖粗粒度信号的问题，提出解耦 compute allocation 与 KV cache 管理，使节点可在 prefill 与 decode 间高效切换，并通过在线规划器动态匹配 agent 工作负载。当前材料为截断摘要，未披露性能指标、对比基线或开源实现。
+
+rss · Hugging Face Daily Papers · Nov 13, 03:05
+
+**「为什么重要」** Agent 工作负载具有动态请求模式与上下文复用特性，对 LLM serving 系统的资源调度与缓存管理提出新要求。该论文直接针对 prefill--decode 负载失衡和 KV cache 误驱逐这两个工程痛点，若方案可行，可能影响 inference 服务架构设计。但当前仅见论文摘要，实际效果与部署成本待验证。
+
+**「可关注」** 可关注：将 compute allocation 与 KV cache 管理解耦，使 serving 节点能按需切换 prefill/decode 角色，是应对 agent 工作负载动态性的一个架构方向。
 
 **Tags**: `#orchestration`
 
 ---
 
-<a id="item-agent-engineer-5"></a>
-### [HF Daily Paper: RL 自学习](https://huggingface.co/papers/2610.39671) ⭐️ 6.0/10
+<a id="item-agent-engineer-10"></a>
+### [腾讯 Qwen3 DSpine 模型登 HF Trending](https://huggingface.co/tencent/Qwen3.8-27B-DSpine-b16) ⭐️ 5.5/10
 
-2026 年 11 月 12 日，Hugging Face Daily Papers 收录论文 arXiv:2610.39671，提出一种基于强化学习的 LLM 自学习框架，配套 BookNavigator 接口用于交互长文本参考材料，并发布教材级数学解题基准测试。该研究要求模型在解题过程中自主检索、学习并应用教材中的原理，参考解法未提供。当前内容为截断的预印本，尚无生产级工具或框架变更。对关注 eval、memory、harness 的工程师而言，这是一项探索在线知识获取与推理耦合能力的学术原型。
+2026年11月13日，腾讯发布的基于Qwen3的DSpine推测解码草稿模型\`tencent/Qwen3.8-27B-DSpine-b16\`登上Hugging Face热门模型榜，当前trendingScore为192，获210个赞，模型标签标注兼容SGLang，关联arxiv论文\`2609.36173\`。目前公开信息仅包含基础热门元数据与标签，无性能对比、架构拆解等技术细节，潜在影响面向LLM agent做推理优化的工程师群体。
 
-rss · Hugging Face Daily Papers · Nov 12, 00:00
+rss · Hugging Face Trending Models · Nov 13, 03:05
 
-**「为什么重要」** 该工作将长文本动态学习形式化为可评估的交互任务，涉及 agent 知识推理与检索。目前仅为预印本，尚未证实其框架或 benchmark 会被主流 harness 采纳。
+**「为什么重要」** 该模型定位为推测解码草稿模型，若实际推理加速效果符合预期，可降低LLM agent的推理延迟，但目前无公开性能数据验证实际效果。
 
-**「可关注」** 可关注：BookNavigator 接口将“导航-学习-应用”耦合为单一交互循环，这可能影响未来 agent memory 模块对长上下文参考材料的结构化检索策略。
+**「可关注」** 可关注：该模型关联arxiv论文\`2609.36173\`，可后续跟进论文或模型页公开的技术细节与SGLang实测表现。
 
-**Tags**: `#eval`, `#memory`, `#harness`
+**Tags**: `#coding-agent`, `#speculative-decoding`, `#sglang`, `#draft-model`
 
 ---
 
 ## AI Daily
 
 <a id="item-ai-daily-1"></a>
-### [Claude Opus 5.5 成付费默认模型](https://claude.com/resources/articles/using-claude-opus-5-5-as-your-daily-driver-for-knowledge-work) ⭐️ 8.8/10
+### [GitHub Launches Agent Skills](https://github.blog/ai-and-ml/github-copilot/build-once-run-on-any-agent-a-practical-guide-to-agent-skills/) ⭐️ 7.8/10
 
-Anthropic 将 Claude Opus 5.5 设为 Pro、Max、Ultra 及 Team 所有付费套餐的默认模型，并推荐作为知识工作日常首选。Opus 5.5 定价为每百万 token 输入 4 美元、输出 20 美元，速度为中等；对比 Haiku 5.5（$0.10/$0.50，最快）、Sonnet 5.5（$2/$10，快）与 Fable 5.2（$8/$40）。内部测试中，Opus 5.5 在 18 份报告任务里通过 16 份，完成虚构合并分析任务耗时 63 分钟，较 Opus 5 的 93 分钟缩短约三成，成本减半。Fable 5.2 未纳入 Pro 及 Team 标准席位额度，需按使用量计费。
+GitHub has officially launched the agent skills feature, a versioned directory format centered on a SKILL.md file designed to encapsulate repeatable task instructions reusable across agents and teams. This addresses the prior problem of task context being scattered across chat logs or locked in individual knowledge, with no standardized way to reuse it. The specification explicitly states that skills only store execution instructions, while required tools, credentials, and permissions must be provided by the runtime environment — for example, a skill can define database query rules but does not grant database access. Official demos include Proof Agent, which uses an independent verifier to avoid self-verification bias when reviewing AI-generated work, and Data Forge, a multi-skill collaborative workflow for data pipeline construction.
 
-rss · Claude Blog · Nov 12, 00:00
+rss · GitHub Blog · Nov 12, 22:54
 
-**「为什么重要」** 默认模型变更直接改变所有付费用户的成本-速度基线，Opus 5.5 的强项（精确遵循指令、少轮次完成复杂文档）可能减少总交互成本。对 coding agent 与 harness 开发者而言，需重新评估默认模型选择、提示词工程及 effort 级别策略。
+**「Why It Matters」** The specification provides a standardized approach for reusing repeatable task instructions across agents and teams, reducing the cost of repeatedly explaining tasks and siloed institutional knowledge. It helps unify task execution standards across the growing agent ecosystem, addressing a common pain point for teams building agent workflows.
 
-**「可关注」** 可关注：Opus 5.5 默认开启思考，删除提示词中的 &quot;think hard&quot; 或 &quot;think carefully&quot; 可缩短响应启动时间；建议从 Medium effort 起步，并要求直接输出完整文件而非大纲，以减少后续编辑轮次。
+**「Engineer Takeaway」** Watch for: Bounded, repeatable tasks such as checklists, releases, migrations, or metric pipelines are ideal for encapsulation as skills; scenarios requiring stable interfaces, shared state, audit trails, long-running control, or out-of-model permission enforcement are better suited for full applications. Project-specific configuration should be stored in a separate manifest file rather than hardcoded into skill instructions.
 
-**Tags**: `#model`, `#lab`, `#product`, `#policy`
+**Tags**: `#product`, `#agent`, `#industry`
 
 ---
 
 <a id="item-ai-daily-2"></a>
-### [Claude Managed Agents 推出自托管版本](https://claude.com/resources/articles/self-hosted-claude-managed-agents) ⭐️ 8.8/10
+### [Amplitude Wave 基于 OpenAI 1–2 天交付产品改进](https://openai.com/business/customer-stories/amplitude) ⭐️ 5.8/10
 
-Anthropic 推出自托管 Claude Managed Agents 私有测试版，允许企业在自有云或本地环境运行 agent，完全托管控制平面、沙箱、凭证与会话历史。企业可自主选择 Claude 请求的路由目标，支持直连 Anthropic、Amazon Bedrock、Google Agent Platform、Microsoft Foundry 或自有网关。若企业与 Anthropic 签署零数据留存（ZDR）协议，该规则同样适用于发往 Claude 的请求。目前该功能处于私有测试阶段，开发者需联系 Anthropic 账户团队申请访问权限。
+OpenAI Blog 发布 Amplitude 客户案例。Amplitude 基于 OpenAI 模型构建主动式产品代理 Wave，自动识别待建功能、调用编码代理协助发布并测量业务影响，宣称产品改进交付周期为 1–2 天。案例未披露具体模型版本、技术架构或量化效果数据。
 
-rss · Claude Blog · Nov 12, 00:00
+rss · OpenAI Blog · Nov 12, 20:00
 
-**「为什么重要」** 此前 Anthropic 仅支持自托管 agent 沙箱，全服务自托管需要团队自行搭建平台，此次官方推出自托管版本填补了该空白，满足企业对 agent 运行环境、数据驻留的合规要求，适合需要 agent 深度接入内部代码与系统的团队。
+**「为什么重要」** 该案例展示 OpenAI 模型在产业界产品迭代场景的实际应用。Wave 将产品决策、编码实现、效果测量串联为闭环，为同类团队提供参考。
 
-**「可关注」** 可关注：自托管版本沿用原有核心 API，迁移成本较低，同时支持通过 OpenTelemetry 导出全量 agent 操作日志，可直接对接现有监控体系。
+**「可关注」** 可关注：Wave 将编码代理嵌入产品迭代全流程的集成方式。
 
-**Tags**: `#product`, `#lab`, `#industry`
+**Tags**: `#industry`, `#product`, `#lab`
 
 ---
 
 <a id="item-ai-daily-3"></a>
-### [Claude Meetings Beta 发布](https://claude.com/resources/articles/claude-meetings) ⭐️ 8.8/10
+### [Codex 助 Gondola 营收翻倍](https://openai.com/business/customer-stories/gondola) ⭐️ 5.8/10
 
-Anthropic官方发布Claude Meetings Beta功能，Claude可作为可见参会者加入视频会议，支持实时协作生成文档/白板、撰写会议纪要与行动项、回答会议问题。当前该功能仅向Team和Enterprise套餐用户开放，首批仅支持Google Meet，其他会议平台后续适配。Beta期间，Team和Enterprise用户的会议纪要、转录、通话内问答免费，Claude生成的文档/白板等制品免费至2027年2月10日，暂不支持零数据保留（ZDR）、HIPAA配置、客户管理加密密钥（CMEK）的组织。
+OpenAI 发布客户案例。Gondola 使用 Codex 与 ChatGPT，营收翻倍，首席工程师产出提升 50%。该公司为创意工作者提供求职与署名服务，案例未披露时间范围与基准。
 
-rss · Claude Blog · Nov 12, 00:00
+rss · OpenAI Blog · Nov 12, 12:00
 
-**「为什么重要」** 这是Claude首次进入实时会议协作场景，将会议信息记录、协作产出的环节从会后前置到会中，为高频开会的团队提供了新的效率工具选项。
+**「为什么重要」** 这是 OpenAI 官方发布的客户案例，提供了 Codex 在商业场景中的具体效率指标。对评估 coding agent 实际生产力有参考价值。
 
-**「可关注」** 可关注：Claude Meetings当前仅支持Google Meet，后续将扩展更多会议平台，同时将对接Gong、Fireflies.ai等第三方会议转录工具。
+**「可关注」** 可关注：Codex 在该客户案例中被报告提升首席工程师产出 50%，但案例由平台方发布，缺乏独立验证。
 
-**Tags**: `#lab`, `#product`
+**Tags**: `#model`, `#product`, `#industry`
 
 ---
 
 <a id="item-ai-daily-4"></a>
-### [Claude for Manufacturing 插件发布](https://claude.com/resources/articles/claude-for-manufacturing) ⭐️ 8.8/10
+### [GitHub 10月可用性报告发布](https://github.blog/news-insights/company-news/github-availability-report-october-2026/) ⭐️ 5.8/10
 
-Anthropic官方发布面向制造业的Claude专用插件Claude for Manufacturing，内置17项跨销售、质量、运营等场景的技能，搭配Autodesk Fusion、Infor、Microsoft 365、Oracle NetSuite 4款系统的连接器，可辅助完成报价、故障诊断、生产报告编制等流程。该插件针对2025年制造业领导委员会调查显示的79%制造商存在手动录入数据的痛点设计，所有生成内容需人工审核后方可对外发出，且不直接操控生产设备。
+GitHub官方发布2026年10月可用性报告，披露生产服务与MySQL主库向Azure Central US的迁移进展、K8s集群扩容及运维挑战。截至11月9日，140/151个生产服务、32/50个MySQL主库已运行在Azure Central US，9个Central US K8s集群完成扩容，容量超此前一倍，承接了3月以来82%的迁移服务流量增长。当月发生10月5日Actions任务排队故障（持续约3小时45分）、10月6日全站请求故障（约6分钟失败/慢请求，后续3.5小时暂停企业迁移）、10月29日Azure网络故障（影响3个可用区，至少34128名登录用户），同时完成多项可靠性优化，East US 3建设落后计划约1周。
 
-rss · Claude Blog · Nov 12, 00:00
+rss · GitHub Blog · Nov 13, 00:20
 
-**「为什么重要」** 制造业手动数据录入痛点突出，该插件直接对接企业现有主流工业与办公系统，无需替换原有软件栈即可减少重复人工操作，落地场景明确。
+**「为什么重要」** 该报告披露了GitHub云迁移过程中的容量规划、故障传导与处置、区域恢复等可核实的官方实践，对云原生服务运维从业者有参考价值。
 
-**「可关注」** 可关注：插件支持企业基于现有技能扩展定制流程，无原生连接器的系统可通过Microsoft 365文件对接，Infor配套插件可实现系统内写入操作且权限跟随用户原有权限。
+**「可关注」** 可关注：NAT网关缓解措施将生产任务预期失败数从约800次降至4次；高流量GitHub Actions端点迁移后峰值数据库读降低85%。
 
-**Tags**: `#product`, `#lab`, `#industry`
-
----
-
-<a id="item-ai-daily-5"></a>
-### [OpenAI 投200万美元支持AI儿童安全研究](https://openai.com/index/children-first-declaration) ⭐️ 7.8/10
-
-OpenAI 官方宣布投入200 万美元，资助AI 与儿童安全相关研究，支持开发用于评估青少年AI 接触风险与机会的共享工具。目前未披露具体合作研究机构、工具落地时间及评估维度细节。
-
-rss · OpenAI Blog · Nov 12, 00:00
-
-**「为什么重要」** 该投入是AI 厂商在青少年AI 使用安全领域的明确政策动作，填补了青少年AI 风险量化评估工具的部分空白，为后续AI 产品适龄化设计提供了参考方向。
-
-**「可关注」** 可关注：相关AI 产品团队可跟进该共享工具的评估维度设计，提前适配青少年使用场景的风险管控要求。
-
-**Tags**: `#lab`, `#policy`, `#industry`
+**Tags**: `#industry`
 
 ---
 
-<a id="item-ai-daily-6"></a>
-### [GitHub 发布 agent skills 实践指南](https://github.blog/ai-and-ml/github-copilot/build-once-run-on-any-agent-a-practical-guide-to-agent-skills/) ⭐️ 7.8/10
+## AI Deals
 
-GitHub 发布 agent skills 实践指南，定义其为以 SKILL.md 为核心的版本化、可共享指令集，支持跨不同 agent 复用。技能仅描述可重复任务的执行逻辑，不授予数据库等资源的访问权限，权限、工具与凭证由运行环境提供。指南配套 Proof Agent、Data Forge 两个 demo，分别演示独立验证技能和多技能协作工作流的实现方式，同时要求将项目配置写入独立 manifest 而非硬编码到技能中。
+<a id="item-ai-deals-1"></a>
+### [谷歌发 Gemini 4 Hydrogen](https://www.ifanr.com/1689267?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=) ⭐️ 5.0/10
 
-rss · GitHub Blog · Nov 12, 22:54
+谷歌发布Gemini 4系列新模型Hydrogen，主打高效率、低成本，擅长快速代码编写、工具调用与日常任务连续执行。API定价为每百万输入Token 1.5美元、每百万输出Token 7.5美元，100万Token上下文窗口统一计价。谷歌宣布免费用户可在Gemini App、Google Search、Google AI Studio体验该模型，但未公布具体免费额度、地区限制等规则；Google Antigravity中仅对AI Pro、Ultra付费订阅用户开放Hydrogen。
 
-**「为什么重要」** 该指南首次由官方明确 agent skills 的标准化定义与使用边界，为团队沉淀可复用 agent 指令、降低重复沟通成本提供了可落地的参考框架。
+rss · 爱范儿 · Nov 12, 23:11
 
-**「可关注」** 可关注：优先将清单、发布、迁移、指标流水线等有界可重复任务封装为 agent skills，需要稳定接口、共享状态、审计能力或外部权限管控的工作流更适合用应用实现。
+**「为什么重要」** Hydrogen是谷歌六周内推出的第三款Gemini 4模型，默认High档位性能已超过Gemini 4 Argon，xhigh档位智能指数仅比Claude Sonnet 5.5、GPT-6.1 Sol最高档低1分，且速度较Gemini 3.8 Flash提升2.5倍，幻觉率仅8%，免费用户即可体验，性价比突出。
 
-**Tags**: `#product`, `#industry`, `#open-source`, `#agent`
+**「可关注」** 可关注：Hydrogen提供Low、Medium、High、xhigh四档推理强度，日常任务使用默认High档位即可，无需盲目调用最高档；其支持文本、图片、音频、视频输入，拥有100万Token上下文窗口，适合长文档处理、多模态任务场景。
 
----
-
-<a id="item-ai-daily-7"></a>
-### [J.Crew 以 Claude 构建 Style Advisor](https://claude.com/resources/articles/j-crew-style-advisor-with-claude) ⭐️ 7.8/10
-
-J.Crew 上线 Style Advisor，基于 Claude 提供整套穿搭推荐。该工具使用 Claude Code 构建，调用 Fable 5.1、Opus 5.5、Sonnet 5.5 与 Haiku 5.5 四类模型，分别负责规划、原型、对话决策与快速响应。用户输入场景（如沙滩婚礼、首次面试）即可获得完整造型照片，目前仅在美国提供女装与男装服务，后续将拓展个性化推荐与市场。
-
-rss · Claude Blog · Nov 12, 00:00
-
-**「为什么重要」** 这是 Claude Code 在企业生产环境中的具体落地案例，展示了如何用不同层级的模型分工协作——用 Fable 与 Opus 完成复杂构建，再用 Sonnet 控流程、Haiku 保速度。它代表了零售行业从单商品搜索向体验式购物的转型尝试。
-
-**「可关注」** 可关注：企业可参考该多模型分工模式——用 Fable 5.1 做方案规划，Opus 5.5 搭原型，Sonnet 5.5 控对话流程，Haiku 5.5 处理快速任务，在 Claude Code 中实现从构建到生产的流水线。
-
-**Tags**: `#product`, `#industry`, `#model`
-
----
-
-<a id="item-ai-daily-8"></a>
-### [Claude Tag 发布初创企业使用指南](https://claude.com/resources/articles/claude-tag-guide-for-startups) ⭐️ 7.8/10
-
-Anthropic 官方博客发布 Claude Tag（beta）初创企业使用指南，采访 8 家高增长初创公司整理 Slack 部署建议与 5 类常见用例。NavigateAI 自 6 月以来从 Slack 线程直接打开约 223 个 PR，其中 134 个已合并，中位耗时 2 小时。Campfire 曾在一个 incident 中 21 分钟打开 draft PR 且当日合并，Orderful 从 Slack 需求到生产上线约 2 天。指南强调 Claude Tag 作为 Slack 频道首响可自动分诊告警、转写线程为 PR，但功能仍处 beta。
-
-rss · Claude Blog · Nov 12, 00:00
-
-**「为什么重要」** 指南汇总 8 家高增长初创公司的量化案例，显示 AI 代理嵌入 Slack 可缩短 incident 响应与需求交付周期。对评估 Slack 与 coding agent 集成的团队，这提供了 beta 阶段的真实采纳参考。
-
-**「可关注」** 可关注：在 \#on-call、\#alerts 等分诊频道配置 Claude 作为首响，可自动读取 Sentry/Datadog 告警、调查代码库并打开 draft PR，NavigateAI 的中位合并耗时已降至 2 小时。
-
-**Tags**: `#lab`, `#product`, `#industry`
+**Tags**: `#free-tier`, `#limited-free`, `#api`
 
 ---
