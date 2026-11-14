@@ -5,37 +5,39 @@ date: 2026-11-14
 lang: zh
 ---
 
-> 从 205 条内容中筛选出 18 条重要资讯。
+> 从 239 条内容中筛选出 20 条重要资讯。
 
-<nav id="ah-toc" class="ah-toc" aria-label="目录"><span class="ah-toc-title">目录</span><ul><li><a href="#sec-harness-arch"><span class="ah-toc-name">Harness 架构</span><span class="ah-toc-count">4条</span></a></li><li><a href="#sec-agent-engineer"><span class="ah-toc-name">Agent 工程师日报</span><span class="ah-toc-count">8条</span></a></li><li><a href="#sec-ai-daily"><span class="ah-toc-name">AI 日报</span><span class="ah-toc-count">3条</span></a></li><li><a href="#sec-ai-deals"><span class="ah-toc-name">AI 羊毛</span><span class="ah-toc-count">3条</span></a></li></ul></nav>
+<nav id="ah-toc" class="ah-toc" aria-label="目录"><span class="ah-toc-title">目录</span><ul><li><a href="#sec-harness-arch"><span class="ah-toc-name">Harness 架构</span><span class="ah-toc-count">4条</span></a></li><li><a href="#sec-agent-engineer"><span class="ah-toc-name">Agent 工程师日报</span><span class="ah-toc-count">9条</span></a></li><li><a href="#sec-ai-daily"><span class="ah-toc-name">AI 日报</span><span class="ah-toc-count">4条</span></a></li><li><a href="#sec-ai-deals"><span class="ah-toc-name">AI 羊毛</span><span class="ah-toc-count">3条</span></a></li></ul></nav>
 
 ---
 
 **[Harness 架构](#sec-harness-arch)**
-1. [Mastra core 1.83.0 发布](#item-harness-arch-1) ⭐️ 8.8/10
+1. [Mastra v1.83.0 发布](#item-harness-arch-1) ⭐️ 8.8/10
 2. [FastMCP v4.2.0 发布](#item-harness-arch-2) ⭐️ 7.8/10
 3. [OpenCode v2.3.0 发布](#item-harness-arch-3) ⭐️ 7.8/10
-4. [Cloudflare Kitesurf 开源发布](#item-harness-arch-4) ⭐️ 7.8/10
+4. [Cloudflare Kitesurf 开源发布](#item-harness-arch-4) ⭐️ 6.8/10
 
 **[Agent 工程师日报](#sec-agent-engineer)**
-1. [XYBench 评测基准发布](#item-agent-engineer-1) ⭐️ 7.8/10
-2. [llama.cpp v1.0.0 发布](#item-agent-engineer-2) ⭐️ 7.8/10
-3. [HF 每日论文收录智能体决策模型研究](#item-agent-engineer-3) ⭐️ 7.0/10
-4. [Anthropic 安全评估构建指南发布](#item-agent-engineer-4) ⭐️ 6.8/10
-5. [Criteria Exposure 过拟合](#item-agent-engineer-5) ⭐️ 6.0/10
-6. [腾讯 Qwen3-DSpine-b16 登 HF 趋势榜](#item-agent-engineer-6) ⭐️ 6.0/10
-7. [SimReady 机器人拾放仿真教程上线](#item-agent-engineer-7) ⭐️ 5.8/10
-8. [SO-Arena 基准评估 System One 模型](#item-agent-engineer-8) ⭐️ 5.5/10
+1. [Decider v1.3 发布](#item-agent-engineer-1) ⭐️ 8.0/10
+2. [XYBench 评测基准发布](#item-agent-engineer-2) ⭐️ 7.8/10
+3. [多模态视觉编码解耦实验发布](#item-agent-engineer-3) ⭐️ 7.0/10
+4. [具身智能基准验证器过拟合](#item-agent-engineer-4) ⭐️ 7.0/10
+5. [llama.cpp v1.0.0 发布](#item-agent-engineer-5) ⭐️ 7.0/10
+6. [PS4 离线运行 Qwen3.5-9B](#item-agent-engineer-6) ⭐️ 7.0/10
+7. [SO-Arena 基准发布](#item-agent-engineer-7) ⭐️ 6.0/10
+8. [HF Daily Paper：决策模型角色研究](#item-agent-engineer-8) ⭐️ 6.0/10
+9. [HF trending Qwen3 DSpine 草稿模型](#item-agent-engineer-9) ⭐️ 6.0/10
 
 **[AI 日报](#sec-ai-daily)**
-1. [OpenAI 发布 ChatGPT Wallet](#item-ai-daily-1) ⭐️ 8.8/10
-2. [DeepSeek 全家桶应用 API 发布](#item-ai-daily-2) ⭐️ 8.8/10
-3. [Claude Tag 发布创业公司指南](#item-ai-daily-3) ⭐️ 5.8/10
+1. [DeepSeek 全家桶应用 API 发布](#item-ai-daily-1) ⭐️ 8.8/10
+2. [OpenAI 推出 ChatGPT Wallet](#item-ai-daily-2) ⭐️ 7.8/10
+3. [Shield 用 OpenAI 处理遗留门户任务](#item-ai-daily-3) ⭐️ 5.8/10
+4. [谷歌发布 Gemini 4 Hydrogen](#item-ai-daily-4) ⭐️ 5.0/10
 
 **[AI 羊毛](#sec-ai-deals)**
-1. [Epic 本周限免《斗阵骑士/Knightica》](#item-ai-deals-1) ⭐️ 8.0/10
-2. [Atlas 世界模型开放 赠 1 万积分](#item-ai-deals-2) ⭐️ 8.0/10
-3. [InstaBox 免费领 4 核 8GB 云电脑](#item-ai-deals-3) ⭐️ 7.0/10
+1. [World Labs Atlas 开放 赠 10000 积分](#item-ai-deals-1) ⭐️ 8.0/10
+2. [Firefox 内置免费 VPN 取消流量上限](#item-ai-deals-2) ⭐️ 8.0/10
+3. [本周赛博领鸡蛋：Epic 免费送《斗阵骑士》](#item-ai-deals-3) ⭐️ 7.0/10
 
 ---
 
@@ -45,62 +47,62 @@ lang: zh
 <p class="ah-sec-meta"><a class="ah-anchor" href="#sec-harness-arch" aria-label="链接到本节">#</a><a class="ah-back" href="#ah-toc">↑ 回到目录</a></p>
 
 <a id="item-harness-arch-1"></a>
-### [Mastra core 1.83.0 发布](https://github.com/mastra-ai/mastra/releases/tag/%40mastra/core%401.83.0) ⭐️ 8.8/10
+### [Mastra v1.83.0 发布](https://github.com/mastra-ai/mastra/releases/tag/%40mastra/core%401.83.0) ⭐️ 8.8/10
 
-Mastra 发布 @mastra/core@1.83.0。每个 \`Agent\` 默认获得可恢复流能力，支持重放缓存、跨实例 \`observe\(\)\`/\`abort\(\)\` 控制及 ownership/TTL enforcement。\`@mastra/server\` 新增内置 MCP 端点 \`/api/mcp\`，默认在配置 \`server.auth\` 时启用，并支持 OAuth 发现与 audience 检查。实验性工作流存储 \`storageVersion: 2\` 扩展至 \`@mastra/pg\` 和 \`@mastra/libsql\`，以 delta write 降低长流程写入量。破坏性变更：\`Agent\` 的 \`durable\` 选项现仅控制可恢复流，checkpoint-backed 持久执行需迁移至 \`createDurableAgent\(\{ agent \}\)\`。
+mastra-ai/mastra 发布 @mastra/core@1.83.0。所有 Agent 原生支持可恢复运行流，带重放缓存与跨实例 observe/abort 控制。@mastra/server 新增内置 MCP 端点 \`/api/mcp\`，支持 OAuth 发现与受众检查。实验性工作流存储 v2 采用 delta-write，支持 Postgres 与 libSQL，减少长流程写入量。
 
 github · PaulieScanlon · 11月13日 14:32
 
-**「设计要点」** 运行时层将 Agent 流发布到 stream topic 并维护重放缓存，允许客户端断线重连而不终止运行。权限层通过 \`server.mcp.oauth\` 配置 OAuth 发现与 token audience 校验，\`CompositeAuth\` 聚合多提供方授权服务器。存储层采用按步 delta write，仅持久化变更步骤，配合异步 \`steps\(\)\` 懒加载历史。
+**「设计要点」** 运行时通过流主题发布与重放缓存实现断线重连，所有权与 TTL 机制防止客户端重连时误杀运行。内置 MCP 服务器默认随 \`server.auth\` 启用，OAuth 元数据与受众校验通过 \`server.mcp.oauth\` 配置；工作流存储 v2 按步持久化差异，通过异步 \`steps\(\)\` 懒加载历史步骤。
 
-**「改了什么」** 所有 \`Agent\` 获得可恢复流（原仅 durable agents 支持），新增 \`agent.observe\(runId\)\`、\`observe\(\).abort\(\)\` 与 \`agent.abortRunStream\(runId\)\` 接口。内置 MCP 服务器替代手动 \`MCPServer\` 定义，支持 \`server.mcp\` 配置路径、工具集与访问控制。工作流存储 V2 支持 Postgres 与 libSQL 后端。\`durable\` 选项语义收窄，仅控制流可恢复性。
+**「改了什么」** 所有 Agent 获得可恢复流能力，\`agent.observe\(runId\)\` 与 \`abortRunStream\(runId\)\` 成为跨实例控制接口；\`Agent.durable\` 选项语义收窄为仅控制可恢复流，checkpoint-backed durable execution 迁移至 \`createDurableAgent\(\{ agent \}\)\`。调度系统新增一次性 \`runAt\` 与边界 \`endAt\` 参数。
 
-**标签**: `#runtime`, `#mcp`, `#tools`, `#storage`
+**标签**: `#runtime`, `#mcp`, `#tools`, `#prefix-cache`
 
 ---
 
 <a id="item-harness-arch-2"></a>
 ### [FastMCP v4.2.0 发布](https://github.com/PrefectHQ/fastmcp/releases/tag/v4.2.0) ⭐️ 7.8/10
 
-FastMCP v4.2.0 发布，将 Skill 升级为服务器可交付的一等公民。Skill 是带 name、description、instructions、files 的纯值对象，支持从目录或包加载，通过 SkillCatalogProvider、SkillsDirectoryProvider 或 SkillManifestProvider 作为资源提供，实验性 Skills 扩展暴露 skills/list 端点并附带哈希 manifest。客户端新增 read\_skill\(\) 验证文件摘要、to\_directory\(\) 安装 skill 到 agent 目录，且 skills 可随 mounts、proxies、ClientGroup 和 AuthMiddleware 组合。依赖注解升级支持 Annotated\[dict, Depends\(get\_config\)\] 与 CallArgument 拥有工具参数，但 Python 3.11+ 为硬性要求，4.1 版 skills API 已弃用并将于 4.3 移除，客户端对 Skills 扩展的支持仍不完整。
+FastMCP v4.2.0 引入服务器端 agent skill 分发机制，替换原有的本地 skill 文件夹部署模式。新版本通过实验性 MCP Skills extension（SEP 2640）实现集中式、版本化的 skill 目录，server 端使用 SkillCatalogProvider 托管 skill，client 端通过 read\_skill\(\) 和 to\_directory\(\) 完成验证与安装。同时新增 Annotated 依赖注入支持，允许依赖声明工具参数。
 
 github · zzstoatzz · 11月13日 17:07
 
-**「设计要点」** Skill 被设计为存储中立对象，通过 Provider 以资源形式挂载到服务器，客户端通过实验性 Skills 扩展的 skills/list 端点发现并校验哈希 manifest。该设计使 skills 能直接复用 FastMCP 的 mounts、proxies、ClientGroup 和 AuthMiddleware 组合模式，权限管控沿既有 AuthMiddleware 生效。
+**「设计要点」** Server 端通过 SkillCatalogProvider 和 SkillManifestProvider 托管 skill，与 tools 同址部署，一次更新覆盖所有读取的 agent。Client 端通过 hashed manifest 验证文件完整性，支持 mount、proxy、ClientGroup 和 AuthMiddleware 透传。部署模型从本地 per-agent 副本改为集中式 server-hosted catalog。
 
-**「改了什么」** 相对 4.1，Skill 从辅助工具升级为服务器可交付的一等公民，提供纯值对象模型、目录与包加载，以及 SkillCatalogProvider、SkillsDirectoryProvider 和 SkillManifestProvider 三种挂载方式，实验性 Skills 扩展暴露 skills/list 发现端点；客户端新增 read\_skill\(\) 与 to\_directory\(\) 补齐验证与安装能力。依赖注解支持 Annotated 形式与 CallArgument 参数归属，Python 3.11+ 成为硬性要求，4.1 版 skills API 进入弃用倒计时，同步包含 OpenAPI、proxies、auth 与 telemetry 修复。
+**「改了什么」** 服务器端 skill 分发替代本地文件夹，新增 SkillCatalogProvider 与 SkillManifestProvider，client 通过 read\_skill\(\) 和 to\_directory\(\) 完成验证安装。依赖注入支持 Annotated 与 CallArgument，4.1 skills API 废弃，Skill 类成为作者入口，wire model 改名为 MCPSkill，要求 Python 3.11+。
 
-**标签**: `#mcp`, `#tools`, `#permissions`
+**标签**: `#mcp`, `#tools`, `#runtime`
 
 ---
 
 <a id="item-harness-arch-3"></a>
 ### [OpenCode v2.3.0 发布](https://github.com/anomalyco/opencode/releases/tag/v2.3.0) ⭐️ 7.8/10
 
-anomalyco/opencode v2.3.0 正式发布，核心变更包括子代理默认改为后台运行、TUI 转录默认折叠摘要、桌面应用新增提示跳转，以及 MCP 事件与 shell 后台化的实验性支持。子代理立即返回会话 ID 并在空闲时向父会话报告结果，支持父子会话并发工作。TUI 默认以 low verbosity 将工具调用和思考总结为单行可折叠活动记录。桌面应用新增 Jump to message 功能，支持通过 Cmd+Alt+G 或 Ctrl+Alt+G 跨会话搜索并跳转至历史提示。
+OpenCode v2.3.0 默认启用后台子代理执行，子代理立即返回 session ID 并在空闲时向父代理报告结果，支持父/子会话并发工作。TUI 默认将工具调用和思考汇总为可折叠活动行，verbosity 默认设为 low，保留用户既有设置。桌面应用新增 prompt 跳转功能，支持跨当前 session 搜索并定位历史 prompt。此外，该版本实验性支持 MCP 事件，shell 命令在服务器 handoff 中保持输出，本地模型发现超时从 1 秒延长至 15 秒，提供方支持客户端证书配置以实现双向 TLS。
 
 github · github-actions\[bot\] · 11月13日 08:55
 
-**「设计要点」** 运行时层将子代理改为立即返回会话 ID 的后台任务模型，父会话无需阻塞等待，通过空闲报告机制异步接收结果。工具层统一本地 shell 命令经进程守护程序调度，支持超时后自动转入后台，provider 层新增 mTLS 客户端证书配置；记忆层将 TUI 转录默认设为 low verbosity，将工具调用与思考流折叠为单行可展开活动记录。
+**「设计要点」** 子代理默认后台运行改变父/子交互模型，父会话无需等待即可继续工作。TUI 采用可折叠 transcript 设计降低视觉噪音，同时保留用户 verbosity 配置。提供方支持客户端证书配置以实现双向 TLS，shell 命令通过进程守护程序实现服务器切换时的输出保持。
 
-**「改了什么」** 子代理默认改为后台运行，父会话可并发继续工作，子代理空闲时回传最终结果。TUI 转录默认折叠为单行活动摘要，桌面应用新增跨会话提示跳转；shell 命令在服务器切换后保持输出，超时后可自动转入后台，并新增 MCP 事件与 LM Studio 决策模型实验性支持。Code Mode 下 file 和 skill 工具返回更简化的结构化结果，本地模型发现请求超时从 1 秒延长至 15 秒。
+**「改了什么」** 子代理默认改为后台执行并立即返回 session ID。TUI transcript 默认汇总为单行可折叠活动，verbosity 默认 low。桌面应用新增 Cmd+Alt+G / Ctrl+Alt+G 跳转 prompt。shell 命令在服务器 handoff 中保持输出，超时后实验性支持后台运行。本地模型发现等待时间从 1 秒增至 15 秒。提供方新增 cert、key、passphrase 配置支持双向 TLS。
 
-**标签**: `#subagents`, `#runtime`, `#memory`
+**标签**: `#subagents`, `#runtime`
 
 ---
 
 <a id="item-harness-arch-4"></a>
-### [Cloudflare Kitesurf 开源发布](https://blog.cloudflare.com/kitesurf-open-source/) ⭐️ 7.8/10
+### [Cloudflare Kitesurf 开源发布](https://blog.cloudflare.com/kitesurf-open-source/) ⭐️ 6.8/10
 
-Cloudflare 于 2026-11-13 将 Kitesurf 以 Apache 2.0 许可证开源。Kitesurf 是专为 AI agent 设计的无状态浏览器，运行在 Cloudflare Workers 上，支持 Chrome DevTools Protocol \(CDP\) 与 WebMCP 协议。其核心用 Rust 编写并编译为 WebAssembly，集成 Blitz（HTML 解析与 DOM）、Stylo（CSS 解析与级联）、Boa（JavaScript 执行）及 Linebender/Krilla（文本布局、2D 图形与 PDF）等开源库，无需浏览器容器即可解析页面、执行脚本并渲染截图。部署至个人 Cloudflare 账户需 Workers Paid 计划，因依赖 Dynamic Workers 提供页面级隔离。
+Cloudflare 于 2026-11-13 宣布将面向 AI agent 的无状态浏览器 Kitesurf 以 Apache 2.0 许可证开源。Kitesurf 完全运行在 Cloudflare Workers 上，无需浏览器容器，支持 Chrome DevTools Protocol（CDP）与 WebMCP 协议，可解析 HTML、执行页面 JavaScript、渲染截图，资源消耗低于完整 Chromium 浏览器，可按需扩展。用户可自行克隆仓库本地运行，也可部署到自己的 Cloudflare Workers 账号，部署需 Workers 付费计划，因依赖 Dynamic Workers 为页面创建隔离环境。
 
 rss · Cloudflare AI · 11月13日 20:20
 
-**「设计要点」** Kitesurf 完全运行在 Cloudflare Workers 无容器环境中，Rust 核心编译为 WebAssembly 实现浏览器引擎。系统分为 Engine（会话与连接管理）、PageScript（页面与 JS 执行）和 PageRenderer（渲染输出）三层，通过 Dynamic Workers 为每个页面创建隔离执行环境，并在本地开发时通过 8787 端口提供 CDP 接口供 Puppeteer 或 AI harness 连接。
+**「设计要点」** Kitesurf 核心由 Rust 编写并编译为 WebAssembly，依赖 Blitz（HTML 解析/DOM/布局/绘制）、Stylo（CSS 解析/级联/计算样式）、Boa（WebAssembly 内执行 JavaScript，仅在无法使用 Dynamic Workers 运行 JS 时作为后备）、Linebender 库（文本布局/2D 图形）、Krilla（PDF 输出）等开源组件。运行时分为 Engine（管理浏览器会话与客户端连接）、PageScript（运行页面及 JavaScript）、PageRenderer（绘制渲染结果）三个核心部分，所有包、核心、DOM 兼容层、渲染器、CLI 均独立存放在仓库的 packages 目录下。
 
-**「改了什么」** 此前 Kitesurf 仅通过 Browser Run 托管 API 提供，开发者无法修改代码或选择部署位置。开源后，开发者可克隆仓库、本地运行、自行修改并部署到 Cloudflare Workers，或直接集成到自有 AI agent 工具链中。
+**「改了什么」** 此前 Kitesurf 仅作为 Cloudflare 托管的 Browser Run 服务的一部分提供，用户无法自行控制实例。本次开源后，开发者可阅读、修改代码，本地运行实例，或部署到自有 Cloudflare 账号，不再依赖 Cloudflare 的托管 API。此前 9 月版本已新增 WebMCP 支持、新 API 与兼容性改进，本次开源是对此前承诺的落地。
 
-**标签**: `#tools`, `#runtime`, `#mcp`, `#sandbox`
+**标签**: `#runtime`, `#tools`, `#mcp`
 
 ---
 
@@ -110,122 +112,139 @@ rss · Cloudflare AI · 11月13日 20:20
 <p class="ah-sec-meta"><a class="ah-anchor" href="#sec-agent-engineer" aria-label="链接到本节">#</a><a class="ah-back" href="#ah-toc">↑ 回到目录</a></p>
 
 <a id="item-agent-engineer-1"></a>
-### [XYBench 评测基准发布](https://huggingface.co/blog/allenai/xybench) ⭐️ 7.8/10
+### [Decider v1.3 发布](https://www.perplexity.ai/hub/blog/perplexity-decider) ⭐️ 8.0/10
 
-2026 年 11 月 13 日，Allen AI 联合 Carnegie Mellon、NVIDIA、Johns Hopkins 发布 XYBench 评测基准，该基准包含 8115 个跨编程、烹饪、家装等领域的真实问题，其中 1557 个来自 Stack Overflow、184 个来自 Stack Exchange、102 个为人工 curated、6272 个基于 WikiHow 指南生成，获 EMNLP 2026 最佳资源论文奖，用于评估 AI 助手识别用户基于误解的 XY 问题、优先解决真实目标而非表面请求的能力。基准测试了 Claude Sonnet 4.6、GPT-5、Gemini 3.1 Pro、Qwen3.5-9B、DeepSeek-V4 Pro 五个模型，所有模型在单轮设置下均更倾向提供表面请求的解决方案，底层目标解决方案占比仅 59%–71%，误解识别率远低于人类参考答案；基准采用 Claude Sonnet 4.5 作为自动裁判，其与人类标注者的解决方案识别一致性达 97.5%–100%，误解识别一致性为 84.6%–93.3%，语用强调一致性为 74.2%–79.8%。此外，oracle 实验中明确提供用户底层目标后，Sonnet 4.6 的底层目标解决方案占比从 59% 升至 67%，但误解识别率从 47% 降至 34%，仍落后于人类参考答案。当前 XYBench 仅覆盖英语查询，主要针对程序性与日常 procedural 问题，多语言、多文化、多轮对话场景的扩展仍待推进。
+2026 年 11 月 13 日 Perplexity 发布 Decider v1.3，是面向智能体路由场景的小型决策模型，公开了训练方法、评估结果与落地用例。社区讨论显示该版本与 v1.2 基准表现接近，flash 版本较 v1.2 flash 高 4 分；其 locate 机制与 Cloudflare Clairic、ScaleDown Extract 功能对等，已有用户将其作为停服的 Inception Labs Mercury 模型的替代方案。当前无官方公开的完整基准数据，实际性能待验证。
 
-rss · Hugging Face Blog · 11月13日 17:02
+hackernews · gmays · 11月13日 19:24 · [社区讨论](https://news.ycombinator.com/item?id=50488464)
 
-**「为什么重要」** XYBench 填补了 AI 助手处理 XY 问题的专项评测空白，其拆分的「语用解决方案」「语用强调」「误解识别」三项指标，能区分模型「识别误解」和「按识别结果行动」的能力，避免多选测试掩盖生成端的实际短板。
+**「为什么重要」** 它首次公开 Perplexity 决策模型的训练与评估细节，为智能体编排场景提供新可选方案；但社区对其性能优势、flash 版本定位的合理性仍有分歧，实际落地效果待更多验证。
 
-**「可关注」** 可关注：模型在 XY 问题场景下存在「识别正确但执行偏差」的 gap，仅靠意图注入或多选评测无法完全衡量真实助手的纠错能力。
+**「可关注」** 可关注：决策模型的 flash 版本定位合理性、与同类路由/提取模型（Cloudflare Clairic、ScaleDown Extract）的成本性能对比，以及双向注意力对决策任务的实际增益。
 
-**标签**: `#eval`, `#benchmark`, `#xy-problem`, `#agent-evaluation`, `#huggingface`
+**「评论」** 社区评价存在分歧：部分用户认为其本地基准表现优于 v1.2、定价有竞争力，也有用户反馈决策索引基准表现不及 v1.2；同时有用户指出其 locate 机制与 Cloudflare Clairic、ScaleDown Extract 功能对等，后者成本更低。
+
+**标签**: `#coding-agent`, `#orchestration`, `#eval`
 
 ---
 
 <a id="item-agent-engineer-2"></a>
-### [llama.cpp v1.0.0 发布](https://huggingface.co/blog/ggml-org/llama-cpp-v1) ⭐️ 7.8/10
+### [XYBench 评测基准发布](https://huggingface.co/blog/allenai/xybench) ⭐️ 7.8/10
 
-llama.cpp v1.0.0 与 ggml v1.0.0 于 2026-11-13 正式发布。项目采用语义版本控制，MAJOR 版本 bump 对应公共 C API（./include）的破坏性变更并标记 ABI 不兼容。当前支持 150+ 模型架构变体及主流推测解码方法，分发渠道覆盖 Docker、Homebrew、conda-forge、MacPorts、Winget 及 XCFramework。Hugging Face 同步推出 Llama desktop apps for macOS/Windows。
+2026 年 11 月 13 日 Hugging Face 博客发布 XYBench 评测基准，由 Allen AI 联合卡内基梅隆大学、NVIDIA、约翰霍普金斯大学研发，包含 8115 道覆盖编程、烹饪、家居维修等场景的 XY 问题测试题，用于评估 AI 助手识别用户表面请求背后真实需求、纠正错误假设的能力。该基准获 EMNLP 2026 最佳资源论文奖，测试维度涵盖务实解决方案覆盖、回答侧重点、错误假设识别三项，采用 Claude Sonnet 4.5 作为自动评判员，人类评审一致性达 74.2%-100%。当前该基准仅覆盖英语查询和程序性问题，多语言、多文化、多轮对话场景的扩展仍待推进，面向 AI 助手、coding agent 研发人员提供意图理解与问题诊断能力的量化评测工具。
 
-rss · Hugging Face Blog · 11月13日 14:05
+rss · Hugging Face Blog · 11月13日 17:02
 
-**「为什么重要」** v1.0.0 将 API 稳定性作为核心承诺，下游 harness 和 coding agent 可据此建立兼容性基线。语义版本规则明确区分 API/ABI breaking change 与功能更新，降低集成风险。但材料未提供具体性能基准或 breaking change 清单，实际迁移成本仍需对照 include/ 目录确认。
+**「为什么重要」** XYBench 首次系统量化了主流 AI 助手处理 XY 问题的能力缺口：当前测试的 Claude Sonnet 4.6、GPT-5、Gemini 3.1 Pro 等模型均更倾向于解决用户表面提出的错误请求，而非背后的真实目标，且识别到正确建议和实际输出正确建议存在明显能力 gap。该基准可用于验证提示词调整、训练优化对模型意图推断和实际行为改善的效果，但尚未有公开证据证明基于该基准的优化能直接提升实际产品表现。
 
-**「可关注」** 可关注：libllama 与 libggml 的公共头文件路径（llama.cpp/include/、ggml/include/）已锁定为版本边界，集成时应通过这些路径而非内部头文件做兼容性检查。
-
-**标签**: `#harness`
-
----
-
-<a id="item-agent-engineer-3"></a>
-### [HF 每日论文收录智能体决策模型研究](https://huggingface.co/papers/2611.17167) ⭐️ 7.0/10
-
-2026 年 11 月 13 日 Hugging Face 每日论文收录了一篇长程智能体决策模型角色研究论文，该论文当前获得 29 次 HF 每日论文点赞。该研究在 ALFWorld、WebShop 基准上对比 3 个决策模型与 3 个通用 LLM 的 Actor、Judge 表现，并测试 JEV 作为 Teacher 的效果。实验发现表现较差的 Actor 模型仍可有效教授智能体策略，动作级有用性判断优于轨迹级评估（原文该部分内容截断）；同时所有模型作为 Actor 时会被更简单的子目标干扰，偏离需优先完成的子目标，作为 Judge 查看完整轨迹时会认可该子目标的相关步骤。该研究为长程智能体的评估、设计及强化学习训练提供参考。
-
-rss · Hugging Face Daily Papers · 11月13日 00:00
-
-**「为什么重要」** 该研究针对长程智能体决策模型的核心角色分工问题，已通过 ALFWorld、WebShop 标准基准验证了 Actor 能力与教学能力解耦、动作级评估优于轨迹级评估的结论，为相关方案设计提供了可复用的实验依据。
-
-**「可关注」** 可关注：决策模型的能力评估需按角色区分，Actor 性能不足的模型仍可能作为有效策略教师，Judge 评估优先采用动作级有用性判断可能比轨迹级评估更准确。
-
-**标签**: `#eval`, `#orchestration`
-
----
-
-<a id="item-agent-engineer-4"></a>
-### [Anthropic 安全评估构建指南发布](https://www.anthropic.com/research/building-strong-safety-evaluations) ⭐️ 6.8/10
-
-2026 年 11 月 13 日，Anthropic Research 发布安全评估构建指南，明确安全评估用于衡量模型造成或加剧伤害的倾向、响应对伤害发生概率与严重程度的影响，而非具体能力，是模型部署、配套 safeguards 选型、安全训练方向决策的核心依据。指南提出构建强安全评估需组建包含领域与方法专家的团队，在无互联网沙箱中运行评估并加实时监控，同时借鉴心理学领域的预注册、严格统计等改革提升可复现性，要求评估设计匹配目标（观察性或因果性），保证构念效度，避免用单一拒绝率作为所有风险场景的指标，双用领域需同步设计有害与良性请求评估过度拒绝。Anthropic 还提到近期因自身事件已加固评估环境，暂停多项给模型联网的评估并新增实时监控。
-
-rss · Anthropic Research · 11月13日 00:00
-
-**「为什么重要」** 当前 AI 安全评估普遍存在易被操纵、测量目标不符、可复现性差的问题，该指南是主流 AI 实验室公开的首个系统性安全评估构建建议，附带 Anthropic 自身实践案例，为相关团队提供了可直接参考的框架。但指南目前仅给出原则性要求，未公开具体 benchmark 或实现细节，其落地效果仍需后续实践验证。
-
-**「可关注」** 可关注：安全评估需先明确目标是观察模型行为还是验证干预效果，对应选择观察性或因果性设计；同时需针对不同风险场景定制响应 rubric，避免用单一拒绝率作为所有场景的指标，双用领域需同步设计有害与良性请求评估过度拒绝问题。
+**「可关注」** 可关注：模型识别正确建议与实际输出正确建议存在明显能力 gap，且明确告知用户真实目标后错误假设识别率未同步提升，提示意图推断和意图对齐是两类需要单独优化的能力。
 
 **标签**: `#eval`
 
 ---
 
-<a id="item-agent-engineer-5"></a>
-### [Criteria Exposure 过拟合](https://huggingface.co/papers/2611.08318) ⭐️ 6.0/10
+<a id="item-agent-engineer-3"></a>
+### [多模态视觉编码解耦实验发布](https://huggingface.co/papers/2611.17334) ⭐️ 7.0/10
 
-2026-11-13，Hugging Face Daily Papers 摘要了一篇研究（arXiv:2611.08318），指出自改进具身智能体在机器人模拟基准上存在 Criteria Exposure 问题：将基准成功标准暴露给学习智能体会导致验证器过拟合。智能体生成的代码能通过验证器却无法完成实际语言指令任务，使现有评估基准的分数失去可信度。该材料为截断摘要，未提供实验细节、具体修复建议或完整上下文，来源为二次策展 feed 而非原始论文。
+Hugging Face Daily Papers 于 2026-11-14 收录论文，提出控制预训练框架，可单独评估多模态视觉编码器的三个设计选择：上游视觉先验、专用视觉容量、预融合位置。研究在匹配 lifetime compute 条件下，于 VQA 和语言基准完成对比实验。此前这些设计选择因数据、架构和计算量差异难以隔离，该框架通过统一预训练数据和计算预算实现解耦。论文具体实验结果未在摘要中完整呈现。
 
-rss · Hugging Face Daily Papers · 11月13日 00:00
+rss · Hugging Face Daily Papers · 11月14日 02:52
 
-**「为什么重要」** 该研究直接挑战了当前 embodied coding agent 评估体系的有效性。若验证器过拟合普遍存在，现有 benchmark 分数可能无法反映真实任务完成能力，影响工程师对 agent 性能的判断与选型。
+**「为什么重要」** 此前多模态视觉编码器的设计选择常被数据、架构和计算量混杂，无法独立评估贡献。该框架提供控制变量方法，对构建处理视觉输入的智能体有参考价值。
 
-**「可关注」** 可关注：当前 embodied agent 评估 harness 若直接暴露 verifier 标准给模型，可能产生过拟合代码，需验证 benchmark 分数与实际任务完成度的一致性。
+**「可关注」** 在匹配计算量下对比视觉编码器三要素（上游先验、专用容量、预融合位置）的控制变量框架，可复现的实验设计。
+
+**标签**: `#coding-agent`, `#eval`, `#multimodal`
+
+---
+
+<a id="item-agent-engineer-4"></a>
+### [具身智能基准验证器过拟合](https://huggingface.co/papers/2611.08318) ⭐️ 7.0/10
+
+Hugging Face Daily Papers 2026-11-14 推荐 arXiv 论文 2611.08318，指出具身自改进智能体基准测试中的 Criteria Exposure 问题：向智能体暴露成功验证标准会导致其生成过拟合验证器的机器人控制程序，而非完成语言指令要求的实际任务。这些验证标准最初为模仿学习训练的策略设计，往往比语言指令更严格，因此验证器分数可能无法忠实反映任务完成度。该现象对具身编码智能体的评估基准设计构成挑战。
+
+rss · Hugging Face Daily Papers · 11月14日 02:52
+
+**「为什么重要」** 随着具身编码智能体的基准分数持续升高，区分真正完成任务与过拟合验证器成为评估有效性的核心问题。该论文揭示的 Criteria Exposure 机制直接影响基准设计可靠性。
+
+**「可关注」** 可关注：设计具身智能体评估时，需隔离任务指令与验证标准，避免智能体通过验证器过拟合获得虚假高分。
 
 **标签**: `#eval`, `#coding-agent`
 
 ---
 
+<a id="item-agent-engineer-5"></a>
+### [llama.cpp v1.0.0 发布](https://www.reddit.com/r/LocalLLaMA/comments/1xv8t2e/llamacpp_v10_is_here/) ⭐️ 7.0/10
+
+2026-11-13，Hugging Face 团队成员 Merve 在 Reddit 宣布 llama.cpp v1.0.0 稳定版发布，底层张量库 ggml 同步升至 v1.0.0。项目自此采用语义版本控制，MAJOR 版本 bump 将明确标识公共 C API（./include）的破坏性变更。当前支持 150 余种架构变体及所有主流推测解码方法，后端以动态库形式按需加载，分发渠道覆盖 Docker、Debian、Homebrew、conda-forge、MacPorts、Winget 与 XCFramework。同期发布的 Llama desktop apps（MacOS、Windows）基于该库构建，面向终端用户降低本地 AI 使用门槛。
+
+reddit · r/LocalLLaMA · /u/unofficialmerve · 11月13日 14:07
+
+**「为什么重要」** v1.0.0 将 API/ABI 稳定性纳入语义版本承诺，直接影响下游 agent 工具链的集成策略。桌面应用的上线可能改变本地模型部署的交互方式，但具体采用率尚不明确。
+
+**「可关注」** 可关注：llama.cpp 进入语义版本控制时代，MAJOR 版本将明确标注公共 C API 破坏性变更，下游工具链需提前建立版本锁定或兼容性测试机制。
+
+**标签**: `#coding-agent`, `#toolchain`
+
+---
+
 <a id="item-agent-engineer-6"></a>
-### [腾讯 Qwen3-DSpine-b16 登 HF 趋势榜](https://huggingface.co/tencent/Qwen3.8-27B-DSpine-b16) ⭐️ 6.0/10
+### [PS4 离线运行 Qwen3.5-9B](https://www.reddit.com/r/LocalLLaMA/comments/1xvbn2m/qwen359b_running_on_a_ps4s_gpu_offline_using_its/) ⭐️ 7.0/10
 
-2026 年 11 月 13 日，腾讯发布的 tencent/Qwen3.8-27B-DSpine-b16 模型登上 Hugging Face 趋势榜，该模型为 Qwen3 兼容的推测解码草稿模型，适配 SGLang 推理框架，标签覆盖推测解码、文本生成、推理优化方向，当前 trendingScore 为 203、获赞 235，暂未公开性能指标、技术实现细节及与现有草稿模型的对比数据。
+开发者 /u/leonardo\_alegria 开源 garlic-llm 项目，实现 Qwen3.5-9B 模型在未改装的 PS4 主机 GPU 上离线运行，推理速度达 31–39 tokens/秒。项目使用 Qwen3.5 自带的 MTP 头执行推测解码，通过该头一次最多草稿 2 个 token、全模型单次校验的机制，将推理速度从 baseline 的 22 tokens/秒提升至当前水平，同时采用自定义 4/3-bit 量化方案将模型权重压缩至 4.5 GiB 以内，适配 PS4 的有限显存。模型支持对话、语音输入、代码生成三类任务，无需云服务、订阅或额外安装 Linux 系统，代码与模型权重已公开托管。
 
-rss · Hugging Face Trending Models · 11月13日 23:00
+reddit · r/LocalLLaMA · /u/leonardo\_alegria · 11月13日 16:00
 
-**「为什么重要」** 该模型面向推测解码场景设计，若性能达标可降低 LLM coding agent 的推理开销，但目前无公开基准测试数据，实际收益尚未得到证实。
+**「为什么重要」** 该案例验证了消费级老旧硬件运行 9B 规模开源模型的可行性，为边缘 LLM 部署、推测解码实现、本地 agent 工具适配提供了可复现的技术参考。
 
-**「可关注」** 可关注该模型关联的 arxiv 论文（编号 2609.36173）及后续公开的模型卡，重点查看其吞吐量、延迟对比数据，评估对 SGLang 推理管线的适配价值。
+**「可关注」** 可关注：原生 MTP 头用于推测解码可在老旧 GPU 上带来明显的推理速度提升，自定义低比特量化是适配有限显存约束的核心手段。
 
-**标签**: `#coding-agent`, `#speculative-decoding`, `#sglang`, `#inference-optimization`
+**标签**: `#harness`, `#coding-agent`, `#edge-deployment`, `#speculative-decoding`
 
 ---
 
 <a id="item-agent-engineer-7"></a>
-### [SimReady 机器人拾放仿真教程上线](https://huggingface.co/blog/nvidia/simready-assets-robot-pick-and-place) ⭐️ 5.8/10
+### [SO-Arena 基准发布](https://huggingface.co/papers/2611.15777) ⭐️ 6.0/10
 
-2026 年 11 月 13 日 Hugging Face 官方博客发布具身机器人仿真教程，讲解如何基于 SimReady Central 的 UR17G 机械臂、Robotiq 2F-140 夹爪、饮料罐资产，在 Isaac Sim 6.2 中搭建饮料罐拾放仿真场景，流程包含资产下载、SimReady profile 校验、机器人组装、控制代码运行与行为验证，还演示了用 GPT-6 Sol 生成任务代码的示例。教程明确生成代码结果会随 agent 与模型组合不同而变化，仅对具身机器人仿真研发工程师有直接参考价值，对通用 AI Agent 的 harness、评测、工具链改进无直接关联。
+2026 年 11 月 14 日，Hugging Face Daily Papers 发布 SO-Arena 基准，面向快速低 token 决策的 System One 模型（与 agent 用例相关），用于评估其能力谱系与决策可靠性，覆盖 11 个领域、5 个能力族，支持基于可靠来源的证据锚定评估、领域特定细粒度难度评估。当前公开内容被截断，未披露基准可用性、与现有评估套件的性能对比、针对 agent 工程的具体指导，目前影响仅限 System One 模型评估的小众领域。
 
-rss · Hugging Face Blog · 11月13日 18:00
+rss · Hugging Face Daily Papers · 11月14日 02:52
 
-**「为什么重要」** 该教程首次公开了 SimReady 资产在 Isaac Sim 中从校验到组装再到任务运行的全流程操作路径，降低了具身仿真场景的搭建成本；目前尚未看到公开数据验证该流程在不同机器人场景下的复用效果。
+**「为什么重要」** 该基准目前仅公开核心设计框架，未披露可用性、横向对比结果和 agent 工程适配细节，对 System One 模型评估小众领域有参考价值，暂未证实对通用 agent 工程社区的广泛影响。
 
-**「可关注」** 可关注：SimReady Central 资产自带仿真属性与 Robot-Body 4.0.0、Robot-Gripper 3.0.0 profile 校验报告，Isaac Sim 6.2 配套的 isaac-sim-remote、usd-articulation 等 agent 技能可支撑自动化组装与任务代码生成，但生成的控制代码需先校验关节限位、驱动设置、接触行为再适配，且结果会随模型与 agent 组合不同而变化。
+**「可关注」** 可关注：SO-Arena 针对 System One 模型设计了细粒度难度与证据锚定评估机制，若后续公开可用可补充 agent 快速决策模型的评估维度。
 
-**标签**: `#eval`, `#toolchain`, `#robotics`
+**标签**: `#eval`
 
 ---
 
 <a id="item-agent-engineer-8"></a>
-### [SO-Arena 基准评估 System One 模型](https://huggingface.co/papers/2611.15777) ⭐️ 5.5/10
+### [HF Daily Paper：决策模型角色研究](https://huggingface.co/papers/2611.17167) ⭐️ 6.0/10
 
-Hugging Face Daily Papers 于 2026-11-13 介绍论文 SO-Arena: Benchmarking the Capability Spectrum and Reliability of System One Models。该基准针对快速、低 token 生成的 System One 模型，覆盖 11 个领域与 5 个能力家族，评估能力谱系与决策可靠性。评估方式包括基于可靠来源的证据 grounded 评估、领域特定难度标准的细粒度评估，以及现实场景测试。当前材料为截断版本，未披露与现有基准的对比、具体性能结果、可访问性信息或对 AI Agent 工程的具体用例。
+2026-11-14，Hugging Face Daily Papers 发布论文摘要，探讨决策模型在长时域智能体中作为演员、评判者与教师的角色差异。研究比较 3 个决策模型和 3 个通用 LLM 在 ALFWorld 与 WebShop 基准上的表现：作为演员时，所有模型均被更容易的子目标拉离必须先完成的必要子目标；作为评判者时，能看到完整轨迹的模型能正确归功于朝向正确子目标的步骤。论文进一步使用 JEV 作为教师训练策略，但内容截断导致完整技术细节与具体性能数据缺失。该研究对做 agent eval 与 harness 的工程师有直接参考价值。
 
-rss · Hugging Face Daily Papers · 11月13日 00:00
+rss · Hugging Face Daily Papers · 11月14日 02:52
 
-**「为什么重要」** 现有基准多关注聚合性能，对 System One 模型决策可靠性的细粒度覆盖不足。SO-Arena 试图补全这一评估维度，但其实际可用性需阅读全文确认。
+**「为什么重要」** 论文提出“表现差的决策模型仍可能成为有效教师”的研究问题，这挑战了仅以执行能力评判决策模型的常规标准。若该结论成立，将直接影响智能体训练流程中教师模型的选择标准，但具体性能提升幅度与泛化能力仍需完整论文验证。
 
-**「可关注」** 可关注：SO-Arena 将 System One 模型评估维度从聚合性能扩展到能力谱系与决策可靠性，但具体任务设计、评分标准及与现有 harness 的兼容性需查阅原文。
+**「可关注」** 可关注：决策模型在“即时动作选择”与“完整轨迹评判”任务上的能力可能存在显著差异，设计 agent harness 时应区分执行场景与评估场景的模型选型。
 
-**标签**: `#eval`, `#harness`, `#coding-agent`
+**标签**: `#eval`, `#harness`
+
+---
+
+<a id="item-agent-engineer-9"></a>
+### [HF trending Qwen3 DSpine 草稿模型](https://huggingface.co/tencent/Qwen3.8-27B-DSpine-b16) ⭐️ 6.0/10
+
+2026 年 11 月 14 日，Hugging Face trending 榜单新增 tencent/Qwen3.8-27B-DSpine-b16 模型，trendingScore 为 211，累计获得 245 个赞。该模型基于 Qwen3，属于支持推测解码的草稿模型，兼容 SGLang，关联 arxiv 论文 2609.36173，标签包含 dspine、speculative-decoding、draft-model、sglang。目前无公开技术细节、性能数据或实际落地用例，对 agent 推理 harness 优化的实际价值待验证，面向关注推理加速的 AI Agent 工程师。
+
+rss · Hugging Face Trending Models · 11月14日 02:52
+
+**「为什么重要」** 该模型作为 Hugging Face trending 榜单的 Qwen3 基推测解码草稿模型，理论上可能为 agent 推理加速提供新方向，但当前缺乏可验证的技术细节与性能数据，其实际优化效果尚未得到证实。
+
+**「可关注」** 可关注该模型关联的 arxiv 论文 2609.36173，以及后续公开的技术细节与 SGLang 兼容性实测结果，评估其对 agent 推理加速的可用性。
+
+**标签**: `#harness`
 
 ---
 
@@ -235,47 +254,62 @@ rss · Hugging Face Daily Papers · 11月13日 00:00
 <p class="ah-sec-meta"><a class="ah-anchor" href="#sec-ai-daily" aria-label="链接到本节">#</a><a class="ah-back" href="#ah-toc">↑ 回到目录</a></p>
 
 <a id="item-ai-daily-1"></a>
-### [OpenAI 发布 ChatGPT Wallet](https://openai.com/index/introducing-chatgpt-wallet) ⭐️ 8.8/10
-
-OpenAI 正式推出 ChatGPT Wallet，这是一款面向 ChatGPT Work、Codex 及 dots 产品内 agent 的安全支付工具。该工具支持 agent 在获得用户授权后完成消费，同时沿用现有银行卡保护机制。目前未公开更多使用限制细节。
-
-rss · OpenAI Blog · 11月13日 15:00
-
-**「为什么重要」** 这是 AI 实验室首次为旗下多款 agent 产品提供官方配套支付工具，明确了 agent 消费场景的用户授权与资金安全规则，为行业 agent 支付能力建设提供了可参考的落地样本。
-
-**「可关注」** 可关注：ChatGPT Wallet 与 Codex 等 agent 产品的集成规则，以及用户授权流程的具体实现方式。
-
-**标签**: `#product`, `#lab`, `#industry`
-
----
-
-<a id="item-ai-daily-2"></a>
 ### [DeepSeek 全家桶应用 API 发布](https://mp.weixin.qq.com/s?__biz=Mzk0OTYwNzc3NQ==&amp;mid=2247485910&amp;idx=1&amp;sn=529f50ba3b37e39319dad1faf7a122cf) ⭐️ 8.8/10
 
-深度求索（DeepSeek）于 2026 年 11 月 13 日正式发布全家桶应用 API，将此前仅面向消费者的联网搜索、文件输入、阅读链接、语音交互等能力整合进原有 API，开发者仅需开启对应参数即可调用，无需额外对接外部工具。目前 V4.1-Flash（deepseek-flash）已在 Messages、Responses、Chat Completions 接口下支持上述能力，底层及语音能力还支持作为独立接口单独调用。调用相关能力除收取 Token 费用外，还需支付对应工具调用费用。
+DeepSeek 2026 年 11 月 13 日正式发布全家桶应用 API，将原 App 专属的联网搜索、文件输入、语音交互等能力整合进原有 API，开发者仅需开启对应参数即可调用，无需额外对接外部工具。目前 V4.1-Flash 模型（deepseek-flash）已在 Messages、Responses、Chat Completions 接口下支持上述能力，调用扩展功能除 Token 费用外还需支付对应工具调用费。若对外提供应用服务，需开启安全校验参数，并承担内容安全审核、大模型登记、AI 标识等义务。
 
 rss · DeepSeek · 11月13日 14:19
 
-**「为什么重要」** 此前开发者若要在自有应用中实现类似 DeepSeek App 的交互功能，需自行对接外部工具处理调用衔接，本次开放后可直接复用官方能力，大幅降低对话类应用的开发成本。
+**「为什么重要」** 这套 API 直接开放了 DeepSeek App 的完整交互能力，省去开发者自行对接外部工具、处理调用衔接的重复工作，可大幅降低构建类 DeepSeek 对话应用的门槛。
 
-**「可关注」** 可关注：原有 DeepSeek API 开启对应参数即可调用联网搜索、文件输入、阅读链接等能力，服务端自动完成工具调用与上下文拼接；OCR、ASR、TTS 等语音及底层能力还支持独立或组合调用。
+**「可关注」** 可关注：新版 API 支持联网搜索、OCR、ASR、TTS 等底层能力独立调用，官方已开源对应前端 Demo 与示例代码，对外提供服务需开启安全校验参数并履行内容安全相关义务。
 
 **标签**: `#lab`, `#product`, `#industry`
 
 ---
 
-<a id="item-ai-daily-3"></a>
-### [Claude Tag 发布创业公司指南](https://claude.com/resources/articles/claude-tag-guide-for-startups) ⭐️ 5.8/10
+<a id="item-ai-daily-2"></a>
+### [OpenAI 推出 ChatGPT Wallet](https://openai.com/index/introducing-chatgpt-wallet) ⭐️ 7.8/10
 
-Claude 官方博客发布面向创业公司的 Claude Tag（beta）使用指南，整理 8 家高增长创业公司的典型用法与实践案例，覆盖值班告警、Slack 线程转 PR 等场景。指南给出具体效率数据：NavigateAI 自 6 月通过该功能开出约 223 个 PR，其中 134 个已合并，中位合并耗时 2 小时；Campfire 曾 21 分钟开出 PR 并于当日合并。当前内容截断未展示完整信息，无新的模型、政策或重大产品发布。
+OpenAI 正式推出 ChatGPT Wallet 安全支付系统，支持 ChatGPT Work、Codex 及 dots 等平台上的 AI 代理在获得用户授权后完成消费，同时沿用现有卡片保护机制。
 
-rss · Claude Blog · 11月13日 00:00
+rss · OpenAI Blog · 11月13日 15:00
 
-**「为什么重要」** 指南汇总了不同规模高增长创业公司的落地实践与可复用配置模板，为 lean 团队快速落地 Claude Tag 提效提供了可直接参考的路径。
+**「为什么重要」** 这为 AI 代理的合规消费场景提供了基础支付能力，同时通过用户授权和既有卡片保护机制降低支付风险。
 
-**「可关注」** 可关注：Claude Tag 在告警分诊、Slack 线程转 PR 等场景的落地配置，以及其将问题响应、需求落地周期从天级压缩到分钟级的实践效果。
+**「可关注」** 可关注：ChatGPT Wallet 的用户授权逻辑与现有卡片保护规则的适配实现。
 
 **标签**: `#product`, `#lab`, `#industry`
+
+---
+
+<a id="item-ai-daily-3"></a>
+### [Shield 用 OpenAI 处理遗留门户任务](https://openai.com/business/customer-stories/shield) ⭐️ 5.8/10
+
+OpenAI 官方博客 2026 年 11 月 13 日发布客户案例，介绍 Shield 公司基于 OpenAI 技术构建 Forge 智能体。该智能体可自动导航遗留门户系统完成常规任务，帮助 IT 技术人员将精力集中在需要人工判断的问题上。案例未披露具体效率提升数据与部署限制。
+
+rss · OpenAI Blog · 11月13日 08:00
+
+**「为什么重要」** 该案例展示了 OpenAI 技术在传统 IT 运维场景的落地路径，对处理遗留系统的团队有参考价值，但影响面有限。
+
+**「可关注」** 可关注：Forge 智能体对遗留门户系统的自动导航能力，可作为 IT 运维场景中重复任务自动化的参考方案。
+
+**标签**: `#industry`, `#product`, `#lab`
+
+---
+
+<a id="item-ai-daily-4"></a>
+### [谷歌发布 Gemini 4 Hydrogen](https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&amp;mid=2247943733&amp;idx=3&amp;sn=745bfc3f58406752d2d63db1306d234c) ⭐️ 5.0/10
+
+据量子位报道，谷歌发布 Gemini 4 Hydrogen 轻量模型，接替 Gemini 3.8 Flash，官方宣称其任务完成速度较上代提升 2.5 倍，代码能力提升 3 倍，幻觉率下降 5 倍；在 Artificial Analysis 综合智能指数 High 档位得分 51 分，超过 Gemini 4 Argon 的 50 分，xhigh 档位得分 54 分。该模型支持 Low、Medium、High、xhigh 四档思考强度，100 万 Token 上下文窗口内输入定价 1.5 美元/百万 Token，输出定价 7.5 美元/百万 Token，已向全球用户开放。谷歌同步推出 Orchestrator 协同调度器，可动态分配 Gemini 4 Carbon 与 Hydrogen 的任务，测试显示该方案任务成功率接近单独使用 Carbon，同时平均减少 24%配额消耗，完成速度提升 19%。
+
+rss · 量子位 · 11月13日 02:54
+
+**「为什么重要」** 该模型是谷歌首次明确落地大小模型搭配的 Agent 执行方案，小模型在代码、长程 Agent 任务上的性能表现亮眼，同时降低推理成本，对 coding agent 的架构设计有直接参考价值。
+
+**「可关注」** 可关注：Gemini 4 Hydrogen 与 Carbon 的 Orchestrator 大小模型搭配方案，在接近大模型任务成功率的同时降低 24% Token 消耗。
+
+**标签**: `#model`, `#lab`, `#industry`, `#product`
 
 ---
 
@@ -285,46 +319,46 @@ rss · Claude Blog · 11月13日 00:00
 <p class="ah-sec-meta"><a class="ah-anchor" href="#sec-ai-deals" aria-label="链接到本节">#</a><a class="ah-back" href="#ah-toc">↑ 回到目录</a></p>
 
 <a id="item-ai-deals-1"></a>
-### [Epic 本周限免《斗阵骑士/Knightica》](https://www.appinn.com/eggs-261113/) ⭐️ 8.0/10
+### [World Labs Atlas 开放 赠 10000 积分](https://www.ifanr.com/1689379?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=) ⭐️ 8.0/10
 
-你看到的内容可能由第三方 AI 基于小众软件文章提炼总结而成，可能与原文真实意图存在偏差。不代表小众软件观点和立场。请&lt;a href=&quot;https://www.appinn.com/eggs-261113/&quot; target=&quot;\_blank&quot;&gt;点击链接阅读原文&lt;/a&gt;细致比对和校验。&lt;br /&gt;&lt;br /&gt;Epic 本周（11.13~11.19）限时免费开放回合制自走棋游戏《斗阵骑士/Knightica》的领取权限，支持手机端与电脑端，登录 Epic 账号即可永久入库。
+李飞飞创办的 World Labs 正式开放 Atlas 世界模型，新用户注册即赠 10000 积分，同步上线网页应用与开发者 API，体验地址为 atlas.worldlabs.ai。领取需完成手机号验证，注册后需选择美国或加拿大地区以确保功能正常，材料未提及领取截止时间。
 
-rss · 小众软件 · 11月13日 06:01
+rss · 爱范儿 · 11月13日 10:04
 
-**「为什么重要」** 该游戏在 Steam 平台获得多半好评，限免期内领取可永久入库，错过活动需付费购买。
+**「为什么重要」** Atlas 支持从草图、单张图片生成可自由探索的 3D 场景，配套 Viewfinder、Chisel、Relight、Splat to mesh 四款工具覆盖场景生成到导出的全链路，10000 积分足够体验核心功能，适合 3D 内容创作者、交互开发者试用。
 
-**「可关注」** 可关注：仅需登录 Epic 账号即可领取，支持 Android、iOS 及电脑端，领取后永久入库。
+**「可关注」** 可关注：+86 手机号可完成注册，但需手动选择美国/加拿大地区；免费积分消耗较快，生成完整 Splat 需 5000 积分、Chisel 整组渲染需 160 积分，大额生成需额外注意积分余额。
 
-**标签**: `#limited-free`, `#promo`, `#game`
+**标签**: `#credits`, `#free-tier`, `#api`, `#promo`, `#limited-free`
 
 ---
 
 <a id="item-ai-deals-2"></a>
-### [Atlas 世界模型开放 赠 1 万积分](https://www.ifanr.com/1689379?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=) ⭐️ 8.0/10
+### [Firefox 内置免费 VPN 取消流量上限](https://blog.mozilla.org/en/firefox/built-in-vpn-unlimited-data/) ⭐️ 8.0/10
 
-李飞飞创办的 World Labs 正式开放 Atlas 世界模型，新用户注册即可获得 10000 积分。该模型同步上线网页应用与开发者 API，支持用户通过网页端体验 3D 场景生成、重建能力，也可通过 API 将能力集成到自有管线。注册需完成手机号验证，+86 手机号可正常接收验证码，后续需选择美国或加拿大区域以确保体验正常，体验地址为 atlas.worldlabs.ai。
+Mozilla 官方宣布 Firefox 内置免费 VPN 取消数据流量限制，该福利有效期至 2027 年 1 月。材料未提及领取条件、地区限制等额外细则。
 
-rss · 爱范儿 · 11月13日 10:04
+rss · HN Free API / Credits · 11月13日 16:05
 
-**「为什么重要」** Atlas 补齐了从单图/草图生成 3D 场景、调整布局、渲染导出到游戏引擎的全链路能力，是 3D 生成领域少有的公开可体验的成熟方案。新用户赠送的 10000 积分足够完成基础功能体验，无需付费即可上手。
+**「为什么重要」** 该调整是 Mozilla 官方推出的限时免费福利，在 2027 年 1 月前使用 Firefox 内置 VPN 无需支付流量超额费用，可满足用户的轻量跨境访问需求。
 
-**「可关注」** 可关注：Atlas 采用积分制，Viewfinder 渲染单帧消耗 50 积分，生成完整 Splat 需 5000 积分，Chisel 智能体按 Gemini 4 Argon 的输出 token 计费（每 1M 输出 token10000 积分），免费额度仅够基础功能体验，重度使用需额外充值。
+**「可关注」** 可关注：该福利仅覆盖 Firefox 内置 VPN 服务，未公开地区限制、速率上限等细则，使用前需确认当地网络监管要求。
 
-**标签**: `#credits`, `#free-tier`, `#api`, `#promo`
+**标签**: `#free-tier`, `#promo`, `#limited-free`
 
 ---
 
 <a id="item-ai-deals-3"></a>
-### [InstaBox 免费领 4 核 8GB 云电脑](https://www.appinn.com/egg-instabox/) ⭐️ 7.0/10
+### [本周赛博领鸡蛋：Epic 免费送《斗阵骑士》](https://www.appinn.com/eggs-261113/) ⭐️ 7.0/10
 
-你看到的内容可能由第三方 AI 基于小众软件文章提炼总结而成，可能与原文真实意图存在偏差。不代表小众软件观点和立场。请&lt;a href=&quot;https://www.appinn.com/egg-instabox/&quot; target=&quot;\_blank&quot;&gt;点击链接阅读原文&lt;/a&gt;细致比对和校验。InstaBox 当前提供免费 4 vCPU、8 GiB 内存、20 GiB 硬盘的云电脑额度，支持 Linux 桌面、安卓镜像，预装 Claude Code、OpenAI Codex 等 AI Agent 工具，可通过 Google 或 GitHub 账号注册领取，无需绑定信用卡。
+你看到的内容可能由第三方 AI 基于小众软件文章提炼总结而成，可能与原文真实意图存在偏差。不代表小众软件观点和立场。请&lt;a href=&quot;https://www.appinn.com/eggs-261113/&quot; target=&quot;\_blank&quot;&gt;点击链接阅读原文&lt;/a&gt;细致比对和校验。&lt;br /&gt;&lt;br /&gt;少数派本周赛博领鸡蛋栏目更新，Epic Games Store 本周限时免费送出回合制类 Roguelike 自走棋游戏《斗阵骑士 / Knightica》，支持手机端与电脑端领取。
 
-rss · 小众软件 · 11月13日 06:42
+rss · 小众软件 · 11月13日 06:01
 
-**「为什么重要」** 该免费额度预置 AI Agent 运行环境与图形桌面，无需自行配置服务器环境，可快速用于 coding agent 测试或轻量开发场景。
+**「为什么重要」** 本周为该游戏限时免费领取周期，支持多端获取，适合喜欢自走棋、策略搭配的玩家入手。
 
-**「可关注」** 可关注：免费实例 30 分钟无操作会自动关机，可通过 API 手动唤醒或保活，仅适合间歇性任务，无法作为常驻服务使用。
+**「可关注」** 可关注：Epic Games Store 本周限免的《斗阵骑士》包含 PC、Android、iOS 三个版本，对应领取链接可在原文中找到。
 
-**标签**: `#promo`, `#free-tier`, `#limited-free`
+**标签**: `#limited-free`, `#promo`, `#game`
 
 ---
