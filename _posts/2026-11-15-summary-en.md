@@ -5,7 +5,7 @@ date: 2026-11-15
 lang: en
 ---
 
-> From 186 items, 8 important content pieces were selected
+> From 185 items, 7 important content pieces were selected
 
 ---
 
@@ -13,17 +13,14 @@ lang: en
 1. [browser-use 1.0.5 发布](#item-harness-arch-1) ⭐️ 5.5/10
 
 **AI Agent Engineer**
-1. [Antigravity /teamwork 多代理协作更新](#item-agent-engineer-1) ⭐️ 7.0/10
-2. [datasette-llm 0.1a11 支持OpenAI兼容端点](#item-agent-engineer-2) ⭐️ 5.8/10
-3. [inspect\_ai 0.3.290 发布](#item-agent-engineer-3) ⭐️ 5.5/10
-
-**AI Daily**
-1. [李飞飞苏姿丰CoRL 2026首次同台对谈](#item-ai-daily-1) ⭐️ 5.0/10
+1. [Antigravity /teamwork 多智能体功能更新](#item-agent-engineer-1) ⭐️ 7.0/10
+2. [datasette-llm 0.1a11 发布](#item-agent-engineer-2) ⭐️ 6.0/10
+3. [HF趋势榜 Qwen3 DSpine草稿模型](#item-agent-engineer-3) ⭐️ 6.0/10
 
 **AI Deals**
-1. [AI 语音面试陪练 100 分钟免费额度](#item-ai-deals-1) ⭐️ 7.0/10
-2. [x6o4 RSS Cloud 送 Kindle 7 天试用码](#item-ai-deals-2) ⭐️ 7.0/10
-3. [免费词典 API 上线 无需密钥](#item-ai-deals-3) ⭐️ 7.0/10
+1. [AI 语音面试陪练 领 90 分钟时长](#item-ai-deals-1) ⭐️ 8.0/10
+2. [免费 Dictionary API 上线](#item-ai-deals-2) ⭐️ 7.0/10
+3. [免费 GitHub 仓库安全扫描工具](#item-ai-deals-3) ⭐️ 5.0/10
 
 ---
 
@@ -32,127 +29,110 @@ lang: en
 <a id="item-harness-arch-1"></a>
 ### [browser-use 1.0.5 发布](https://github.com/browser-use/browser-use/releases/tag/1.0.5) ⭐️ 5.5/10
 
-这是browser-use 1.0.5版本的正式发布，核心新增内置模型驱动的浏览器代理运行评判机制，支持配置化评判规则，站点反制边缘场景识别能力显著提升。安装命令为\`pip install &\#x27;browser-use==1.0.5&\#x27;\`，每次运行后会自动填充\`result.judgement\`字段，包含成功状态、失败原因、提示词注入检测、机器人拦截/验证码检测、问题记录等维度，旧版0.x的\`use\_judge\`/\`ground\_truth\`参数已恢复兼容。经13次真实运行各评判3次验证，站点反制场景的问题识别率从6/15提升至15/15，干净运行场景误报率为2/24，成功判定结果无变化。
+这是browser-use agent harness的1.0.5官方补丁版本发布。新增可配置的结构化运行判定系统，由用户自有模型对每次运行做任务匹配判定，结果回填至result.judgement字段，包含success、failure\_reason等6类结构化字段。同时恢复0.x版本的use\_judge、ground\_truth legacy参数兼容，优化站点反制检测能力，安装命令为pip install &\#x27;browser-use==1.0.5&\#x27;。
 
 github · sarath-menon · Nov 14, 08:24
 
-**「设计要点」** 评判模块作为低侵入旁路能力接入运行链路，默认可访问运行轨迹、末帧截图与最终页面（\`use\_vision=False\`时除外），支持通过\`judge\_context\`传入自定义评判标准，也可通过\`judge=False\`关闭该能力；模块会在站点拒绝输入、报错、拦截、限流时生成问题记录，哪怕运行最终成功也会记录，例如表单要求特定格式的电话号码这类问题。
+**「设计要点」** 运行判定逻辑由用户自有模型承担，判定时可访问运行trace、末次截图、最终页面（use\_vision=False时除外访问截图）；通过judge\_context参数传入自定义判定标准，支持judge=False关闭判定，同时兼容0.x版本的legacy评估参数。
 
-**「改了什么」** 相对上一版本，新增内置模型驱动的运行自动评判能力，恢复0.x版本\`use\_judge\`/\`ground\_truth\`参数的兼容性，站点反制边缘场景的问题识别率从6/15提升至15/15，干净运行场景误报率控制在2/24，成功判定结果无变化，相关实现对应PR \#6398、\#6403、\#6404。
+**「改了什么」** \1. 新增结构化运行判定能力，每次运行自动生成包含6类字段的judgement结果；2. 恢复0.x版本use\_judge、ground\_truth参数兼容；3. 站点反制检测召回率从40%（6/15）提升至100%（15/15），干净运行误报率约8.3%（2/24），成功判定准确率无变化。
 
-**Tags**: `#eval`, `#tools`
+**「评论」** 暂无社区评论可用。
+
+**Tags**: `#eval`, `#runtime`
 
 ---
 
 ## AI Agent Engineer
 
 <a id="item-agent-engineer-1"></a>
-### [Antigravity /teamwork 多代理协作更新](https://research.google/blog/advancing-science-engineering-with-antigravitys-teamwork-feature/) ⭐️ 7.0/10
+### [Antigravity /teamwork 多智能体功能更新](https://research.google/blog/advancing-science-engineering-with-antigravitys-teamwork-feature/) ⭐️ 7.0/10
 
-Google Research 2026-11-14 博客更新了 Antigravity /teamwork 多代理功能在科学计算与工程任务中的用例。该功能目前处于持续迭代阶段，团队确认正在推送给外部用户，后续将公布动态构建代理团队的实现细节。公开材料未包含深层技术实现说明或性能基准数据。
+2026年11月14日Google Research发布官方博客，展示Antigravity的/teamwork多智能体功能在数学、科学、编码、工程类任务上的应用案例，该功能此前已部分对外披露，当前更新已向外部用户推送。社区讨论提及多智能体团队存在上下文重复、token消耗过高的问题，同时关联了多智能体自适应harness的相关研究，Antigravity团队回应将持续迭代该功能并公开动态构建智能体团队的细节。
 
 hackernews · acossta · Nov 14, 13:20 · [Discussion](https://news.ycombinator.com/item?id=50496811)
 
-**「为什么重要」** 这是 Google 首次系统展示 /teamwork 在复杂技术任务中的实际应用场景，而非仅发布概念公告。对正在设计 agent orchestration 与 harness 的工程师而言，这提供了评估多代理协作落地路径的新参考，但具体技术差异仍需更多披露才能判断。
+**「为什么重要」** 该功能是面向科研与工程场景的多智能体编排落地实践，社区讨论点出的多智能体上下文冗余、高token消耗是当前coding agent harness的普遍痛点，对相关工程师有直接参考价值。
 
-**「可关注」** 可关注：/teamwork 与 Claude dynamic workflows、Codex 等工具的 orchestration 模型差异尚未有公开技术对比，社区对其“自动模式”缺失的批评值得在选型时纳入评估。
+**「可关注」** 可关注：多智能体团队场景下的上下文重复与token消耗问题，以及动态构建智能体团队的实现方案。
 
-**「评论」** 社区讨论引用 Adaptive Auto-Harness 与 team-solve 等证据，支持多代理团队工作流能提升自主性并控制质量衰减。Antigravity 团队成员确认 /teamwork 正在持续改进并将推送给外部用户，但部分用户认为其功能落后于 Claude dynamic workflows 且缺乏自动模式。
+**「评论」** 社区用户反馈使用多智能体团队时出现上下文重复、周额度token在2天内耗尽的问题，同时分享了多智能体自适应harness的相关研究，也有用户对比了其与Claude动态工作流的差异。
 
-**Tags**: `#harness`, `#coding-agent`, `#orchestration`
+**Tags**: `#orchestration`, `#coding-agent`, `#harness`, `#memory`
 
 ---
 
 <a id="item-agent-engineer-2"></a>
-### [datasette-llm 0.1a11 支持OpenAI兼容端点](https://github.com/datasette/datasette-llm/releases/tag/0.1a11) ⭐️ 5.8/10
+### [datasette-llm 0.1a11 发布](https://simonwillison.net/2026/Nov/14/datasette-llm/) ⭐️ 6.0/10
 
-2026年11月14日，simonw发布datasette-llm 0.1a11，新增OpenAI兼容端点直接配置能力，支持Chat Completions与Responses API，相比此前版本无需额外LLM插件即可接入本地或第三方模型。配置项支持在YAML中通过endpoints字段注册模型，可指定api\_base、model\_name、key等参数，端点模型默认支持工具调用与流式输出。该版本调整了模型查找、密钥校验、黑白名单的生效逻辑，要求依赖LLM 0.37.1及以上版本，目前仍处于早期alpha阶段，主要面向Datasette数据探索生态用户。
+datasette-llm 0.1a11 于 2026-11-14 发布，新增 OpenAI 兼容端点配置。该 alpha 版本允许 Datasette 插件通过 LM Studio、Ollama 或 llama.cpp 调用本地模型。配置支持在 \`default\_model\` 或 \`models\` 列表中使用含 \`api\_base\` 与 \`model\_name\` 的字典引用。版本要求 LLM 0.37.1+，并收紧模型查找、密钥校验与错误类型兼容性。
 
-github · simonw · Nov 14, 23:59
+rss · Simon Willison · Nov 14, 23:59
 
-**「为什么重要」** 该更新降低了Datasette对接OpenAI兼容模型的门槛，减少了插件依赖成本；但目前该插件仍处早期alpha阶段，且主要面向Datasette数据探索场景，对主流agent工程框架的影响尚未明确。
+**「为什么重要」** Datasette 生态首次原生支持 OpenAI 兼容协议，本地模型接入无需额外插件。对构建数据 Agent 的工程师可直接复用现有推理服务，但 alpha 阶段稳定性未经验证。
 
-**「可关注」** 可关注：配置OpenAI兼容端点时需将凭证写入key字段，避免额外headers在Datasette的/-/config.json中泄露。
+**「可关注」** 可关注：显式 \`key\` 不再回退到 provider 默认凭证，\`model\(\)\` / \`group\(\)\` 现在受 allowlist/blocklist 约束，且密钥缺失时提前抛出 \`NeedsKeyException\`，旧代码需检查隐式密钥依赖。
 
 **Tags**: `#harness`
 
 ---
 
 <a id="item-agent-engineer-3"></a>
-### [inspect\_ai 0.3.290 发布](https://github.com/UKGovernmentBEIS/inspect_ai/releases/tag/0.3.290) ⭐️ 5.5/10
+### [HF趋势榜 Qwen3 DSpine草稿模型](https://huggingface.co/tencent/Qwen3.8-27B-DSpine-b16) ⭐️ 6.0/10
 
-inspect\_ai 0.3.290 于 2026-11-13 发布。本次更新增强 agent 可观测性，包括 in-flight 模型调用事件 ID、跨 agent bridge 的持久消息 ID 及工具事件来源记录；评估准确性方面，excluded epoch 不再参与 epoch reduction，score reason 新增 excluded 和 zeroed 标记。新增 Gemini 4 Carbon、Gemini 4 Hydrogen、Mistral Large 4、Meta Muse 系列及 Moonshot Kimi K3 支持，并修复 bridged agent 限流后无响应、sandbox 身份作用域隔离、ACP 请求卡住、异步 fsspec 读取阻塞事件循环等缺陷。
+2026年11月15日，Hugging Face趋势榜新增tencent/Qwen3.8-27B-DSpine-b16模型，当前trendingScore为226，累计获得274个赞。该模型标注为兼容SGLang的Qwen3系列推测解码草稿模型，关联arXiv论文编号2609.36173。目前仅公开基础元数据，未披露技术细节、性能数据或架构说明，无法直接指导工程改进，对AI Agent推理优化存在潜在参考价值但信息不足。
 
-github · github-actions\[bot\] · Nov 14, 21:14
+rss · Hugging Face Trending Models · Nov 15, 02:53
 
-**「为什么重要」** 可观测性增强直接改善 agent 轨迹调试效率；模型支持扩展与多项关键缺陷修复（限流、权限、事件循环）降低了生产 harness 的运行风险。
+**「为什么重要」** 该模型属于大模型推测解码的优化方向，若后续公开完整技术资料，可能为AI Agent推理延迟优化提供新的参考路径，但当前实际影响尚未得到证实。
 
-**「可关注」** 可关注：excluded epoch 已从 epoch reduction 中移除，且 score reason 新增 excluded 和 zeroed 状态，评估脚本若依赖旧聚合逻辑需核对结果。
+**「可关注」** 可关注：该模型关联arXiv论文2609.36173，可后续跟进其公开的技术细节与性能基准数据。
 
-**Tags**: `#harness`, `#eval`, `#observability`, `#orchestration`
-
----
-
-## AI Daily
-
-<a id="item-ai-daily-1"></a>
-### [李飞飞苏姿丰CoRL 2026首次同台对谈](https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&amp;mid=2651074456&amp;idx=2&amp;sn=96fd9bd0e55a35b655b0a2dddd61264d) ⭐️ 5.0/10
-
-2026年11月12日，机器人学习顶会CoRL 2026进入第三天，AMD此前宣布以约82亿美元全股票交易收购的李飞飞创办的World Labs尚未完成交割，李飞飞与AMD董事长兼CEO苏姿丰在该会议首次同台开展约半小时对谈，话题覆盖物理AI市场机会、端到端基础模型边界、学界算力短缺、AI时代读博选择等；苏姿丰称物理AI尤其是机器人是未来几年数千亿美元量级的机会，李飞飞称AI与计算已根本融合、多模态模型正走向融合，对谈未披露具体未公开的新交易或技术细节。
-
-rss · 机器之心 · Nov 14, 03:34
-
-**「为什么重要」** 这是该笔收购宣布后双方核心人物的首次公开同台，释放了AMD加码物理AI、World Labs融入其技术体系的信号，对关注机器人AI领域的从业者有参考价值。
-
-**「可关注」** 可关注：AMD将硬件、软件、系统协同优化的思路延伸至机器人领域，World Labs与AMD的结合被双方视为团队科学在AI时代的实践。
-
-**Tags**: `#industry`, `#event`, `#lab`
+**Tags**: `#speculative-decoding`, `#draft-model`, `#sglang`, `#inference-optimization`, `#text-generation`
 
 ---
 
 ## AI Deals
 
 <a id="item-ai-deals-1"></a>
-### [AI 语音面试陪练 100 分钟免费额度](https://www.v2ex.com/t/1257121#reply10) ⭐️ 7.0/10
+### [AI 语音面试陪练 领 90 分钟时长](https://www.v2ex.com/t/1257121#reply10) ⭐️ 8.0/10
 
-独立开发者 cryptitalk 推出 AI 语音面试陪练工具 aidou.studio，提供最高 100 分钟免费通话额度。无登录状态下可直接体验 10 分钟，使用 Google 账号登录并完成与小豆的 5 分钟真人验证后，可额外获得 90 分钟时长。材料未提及额度有效期及截止时间。
+独立开发者 cryptitalk 推出 AI 语音面试陪练工具，未登录用户可直接体验 10 分钟；使用 Google 账号登录并通过 5 分钟真人验证后，可获赠 90 分钟通话时长，前 20 位通过验证的用户还可获得 10 分钟一对一反馈邀约。
 
 rss · V2EX Hot · Nov 14, 15:19
 
-**「为什么重要」** 该工具采用全双工实时对话模式，支持用户随时打断回复，提供技术面试官 Alex、英语口语私教 Emma 两类角色，区别于传统分段回复的AI面试工具，适合有面试练手需求的用户先试用。
+**「为什么重要」** 该工具采用全双工实时对话模式，支持用户随时打断 AI 发言，区别于传统分段回复的 AI 面试工具，当前提供技术面试、英语口语两类陪练角色，免费额度可满足轻度练习需求。
 
-**「可关注」** 可关注：无登录可直接体验10分钟，完成Google账号真人验证（与小豆聊5分钟）后可额外获得90分钟通话时长，总时长最高100分钟。
+**「可关注」** 可关注：未登录可先体验 10 分钟，通过 5 分钟真人验证后可额外获得 90 分钟时长，时长按语音模型分钟计费。
 
-**Tags**: `#free-tier`, `#promo`, `#limited-free`
+**Tags**: `#limited-free`, `#promo`, `#api`
 
 ---
 
 <a id="item-ai-deals-2"></a>
-### [x6o4 RSS Cloud 送 Kindle 7 天试用码](https://www.v2ex.com/t/1257010#reply6) ⭐️ 7.0/10
+### [免费 Dictionary API 上线](https://api.suvankar.cc/docs/dictionary) ⭐️ 7.0/10
 
-V2EX个人开发者VeeSong发放x6o4 RSS Cloud共100个7天免费试用码，该工具支持将RSS内容推送至Kindle阅读，也可对接AI agent实现语音一键推送，需微信扫码领取；另放出20个x6o4 Reader去广告会员兑换码，可直接使用。
+Hacker News 用户 suvankar\_m 在 Show HN 板块分享了一款基于 Wiktionary 数据的免费 Dictionary API，无需 API 密钥即可调用。目前可通过官方文档访问相关接口，公开信息未披露该 API 的速率限制、配额上限及服务可用时长。
 
-rss · V2EX Hot · Nov 14, 03:18
+rss · HN Free API / Credits · Nov 14, 06:30
 
-**「为什么重要」** 该工具专门针对Kindle电纸书优化RSS阅读体验，解决miniflux、FreshRSS等自部署方案不适配Kindle的问题，支持AI agent一键推送未读文章，适合有Kindle阅读RSS需求的用户；当前100个试用码为限时福利，未抢到名额的用户后续可等待官方释放名额或直接付费。
+**「可关注」** 可关注：该 API 无需 API 密钥即可调用，但尚未公开速率限制、配额上限等使用约束，适合轻量场景测试。
 
-**「可关注」** 可关注：x6o4 RSS Cloud配套skill已开源至GitHub，可fork后对接自建RSS服务器，也支持调整适配其他电纸书设备；100个7天试用码需微信扫码领取，若未抢到可等待后续释放名额或直接付费。
-
-**Tags**: `#limited-free`, `#promo`
+**Tags**: `#free-tier`, `#api`, `#limited-free`
 
 ---
 
 <a id="item-ai-deals-3"></a>
-### [免费词典 API 上线 无需密钥](https://api.suvankar.cc/docs/dictionary) ⭐️ 7.0/10
+### [免费 GitHub 仓库安全扫描工具](https://edgeiqlabs.com/free-repo-scanner/) ⭐️ 5.0/10
 
-suvankar\_m 在 Hacker News 分享了一款基于 Wiktionary 数据的免费词典 API，访问地址为 https://api.suvankar.cc/docs/dictionary。该 API 无需 API 密钥即可调用，目前未公开调用额度、速率限制及服务有效期。
+edgeiqlabs 在 Show HN 发布一款免费的 GitHub 仓库安全扫描工具，可检测泄露的密钥与暴露的配置，当前未公开具体使用限制、领取条件及截止时间。
 
-rss · HN Free API / Credits · Nov 14, 06:30
+rss · HN Free API / Credits · Nov 14, 12:09
 
-**「为什么重要」** 对于需要轻量词典能力的开发场景，该 API 省去了密钥申请流程，可快速接入验证原型。
+**「为什么重要」** 该工具针对开发者常见的仓库密钥泄露、配置暴露风险提供免费检测能力，当前无公开使用门槛，适合有 GitHub 仓库安全巡检需求的开发者试用。
 
-**「可关注」** 可关注：该 API 未公开速率限制、配额及服务有效期，生产环境接入前需自行验证稳定性。
+**「可关注」** 可关注：该工具暂未公开具体调用频率、扫描范围等限制，大规模使用前建议先小范围验证稳定性。
 
-**Tags**: `#free-tier`, `#api`
+**Tags**: `#free-tier`, `#dev-tool`, `#security`, `#github`
 
 ---
