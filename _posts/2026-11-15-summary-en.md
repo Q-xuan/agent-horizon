@@ -5,164 +5,154 @@ date: 2026-11-15
 lang: en
 ---
 
-> From 152 items, 9 important content pieces were selected
+> From 186 items, 8 important content pieces were selected
 
 ---
 
 **Agent Harness Architecture**
-1. [LangGraph 1.2.22 发布](#item-harness-arch-1) ⭐️ 5.3/10
-2. [browser-use 1.0.5 发布](#item-harness-arch-2) ⭐️ 5.3/10
+1. [browser-use 1.0.5 发布](#item-harness-arch-1) ⭐️ 5.5/10
 
 **AI Agent Engineer**
-1. [Google Research 发布 Antigravity /teamwork 功能](#item-agent-engineer-1) ⭐️ 7.0/10
-2. [长周期智能体决策模型多角色研究发布](#item-agent-engineer-2) ⭐️ 7.0/10
-3. [SO-Arena 基准发布](#item-agent-engineer-3) ⭐️ 6.0/10
-4. [HF每日论文：Duo 全双工世界模型发布](#item-agent-engineer-4) ⭐️ 6.0/10
-5. [Open Vision Banana 全开放视觉感知配方](#item-agent-engineer-5) ⭐️ 6.0/10
-6. [腾讯Qwen3投机解码模型登HF Trending](#item-agent-engineer-6) ⭐️ 6.0/10
+1. [Antigravity /teamwork 多代理协作更新](#item-agent-engineer-1) ⭐️ 7.0/10
+2. [datasette-llm 0.1a11 支持OpenAI兼容端点](#item-agent-engineer-2) ⭐️ 5.8/10
+3. [inspect\_ai 0.3.290 发布](#item-agent-engineer-3) ⭐️ 5.5/10
 
 **AI Daily**
-1. [CoRL 2026 李飞飞苏姿丰收购后首同台](#item-ai-daily-1) ⭐️ 5.5/10
+1. [李飞飞苏姿丰CoRL 2026首次同台对谈](#item-ai-daily-1) ⭐️ 5.0/10
+
+**AI Deals**
+1. [AI 语音面试陪练 100 分钟免费额度](#item-ai-deals-1) ⭐️ 7.0/10
+2. [x6o4 RSS Cloud 送 Kindle 7 天试用码](#item-ai-deals-2) ⭐️ 7.0/10
+3. [免费词典 API 上线 无需密钥](#item-ai-deals-3) ⭐️ 7.0/10
 
 ---
 
 ## Agent Harness Architecture
 
 <a id="item-harness-arch-1"></a>
-### [LangGraph 1.2.22 发布](https://github.com/langchain-ai/langgraph/releases/tag/1.2.22) ⭐️ 5.3/10
+### [browser-use 1.0.5 发布](https://github.com/browser-use/browser-use/releases/tag/1.0.5) ⭐️ 5.5/10
 
-LangGraph 1.2.22 为补丁版本，修复子图流式传输的线程调度问题，并引入五项运行时性能优化。修复确保调用方流式消费子图时，子图在独立线程上运行。性能优化包括跳过纯消息的 add\_messages 转换、按任务过滤待处理写入、宽状态下的键集合匹配、仅检查失败 futures 的 runner 停止条件，以及每次运行仅执行一次未追踪和增量通道查找。配套发布 checkpoint-postgres 3.2.1、prebuilt 1.1.2 与 checkpoint 4.3.2。
-
-github · github-actions\[bot\] · Nov 14, 01:43
-
-**「设计要点」** 子图执行采用独立线程模型，调用方流式消费时不会阻塞子图运行。运行时通过减少消息转换、过滤写入状态、集合化键匹配和延迟通道追踪降低开销。
-
-**「改了什么」** 修复子图流式传输的线程模型，确保调用方流式消费子图时子图在独立线程运行。新增五项性能优化：纯消息跳过 add\_messages 转换、按任务过滤待处理写入、宽状态键集合匹配、仅检查失败 futures、每次运行单次通道追踪。
-
-**Tags**: `#runtime`, `#subagents`
-
----
-
-<a id="item-harness-arch-2"></a>
-### [browser-use 1.0.5 发布](https://github.com/browser-use/browser-use/releases/tag/1.0.5) ⭐️ 5.3/10
-
-browser-use 1.0.5 正式发布。本次更新引入可配置的基于模型的运行评判功能，每次浏览器代理任务运行均由用户自有模型进行评判，结果填充 \`result.judgement\` 字段，包含成功状态、失败原因、描述、提示注入检测、机器人拦截检测及站点反制细节。可通过 \`judge\_context=\` 传入评判标准，或 \`judge=False\` 关闭；同时恢复 0.x 版本的 \`use\_judge\` 与 \`ground\_truth\` 标志。评判器默认查看运行 trace、最后截图及最终页面（\`use\_vision=False\` 时除外），并在站点拒绝输入、报错、拦截或限速时写入 gotchas，即使运行成功也不例外。
+这是browser-use 1.0.5版本的正式发布，核心新增内置模型驱动的浏览器代理运行评判机制，支持配置化评判规则，站点反制边缘场景识别能力显著提升。安装命令为\`pip install &\#x27;browser-use==1.0.5&\#x27;\`，每次运行后会自动填充\`result.judgement\`字段，包含成功状态、失败原因、提示词注入检测、机器人拦截/验证码检测、问题记录等维度，旧版0.x的\`use\_judge\`/\`ground\_truth\`参数已恢复兼容。经13次真实运行各评判3次验证，站点反制场景的问题识别率从6/15提升至15/15，干净运行场景误报率为2/24，成功判定结果无变化。
 
 github · sarath-menon · Nov 14, 08:24
 
-**「改了什么」** 新增基于模型的运行评判机制，每次运行自动生成结构化 \`result.judgement\`；恢复旧版 \`use\_judge\` 与 \`ground\_truth\` 标志；改进站点反制 gotcha 检测，使站点拒绝输入、报错、拦截或限速场景的检出率从 6/15 提升至 15/15，同时保持成功 verdict 不变。
+**「设计要点」** 评判模块作为低侵入旁路能力接入运行链路，默认可访问运行轨迹、末帧截图与最终页面（\`use\_vision=False\`时除外），支持通过\`judge\_context\`传入自定义评判标准，也可通过\`judge=False\`关闭该能力；模块会在站点拒绝输入、报错、拦截、限流时生成问题记录，哪怕运行最终成功也会记录，例如表单要求特定格式的电话号码这类问题。
 
-**Tags**: `#tools`, `#eval`
+**「改了什么」** 相对上一版本，新增内置模型驱动的运行自动评判能力，恢复0.x版本\`use\_judge\`/\`ground\_truth\`参数的兼容性，站点反制边缘场景的问题识别率从6/15提升至15/15，干净运行场景误报率控制在2/24，成功判定结果无变化，相关实现对应PR \#6398、\#6403、\#6404。
+
+**Tags**: `#eval`, `#tools`
 
 ---
 
 ## AI Agent Engineer
 
 <a id="item-agent-engineer-1"></a>
-### [Google Research 发布 Antigravity /teamwork 功能](https://research.google/blog/advancing-science-engineering-with-antigravitys-teamwork-feature/) ⭐️ 7.0/10
+### [Antigravity /teamwork 多代理协作更新](https://research.google/blog/advancing-science-engineering-with-antigravitys-teamwork-feature/) ⭐️ 7.0/10
 
-2026年11月14日Google Research发布博客，介绍Antigravity的/teamwork功能，支持科学与工程任务下的动态多智能体协作。社区反馈显示该功能此前已在Antigravity官方博客部分披露，当前仍在持续迭代，同时有用户将其与Claude动态工作流对比，质疑功能差异与成熟度，博客全文技术细节未完全公开。
+Google Research 2026-11-14 博客更新了 Antigravity /teamwork 多代理功能在科学计算与工程任务中的用例。该功能目前处于持续迭代阶段，团队确认正在推送给外部用户，后续将公布动态构建代理团队的实现细节。公开材料未包含深层技术实现说明或性能基准数据。
 
 hackernews · acossta · Nov 14, 13:20 · [Discussion](https://news.ycombinator.com/item?id=50496811)
 
-**「为什么重要」** 该功能直接对应多智能体编排与coding agent harness设计的行业热点方向，官方披露引发社区对动态团队协作落地的讨论；社区同时关联了自适应多智能体harness的相关研究，说明该方向的技术探索正在加速。
+**「为什么重要」** 这是 Google 首次系统展示 /teamwork 在复杂技术任务中的实际应用场景，而非仅发布概念公告。对正在设计 agent orchestration 与 harness 的工程师而言，这提供了评估多代理协作落地路径的新参考，但具体技术差异仍需更多披露才能判断。
 
-**「可关注」** 可关注动态多智能体harness的角色分配与非同质任务流适配方案，以及不同平台动态工作流能力的实际落地差异。
+**「可关注」** 可关注：/teamwork 与 Claude dynamic workflows、Codex 等工具的 orchestration 模型差异尚未有公开技术对比，社区对其“自动模式”缺失的批评值得在选型时纳入评估。
 
-**「评论」** 社区共识是团队式多智能体工作流在减少质量损耗、提升自主性上有应用潜力，同时有用户指出Antigravity /teamwork与Claude动态工作流差异不明确，且当前缺乏自动模式与使用指引。
+**「评论」** 社区讨论引用 Adaptive Auto-Harness 与 team-solve 等证据，支持多代理团队工作流能提升自主性并控制质量衰减。Antigravity 团队成员确认 /teamwork 正在持续改进并将推送给外部用户，但部分用户认为其功能落后于 Claude dynamic workflows 且缺乏自动模式。
 
-**Tags**: `#harness`, `#orchestration`, `#coding-agent`, `#eval`
+**Tags**: `#harness`, `#coding-agent`, `#orchestration`
 
 ---
 
 <a id="item-agent-engineer-2"></a>
-### [长周期智能体决策模型多角色研究发布](https://huggingface.co/papers/2611.17167) ⭐️ 7.0/10
+### [datasette-llm 0.1a11 支持OpenAI兼容端点](https://github.com/datasette/datasette-llm/releases/tag/0.1a11) ⭐️ 5.8/10
 
-Hugging Face Daily Papers 于 2026-11-14 推荐论文《Actor, Judge, or Teacher? Understanding Decision Models in Long-Horizon Agents》。该研究在 ALFWorld 与 WebShop 基准上，对比三个决策模型与三个通用 LLM 作为动作执行者（actor）、轨迹评估者（judge）和策略教师（teacher）的表现。实验发现，作为 actor 时，六种模型均会被更易子目标干扰而偏离关键前置子目标；作为 judge 时，它们会认可朝向该子目标的推进步骤；即使动作表现较差的决策模型，仍可作为有效教师（JEV）。结论对智能体组件选型与流程设计有参考价值。
+2026年11月14日，simonw发布datasette-llm 0.1a11，新增OpenAI兼容端点直接配置能力，支持Chat Completions与Responses API，相比此前版本无需额外LLM插件即可接入本地或第三方模型。配置项支持在YAML中通过endpoints字段注册模型，可指定api\_base、model\_name、key等参数，端点模型默认支持工具调用与流式输出。该版本调整了模型查找、密钥校验、黑白名单的生效逻辑，要求依赖LLM 0.37.1及以上版本，目前仍处于早期alpha阶段，主要面向Datasette数据探索生态用户。
 
-rss · Hugging Face Daily Papers · Nov 14, 23:00
+github · simonw · Nov 14, 23:59
 
-**「为什么重要」** 该研究首次系统揭示长周期智能体中决策模型的多角色能力可解耦：动作执行能力弱并不妨碍其承担评估或教学角色。这一结论对当前智能体架构中普遍采用的单一模型多角色复用模式提出反思，为组件解耦与专业化选型提供了实证依据。
+**「为什么重要」** 该更新降低了Datasette对接OpenAI兼容模型的门槛，减少了插件依赖成本；但目前该插件仍处早期alpha阶段，且主要面向Datasette数据探索场景，对主流agent工程框架的影响尚未明确。
 
-**「可关注」** 可关注：在长周期智能体设计中，可尝试将 actor、judge、teacher 角色拆分给不同模型或配置，利用评估者对关键前置子目标推进步骤的认可特性，优化轨迹筛选与策略蒸馏流程。
+**「可关注」** 可关注：配置OpenAI兼容端点时需将凭证写入key字段，避免额外headers在Datasette的/-/config.json中泄露。
 
-**Tags**: `#eval`, `#orchestration`
+**Tags**: `#harness`
 
 ---
 
 <a id="item-agent-engineer-3"></a>
-### [SO-Arena 基准发布](https://huggingface.co/papers/2611.15777) ⭐️ 6.0/10
+### [inspect\_ai 0.3.290 发布](https://github.com/UKGovernmentBEIS/inspect_ai/releases/tag/0.3.290) ⭐️ 5.5/10
 
-2026 年 11 月 14 日，Hugging Face Daily Papers 发布 SO-Arena 基准测试，用于评估 System One 模型的能力谱系与决策可靠性。该基准覆盖 11 个领域和 5 个能力家族，提供基于可靠来源的证据锚定评估、细粒度领域难度分级，以及面向真实场景的验证机制。当前公告为 truncated 版本，未披露完整技术细节、性能对比数据或实际落地案例，对工程师的直接影响有限。
+inspect\_ai 0.3.290 于 2026-11-13 发布。本次更新增强 agent 可观测性，包括 in-flight 模型调用事件 ID、跨 agent bridge 的持久消息 ID 及工具事件来源记录；评估准确性方面，excluded epoch 不再参与 epoch reduction，score reason 新增 excluded 和 zeroed 标记。新增 Gemini 4 Carbon、Gemini 4 Hydrogen、Mistral Large 4、Meta Muse 系列及 Moonshot Kimi K3 支持，并修复 bridged agent 限流后无响应、sandbox 身份作用域隔离、ACP 请求卡住、异步 fsspec 读取阻塞事件循环等缺陷。
 
-rss · Hugging Face Daily Papers · Nov 14, 23:00
+github · github-actions\[bot\] · Nov 14, 21:14
 
-**「为什么重要」** SO-Arena 针对快速低 token 的 System One 模型设计评估框架，填补了当前基准仅关注聚合性能、忽视决策可靠性的空白。但公告未提供可复现的实验设置或模型对比基线，其评估方法论的实际区分度尚未经社区验证。
+**「为什么重要」** 可观测性增强直接改善 agent 轨迹调试效率；模型支持扩展与多项关键缺陷修复（限流、权限、事件循环）降低了生产 harness 的运行风险。
 
-**「可关注」** 可关注：SO-Arena 的证据锚定与细粒度评估设计，可能为低延迟 agent 的可靠性测试提供新范式，但需等待完整技术报告确认其难度分级与标注一致性。
+**「可关注」** 可关注：excluded epoch 已从 epoch reduction 中移除，且 score reason 新增 excluded 和 zeroed 状态，评估脚本若依赖旧聚合逻辑需核对结果。
 
-**Tags**: `#eval`, `#harness`, `#orchestration`
-
----
-
-<a id="item-agent-engineer-4"></a>
-### [HF每日论文：Duo 全双工世界模型发布](https://huggingface.co/papers/2611.15131) ⭐️ 6.0/10
-
-2026年11月14日Hugging Face每日论文收录预印本arXiv:2611.15131，提出互惠世界模型（RWM）及全双工模型Duo v1。RWM将认知意图、视听实现能力与物理现实并列为世界的核心构成要素，改变现有世界模型仅模拟物理现实、将推理决策作为外部控制的思路。Duo v1计划通过自回归建模等三项关键技术实现实时连续的视听感知与用户交互响应，但目前仅公开摘要，无性能数据、开源代码，也未说明对现有智能体工具链或评测体系的直接改进，仅对全双工多模态智能体细分领域有参考价值。
-
-rss · Hugging Face Daily Papers · Nov 14, 23:00
-
-**「为什么重要」** 该工作首次将认知意图纳入世界模型的核心构成框架，为全双工多模态智能体的感知-决策-响应一体化设计提供了新思路；但目前仅公开摘要，无落地技术细节与性能验证，实际工程价值尚未证实。
-
-**「可关注」** 可关注该预印本全文发布后的技术细节公开情况，以及其设计是否对现有全双工多模态智能体的感知-响应链路有可复用的改进。
-
-**Tags**: `#orchestration`, `#eval`, `#world-model`, `#multimodal-agent`
-
----
-
-<a id="item-agent-engineer-5"></a>
-### [Open Vision Banana 全开放视觉感知配方](https://huggingface.co/papers/2611.15844) ⭐️ 6.0/10
-
-Hugging Face Daily Papers 于 2026-11-14 介绍 Open Vision Banana \(OVB\) 论文。该工作提出将预训练图像生成器转换为统一多任务感知系统的完全开放、可复现方案，基于 4B 与 9B 参数开源基模型，使用 210 万至 380 万训练数据对。论文分析了颜色编码、提示设计、参数适配和任务平衡等设计选择，指出这些因素会相互影响，单独有益的决策组合后可能损害性能。该方案对开发视觉感知能力的 agent 工程师有参考价值，但对 broader agent engineering 的适用性有限。当前材料中论文结论部分被截断。
-
-rss · Hugging Face Daily Papers · Nov 14, 23:00
-
-**「为什么重要」** OVB 首次公开了 Vision Banana 框架的完整数据、权重、代码与实现细节，填补了此前完全闭源的空白。其对设计选择相互作用的实证分析，为构建生成式视觉感知系统提供了可复现的基准。
-
-**「可关注」** 可关注：将图像生成器迁移为感知系统时，颜色编码、提示设计、参数适配与任务平衡等设计选择存在交互效应，需联合调优而非孤立评估单个组件。
-
-**Tags**: `#perception`, `#generative-model`, `#open-recipe`, `#multi-task`
-
----
-
-<a id="item-agent-engineer-6"></a>
-### [腾讯Qwen3投机解码模型登HF Trending](https://huggingface.co/tencent/Qwen3.8-27B-DSpine-b16) ⭐️ 6.0/10
-
-2026年11月14日，Hugging Face Trending上线腾讯针对Qwen3系列优化的投机解码草稿模型tencent/Qwen3.8-27B-DSpine-b16，该模型采用safetensors格式，标签包含qwen3、dspine、speculative-decoding、draft-model、sglang，兼容SGLang推理框架，关联arxiv论文编号2609.36173，可用于加速包括Agent系统在内的大模型文本生成推理，当前trendingScore为231，获赞272次；目前仅公开trending元数据，无具体性能指标、使用指南或技术实现细节，实际收益需进一步查看模型仓库或关联论文评估。
-
-rss · Hugging Face Trending Models · Nov 14, 23:00
-
-**「为什么重要」** 投机解码是当前大模型推理加速的热门技术方向，该模型针对Qwen3系列优化且兼容主流推理框架SGLang，若实际性能达标可降低Agent等场景的推理成本，但目前仅公开元数据，实际落地价值尚未验证。
-
-**「可关注」** 可关注该模型关联的arxiv论文2609.36173与模型仓库后续公开的技术细节，评估其投机解码方案对自身推理链路的适配性。
-
-**Tags**: `#harness`, `#speculative-decoding`, `#inference-optimization`
+**Tags**: `#harness`, `#eval`, `#observability`, `#orchestration`
 
 ---
 
 ## AI Daily
 
 <a id="item-ai-daily-1"></a>
-### [CoRL 2026 李飞飞苏姿丰收购后首同台](https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&amp;mid=2651074456&amp;idx=2&amp;sn=96fd9bd0e55a35b655b0a2dddd61264d) ⭐️ 5.5/10
+### [李飞飞苏姿丰CoRL 2026首次同台对谈](https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&amp;mid=2651074456&amp;idx=2&amp;sn=96fd9bd0e55a35b655b0a2dddd61264d) ⭐️ 5.0/10
 
-2026年11月12日，机器人学习顶会CoRL 2026在美国奥斯汀进入第三天，AMD此前宣布以82亿美元全股票交易收购李飞飞创办的World Labs、预计年底前完成交割，李飞飞将出任AMD执行副总裁兼首席科学家向苏姿丰汇报，二人当日完成收购后首次公开同台对谈，对谈时长约半小时，内容覆盖物理AI机会、端到端基础模型边界、学术界算力短缺等话题。苏姿丰称物理AI尤其是机器人是未来几年数千亿美元量级的机会，收购逻辑是加深对工作负载的理解以落地软硬协同优化；李飞飞提出「AI就是计算，计算就是AI」，认为多模态模型正走向融合，需硬件与软件协同演化。该内容为机器之心的二手整理报道，无对应官方一手信源。
+2026年11月12日，机器人学习顶会CoRL 2026进入第三天，AMD此前宣布以约82亿美元全股票交易收购的李飞飞创办的World Labs尚未完成交割，李飞飞与AMD董事长兼CEO苏姿丰在该会议首次同台开展约半小时对谈，话题覆盖物理AI市场机会、端到端基础模型边界、学界算力短缺、AI时代读博选择等；苏姿丰称物理AI尤其是机器人是未来几年数千亿美元量级的机会，李飞飞称AI与计算已根本融合、多模态模型正走向融合，对谈未披露具体未公开的新交易或技术细节。
 
 rss · 机器之心 · Nov 14, 03:34
 
-**「为什么重要」** 这是82亿美元收购案后双方核心人物的首次公开对谈，释放了AMD加码物理AI与机器人领域的明确信号，同时覆盖了当前机器人学习领域最关注的算力、模型架构走向等核心议题，对从业者判断行业趋势有参考价值。
+**「为什么重要」** 这是该笔收购宣布后双方核心人物的首次公开同台，释放了AMD加码物理AI、World Labs融入其技术体系的信号，对关注机器人AI领域的从业者有参考价值。
 
-**「可关注」** 可关注：物理AI领域软硬协同优化成为行业共识，学术界算力短缺是当前机器人学习落地的普遍瓶颈。
+**「可关注」** 可关注：AMD将硬件、软件、系统协同优化的思路延伸至机器人领域，World Labs与AMD的结合被双方视为团队科学在AI时代的实践。
 
-**Tags**: `#industry`, `#lab`
+**Tags**: `#industry`, `#event`, `#lab`
+
+---
+
+## AI Deals
+
+<a id="item-ai-deals-1"></a>
+### [AI 语音面试陪练 100 分钟免费额度](https://www.v2ex.com/t/1257121#reply10) ⭐️ 7.0/10
+
+独立开发者 cryptitalk 推出 AI 语音面试陪练工具 aidou.studio，提供最高 100 分钟免费通话额度。无登录状态下可直接体验 10 分钟，使用 Google 账号登录并完成与小豆的 5 分钟真人验证后，可额外获得 90 分钟时长。材料未提及额度有效期及截止时间。
+
+rss · V2EX Hot · Nov 14, 15:19
+
+**「为什么重要」** 该工具采用全双工实时对话模式，支持用户随时打断回复，提供技术面试官 Alex、英语口语私教 Emma 两类角色，区别于传统分段回复的AI面试工具，适合有面试练手需求的用户先试用。
+
+**「可关注」** 可关注：无登录可直接体验10分钟，完成Google账号真人验证（与小豆聊5分钟）后可额外获得90分钟通话时长，总时长最高100分钟。
+
+**Tags**: `#free-tier`, `#promo`, `#limited-free`
+
+---
+
+<a id="item-ai-deals-2"></a>
+### [x6o4 RSS Cloud 送 Kindle 7 天试用码](https://www.v2ex.com/t/1257010#reply6) ⭐️ 7.0/10
+
+V2EX个人开发者VeeSong发放x6o4 RSS Cloud共100个7天免费试用码，该工具支持将RSS内容推送至Kindle阅读，也可对接AI agent实现语音一键推送，需微信扫码领取；另放出20个x6o4 Reader去广告会员兑换码，可直接使用。
+
+rss · V2EX Hot · Nov 14, 03:18
+
+**「为什么重要」** 该工具专门针对Kindle电纸书优化RSS阅读体验，解决miniflux、FreshRSS等自部署方案不适配Kindle的问题，支持AI agent一键推送未读文章，适合有Kindle阅读RSS需求的用户；当前100个试用码为限时福利，未抢到名额的用户后续可等待官方释放名额或直接付费。
+
+**「可关注」** 可关注：x6o4 RSS Cloud配套skill已开源至GitHub，可fork后对接自建RSS服务器，也支持调整适配其他电纸书设备；100个7天试用码需微信扫码领取，若未抢到可等待后续释放名额或直接付费。
+
+**Tags**: `#limited-free`, `#promo`
+
+---
+
+<a id="item-ai-deals-3"></a>
+### [免费词典 API 上线 无需密钥](https://api.suvankar.cc/docs/dictionary) ⭐️ 7.0/10
+
+suvankar\_m 在 Hacker News 分享了一款基于 Wiktionary 数据的免费词典 API，访问地址为 https://api.suvankar.cc/docs/dictionary。该 API 无需 API 密钥即可调用，目前未公开调用额度、速率限制及服务有效期。
+
+rss · HN Free API / Credits · Nov 14, 06:30
+
+**「为什么重要」** 对于需要轻量词典能力的开发场景，该 API 省去了密钥申请流程，可快速接入验证原型。
+
+**「可关注」** 可关注：该 API 未公开速率限制、配额及服务有效期，生产环境接入前需自行验证稳定性。
+
+**Tags**: `#free-tier`, `#api`
 
 ---
