@@ -5,252 +5,272 @@ date: 2026-11-17
 lang: en
 ---
 
-> From 201 items, 15 important content pieces were selected
+> From 208 items, 16 important content pieces were selected
 
 ---
 
 **Agent Harness Architecture**
-1. [Agents SDK v0.24.0 发布](#item-harness-arch-1) ⭐️ 7.8/10
-2. [openai-agents-js v0.22.0-alpha.3 发布](#item-harness-arch-2) ⭐️ 7.8/10
-3. [google/adk-go v2.8.0 发布](#item-harness-arch-3) ⭐️ 7.8/10
+1. [OpenHands v1.41.0 发布](#item-harness-arch-1) ⭐️ 7.8/10
+2. [pydantic-ai v2.69.0 发布](#item-harness-arch-2) ⭐️ 7.8/10
+3. [openai-agents-js v0.22.0-alpha.3 发布](#item-harness-arch-3) ⭐️ 7.8/10
 
 **AI Agent Engineer**
-1. [HF 论文：MIRIX-2.0 多智能体记忆系统](#item-agent-engineer-1) ⭐️ 7.0/10
-2. [GH-AWTrace 数据集发布](#item-agent-engineer-2) ⭐️ 7.0/10
-3. [HF 每日论文：MEM-SQL 与 HARE 基准](#item-agent-engineer-3) ⭐️ 6.0/10
-4. [多智能体对齐迁移研究 Aligning AI Teams](#item-agent-engineer-4) ⭐️ 6.0/10
+1. [OpenAI 儿童安全政策更新及封禁案例](#item-agent-engineer-1) ⭐️ 7.0/10
+2. [HF 每日论文：MIRIX-2.0 多智能体记忆系统](#item-agent-engineer-2) ⭐️ 7.0/10
+3. [Mobile AI Factory 论文发布](#item-agent-engineer-3) ⭐️ 7.0/10
+4. [external-sandbox-quicksand 0.2.0 发布](#item-agent-engineer-4) ⭐️ 6.8/10
+5. [Gamer 游戏智能体基础模型发布](#item-agent-engineer-5) ⭐️ 6.0/10
+6. [VibePrevisBench：4D Blender 编码智能体基准](#item-agent-engineer-6) ⭐️ 6.0/10
 
 **AI Daily**
-1. [OpenAI 发布医疗版 ChatGPT 新功能](#item-ai-daily-1) ⭐️ 8.8/10
-2. [ChatGPT 学术研究计划扩至 20 万人](#item-ai-daily-2) ⭐️ 7.8/10
-3. [OpenAI 发布儿童网络安全防护工具](#item-ai-daily-3) ⭐️ 7.8/10
-4. [LVMH Media 与 OpenAI 达成合作](#item-ai-daily-4) ⭐️ 7.8/10
-5. [OpenAI 嵌入式评估首阶段启动](#item-ai-daily-5) ⭐️ 7.8/10
-6. [OpenAI 推进医疗团队计算机代理](#item-ai-daily-6) ⭐️ 7.8/10
-7. [OpenAI 启动百万英镑青年 AI 培训](#item-ai-daily-7) ⭐️ 7.8/10
-8. [TPU 同策略 RL 实现零训练推理差异](#item-ai-daily-8) ⭐️ 7.8/10
+1. [OpenAI 启动嵌入式评估第一阶段](#item-ai-daily-1) ⭐️ 8.8/10
+2. [OpenAI Expands Academic Access to 200K Researchers](#item-ai-daily-2) ⭐️ 7.8/10
+3. [OpenAI 发布 1800+ 科学家 ChatGPT 使用研究](#item-ai-daily-3) ⭐️ 7.8/10
+4. [LVMH 媒体部与 OpenAI 达成合作](#item-ai-daily-4) ⭐️ 7.8/10
+5. [OpenAI 推进医疗团队计算机操作代理](#item-ai-daily-5) ⭐️ 7.8/10
+6. [OpenAI 扩展 ChatGPT 医疗能力](#item-ai-daily-6) ⭐️ 7.8/10
+7. [OpenAI 发布儿童在线安全工具](#item-ai-daily-7) ⭐️ 6.8/10
 
 ---
 
 ## Agent Harness Architecture
 
 <a id="item-harness-arch-1"></a>
-### [Agents SDK v0.24.0 发布](https://github.com/openai/openai-agents-python/releases/tag/v0.24.0-alpha.8) ⭐️ 7.8/10
+### [OpenHands v1.41.0 发布](https://github.com/OpenHands/OpenHands/releases/tag/v1.41.0) ⭐️ 7.8/10
 
-OpenAI 官方发布 Python Agents SDK v0.24.0-alpha.8。本次 alpha 版本新增三项核心能力：工具调用执行前审批（支持会话级决策记忆，覆盖权限与工具模块）、自定义模型客户端支持（扩展运行时模型集成能力，兼容 async Responses、Chat Completions、LiteLLM、AnyLLM 及自定义适配器）、Realtime 语音会话支持（提供服务器 WebSocket、浏览器 WebRTC、SIP 通话三种连接方案）。此外支持带预算保留的断点恢复、ARM64 Linux wheel 安装，以及 \`ModelOutputItemCompleted\` 工具观察、\`FunctionToolApprovalRequest\` 审批接口、\`SQLAlchemySQLiteSessionStore\` 存储后端等 API 扩展。alpha 版本稳定性待验证。
+OpenHands v1.41.0 于 2026-11-16 发布。ACP 协议新增从 agent 上报中选择推理强度的能力。hook 系统现在在 Available Hooks 对话框中显示工作区与用户 hook 文件名。测试场景扩展至非愉快路径、地图控件和浏览器时区，密钥管理支持复用 profile secret consent 以及安全替换请求的密钥。
 
-github · markstuart-oai · Nov 16, 04:39
+github · openhands-release-bot\[bot\] · Nov 16, 20:46
 
-**「设计要点」** 运行时层通过 application-owned model client 解耦原生工具循环与 OpenAI 后端，支持 LiteLLM、AnyLLM 及自定义适配器。权限与记忆层引入 managed approval 机制，在审批谓词前执行 input policy，并将决策持久化至会话级。存储层通过 CustomStorage 扩展至 SQLAlchemy SQLite、Redis、MongoDB、Dapr，同时支持预算感知的 checkpoint 恢复。
+**「设计要点」** ACP 协议层新增从 agent 上报选择推理强度的能力，hook 扩展系统在 UI 中展示命名的工作区与用户 hook 文件。密钥管理新增 consent 复用与安全替换流程，MCP OAuth 回调基地址改为从浏览器后端 URL 派生。
 
-**「改了什么」** 新增工具调用执行前审批能力，支持会话级决策记忆与 \`run\_input\_policy\_before\_approval\` 配置。新增自定义模型客户端支持，原生工具循环兼容 async Responses、Chat Completions、LiteLLM、AnyLLM 及自定义适配器。新增原生 Realtime 语音会话 API，支持 WebSocket、WebRTC、SIP 连接。新增带预算保留的断点恢复能力。新增 ARM64 Linux wheel 支持。新增 \`FunctionToolApprovalRequest\`、\`FunctionToolApprovalDecision\`、\`SQLAlchemySQLiteSessionStore\`、\`ResponsesSocketFactoryOptions\`、\`Session.replace\_history\_suffix\`、\`SessionState.with\_appended\_pending\_input\` 等接口。
+**「改了什么」** 相对 v1.40.0，v1.41.0 新增 ACP 推理强度选择、hook 文件命名显示、非愉快路径测试场景、密钥 consent 复用与安全替换。修复 MCP OAuth 回调地址与 plain-HTTP 下 UUID 生成问题。
 
-**Tags**: `#tools`, `#permissions`, `#runtime`, `#memory`
+**Tags**: `#OpenHands Release`, `#ACP Protocol Update`, `#Harness Hook System`, `#Agent Testing`, `#Secret Management`
 
 ---
 
 <a id="item-harness-arch-2"></a>
-### [openai-agents-js v0.22.0-alpha.3 发布](https://github.com/openai/openai-agents-js/releases/tag/v0.22.0-alpha.3) ⭐️ 7.8/10
+### [pydantic-ai v2.69.0 发布](https://github.com/pydantic/pydantic-ai/releases/tag/v2.69.0) ⭐️ 7.8/10
 
-这是OpenAI开源的openai-agents-js SDK v0.22.0-alpha.3预发布版本，新增类型化Decision机制（含agent.decide\(\)、ctx.decide\(\)、OpenAIDecisions适配器）实现agent控制流与handoff的类型安全路由，支持应用自主配置的ResponsesModel/ChatCompletionsModel/AiSdkModel模型后端（均支持流式输出），扩展Native Realtime/Voice至Node.js、浏览器、React Native、Workers，新增LocalStorage命名配置文件及历史查询、编辑、分叉能力，配套沙箱工作流的内存、工件、UI辅助能力；同时新增原生工具的命名空间、并发限制、调用方限制、托管审批、客户端搜索、可配置错误格式，MCP的发现过滤器、缓存控制、每工具审批、借用别名，provider的作用域头/查询参数、显式WebSocket路由、托管历史、缓冲Responses JSON、托管提示、重试控制，文本会话的Sign in with ChatGPT与Codex CLI登录路由，beforeComplete输出检查钩子与turn.acceptedText\(\)精确文本前缀暴露；升级要求工具回调默认并发需手动设置maxFunctionConcurrency:1避免竞态，Session.enqueue支持ifBusy: &\#x27;reject&\#x27;拒绝逻辑，AgentOptions要求非字符串Output类型匹配outputType，沙箱快照恢复需单独配置可信resumeAuthority声明，捆绑包需五个同版本SDK包对齐，checkpoint恢复需匹配原生Codex修订与执行器策略；修复User-Agent标识、ESM/CJS模块身份一致性、恢复流程的终端工具所有权与MCP回调错误问题；捆绑包新增Linux x64/ARM64、macOS Apple silicon、Windows x64平台支持，要求Linux glibc 2.39+、OpenSSL 3，Windows x64需VC++运行库，Node.js 24用于捆绑包校验。
+pydantic-ai v2.69.0 发布，引入工具调用处理架构的破坏性变更。\`RequestInput\` 折叠进 \`HandleDeferredToolCalls\` 并支持恢复令牌，工具调用 ID 改为响应级作用域配置。新增 Gemini 4 Hydrogen、Groq \`service\_tier\` 支持，流式管道增加 \`DetectLoops\` 循环检测。
 
-github · markstuart-oai · Nov 16, 21:06
+github · dsfaccini · Nov 17, 01:03
 
-**「设计要点」** 运行时层通过三种模型后端抽象解耦SDK与具体模型提供方，支持流式输出；控制流层引入类型化Decision实现agent路由与handoff的类型安全；记忆层新增本地命名配置文件，支持历史查询、编辑、分叉，配套沙箱工作流的内存、工件、UI辅助能力。
+**「设计要点」** 工具运行时层重构：\`RequestInput\` 并入 \`HandleDeferredToolCalls\`，工具调用 ID 作用域从全局改为响应级配置化。Harness 包重命名，子代理任务历史从内存移至持久化文件，流式输出增加循环检测。
 
-**「改了什么」** 相对v0.22.0-alpha.2，新增类型化Decision与OpenAIDecisions适配器、三种应用级模型后端、跨平台实时语音控制、LocalStorage历史管理能力；工具回调默认允许并发，需手动设置maxFunctionConcurrency:1避免竞态；Session.enqueue新增ifBusy: &\#x27;reject&\#x27;拒绝逻辑；AgentOptions要求非字符串Output类型匹配outputType；沙箱快照恢复需单独配置可信resumeAuthority声明，捆绑包需五个同版本SDK包对齐，checkpoint恢复需匹配原生Codex修订与执行器策略；修复User-Agent标识、ESM/CJS模块身份一致性、恢复流程的终端工具所有权与MCP回调错误问题；新增多平台捆绑包安装支持。
+**「改了什么」** 工具调用处理架构破坏性变更：\`RequestInput\` 折叠进 \`HandleDeferredToolCalls\` 并支持恢复令牌，工具调用 ID 改为响应级作用域。新增 Gemini 4 Hydrogen、Groq \`service\_tier\`、\`WindowsWorkspace\`、\`KubernetesSandbox\` 和 harness \`Peers\` 消息。流式管道增加循环检测，\`Advisor\` 接口统一为 \`native=\`/\`local=\`。
 
-**Tags**: `#runtime`, `#memory`, `#subagents`, `#planning`
+**Tags**: `#tools`, `#runtime`, `#breaking-change`
 
 ---
 
 <a id="item-harness-arch-3"></a>
-### [google/adk-go v2.8.0 发布](https://github.com/google/adk-go/releases/tag/v2.8.0) ⭐️ 7.8/10
+### [openai-agents-js v0.22.0-alpha.3 发布](https://github.com/openai/openai-agents-js/releases/tag/v0.22.0-alpha.3) ⭐️ 7.8/10
 
-Google 官方发布 adk-go v2.8.0。版本引入配置加载的破坏性变更：workflow edge 引用拒绝绝对 config\_path，且配置目录内任意符号链接均阻断 agent/workflow 引用加载，覆盖 Kubernetes ConfigMap、Bazel runfiles、Nix store 路径等场景，需将挂载复制为真实文件目录（如 cp -rL）后使用。新功能包括内存服务 artifact:// 引用支持、服务端 OAuth2 用户同意流、工具请求终端用户登录、Agent Runtime 流式查询客户端、MCP 工具集转换器、Vertex AI RAG 记忆服务及 BigQuery 工具集。
+openai-agents-js 发布 v0.22.0-alpha.3 官方 alpha 版本。该版本引入类型化决策机制（agent.decide\(\)、ctx.decide\(\)、OpenAIDecisions），支持应用自有模型后端（ResponsesModel、ChatCompletionsModel、AiSdkModel），扩展跨运行时语音能力至 Node.js、浏览器、React Native 和 Workers，并增强本地内存与执行器功能。 bundled 安装现支持 Linux x64/ARM64、macOS Apple silicon 和 Windows x64 四平台，Linux 需 glibc 2.39+ 与 OpenSSL 3，Windows 需 VC++ 运行库，Starter 检查基于 Node.js 24。
 
-github · adk-go-bot · Nov 16, 15:05
+github · markstuart-oai · Nov 16, 21:06
 
-**「改了什么」** 相对 v2.7.1，v2.8.0 收紧配置解析器对符号链接的接受策略，agent 与 workflow 引用均受影响。内存服务新增 artifact:// 引用解析与服务端 OAuth2 同意流，工具可请求终端用户登录；CLI、Agent Engine 客户端、记忆层及工具层分别新增部署环境配置、流式查询、Vertex AI RAG 服务、增量写入、BigQuery 工具集及 MCP 转换器。
+**「设计要点」** SDK 采用分层适配器架构，通过 ResponsesModel、ChatCompletionsModel 和 AiSdkModel 抽象模型后端，允许应用注入自有客户端。本地执行器通过 read-only workspace 与 trusted\_workspace\_write 策略隔离权限，沙盒恢复需匹配信任声明与快照 ID，AGENTS.md 发现机制已纳入执行器策略。
 
-**Tags**: `#runtime`, `#permissions`, `#config`
+**「改了什么」** 工具回调默认并发 admission，需显式设置 maxFunctionConcurrency: 1 避免竞态。Session.enqueue\(\) 现拒绝 ifBusy 选项，AgentOptions 要求非字符串 Output 类型匹配 outputType。沙盒恢复强制要求信任绑定，UnixLocal 和 Docker 远程快照需单独声明 remoteSnapshotId。捆绑安装要求五包版本一致，Starter 基于 Node.js 24。
+
+**「评论」** 无可用社区评论。
+
+**Tags**: `#runtime`, `#subagents`, `#memory`, `#planning`
 
 ---
 
 ## AI Agent Engineer
 
 <a id="item-agent-engineer-1"></a>
-### [HF 论文：MIRIX-2.0 多智能体记忆系统](https://huggingface.co/papers/2611.12068) ⭐️ 7.0/10
+### [OpenAI 儿童安全政策更新及封禁案例](https://openai.com/index/strengthening-online-child-safety/) ⭐️ 7.0/10
 
-2026年11月16日Hugging Face每日论文发布MIRIX-2.0多智能体LLM智能体记忆系统，该论文当前获社区45次赞同。该系统在5个QA与智能体任务基准中的4个达到对比系统最高准确率：LoCoMo得分91.4%，LongMemEval-S得分72.6%，领先最强基线14.3分；关闭AutoDream后，单跳与多跳文档QA得分分别比HyperMem高31.0、22.0分；作为过程记忆，其在ALFWorld、WebShop上的成功率高于对比记忆方法，MetaClaw-Bench得分49.2%，对比基线为44%（原文内容截断，完整技术实现细节与剩余对比数据未披露）。该成果面向从事LLM智能体记忆模块开发、智能体任务评估的工程师。
+OpenAI 于 2026-11-16 发布儿童安全政策更新，明确禁止 API 用于处理儿童性虐待材料（CSAM）。HN 社区报告一例生产环境自主代理因调用 OpenAI 图像分类 API 处理用户上传内容被封禁，累计分类超 10 万张图片，申诉未获进一步信息。OpenRouter 同步在零数据保留端点新增 CSAM 筛查。政策对误报申诉流程及数据共享范围仍不透明。
 
-rss · Hugging Face Daily Papers · Nov 16, 00:00
+hackernews · rossant · Nov 16, 18:12 · [Discussion](https://news.ycombinator.com/item?id=50520804)
 
-**「为什么重要」** 当前LLM智能体长期记忆存在参数记忆需训练、记忆整合易丢细节、全量存储检索成本高的普遍痛点，MIRIX-2.0在多个主流记忆与智能体任务基准上取得明确性能提升，为相关模块设计提供了可参考的评估参照，目前尚未有实际落地效果的公开验证。
+**「为什么重要」** 该政策更新直接影响使用 OpenAI API 构建图像分类或内容审核管道的代理工程师。OpenRouter 的调整打破了零数据保留端点可豁免筛查的预期，但实际封禁阈值与误报处理机制仍未公开。
 
-**「可关注」** 可关注：多智能体记忆系统在QA、过程记忆类基准上的性能增益，以及AutoDream组件对文档QA结果的显著影响。
+**「可关注」** 可关注：生产环境代理若需分类敏感图像，应优先评估本地模型替代云端 API，并确认工具链供应商的数据保留与筛查承诺是否随政策动态调整。
+
+**「评论」** HN 评论呈现分歧：部分用户反馈 GPT 图像生成对涉及儿童场景的提示词严格拒绝，另有用户指出“同意/伤害”伦理框架难以解释 AI 生成 CSAM 的禁止理由。同时，NCMEC 自动化举报链路已产生实际逮捕案例的讨论。
+
+**Tags**: `#permissions`, `#observability`
+
+---
+
+<a id="item-agent-engineer-2"></a>
+### [HF 每日论文：MIRIX-2.0 多智能体记忆系统](https://huggingface.co/papers/2611.12068) ⭐️ 7.0/10
+
+2026年11月17日Hugging Face每日论文收录MIRIX-2.0多智能体LLM记忆系统相关论文，该系统定位为兼顾实用性、准确性与效率的长期记忆方案，当前该论文获得46次HF每日论文点赞。关键基准表现包括：在5个QA基准中的4个取得最高准确率，LoCoMo达91.4%，LongMemEval-S达72.6%，领先最强基线14.3分；关闭AutoDream后，单跳与多跳文档QA较HyperMem分别提升31.0、22.0分；作为过程记忆时，在ALFWorld、WebShop上取得对比方法最高平均成功率，MetaClaw-Bench达49.2%，对比基线为44%。当前公开内容存在截断，缺少完整技术实现细节与剩余基准的完整对比数据，相关成果面向智能体记忆与评估开发方向的研究者与工程师。
+
+rss · Hugging Face Daily Papers · Nov 17, 04:55
+
+**「为什么重要」** 该成果在多个智能体记忆与任务评估基准上验证了优于现有基线的性能，为相关方向的记忆系统设计与评估开发提供了可参考的实证依据；但完整技术实现未公开，实际落地效果与泛化性尚未得到进一步验证。
+
+**「可关注」** 可关注多智能体记忆系统在长期记忆场景下的精度与效率平衡设计，以及其公开的基准测试结果对智能体记忆模块评估方案设计的参考价值。
 
 **Tags**: `#memory`, `#eval`, `#multi-agent`
 
 ---
 
-<a id="item-agent-engineer-2"></a>
-### [GH-AWTrace 数据集发布](https://huggingface.co/papers/2611.06866) ⭐️ 7.0/10
-
-2026年11月16日，Hugging Face每日论文聚合介绍了一篇arXiv预印本，发布大规模GitHub智能体工作流执行日志数据集GH-AWTrace。该数据集包含25014条已验证智能体工作流，覆盖5051个仓库，关联4112526条运行记录与562877份非空执行日志归档，数据受GitHub日志保留限制保存，同时关联仓库元数据与生成的工作流配置。它填补了现有研究仅关注工作流定义与输出、缺乏运行时执行证据的空白，可用于分析智能体执行失败、工具拒绝、代理委托等场景，对智能体评测、可观测性、工作流编排优化有参考价值；目前公开内容未包含性能对比或深度技术排查细节。
-
-rss · Hugging Face Daily Papers · Nov 16, 00:00
-
-**「为什么重要」** 该数据集首次公开了大规模带真实运行时执行证据的GitHub智能体工作流数据，解决了该领域缺乏生产级Trace数据的研究痛点；其对智能体故障分析、工具使用研究的实际增益还需后续研究进一步验证。
-
-**「可关注」** 可关注：GH-AWTrace 提供的真实生产执行日志可用于验证智能体工作流的故障定位与工具调用行为分析。
-
-**Tags**: `#eval`, `#observability`, `#orchestration`
-
----
-
 <a id="item-agent-engineer-3"></a>
-### [HF 每日论文：MEM-SQL 与 HARE 基准](https://huggingface.co/papers/2611.18338) ⭐️ 6.0/10
+### [Mobile AI Factory 论文发布](https://huggingface.co/papers/2611.13509) ⭐️ 7.0/10
 
-2026年11月16日，Hugging Face Daily Papers分享了一篇新论文，提出面向历史查询复用的Text-to-SQL基准HARE与内存增强方法MEM-SQL。HARE包含1600条请求，源自4个数据集的823条已验证查询，标注了各请求保留的组件与需编辑的部分，可区分全查询适配与部分复用场景。MEM-SQL通过存储全查询模板、可复用SQL块及领域概念映射实现内存增强。当前公开摘录未披露完整技术细节、性能数据与可复现资源，需参考原论文获取全量信息，该成果在Hugging Face Daily Papers获得17次赞同，主要对数据库交互类Agent的序列化工具调用、记忆系统设计场景有参考价值。
+2026年11月17日，Hugging Face Daily Papers curate了编号为2611.13509的论文，提出Mobile AI Factory：一个自动化端到端生成针对特定移动任务、目标设备微调量化小语言模型（SLM）的智能体系统。给定任务规格与目标手机，编排LLM自主选择超参数调优、真实数据挖掘或合成示例生成路径，精度受损时按固定规则回滚变更；系统从小模型到大模型遍历基座与量化方案，动态调整精度目标，并集成目标手机真实推理引擎测量结果，解决当前移动端SLM适配需专家反复人工调优的痛点，面向端侧AI、移动端智能体工具开发者群体。当前公开摘要未披露完整性能基准数据。
 
-rss · Hugging Face Daily Papers · Nov 16, 00:00
+rss · Hugging Face Daily Papers · Nov 17, 04:55
 
-**「为什么重要」** 它首次系统覆盖了Text-to-SQL场景下的历史查询复用评估空白，为数据库交互Agent的序列化工具调用效果测试提供了新的基准思路；但该方法对通用Agent记忆系统的迁移价值尚未得到验证，仅对数据库交互类场景有直接参考意义。
+**「为什么重要」** 该论文公开了端侧SLM自动化适配的智能体系统具体实现机制，包含编排LLM决策、精度回滚规则、真实设备推理测量集成等设计，为智能体工作流编排和端侧AI工具开发提供了可参考的落地路径，但完整性能基准数据未在公开摘要中披露，实际效果待验证。
 
-**「可关注」** 可关注：现有Text-to-SQL基准多仅独立评估单条查询生成效果，HARE对历史查询复用的评估维度可补充数据库交互Agent的序列化工具调用测试框架。
+**「可关注」** 可关注：端侧模型自动化适配场景中，用固定规则约束智能体决策（如精度回滚）、结合真实设备推理测量做搜索，是降低人工调优成本的可参考设计方向。
 
-**Tags**: `#eval`, `#memory`
+**Tags**: `#orchestration`, `#eval`, `#on-device-ai`, `#agentic-workflow`, `#model-optimization`
 
 ---
 
 <a id="item-agent-engineer-4"></a>
-### [多智能体对齐迁移研究 Aligning AI Teams](https://huggingface.co/papers/2611.17820) ⭐️ 6.0/10
+### [external-sandbox-quicksand 0.2.0 发布](https://github.com/prime-radiant-inc/external-sandbox-quicksand/releases/tag/0.2.0) ⭐️ 6.8/10
 
-Hugging Face Daily Papers 于 2026-11-16 推荐一篇预印本，研究单智能体 LLM 对齐训练向多智能体团队的迁移失败机制。该研究在败血症分诊、新闻推荐器及十个咨询提案生成任务上开展实证，发现单-团队安全差距与模型能力无清晰正相关：Anthropic Mythos Preview 在一个任务上差距最大，在另一个任务上最小。研究还测试了互相批评、群聊协调等自然干预，但这些方法无法可靠将团队行为拉回单智能体对齐水平。当前材料仅呈现部分发现，全文尚未发布，缺乏完整结论、可操作解决方案或量化性能数据。
+2026年11月16日，simonw 发布 prime-radiant-inc/external-sandbox-quicksand 0.2.0。本次更新新增 \`--proxy\` 参数，启动 HTTP\(S\) 代理时默认拒绝所有目的地流量，支持通过 \`/proxy\` 页面添加放行规则，无需预先编写策略文件；\`--proxy-config FILE\` 参数可在启动时加载策略，优先级高于默认 deny-all 模式。代理现在通过 truststore 库校验上游 TLS 证书，匹配操作系统信任库，避免主机浏览器、curl 可访问的站点返回 502。日志优化方面，沙箱客户端中途断开连接时记录为 \`allowed\` 状态，原因为 \`client\_disconnected\`，不再记为 502 错误；证书校验失败时记录原因为 \`upstream\_certificate\_not\_verified\`。
 
-rss · Hugging Face Daily Papers · Nov 16, 00:00
+github · simonw · Nov 16, 22:24
 
-**「为什么重要」** 多智能体系统对齐是 coding agent 工程的核心难题。该预印本提供初步实证证据，表明常见自然干预可能无法解决能力相关安全差距，值得在全文发布前浏览。
+**「为什么重要」** 该工具面向 AI 代理沙箱的网络权限管控场景，deny-all 默认模式降低了临时放行网络请求的策略配置门槛，OS 信任库 TLS 校验减少了因证书策略不一致导致的代理故障，日志优化则方便排查沙箱内客户端的网络异常。
 
-**「可关注」** 可关注：单智能体对齐结果不能直接外推多智能体团队，现有自然协调机制（互评、群聊）可能无法弥补安全差距。
+**「可关注」** 可关注：沙箱网络代理工具的默认拒绝策略与动态规则配置能力，以及 TLS 校验对齐主机信任库对降低代理故障率的实际效果。
 
-**Tags**: `#orchestration`, `#eval`, `#coding-agent`
+**Tags**: `#sandbox`, `#proxy`, `#permissions`, `#observability`, `#tooling`
+
+---
+
+<a id="item-agent-engineer-5"></a>
+### [Gamer 游戏智能体基础模型发布](https://huggingface.co/papers/2611.18397) ⭐️ 6.0/10
+
+2026年11月17日Hugging Face Daily Papers收录arXiv预印本，介绍通用游戏智能体基础模型Gamer。该模型采用端到端架构，整合感知、记忆管理与多步推理能力，支持2D图形界面与3D模拟世界的交互，训练数据包含数万小时真实设备键鼠交互轨迹，覆盖模拟游戏与具身环境，还通过稀疏思维指令调优降低冗余计算。目前公开内容未包含性能基准与可复现性信息，适用场景聚焦游戏智能体领域。
+
+rss · Hugging Face Daily Papers · Nov 17, 04:55
+
+**「为什么重要」** 该工作首次将感知、记忆管理、多步推理端到端整合到游戏智能体基础模型中，并以真实设备交互数据做预训练、用稀疏思维调优降低计算冗余，为长时序游戏智能体研发提供了可参考的技术路径。但其通用场景适用性尚未经过公开基准验证，目前仅确认对游戏智能体领域有直接参考价值。
+
+**「可关注」** 可关注：其端到端感知-记忆-推理架构、真实设备交互数据预训练方案、稀疏思维指令调优的降冗余效果，以及后续公开的性能基准与可复现性信息。
+
+**Tags**: `#memory`, `#eval`
+
+---
+
+<a id="item-agent-engineer-6"></a>
+### [VibePrevisBench：4D Blender 编码智能体基准](https://huggingface.co/papers/2611.15789) ⭐️ 6.0/10
+
+2026年11月17日Hugging Face每日论文发布专用基准VibePrevisBench，用于评估能生成可执行4D Blender场景的编码智能体。该基准包含242个任务，覆盖脚本、照片、续写、参考视频四类输入，采用双维度评估：规则式场景检查会重跑代码，将导出的4D场景与9个维度的隐藏真实事实比对；VLM屏幕检查由视觉语言模型判断生成内容与事实的符合度。该资源面向构建3D/4D工具类编码智能体、专项智能体评估的工程师。
+
+rss · Hugging Face Daily Papers · Nov 17, 04:55
+
+**「为什么重要」** 它填补了4D Blender场景生成类编码智能体的专项评估空白，提供了可复用的双维度评估框架；但仅覆盖细分场景，对通用编码智能体能力评估无直接参考价值。
+
+**「可关注」** 可关注：该基准公开了规则式场景检查与VLM屏幕检查的具体评估维度与实现逻辑，可直接复用于同类4D场景生成智能体的效果验证。
+
+**Tags**: `#eval`, `#coding-agent`
 
 ---
 
 ## AI Daily
 
 <a id="item-ai-daily-1"></a>
-### [OpenAI 发布医疗版 ChatGPT 新功能](https://openai.com/index/more-ways-to-move-care-forward-with-chatgpt-for-healthcare) ⭐️ 8.8/10
+### [OpenAI 启动嵌入式评估第一阶段](https://openai.com/index/our-first-phase-of-embedded-assessments) ⭐️ 8.8/10
 
-OpenAI 宣布为医疗场景的 ChatGPT 增加三项新功能：computer-use agents、改进的临床问答，以及可在不同医疗软件间工作的插件。这些功能的目标是让 ChatGPT 在医疗软件中完成实际工作。公告未披露具体发布时间、支持地区或临床验证细节。
-
-rss · OpenAI Blog · Nov 16, 06:00
-
-**「为什么重要」** 医疗是 AI 落地的关键垂直领域，OpenAI 此次为医疗场景扩展 ChatGPT 功能，显示其对垂直行业的持续投入。新功能同时涉及 agent 执行与跨系统整合，扩展了 ChatGPT 在医疗场景的应用方向。
-
-**「可关注」** 可关注：医疗场景中 computer-use agent 与跨医疗软件插件的实际落地形式。
-
-**Tags**: `#lab`, `#product`, `#industry`
-
----
-
-<a id="item-ai-daily-2"></a>
-### [ChatGPT 学术研究计划扩至 20 万人](https://openai.com/index/expanding-chatgpt-for-academic-researchers) ⭐️ 7.8/10
-
-OpenAI 宣布扩展 ChatGPT for Academic Researchers 计划，向全球 20 万名研究人员免费提供前沿模型访问权限。此次扩展将免费覆盖规模扩大至 20 万人，但材料未说明具体模型范围、访问形式或申请条件。
-
-rss · OpenAI Blog · Nov 16, 17:00
-
-**「为什么重要」** 该扩展是 OpenAI 在学术可及性方面的政策调整，将免费前沿模型覆盖扩大至 20 万研究者规模。材料未评估具体影响，仅记录这一规模变化本身。
-
-**「可关注」** 可关注：免费访问的具体形式与模型限制尚未披露，材料未说明相关约束条件。
-
-**Tags**: `#openai`, `#product`, `#policy`, `#industry`
-
----
-
-<a id="item-ai-daily-3"></a>
-### [OpenAI 发布儿童网络安全防护工具](https://openai.com/index/strengthening-online-child-safety) ⭐️ 7.8/10
-
-2026年11月16日，OpenAI 官方博客发布公告，推出用于防范、检测和应对网络儿童性剥削与虐待的新工具、实用指南，同时公布相关合作伙伴关系，覆盖该领域的全流程防护工作。
-
-rss · OpenAI Blog · Nov 16, 17:00
-
-**「为什么重要」** 该举措为AI平台应对网络儿童性剥削问题提供了可参考的工具与规范框架，有助于推动行业建立统一的防护标准。
-
-**「可关注」** 可关注：OpenAI 配套发布的儿童网络性剥削防护实用指南的具体技术落地规则与工具调用方式。
-
-**Tags**: `#lab`, `#policy`, `#industry`, `#product`
-
----
-
-<a id="item-ai-daily-4"></a>
-### [LVMH Media 与 OpenAI 达成合作](https://openai.com/index/lvmh-media-division-partnership) ⭐️ 7.8/10
-
-LVMH Media Division 与 OpenAI 宣布建立战略合作伙伴关系，旨在用 AI 支持新闻业，并通过 ChatGPT 让 LVMH 旗下出版物更易访问。公告未披露具体合作规模、投入资金或覆盖的出版物数量。
-
-rss · OpenAI Blog · Nov 16, 09:00
-
-**「为什么重要」** LVMH 作为全球奢侈品媒体集团与 OpenAI 达成合作，是新闻业 AI 应用的一个新案例。该合作如何落地，可观察新闻业与 AI 的协作边界。
-
-**「可关注」** 可关注：LVMH 旗下出版物接入 ChatGPT 的内容授权范围与交互形式。
-
-**Tags**: `#industry`, `#lab`, `#product`
-
----
-
-<a id="item-ai-daily-5"></a>
-### [OpenAI 嵌入式评估首阶段启动](https://openai.com/index/our-first-phase-of-embedded-assessments) ⭐️ 7.8/10
-
-2026年11月16日OpenAI官方宣布，与Apollo Research、METR、Transluce、Goodfire四家研究机构启动嵌入式评估首阶段计划，由上述独立机构评估模型对齐性、安全措施及监控系统。
+OpenAI 启动嵌入式评估第一阶段，与 Apollo Research、METR、Transluce 及 Goodfire 合作，独立评估模型对齐、安全措施与监控系统。这是 OpenAI 首次将外部机构嵌入模型开发流程进行安全评估。
 
 rss · OpenAI Blog · Nov 16, 08:00
 
-**「为什么重要」** 这是OpenAI首次推进嵌入式第三方评估机制，独立机构的介入可提升模型对齐、安全相关评估的客观性，为行业评估范式提供参考。
+**「为什么重要」** 嵌入式评估将独立第三方直接嵌入模型开发周期，而非事后审计，代表安全评估范式转变。外部机构直接介入评估环节，有助于建立更可信的安全保障体系。
 
-**「可关注」** 可关注：后续可跟踪四家机构的评估方法论与公开结论，了解第三方嵌入式评估的落地实践。
+**「可关注」** 可关注：Apollo Research、METR、Transluce 及 Goodfire 四家机构的具体评估范围与结果披露方式。
 
 **Tags**: `#lab`, `#eval`, `#policy`, `#industry`
 
 ---
 
-<a id="item-ai-daily-6"></a>
-### [OpenAI 推进医疗团队计算机代理](https://openai.com/index/advancing-computer-use-for-healthcare-teams) ⭐️ 7.8/10
+<a id="item-ai-daily-2"></a>
+### [OpenAI Expands Academic Access to 200K Researchers](https://openai.com/index/expanding-chatgpt-for-academic-researchers) ⭐️ 7.8/10
 
-OpenAI 于 2026 年 11 月 16 日发布官方博客，宣布推进面向医疗团队的计算机使用代理能力。该公告未披露具体技术改进细节、性能指标或适用范围。目前可确认的信息仅限发布主体、发布时间及目标应用领域。
+OpenAI announced an expansion of its ChatGPT for Academic Researchers program, granting 200,000 researchers worldwide free access to its frontier models. The announcement was published on November 16, 2026. The source material does not specify additional eligibility criteria, which frontier models are included, or any usage limitations.
+
+rss · OpenAI Blog · Nov 16, 17:00
+
+**Tags**: `#lab`, `#industry`, `#product`, `#policy`
+
+---
+
+<a id="item-ai-daily-3"></a>
+### [OpenAI 发布 1800+ 科学家 ChatGPT 使用研究](https://openai.com/index/science-at-the-frontier) ⭐️ 7.8/10
+
+OpenAI&\#x27;s official blog published a research report based on a survey of over 1,800 scientists, detailing their use of ChatGPT in research workflows. The report covers daily research practices, self-reported productivity gains, and expectations for AI-driven scientific discovery.
+
+rss · OpenAI Blog · Nov 16, 12:00
+
+**「为什么重要」** This is one of the few large-scale empirical datasets on AI tool adoption among researchers, offering concrete insights into how AI is integrated into real scientific workflows.
+
+**「可关注」** 可关注：Empirical data on AI tool usage habits, productivity feedback, and expectations in scientific scenarios is now available as a reference sample.
+
+**Tags**: `#lab`, `#industry`, `#product`
+
+---
+
+<a id="item-ai-daily-4"></a>
+### [LVMH 媒体部与 OpenAI 达成合作](https://openai.com/index/lvmh-media-division-partnership) ⭐️ 7.8/10
+
+2026年11月16日，OpenAI官方博客发布公告，宣布与LVMH媒体部达成战略合作。双方合作目标为通过AI支持新闻业发展，同时让LVMH旗下出版物可通过ChatGPT访问。目前公开信息未披露具体技术实现细节与接入范围。
+
+rss · OpenAI Blog · Nov 16, 09:00
+
+**「为什么重要」** 这是头部AI实验室与奢侈品媒体集团的公开行业合作，可能为媒体行业的AI应用与内容分发路径提供新的参考。
+
+**「可关注」** 可关注：头部AI公司与传统媒体集团的内容接入合作模式后续落地细节。
+
+**Tags**: `#lab`, `#industry`, `#product`
+
+---
+
+<a id="item-ai-daily-5"></a>
+### [OpenAI 推进医疗团队计算机操作代理](https://openai.com/index/advancing-computer-use-for-healthcare-teams) ⭐️ 7.8/10
+
+OpenAI 于 2026 年 11 月 16 日发布官方博客，宣布推进计算机操作代理（computer-use agent）能力，面向医疗团队场景部署。具体技术改进、性能数据与发布时间表未在提供材料中披露。
 
 rss · OpenAI Blog · Nov 16, 06:00
+
+**「为什么重要」** 医疗场景对操作准确性与数据安全要求严格，OpenAI 此举将计算机操作代理应用拓展至医疗垂直领域。实际落地效果与合规性安排需待后续信息确认。
+
+**Tags**: `#lab`, `#industry`, `#product`
+
+---
+
+<a id="item-ai-daily-6"></a>
+### [OpenAI 扩展 ChatGPT 医疗能力](https://openai.com/index/more-ways-to-move-care-forward-with-chatgpt-for-healthcare) ⭐️ 7.8/10
+
+OpenAI 于 2026 年 11 月 16 日发布 ChatGPT 医疗能力扩展方案，新增 computer-use agents、增强版临床问答、跨医疗软件插件三类功能。这些功能针对医疗工作流设计，可跨不同医疗软件生态运行，目标是完成实际医疗场景任务。
+
+rss · OpenAI Blog · Nov 16, 06:00
+
+**「为什么重要」** 这是 OpenAI 首次将 computer-use agents 等通用能力落地到医疗垂直场景，提供了可验证的医疗工作流落地路径，对医疗行业数字化和合规场景的大模型应用有参考价值。
+
+**「可关注」** 可关注：跨医疗软件的插件互操作性设计，以及 computer-use agents 在合规医疗场景的落地边界。
 
 **Tags**: `#lab`, `#industry`, `#product`
 
 ---
 
 <a id="item-ai-daily-7"></a>
-### [OpenAI 启动百万英镑青年 AI 培训](https://openai.com/index/the-kings-trust-and-openai) ⭐️ 7.8/10
+### [OpenAI 发布儿童在线安全工具](https://openai.com/index/strengthening-online-child-safety) ⭐️ 6.8/10
 
-OpenAI 宣布与英国慈善机构 The King&\#x27;s Trust 启动 £1m 合作，计划为英国最多 2.5 万名年轻人提供实用 AI 技能培训。该项目聚焦工作场景所需的 AI 应用能力，目前未披露具体课程内容、实施周期或参与门槛。
+OpenAI 于 2026-11-16 宣布推出新工具、实践指导及合作伙伴关系，旨在预防、检测和应对在线儿童性剥削与虐待。目前仅知措施覆盖预防、检测、响应三个环节，但官方未披露具体工具名称、功能参数、合作伙伴名单或与既有方案的差异。该公告缺乏可量化的效果指标或部署时间表。
 
-rss · OpenAI Blog · Nov 16, 00:00
+rss · OpenAI Blog · Nov 16, 17:00
 
-**「可关注」** 关注 OpenAI 通过 The King&\#x27;s Trust 落地英国青年 AI 技能培训的后续课程设计。
+**「可关注」** 可关注：OpenAI 推出覆盖预防、检测、响应环节的在线儿童安全工具与指导。
 
-**Tags**: `#lab`, `#industry`
-
----
-
-<a id="item-ai-daily-8"></a>
-### [TPU 同策略 RL 实现零训练推理差异](https://developers.googleblog.com/unlocking-stable-on-policy-rl-on-tpu-with-bitwise-zero-traininference-mismatch/) ⭐️ 7.8/10
-
-Google 开发者博客发布 Zero-TIM（零训练-推理不匹配）技术方案，落地于 Tunix 框架，解决大语言模型同策略强化学习训练中 rollout 生成与梯度更新执行路径不同导致的数值不稳定问题。该方案在 64 块 TPU v5p 组成的 DP8×TP8 多主机网格上完成验证，实现采样解码、服务预填充、训练前向三条路径的 logprob 位级完全一致，当前验证基于 Qwen3-8B  checkpoint 在 FrozenLake 环境的 200 步数值测试，实现已在 Tunix 开源。
-
-rss · Google Developers AI · Nov 16, 00:00
-
-**「为什么重要」** 消除训练-推理数值不匹配已成为大规模 RL 收敛的行业标配要求，该方案提供了可复用的分布式 JAX/TPU 栈位精确同策略 RL 实现蓝图，解决了同策略 RL 训练易因数值差异退化为异策略的行业痛点。
-
-**「可关注」** 可关注：Tunix 的 Zero-TIM 提供四部分可复用配方，通过锁存分片内核累加、显式规约顺序、统一 logprob 评分尾、自定义服务内核微分规则，实现 TPU 上采样/预填充/训练三条路径的位级 logprob 对齐；同时提供采样解码-预填充、预填充-训练前向的两步诊断方法，可快速定位数值对齐问题，并通过 XLA\_FLAGS 传递 --xla\_allow\_excess\_precision=false 约束编译器中间精度。
-
-**Tags**: `#lab`, `#industry`, `#product`
+**Tags**: `#policy`, `#industry`, `#lab`
 
 ---
