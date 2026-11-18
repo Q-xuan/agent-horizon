@@ -5,32 +5,30 @@ date: 2026-11-18
 lang: en
 ---
 
-> From 193 items, 17 important content pieces were selected
+> From 186 items, 15 important content pieces were selected
 
 ---
 
 **Agent Harness Architecture**
 1. [Codex rust-v0.170.0 发布](#item-harness-arch-1) ⭐️ 7.8/10
-2. [pydantic-ai v2.70.0 发布](#item-harness-arch-2) ⭐️ 7.8/10
-3. [openai-agents v0.25 发布](#item-harness-arch-3) ⭐️ 7.8/10
+2. [Goose v1.60.0 发布](#item-harness-arch-2) ⭐️ 7.8/10
+3. [pydantic-ai v2.70.0 发布](#item-harness-arch-3) ⭐️ 7.8/10
 
 **AI Agent Engineer**
-1. [OpenAI 发布 GPT-6.2 双模型](#item-agent-engineer-1) ⭐️ 8.0/10
-2. [llm CLI v0.38 发布](#item-agent-engineer-2) ⭐️ 7.8/10
-3. [ONNX Runtime Repo Down](#item-agent-engineer-3) ⭐️ 7.0/10
-4. [Prime Radiant 开源外部沙箱实现](#item-agent-engineer-4) ⭐️ 7.0/10
-5. [Datasette Lite 浏览器完整重写](#item-agent-engineer-5) ⭐️ 7.0/10
-6. [K2-Horizon 开源模型舰队发布](#item-agent-engineer-6) ⭐️ 7.0/10
-7. [SWE-CoWork 编码代理组织基准发布](#item-agent-engineer-7) ⭐️ 7.0/10
-8. [HF Daily Papers 权重空间编程无需 Transformer](#item-agent-engineer-8) ⭐️ 6.0/10
-9. [ResWAM 世界动作模型论文发布](#item-agent-engineer-9) ⭐️ 6.0/10
-10. [Edge0-145B-NVFP4 登顶趋势榜](#item-agent-engineer-10) ⭐️ 6.0/10
+1. [GPT-6.2 Astra/Sol 发布](#item-agent-engineer-1) ⭐️ 8.0/10
+2. [llm 0.38 发布 新增GPT-6.2模型支持](#item-agent-engineer-2) ⭐️ 7.8/10
+3. [External Sandbox 模式 三套开源实现发布](#item-agent-engineer-3) ⭐️ 7.0/10
+4. [HF 论文：OPD 重塑 LLM ReAct](#item-agent-engineer-4) ⭐️ 7.0/10
+5. [Self-Improvement Memory 提出 CRSI 机制](#item-agent-engineer-5) ⭐️ 7.0/10
+6. [HF日报：权重空间编程无需Transformer](#item-agent-engineer-6) ⭐️ 6.0/10
+7. [Edge0-145B-NVFP4 登 HF 趋势榜](#item-agent-engineer-7) ⭐️ 6.0/10
+8. [Martin Fowler 确定性模拟测试介绍](#item-agent-engineer-8) ⭐️ 6.0/10
 
 **AI Daily**
-1. [OpenAI 发布 GPT-6.2 Astra 与 Sol](#item-ai-daily-1) ⭐️ 9.8/10
-2. [ChatGPT Sales 插件上线](#item-ai-daily-2) ⭐️ 7.8/10
-3. [GitHub 开源 Agent Host Protocol](#item-ai-daily-3) ⭐️ 7.8/10
-4. [GitHub 微软试点 AI 辅助开源漏洞修复](#item-ai-daily-4) ⭐️ 6.8/10
+1. [GitHub 发布开源 AHP 跨设备会话协议](#item-ai-daily-1) ⭐️ 8.8/10
+2. [GPT-6.2 Astra Sol 发布](#item-ai-daily-2) ⭐️ 7.8/10
+3. [OpenAI 发布 ChatGPT Sales 插件](#item-ai-daily-3) ⭐️ 7.8/10
+4. [GitHub 微软试点 AI 漏洞修复直报](#item-ai-daily-4) ⭐️ 7.8/10
 
 ---
 
@@ -39,261 +37,229 @@ lang: en
 <a id="item-harness-arch-1"></a>
 ### [Codex rust-v0.170.0 发布](https://github.com/openai/codex/releases/tag/rust-v0.170.0) ⭐️ 7.8/10
 
-OpenAI Codex agent harness 发布 rust-v0.170.0。本次更新增加实验性跨环境同名 MCP 服务器支持（\#60905）、MCP OAuth 凭证竞态修复（\#60849, \#60981），以及 TUI 实时语音通话的 WebRTC 协商能力（\#61172）。沙箱机制修复了权限保留、子线程限制传递和 Windows 运行时注册恢复（\#60936, \#61134, \#60943, \#60944）。运行时稳定性改进包括 WebSocket 超大请求按广告限制立即回退 HTTP（\#60840, \#60841）、Cloud 会话重连及恢复轮次保留（\#60969, \#61014），以及 OpenTelemetry HTTP 导出器自动刷新认证头（\#61028）。
+openai/codex 发布 rust-v0.170.0。本次新增 TUI 实时语音通话的 WebRTC 协商能力，以及 OpenTelemetry HTTP 导出器的自动刷新认证头。实验性支持跨环境同名 MCP 服务器相互隔离。错误修复涵盖 WebSocket 超大请求降级、MCP OAuth 凭证竞态、Cloud 会话重连与恢复轮次保留、Windows 文件替换与运行时注册恢复，以及沙箱权限继承和搜索去重。文档同步更新沙箱权限配置说明。
 
 github · github-actions\[bot\] · Nov 18, 03:40
 
-**「设计要点」** 沙箱权限管理转向 permission profile 标签体系，并在会话准入时统一规范化权限更新，确保子线程继承现有限制。MCP 服务器实现按环境隔离同名实例，运行时通过 WebSocket 消息大小限制回退 HTTP 并支持 Cloud 会话断线重连与恢复轮次保留。
+**「设计要点」** 实验性 MCP 服务器环境隔离通过独立命名空间实现，避免跨环境配置冲突。沙箱权限在会话设置准入时统一规范化，并在线程和子进程中继承保留。运行时重连逻辑在 Cloud 流式传输中断后恢复活跃恢复轮次。Windows 平台修复原子写入和特权错误后的运行时注册对账。
 
-**「改了什么」** 相对 rust-v0.169.0，本版本新增 TUI 实时语音通话实验支持、跨环境 MCP 服务器隔离和 OpenTelemetry 自动刷新认证头。修复覆盖 MCP OAuth 竞态、沙箱权限保留与 Windows 兼容性、WebSocket 超大请求回退、Cloud 会话重连及文件搜索去重。
+**「改了什么」** 新增 TUI 实时语音通话的 WebRTC 协商能力。MCP 服务器现在支持跨环境独立实例。OAuth 凭证刷新在取消和登出时具备竞态安全。Cloud 对话在临时流中断后自动重连并保留恢复轮次。Windows 沙箱修复文件替换、权限保留和运行时注册恢复问题。
 
 **Tags**: `#mcp`, `#sandbox`, `#runtime`, `#permissions`, `#tools`
 
 ---
 
 <a id="item-harness-arch-2"></a>
-### [pydantic-ai v2.70.0 发布](https://github.com/pydantic/pydantic-ai/releases/tag/v2.70.0) ⭐️ 7.8/10
+### [Goose v1.60.0 发布](https://github.com/aaif-goose/goose/releases/tag/v1.60.0) ⭐️ 7.8/10
 
-pydantic-ai v2.70.0 发布，同步修复 pydantic-ai-harness 0.70.0 中两个高危 ReDoS 漏洞。ToolOutputLimits 的 ANSI  stripping（strip\_ansi=True）与 JWT 密钥脱敏正则均存在二次时间复杂度回溯，攻击者可构造超长工具输出或含 JWT 的文本阻塞事件循环数秒至数分钟。本次更新还新增 StreamGuardrail、PruneToolResults、CapabilityPart 等运行时能力，并扩展 xAI、HuggingFace、Groq 及 OpenAI gpt-6.2 系列模型适配。
+Goose agent harness 发布 v1.60.0。核心运行时新增 SkillOperation、SlashCommandOperation、Bang command 和 Steering 四种操作类型，同时移除遗留 Skills 扩展（破坏性变更）。新增 Cortecs 与 Onysoft 声明式 provider 支持，GDK 引入可复用轮次限制。此外包含 MCP 运行时与平台扩展分离、移除 chat 模式、MSRV 提升至 1.95.0 等改进，以及大量针对 Ollama、OpenAI、Databricks、Bedrock 等后端的 bug 修复。
 
-github · dsfaccini · Nov 17, 22:44
+github · github-actions\[bot\] · Nov 17, 23:08
 
-**「设计要点」** 安全修复位于 pydantic-ai-harness 层而非核心运行时，说明工具输出处理与密钥脱敏属于 harness 级职责。事件循环阻塞的影响路径表明，相关正则操作在异步运行时中同步执行且缺乏超时保护。
+**「设计要点」** 本版将平台扩展与 MCP 运行时分离，并把 hook 触发从 GDK API 移入 Goose 自身运行循环，收紧了核心与扩展的边界。新增的四种操作类型均通过状态机注册，使运行时更偏向声明式。
 
-**「改了什么」** 修复 pydantic-ai-harness 0.70.0 中两个高危 ReDoS 漏洞：ToolOutputLimits 的 ANSI  stripping 正则与 JWT 脱敏正则。新增 StreamGuardrail 流式文本筛查、PruneToolResults 工具结果摘要、CapabilityPart 语音权限声明，以及 SpendLimits Budget 按作用域解析。模型层新增 xAI service\_tier 转发、HuggingFace logprobs、Groq JSON 输出修正与 OpenAI gpt-6.2 模型支持。
+**「改了什么」** 相对上一版，核心运行时新增四种操作类型并移除 Skills 扩展（破坏性变更），新增两个声明式 provider，GDK 支持可复用轮次限制。同时移除 chat 模式与 GDK hook API，MSRV 提升至 1.95.0，并修复多项 provider 适配与安全隐私问题。
 
-**「评论」** 暂无社区评论。
-
-**Tags**: `#runtime`, `#tools`, `#permissions`
+**Tags**: `#runtime`, `#tools`
 
 ---
 
 <a id="item-harness-arch-3"></a>
-### [openai-agents v0.25 发布](https://github.com/openai/openai-agents-python/releases/tag/v0.25.0) ⭐️ 7.8/10
+### [pydantic-ai v2.70.0 发布](https://github.com/pydantic/pydantic-ai/releases/tag/v2.70.0) ⭐️ 7.8/10
 
-openai-agents v0.25.0 发布。移除 Runloop 沙箱提供方，构成破坏性变更。暴露第三方会话适配器工具，供 harness 实现者集成。修复内部沙箱操作误加载工作区启动文件。修复跨 resume 丢失嵌套 ToolContext 审批决策。避免已完成工具调用重复指纹。新增 handoff 错误恢复 opt-in。对齐隐式设置与提供方模型。对齐模型默认值与 TS SDK。MCP v2 支持并发 Streamable HTTP 请求。GPT-6 Chat Completions 工具请求默认关闭推理。依赖项升级：openai 3.29.0→3.48.0，mcp 2.0.0→2.3.0，websockets 15.0.1→16.1.1。
+pydantic-ai v2.70.0 发布，包含 harness 两个高危 ReDoS 安全修复。\`strip\_ansi=True\` 时 \`ToolOutputLimits\` 的 ANSI 转义序列正则存在二次方耗时，攻击者可构造含大量未终止转义序列的工具输出阻塞事件循环数十秒至分钟级。默认 \`jwt\` 密钥脱敏正则同样存在二次方回溯，攻击者可 craft 数百 KB 文本触发长时间占用。版本同时新增 \`StreamGuardrail\`、\`PruneToolResults\`、\`ToolSearch\` 等运行时能力，以及 xAI \`service\_tier\` 转发、HuggingFace logprobs 返回等模型层特性。
 
-github · openai-sdks\[bot\] · Nov 18, 00:22
+github · dsfaccini · Nov 17, 22:44
 
-**「设计要点」** 沙箱层移除内置 Runloop 提供方，runtime 沙箱配置责任转移至外部集成。工具权限层修复 ToolContext 审批决策在 resume 间的持久化。新增会话适配器工具，供 harness 实现者接入自定义状态存储。
+**「设计要点」** harness 在工具输出处理和密钥脱敏环节对不可信输入使用正则表达式，本次修复将 ANSI 与 JWT 匹配改为线性复杂度模式。新引入的 \`StreamGuardrail\` 在流式输出返回调用方前逐段筛查，\`PruneToolResults\` 允许模型用摘要替换工具结果以减少上下文占用。
 
-**「改了什么」** 破坏性变更：移除 Runloop 沙箱提供方。新增能力：暴露第三方会话适配器工具，handoff 错误恢复 opt-in。问题修复：内部沙箱操作不再加载工作区启动文件；嵌套 ToolContext 审批决策跨 resume 保留；已完成工具调用停止重复指纹；隐式设置与提供方模型对齐；模型默认值与 TS SDK 对齐；MCP v2 支持并发 Streamable HTTP 请求；GPT-6 Chat Completions 工具请求默认非推理。依赖升级：openai 3.29.0→3.48.0，mcp 2.0.0→2.3.0，websockets 15.0.1→16.1.1。
+**「改了什么」** 修复两个高危 ReDoS：\`strip\_ansi=True\` 下的 ANSI 转义序列处理与默认 \`jwt\` 密钥脱敏模式。新增 \`StreamGuardrail\` 流式筛查、\`PruneToolResults\` 工具结果裁剪、\`ToolSearch\` 预搜索延迟、\`SubAgent\(on\_model\_error=\)\` 独立重试、\`ToolDefinition.durable\` 持久化执行，以及 xAI \`service\_tier\` 与 HuggingFace logprobs 支持。
 
-**Tags**: `#sandbox`, `#tools`, `#permissions`
+**Tags**: `#runtime`, `#tools`, `#permissions`
 
 ---
 
 ## AI Agent Engineer
 
 <a id="item-agent-engineer-1"></a>
-### [OpenAI 发布 GPT-6.2 双模型](https://openai.com/index/introducing-gpt-6-2-astra-sol/) ⭐️ 8.0/10
+### [GPT-6.2 Astra/Sol 发布](https://openai.com/index/introducing-gpt-6-2-astra-sol/) ⭐️ 8.0/10
 
-2026年11月17日OpenAI正式发布GPT-6.2 Astra与GPT-6.2 Sol，API标识为\`gpt-6.2-astra\`与\`gpt-6.2-sol\`，第三方库LLM已发布0.38版本适配两款新模型，前者定位前沿 hardest projects 模型，后者定位高效日常通用模型。Astra定价为输入$8/MTok、输出$40/MTok，是上一代6 Astra的80%，缓存输入价格降至$0.40/MTok，为上一代的1/4；Sol定价维持$2/$10，是GPT-5.6 Sol的一半。官方宣称两款模型在agent任务上可实现最高5倍成本降低、20% token 消耗减少，推理速度更快且所需工具调用更少，已在PacBench、数据分析考试等agent相关eval中验证性能。社区实测显示数据分析考试中Astra成本从V6的约20美元降至约4美元、Sol从约2.6美元降至约1.2美元，准确率与上一代接近，但存在偶尔提前终止未找到答案的情况；用Codex CLI跑复杂代码生成任务时，两款模型在3D动画生成任务中表现弱于Claude Fable 5.2与Gemini 4 Carbon。部分用户反馈Astra长任务中会随机询问无关内部实现细节，办公场景生成效果弱于旧模型，PacBench得分Astra为92、Sol为87，分别低于Kimi K3.1 Pro的93与Muse Wonder的87，但耗时更短。影响群体为使用OpenAI API开发agent、做coding agent harness的工程师。
+OpenAI发布GPT-6.2 Astra和GPT-6.2 Sol，API标识为gpt-6.2-astra和gpt-6.2-sol，LLM 0.38已率先支持。Astra输入定价$8/MTok、输出$40/MTok，为上一代GPT-6 Astra的80%，缓存输入价格降至$0.40/MTok；Sol维持$2/$10定价，为GPT-5.6 Sol的一半。社区实测显示Astra成本较V6下降约80%（从~$20到~$4），Sol下降约54%（从$2.6到$1.2），token用量减少约20%，工具调用次数也更少。PacBench测试中，Astra得分92、耗时6.6分钟、花费$2.04；Sol得分87、耗时6.3分钟、花费$0.49。也有用户反馈Astra长任务中会提出与当前目标无关的内部实现细节问题，部分办公场景生成质量不及旧模型。
 
 hackernews · jasondavies · Nov 17, 17:46 · [Discussion](https://news.ycombinator.com/item?id=50535230)
 
-**「为什么重要」** 已发生的agent场景定价下调与效率提升可直接降低coding agent的API成本，是当前值得跟进的变化；但成本下降、效率提升能否复现到所有自定义agent场景，以及长任务稳定性、办公场景生成质量的问题是否普遍，尚未得到充分验证。
+**「为什么重要」** 对coding agent和harness团队而言，新模型的价格与token效率优化可直接降低长会话运行成本，公开的PacBench数据也为agent能力选型提供了可对比的参考；但模型在长任务中的异常提问和部分场景的质量波动，需要团队在接入前做针对性验证。
 
-**「可关注」** 长时agent任务可优先用小流量对比GPT-6.2双模型与上一代的token消耗、工具调用次数与实际成本，同时留意长任务中无关提问、提前终止的边界case。
+**「可关注」** 可关注：长会话agent场景可优先验证GPT-6.2 Astra的缓存折扣与token效率带来的成本收益，同时测试其长任务中的无关提问是否会影响实际工作流稳定性。
 
-**「评论」** 社区对成本下降共识明确，但模型表现存在分歧：办公场景生成质量、PacBench得分弱于部分竞品，长任务稳定性也收到较多负面反馈，也有用户认可其推理速度表现。
+**「评论」** 社区普遍确认了成本与token效率的提升，但存在明显分歧：部分用户认为办公场景生成质量不如旧模型，也有用户反馈Astra在长任务中会出现与当前目标无关的内部细节提问，影响使用体验。
 
-**Tags**: `#eval`, `#coding-agent`
+**Tags**: `#coding-agent`, `#eval`, `#orchestration`, `#harness`
 
 ---
 
 <a id="item-agent-engineer-2"></a>
-### [llm CLI v0.38 发布](https://github.com/simonw/llm/releases/tag/0.38) ⭐️ 7.8/10
+### [llm 0.38 发布 新增GPT-6.2模型支持](https://github.com/simonw/llm/releases/tag/0.38) ⭐️ 7.8/10
 
-2026-11-17，simonw 发布 llm CLI 正式版 v0.38。本次更新新增 OpenAI GPT-6.2 Astra、Sol 模型（gpt-6.2-astra、gpt-6.2-sol）的支持。修复6项问题：非OpenAI相关CLI命令（如llm --version、llm models list）启动慢的问题，原因是openai包改为首次需要时才导入；开启LLM\_OPENAI\_SHOW\_RESPONSES=1时异步OpenAI模型请求报Invalid \`http\_client\` argument错误的问题，现在异步请求/响应日志逻辑与同步一致；工具schema清理Pydantic title注解时误删default、const、enum、examples值内的title键的问题；模板、-f传入的片段文件、--functions传入的Python文件默认按UTF-8读取，非UTF-8文件回退到系统默认编码，避免Windows等系统出现UnicodeDecodeError；llm fragments list -q现在返回匹配片段的所有别名，而非仅匹配到的别名；Toolbox子类调用父类\_\_init\_\_时，现在会记录子类构造参数而非被父类参数覆盖。同时更新安装文档，提示uv tool upgrade llm、pipx upgrade llm、brew upgrade llm会移除llm install安装的插件，推荐用llm install -U llm升级保留插件。
+2026年11月17日，simonw/llm 发布官方 0.38 版本，新增 OpenAI GPT-6.2 Astra、Sol 对应模型 \`gpt-6.2-astra\`、\`gpt-6.2-sol\` 的支持。本次更新修复多项问题：非 OpenAI 相关命令（如 \`llm --version\`、\`llm models list\`）通过延迟导入 \`openai\` 包提升启动速度；修复 \`LLM\_OPENAI\_SHOW\_RESPONSES=1\` 环境下异步 OpenAI 模型调用报 \`Invalid http\_client\` 参数错误的问题，异步请求/响应现已正常记录；修复工具 schema 中因 Pydantic \`title\` 注解清理误删 \`default\`、\`const\`、\`enum\`、\`examples\` 值内 \`title\` 键的问题；模板、片段、函数文件读取优先使用 UTF-8 编码，避免非 ASCII 字符在非 UTF-8 默认编码系统触发 \`UnicodeDecodeError\`；同时修正 \`llm fragments list -q\` 别名匹配逻辑、\`Toolbox\` 子类构造参数记录逻辑；文档同步更新升级说明，提示使用 \`uv tool upgrade llm\`、\`pipx upgrade llm\` 或 \`brew upgrade llm\` 升级会移除通过 \`llm install\` 安装的插件，推荐使用 \`llm install -U llm\` 升级保留插件。变更影响使用 llm CLI 进行 LLM 开发、工具调用、本地模型管理的开发者。
 
 github · simonw · Nov 17, 19:00
 
-**「为什么重要」** 对使用llm CLI构建或调试AI Agent的开发者而言，本次更新直接覆盖了模型调用、启动性能、可观测性、函数调用schema准确性四个高频场景的问题。新增的GPT-6.2模型支持让用户可第一时间调用OpenAI最新发布的模型能力，异步日志修复解决了此前开启响应观测时异步请求完全不可用的阻塞性问题。
+**「为什么重要」** 本次更新的多项修复直接作用于 LLM agent 工具调用准确率、异步工作流可观测性、跨平台使用稳定性。其中工具 schema 的 \`title\` 键保留问题修复，可避免模型因缺失参数描述信息产生工具调用偏差；异步日志修复则让异步 agent 工作流的调试能力恢复正常。
 
-**「可关注」** 可关注：llm v0.38 修复了开启LLM\_OPENAI\_SHOW\_RESPONSES=1时异步OpenAI请求的报错问题，此前该配置会导致所有异步请求在发送前就失败，现在可正常观测异步调用的全链路日志。
+**「可关注」** 可关注：若你的工作流依赖 llm 的异步 OpenAI 模型调用或工具 schema 传递，0.38 版本的对应修复可直接消除已知报错和参数描述偏差。
 
-**Tags**: `#observability`, `#openai`, `#bugfix`, `#tooling`
+**Tags**: `#harness`, `#coding-agent`, `#observability`
 
 ---
 
 <a id="item-agent-engineer-3"></a>
-### [ONNX Runtime Repo Down](https://github.com/microsoft/onnxruntime) ⭐️ 7.0/10
+### [External Sandbox 模式 三套开源实现发布](https://simonwillison.net/2026/Nov/17/external-sandboxes-for-coding-agents/) ⭐️ 7.0/10
 
-On November 17, 2026, an unconfirmed Hacker News post reported that Microsoft&\#x27;s official ONNX Runtime GitHub repository \(https://github.com/microsoft/onnxruntime\) is no longer accessible. The repository, which had roughly 22,000 stars, is a widely used inference runtime for agent and evaluation workflows. Users maintaining production eval pipelines reported unannounced breakage starting the morning of the incident, with no prior warning from Microsoft. The cause of the unavailability remains unconfirmed, and Microsoft has not issued any public statement as of the report timestamp.
+2026年11月17日，Simon Willison与AI研究实验室Prime Radiant联合推出面向coding agent的外部沙箱模式，核心规则为agent执行的代码在独立沙箱内运行，agent本身驻留在沙箱外，解决prompt注入或操作失误导致主机受损的核心安全痛点。为演示该模式，双方同步发布三套开源沙箱服务器实现：external-sandbox-v86基于v86在WebAssembly中运行Alpine Linux，external-sandbox-container基于Apple Containers运行Alpine Linux，external-sandbox-quicksand基于微软Quicksand库打包QEMU与Alpine Linux。三套实现均提供统一localhost API，可配置Pi、Claude Code、Codex等agent将代码执行请求转发至沙箱，同时支持可选的HTTP/HTTPS白名单代理与凭证替换机制，用于控制agent代码的通信目标、避免向agent泄露密钥。该方案主要面向coding agent的harness开发者、工具链开发者及本地模型使用者。
 
-hackernews · nvader · Nov 17, 23:18 · [Discussion](https://news.ycombinator.com/item?id=50539610)
+rss · Simon Willison · Nov 17, 22:52
 
-**「Why It Matters」** ONNX Runtime is a core dependency for many agent and eval harnesses, so its sudden unavailability directly disrupts production pipelines with no advance notice. The lack of official communication or confirmed cause amplifies risk for teams relying on the runtime for critical workflows.
+**「为什么重要」** 该模式直接针对coding agent代码执行环节的安全核心痛点，此前缺乏公开的标准化外部沙箱实现，三套开源方案降低了agent harness与工具链开发者的安全集成门槛。
 
-**「Engineer Takeaway」** Watch for: Maintain mirrored copies or alternative dependency sources for critical open-source components used in production eval and agent pipelines to mitigate single-point-of-failure risks from sudden repository unavailability.
+**「可关注」** 可关注：三套实现均提供统一localhost API，可低改动接入现有Pi、Claude Code、Codex等agent的代码执行链路。
 
-**「Community Discussion」** Community comments include unsubstantiated speculation that the disappearance may be linked to compromised packages, default telemetry data exfiltration, or newly discovered backdoor exploit vectors. One user shared Intel&\#x27;s ONNX Runtime fork \(https://github.com/intel/onnxruntime\) as a temporary alternative, though no official explanation for the incident has been released.
-
-**Tags**: `#eval`, `#harness`
+**Tags**: `#coding-agent`, `#harness`, `#permissions`
 
 ---
 
 <a id="item-agent-engineer-4"></a>
-### [Prime Radiant 开源外部沙箱实现](https://simonwillison.net/2026/Nov/17/external-sandboxes-for-coding-agents/) ⭐️ 7.0/10
+### [HF 论文：OPD 重塑 LLM ReAct](https://huggingface.co/papers/2611.19244) ⭐️ 7.0/10
 
-2026-11-17，Simon Willison 与 Prime Radiant 发布 coding agent 的「外部沙箱」模式：agent 代码在专用沙箱内执行，agent 本身驻留沙箱外。同日开源三套本地沙箱服务器实现，分别是基于 v86 与 WebAssembly 运行 Alpine Linux 的 \`external-sandbox-v86\`、基于 Apple Containers 的 \`external-sandbox-container\`，以及集成 Microsoft Quicksand 与 QEMU 的 \`external-sandbox-quicksand\`。三套实现均暴露 localhost API，支持配置 Pi、Claude Code 或 Codex 将代码执行请求转发至沙箱，并附带可热更新的 HTTP/HTTPS 允许列表代理与凭证替换机制。目前无社区评论。
+2026年11月18日 Hugging Face Daily Papers 收录一篇预印本研究，探究同策略蒸馏（OPD）对 LLM 智能体 ReAct 交互模式的影响，实验覆盖数学、ALFWorld、τ²-bench 三个领域。通用推理监督下，数学领域不必要工具调用占比从 70.4% 降至 14.4%，准确率从 16.7% 提升至 38.0%；代码解释器监督可改善家庭动作与零售查询表现。但 ALFWorld 领域监督会导致 τ²-bench 准确率从 41.5% 跌至 6.6%，同时出现违反用户信息依赖的频繁工具调用。该研究为预印本，相关结论待同行评审验证。
 
-rss · Simon Willison · Nov 17, 22:52
+rss · Hugging Face Daily Papers · Nov 18, 00:00
 
-**「为什么重要」** 该模式将 agent 代码执行与 agent 本体分离，直接针对提示词注入或执行错误对宿主机的安全风险。三套开源实现分别基于 WebAssembly、Apple Containers 和 QEMU，为 harness 与权限工程提供了可运行的技术样本。
+**「为什么重要」** 该研究提供了同策略蒸馏影响 LLM 智能体交互模式的可量化实验证据，正负迁移的具体数值可直接指导智能体训练监督信号选择与跨域评估设计，避免未预期的性能退化。
 
-**「可关注」** 可关注：三套实现均通过 localhost API 暴露沙箱服务，harness 可在代理层配置网络白名单与凭证替换，在不改动 agent 的前提下实现执行环境隔离。
+**「可关注」** 可关注：跨域应用同策略蒸馏时需验证目标域性能，避免严重负迁移；不同监督信号对智能体工具调用模式的改变差异显著，训练时需针对性选择监督来源。
 
-**Tags**: `#permissions`, `#harness`, `#coding-agent`
+**Tags**: `#eval`, `#coding-agent`, `#orchestration`
 
 ---
 
 <a id="item-agent-engineer-5"></a>
-### [Datasette Lite 浏览器完整重写](https://simonwillison.net/2026/Nov/17/datasette-lite/) ⭐️ 7.0/10
+### [Self-Improvement Memory 提出 CRSI 机制](https://huggingface.co/papers/2611.18856) ⭐️ 7.0/10
 
-Simon Willison 于 2026-11-17 发布 Datasette Lite 完整重写版本。该版本通过 Pyodide 与 service workers 将完整服务端 Datasette Python 应用运行在浏览器中，替代了 2022 年首次发布时基于 web worker 与 innerHTML 注入的方案。用户可通过 lite.datasette.io 的 URL 参数加载 SQLite、JSON、CSV 或 SQL 脚本数据库，从 PyPI 选择 Datasette 版本，指定 GitHub commit/tag/branch，挑选 100 余种 SQLite 版本之一，并安装来自 PyPI 或 wheel URL 的插件。URL 支持 install、url、metadata、ref 等参数，可用于精确复现 bug 或演示工作进度，无需启动后端服务器；该机制已被用于 Datasette 自身 issue 中的 bug 对比演示。
+2026-11-18，Hugging Face Daily Papers 收录论文 proposing Self-Improvement Memory \(SIM\)。该机制面向 harness optimizer，按 recurring harness problem 分组编辑历史，记录 rationale、预测与观察结果及评估上下文，以支持 Continual Recursive Self-Improvement \(CRSI\)。实验覆盖四个领域，但原文结果描述截断（仅显示 &quot;achieves hig&quot;），具体性能数字与对比基线未完整提供。该工作针对 benchmark 或 policy model 演化时，harness 优化器难以复用历史编辑决策的问题。
 
-rss · Simon Willison · Nov 17, 16:48
+rss · Hugging Face Daily Papers · Nov 18, 00:00
 
-**「为什么重要」** 这改变了在浏览器中运行完整服务端 Python Web 应用的可行性判断。对构建 coding agent 或浏览器端 Python 工具链的工程师而言，service worker 方案解决了此前 JavaScript 插件无法执行、路由状态难以维持的关键限制。
+**「为什么重要」** 当前 harness 优化研究多假设固定 benchmark 与 policy model，实际部署中二者常随迭代变化。SIM 提供显式记忆结构，使优化过程可跨兼容环境延续，减少重复试错。
 
-**「可关注」** 可关注：service worker 介入后，Pyodide 应用可从“页面内脚本”升级为“完整网络应用栈”，路由、插件、静态资源加载均可被拦截和重写。
+**「可关注」** 可关注：harness 优化器可引入按问题分组的编辑历史记忆，记录 rationale 与评估上下文，以支持跨 benchmark 或 policy model 的持续优化。
 
-**Tags**: `#toolchain`, `#pyodide`, `#browser`
+**Tags**: `#harness`, `#eval`, `#memory`
 
 ---
 
 <a id="item-agent-engineer-6"></a>
-### [K2-Horizon 开源模型舰队发布](https://huggingface.co/papers/2611.21003) ⭐️ 7.0/10
+### [HF日报：权重空间编程无需Transformer](https://huggingface.co/papers/2611.22055) ⭐️ 6.0/10
 
-2026-11-18，Hugging Face Daily Papers 收录 K2-Horizon 开源模型舰队，包含 6 个模型规格，范围从 0.9B 稠密模型到 375B-A23B 混合专家模型，面向通用推理与智能体工作负载。论文提出 Mixture-of-Value Attention（MoVA）与 softplus 注意力门控，报告称 36B-A4B 模型以七分之一激活参数接近 32B 稠密模型性能；同时推出 Uno 无损扩散适配器，报告解码速度提升最高 2.2 倍。该舰队在智能体与编码基准上声称具备竞争力，目前完全开源，HF 日榜获 73 次点赞。
+2026年11月18日Hugging Face Daily Papers收录的论文显示，3个前沿大模型在极简指导、10个标注样本、沙箱环境的条件下，可手写设计稀疏表架构替代标准Transformer，在多项选择题任务上最高达到54.4%的测试准确率，超过同任务下公开的最优Transformer模型表现，该研究对agent工程工具链的直接影响较窄。
 
-rss · Hugging Face Daily Papers · Nov 18, 03:59
+rss · Hugging Face Daily Papers · Nov 18, 00:00
 
-**「为什么重要」** 这为智能体工程师提供了新的开源模型选项，且 MoVA 与 Uno 直接针对部署效率。但性能声明尚未经独立基准测试验证。
+**「为什么重要」** 该研究验证了大模型无需梯度训练即可手写可运行神经架构的可行性，但当前验证场景局限于低样本多项选择题，对coding agent相关架构设计的直接参考价值尚未得到证实。
 
-**「可关注」** MoVA 将 MoE 应用于注意力值投影，Uno 适配器报告无损提升解码速度 2.2 倍，两者均针对 agent 部署的激活参数与推理效率；36B-A4B 接近 32B 稠密模型的报告需独立验证。
+**「可关注」** 可关注前沿大模型在极低样本下手写可运行架构的能力边界，以及稀疏表结构在轻量eval场景的潜在适配性。
 
-**Tags**: `#coding-agent`, `#eval`, `#model-architecture`, `#efficiency`
+**Tags**: `#eval`, `#architecture`, `#coding-agent`
 
 ---
 
 <a id="item-agent-engineer-7"></a>
-### [SWE-CoWork 编码代理组织基准发布](https://huggingface.co/papers/2611.20218) ⭐️ 7.0/10
+### [Edge0-145B-NVFP4 登 HF 趋势榜](https://huggingface.co/Edge0/Edge0-145B-NVFP4) ⭐️ 6.0/10
 
-SWE-CoWork 基准测试于 2026-11-18 由 Hugging Face Daily Papers 发布，面向 coding agent 与 harness 开发者。该基准包含 101 个跨真实仓库的开发任务，覆盖 11 种编程语言和 12 个应用领域。每个任务将编码代理置于含 26 名同事的模拟工程组织中，测试需求恢复、冲突调和与实现变更能力。研究团队评估了 11 个模型，观察到部分实现与完整任务之间存在显著差距，但具体性能数据未在摘要中提供。
+2026-11-18，Hugging Face 趋势榜出现 Edge0/Edge0-145B-NVFP4 模型。该模型为 145B 参数 MoE 架构，采用 4-bit NVFP4 量化并以 GGUF 格式发布，标签指向 coding 与 agent 场景。当前公开信息仅包含 trendingScore=123、likes=496 等基础元数据，未披露技术规格、性能基准或部署细节。对边缘/本地 coding agent 部署有潜在参考价值，但具体能力与限制尚不明确。
 
-rss · Hugging Face Daily Papers · Nov 18, 03:59
+rss · Hugging Face Trending Models · Nov 18, 04:37
 
-**「为什么重要」** 该基准首次将编码代理评估扩展到组织协作场景，为 coding agent 和 harness 开发提供了新的评测维度。不过具体模型性能排名和实际影响尚待完整论文验证。
+**「为什么重要」** 该模型以 145B 规模 MoE 搭配 4-bit NVFP4 量化，若技术细节公开，可能为边缘设备运行大型 coding agent 提供新选项。但目前缺乏可验证的性能数据与实现细节，实际影响仍不确定。
 
-**「可关注」** 可关注：编码代理在模拟组织中的需求恢复能力，或成为 harness 评估的新指标。
+**「可关注」** 可关注：GGUF 格式与 NVFP4 量化组合在 145B MoE 模型上的实际内存占用与推理延迟表现，待官方发布技术报告后评估是否纳入边缘 agent 部署候选。
 
-**Tags**: `#eval`, `#coding-agent`, `#harness`
+**Tags**: `#coding-agent`, `#moe`, `#edge-inference`, `#gguf`
 
 ---
 
 <a id="item-agent-engineer-8"></a>
-### [HF Daily Papers 权重空间编程无需 Transformer](https://huggingface.co/papers/2611.22055) ⭐️ 6.0/10
+### [Martin Fowler 确定性模拟测试介绍](https://martinfowler.com/articles/deterministic-simulation-testing.html) ⭐️ 6.0/10
 
-Hugging Face Daily Papers 于 2026-11-18 收录论文，展示三个前沿 LLM 在仅给 10 个标注样本与沙箱的条件下，为权重空间编程自主设计非 Transformer 稀疏架构。模型将纯文本事实编译为稀疏表，由固定程序查询，在多项选择 eval 任务上达到 54.4% 测试准确率，超过同期发布的最优 Transformer。该工作直接改进 AI agent、harness 或 eval 工具链的关联有限，因研究聚焦通用神经架构设计；论文内容被截断，具体架构细节与更广泛任务表现未披露。
+2026年11月17日Martin Fowler发布文章，介绍Unmesh Joshi提出的确定性模拟测试方法，用于解决分布式系统测试中部分故障与实时流量叠加、同故障多次运行产生不同执行轨迹的问题。该方法用单线程执行循环驱动的模拟时钟、网络、存储组件替换真实依赖，支持注入硬故障与模拟网络/磁盘延迟尖峰，且每次执行可完全复现。文章以Tickloom Java实现的quorum键值存储为运行示例，未提供性能数据或生产环境落地验证。
 
-rss · Hugging Face Daily Papers · Nov 18, 00:00
+rss · Martin Fowler · Nov 17, 14:33
 
-**「为什么重要」** 该工作以 54.4% 准确率证明 LLM 可在极少监督下设计有效计算结构，但当前任务与 agent 工程核心工作流脱节，尚未形成可直接复用的工具或方法论。
+**「为什么重要」** 该技术为分布式系统测试提供了可复现的故障注入与延迟模拟方案，对提升AI agent评估（eval）的可复现性和测试 harness 的可靠性有参考价值，但文章未提供性能数据或生产环境落地验证。
 
-**「可关注」** 可关注：LLM 在极少样本下能自主设计稀疏架构并将文本编译为可查询表，显示权重空间编程无需 Transformer，但当前任务与 agent 工具链脱节。
+**「可关注」** 可关注：用单线程驱动的模拟组件替换真实时钟、网络、存储依赖，可提升分布式系统与agent测试场景的执行复现性。
 
-**Tags**: `#eval`, `#architecture`, `#weight-space-programming`
-
----
-
-<a id="item-agent-engineer-9"></a>
-### [ResWAM 世界动作模型论文发布](https://huggingface.co/papers/2611.19559) ⭐️ 6.0/10
-
-2026-11-18，Hugging Face Daily Papers 收录论文《ResWAM: Learning What Changes, Not What Stays, for World-Action Models》。该论文提出 ResWAM 世界动作模型，通过冻结 DINOv3 空间的视觉残差学习，仅监督当前帧到未来帧的特征变化，替代传统全未来观测监督。该方法降低视觉-语言-动作策略的计算成本，同时提升对任务相关运动的学习效果，对具身智能体开发有参考价值。目前仅提供摘要，无性能数据、代码发布或完整技术细节，可立即落地的 actionable 价值有限。
-
-rss · Hugging Face Daily Papers · Nov 18, 00:00
-
-**「为什么重要」** 该论文针对现有世界动作模型计算开销大、静态背景主导损失的问题，提出轻量替代方案。但因其仅发布摘要，尚未证实实际部署效果与性能增益。
-
-**「可关注」** 可关注：冻结预训练视觉空间做残差监督，可能降低世界模型训练与推理成本。
-
-**Tags**: `#coding-agent`
-
----
-
-<a id="item-agent-engineer-10"></a>
-### [Edge0-145B-NVFP4 登顶趋势榜](https://huggingface.co/Edge0/Edge0-145B-NVFP4) ⭐️ 6.0/10
-
-Edge0/Edge0-145B-NVFP4 became a trending Hugging Face model on 2026-11-18 with a trendingScore of 123 and 496 likes. It is a 145B-parameter MoE text-generation model quantized to 4-bit NVFP4, tagged for coding-agent and edge-inference use cases. The provided material contains only basic metadata; no performance data, technical details, or usage guides are available, leaving deployment characteristics unverified.
-
-rss · Hugging Face Trending Models · Nov 18, 03:59
-
-**「为什么重要」** The NVFP4 quantization combined with MoE architecture could offer optimization potential for running coding agents on edge devices, but without benchmark data, the actual impact remains unconfirmed.
-
-**「可关注」** Monitor the 145B MoE model&\#x27;s accuracy retention under 4-bit NVFP4 quantization and actual inference latency and memory footprint in coding-agent scenarios.
-
-**Tags**: `#coding-agent`
+**Tags**: `#eval`, `#harness`, `#orchestration`, `#distributed-systems`
 
 ---
 
 ## AI Daily
 
 <a id="item-ai-daily-1"></a>
-### [OpenAI 发布 GPT-6.2 Astra 与 Sol](https://openai.com/index/introducing-gpt-6-2-astra-sol) ⭐️ 9.8/10
+### [GitHub 发布开源 AHP 跨设备会话协议](https://github.blog/engineering/engineering-principles/building-the-agent-host-protocol-for-sessions-that-continue-across-devices/) ⭐️ 8.8/10
 
-OpenAI 正式发布 GPT-6.2 Astra 和 Sol 两个新模型。新模型在专业输出、编码和计算机使用能力上有所增强，同时效率更高、成本更低。此次更新覆盖 ChatGPT Work、Codex 及 API 产品线。
+GitHub正式发布开源的Agent Host Protocol（AHP）开放标准，用于实现智能体会话跨设备、跨应用的连续性，目前已落地VS Code Copilot及GitHub全产品线，同时向第三方开发者开放集成。该协议不规定智能体具体行为，仅聚焦交互逻辑，核心设计保持最小化，以URI标识的channel为功能单元，要求所有服务端实现root、session、chat三个基础channel，可扩展terminal、MCP、OTel等可选channel。其采用服务端仲裁的reducer式状态模型，客户端通过发送action序列变更状态或触发副作用，天然支持弱网环境下的重连重放，且与React等主流UI框架适配良好。GitHub在适配AHP时基于Copilot SDK新建独立agent host进程，其中VS Code agent host约36.9万行TypeScript，GitHub agent host约30.5万行Rust，替代了原先绑定VS Code窗口生命周期、超40万行TypeScript的Copilot Chat扩展代码。
+
+rss · GitHub Blog · Nov 17, 18:20
+
+**「为什么重要」** 此前各客户端需独立开发智能体集成，无法实现会话跨端延续，AHP作为统一开放标准，降低了第三方将智能体接入自有编辑器、终端、自研工具等场景的门槛，有助于减少智能体生态的碎片化。
+
+**「可关注」** 可关注：AHP的服务端仲裁reducer状态模型，支持弱网下重连重放，且与React等主流UI框架适配，可简化多端智能体应用的开发。
+
+**Tags**: `#open-source`, `#product`, `#industry`
+
+---
+
+<a id="item-ai-daily-2"></a>
+### [GPT-6.2 Astra Sol 发布](https://openai.com/index/introducing-gpt-6-2-astra-sol) ⭐️ 7.8/10
+
+OpenAI 官方博客宣布推出 GPT-6.2 Astra 和 Sol 模型。公告称两款模型提升专业输出、编码、计算机使用能力，并改善成本效率，覆盖 ChatGPT Work、Codex 及 API。目前未公开具体基准测试数据、定价细节或正式上线时间。
 
 rss · OpenAI Blog · Nov 17, 17:45
 
-**「为什么重要」** 对构建 coding agent 和 harness 的开发者而言，编码与计算机使用能力的提升可能直接改善工具调用稳定性；API 成本下降则可能降低批量测试与集成的开销。
+**「为什么重要」** 该公告同时覆盖 ChatGPT Work、Codex 和 API 三条产品线，显示 OpenAI 推进多端能力对齐。对工程团队而言，成本效率声称改善需等待第三方基准验证。
 
-**「可关注」** 可关注：GPT-6.2 Astra 与 Sol 在 Codex 和 API 产品线中的成本变化及计算机使用能力的改进。
+**「可关注」** 可关注：GPT-6.2 Astra 与 Sol 在 Codex 和 API 的成本效率声称改进，但具体幅度未披露。
 
 **Tags**: `#model`, `#lab`, `#product`
 
 ---
 
-<a id="item-ai-daily-2"></a>
-### [ChatGPT Sales 插件上线](https://openai.com/index/introducing-chatgpt-for-sales) ⭐️ 7.8/10
+<a id="item-ai-daily-3"></a>
+### [OpenAI 发布 ChatGPT Sales 插件](https://openai.com/index/introducing-chatgpt-for-sales) ⭐️ 7.8/10
 
-OpenAI 推出 ChatGPT Sales 插件及 30 余个新增或扩展的合作伙伴插件，覆盖潜在客户研究、pitch 准备与 CRM 更新等销售工作流。该功能已在 ChatGPT 平台可用。
+OpenAI 发布 ChatGPT Sales 插件，同步推出 30 余款新增及扩展的合作伙伴集成。这些集成覆盖潜在客户研究、销售话术准备和 CRM 数据更新等场景。用户可通过 ChatGPT 直接推进销售流程，无需切换工具。
 
 rss · OpenAI Blog · Nov 17, 08:00
 
-**「可关注」** 可关注：ChatGPT 插件生态向垂直销售场景扩展，新增 CRM 数据写入与销售线索研究能力。
+**「为什么重要」** OpenAI 将 ChatGPT 扩展至销售工作流，标志其从通用助手向垂直场景渗透。官方博客发布且来源可信，代表产品战略的实质性转向。
+
+**「可关注」** 可关注：Sales 插件与 30+ 合作伙伴集成在潜在客户研究、话术准备和 CRM 更新场景中的实际表现。
 
 **Tags**: `#product`, `#lab`, `#industry`
 
 ---
 
-<a id="item-ai-daily-3"></a>
-### [GitHub 开源 Agent Host Protocol](https://github.blog/engineering/engineering-principles/building-the-agent-host-protocol-for-sessions-that-continue-across-devices/) ⭐️ 7.8/10
-
-GitHub 开源 Agent Host Protocol（AHP）开放标准，用于实现 AI 智能体会话跨设备、跨应用的延续，目前已在 VS Code 的 GitHub Copilot 中落地，配套推出 5 个客户端与 2 个 agent host 实现。为适配 AHP，VS Code 侧新建的 agent host 约 36.9 万行 TypeScript，GitHub 侧 agent host 约 30.5 万行 Rust，原 Copilot Chat 扩展代码量超 41.5 万行 TypeScript。该协议围绕 URI 标识的 channel 设计，强制实现 root、session、chat 三个核心 channel，采用服务端仲裁的 reducer-based 状态模型，客户端通过发送 action 变更状态或触发副作用，支持弱网下的重连与操作重放。AHP 不约束 agent 行为逻辑，仅定义交互方式，核心协议保持最小化以便第三方集成。
-
-rss · GitHub Blog · Nov 17, 18:20
-
-**「为什么重要」** 此前各客户端需为 Copilot agent 做独立定制集成，且 agent 生命周期绑定单应用窗口，跨设备、跨应用会话延续难以实现。AHP 作为开放标准统一了交互规范，第三方开发者无需重复造轮子即可将 agent 接入自有工作流，同时支持会话在设备间无缝切换。
-
-**「可关注」** 可关注：AHP 已发布官方规范文档，核心协议最小化，支持通过扩展 terminal、MCP、OTel 等可选 channel 适配自定义需求，reducer-based 状态模型可降低客户端与服务端的调试成本。
-
-**Tags**: `#product`, `#open-source`, `#industry`
-
----
-
 <a id="item-ai-daily-4"></a>
-### [GitHub 微软试点 AI 辅助开源漏洞修复](https://github.blog/open-source/maintainers/maintainers-dont-need-more-ai-bug-reports-they-need-fixes/) ⭐️ 6.8/10
+### [GitHub 微软试点 AI 漏洞修复直报](https://github.blog/open-source/maintainers/maintainers-dont-need-more-ai-bug-reports-they-need-fixes/) ⭐️ 7.8/10
 
-GitHub 与微软联合开展开源漏洞修复试点，使用微软 Codename MDASH 多模型代理扫描工具、GitHub 安全实验室 AI 分类代理及微软 FORGE 实验室人工验证，向 6 个开源项目维护者推送带修复建议的高质量漏洞报告，而非原始扫描结果。扫描共标记 9791 个潜在问题，经筛选验证后仅向维护者发送 99 份私有报告；截至 2026 年 11 月 15 日，55 份报告对应的漏洞已被修复，其中 14 份修复已进入正式发布。试点仅覆盖 6 个 GitHub 安全开源基金往期受资助项目，样本量有限，相关经验为早期探索结论。
+GitHub 与微软联合开展开源 AI 漏洞修复试点，针对 AI 生成的重复、无效漏洞报告淹没开源维护者工作量的痛点，尝试让 AI 直接提供带修复建议的已验证漏洞报告而非仅提交原始发现。试点使用微软 Codename MDASH 多模型代理扫描系统扫描 6 个 GitHub Secure Open Source Fund 支持的开源项目，初始标记 9791 个潜在问题，经 GitHub 安全实验室 AI 分诊代理去重、有效性校验，再由 7 名微软 FORGE 实验室研究员人工复核后，仅向维护者发送 99 份私有报告。截至 2026 年 11 月 15 日，维护者已完成 55 份漏洞修复，其中 14 份已进入正式发布版本。试点样本量较小，相关经验仍属早期探索。
 
 rss · GitHub Blog · Nov 17, 18:29
 
-**「为什么重要」** 当前 AI 生成的漏洞报告大量涌入开源社区，重复、无效报告已严重挤压维护者精力，该试点将 AI 能力从“生成漏洞发现”转向“辅助漏洞修复”，为缓解开源维护者负担、提升开源安全治理效率提供了可落地的实践参考。
+**「为什么重要」** 当前 AI 漏洞扫描成本极低但修复仍需人工判断，大量未经筛选的 AI 漏洞报告已造成维护者负担过载，该试点将“找漏洞”和“修漏洞”的链路打通，直接提交带修复建议的高质量报告，为缓解开源维护者压力、提升开源安全修复效率提供了可参考的实践路径。
 
-**「可关注」** 可关注“多模型扫描 + AI 分类 + 人工验证 + 附带修复建议”的漏洞处理流程，该流程可将原始扫描结果压缩至约 1% 再推送至维护者，同时降低修复门槛。
+**「可关注」** 可关注：试点将 AI 扫描的原始漏洞结果经 AI 分诊、人工复核后压缩至约 1% 再提交维护者，且每份报告附带可审查的修复建议，将维护者的工作重心从筛选报告转移到实际修复。
 
 **Tags**: `#open-source`, `#industry`, `#product`
 
