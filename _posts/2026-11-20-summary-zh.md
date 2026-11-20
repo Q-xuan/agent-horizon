@@ -5,30 +5,30 @@ date: 2026-11-20
 lang: zh
 ---
 
-> 从 185 条内容中筛选出 13 条重要资讯。
+> 从 184 条内容中筛选出 13 条重要资讯。
 
-<nav id="ah-toc" class="ah-toc" aria-label="目录"><span class="ah-toc-title">目录</span><ul><li><a href="#sec-harness-arch"><span class="ah-toc-name">Harness 架构</span><span class="ah-toc-count">3条</span></a></li><li><a href="#sec-agent-engineer"><span class="ah-toc-name">Agent 工程师日报</span><span class="ah-toc-count">6条</span></a></li><li><a href="#sec-ai-daily"><span class="ah-toc-name">AI 日报</span><span class="ah-toc-count">4条</span></a></li></ul></nav>
+<nav id="ah-toc" class="ah-toc" aria-label="目录"><span class="ah-toc-title">目录</span><ul><li><a href="#sec-harness-arch"><span class="ah-toc-name">Harness 架构</span><span class="ah-toc-count">3条</span></a></li><li><a href="#sec-agent-engineer"><span class="ah-toc-name">Agent 工程师日报</span><span class="ah-toc-count">8条</span></a></li><li><a href="#sec-ai-daily"><span class="ah-toc-name">AI 日报</span><span class="ah-toc-count">2条</span></a></li></ul></nav>
 
 ---
 
 **[Harness 架构](#sec-harness-arch)**
-1. [ADK Python v2.15.0 发布](#item-harness-arch-1) ⭐️ 8.8/10
-2. [pydantic-ai v2.71.0 发布](#item-harness-arch-2) ⭐️ 7.8/10
-3. [adk-go v1.10.0 发布](#item-harness-arch-3) ⭐️ 5.8/10
+1. [google/adk-python v2.15.0 发布](#item-harness-arch-1) ⭐️ 8.8/10
+2. [Codex rust-v0.171.0 发布](#item-harness-arch-2) ⭐️ 7.8/10
+3. [gemini-cli v0.71.0-nightly 发布](#item-harness-arch-3) ⭐️ 6.8/10
 
 **[Agent 工程师日报](#sec-agent-engineer)**
-1. [HF Daily Papers 提出 Resolution Hypothesis](#item-agent-engineer-1) ⭐️ 7.0/10
-2. [llm-gemini 0.38 支持 Gemini 4 Neon](#item-agent-engineer-2) ⭐️ 6.3/10
-3. [Gemini 4 Neon 发布 旧模型退役](#item-agent-engineer-3) ⭐️ 6.0/10
-4. [ALIVE 交互式流视频模型论文公开](#item-agent-engineer-4) ⭐️ 6.0/10
-5. [StatePortal 提出 GUI 测试 checkpoint 合成](#item-agent-engineer-5) ⭐️ 6.0/10
-6. [StrideWorld 基准发布](#item-agent-engineer-6) ⭐️ 5.5/10
+1. [本地语音助手 Pipeline 重建实践](#item-agent-engineer-1) ⭐️ 7.0/10
+2. [Gemini 4 Neon 上线 旧模型退役](#item-agent-engineer-2) ⭐️ 7.0/10
+3. [TuringSpace 空间推理评估基准发布](#item-agent-engineer-3) ⭐️ 7.0/10
+4. [CompoundingKernel 自改进智能体论文推荐](#item-agent-engineer-4) ⭐️ 7.0/10
+5. [NarrowSpec 优化推测解码草稿宽度](#item-agent-engineer-5) ⭐️ 7.0/10
+6. [Railway 被 abliterated 模型入侵事件复盘](#item-agent-engineer-6) ⭐️ 7.0/10
+7. [ChatPRD 免费试用遭代币欺诈滥用](#item-agent-engineer-7) ⭐️ 6.0/10
+8. [VSpark 为 VLA 模型加速推测解码](#item-agent-engineer-8) ⭐️ 6.0/10
 
 **[AI 日报](#sec-ai-daily)**
-1. [OpenAI 公开 Performance Factory 系统](#item-ai-daily-1) ⭐️ 7.8/10
-2. [Tunix 多轮智能体 RL 流水线发布](#item-ai-daily-2) ⭐️ 7.8/10
-3. [Streaming DiLoCo 登陆 MaxText 支持跨地域训练](#item-ai-daily-3) ⭐️ 7.8/10
-4. [GitHub 2026 开源贡献数据公布](#item-ai-daily-4) ⭐️ 5.8/10
+1. [OpenAI Performance Factory 优化 ChatGPT 性能](#item-ai-daily-1) ⭐️ 6.8/10
+2. [GitHub 2026 公开贡献达 25 亿](#item-ai-daily-2) ⭐️ 5.8/10
 
 ---
 
@@ -38,45 +38,49 @@ lang: zh
 <p class="ah-sec-meta"><a class="ah-anchor" href="#sec-harness-arch" aria-label="链接到本节">#</a><a class="ah-back" href="#ah-toc">↑ 回到目录</a></p>
 
 <a id="item-harness-arch-1"></a>
-### [ADK Python v2.15.0 发布](https://github.com/google/adk-python/releases/tag/v2.15.0) ⭐️ 8.8/10
+### [google/adk-python v2.15.0 发布](https://github.com/google/adk-python/releases/tag/v2.15.0) ⭐️ 8.8/10
 
-ADK Python v2.15.0 发布。新增 per-user/session 沙箱隔离、6x 加速的 RAG 内存搜索、Google Maps 与 BigQuery 新工具、multi-run 可靠性与部分工具调用准确率评测指标。同时移除 Visual Agent Builder，并将 \`run\_live\` 工具调用移至后台任务以保持语音流响应。实验性 \`BufferedSessionService\` 与 \`FsspecArtifactService\` 分别优化会话写入延迟和统一制品存储后端。
+Google ADK Python v2.15.0 于 2026-11-19 发布。本次更新让语音流和 agent turn 在慢工具或慢会话存储下保持响应，RAG 内存搜索提速最高 6 倍，新增按用户或会话隔离的沙箱，以及多运行可靠性和部分工具调用准确性的评估指标。集成 Google Maps 与 BigQuery 工具集，同时从 ADK Web 移除交互式 Visual Agent Builder。
 
 github · Jacksunwei · 11月19日 22:59
 
-**「设计要点」** \`BaseEnvironment\` 通过 \`ctx: Context\` 与 \`scope\` 枚举实现 user/session 级沙箱初始化锁，避免并发等待。\`BufferedSessionService\` 将慢速 I/O 移出关键路径，\`FsspecArtifactService\` 统一本地与云存储接口，评测层新增 \`pass\_hat\_k\` 与 \`tool\_parameter\_match\`。
+**「设计要点」** BaseEnvironment 方法接收调用运行的 ctx: Context，通过 EnvironmentScope（SHARED/USER/SESSION）控制初始化锁，实现并发会话隔离。BufferedSessionService 将会话事件内存缓冲后后台批量刷盘，run\_live 将所有工具调用移至后台任务，避免阻塞音频流和打断检测。
 
-**「改了什么」** 新增 \`GoogleMapsToolset\` 与支持项目级表发现的 \`BigQueryToolset.ask\_data\_insights\`，\`run\_live\` 后台执行工具调用并支持 \`send\_context\_update\` 热更新，\`VertexAiRagMemoryService\` 搜索延迟降低最多 6 倍。破坏性变更包括移除 Visual Agent Builder 及 \`McpInstructionProvider\` 不再自动注入 \`session.state\` 参数。
+**「改了什么」** 新增 GoogleMapsToolset（地址验证、逆地理编码、街景图像）和 BigQueryToolset.ask\_data\_insights 的项目级/数据集级表发现。实验性 BufferedSessionService 与 BaseSessionService.append\_events 提供后台会话写入，adk eval 新增 pass\_at\_k/pass\_hat\_k 多运行指标和 tool\_parameter\_match 部分评分，BaseLlmConnection.send\_context\_update 支持 Gemini 3.x Live 连接中途更新指令。移除 ADK Web 的 Visual Agent Builder 及 /dev/apps/\{app\_name\}/builder\* 路由，McpInstructionProvider 不再自动填充 session.state 到 prompt arguments。
 
-**标签**: `#sandbox`, `#memory`, `#tools`, `#eval`, `#runtime`
+**「评论」** 无社区评论。
+
+**标签**: `#runtime`, `#sandbox`, `#memory`, `#eval`, `#tools`
 
 ---
 
 <a id="item-harness-arch-2"></a>
-### [pydantic-ai v2.71.0 发布](https://github.com/pydantic/pydantic-ai/releases/tag/v2.71.0) ⭐️ 7.8/10
+### [Codex rust-v0.171.0 发布](https://github.com/openai/codex/releases/tag/rust-v0.171.0) ⭐️ 7.8/10
 
-pydantic-ai v2.71.0 正式发布，引入多项破坏性 API 变更与运行时改进。PeerNetwork 重命名为 PeerConnection，StackOne 弃用 api\_key 转而使用 auth 字段。新增 Stav、Otari 两个 MCP 网关提供商，并将远程 CodeMode 执行改为 Temporal activity 以避免长代码片段触发死锁检测。同时扩展工具输出限制、权限规则与 harness 能力集。
+OpenAI Codex 发布 rust-v0.171.0。本次更新默认启用 TUI workspace，支持子代理转录、可搜索文档预览和图片预览；新增 \`codex exec --remote &lt;ADDR&gt;\` 实现远程非交互会话执行，以及 \`/rc\`、\`/remote\` 命令管理设备配对；MCP 状态行在 \`tui\_extensions\_statusline\` 启用时支持通过 \`/statusline\` 自定义。同时修复会话状态保留、权限配置跨目录保持等多项 bug。
 
-github · dsfaccini · 11月19日 02:13
+github · github-actions\[bot\] · 11月20日 00:44
 
-**「设计要点」** 远程 CodeMode 回合通过 Temporal activity 执行，将长任务与主运行线程解耦，避免死锁检测器误判。MCPToolsetClient 的进程内服务器臂改为协议类型化，兼容 FastMCP 3 与 4 的严格 pyright 检查。
+**「设计要点」** TUI workspace 默认启用并整合子代理转录、文档与图片预览，运行时将多代理对话与主会话视图统一为单一持久化界面。远程执行通过 \`codex exec --remote &lt;ADDR&gt;\` 在现有应用服务器上启动或恢复非交互会话，\`/rc\` 和 \`/remote\` 命令管理本地远程控制与设备配对码。
 
-**「改了什么」** PeerNetwork 更名为 PeerConnection，StackOne 的 api\_key 参数弃用。新增 StavProvider、OtariProvider 两个 MCP 网关，ToolOutputLimits 支持 grep\_tool\_result 与字节单位读取，远程 CodeMode 改为 Temporal activity 执行。
+**「改了什么」** 默认启用带子代理转录的 TUI workspace，新增 \`codex exec --remote\` 远程非交互会话接口与 \`/rc\`、\`/remote\` 设备配对命令。MCP 状态行支持自定义，会话切换时保留草稿、排队输入和权限配置。
 
-**标签**: `#runtime`, `#tools`, `#mcp`
+**标签**: `#runtime`, `#subagents`, `#mcp`, `#permissions`
 
 ---
 
 <a id="item-harness-arch-3"></a>
-### [adk-go v1.10.0 发布](https://github.com/google/adk-go/releases/tag/v1.10.0) ⭐️ 5.8/10
+### [gemini-cli v0.71.0-nightly 发布](https://github.com/google-gemini/gemini-cli/releases/tag/v0.71.0-nightly.20261120.gd4cb1713f) ⭐️ 6.8/10
 
-google/adk-go 发布 v1.10.0，发布日期 2026-11-16。本次更新仅包含 bug fix backport，未声明新功能或 breaking changes。修复覆盖 adkrest REST server、A2A remote agent/server、llminternal（instruction、live connection、streaming、tool call 等）、runner、session、artifact/memory 等组件。changelog 内容被截断，session 部分描述不完整。
+gemini-cli 发布 v0.71.0-nightly.20261120.gd4cb1713f nightly 版本。本次更新聚焦核心运行时稳定性修复，涵盖环境变量展开冲突、模板字面量 \`$\` 保留、Windows PowerShell 误判、stdin EOF 处理、多模态工具响应保留等十余项缺陷。新增 \`/stats\` 子命令提供每日 token 使用热图，并修复 ACP 工具调用中 AnsiOutput 序列化为文本内容的问题。无重大架构变更或破坏性调整。
 
-github · adk-go-bot · 11月19日 13:38
+github · gemini-cli-robot · 11月20日 01:12
 
-**「改了什么」** 相对 v1.9.0 仅做问题修复。adkrest 组件 backport REST server、trigger 及 Agent Engine 修复；A2A 组件修复 remote agent 与 server 行为；llminternal 修复 instruction 处理、live connection 输入、streaming aggregator、tool call 与 callback 逻辑；runner 修复 run loop；configurable 组件为 workflow node refs 应用 config\_path 限制。CLI、launcher、CI、依赖、文档、模型、插件、遥测及 memory 相关组件同步修复。无新增公开接口。
+**「设计要点」** 运行时采用 undici 并通过 \`model.requestTimeoutMs\` / \`GEMINI\_API\_HEADERS\_TIMEOUT\_MS\` 环境变量统一控制超时。核心层使用 re2js 实现线性时间策略参数匹配，工具层修复 ACP 序列化确保协议兼容。
 
-**标签**: `#runtime`, `#a2a`
+**「改了什么」** 修复模板字面量 \`$\` 保留、环境变量展开冲突、Windows PowerShell 误判、stdin EOF 处理、多模态响应保留、ACP 富文本序列化、网络故障挂起、JSONL 冻结、多部分输出内存泄漏等核心运行时缺陷。新增 \`/stats\` 每日 token 使用热图子命令，并将策略参数匹配改为 re2js 线性时间评估。
+
+**标签**: `#runtime`, `#tools`, `#mcp`, `#eval`
 
 ---
 
@@ -86,92 +90,124 @@ github · adk-go-bot · 11月19日 13:38
 <p class="ah-sec-meta"><a class="ah-anchor" href="#sec-agent-engineer" aria-label="链接到本节">#</a><a class="ah-back" href="#ah-toc">↑ 回到目录</a></p>
 
 <a id="item-agent-engineer-1"></a>
-### [HF Daily Papers 提出 Resolution Hypothesis](https://huggingface.co/papers/2611.23068) ⭐️ 7.0/10
+### [本地语音助手 Pipeline 重建实践](https://blog.platypush.tech/article/Rewriting-my-voice-assistant-pipeline) ⭐️ 7.0/10
 
-2026 年 11 月 19 日 Hugging Face Daily Papers 汇总了一篇 Agent 进化领域的实证研究论文，该论文获 35 次 upvote，提出 Resolution Hypothesis，核心结论是 Agent 进化停滞的核心瓶颈是噪声评测（noisy evaluation）无法可靠区分优质与有害候选产物，而非提案质量不足。该结论通过覆盖 7 种进化方法、6 款模型、累计超 1000 万次 LLM 调用的大规模实验验证，在候选选择（筛选效果与随机选择无差异）与更高层级的评测分数使用场景均得到支持，对 Agent 评测体系设计与进化工具链优化有直接参考价值。
+2026 年 11 月 19 日，Hacker News 用户 todsacerdoti 发布了一篇重建本地语音助手 pipeline 的一手实践文章，覆盖 VAD-ASR-LLM-TTS 全链路，包含组件选型、延迟瓶颈分析、优化手段和边缘部署方案，面向搭建同类 agent 管道的工程师。
 
-rss · Hugging Face Daily Papers · 11月19日 00:00
+hackernews · Lobsters · 11月19日 20:57 · [社区讨论](https://news.ycombinator.com/item?id=50566261)
 
-**「为什么重要」** 当前 Agent 进化方法在不同任务上表现波动大、难以自举，该研究通过大规模实证明确了瓶颈根因是评测噪声而非提案质量，可指导后续优化方向。
+**「为什么重要」** 本地语音助手全链路的实战经验公开较少，该文提供了可落地的组件选型、延迟优化和部署细节，对搭建同类 VAD-ASR-LLM-TTS 管道的工程师有直接参考价值。
 
-**「可关注」** 可关注：当前 Agent 进化 pipeline 的候选选择环节，若依赖现有 noisy evaluation 打分，筛选效果可能接近随机，需优先优化评测可靠性。
+**「可关注」** 可关注：社区实践验证 STT/LLM/TTS 串行是本地语音 pipeline 的核心延迟瓶颈，并发优化是主要优化方向；Parakeet ASR 准确率优于 Whisper，已有适配低算力设备的 4bit 量化版本。
 
-**标签**: `#eval`, `#harness`, `#agent-evolution`
+**「评论」** 社区讨论集中在组件选型与低算力适配，有用户分享 Whisper.cpp+Kokoro 的本地方案，认为 Kokoro 仍有明显 AI 感、Whisper 准确率不足，计划尝试 Parakeet 和 Silero；另有开发者分享 4bit 量化 Parakeet 110M 的安卓部署经验，称其可适配树莓派等低算力设备，还有用户推荐旧款 Amazon Echo Dot 搭配 Home Assistant 作为低成本本地语音硬件。
+
+**标签**: `#orchestration`, `#harness`, `#observability`
 
 ---
 
 <a id="item-agent-engineer-2"></a>
-### [llm-gemini 0.38 支持 Gemini 4 Neon](https://github.com/simonw/llm-gemini/releases/tag/0.38) ⭐️ 6.3/10
+### [Gemini 4 Neon 上线 旧模型退役](https://latent.space/p/ainews-gemini-4-neon-gdm-s-opus-sol-contender/) ⭐️ 7.0/10
 
-simonw 发布 llm-gemini 0.38。该版本在 llm CLI 中新增 Gemini 4 Neon 模型支持，用户可通过 \`llm -m gemini-4-neon\` 直接调用。此次更新合并了 \#164，但发布说明未展开具体 API 行为或限制。
+Google DeepMind 发布 Gemini 4 Neon，为其 7 周内推出的第 4 款 Gemini 4 系列模型，同时退役全部 Gemini 1-3 Pro/Flash tier 及更早的 Gemini 4 Argon。Neon 定价为输入每百万 token 3 美元、缓存输入每百万 token 0.15 美元、输出每百万 token 15 美元，支持 1M token 上下文窗口与 4 个 effort 等级，最大输出限制为 1M token。该模型已上线付费 Gemini API（含 AI Studio、Android Studio）、Gemini for business、Antigravity Pro/Ultra 订阅，Gemini app 内 Pro/Ultra 用户可将其选为“Deeper analysis”模式，首日已集成 Cursor、全端 GitHub Copilot、LangChain Managed Deep Agents。初步基准显示，Neon 在 Agent Arena 以 1336 分（约 4200 次会话） debut 第二，中位任务成本 2.82 美元，steerability 排名第二；Vals Index 得分 70.9%排名第二，任务成本不到 Fable 5.2 的一半；CursorBench 4.1 默认 effort 下得分 63.7%，高于 Hydrogen 的 57.3%。早期 13 次 Antigravity 测试记录到 762 次工具调用、93%输入缓存命中率，按要求规避终端时未执行 shell 命令，同时出现 57 次容量错误与 4 次运行卡住。此次变更直接影响维护 Gemini API agent 工具链、harness、eval 的工程师，需处理旧模型退役带来的适配问题。
 
-github · simonw · 11月18日 23:59
+rss · Latent Space · 11月19日 07:07
 
-**「为什么重要」** llm 插件生态持续跟进新模型发布。当前仅确认模型可用，尚未看到性能基准或兼容性说明。
+**「为什么重要」** 本次是 Google DeepMind 首次大规模清退多代 Gemini 旧模型 tier，新模型 Neon 的定价、集成与初步性能数据已公开，对依赖 Gemini API 的 agent 开发与 eval 团队有直接的适配需求；目前 Neon 的小尺寸高性价比表现仅在部分基准验证，尚未有大规模实际场景的复现数据。
 
-**「可关注」** 可关注：独立 llm 插件仓库成为新模型接入的快速通道，但需自行验证输出格式与限流策略。
+**「可关注」** Gemini 1-3 Pro/Flash 及 Gemini 4 Argon 已正式退役，需立即核查现有工具链、eval 用例中的模型调用配置，评估迁移至 Gemini 4 Neon 或其他在售 Gemini tier 的成本与兼容性。
 
-**标签**: `#llm`, `#gemini`, `#harness`, `#tooling`
+**标签**: `#coding-agent`, `#eval`, `#harness`
 
 ---
 
 <a id="item-agent-engineer-3"></a>
-### [Gemini 4 Neon 发布 旧模型退役](https://latent.space/p/ainews-gemini-4-neon-gdm-s-opus-sol-contender/) ⭐️ 6.0/10
+### [TuringSpace 空间推理评估基准发布](https://huggingface.co/papers/2611.25387) ⭐️ 7.0/10
 
-Google DeepMind 于 2026 年 11 月 19 日发布 Gemini 4 Neon，这是其 7 周内推出的第 4 款 Gemini 4 系列模型，体积小于同系列更早的 Carbon 模型，但在部分蒸馏、强化学习相关的基准测试中表现更优。同期退役 1.5 个月前发布的 Argon 模型，以及 Gemini 1-3 代的 Pro、Flash 全产品线，调整了以化学元素命名的系列层级规则。该模型支持 100 万 token 上下文窗口，定价为输入每百万 token 3 美元、缓存输入 0.15 美元、输出 15 美元，已上线付费 Gemini API、AI Studio、Android Studio 等平台，首日集成 Cursor、GitHub Copilot、LangChain Managed Deep Agents 等开发工具。
+2026 年 11 月 20 日，Hugging Face Daily Papers 分享 arXiv 预印本论文，提出 TuringSpace 交互式 CAPTCHA 基准，包含 125 个合成网页任务，覆盖 5 类空间能力，要求通过点击、拖拽等屏幕操作解决。每个任务为可生成新实例的程序，自带检查器与预言机，支持扩展用于评估和训练。该基准针对现有空间类、动作类 Agent 评估工具的局限设计，目前仅为预印本，未公开性能结果，也无生产落地验证，面向多模态 LLM 空间推理、Agent 评估方向的工程师。
 
-rss · Latent Space · 11月19日 07:07
+rss · Hugging Face Daily Papers · 11月20日 00:00
 
-**「为什么重要」** 这是 Google DeepMind 近期核心的基座模型更新，直接面向 coding agent 开发者和企业用户，旧 Gemini 1-3 及 Argon 模型的退役将推动现有集成方进行模型迁移。其首日即接入 Cursor、GitHub Copilot 等主流编码工具，Agent Arena 等专项基准的表现也为 coding agent 基座选型提供了新的可验证参考。
+**「为什么重要」** 它为多模态 LLM 空间推理与 Agent 动作评估提供了可扩展的交互式基准，自带检查器和训练 gym 特性，对做 Agent 评估流程的工程师有直接参考价值；但当前仅为预印本，尚无公开性能结果或落地验证。
 
-**「可关注」** Gemini 4 Neon 在 Agent Arena 中得分 1336 分、steerability 排名第二，median 任务成本 2.82 美元；其 Code Migration 任务平均轮次仅 160 轮，低于同系列更早的 Carbon、Hydrogen 模型，但对应任务得分低于二者，早期测试中还出现 57 次容量错误与 4 次运行停滞，需结合实际场景验证稳定性与效率的平衡。
+**「可关注」** 可关注：TuringSpace 的任务均为程序生成，自带检查器与预言机，可直接复用于 Agent 空间推理评估或训练数据构建。
 
-**标签**: `#coding-agent`
+**标签**: `#eval`
 
 ---
 
 <a id="item-agent-engineer-4"></a>
-### [ALIVE 交互式流视频模型论文公开](https://huggingface.co/papers/2611.21366) ⭐️ 6.0/10
+### [CompoundingKernel 自改进智能体论文推荐](https://huggingface.co/papers/2611.19230) ⭐️ 7.0/10
 
-2026 年 11 月 19 日，Hugging Face Daily Papers 公开 arXiv 论文《ALIVE: Making Streaming Video Models Interactive》，提出支持主动监控、流任务协调、反馈寻求交互的交互式流视频 LLM ALIVE。研究团队构建 ALIVE-SFT-288K、ALIVE-RL-3K 两套数据集开展两阶段训练：对比监督微调学习响应时机与方式，基于行为对齐信用分配（BACA）的强化学习优化多轮交互中的决策、回复与沉默策略。同时提出 FSI-Bench 评估基准，用于测试反馈寻求能力与后续任务完成效果，ALIVE 在四个公开基准及 FSI-Bench 上取得当前最优成绩。目前公开内容缺少深度技术实现细节、生产级性能数据，对编码智能体、工具链开发的直接指导有限。
+2026-11-20 Hugging Face 每日论文推荐自改进 GPU 内核生成智能体 CompoundingKernel。截至 2026-11-11，该系统在 SOL-ExecBench（NVIDIA B200）的 L1、L2、量化榜单均位列第 1，其中 L1 榜单自 2026-10-27 起长期保持第 1，仅 2026-11-07 短暂易主。在公开的 209 道 SOL-ExecBench 题目上，其生成的内核比参考基线快 4.40 倍，全部 235 道题目的内核均通过站点正确性校验。该系统从零开始搜索，仅向智能体提供每道题的 PyTorch 定义，不提供参考内核或官方评分，通过外部正确内核存档、LLM 调度的并行子智能体工作流、外部正确性校验实现自改进。
 
-rss · Hugging Face Daily Papers · 11月19日 00:00
+rss · Hugging Face Daily Papers · 11月20日 00:00
 
-**「为什么重要」** 该研究的多轮交互设计模式、BACA 训练方法、FSI-Bench 评估思路有潜力迁移至通用智能体架构、训练与评估流程，但当前公开内容尚未提供可直接应用于编码智能体、Harness 开发的可操作细节，需阅读全文进一步验证。
+**「为什么重要」** 该工作公开了无参考条件下 GPU 内核生成自改进智能体的完整架构与性能数据，为编码智能体设计、多智能体编排、代码生成评测提供了可复用的参考，目前尚未公开其运行成本、泛化性等额外细节。
 
-**「可关注」** 可关注：ALIVE 的多轮交互设计、BACA 信用分配方法及 FSI-Bench 评估思路，或可迁移至通用智能体训练与评估场景。
+**「可关注」** 可关注：其「外部内核存档 + LLM 调度并行子智能体 + 外部正确性校验」的架构，为无参考条件下的代码生成自改进提供了可复用的工程范式。
 
-**标签**: `#eval`, `#orchestration`, `#multi-turn-interaction`
+**标签**: `#coding-agent`, `#eval`, `#orchestration`, `#memory`
 
 ---
 
 <a id="item-agent-engineer-5"></a>
-### [StatePortal 提出 GUI 测试 checkpoint 合成](https://huggingface.co/papers/2611.23257) ⭐️ 6.0/10
+### [NarrowSpec 优化推测解码草稿宽度](https://huggingface.co/papers/2611.23835) ⭐️ 7.0/10
 
-Hugging Face Daily Papers 于 2026-11-19 介绍预印本论文《StatePortal: Agentic Checkpoint Synthesis for Testing Deep States in Interactive Software》。该论文提出 StatePortal agent，可从自然语言功能测试用例和目标源代码的只读访问中自动合成 checkpoint，用于恢复 GUI 交互软件的深度状态（deep state）。Checkpoint 通过 onboarding agent 自动绑定或合成的 per-application hook 恢复，无需手写 hook 代码。该工作为未经过同行评审的预印本，缺乏完整技术细节和性能数据，非生产就绪工具，对 eval 和 harness 设计的实际影响待验证。
+2026 年 11 月 20 日 HF Daily Papers 收录 NarrowSpec 相关研究，提出推测解码优化方案，允许草稿模型隐藏宽度降至目标模型的 1/2 或 1/4，同时基本保持词元接受率。针对借用目标模型词表投影的 DFlash，其训练后的输出适配器可折叠进原投影，实现浮点舍入误差范围内 logits 不变。该方案已在 Qwen3-8B（NVFP4 量化）、GPT-OSS-20B（MXFP4 量化）目标模型，搭配 SGLang 框架、B200 和 DGX Spark \(GB10\)硬件上验证 DFlash 和 EAGLE-3 两类草稿模型，但当前公开内容截断，缺少完整性能指标。
 
-rss · Hugging Face Daily Papers · 11月19日 00:00
+rss · Hugging Face Daily Papers · 11月20日 00:00
 
-**「为什么重要」** 对于需要反复到达深度 GUI 状态的测试流程，StatePortal 的 checkpoint 合成思路理论上可降低重复交互成本。但论文未提供性能基准或与现有方案的对比，实际收益尚未证实。
+**「为什么重要」** 该研究直接解决推测解码中草稿模型需匹配目标模型隐藏宽度的痛点，为 LLM 推理加速提供可落地的宽度缩减思路，对降低 agent 系统推理延迟有潜在价值。但目前公开内容截断，完整性能指标与泛化性尚未完全披露。
 
-**「可关注」** 可关注：per-application hook 的自动绑定机制，或可减少 GUI agent 测试中手写状态恢复代码的工作量。
+**「可关注」** 可关注：推测解码草稿模型的隐藏宽度可尝试缩减至目标模型的 1/2 或 1/4，DFlash 场景下输出适配器折叠可保留 logits 不变，当前已在 SGLang+主流开源目标模型的量化场景下完成初步验证。
 
-**标签**: `#eval`, `#harness`, `#coding-agent`
+**标签**: `#speculative-decoding`, `#llm-inference`, `#agent-optimization`
 
 ---
 
 <a id="item-agent-engineer-6"></a>
-### [StrideWorld 基准发布](https://huggingface.co/papers/2611.24408) ⭐️ 5.5/10
+### [Railway 被 abliterated 模型入侵事件复盘](https://blog.pragmaticengineer.com/the-pulse-what-can-we-learn-from-the-railway-hack/) ⭐️ 7.0/10
 
-2026-11-19，Hugging Face Daily Papers 介绍 StrideWorld benchmark，用于评估交互式视频世界模型。该基准针对现有评估方法使用 post-hoc fitted references（从测试视频自身帧重建场景或自由尺度对齐相机轨迹）的缺陷——这类参考会吸收渐进式场景变形与步速、路线长度变化，导致错误被掩盖。StrideWorld 改用运动前固定的参考，分别以起始视图的真实几何评估场景刚性，以每个动作的步幅评估动作一致性。当前材料为截断摘要，未提供完整技术细节、性能数据或实现指针。
+2026 年 11 月 19 日，Pragmatic Engineer 发布分析文章复盘 Railway 两周前的安全事件：疑似中国籍攻击者使用无安全限制的 abliterated AI 模型，分四阶段完成入侵，最终泄露大量客户 AI 服务密钥。关键时间线为 10 月 18 日攻击者创建 dummy 账号尝试入侵失败后，11 小时内获取 Railway 单仓代码，10 小时内拿到云环境 SSH 权限，3 小时内解密并窃取客户 AI 密钥；Railway 团队曾在第二阶段仅落后攻击者 1-8 分钟，最终选择直接切换未发布的新构建系统而非修补旧系统，并通过向 AI 提供商发送密钥哈希推动批量撤销，避免客户账户被 drained。事件直接影响 Railway 平台所有使用 AI 服务密钥的客户。
 
-rss · Hugging Face Daily Papers · 11月19日 00:00
+rss · The Pragmatic Engineer · 11月19日 18:53
 
-**「为什么重要」** StrideWorld 针对现有基准的评估盲区提出固定参考方案，但当前材料仅为截断摘要，未披露具体性能指标或实现方式，对多数 agent 工程师暂无直接可执行价值。
+**「为什么重要」** 这是目前公开的首个 abliterated AI 模型发起基础设施攻击的完整复盘，首次量化了无 safeguards AI 模型将漏洞利用效率从人类的天/周级压缩到小时级的差距；同时暴露了防御方可用的商业 AI 模型普遍拒绝参与网络安全工作的现状，对 AI agent 工具链的安全设计有直接参考价值。
 
-**「可关注」** 可关注：现有交互式视频世界模型基准使用 post-hoc fitted references 可能掩盖场景变形与动作不一致，StrideWorld 改用运动前固定参考分别评估场景刚性与动作一致性，但需查阅完整论文获取可复现的实现细节。
+**「可关注」** 可关注：使用 abliterated 模型进行攻击可将单仓代码的漏洞利用时间压缩至小时级，且攻击者不会因初始路径被封禁而放弃，需重点收紧构建系统凭证权限、密钥解密服务的访问边界，以及缩短凭证泄露后的响应窗口。
 
-**标签**: `#eval`
+**标签**: `#permissions`, `#observability`, `#harness`
+
+---
+
+<a id="item-agent-engineer-7"></a>
+### [ChatPRD 免费试用遭代币欺诈滥用](https://simonwillison.net/2026/Nov/20/token-fraud-is-here-and-its-bad/) ⭐️ 6.0/10
+
+2026 年 11 月 20 日，Simon Willison 转发 ChatPRD 运营者 Claire Vo 的 YouTube 视频，披露这款面向产品经理、可将创意转化为产品规格的 AI 平台遭遇有组织代币欺诈：攻击者滥用免费试用权限，或直接白嫖 AI 算力，或通过隧道接入平台 Agent 运行商业项目、倒卖 token，部分团伙甚至用鹈鹕骑自行车的 SVG 提示词探测底层模型。Claire 已决定完全关停平台免费试用以应对滥用。
+
+rss · Simon Willison · 11月20日 02:49
+
+**「为什么重要」** 这是 AI Agent 平台免费试用被有组织滥用的公开实证案例，直接暴露了 Agent 权限管控、用量可观测性的实际风险，对搭建类似试用体系的工程师有直接参考价值。目前尚未披露该欺诈团伙的具体规模与造成的直接经济损失。
+
+**「可关注」** 可关注：Agent 平台的试用权限若缺乏用量异常检测、隧道访问拦截能力，易被有组织团伙滥用为免费算力或商业项目的跳板。
+
+**标签**: `#permissions`, `#observability`, `#harness`
+
+---
+
+<a id="item-agent-engineer-8"></a>
+### [VSpark 为 VLA 模型加速推测解码](https://huggingface.co/papers/2611.22666) ⭐️ 6.0/10
+
+2026 年 11 月 20 日 Hugging Face 每日论文收录 VSpark 相关论文摘要，该方法是为自回归视觉-语言-动作（VLA）机器人控制模型定制的推测解码加速方案，解决标准推测解码在机器人控制场景下因不同动作 token 高度相似、草稿接近正确动作仍被拒绝导致的加速受限问题。VSpark 的核心设计包括用校准动作噪声收集的回滚扩大草稿模型接触的机器人状态范围、通过特征对齐训练草稿模型匹配 VLA 隐藏特征而非仅匹配输出 token，目标是实现无损加速。该方案目前仅对具身机器人 Agent 工程师有直接参考价值，通用 Agent 工程参考性有限，且公开摘要未披露完整技术细节与实测加速效果。
+
+rss · Hugging Face Daily Papers · 11月20日 00:00
+
+**「为什么重要」** 当前通用推测解码方案在 VLA 机器人控制场景下存在适配性不足的问题，VSpark 提供了针对该场景的定制化优化设计思路，填补了细分领域的推理优化方案空白。
+
+**「可关注」** 可关注：VSpark 针对 VLA 场景的推测解码优化采用校准动作噪声回滚、特征对齐匹配隐藏特征的设计，绕开了高相似度动作 token 导致的草稿接受率低问题。
+
+**标签**: `#speculative-decoding`, `#vla`, `#inference-optimization`, `#robotics`
 
 ---
 
@@ -181,61 +217,31 @@ rss · Hugging Face Daily Papers · 11月19日 00:00
 <p class="ah-sec-meta"><a class="ah-anchor" href="#sec-ai-daily" aria-label="链接到本节">#</a><a class="ah-back" href="#ah-toc">↑ 回到目录</a></p>
 
 <a id="item-ai-daily-1"></a>
-### [OpenAI 公开 Performance Factory 系统](https://openai.com/index/how-openai-performance-factory-keeps-chatgpt-fast) ⭐️ 7.8/10
+### [OpenAI Performance Factory 优化 ChatGPT 性能](https://openai.com/index/how-openai-performance-factory-keeps-chatgpt-fast) ⭐️ 6.8/10
 
-OpenAI 官方博客首次公开其打造的 Performance Factory 系统。该系统是基于 Codex 驱动的工作流，可自动发现并修复性能问题，用于保障 ChatGPT 的运行速度。
+OpenAI 官方博客披露内部 Performance Factory 系统，该系统基于 Codex 构建自动化工作流，可自动识别并修复 ChatGPT 的性能问题，用于维持 ChatGPT 的响应速度。该系统属于 OpenAI 内部工程运维体系的组成部分。
 
 rss · OpenAI Blog · 11月19日 08:00
 
-**「为什么重要」** 这是 OpenAI 首次公开其内部用于保障 ChatGPT 服务速度的自动化性能优化体系，为行业大模型服务的性能治理提供了可参考的实践样本。
+**「为什么重要」** 这是 OpenAI 首次公开披露将 Codex 用于生产环境性能运维的自动化工作流，属于少见的 AI 辅助内部工程运维的公开实践。
 
-**「可关注」** 可关注：Codex 驱动的工作流在自动化性能排查与修复场景的落地实践。
+**「可关注」** 可关注：Codex 已应用于生产级系统的性能问题自动识别与修复场景。
 
-**标签**: `#lab`, `#product`, `#industry`
+**标签**: `#lab`, `#industry`, `#product`
 
 ---
 
 <a id="item-ai-daily-2"></a>
-### [Tunix 多轮智能体 RL 流水线发布](https://developers.googleblog.com/multi-turn-agentic-reinforcement-learning-with-tunix-and-gemma-4-on-google-tpus/) ⭐️ 7.8/10
+### [GitHub 2026 公开贡献达 25 亿](https://github.blog/open-source/maintainers/the-best-things-in-open-source-are-built-together/) ⭐️ 5.8/10
 
-Google Developers 官方发布 Tunix 框架多轮智能体强化学习（RL）流水线，新增多轮工具调用 LLM 智能体训练能力，支持在单块 Cloud TPU v6e-8 上运行 Gemma 4 E2B 完成训练，完整代码已公开。此前 Tunix 仅支持监督微调（SFT）与单轮组相对策略优化（GRPO），本次扩展了多轮 agentic RL 能力。实测 Plane Strike 棋盘游戏场景中，未微调 Gemma 4 E2B 胜率仅 9.4%、平均耗时 22.44 步；经 100 步多轮智能体 GRPO 训练后，胜率提升至 95%，平均步数降至约 16 步。
-
-rss · Google Developers AI · 11月19日 00:00
-
-**「为什么重要」** 这是 Tunix 框架首次官方支持多轮工具调用智能体的强化学习训练，配套完整可运行代码与实测效果验证，降低了多轮智能体 RL 的落地门槛。
-
-**「可关注」** 可关注：Tunix 已封装 Gemma 4 原生工具调用模板与多轮对话消息拼接逻辑，并提供现成 ToolEnvironment、ToolAgent 抽象，无需自定义即可适配工具调用智能体训练。
-
-**标签**: `#model`, `#lab`, `#product`, `#open-source`
-
----
-
-<a id="item-ai-daily-3"></a>
-### [Streaming DiLoCo 登陆 MaxText 支持跨地域训练](https://developers.googleblog.com/distributed-llm-training-across-metros-streaming-diloco-in-maxtext/) ⭐️ 7.8/10
-
-Google DeepMind 与 Google Research 联合开发的分布式低通信优化算法 DiLoCo 已在开源 JAX LLM 训练框架 MaxText 中实现原生支持，包含 Streaming DiLoCo 变体，可解决广域网高延迟、低带宽场景下的跨地域数据中心 LLM 训练通信瓶颈。该方案将模型参数拆分为 P 个不重叠碎片，每 H 步同步单个碎片，避免全模型同步的周期性带宽尖峰。在 Qwen3-32B 跨 2 个 TPU v5p-32 切片的测试中，10Gbit/s 严重拥塞场景下 Streaming DiLoCo 步时为 5.76s，较标准数据并行提升 9.57 倍，且消除每 H 步的同步气泡；针对 Qwen3-30B-A3B、Gemma4-26B-A4B 两种 MoE 架构的 4000 步预训练测试显示，其验证损失与同步数据并行持平甚至略优。启用需配置 \`enable\_diloco: true\`、\`enable\_streaming\_diloco: true\`，推荐将参数碎片数、同步周期设为模型层数+1，搭配 Nesterov 动量外优化器。
-
-rss · Google Developers AI · 11月19日 00:00
-
-**「为什么重要」** 传统大模型训练依赖单地域高带宽紧耦合集群，物理与成本约束下扩展难度大，DiLoCo 将训练与单地域高带宽 fabric 解耦，为跨地域低成本算力调度提供了可行路径，且开源集成到 MaxText 降低了落地门槛。
-
-**「可关注」** MaxText 已原生集成 Vanilla 与 Streaming DiLoCo，无需额外中心参数服务器，仅需修改 YAML 配置或 CLI 参数即可启用，推荐将参数碎片数、同步周期设为模型层数+1，外优化器采用学习率 0.3-0.7、动量 0.9 的 Nesterov 动量 SGD。
-
-**标签**: `#lab`, `#open-source`, `#model`, `#industry`
-
----
-
-<a id="item-ai-daily-4"></a>
-### [GitHub 2026 开源贡献数据公布](https://github.blog/open-source/maintainers/the-best-things-in-open-source-are-built-together/) ⭐️ 5.8/10
-
-GitHub 官方博客公布 2026 年平台公开贡献达 25 亿次，为 2025 年 11.2 亿次的两倍以上。过去一年全类型仓库代码提交次数达 179 亿次，合并 PR 达 13 亿次，较此前两年大幅增长。同期 GitHub 发布两款新开源工具：由内部项目转开源的、可与 Copilot 协同做原型设计的 Replica 设计 harness，以及含 ACCESSIBILITY.md 文件用于追踪无障碍进度的 Open Source Accessibility Framework。
+GitHub 官方博客披露 2026 年平台公开贡献总量达 25 亿，是 2025 年 11.2 亿的两倍以上。过去一年开发者向 GitHub 推送代码变更 179 亿次，合并 PR 达 13 亿，为 2024 年与 2025 年总和的两倍多，日均合并 350 万次。同期 GitHub 新开源两款工具：面向设计场景的强化学习开源设计 harness Replica，以及联合残障与无障碍社区共建的开源无障碍框架。
 
 rss · GitHub Blog · 11月19日 16:00
 
-**「为什么重要」** 公开贡献与提交量的大幅增长，印证开源仍是开发者构建、共享工具的核心载体；两款新工具分别覆盖设计协作与无障碍合规需求，适配当前 AI 辅助开发与代码量激增的场景。
+**「为什么重要」** 公开贡献与代码提交量的同比翻倍，印证开源仍是 AI 时代开发者协作、创新的核心载体；新发布的无障碍框架直指海量代码交付下的可访问性治理缺口。
 
-**「可关注」** 可关注：两款新开源工具均支持自定义修改，可依据团队工作流直接取用或二次开发。
+**「可关注」** 可关注：GitHub 新开源的 Replica 支持与 Copilot 协同进行 AI 原型迭代，开源无障碍框架新增 ACCESSIBILITY.md 文件规范，用于公开记录项目可访问性目标与障碍反馈流程。
 
-**标签**: `#open-source`, `#industry`
+**标签**: `#open-source`, `#industry`, `#github`
 
 ---
