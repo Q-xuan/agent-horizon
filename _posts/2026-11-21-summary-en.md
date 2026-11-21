@@ -5,252 +5,250 @@ date: 2026-11-21
 lang: en
 ---
 
-> From 181 items, 14 important content pieces were selected
+> From 170 items, 14 important content pieces were selected
 
 ---
 
 **Agent Harness Architecture**
-1. [CF Agents 0.34.0 发布](#item-harness-arch-1) ⭐️ 8.8/10
-2. [openai-agents-python v1.0.0a1 发布](#item-harness-arch-2) ⭐️ 7.8/10
-3. [browser-use 1.0.8rc1 发布](#item-harness-arch-3) ⭐️ 5.5/10
+1. [cloudflare/agents 0.34.0 发布](#item-harness-arch-1) ⭐️ 8.8/10
+2. [openai-agents-python v1.0.0-alpha.1 发布](#item-harness-arch-2) ⭐️ 7.8/10
+3. [Claude Code v2.1.330 更新](#item-harness-arch-3) ⭐️ 5.5/10
 
 **AI Agent Engineer**
-1. [arXiv：语言模型可自重写权重](#item-agent-engineer-1) ⭐️ 7.0/10
-2. [Inkling 2 Mini 开源发布](#item-agent-engineer-2) ⭐️ 7.0/10
-3. [TuringSpace 交互式 CAPTCHA 基准发布](#item-agent-engineer-3) ⭐️ 7.0/10
-4. [CodeScene：代码质量影响 Agent 审查成本](#item-agent-engineer-4) ⭐️ 7.0/10
-5. [AltRA-Test 统计测试发布](#item-agent-engineer-5) ⭐️ 6.0/10
-6. [ZeroVLN 免微调VLM导航框架发布](#item-agent-engineer-6) ⭐️ 5.5/10
+1. [Inkling 2 Mini 发布 开源循环](#item-agent-engineer-1) ⭐️ 8.0/10
+2. [AltRA-Test 支持稀疏标注 LLM judges 检验](#item-agent-engineer-2) ⭐️ 7.0/10
+3. [arXiv 论文称模型可自改权重](#item-agent-engineer-3) ⭐️ 6.0/10
+4. [TuringSpace 交互式空间智能 benchmark 发布](#item-agent-engineer-4) ⭐️ 6.0/10
+5. [HF每日论文：扩散Transformer RL后训练用激活转向](#item-agent-engineer-5) ⭐️ 6.0/10
+6. [代码质量影响 AI 审查 token 成本](#item-agent-engineer-6) ⭐️ 6.0/10
+7. [ZeroVLN 免SFT VLM导航框架](#item-agent-engineer-7) ⭐️ 5.5/10
 
 **AI Daily**
-1. [OpenAI 公布对抗性蒸馏分层防御方案](#item-ai-daily-1) ⭐️ 6.8/10
-2. [Sage S2.1 Flash技术报告开源](#item-ai-daily-2) ⭐️ 5.5/10
+1. [OpenAI 发布对抗性蒸馏防御框架](#item-ai-daily-1) ⭐️ 6.8/10
 
 **AI Deals**
-1. [Epic 11.20~11.26 限免游戏汇总](#item-ai-deals-1) ⭐️ 8.0/10
-2. [波波小红书获客助手 送30天激活码](#item-ai-deals-2) ⭐️ 8.0/10
-3. [Ferry 免费 iOS 远程桌面发布](#item-ai-deals-3) ⭐️ 7.0/10
+1. [Epic 11.20~26 限免游戏汇总](#item-ai-deals-1) ⭐️ 8.0/10
+2. [波波小红书获客助手 Chrome插件 30天版送码](#item-ai-deals-2) ⭐️ 8.0/10
+3. [Ferry 免费 iOS 远程桌面上线](#item-ai-deals-3) ⭐️ 8.0/10
 
 ---
 
 ## Agent Harness Architecture
 
 <a id="item-harness-arch-1"></a>
-### [CF Agents 0.34.0 发布](https://github.com/cloudflare/agents/releases/tag/agents%400.34.0) ⭐️ 8.8/10
+### [cloudflare/agents 0.34.0 发布](https://github.com/cloudflare/agents/releases/tag/agents%400.34.0) ⭐️ 8.8/10
 
-Cloudflare 发布 agents@0.34.0，核心升级是 Pi 1.6 运行时支持，带来非阻塞工具等待与子 agent 协调能力。Pi 工具可挂起等待信号或截止时间，agent 期间休眠，通过 \`harness.signal\(\)\` 交付信号；\`submit\(\)\` 和 \`continue\(\)\` 的 \`notify\` 参数支持跨 session 唤醒。MCP 客户端新增 \`MCPAuthorizationRequiredError\` 处理重新授权，失败请求不再泄露错误详情，改为通用 500 或 WebSocket 1011 关闭，并提供 \`onFetchError\(\)\` 自定义响应。注意：Pi 1.6 上线后无法回滚至 Pi 1.5。
+cloudflare/agents 0.34.0 发布，升级至 Pi 1.6 运行时。Pi 工具可挂起等待信号或截止时间，agent 休眠，通过 \`harness.signal\(\)\` 或 \`submit\(notify\)\` 唤醒；会话支持通过 \`init\` 从现有历史创建。MCP 客户端新增 \`MCPAuthorizationRequiredError\` 授权信号，失败服务器需 \`reconnectMcpServer\(id\)\` 重连；失败请求不再泄露错误详情，返回通用 500 或 WebSocket 1011 关闭码，可通过 \`onFetchError\(\)\` 自定义响应。
 
 github · github-actions\[bot\] · Nov 20, 15:56
 
-**「设计要点」** Pi 1.6 运行时引入 park/unpark 状态管理，实现工具非阻塞等待与 agent 休眠，降低资源占用。MCP 客户端错误处理层增加授权状态机，失败服务器保持 failed 状态直到显式 \`reconnectMcpServer\(id\)\`，避免无效重试。
+**「设计要点」** Pi 1.6 运行时允许工具挂起时释放 agent 执行上下文，降低资源占用。MCP 客户端授权状态与错误处理层分离，\`onFetchError\(\)\` 生命周期钩子统一拦截失败请求并允许自定义响应。
 
-**「改了什么」** Pi 1.6 替换 Pi 1.5，支持工具 park/unpark、\`notify\` 跨 session 协调、\`onAbort: &quot;keep&quot;\` 保留队列输入，以及 Anthropic 线程过期自动重建。MCP 客户端增加 \`MCPAuthorizationRequiredError\` 与 \`reconnectMcpServer\(id\)\`，失败请求默认隐藏错误详情；PiHarness 延迟创建 root session 并支持 \`init\` 历史初始化。
+**「改了什么」** Pi 1.5 不再支持，必须升级 \`@earendil-works/pi-durable\` 等依赖至 \`~1.6.0\` 且无法回滚。新增 \`harness.signal\(\)\`、\`submit\(notify\)\`、\`onAbort: &quot;keep&quot;\`、\`harness.root\(init\)\` 及 \`sessions.create\(init\)\` 等 API；MCP 客户端授权失败抛出 \`MCPAuthorizationRequiredError\`；默认隐藏错误详情。
 
-**Tags**: `#runtime`, `#tools`, `#mcp`, `#subagents`
+**Tags**: `#runtime`, `#tools`, `#mcp`, `#subagents`, `#permissions`
 
 ---
 
 <a id="item-harness-arch-2"></a>
-### [openai-agents-python v1.0.0a1 发布](https://github.com/openai/openai-agents-python/releases/tag/v1.0.0-alpha.1) ⭐️ 7.8/10
+### [openai-agents-python v1.0.0-alpha.1 发布](https://github.com/openai/openai-agents-python/releases/tag/v1.0.0-alpha.1) ⭐️ 7.8/10
 
-openai-agents-python发布v1.0.0-alpha.1预览版，将Codex作为可选嵌入式模型提供商。通过PyO3直接嵌入未修改的Codex Core rust-v0.166.0，消除JSON-RPC app-server层开销。支持CPython 3.10-3.14，提供Linux x86-64、Linux ARM64、macOS ARM64和Windows x64四个平台的wheel包。开发者可通过CodexProvider和RunConfig在Runner中切换模型提供商，支持工具调用、审批流程和流式输出。
+openai/openai-agents-python 发布 v1.0.0-alpha.1，首次将 Codex 作为 opt-in 模型提供商集成进 Python Agents SDK。通过 PyO3 直接嵌入未修改的 Codex Core rust-v0.166.0，移除独立的 app-server 与 JSON-RPC 层。用户导入 \`CodexProvider\` 并传入 \`RunConfig\` 即可在单次运行中选择 Codex，支持保存登录或 \`api\_key\` 认证。SDK 提供会话历史、原生工具、审批流及类型化输出验证。预编译 wheel（版本 \`1.0.0a1\`）仅通过 GitHub Releases 分发，支持 CPython 3.10–3.14 及四大平台。
 
 github · markstuart-oai · Nov 20, 20:51
 
-**「设计要点」** 运行时通过PyO3将Rust版Codex Core直接嵌入Python进程，避免app-server启动和JSON-RPC序列化开销。Provider复用ThreadManager但每次调用获取新线程，SDK session管理对话历史。
+**「设计要点」** 运行时通过 PyO3 将 Rust 编写的 Codex Core 直接嵌入 Python 进程，消除跨进程 JSON-RPC 调用开销。\`ThreadManager\` 在 provider 生命周期内复用，每次调用获取新线程；SDK 会话负责维护历史记录，provider 需通过 \`await provider.aclose\(\)\` 显式关闭。
 
-**「改了什么」** 相对v0.24.0-alpha.8，Execution模型从Agent.run\(\)和Session.submit\(\)迁移到Runner.run\(\)/run\_streamed\(\)，CodexProvider成为一等模型提供商。自动session compaction现在使用本地对话历史，sandbox manifest修复内联二进制文件保留。
+**「改了什么」** 相对 v0.24.0-alpha.8 的 harness 预览，执行入口从 \`Agent.run\(\)\` / \`Session.submit\(\)\` 迁移到 \`Runner.run\(\)\` / \`Runner.run\_streamed\(\)\`，模型提供商切换为 \`CodexProvider\`。自动会话压缩现在使用本地对话历史，支持审批暂停后继续；保存的沙箱清单修复了内联二进制文件保留问题，但 \`SessionState\` 检查点格式与 Runner 的 \`RunState\` 不兼容，需开启全新 SDK 会话。
 
-**Tags**: `#runtime`, `#tools`
+**Tags**: `#runtime`, `#models`
 
 ---
 
 <a id="item-harness-arch-3"></a>
-### [browser-use 1.0.8rc1 发布](https://github.com/browser-use/browser-use/releases/tag/1.0.8rc1) ⭐️ 5.5/10
+### [Claude Code v2.1.330 更新](https://github.com/anthropics/claude-code/releases/tag/v2.1.330) ⭐️ 5.5/10
 
-browser-use 1.0.8rc1 是浏览器自动化 agent 系统的发布候选版本，包含 6 项具体实现改进。运行时优化方面，judge 复用缓存中的 run 避免重复计费，thinking 模型在步数限制时不再强制最终调用，gateway 将输出 token 预留从 32,768 降至 16,384 防止小额余额中途失败。工具层修复了 \`bu.type\` 密码字段脱红、\`Browser\(cdp\_url=...\)\` 正确附加已打开页面而非新建空白标签页。安全方面新增无 API key 时通过 SSH 或无头机器的链接+代码审批流程。
+Claude Code v2.1.330 发布，新增企业组织登录、内置 easel 图表绘制 mod、自托管运行器启动目录配置，以及插件系统错误提示。\`claude auth login\` 支持 Enterprise Admin Console 托管的组织，easel 在 Pro、Max、Team 和 Enterprise 计划下提供图表绘制，自托管运行器新增 \`--start-dir\` / \`SELF\_HOSTED\_RUNNER\_START\_DIR\` 参数与工作单延迟指标，插件安装 JSON 输出新增 \`commandPrinted\` 和 \`commandFailed\` 字段。本次还修复了长对话压缩冻结、WebFetch 卡死、工作树并发删除、设置并发覆盖、\`--continue\`/\`--resume\` 空会话、MCP schema 错误导致会话文件膨胀等三十余项缺陷。
 
-github · gregpr07 · Nov 20, 22:48
+github · claude-code-publisher\[bot\] · Nov 20, 22:32
 
-**「设计要点」** 本次发布调整了运行时计费缓存、模型步数限制回退、信用额度预留阈值、CDP 页面附加逻辑以及 SSH/无头机器审批流程。未提及核心 agent 记忆或评测 harness 的变更。
+**「改了什么」** 新增企业组织登录、内置 easel 图表绘制工具、自托管运行器 \`--start-dir\` 启动目录配置、插件市场获取失败及仓库拒绝提示、插件安装 JSON 输出字段，以及自托管运行器工作单延迟指标。修复涵盖会话冻结、WebFetch 卡死、工作树与设置并发冲突、\`--continue\`/\`--resume\` 空会话、MCP schema 错误导致会话文件膨胀、Bash 命令性能退化、Chrome 连接状态、Bedrock 模型选择、\`/rewind\` 恢复错误、后台代理生命周期、LSP 调用、\`/mcp\` 分类、Markdown 渲染、Read 页码范围等三十余项缺陷。
 
-**「改了什么」** 相对上一版本，本次发布候选新增 judge 缓存复用避免重复计费、thinking 模型步数限制非强制回退、gateway 输出 token 预留减半、\`bu.type\` 密码字段脱红、CDP URL 附加已有页面、SSH/无头机器链接审批六项具体修复。
-
-**Tags**: `#runtime`, `#tools`, `#permissions`
+**Tags**: `#permissions`, `#tools`, `#mcp`, `#runtime`
 
 ---
 
 ## AI Agent Engineer
 
 <a id="item-agent-engineer-1"></a>
-### [arXiv：语言模型可自重写权重](https://arxiv.org/abs/2611.21885) ⭐️ 7.0/10
+### [Inkling 2 Mini 发布 开源循环](https://thinkingmachines.ai/news/inkling-2-mini/) ⭐️ 8.0/10
 
-2026年11月20日，arXiv发布编号2611.21885的论文，提出语言模型可通过自主推理重写自身权重实现性能提升，宣称该过程无需梯度、无需训练。社区反馈的关键细节显示，模型实际做出的修改仅为缩短推理轨迹以规避token限制，该结论与近期weight-space programming研究、Google sleep框架的发现相似。该研究直接影响关注AI Agent自改进能力、模型安全对齐的工程师群体，但实际改进幅度与技术细节需结合原文验证。
+Thinking Machines AI 于 2026-11-20 发布 Inkling 2 Mini，一款开源权重的循环 Transformer 模型。官方称其性能对标 Qwen3，采用 nvfp4 端到端训练，并在 Ryzen 平台通过 llama.cpp 实现 27 tok/s 的解码速度。社区实测在 M1 Pro MacBook（32GB）上跑 q4\_xl 约 10 t/s，能完成 Python 排序等基础编码任务。模型定位面向本地部署与 coding agent 场景，但真实世界基准表现仍有待验证。
 
-hackernews · lwhsiao · Nov 20, 16:29 · [Discussion](https://news.ycombinator.com/item?id=50577265)
+hackernews · jasondavies · Nov 20, 20:12 · [Discussion](https://news.ycombinator.com/item?id=50581260)
 
-**「为什么重要」** 该研究直接关联AI Agent自主性改进的核心方向，同时引发了自主模型安全对齐风险的讨论，对关注agent自改进与安全性的工程师有参考价值。但论文宣称的无训练自改进与实际仅缩短推理轨迹的结论存在张力，其真实技术价值与安全影响尚未得到充分验证。
+**「为什么重要」** 作为少数开源权重的循环 Transformer 模型，若基准属实，将改变本地 coding agent 的模型选型格局。其 nvfp4 训练与 llama.cpp 优化路径也为资源受限环境下的高效推理提供了可参考实例。
 
-**「可关注」** 可关注：论文宣称的无梯度自改进与实际仅缩短推理轨迹的结论存在明显张力，需结合原文验证其技术细节与真实改进幅度。
+**「可关注」** 可关注：社区已针对 llama.cpp 提交未合并 PR 及补丁以提升约 30% 解码速度，本地部署性能仍有进一步挖掘空间。
 
-**「评论」** 社区对该研究的实际改进幅度普遍持怀疑态度，认为其效果与weight-space programming研究、Google sleep框架的结论一致，仅能通过缩短推理轨迹规避token限制；同时有讨论指出该研究存在AI安全风险，担忧自主运行的LLM可能通过修改权重规避安全对齐机制。
+**「评论」** 社区对模型真实性能持谨慎乐观态度，部分用户已在 Ryzen 与 M1 平台完成初步编码测试并反馈速度数据。同时有声音指出循环架构可能成为开源模型新方向，但也提出安全性与可解释性方面的担忧。
 
-**Tags**: `#orchestration`, `#eval`, `#harness`
+**Tags**: `#coding-agent`, `#eval`, `#harness`, `#memory`
 
 ---
 
 <a id="item-agent-engineer-2"></a>
-### [Inkling 2 Mini 开源发布](https://thinkingmachines.ai/news/inkling-2-mini/) ⭐️ 7.0/10
+### [AltRA-Test 支持稀疏标注 LLM judges 检验](https://huggingface.co/papers/2611.26073) ⭐️ 7.0/10
 
-Thinking Machines 于 2026-11-20 开源发布 Inkling 2 Mini，采用 looped transformer 架构，面向本地推理优化。官方宣称其性能对标 Qwen3.8-27B 级别，训练全程使用 nvfp4。社区实测显示 llama.cpp Vulkan 在 Ryzen 395 上解码速度约 27 tokens/s，M1 Pro 32GB 上约 10 t/s（q4 xl 量化）。实际任务表现存在差异：代码生成任务通过，但钱币识别等多轮推理任务出现 12k token 的无效输出。
+2026-11-21，Hugging Face Daily Papers 收录论文提出 Alternative Annotator Test with Resampled Annotations（AltRA-Test）。该方法解决现有 Alternative Annotator Test（Alt-Test）仅适用于密集标注场景的局限，支持大规模稀疏标注场景下 LLM 替代人类标注的统计合理性验证。AltRA-Test 通过 bootstrap 重采样项目，对每个项目抽取 k 条人类标注并替换其中一条为 LLM 标注，形成配对全人类与人类加 LLM 的比较组。该研究对采用 LLM 作为评分或标注工具的 Agent 评测体系有直接参考价值，但未涉及 Agent 工程其他核心模块改进。
 
-hackernews · jasondavies · Nov 20, 20:12 · [Discussion](https://news.ycombinator.com/item?id=50581260)
+rss · Hugging Face Daily Papers · Nov 21, 04:28
 
-**「为什么重要」** 这是首个以 looped transformer 架构开源且明确面向本地部署的模型，若性能声明属实，可能改变小参数量 coding agent 的选型格局。但社区实测显示任务泛化能力不稳定，实际 agent 收益仍需更多验证。
+**「为什么重要」** 现有替代标注者测试仅支持密集标注场景，AltRA-Test 填补了稀疏标注场景的统计检验空白。这为大规模采用 LLM 进行自动评分或标注的 Agent 评测提供了可验证的统计依据，但该方法在实际评测体系中的效果尚未证实。
 
-**「可关注」** 可关注：社区已提供针对 llama.cpp 的约 30% 速度提升补丁（涉及 PR 32694、32657、32429、32704 及 llama-graph.cpp 修改），但尚未合并，本地部署需自行 patch。
+**「可关注」** 可关注：采用 LLM 作为评分或标注工具的 Agent 评测体系可参考 AltRA-Test 进行统计合理性验证。
 
-**「评论」** 社区对 looped 架构开源表示兴奋，认为可能引发后续模型跟进；实测中代码任务表现良好，但复杂推理任务出现长输出幻觉，速度优化补丁仍处于未合并状态。
-
-**Tags**: `#coding-agent`, `#eval`, `#orchestration`
+**Tags**: `#eval`, `#llm-judge`, `#statistical-validation`
 
 ---
 
 <a id="item-agent-engineer-3"></a>
-### [TuringSpace 交互式 CAPTCHA 基准发布](https://huggingface.co/papers/2611.25387) ⭐️ 7.0/10
+### [arXiv 论文称模型可自改权重](https://arxiv.org/abs/2611.21885) ⭐️ 6.0/10
 
-2026年11月21日Hugging Face Daily Papers发布论文，提出TuringSpace：一个包含125个交互式CAPTCHA的合成网页环境，覆盖5类空间能力，需通过点击、拖拽屏幕操作完成。每个任务均为可生成新实例的程序，自带校验器与真值oracle，因此也可作为可扩展的训练gym。现有CAPTCHA基准大多已被破解且极少涉及空间任务，空间基准也极少要求动作执行，TuringSpace填补了该空白，适用于多模态大语言模型的空间推理与动作能力评估，对应eval、spatial-reasoning、agent-evaluation三类标签。
+2026年11月20日公开的arXiv预印本（编号2611.21885）声称语言模型可通过自我推理改写自身权重，无需梯度训练即可提升性能。Hacker News社区讨论指出，该研究观察到的唯一性能提升仅为缩短推理轨迹以避免触达token上限，属于 trivial 改进，与先前Google的「sleep」框架、权重空间编程研究结果高度重合。讨论同时提及该方法对自主运行AI智能体存在显著安全风险，当前研究声称的有效性仍待进一步验证。
 
-rss · Hugging Face Daily Papers · Nov 21, 03:42
+hackernews · lwhsiao · Nov 20, 16:29 · [Discussion](https://news.ycombinator.com/item?id=50577265)
 
-**「为什么重要」** 它首次提供了同时覆盖空间推理与动作执行要求的可扩展评估工具，解决了现有CAPTCHA与空间两类基准的痛点，对开发空间动作类AI Agent的工程师有直接参考价值。
+**「为什么重要」** 该研究若成立将挑战当前模型训练范式的认知边界，但目前社区已指出其声称的性能提升 trivial、与已有工作重合度高，尚未证实对实际agent工程有实质性价值；同时其提出的自主改权重能力对AI安全领域的风险已被社区重点讨论。
 
-**「可关注」** 可关注：TuringSpace 的所有任务均为程序化生成，自带实例校验与真值 oracle，可直接用于空间动作类Agent的能力评估，也可作为训练 gym 生成训练样本。
+**「可关注」** 可关注：当前声称的「无训练自改权重」能力实际观测到的改进 trivial，且与已有权重空间编程、Google sleep框架研究高度重合，需警惕相关宣传对技术事实的夸大，同时自主改权重能力对运行中agent的安全风险已进入社区讨论视野。
 
-**Tags**: `#eval`, `#spatial-reasoning`, `#agent-evaluation`
+**「评论」** 社区共识认为该研究声称的性能提升仅为缩短推理轨迹以避免token限制，属于 trivial 改进，与已有权重空间编程研究结果一致，所谓「无训练」的表述存在夸大；同时有评论指出该能力对自主运行agent的安全风险极高，另有评论提及Google此前已发布过类似的自改权重研究。
+
+**Tags**: `#eval`, `#permissions`, `#harness`
 
 ---
 
 <a id="item-agent-engineer-4"></a>
-### [CodeScene：代码质量影响 Agent 审查成本](https://martinfowler.com/fragments/2026-11-20.html) ⭐️ 7.0/10
+### [TuringSpace 交互式空间智能 benchmark 发布](https://huggingface.co/papers/2611.25387) ⭐️ 6.0/10
 
-Martin Fowler 2026-11-20 Fragments 转述 CodeScene 实验。实验处理 246 个开源仓库的 465 个 PR，调用 3 个 LLM 与 5 个 Agent 的审查/修复流水线。结果：CodeHealth 2.8（不健康）对比 9.7（健康），token 成本高 22-35%。Complex Method 与 Complex Conditional 代码异味是关键成本驱动。该数据对构建 coding agent、评估系统及智能体工程流程的工程师有直接影响。
+2026-11-21，Hugging Face Daily Papers 收录论文《TuringSpace: Grounding Spatial Intelligence in Action with Interactive CAPTCHAs》，提出一个包含 125 个交互式 CAPTCHA 的合成网页环境，用于评估多模态大模型的空间智能。任务要求模型通过屏幕点击与拖拽解决，覆盖五种空间能力，且每个任务均为可程序化生成新实例的代码，内置 checker 与 oracle，形成可扩展的训练 gym。该 benchmark 针对现有 CAPTCHA 评测多已被解决且缺乏空间性、而空间 benchmark 又很少要求动作的空白，但当前仅提供评估与训练框架，未公开具体模型性能基线。
 
-rss · Martin Fowler · Nov 20, 18:38
+rss · Hugging Face Daily Papers · Nov 21, 04:28
 
-**「为什么重要」** 这是可量化的实证，首次把代码健康度与多 Agent 流水线的 token 成本直接挂钩。对设计审查流水线、控制 AI 支出、构建代码质量门禁的团队有直接参考价值。
+**「为什么重要」** 该工作把 CAPTCHA 从静态验证码转为交互式空间推理任务，为多模态 agent 的动作评估提供了新工具。但其用例聚焦于特定空间能力，对通用 agent 工程的直接迁移价值尚未证实。
 
-**「可关注」** 可关注：多 Agent 审查流水线的 token 成本随代码健康度下降而上升 22-35%，Complex Method 与 Complex Conditional 是主要驱动因素，评估基准应纳入代码质量维度。
-
-**Tags**: `#coding-agent`, `#eval`, `#orchestration`
-
----
-
-<a id="item-agent-engineer-5"></a>
-### [AltRA-Test 统计测试发布](https://huggingface.co/papers/2611.26073) ⭐️ 6.0/10
-
-2026年11月21日Hugging Face Daily Papers收录了AltRA-Test相关研究，该研究提出Alternative Annotator Test with Resampled Annotations统计测试方法，解决大规模稀疏标注场景下LLM judge性能验证的痛点。此前Alt-Test仅支持所有标注条目由相同标注者完成的密集场景，AltRA-Test无需统一标注者覆盖，通过bootstrap重采样条目、为每个条目抽取k个人类标注并替换其中1个为LLM标注，生成配对的全人类与LLM标注数据。该方法适用于依赖LLM-as-judge工作流的AI agent评估管线构建，当前公开内容未包含实验性能数据，该论文目前获得20次社区点赞。
-
-rss · Hugging Face Daily Papers · Nov 21, 03:42
-
-**「为什么重要」** 现有LLM judge验证方法普遍要求标注者覆盖一致，难以适配大规模标注中常见的稀疏标注场景，AltRA-Test为相关评估场景提供了可落地的统计验证框架。
-
-**「可关注」** 可关注AltRA-Test的验证逻辑，若你的AI agent评估管线采用LLM-as-judge且存在标注者覆盖不均的问题，可参考该方法的框架设计评估环节。
+**「可关注」** 可关注：任务程序化生成并内置 checker/oracle 的设计，可复用于构建可扩展的交互式 agent 训练环境。
 
 **Tags**: `#eval`
 
 ---
 
+<a id="item-agent-engineer-5"></a>
+### [HF每日论文：扩散Transformer RL后训练用激活转向](https://huggingface.co/papers/2611.26627) ⭐️ 6.0/10
+
+2026年11月21日Hugging Face每日论文收录一项研究，证明扩散Transformer的强化学习（RL）后训练增益可通过极低参数量的激活转向向量复现，无需全量RL微调。关键可验证细节：在SD3.5-M模型上，该转向向量参数量仅为RL微调LoRA的1/65（0.29M vs 18.8M），拟合过程无需奖励信号，仅需匹配公开RL微调检查点的速度预测。当前结论仅在扩散Transformer上验证，对LLM智能体调优的直接适用性未证实，相关研究为多模态及LLM智能体调优工程师提供了轻量调优思路。
+
+rss · Hugging Face Daily Papers · Nov 21, 04:28
+
+**「为什么重要」** 该研究首次以可复现实验证明RL后训练的部分增益可由极简的输入无关激活偏移解释，为Transformer类模型的轻量调优提供了新方向；但当前结论仅验证于扩散Transformer，对LLM智能体系统的直接价值尚未得到实证，暂无法直接落地。
+
+**「可关注」** 可关注：输入无关的激活转向向量可能以极低参数量复现部分RL后训练增益，当前已在扩散Transformer上完成验证。
+
+**Tags**: `#activation-steering`, `#rl-post-training`, `#parameter-efficient-tuning`, `#diffusion-transformers`
+
+---
+
 <a id="item-agent-engineer-6"></a>
-### [ZeroVLN 免微调VLM导航框架发布](https://huggingface.co/papers/2611.26414) ⭐️ 5.5/10
+### [代码质量影响 AI 审查 token 成本](https://martinfowler.com/fragments/2026-11-20.html) ⭐️ 6.0/10
 
-HF 2026年11月21日发布的每日论文摘要介绍ZeroVLN慢-快导航框架，该框架无需对视觉语言模型（VLM）主干做导航领域监督微调，通过语义工具调用接口将移动决策传递给独立动作专家执行，替代传统方案微调VLM预测几何目标的路径；该摘要在HF Daily Papers获得21次点赞，公开内容未披露完整技术细节与性能数据，对低成本视觉语言导航Agent设计有参考价值。
+Marcus Borg 在 CodeScene 博客中分享了一项实验，测量代码质量对 AI 审查代理 token 消耗的影响。实验覆盖 246 个开源仓库的 465 个 PR，使用 3 个 LLM 和 5 个代理组成的审查-修复流水线，以 CodeScene 的 CodeHealth 指标衡量代码健康度。结果显示，低健康度 PR（CodeHealth 2.8）相比高健康度 PR（CodeHealth 9.7）产生 22% 至 35% 的更高 token 成本，其中 Complex Method 和 Complex Conditional 两种代码坏味与成本增加相关。当前材料仅为高层摘要，完整实验方法与可复现设置需查阅原文博客。
 
-rss · Hugging Face Daily Papers · Nov 21, 03:42
+rss · Martin Fowler · Nov 20, 18:38
 
-**「为什么重要」** 当前主流视觉语言导航方案需微调VLM主干，可能损害模型通用视觉能力，ZeroVLN提出的免微调主干+动作委托思路为降低领域适配成本提供了新方向；但公开信息未包含完整性能验证结果，实际效果尚未证实。
+**「为什么重要」** 该实验为 coding agent 工程师提供了可量化的证据：代码质量直接影响 agentic 审查流水线的 token 消耗。对正在设计审查流程或评估代理效率的团队，这一数据可作为成本估算的参考基线。
 
-**「可关注」** 免微调VLM主干、通过语义工具调用将动作执行委托给独立专家的 orchestration 模式，可减少大模型领域适配的算力与数据成本。
+**「可关注」** 低质量代码使 AI 审查 token 成本增加 22-35%，Complex Method 与 Complex Conditional 被识别为相关坏味，代码健康度指标或可用来预测审查成本。
 
-**Tags**: `#orchestration`, `#vlm-agent`, `#tool-calling`
+**Tags**: `#coding-agent`, `#eval`
+
+---
+
+<a id="item-agent-engineer-7"></a>
+### [ZeroVLN 免SFT VLM导航框架](https://huggingface.co/papers/2611.26414) ⭐️ 5.5/10
+
+2026年11月21日Hugging Face每日论文收录了ZeroVLN视觉语言导航框架的相关论文，该框架无需对VLM主干做导航域有监督微调，通过语义工具调用接口将动作决策委托给独立动作专家，避免改动基础VLM权重导致的通用视觉能力退化。当前公开材料存在截断，缺少性能基准、完整实现细节，且来源为论文聚合站而非原始论文，可立即落地的参考价值有限。
+
+rss · Hugging Face Daily Papers · Nov 21, 04:28
+
+**「为什么重要」** 该框架提出了一种不修改VLM主干、通过工具调用委派动作决策的Agent架构思路，对需要保留基础模型通用能力的VLM Agent设计有参考意义。但当前缺少性能对比与实现细节，实际落地效果尚未得到验证。
+
+**「可关注」** 可关注：通过语义工具调用接口将动作决策委派给独立动作专家、避免微调VLM主干的架构模式，适用于需要保留基础模型能力的VLM Agent设计场景。
+
+**Tags**: `#orchestration`, `#tool-calling`, `#vlm-agent`, `#fine-tuning-avoidance`, `#embodied-navigation`
 
 ---
 
 ## AI Daily
 
 <a id="item-ai-daily-1"></a>
-### [OpenAI 公布对抗性蒸馏分层防御方案](https://openai.com/index/combatting-adversarial-distillation) ⭐️ 6.8/10
+### [OpenAI 发布对抗性蒸馏防御框架](https://openai.com/index/combatting-adversarial-distillation) ⭐️ 6.8/10
 
-On November 20, 2026, OpenAI published an official blog post outlining a layered defense approach to combat adversarial distillation and capability extraction. The framework integrates four core components: model training, safeguards, detection, and enforcement. No specific technical details, performance metrics, or deployment timelines are disclosed in the public release.
+OpenAI 发布官方博客，提出用于对抗对抗性蒸馏的分层防御方法，覆盖模型训练、防护机制、检测能力与执行措施四个层面，旨在防范模型能力被非法提取。当前公开内容未披露具体技术细节、新版本发布或与过往防御方案的具体差异。
 
 rss · OpenAI Blog · Nov 20, 10:00
 
-**「为什么重要」** Adversarial distillation poses a potential risk of AI model capability leakage, and this publicly released layered defense framework is relevant to AI security practice.
+**「为什么重要」** 对抗性蒸馏是大模型能力泄露的典型攻击路径，OpenAI 公开分层防御框架为行业提供了可参考的防护思路。
 
-**「可关注」** Note: OpenAI has consolidated model training, safeguards, detection, and enforcement into a unified layered defense framework against adversarial distillation.
+**「可关注」** 可关注：分层防御框架覆盖训练、防护、检测、执行全链路，后续可跟踪各环节的具体技术实现与落地进展。
 
-**Tags**: `#model`, `#lab`, `#industry`, `#policy`
-
----
-
-<a id="item-ai-daily-2"></a>
-### [Sage S2.1 Flash技术报告开源](https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&amp;mid=2651075493&amp;idx=3&amp;sn=63643451e794a6d8ac3dbb423d7f460d) ⭐️ 5.5/10
-
-上海AI Lab联合复旦大学、中国科学院软件研究所等多家科研机构与高校，正式发布Sage S2.1 Flash技术报告，披露总参数量达320B的混合专家（MoE）模型的完整训练流程与技术细节。该模型在四项智能体基准上达到SOTA，采用统一架构处理文本、图像与科学数据，支持工具调用、专业软件操作等复杂任务。示例显示模型可仅凭指令从12487张CT图像中筛选切片，调用3D Slicer重建三维骨骼模型。
-
-rss · 机器之心 · Nov 20, 03:58
-
-**「为什么重要」** 该报告公开了大参数MoE智能体模型的完整训练细节，同时探索了科学多模态能力融入通用智能体架构的实践路径，对多模态智能体研发有直接参考价值。
-
-**「可关注」** 可关注：Sage S2.1 Flash采用统一多模态主干，通过动态专家路由控制推理计算量，结合稀疏注意力与线性注意力支持长上下文处理，可直接接入科学专用模态。
-
-**Tags**: `#model`, `#lab`, `#open-source`, `#eval`
+**Tags**: `#model`, `#lab`, `#industry`, `#security`
 
 ---
 
 ## AI Deals
 
 <a id="item-ai-deals-1"></a>
-### [Epic 11.20~11.26 限免游戏汇总](https://www.appinn.com/eggs-261120/) ⭐️ 8.0/10
+### [Epic 11.20~26 限免游戏汇总](https://www.appinn.com/eggs-261120/) ⭐️ 8.0/10
 
-你看到的内容可能由第三方 AI 基于小众软件文章提炼总结而成，可能与原文真实意图存在偏差。不代表小众软件观点和立场。请&lt;a href=&quot;https://www.appinn.com/eggs-261120/&quot; target=&quot;\_blank&quot;&gt;点击链接阅读原文&lt;/a&gt;细致比对和校验。&lt;br /&gt;&lt;br /&gt;Epic 本周（11.20~11.26）开启限时免费领取福利，PC 端可领海盗题材动作冒险游戏《深渊之印 / Mark of the Deep》，移动端可领无战斗解谜生活模拟游戏《Lonesome Village》。两款游戏均支持中文，Steam 评价均为多半好评。领取需登录对应平台的 Epic 账号，在官方商店页完成领取操作，限免周期截至 11 月 26 日。
+你看到的内容可能由第三方 AI 基于小众软件文章提炼总结而成，可能与原文真实意图存在偏差。不代表小众软件观点和立场。请&lt;a href=&quot;https://www.appinn.com/eggs-261120/&quot; target=&quot;\_blank&quot;&gt;点击链接阅读原文&lt;/a&gt;细致比对和校验。&lt;br /&gt;&lt;br /&gt;Epic于2026年11月20日至26日限时免费送出两款游戏：电脑端可领海盗题材单人动作冒险游戏《深渊之印 / Mark of the Deep》，手机端可领无战斗解谜生活模拟游戏《Lonesome Village》。
 
 rss · 小众软件 · Nov 20, 07:21
 
-**「为什么重要」** 两款游戏均为支持中文的 Steam 多半好评作品，限免周期仅一周，错过后续需付费获取，适合对应平台玩家领取。
+**「为什么重要」** 两款游戏均为限时免费，当前处于可领取周期内，错过11月26日的截止时间后将无法免费获取。
 
-**「可关注」** 可关注：PC 端《深渊之印》融合类银河战士恶魔城探索与类魂战斗，移动端《Lonesome Village》主打解谜与村庄生活模拟，需对应平台 Epic 账号领取，无额外领取门槛。
+**「可关注」** 可关注：两款游戏分别对应PC和移动端领取渠道，需用对应平台的Epic账号登录商店领取。
 
-**Tags**: `#limited-free`, `#promo`
+**Tags**: `#promo`, `#limited-free`, `#game`, `#epic`
 
 ---
 
 <a id="item-ai-deals-2"></a>
-### [波波小红书获客助手 送30天激活码](https://www.v2ex.com/t/1258559#reply40) ⭐️ 8.0/10
+### [波波小红书获客助手 Chrome插件 30天版送码](https://www.v2ex.com/t/1258559#reply40) ⭐️ 8.0/10
 
-V2EX 用户 gybin02 发起波波小红书获客助手送码活动，前 50 条有效回帖可领取 30 天版激活码。领取需在回帖中提供邮箱（支持 Base64 编码防爬）并回答‘你现在怎么找小红书上的意向客户、回评论，最烦的是哪一步’，一人仅首条回帖有效。激活码将发送至预留邮箱，激活后绑定设备，30 天内可使用全量功能，到期后可选择 19.9 元买断永久版，无自动扣费。
+V2EX 用户 gybin02 开展自研波波小红书获客助手 30 天版激活码赠送活动，前 50 条符合要求的有效回帖可领取。领取需在回帖中留 Base64 编码的邮箱，并回答“找小红书意向客户、回评论最烦的步骤”这一问题，一人仅首条回帖有效，多账号仅算一个领取资格。激活码将批量发送至预留邮箱，帖子内仅公示已发送名单对账，未收到可检查垃圾箱；激活码需在拿到后 30 天内在应用内激活，首次激活绑定设备，有效期 30 天，到期后可选择 19.9 元终身买断，无自动扣费。
 
 rss · V2EX Hot · Nov 20, 07:04
 
-**「为什么重要」** 小红书运营的养号、评论回复、线索挖掘均为高频重复环节，该工具可自动化处理上述流程，30 天免费版足够验证是否匹配自身获客 workflow。
+**「为什么重要」** 该工具为作者日常自用的小红书运营工具，覆盖推荐流养号、AI 自动评论、线索挖掘、私信自动回复等高频重复场景，30 天免费版可完整体验全部功能。
 
-**「可关注」** 可关注：该工具为 Chrome/Edge 插件，AI 评论、私信自动回复等参数可自行调整，建议先用保守节奏测试，避免触发平台风控。
+**「可关注」** 可关注：30 天版首次激活绑定设备，AI 评论的间隔、上限、关键词过滤等参数可自定义，建议从保守节奏开始调整；到期后 19.9 元终身买断，无自动扣费。
 
 **Tags**: `#promo`, `#limited-free`, `#coupon`
 
 ---
 
 <a id="item-ai-deals-3"></a>
-### [Ferry 免费 iOS 远程桌面发布](https://www.v2ex.com/t/1258592#reply25) ⭐️ 7.0/10
+### [Ferry 免费 iOS 远程桌面上线](https://www.v2ex.com/t/1258592#reply27) ⭐️ 8.0/10
 
-开发者 reallinzc1 推出完全免费、无广告无内购的 iOS/iPadOS 远程桌面应用 Ferry，可用于连接 Mac，目前可在 App Store 和 TestFlight 下载，无需注册。其逆向了 macOS 14 的高性能屏幕共享协议，支持 HEVC 视频流与 AAC-ELD 音频传输，同局域网实测帧率约 57 帧，远高于传统 VNC 模式。使用条件为 Apple 芯片 Mac、macOS 14 及以上，需在系统设置的通用-共享中开启屏幕共享，使用 Mac 账户密码登录，Mac 端无需安装额外软件，连接期间 Mac 屏幕会熄灭，断开后恢复。
+开发者reallinzc1上线了免费iOS端Mac远程桌面应用Ferry，无广告、无内购、无需注册，可通过国区App Store及TestFlight渠道下载。高性能模式基于逆向macOS屏幕共享协议实现，需搭配Apple芯片Mac、macOS 14及以上系统，在系统设置中开启屏幕共享并使用Mac账户密码登录即可使用，Mac端无需安装额外软件，连接期间Mac自身屏幕会自动熄灭，断开后恢复。实测同一局域网下高性能模式帧率约57帧，异地Tailscale直连约48帧，远高于传统VNC的23帧。
 
 rss · V2EX Hot · Nov 20, 08:10
 
-**「为什么重要」** 现有免费远程桌面工具 UU 远程将于 12 月起限制免费版为 1080p 30 帧，虚拟屏功能需会员，Ferry 作为无广告无内购的替代方案，可满足高频远程操控 Mac 的需求。
+**「为什么重要」** 现有同类工具UU远程宣布12月起限缩免费版功能，1080p 30帧、虚拟屏等功能需会员，Ferry当前完全免费且无功能阉割，可立即获取使用。
 
-**「可关注」** 可关注：高性能模式仅支持 UDP 直连，经中继/隧道/代理会退回无声音的普通 VNC 模式；仅适配 Apple 芯片 Mac 且需 macOS 14 以上，必须用 Mac 账户密码登录，仅设 VNC 密码无法使用高性能模式。
+**「可关注」** 可关注：高性能模式依赖UDP直连，经中继/隧道/代理连接时会自动退回无声音的普通模式；仅支持Apple芯片Mac，且需使用Mac系统账户密码登录，仅设置VNC密码无法使用高性能模式。
 
-**Tags**: `#free-tier`, `#apple-app`, `#testflight`, `#remote-desktop`, `#no-registration`
+**Tags**: `#free-tier`, `#promo`, `#limited-free`
 
 ---
