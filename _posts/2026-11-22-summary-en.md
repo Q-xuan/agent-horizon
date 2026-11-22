@@ -5,166 +5,100 @@ date: 2026-11-22
 lang: en
 ---
 
-> From 140 items, 10 important content pieces were selected
+> From 164 items, 8 important content pieces were selected
 
 ---
 
 **Agent Harness Architecture**
-1. [Cline SDK v0.2.1 发布](#item-harness-arch-1) ⭐️ 5.5/10
-2. [fastmcp v4.2.4 安全补丁发布](#item-harness-arch-2) ⭐️ 5.3/10
-
-**AI Agent Engineer**
-1. [AltRA-Test 提出稀疏标注 LLM Judge 验证方法](#item-agent-engineer-1) ⭐️ 6.0/10
-2. [TuringSpace 空间智能基准发布](#item-agent-engineer-2) ⭐️ 6.0/10
-3. [HF 每日论文：ZeroVLN 免微调导航框架](#item-agent-engineer-3) ⭐️ 6.0/10
-4. [Mind2Act World 机器人操作诊断基准](#item-agent-engineer-4) ⭐️ 5.5/10
+1. [Cline CLI cli-v3.0.75 发布](#item-harness-arch-1) ⭐️ 5.5/10
+2. [FastMCP v4.2.4 发布](#item-harness-arch-2) ⭐️ 5.5/10
 
 **AI Daily**
-1. [腾讯元宝×KCL 发布 Agent 记忆基准](#item-ai-daily-1) ⭐️ 5.5/10
-2. [Karpo Decision 31B 开源](#item-ai-daily-2) ⭐️ 5.5/10
-3. [TML开源Inkling 2 Mini模型](#item-ai-daily-3) ⭐️ 5.5/10
+1. [腾讯元宝×KCL 发群聊Agent记忆基准](#item-ai-daily-1) ⭐️ 5.5/10
+2. [Karpo Decision 31B 开源 浏览器Agent框架释出](#item-ai-daily-2) ⭐️ 5.5/10
+3. [TML 开源 Inkling 2 Mini 循环 Transformer 模型](#item-ai-daily-3) ⭐️ 5.5/10
 
 **AI Deals**
-1. [Google AI Pro 黑五五折 老用户可提前领](#item-ai-deals-1) ⭐️ 8.0/10
+1. [AIask Claude Opus 5.5 限时5折](#item-ai-deals-1) ⭐️ 8.0/10
+2. [File Organizer 30枚兑换码发放](#item-ai-deals-2) ⭐️ 8.0/10
+3. [Gemini 美区黑五 Pro 半价](#item-ai-deals-3) ⭐️ 8.0/10
 
 ---
 
 ## Agent Harness Architecture
 
 <a id="item-harness-arch-1"></a>
-### [Cline SDK v0.2.1 发布](https://github.com/cline/cline/releases/tag/sdk/sdk/v0.2.1) ⭐️ 5.5/10
+### [Cline CLI cli-v3.0.75 发布](https://github.com/cline/cline/releases/tag/cli-v3.0.75) ⭐️ 5.5/10
 
-这是 Cline 项目的 SDK v0.2.1 版本发布，核心围绕工具结果处理、推理逻辑兼容性、Hub 云能力与工具集展开优化，新增多项面向 harness 工程师的可选工具与接口，同步刷新模型目录与默认模型配置。
+Cline CLI cli-v3.0.75 调整 one-shot 运行默认行为、工具调用安全边界与文件读取上限。单次运行（stdin/prompt）默认切到 yolo mode，不再读取本地 .env 与 bunfig.toml，read\_files 输出上限从 8k 提升至约 48k 字符或 2000 行。首轮支持 timeout 与 Ctrl+C 中断，默认模型选择逻辑改为首个可用模型，Reflection Beam 在压缩或切换模型后的 400 错误已修复。同时移除 CLINE\_CAPTURE\_\* 调试变量，升级 undici 至 7.30.1 修复进程崩溃问题。
 
-github · github-actions\[bot\] · Nov 21, 05:19
+github · github-actions\[bot\] · Nov 21, 05:30
 
-**「设计要点」** 运行时支持可中断的会话压缩流程，工具层新增 MCP 工具注解透传、自定义模型能力自动 seeding 机制，Hub 云服务新增分块历史返回、沙箱外工件下载能力，权限层要求 provider 管理类 Hub 命令必须使用 token 鉴权。
+**「设计要点」** 运行时层：one-shot 模式默认切到 yolo，首轮支持异步中断；工具层：read\_files 取消 8k 截断，本地配置加载移除；权限层：.env/bunfig.toml 不再自动读取，降低密钥泄露风险。模型层：默认模型选择逻辑改为首个可用模型，reasoning 参数适配各 provider 能力，LiteLLM 预算字段修正。
 
-**「改了什么」** 工具结果上限调整，read\_files 结果取消 8k 截断改用 50k 上限，其余工具维持 8k 上限；新增 interleaved reasoning 占位字段修复模型压缩/切换后的参数缺失错误，调整摘要器推理偏好、自定义模型能力 seeding 与 OpenAI/LiteLLM 适配逻辑避免端点拒绝；新增 ux\_verifier、publish\_artifacts 可选工具，Hub 云会话支持分块历史返回与沙箱外工件下载，同步刷新模型目录与默认模型配置。
+**「改了什么」** one-shot 运行默认启用 yolo mode，首轮支持 timeout/Ctrl+C 中断；本地 .env 与 bunfig.toml 停止加载；read\_files 输出上限从 8k 提升至约 48k/2000 行。默认模型选择改为首个可用模型，Reflection Beam 在 compaction/model switch 后的 400 错误修复，移除 CLINE\_CAPTURE\_\* 调试变量。
 
-**Tags**: `#runtime`, `#tools`, `#prefix-cache`
+**Tags**: `#runtime`, `#tools`, `#permissions`, `#configuration`
 
 ---
 
 <a id="item-harness-arch-2"></a>
-### [fastmcp v4.2.4 安全补丁发布](https://github.com/PrefectHQ/fastmcp/releases/tag/v4.2.4) ⭐️ 5.3/10
+### [FastMCP v4.2.4 发布](https://github.com/PrefectHQ/fastmcp/releases/tag/v4.2.4) ⭐️ 5.5/10
 
-fastmcp v4.2.4 修复 OAuth proxy 授权码与刷新令牌并发兑换 race condition（GHSA-78c8-3jhx-5mg7），并阻止已撤销的 proxy access token 在刷新后重新生效。工具转换失败时仅隐藏自身工具，不再破坏整个工具列表。挂载与版本化组件修复重复版本列出、父级 twin 隐藏时子组件响应异常，以及合并默认值破坏调用者对象的问题，新增混合版本化/非版本化组件挂载警告。
+FastMCP v4.2.4 修复 OAuth 代理授权码并发兑换竞态条件（GHSA-78c8-3jhx-5mg7），阻止同一授权码或刷新令牌被重复兑换。已撤销的代理访问令牌在刷新后保持撤销状态，防止复用。工具转换失败现在仅隐藏自身工具，不再破坏全部工具列表查询。挂载与版本化组件行为修正，包括共享版本去重、父级隐藏时子组件响应、合并默认值保留调用者对象。
 
 github · zzstoatzz · Nov 21, 05:24
 
-**「改了什么」** 修复 OAuth proxy 并发兑换 race condition 与已撤销 token 刷新后重新生效的安全问题。工具转换失败仅隐藏自身工具，不再破坏整个列表；挂载混合版本化/非版本化组件时发出警告，并修正版本化组件重复列出、父级 twin 隐藏时子组件响应及合并默认值保留调用者对象。
+**「改了什么」** 修复 OAuth 代理授权码与刷新令牌的并发竞态（GHSA-78c8-3jhx-5mg7），防止重复兑换，并确保已撤销令牌刷新后保持撤销状态。工具转换失败仅隐藏自身工具，避免破坏工具列表；同时修正挂载组件版本重复列出、父级隐藏时子组件不可见、合并默认值破坏调用者对象等问题。
 
-**Tags**: `#mcp`, `#runtime`, `#tools`, `#permissions`
-
----
-
-## AI Agent Engineer
-
-<a id="item-agent-engineer-1"></a>
-### [AltRA-Test 提出稀疏标注 LLM Judge 验证方法](https://huggingface.co/papers/2611.26073) ⭐️ 6.0/10
-
-2026-11-21，Hugging Face Daily Papers 介绍 AltRA-Test 统计检验方法。该方法针对稀疏标注场景设计，无需所有标注项由同一批标注者完成，弥补了此前 Alt-Test 仅适用于密集标注场景的局限。其通过 bootstrap 重采样 items，对每个 item 抽取 k 个人工标注并替换其中一个为 LLM 标注，为验证 LLM 替代人工标注员的统计合理性提供新工具。该方法对使用 LLM 作为评测 judge 的 agent 工程师有参考价值，但适用场景聚焦于标注验证领域，无通用 agent 工程相关的突破性更新。
-
-rss · Hugging Face Daily Papers · Nov 21, 23:00
-
-**「为什么重要」** AltRA-Test 针对稀疏标注场景设计，无需共享标注者即可验证 LLM 替代人工的统计合理性，扩展了现有检验方法的适用范围。但当前研究仅聚焦标注验证领域，尚未证实对通用 agent 工程或 LLM 评测工作流的直接影响。
-
-**「可关注」** 在稀疏标注场景下评估 LLM judge 时，可参考 AltRA-Test 的 bootstrap 设计，通过重采样 items 并替换单个人工标注为 LLM 标注的方式验证替代统计合理性。
-
-**Tags**: `#eval`, `#llm-judge`, `#annotation-validation`
-
----
-
-<a id="item-agent-engineer-2"></a>
-### [TuringSpace 空间智能基准发布](https://huggingface.co/papers/2611.25387) ⭐️ 6.0/10
-
-2026-11-21，Hugging Face Daily Papers 发布论文《TuringSpace: Grounding Spatial Intelligence in Action with Interactive CAPTCHAs》。该研究提出可扩展交互式 CAPTCHA 基准 TuringSpace，包含 125 个程序生成任务，覆盖五种空间能力，要求模型通过屏幕点击与拖拽解决。每项任务内置检查器与预言机，兼作训练环境。该资源面向多模态 LLM 的空间推理与交互行动评估，对构建视觉-空间交互 agent 的工程师有参考价值，但属小众研究资源，未直接影响主流 agent 工具链或引发重大变更。
-
-rss · Hugging Face Daily Papers · Nov 21, 23:00
-
-**「为什么重要」** 当前主流 agent 评估多聚焦文本或静态视觉，该基准提供可交互空间任务，填补了空间推理与物理行动结合评估的空白。但尚未见到实际集成到主流框架的报道，影响范围待观察。
-
-**「可关注」** 程序生成任务配合内置检查器的设计模式，可复用于构建可扩展的 agent 交互式评估环境。
-
-**Tags**: `#eval`
-
----
-
-<a id="item-agent-engineer-3"></a>
-### [HF 每日论文：ZeroVLN 免微调导航框架](https://huggingface.co/papers/2611.26414) ⭐️ 6.0/10
-
-2026年11月21日Hugging Face每日论文推荐了一篇视觉语言导航（VLN）预印本，提出名为ZeroVLN的慢-快导航框架。该框架无需对VLM大脑做导航域有监督微调，而是通过语义工具调用接口以自然语言传递移动决策给专用动作专家，先完成动作专家对移动请求的适配，再联合优化VLM大脑的决策质量与动作专家的协同能力。当前仅公开预印本内容，未提供生产级实现细节或可泛化的评估结果，该条目获得22次upvote。
-
-rss · Hugging Face Daily Papers · Nov 21, 23:00
-
-**「为什么重要」** 该工作提出的「免微调VLM大脑+语义工具调用对接动作专家」的范式，与当前AI Agent的工具编排、MCP对齐集成及评估设计方向存在关联。但目前仅为预印本，未公开可复现的评估结果，相关范式对通用场景的适用性尚未证实。
-
-**「可关注」** 可关注：将VLM的领域决策能力通过语义工具调用接口卸载给专用专家模块，或可降低大模型微调对通用能力的损耗，同时适配Agent工具编排场景。
-
-**Tags**: `#orchestration`, `#eval`, `#mcp`
-
----
-
-<a id="item-agent-engineer-4"></a>
-### [Mind2Act World 机器人操作诊断基准](https://huggingface.co/papers/2611.26444) ⭐️ 5.5/10
-
-On November 21, 2026, Hugging Face Daily Papers curated an arXiv preprint introducing Mind2Act World, a diagnostic benchmark for embodied robotic manipulation. The benchmark includes 30 simulated manipulation tasks across 5 real-world application domains, with each task set to 3 difficulty levels and 2 scene settings \(Clean and Random\), totaling 180 task configurations. Its core design decouples agent failure modes into reasoning, execution, and reasoning-execution composition, addressing the limitation of existing benchmarks that either evaluate reasoning and execution in the same tasks or assess them separately without covering their composition. Currently, the public content lacks full evaluation metrics, baseline results, and toolchain integration details. It has reference value for evaluation work in embodied intelligence and robotic manipulation fields, but has limited direct relevance to most coding agent engineers. This curation received 50 upvotes on Hugging Face Daily Papers. This is a second-hand curation without an official first-hand release \(official blog, GitHub repository, or official documentation\), with an analysis score capped at 5.5.
-
-rss · Hugging Face Daily Papers · Nov 21, 23:00
-
-**「为什么重要」** The decoupled diagnostic evaluation design that splits failure modes into reasoning, execution, and composition can be migrated to other agent evaluation scenarios. However, the current benchmark only covers robotic manipulation, has limited direct reference value for most coding agent engineers, and does not disclose production-level practices that can be directly reused.
-
-**「可关注」** Pay attention to the decoupled design of diagnostic evaluation that separates reasoning, execution, and composition failure modes, which can be reused in fault localization scenarios for other coding agents.
-
-**Tags**: `#eval`, `#embodied-agent`
+**Tags**: `#mcp`, `#tools`, `#permissions`
 
 ---
 
 ## AI Daily
 
 <a id="item-ai-daily-1"></a>
-### [腾讯元宝×KCL 发布 Agent 记忆基准](https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&amp;mid=2247947677&amp;idx=3&amp;sn=0797fbd2116a405b44176c97577757d8) ⭐️ 5.5/10
+### [腾讯元宝×KCL 发群聊Agent记忆基准](https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&amp;mid=2247947677&amp;idx=3&amp;sn=0797fbd2116a405b44176c97577757d8) ⭐️ 5.5/10
 
-腾讯元宝与伦敦国王学院 NLP 团队联合发布首个基于群聊构建的 Agent 记忆基准 GroupAssistBench。基准基于 50 个真实群聊、80,299 条历史消息构建 2,395 道评测题，检查 Agent 记忆能否从“记得住”走向“用得好”。研究比较完整上下文、检索增强和外部记忆等 14 组配置，EverMemOS 在 L1 记忆召回中得分 0.621，高于完整上下文得分 0.570，但在 L2 开放式服务中得分 0.247，低于完整上下文得分 0.431。
+腾讯元宝联合伦敦国王学院NLP团队发布首个群聊场景Agent记忆基准GroupAssistBench。该基准基于50个真实群聊的80299条历史消息构建2395道评测题，覆盖L1记忆召回、L2开放式服务两个层级，对比完整上下文、检索增强、外部记忆等14组配置。评测显示EverMemOS在L1召回得分0.621高于完整上下文的0.570，但L2服务得分0.247低于完整上下文的0.431，暴露出现有方案「记得住但用不好」的问题。
 
 rss · 量子位 · Nov 21, 09:52
 
-**「为什么重要」** 群聊场景要求 Agent 不仅召回历史，更要在正确时刻判断该使用谁的哪条记忆。该基准首次量化了多人群聊中“记得住”与“用得好”之间的落差。
+**「为什么重要」** 当前Agent记忆评测多聚焦召回准确率，缺乏面向群聊复杂场景的服务能力评估，该基准填补了群聊场景Agent记忆量化评测的空白，为相关产品迭代提供可参考的评估框架。
 
-**「可关注」** 可关注：EverMemOS 在 L1 记忆召回中得分 0.621，高于完整上下文得分 0.570，但在 L2 开放式服务中得分 0.247，低于完整上下文得分 0.431，显示记忆召回与服务使用存在显著反差。
+**「可关注」** 可关注：群聊场景Agent记忆评估需同时覆盖召回准确率与实际服务能力，避免仅以召回指标作为唯一优化目标。
 
-**Tags**: `#lab`, `#industry`, `#eval`, `#product`
+**Tags**: `#eval`, `#lab`, `#product`, `#industry`
 
 ---
 
 <a id="item-ai-daily-2"></a>
-### [Karpo Decision 31B 开源](https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&amp;mid=2247947677&amp;idx=1&amp;sn=ebf1f96b9afceacdfa0d407ecdb3ff2b) ⭐️ 5.5/10
+### [Karpo Decision 31B 开源 浏览器Agent框架释出](https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&amp;mid=2247947677&amp;idx=1&amp;sn=ebf1f96b9afceacdfa0d407ecdb3ff2b) ⭐️ 5.5/10
 
-MachinePulse AI开源的Karpo Decision 31B决策模型，在《城市扫描仪》挑战中耗时2.6秒，约为Gemini 3.5 Flash（14.96秒）的6倍，成本仅为后者的十三分之一，36题准确率100%。单张RTX PRO 6000即可部署，中位响应时间94毫秒，在Decision Index评测总榜（300个模型）中以Full分73.9位列第一，校准误差2.3%，单题最多可同时判断255个候选选项。同时MachinePulse AI还开源了配套浏览器操作框架，包含karpo-browser框架、Karpo Decision 27B Act模型与KBB评测集，采用System 1 + System 2架构，在Browserbase Benchmark v2 102道核心任务上有对应表现。
+MachinePulse AI 开源专为 Agent 设计的 Karpo Decision 31B 决策模型，量子位报道其在《城市扫描仪》挑战中耗时 2.6 秒，约为 Gemini 3.5 Flash（14.96 秒）的 6 倍，成本仅为后者的 1/13，36 道题准确率 100%；在 300 个模型参与的 Decision Index 评测总榜以 73.9 分登顶，单题最多可同时判断 255 个候选选项，校准误差 2.3%，单卡 RTX PRO 6000 中位响应时间 94 毫秒。同期 MachinePulse AI 还开源配套浏览器操作框架 karpo-browser，包含 System 1 + System 2 架构、Karpo Decision 27B Act 模型及配套评测集 KBB。以上数据均来自量子位二手报道，未附官方一手发布链接，无更多可核实的官方细节。
 
 rss · 量子位 · Nov 21, 09:52
 
-**「为什么重要」** 该模型专为Agent高频低延迟决策设计，开源后可为浏览器Agent等场景提供更快的决策能力，降低部署成本。
+**「为什么重要」** 该方案同时覆盖 Agent 决策模型与浏览器操作全链路组件，且明确针对低延迟、低成本场景优化，为浏览器 Agent 的落地提供了可直接复用的开源技术路径。
 
-**「可关注」** 可关注：Karpo Decision 31B单RTX PRO 6000即可部署，中位响应时间94毫秒，适合对时延敏感的Agent决策场景。
+**「可关注」** 可关注：Karpo Decision 31B 单卡 RTX PRO 6000 即可部署，中位响应时间 94 毫秒，适配对延迟敏感的 Agent 决策场景。
 
-**Tags**: `#model`, `#open-source`, `#industry`, `#agent`
+**Tags**: `#model`, `#open-source`, `#eval`, `#industry`
 
 ---
 
 <a id="item-ai-daily-3"></a>
-### [TML开源Inkling 2 Mini模型](https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&amp;mid=2651075624&amp;idx=2&amp;sn=b6e7e23d631dba7a952cbe5da8e77769) ⭐️ 5.5/10
+### [TML 开源 Inkling 2 Mini 循环 Transformer 模型](https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&amp;mid=2651075624&amp;idx=2&amp;sn=b6e7e23d631dba7a952cbe5da8e77769) ⭐️ 5.5/10
 
-Thinking Machines Lab（TML）开源26B参数循环Transformer多模态模型Inkling 2 Mini，权重按Apache 2.0许可发布，支持文本、图像输入，最大上下文窗口100万token。该模型总参数26B，激活参数约3.4B，循环计算后有效激活参数约5.4B，官方宣称可在笔记本运行，公开演示基于配备48GB内存的M5 Pro MacBook Pro离线完成写可玩飞行模拟器、驱动20位像素小镇村民日常交互等任务，AA Index得分20.1。
+Thinking Machines Lab（TML）开源26B参数循环Transformer多模态模型Inkling 2 Mini，采用looped transformer架构，总参数26B，激活参数约3.4B，计入循环重复计算后有效激活参数约5.4B，支持文本与图像输入，最大上下文窗口100万token，权重按Apache 2.0许可发布。官方宣称该模型可在笔记本运行，AA Index得分20.1，演示了在配备48GB内存的M5 Pro MacBook Pro离线环境下数分钟生成可玩飞行模拟器、驱动20位村民的像素小镇等场景。社区已出现接入DeepSeek Harness测试、通关电子游戏并实现速通、生成动画MV等用例。
 
 rss · 机器之心 · Nov 21, 04:11
 
-**「为什么重要」** 它验证了循环Transformer架构在端侧部署多模态智能体任务的可行性，为低算力场景下的复杂模型应用提供了新参考。
+**「为什么重要」** 该模型以较低的有效激活参数实现了笔记本可运行的多模态智能体能力，展示了端侧大模型在复杂任务上的可行路径，为轻量级大模型架构设计提供了参考。
 
-**「可关注」** 可关注：循环Transformer通过重复利用中间12层网络（前6层、后6层各运行1次，中间12层运行3次），让24层权重实现每token 48次层计算，在控制权重大小的同时提升任务处理能力。
+**「可关注」** 可关注：循环Transformer架构通过重复利用中间12层网络层，在仅存储24层权重的条件下为每个token提供48次层计算，兼顾了模型体积与连续推理任务的处理空间。
 
-**「评论」** 社区已尝试将其接入DeepSeek Harness获得较快推理速度，还实现了游戏速通、生成动画MV等落地玩法。
+**「评论」** 社区反馈热烈，已有用户将其接入DeepSeek Harness获得较快运行速度，还有用户测试其通关电子游戏并学会速通、生成动画MV等能力。
 
 **Tags**: `#model`, `#open-source`, `#lab`, `#eval`
 
@@ -173,16 +107,46 @@ rss · 机器之心 · Nov 21, 04:11
 ## AI Deals
 
 <a id="item-ai-deals-1"></a>
-### [Google AI Pro 黑五五折 老用户可提前领](https://www.appinn.com/google-ai-pro-black-friday-2026/) ⭐️ 8.0/10
+### [AIask Claude Opus 5.5 限时5折](https://www.v2ex.com/t/1258730#reply18) ⭐️ 8.0/10
 
-你看到的内容可能由第三方 AI 基于小众软件文章提炼总结而成，可能与原文真实意图存在偏差。不代表小众软件观点和立场。请&lt;a href=&quot;https://www.appinn.com/google-ai-pro-black-friday-2026/&quot; target=&quot;\_blank&quot;&gt;点击链接阅读原文&lt;/a&gt;细致比对和校验。&lt;br /&gt;&lt;br /&gt;Google 在美区推出 AI Pro 及 AI Plus 年付套餐黑五五折活动，优惠后年费约 99.99 美元，折合每月 8.33 美元。11 月 20 日至 26 日现有 Google One、Google AI 订阅老用户可提前参与，11 月 27 日起向符合条件的新用户开放。部分账户参与限制未完整披露，最终以 Google 结算页面为准。
+AIask 于 2026-11-21 推出两项福利：一是周末老用户回复 V2EX 对应帖子内的个人 AIask 用户 ID 可领取鸡蛋，二是 Claude Opus 5.5 限时 5 天打一折，输入价格为 $0.4/M tokens，输出价格为 $2/M tokens。用户 ID 可在登录后平台面板左侧 LOGO 旁查看，新用户可通过 aiask.me 注册账号。
 
-rss · 小众软件 · Nov 21, 11:14
+rss · V2EX Hot · Nov 21, 04:59
 
-**「为什么重要」** 活动当前对美区老用户已开放，优惠后年费包含 5TB Google One 存储与 Gemini 高级功能，对已有 Google One 订阅的用户性价比高于单独购买对应服务。
+**「为什么重要」** 本次 Claude Opus 5.5 限时 5 天一折，过期无法享受该折扣，有模型调用需求的开发者可及时参与。
 
-**「可关注」** 可关注：仅美区符合条件账户可参与，老用户可直接在 Google One 设置尝试升级，首个优惠周期后续费将恢复原价。
+**「可关注」** 可关注：仅 AIask 老用户可回复 ID 领取鸡蛋福利并享受 Claude Opus 5.5 一折价，新用户需先注册平台账号；使用 Claude Opus 5.5 需创建 API 密钥并加入“组合”分组的“默认”分组，具体价格可在平台模型广场核对。
 
-**Tags**: `#promo`, `#coupon`, `#limited-offer`, `#subscription`
+**Tags**: `#promo`, `#api`, `#limited-free`
+
+---
+
+<a id="item-ai-deals-2"></a>
+### [File Organizer 30枚兑换码发放](https://www.v2ex.com/t/1258731#reply17) ⭐️ 8.0/10
+
+开发者sakishum为回馈V2EX用户，放出30枚macOS文件整理工具File Organizer的App Store免费兑换码，黑五限时限量发放，先到先得，用户可直接在App Store兑换使用，无额外领取门槛。
+
+rss · V2EX Hot · Nov 21, 05:03
+
+**「为什么重要」** 该工具支持本地文件按规则归档、批量重命名，黑五限时免费兑换可满足有macOS文件整理需求的用户使用，数量有限先到先得。
+
+**「可关注」** 可关注：兑换码无额外使用限制，仅适配macOS平台App Store版本，领完即止。
+
+**Tags**: `#promo`, `#limited-free`, `#coupon`, `#macos`, `#app-store`
+
+---
+
+<a id="item-ai-deals-3"></a>
+### [Gemini 美区黑五 Pro 半价](https://www.v2ex.com/t/1258834#reply8) ⭐️ 8.0/10
+
+V2EX 用户 Msxx 分享谷歌 Gemini 美区黑五 Pro 年付半价活动，同时梳理当前主流订阅方案的差异与限制。学生身份订阅的美区 Pro 月费约 8.x 美元、日区约 30 元人民币，但学生版为受限版本，无法使用 Gemini 4，且近期 Google One 学生身份核验失败率较高。用户附带了个人订阅教程参考链接，并分享了自己搭配 DeepSeek Flash、Gemini 4 Neon 等工具的 AI 使用方案。
+
+rss · V2EX Hot · Nov 21, 19:31
+
+**「为什么重要」** 当前 Google One 学生身份核验收紧，大量用户验证失败，黑五半价年付是无需学生身份即可获得完整 Pro 权益的可行替代方案，且活动具有时效性。
+
+**「可关注」** 可关注：美区黑五半价年付活动无学生身份限制，可完整使用 Gemini 4 等新模型，但需注意活动时效与美区账号支付要求。
+
+**Tags**: `#promo`, `#student`, `#limited-free`, `#limited-region`, `#api`
 
 ---
