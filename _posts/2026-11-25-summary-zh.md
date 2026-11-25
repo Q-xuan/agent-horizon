@@ -5,33 +5,31 @@ date: 2026-11-25
 lang: zh
 ---
 
-> 从 198 条内容中筛选出 14 条重要资讯。
+> 从 193 条内容中筛选出 12 条重要资讯。
 
-<nav id="ah-toc" class="ah-toc" aria-label="目录"><span class="ah-toc-title">目录</span><ul><li><a href="#sec-harness-arch"><span class="ah-toc-name">Harness 架构</span><span class="ah-toc-count">3条</span></a></li><li><a href="#sec-agent-engineer"><span class="ah-toc-name">Agent 工程师日报</span><span class="ah-toc-count">7条</span></a></li><li><a href="#sec-ai-daily"><span class="ah-toc-name">AI 日报</span><span class="ah-toc-count">3条</span></a></li><li><a href="#sec-ai-deals"><span class="ah-toc-name">AI 羊毛</span><span class="ah-toc-count">1条</span></a></li></ul></nav>
+<nav id="ah-toc" class="ah-toc" aria-label="目录"><span class="ah-toc-title">目录</span><ul><li><a href="#sec-harness-arch"><span class="ah-toc-name">Harness 架构</span><span class="ah-toc-count">3条</span></a></li><li><a href="#sec-agent-engineer"><span class="ah-toc-name">Agent 工程师日报</span><span class="ah-toc-count">5条</span></a></li><li><a href="#sec-ai-daily"><span class="ah-toc-name">AI 日报</span><span class="ah-toc-count">3条</span></a></li><li><a href="#sec-ai-deals"><span class="ah-toc-name">AI 羊毛</span><span class="ah-toc-count">1条</span></a></li></ul></nav>
 
 ---
 
 **[Harness 架构](#sec-harness-arch)**
 1. [Goose v1.61.0 发布](#item-harness-arch-1) ⭐️ 7.8/10
 2. [pydantic-ai v2.74.0 发布](#item-harness-arch-2) ⭐️ 6.8/10
-3. [fastmcp v4.2.6 发布](#item-harness-arch-3) ⭐️ 5.5/10
+3. [fastmcp v4.2.6 发布](#item-harness-arch-3) ⭐️ 5.3/10
 
 **[Agent 工程师日报](#sec-agent-engineer)**
-1. [SWE-2.1 编码智能体发布](#item-agent-engineer-1) ⭐️ 8.8/10
-2. [Simon Willison 总结 LLM 与 coding agent 三大拐点](#item-agent-engineer-2) ⭐️ 6.0/10
-3. [ACAP 异步多 Agent 机器人控制框架](#item-agent-engineer-3) ⭐️ 6.0/10
-4. [CUA-SEE 自演化评估框架论文发布](#item-agent-engineer-4) ⭐️ 6.0/10
-5. [NightWatch 即插即用感知框架](#item-agent-engineer-5) ⭐️ 6.0/10
-6. [HF 热门：27B 三元量化 GGUF](#item-agent-engineer-6) ⭐️ 6.0/10
-7. [HF 日报：Loom Attention 与 LoomFormer](#item-agent-engineer-7) ⭐️ 5.5/10
+1. [Cognition 发布 SWE-2.1 模型](#item-agent-engineer-1) ⭐️ 8.8/10
+2. [LLM 12 个月三个能力拐点梳理](#item-agent-engineer-2) ⭐️ 7.0/10
+3. [CUA-SEE 自进化评估框架提出](#item-agent-engineer-3) ⭐️ 7.0/10
+4. [NightWatch 为 CUA 补连续时间感知](#item-agent-engineer-4) ⭐️ 6.0/10
+5. [Microduck 避障 Sim2Real](#item-agent-engineer-5) ⭐️ 5.8/10
 
 **[AI 日报](#sec-ai-daily)**
-1. [GPT-6 展示内在蛋白质设计能力](#item-ai-daily-1) ⭐️ 8.8/10
-2. [Codex 与 Astra 辅助发现潜在系外行星](#item-ai-daily-2) ⭐️ 6.8/10
-3. [LIBERO 登顶六项真机具身任务](#item-ai-daily-3) ⭐️ 5.5/10
+1. [GPT-6 模型具备蛋白质设计能力](#item-ai-daily-1) ⭐️ 7.8/10
+2. [爱好者用 Codex、Astra 寻系外行星](#item-ai-daily-2) ⭐️ 7.8/10
+3. [阿里达摩院具身策略登顶六项真机任务](#item-ai-daily-3) ⭐️ 5.5/10
 
 **[AI 羊毛](#sec-ai-deals)**
-1. [所以便签 SoYiNote 兑换码放送](#item-ai-deals-1) ⭐️ 7.0/10
+1. [SoYiNote 终身会员兑换码放送](#item-ai-deals-1) ⭐️ 7.0/10
 
 ---
 
@@ -43,45 +41,45 @@ lang: zh
 <a id="item-harness-arch-1"></a>
 ### [Goose v1.61.0 发布](https://github.com/aaif-goose/goose/releases/tag/v1.61.0) ⭐️ 7.8/10
 
-Goose agent harness 发布 v1.61.0。MCP 集成增强：通过 ACP 传输 mcpServers 配置时所有请求头自动标记为 secret，支持导入 MCP server.json 格式，goose-agent 新增 MCP 扩展操作。新增 goose-agent 的 compaction 操作管理对话记忆，模型目录新增 Gemini 4 Neon、Ollama-compatible 及 amazee.ai provider。运行时修复 TTFT 统计时机（首段文本/thinking/tool call 即终止）、provider 刷新接口同步等待、Databricks OAuth 超时等问题，工具审批改为可选，并升级 @agentclientprotocol/sdk 至 2.6.0、Node 24.22.3 与 Electron Forge 8.0.1。
+block/goose v1.61.0 正式发布，引入 MCP 配置与扩展增强、goose-agent 上下文压缩、两种新的声明式 LLM 提供商，以及运行时首 token 时延（TTFT）测量修复。MCP 层面新增 ACP 协议下 header secrecy、server.json 格式导入，以及 goose-agent 的 MCP extension operation。上下文压缩通过 Compaction operation 实现，支持丢弃 Claude 模型拒绝的 &lt;analysis&gt; scratchpad。新增 llmman（Ollama 兼容）和 amazee.ai 声明式提供商，Gemini 4 Neon 加入模型目录。
 
 github · github-actions\[bot\] · 11月25日 03:31
 
-**「设计要点」** Goose 作为 agent harness，通过 MCP 扩展层与外部工具交互，支持 ACP 协议传输。上下文压缩（compaction）机制直接作用于 goose-agent 的记忆管理。前端基于 Electron Forge，后端采用多 provider 注册制，支持声明式 provider 配置。
+**「设计要点」** goose-agent 新增 MCP extension 与 Compaction 两种 operation，分别扩展工具调用边界和实现上下文压缩。声明式 LLM provider 机制（llmman、amazee.ai）将提供商配置迁移到配置驱动，MCP 集成通过 ACP 统一 header secrecy 并支持导入 server.json。
 
-**「改了什么」** 新增 ACP 传输 mcpServers 配置时 headers 全部视为 secret、MCP server.json 配置导入、goose-agent 的 compaction 与 MCP 扩展操作。工具审批流程改为可选。TTFT 统计现在在首段文本、thinking 或 tool call 开始时终止。新增三个 LLM providers，升级 SDK 与 Node/Electron 依赖。
+**「改了什么」** goose-agent 新增 MCP extension 与 Compaction operation，分别扩展工具调用和实现上下文压缩。MCP 配置支持导入 server.json 并在 ACP 下统一处理 header secrecy，新增 llmman 与 amazee.ai 声明式提供商，修复 TTFT 测量逻辑，工具审批改为可选。
 
-**标签**: `#mcp`, `#memory`, `#runtime`, `#tools`
+**标签**: `#mcp`, `#memory`, `#runtime`
 
 ---
 
 <a id="item-harness-arch-2"></a>
 ### [pydantic-ai v2.74.0 发布](https://github.com/pydantic/pydantic-ai/releases/tag/v2.74.0) ⭐️ 6.8/10
 
-pydantic-ai v2.74.0 与 pydantic-ai-harness 0.74.0 正式发布，修复 PlaywrightBrowser 工具中 6 个中危安全漏洞，包括 IPv6 站点本地地址与 NAT64 嵌入地址绕过、反斜杠 URL 解析绕过、WebRTC/WebTransport/WebSocketStream/FedCM 出口策略遗漏，以及 ElevenLabs 实时会话 OpenTelemetry 凭据泄露和在线评估 baggage 属性篡改。补丁同步将 \`ComputerTool\` 纳入核心契约，并为 DockerContainer、DaytonaSandbox、E2BSandbox 等 11 种沙箱添加 \`desktop=True\` 支持，以驱动 Anthropic、OpenAI、Google 的原生 computer use 工具。
+pydantic-ai v2.74.0 与 pydantic-ai-harness 0.74.0 发布，包含 6 项中危安全修复。PlaywrightBrowser 修复 5 个 SSRF/沙箱绕过漏洞，覆盖 IPv6 site-local 地址、NAT64/ISATAP 嵌入、反斜杠 URL 解析错误及 WebRTC 等出口策略遗漏。新增 computer use 全链路支持，包括 ComputerTool 核心契约、ComputerUse 能力、Display 协议，以及 DockerContainer、DaytonaSandbox 等 11 种 Sandbox 的 desktop 模式。兼容性变更包括 GPT-6.2 静态指令缓存策略调整、Gemini streaming 使用量统计逻辑变更，以及 ElevenLabs 和 pydantic-evals 的 OpenTelemetry 敏感数据泄露修复。
 
 github · dsfaccini · 11月24日 23:22
 
-**「设计要点」** PlaywrightBrowser 默认启用强制出口策略，在页面和框架层移除 \`RTCPeerConnection\`、\`WebTransport\`、\`WebSocketStream\` 和 FedCM 并以 Blink 特性关闭启动 Chromium，但 workers 的 \`WebTransport\`、通过 \`cdp\_url\` 的 workers 中的 \`WebSocketStream\`、隔离沙盒 iframe 及附件前加载的文档仍保持开放；核心层新增 \`ComputerTool\` 契约并纳入 \`NATIVE\_TOOLS\_REQUIRING\_CONFIG\`，要求运行时提供 \`computer\` 工具驱动调用。
+**「设计要点」** PlaywrightBrowser 默认启用强制出口策略，通过禁用 RTCPeerConnection、WebTransport、WebSocketStream 和 FedCM API 实现网络隔离。Computer use 架构新增 ComputerTool 核心契约、ComputerUse 能力及 Display 协议，支持多 Sandbox 桌面模式。OpenTelemetry instrumentation 在实时会话和在线评估中分别处理敏感字段和 baggage 属性，避免跨上下文污染。
 
-**「改了什么」** 修复 PlaywrightBrowser 在 IPv6 站点本地地址、NAT64 嵌入地址、反斜杠 URL 解析及 WebRTC/WebTransport 等协议上的私有地址封锁绕过漏洞，同时移除强制策略下页面和框架的对应 API。新增 \`ComputerTool\` 契约及 11 种沙箱的 \`desktop=True\` 支持，覆盖 Anthropic、OpenAI、Google 的原生 computer use 工具发送。
+**「改了什么」** PlaywrightBrowser 修复 5 个中危 SSRF/沙箱绕过漏洞，包括 IPv6 私有地址绕过、NAT64/ISATAP 嵌入、反斜杠 URL 解析错误及 WebRTC 等出口策略遗漏，并收紧 OpenTelemetry 敏感数据记录。新增 computer use 全链路支持，涵盖 ComputerTool 核心契约、ComputerUse 能力、Display 协议及 11 种 Sandbox 的 desktop 模式。GPT-6.2 静态指令缓存策略调整，Gemini streaming 使用量统计逻辑变更，pydantic-evals 修复 OpenTelemetry baggage 属性污染。
 
-**标签**: `#tools`, `#sandbox`
+**标签**: `#tools`, `#sandbox`, `#permissions`
 
 ---
 
 <a id="item-harness-arch-3"></a>
-### [fastmcp v4.2.6 发布](https://github.com/PrefectHQ/fastmcp/releases/tag/v4.2.6) ⭐️ 5.5/10
+### [fastmcp v4.2.6 发布](https://github.com/PrefectHQ/fastmcp/releases/tag/v4.2.6) ⭐️ 5.3/10
 
-fastmcp v4.2.6 发布，新增实验性 \`CodeModeClient\`，允许 agent 跨多个 MCP 服务器链式调用工具，即使目标服务器未运行 CodeMode。事件系统拆分为独立包 \`fastmcp-events\`，事件类型从 check function 改为 Pydantic model，注册使用 \`@events.event\`，发射使用 \`await events.emit\`，并支持通过 \`DocketEventLog\` 持久化到 Redis。同时移除 \`authlib\` 依赖，服务端 span 增加 \`network.transport\` 等网络属性，并修复客户端回调、OpenAPI schema 序列化等 15 个技术问题。
+fastmcp v4.2.6 发布。本次版本新增实验性 CodeModeClient，可在客户端侧执行 CodeMode，为原生不支持 CodeMode 的 MCP 服务器提供 search、schema 和 execute 元工具，并支持单个 execute 块跨服务器链式调用工具。服务端 span 新增 network.transport 属性，HTTP 传输下还携带 network.protocol.name 和 network.protocol.version。同时移除 Authlib 依赖，并将实验性事件系统拆分为独立包 fastmcp-events，事件类型改为 Pydantic 模型，支持通过 DocketEventLog 持久化到 Redis。
 
 github · github-actions\[bot\] · 11月25日 00:40
 
-**「设计要点」** 客户端运行在 asyncio 上，事件通过 \`DocketEventLog\` 写入 Redis 实现跨副本持久化与分发。跨服务器工具编排在客户端侧通过 \`CodeModeClient\` 实现，不依赖服务端 CodeMode。
+**「设计要点」** fastmcp 运行于 asyncio，采用客户端-服务器架构。服务端 span 暴露网络传输层属性，支持可观测性。事件系统支持通过 Docket 将事件日志持久化到 Redis，实现跨副本分发和重启恢复。
 
-**「改了什么」** 新增实验性 \`CodeModeClient\` 支持跨服务器工具链式执行，事件系统拆分为 \`fastmcp-events\` 包并变更注册与发射 API，同时移除 \`authlib\` 依赖。服务端 span 增加网络传输属性，并修复客户端回调、OpenAPI schema、资源链接命名空间、响应截断序列化等 15 个 bug。
+**「改了什么」** 新增实验性 CodeModeClient，支持客户端侧元工具和跨服务器工具链。移除 Authlib 依赖，客户端和服务器不再使用该包。实验性事件拆分为 fastmcp-events 独立包，API 从 check 函数改为 Pydantic 模型加 reader 模式，支持 for\_subscription 方法。
 
-**标签**: `#mcp`, `#tools`
+**标签**: `#mcp`, `#tools`, `#runtime`, `#experimental`, `#breaking-change`
 
 ---
 
@@ -91,107 +89,77 @@ github · github-actions\[bot\] · 11月25日 00:40
 <p class="ah-sec-meta"><a class="ah-anchor" href="#sec-agent-engineer" aria-label="链接到本节">#</a><a class="ah-back" href="#ah-toc">↑ 回到目录</a></p>
 
 <a id="item-agent-engineer-1"></a>
-### [SWE-2.1 编码智能体发布](https://cognition.ai/blog/swe-2-1) ⭐️ 8.8/10
+### [Cognition 发布 SWE-2.1 模型](https://cognition.ai/blog/swe-2-1) ⭐️ 8.8/10
 
-2026 年 11 月 24 日，Cognition 官方发布编码智能体 SWE-2.1，为 SWE-2 的重大升级版本，基于 Kimi K3 采用纯强化学习训练。该版本在 FrontierCode 2.0、Terminal-Bench 4.1 等编码基准，以及 ExploitBench、ExploitGym 等网络安全长程自主任务基准上均有显著提升：SWE-2.1 在 ExploitBench 取得 80%的得分，在 ExploitGym 中通过预期利用捕获 27.3%的旗帜，长时自主运行性能随 rollout 时间延长呈对数线性提升，测试时 scaling 曲线斜率较基础模型明显提升。训练过程中 Cognition 通过红队测试、持续安全监控和沙箱逃逸 canary 评估拦截风险，累计发现并修复 4 次训练环境新漏洞。Cognition 同时推出 safeguards 更宽松的 SWE-2.1 Cyber 版本向 Devin Security 开放，还与 Cerebras 合作发布 10 倍推理速度的 SWE-2.1 Ultrafast 版本；SWE-2.1 目前免费开放至 2026 年 12 月 8 日（Desktop 与 CLI 版本），折扣价有效期至 2026 年 1 月 30 日，面向编码、网络安全领域的开发者及 AI agent 工程、评估、工具链设计人员。
+2026 年 11 月 24 日 Cognition AI 发布 SWE-2.1，为 SWE-2 的重大升级版本，基于 Kimi K3 采用纯强化学习训练。相比 SWE-2，其在 FrontierCode 2.0、Terminal-Bench 4.1 等基准测试有显著提升，网络安全方向得分基于 Muse Wonder Full 配置，达到 ExploitBench 80%得分、ExploitGym 27.3%旗标捕获率，且测试时计算随 rollout 时长对数线性提升。训练过程中配套红队测试、持续安全监控与沙箱逃逸 canary 评估，累计发现 4 次训练环境沙箱新漏洞并即时响应。官方同步推出面向防御场景的 SWE-2.1 Cyber 版本（已集成至 Devin Security），以及与 Cerebras 合作实现 10 倍推理加速的 SWE-2.1 Ultrafast 版本，前者面向合法防御工作调整护栏策略，后者免费至 2026 年 12 月 8 日，全版本折扣价截至 2026 年 1 月 30 日。
 
 rss · Cognition Blog · 11月24日 16:00
 
-**「为什么重要」** 该发布验证了纯强化学习训练长时自主编码、网络安全任务智能体的可行性，其长时 rollout 性能随计算量提升的 scaling 特性，对 AI agent 的测试时计算分配、长程任务设计有直接参考价值。目前这些能力在实际工程、安全场景中的落地效果尚未有公开验证。
+**「为什么重要」** SWE-2.1 首次将纯强化学习训练的长时程自主工作流能力同时落地到软件工程和网络安全场景，且配套了分版本的安全护栏策略，为 coding agent 的能力边界和安全治理提供了新的参考。其对下游开发工具的实际效率提升效果、护栏策略对合法防御工作的实际影响尚未有公开验证。
 
-**「可关注」** 可关注：长时自主编码、安全任务的性能随 rollout 时间对数线性提升，测试时计算分配策略会直接影响长程任务完成率；训练阶段优化 rollout 长度控制减少震荡，可提升模型对跨时长任务的训练稳定性与测试时计算利用率。
+**「可关注」** 可关注：SWE-2.1 通过降低训练时 rollout 长度振荡，实现了从分钟级到小时级任务的稳定训练，同时测试时计算随时长对数线性提升，且配套 10 倍推理加速版本适配紧急场景的时效需求。
 
 **标签**: `#coding-agent`, `#eval`, `#orchestration`
 
 ---
 
 <a id="item-agent-engineer-2"></a>
-### [Simon Willison 总结 LLM 与 coding agent 三大拐点](https://simonwillison.net/2026/Nov/24/llm-inflection-points/) ⭐️ 6.0/10
+### [LLM 12 个月三个能力拐点梳理](https://simonwillison.net/2026/Nov/24/llm-inflection-points/) ⭐️ 7.0/10
 
-2026 年 11 月 24 日，Simon Willison 发布 AI Engineer Code Summit 主题演讲 recap，以 Claude Opus 4.5 发布一周年为节点，梳理过去 12 个月 LLM 与 coding agent 能力的三个拐点。第一个拐点为 2025 年 11 月，Claude Opus 4.5、GPT-5.1 系列模型发布，让 Claude Code、OpenAI Codex 等 coding agent 从「需频繁修正的辅助」变为日常开发中可可靠使用的工具。第二个拐点为 2026 年 6-7 月，Claude Fable 5 等「Fable 类模型」发布，这类模型在给定明确目标和必要工具时可自主拆解任务、brute force 解决复杂问题，成为作者认知中的前沿模型新基线。第三个拐点为 2026 年 9-10 月，frontier 模型 3D 建模与游戏开发能力大幅提升，不仅能生成可信的 3D 内容，还能通过长时间 playtest 优化游戏可玩性。文中未提供可复现的性能基准数据，所有能力判断均来自作者个人实践观察，且部分模型发布时间与当前公开信息存在差异，未经验证。
+2026 年 11 月 24 日，Simon Willison 在 AI Engineer Code Summit 主题演讲中回顾过去 12 个月 LLM 与 coding agent 的能力变化，提出三个关键拐点，锚定 2025 年 11 月 24 日发布的 Claude Opus 4.5 为起点。第一拐点为 2025 年 11 月 Opus 4.5、GPT-5.1 Instant/Thinking/Codex/Codex-Max 系列模型发布，其中 Opus 4.5 是 Simon Willison 使用的第一个能让 Claude Code 默认结果大多正确的模型，此前他因需要频繁修正而未将其作为日常开发工具，该模型发布后 Claude Code、OpenAI Codex 等 coding agent 从不够可靠变为日常开发可用工具。第二拐点为 2026 年 6 月 Claude Fable 5 发布，其作为「去危险化」的 Claude Mythos，在给定明确目标和必要工具时可通过 brute force 解决复杂问题，但发布三天后被美国出口管制，直到 7 月 1 日才恢复可用。第三拐点为 2026 年 9-10 月前沿模型 3D 建模与游戏开发能力大幅提升，Claude Opus 5.5 甚至能通过 12 小时 playtest 优化游戏可玩性。该总结为一线实践者的个人 retrospective，未附官方 benchmark，主要影响 coding agent 工程师与 AI 工具使用者。
 
 rss · Simon Willison · 11月24日 23:02
 
-**「为什么重要」** 作为一线实践者的第一手观察，梳理了 coding agent 从「不可靠辅助」到「日常可用」再到「可自主完成复杂多步骤任务」的演进路径，为工程师评估当前模型能力提供了实践参考。但文中对模型能力的判断无公开基准数据支撑，部分模型信息未经验证，相关能力结论需结合实际测试确认。
+**「为什么重要」** 这份 retrospective 来自长期深度使用 coding agent 的一线实践者，其总结的三个拐点直接对应 agent 可靠性与能力边界的实际变化，可用来校准团队对前沿模型能力的预期，避免被官方宣传误导。
 
-**「可关注」** 可关注：前沿模型已从「需频繁修正的辅助工具」转向「给定目标和工具即可自主完成复杂任务」的基线，3D 空间理解与多步骤目标拆解能力是近期 coding agent 能力的突出变化点。
+**「可关注」** 可关注：前沿模型已出现「给定明确目标与必要工具即可 brute force 解决问题」的能力档位，同时 3D 空间建模能力的提升可能同步利好机器人视觉场景的 agent 开发。
 
-**标签**: `#coding-agent`, `#orchestration`
+**标签**: `#coding-agent`, `#llm`, `#agent-engineering`, `#inflection-points`
 
 ---
 
 <a id="item-agent-engineer-3"></a>
-### [ACAP 异步多 Agent 机器人控制框架](https://huggingface.co/papers/2611.31205) ⭐️ 6.0/10
+### [CUA-SEE 自进化评估框架提出](https://huggingface.co/papers/2611.30962) ⭐️ 7.0/10
 
-2026-11-25，Hugging Face Daily Papers 发布 preprint 介绍 ACAP（Asynchronous Coding Agents as Policy）。该框架将机器人组织为持久化 coding agent 团队，每个 agent 负责一个可配置控制组（如机械臂与夹爪、躯干与底盘），实现异步推理与执行；另引入 hyper-agent 分配任务、协调跨组件物理依赖并动态分配控制权。当前内容截断，未提供性能基准或生产部署细节，且机器人专用场景限制了对通用 agent 工程工作流的直接迁移。
+2026 年 11 月 25 日，Hugging Face Daily Papers 收录论文提出 CUA-SEE，一种面向计算机使用代理的闭环自进化评估环境。该框架通过共同演化评估任务与可执行验证器，解决传统静态基准因固定难度上限、有限特征覆盖与粗略聚合分数导致的判别力衰退问题。CUA-SEE 将演化目标解耦为基准演化、诊断演化与验证器演化三部分，分别扩展评估范围、提升能力边界探测分辨率、以及将变化需求转化为状态锚定的检查点。当前摘要内容被截断，完整技术细节与实验结果尚未披露。
 
 rss · Hugging Face Daily Papers · 11月25日 00:00
 
-**「为什么重要」** 该工作提出了一种分层异步多智能体编排模式，将并发控制与依赖协调分离，对复杂系统 agent 工程有潜在参考价值；但 preprint 缺乏实证数据，实际效果尚未证实。
+**「为什么重要」** 该框架直接针对 coding agent 与计算机使用代理评测体系的核心痛点——静态基准随代理能力提升而快速贬值。若其共同演化机制与可执行验证器设计在后续完整论文中得到验证，可能为 eval harness 设计提供新的范式参考。
 
-**「可关注」** 可关注：ACAP 用持久化 per-subsystem agent 加 hyper-agent 分层，解耦独立子系统的并发执行与跨组件依赖协调；但该框架面向机器人控制，通用 agent 工程场景的直接迁移性受限。
+**「可关注」** 可关注：静态基准的判别力衰减问题已获明确，闭环自进化评估中任务与验证器的共同演化机制值得在 harness 设计中验证其工程可行性。
 
-**标签**: `#orchestration`, `#coding-agent`, `#multi-agent`
+**标签**: `#eval`, `#coding-agent`, `#harness`
 
 ---
 
 <a id="item-agent-engineer-4"></a>
-### [CUA-SEE 自演化评估框架论文发布](https://huggingface.co/papers/2611.30962) ⭐️ 6.0/10
+### [NightWatch 为 CUA 补连续时间感知](https://huggingface.co/papers/2611.28947) ⭐️ 6.0/10
 
-2026-11-25，Hugging Face Daily Papers 收录论文《Self-Evolving Evaluation Environments for Computer-Use Agents》，提出 CUA-SEE 自演化评估环境。该框架针对 computer-use agents 设计，通过 rollout evidence 共同演化任务与可执行验证器，拆分为 benchmark evolution、diagnostic evolution、verifier evolution 三个目标。论文指出现有静态基准存在固定难度上限、特征覆盖有限、聚合分数粗略等问题，导致 discriminative 与 diagnostic value 逐渐减弱。当前材料为截断内容，未提及开源发布或可复现性能数据。
-
-rss · Hugging Face Daily Papers · 11月25日 00:00
-
-**「为什么重要」** 静态基准测试在 computer-use agents 能力快速提升背景下 discriminative 能力下降，CUA-SEE 提供了任务-验证器协同演化的解决思路。但论文未公开可复现结果，其实践价值尚待完整论文验证。
-
-**「可关注」** 可关注：现有 agent 评估 harness 多依赖静态验证规则，CUA-SEE 提出的从 rollout 证据中演化验证器的思路，可能改变评估环境的设计假设。
-
-**标签**: `#eval`, `#coding-agent`
-
----
-
-<a id="item-agent-engineer-5"></a>
-### [NightWatch 即插即用感知框架](https://huggingface.co/papers/2611.28947) ⭐️ 6.0/10
-
-这篇 Hugging Face 每日论文（2026-11-25）介绍 NightWatch 即插即用框架，旨在解决视觉语言模型计算机使用代理（CUA）的感知-动作滞后问题。该框架通过耦合轻量级 NightWatch-0.8B 模型，为现有 CUA 提供连续时序感知，无需修改代理的模型、提示或动作空间。材料未提供性能对比或具体评测数据。
+2026 年 11 月 25 日 Hugging Face 每日论文收录 arXiv 论文 2611.28947，提出即插即用框架 NightWatch，针对基于视觉语言模型的计算机使用代理（CUA）的感知陈旧问题，通过搭配轻量辅助模型 NightWatch-0.8B 为其增加连续时间感知能力，无需修改 CUA 原有模型、提示词或动作空间。该框架面向构建 UI 交互代理（含编码代理）的工程师，但当前提供的材料为截断版本，缺少完整技术细节、性能基准、代码发布信息与评估结果，实际落地效用暂无法完全评估。
 
 rss · Hugging Face Daily Papers · 11月25日 00:00
 
-**「为什么重要」** 该框架针对 VLM 推理延迟与动态界面导致的感知 stale 问题，提供了一种不侵入现有代理架构的补丁方案。对正在开发或维护 CUA 的工程师而言，这可能降低集成环境感知模块的门槛。但缺少量化结果，实际效果待验证。
+**「为什么重要」** 该框架针对 VLM 推理延迟与动态界面叠加导致的感知-动作间隙这一实际痛点，提出无需改动现有 CUA 核心组件的补丁方案，对构建 UI 交互代理的工程师有参考价值。但当前缺乏完整性能数据与开源信息，其实际效果尚未得到验证。
 
-**「可关注」** 可关注：NightWatch 以独立轻量模型耦合主代理的设计，可能为现有 CUA 系统增加时序感知能力提供低侵入路径。
+**「可关注」** 可关注：NightWatch 采用即插即用设计，无需修改现有 CUA 的核心模型、提示词与动作空间即可补充连续时间感知能力，但需等待完整技术细节与评估结果发布后再判断落地可行性。
 
 **标签**: `#coding-agent`, `#harness`
 
 ---
 
-<a id="item-agent-engineer-6"></a>
-### [HF 热门：27B 三元量化 GGUF](https://huggingface.co/prism-ml/Ternary-Bonsai-2.5-27B-GGUF) ⭐️ 6.0/10
+<a id="item-agent-engineer-5"></a>
+### [Microduck 避障 Sim2Real](https://huggingface.co/blog/nvidia/microduck-obstacle-avoidance) ⭐️ 5.8/10
 
-2026 年 11 月 25 日，Hugging Face 热门榜新增 prism-ml/Ternary-Bonsai-2.5-27B-GGUF 模型，trendingScore 达 133，获 140 个赞，为 27B 参数的 2-bit 三元量化 GGUF 格式文本生成模型，适配 llama.cpp，支持 CUDA、Metal 端侧部署，面向低资源本地 LLM 部署场景；当前公开信息未披露性能指标、技术实现细节与实际用例验证，模型实际可用性需进一步评估。
+2026 年 11 月 24 日 Hugging Face 官方博客发布 Microduck 四足机器人 Sim2Real 避障控制器开发教程，基于 Isaac Lab exp/microduck 分支与 Newton 物理引擎实现。教程复用已训练好的固定行走策略，单独训练基于 ToF 传感的避障控制器，模拟 VL53L5CX 传感器（8×8 网格、15Hz 更新率、45°视场角、0.12-4m 量程），支持在 16384 个并行仿真环境用 PPO 训练 1500 轮，也可在 NVIDIA DGX Spark 上用 4096 环境跑 3000 轮完成训练。流程覆盖仿真训练、评估、ONNX 导出与真机部署，依赖 SimReady Central pinned 版本资产（commit 9d4556bfe80868c1d27a7a7ba1c2774e63e8cedd）构建随机化障碍场地。该教程仅面向 Microduck 硬件与 Isaac Lab 工具链开发者，对通用 AI Agent 工程师无直接参考价值。
 
-rss · Hugging Face Trending Models · 11月25日 05:11
+rss · Hugging Face Blog · 11月24日 16:34
 
-**「为什么重要」** 该模型作为高热度量化端侧模型进入 HF 热门榜，为低资源本地 LLM 部署（含 coding agent 本地运行场景）提供了新的量化方案参考；但目前公开信息不足，实际推理性能、精度损失与落地可行性尚未得到验证。
+**「为什么重要」** 该教程完整公开了特定四足机器人的 Sim2Real 避障控制全链路工程实现，包括传感器建模、并行训练与真机部署的细节，为同类具身智能机器人项目提供了可复用的工具链参考。
 
-**「可关注」** 可关注：该 2-bit 三元量化 27B GGUF 模型在 llama.cpp 上的端侧推理吞吐、显存占用与精度表现，可对照现有同参数量级量化方案评估本地部署价值。
+**「可关注」** 可关注：避障控制与底层行走策略解耦、冻结行走权重单独训练上层导航策略的设计，以及仿真传感器加入噪声、延迟、缺失测量以对齐真机数据分布的工程实践。
 
-**标签**: `#coding-agent`, `#quantization`, `#on-device-inference`
-
----
-
-<a id="item-agent-engineer-7"></a>
-### [HF 日报：Loom Attention 与 LoomFormer](https://huggingface.co/papers/2611.30634) ⭐️ 5.5/10
-
-2026 年 11 月 25 日，Hugging Face Daily Papers 发布论文摘要，提出 Loom Attention 与 LoomFormer 架构。该架构采用双流设计，以每 token 矩阵记忆作为第二残差流，通过交织垂直注意力（基于归一化门控线性注意力访问矩阵记忆）与水平注意力，实现 Transformer 每 token 动态重连电路。论文声称该架构在语言建模和下游任务中，可匹配 3 倍计算量训练的常规 Transformer，以及 HC/mHC、MUDDFormer、AttnRe 等近期残差流基线。当前公开内容仅为不完整摘要片段，无实现细节、开源代码、面向 Agent 任务的评测结果，来源为二手聚合内容，无官方论文仓库、作者博客等一手链接，对 Agent 工程师短期可行动价值有限。
-
-rss · Hugging Face Daily Papers · 11月25日 00:00
-
-**「为什么重要」** 该工作为高效 Transformer 架构设计提供了新的双流矩阵记忆思路，属于架构层面的新颖探索；但其对 Agent 场景的实际增益、实现成本、可复现性均未得到验证，短期无法直接落地到 coding agent 相关开发中。
-
-**「可关注」** 可关注：后续若公开完整论文、开源实现及 Agent 场景评测结果，可再评估该架构对 coding agent 推理效率的实际提升空间。
-
-**标签**: `#memory`
+**标签**: `#eval`, `#simulation`, `#embodied-ai`
 
 ---
 
@@ -201,41 +169,45 @@ rss · Hugging Face Daily Papers · 11月25日 00:00
 <p class="ah-sec-meta"><a class="ah-anchor" href="#sec-ai-daily" aria-label="链接到本节">#</a><a class="ah-back" href="#ah-toc">↑ 回到目录</a></p>
 
 <a id="item-ai-daily-1"></a>
-### [GPT-6 展示内在蛋白质设计能力](https://openai.com/index/gpt-6-models-demonstrate-intrinsic-protein-design-capabilities) ⭐️ 8.8/10
+### [GPT-6 模型具备蛋白质设计能力](https://openai.com/index/gpt-6-models-demonstrate-intrinsic-protein-design-capabilities) ⭐️ 7.8/10
 
-OpenAI 官方博客于 2026 年 11 月 24 日宣布，GPT-6 模型具备内在蛋白质设计能力，可通过推理与代码完成蛋白质结构、序列设计。实验室测试证实其对 5 个靶点存在结合活性。
+OpenAI 官方博客称 GPT-6 模型可通过推理与代码设计蛋白质结构和序列，实验室测试在 5 个靶标上发现结合证据。该公告内容极简，未披露详细方法论、与既有蛋白质折叠模型的对比或具体差异。
 
 rss · OpenAI Blog · 11月24日 13:00
 
-**「为什么重要」** 这是大语言模型蛋白质设计能力首次获得官方公布的实验室验证，拓展了 AI 在生物计算领域的应用场景。
+**「为什么重要」** 若该能力属实，将拓展大模型在生物计算领域的应用边界；但当前披露信息不足，尚无法验证其实际突破程度。
 
-**「可关注」** 可关注：GPT-6 通过推理与代码完成蛋白质设计的技术路径，以及其 5 个靶点结合活性的实验室验证结果。
+**「可关注」** 可关注：后续公开的详细实验设计与性能对比数据，以验证该能力的实际水平。
 
 **标签**: `#model`, `#lab`, `#industry`
 
 ---
 
 <a id="item-ai-daily-2"></a>
-### [Codex 与 Astra 辅助发现潜在系外行星](https://openai.com/index/searching-for-distant-planets-with-astra) ⭐️ 6.8/10
+### [爱好者用 Codex、Astra 寻系外行星](https://openai.com/index/searching-for-distant-planets-with-astra) ⭐️ 7.8/10
 
-OpenAI 官方博客 2026 年 11 月 24 日发布应用案例，两名业余天文学家使用 Codex 和 Astra 工具分析 NASA 开普勒与 TESS 望远镜的公开数据，发现潜在系外行星。
+OpenAI 官方博客披露，两名业余天文学爱好者使用 Codex 与 Astra 工具，分析 NASA Kepler 与 TESS 空间望远镜的公开数据，识别出潜在系外行星候选。目前未披露具体识别到的候选数量及后续验证进展。
 
 rss · OpenAI Blog · 11月24日 11:00
+
+**「为什么重要」** 这验证了 Codex 与 Astra 在科研场景的可用性，为业余天文爱好者参与系外行星搜寻提供了低门槛工具路径。
+
+**「可关注」** 可关注：公开科研数据集与 AI 工具结合的平民化科研场景拓展。
 
 **标签**: `#lab`, `#product`, `#industry`
 
 ---
 
 <a id="item-ai-daily-3"></a>
-### [LIBERO 登顶六项真机具身任务](https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&amp;mid=2247948323&amp;idx=3&amp;sn=f554a3311a9945f2a61b4c13d2f3313c) ⭐️ 5.5/10
+### [阿里达摩院具身策略登顶六项真机任务](https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&amp;mid=2247948323&amp;idx=3&amp;sn=f554a3311a9945f2a61b4c13d2f3313c) ⭐️ 5.5/10
 
-阿里达摩院、香港具身智能实验室等团队提出具身智能策略 RynnVLA-Latent，核心是用潜在动作作为共享监督接口，将 3.01 万小时异构人类视频转化为策略监督信号，先学习共享运动经验再适配具体机器人。基于该策略训练的 4B 模型 LIBERO 在六项真机任务中登顶，单任务成绩达 98.8%。该报道为二手科技媒体转载，正文截断，无对应官方一手公告链接，技术细节无法进一步核对。
+阿里达摩院等团队提出具身智能策略 RynnVLA-Latent，以潜在动作作为共享监督接口，将 3.01 万小时异构人类视频转化为策略训练信号，无需原生机器人控制标签。配套 4B 参数模型 LIBERO 在六项真机任务中登顶，单任务最高准确率达 98.8%。当前披露内容为二手科技媒体报道，未提供官方一手发布链接与完整技术细节。
 
 rss · 量子位 · 11月24日 06:27
 
-**「为什么重要」** 现有具身训练依赖昂贵的机器人示教数据，且不同硬件的动作空间难以统一。该策略尝试绕开原生控制标签需求，从海量人类视频中提取可跨硬件复用的运动经验，可能降低具身智能的训练数据门槛。
+**「为什么重要」** 该工作针对人类视频缺乏机器人控制指令、跨硬件示教数据难以通用的行业痛点，采用共享运动学习+下游适配的路线降低具身智能训练门槛，其真机登顶结果对具身智能落地路径有参考价值。
 
-**「可关注」** 可关注：潜在动作表示结合残差式未来特征预测与三维场景流约束，可在无原生机器人控制标签条件下从人类视频学习运动经验。
+**「可关注」** 可关注：潜在动作共享监督接口、残差式未来特征预测与三维几何约束的设计，为跨硬件具身策略训练提供了可复用的技术思路。
 
 **标签**: `#model`, `#lab`, `#industry`, `#eval`
 
@@ -247,14 +219,16 @@ rss · 量子位 · 11月24日 06:27
 <p class="ah-sec-meta"><a class="ah-anchor" href="#sec-ai-deals" aria-label="链接到本节">#</a><a class="ah-back" href="#ah-toc">↑ 回到目录</a></p>
 
 <a id="item-ai-deals-1"></a>
-### [所以便签 SoYiNote 兑换码放送](https://www.v2ex.com/t/1259471#reply20) ⭐️ 7.0/10
+### [SoYiNote 终身会员兑换码放送](https://www.v2ex.com/t/1259471#reply20) ⭐️ 7.0/10
 
-V2EX 用户 W20NY 分享自制拟物风格 iOS 便签应用「所以便签（SoYiNote）」，放出 20 个终身会员兑换码，按原帖楼层每 5 楼赠送 1 个。
+开发者 W20NY 在 V2EX 分享自制拟物风格 iOS 便签 APP「所以便签（SoYiNote）」，放出 20 个终身会员兑换码，领取规则为每 5 楼赠送 1 个，材料未标注活动截止时间。
 
 rss · V2EX Hot · 11月24日 07:43
 
-**「可关注」** 可关注：该兑换码仅通过 V2EX 原帖楼层活动发放，无其他公开领取渠道，需在对应帖子下参与互动按规则领取。
+**「为什么重要」** 该 APP 以拟物交互为核心特色，支持待办一键生成锁屏壁纸或长图，未来还将上线桌面小组件、锁屏实时活动与灵动岛功能，终身会员兑换码属于稀缺福利。
 
-**标签**: `#promo`, `#coupon`
+**「可关注」** 可关注：兑换码按 V2EX 帖子每 5 楼规则发放，需前往对应帖子楼层回复领取，仅适配 iOS 设备。
+
+**标签**: `#promo`, `#coupon`, `#limited-free`
 
 ---
