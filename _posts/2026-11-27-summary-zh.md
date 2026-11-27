@@ -5,25 +5,28 @@ date: 2026-11-27
 lang: zh
 ---
 
-> 从 200 条内容中筛选出 10 条重要资讯。
+> 从 203 条内容中筛选出 11 条重要资讯。
 
-<nav id="ah-toc" class="ah-toc" aria-label="目录"><span class="ah-toc-title">目录</span><ul><li><a href="#sec-harness-arch"><span class="ah-toc-name">Harness 架构</span><span class="ah-toc-count">3条</span></a></li><li><a href="#sec-agent-engineer"><span class="ah-toc-name">Agent 工程师日报</span><span class="ah-toc-count">7条</span></a></li></ul></nav>
+<nav id="ah-toc" class="ah-toc" aria-label="目录"><span class="ah-toc-title">目录</span><ul><li><a href="#sec-harness-arch"><span class="ah-toc-name">Harness 架构</span><span class="ah-toc-count">3条</span></a></li><li><a href="#sec-agent-engineer"><span class="ah-toc-name">Agent 工程师日报</span><span class="ah-toc-count">7条</span></a></li><li><a href="#sec-ai-daily"><span class="ah-toc-name">AI 日报</span><span class="ah-toc-count">1条</span></a></li></ul></nav>
 
 ---
 
 **[Harness 架构](#sec-harness-arch)**
-1. [E2B @e2b/acp 0.1.0 发布](#item-harness-arch-1) ⭐️ 7.8/10
-2. [Instructor v1.18.0 发布](#item-harness-arch-2) ⭐️ 6.8/10
-3. [browser-use 1.0.9 发布](#item-harness-arch-3) ⭐️ 5.5/10
+1. [pydantic-ai v2.76.0 发布](#item-harness-arch-1) ⭐️ 7.8/10
+2. [E2B @e2b/acp 0.1.0 发布](#item-harness-arch-2) ⭐️ 7.8/10
+3. [instructor v1.18.0 发布](#item-harness-arch-3) ⭐️ 5.8/10
 
 **[Agent 工程师日报](#sec-agent-engineer)**
-1. [Nemotron 3.5 Parse 开源优化](#item-agent-engineer-1) ⭐️ 7.8/10
-2. [Hugging Face 开源多智能体 swarm 训练教程](#item-agent-engineer-2) ⭐️ 7.8/10
-3. [llama.cpp AMD 基准看板上线](#item-agent-engineer-3) ⭐️ 6.3/10
-4. [Google 强制 Workspace MCP 使用引争议](#item-agent-engineer-4) ⭐️ 6.0/10
-5. [sqlite3\_rsync 轻量快照同步](#item-agent-engineer-5) ⭐️ 6.0/10
-6. [Play2Evolve 递归框架优化游戏生成](#item-agent-engineer-6) ⭐️ 6.0/10
-7. [AIRIS 社会具身智能基准发布](#item-agent-engineer-7) ⭐️ 5.5/10
+1. [Nemotron 3.5 Parse 开源微调与推理资源](#item-agent-engineer-1) ⭐️ 7.8/10
+2. [编码智能体视觉推理超视频模型](#item-agent-engineer-2) ⭐️ 7.0/10
+3. [llama.cpp AMD 基准测试看板上线](#item-agent-engineer-3) ⭐️ 6.8/10
+4. [sqlite3\_rsync 无额外磁盘复制特性](#item-agent-engineer-4) ⭐️ 6.0/10
+5. [Stable Gated DeltaNet-2 论文发布](#item-agent-engineer-5) ⭐️ 6.0/10
+6. [OS-Omni 跨平台基准发布](#item-agent-engineer-6) ⭐️ 6.0/10
+7. [DRBench Pro 评估深度研究代理](#item-agent-engineer-7) ⭐️ 6.0/10
+
+**[AI 日报](#sec-ai-daily)**
+1. [421 期周刊：Anthropic 造富](#item-ai-daily-1) ⭐️ 5.5/10
 
 ---
 
@@ -33,51 +36,47 @@ lang: zh
 <p class="ah-sec-meta"><a class="ah-anchor" href="#sec-harness-arch" aria-label="链接到本节">#</a><a class="ah-back" href="#ah-toc">↑ 回到目录</a></p>
 
 <a id="item-harness-arch-1"></a>
-### [E2B @e2b/acp 0.1.0 发布](https://github.com/e2b-dev/E2B/releases/tag/%40e2b/acp%400.1.0) ⭐️ 7.8/10
+### [pydantic-ai v2.76.0 发布](https://github.com/pydantic/pydantic-ai/releases/tag/v2.76.0) ⭐️ 7.8/10
 
-E2B 发布 \`@e2b/acp\` 0.1.0，首次支持在 E2B sandbox 内运行 ACP 兼容 agent。该包通过 \`new ACPAgent\(sandbox, command, client\)\` 与 \`await agent.start\(\)\` 启动 agent，基于 stdin/stdout 通信并连接 ACP client。客户端文件系统与终端能力被显式关闭，agent 请求这些能力时直接拒绝，强制其使用 sandbox 原生工具执行文件操作和命令。依赖同步更新至 \`e2b@2.65.0\`。
+pydantic-ai v2.76.0 发布，核心新增实时会话中途动态揭示工具能力。通过\`UpdateTools\`类型与\`RealtimeModelProfile.supports\_tool\_updates\`标志控制，仅向支持工具更新的模型连接发送更新，\`DEFAULT\_REALTIME\_PROFILE\`默认关闭该能力。\`RealtimeInput\`联合类型扩展后，现有穷尽匹配（如\`assert\_never\`）会破坏类型检查，需显式处理\`UpdateTools\`分支。同时，\`gemini-2.5-pro\`与\`gemini-2.5-flash\`请求现在触发\`DeprecatedModelWarning\`，\`FileSystem.read\_file\`的\`offset\`参数改为 1-indexed 且\`offset=0\`抛出异常。
 
-github · github-actions\[bot\] · 11月26日 12:35
+github · dsfaccini · 11月26日 23:49
 
-**「设计要点」** 运行时通过 stdin/stdout 与 agent 进程通信，能力层在 client 侧禁用文件系统和终端能力，由 sandbox 原生工具接管文件操作与命令执行，形成能力边界隔离。
+**「设计要点」** 实时工具更新采用模型能力声明机制，\`supports\_tool\_updates\`为 False 的连接不会收到\`UpdateTools\`消息，避免向不支持的模型推送。历史修剪场景下，\`result.conversation\`保留运行期间添加的全部消息，若需传递压缩历史应改用\`result.all\_messages\(\)\`，这影响多轮运行间的状态传递设计。
 
-**「改了什么」** 新增 \`@e2b/acp\` 包，支持 Goose、OpenCode、Claude Code（通过 ACP adapter）等 ACP 兼容 agent 在 E2B sandbox 中运行。客户端文件系统和终端能力默认关闭并拒绝请求，强制 agent 使用 sandbox 原生工具。
+**「改了什么」** 实时会话新增\`UpdateTools\`类型与\`RealtimeModelProfile.supports\_tool\_updates\`标志，支持中途动态揭示工具；\`FileSystem.read\_file\`的\`offset\`改为 1-indexed 且\`offset=0\`抛出异常。\`gemini-2.5-pro\`和\`gemini-2.5-flash\`请求触发\`DeprecatedModelWarning\`；新增\`GoogleInteractionsModel\`与\`CodeMode\(allow\_final\_output=True\)\`。
 
-**「评论」** 无社区评论。
-
-**标签**: `#sandbox`, `#tools`, `#runtime`, `#permissions`
+**标签**: `#runtime`, `#tools`
 
 ---
 
 <a id="item-harness-arch-2"></a>
-### [Instructor v1.18.0 发布](https://github.com/567-labs/instructor/releases/tag/v1.18.0) ⭐️ 6.8/10
+### [E2B @e2b/acp 0.1.0 发布](https://github.com/e2b-dev/E2B/releases/tag/%40e2b/acp%400.1.0) ⭐️ 7.8/10
 
-这是结构化 LLM 输出库 Instructor 的官方 v1.18.0 版本发布，该库是 agent harness 生态的常用依赖。本次更新包含缓存键冲突修复、运行时与 provider 职责分离的核心重构，以及覆盖 Bedrock、OpenAI、Anthropic、Gemini 等多 provider 的兼容性、流式传输、批处理、安全相关修复，同时新增 typed Jev 决策模型与可复现离线性能基线。
+E2B 发布 @e2b/acp 0.1.0，支持在 E2B sandbox 内运行 ACP 兼容 agent（goose、OpenCode、Claude Code 通过 ACP adapter）。通过 new ACPAgent\(sandbox, command, client\) 初始化，await agent.start\(\) 通过 stdin/stdout 启动 agent 并连接 ACP client。客户端文件系统与终端能力被强制关闭，agent 请求这些能力时直接拒绝，确保 agent 只能通过 sandbox 内自有工具执行文件编辑和命令运行。
 
-github · jxnl · 11月26日 21:02
+github · github-actions\[bot\] · 11月26日 12:35
 
-**「设计要点」** 本次重构将 token 预算策略、重试执行逻辑、缓存响应序列化等运行时能力与 provider 实现解耦，各 provider 模块独立负责自身 SDK 构造、请求配置策略与兼容性适配；安全层面默认关闭原始响应日志、忽略磁盘缓存，减少敏感信息暴露面。
+**「设计要点」** 运行时通过 stdin/stdout 桥接 agent 与 ACP client，权限模型在客户端侧禁用文件系统和终端能力，由 sandbox 侧统一拦截拒绝，实现工具调用边界隔离。
 
-**「改了什么」** 相对上一版本，修复了缓存键映射冲突、流式传输 Unicode 控制字符丢失、多 provider 工具调用与批处理结果保留等问题；重构核心模块与 provider 的职责边界，新增 typed Jev 决策模型，补充可复现离线性能基线，同时收紧请求日志与依赖提交的安全策略。
+**「改了什么」** 新增 @e2b/acp 包，提供 ACPAgent 类用于在 E2B sandbox 中托管 ACP 兼容 agent。依赖升级至 e2b@2.65.0。
 
-**标签**: `#cache`, `#runtime`, `#providers`
+**「评论」** 无社区评论。
+
+**标签**: `#sandbox`, `#tools`, `#permissions`
 
 ---
 
 <a id="item-harness-arch-3"></a>
-### [browser-use 1.0.9 发布](https://github.com/browser-use/browser-use/releases/tag/1.0.9) ⭐️ 5.5/10
+### [instructor v1.18.0 发布](https://github.com/567-labs/instructor/releases/tag/v1.18.0) ⭐️ 5.8/10
 
-browser-use 1.0.9 发布云浏览器 IP 轮换与 Claude 缓存修复。新增 rotate\_proxy 接口，在页面因 IP 被拦截时切换出口 IP，标签页、cookie 与登录状态保留，每个站点最多触发一次；云报告无新出口 IP 时接口明确失败。针对 .ru、.de、.co.uk、.kr 等国家域名可指定对应国家出口，在 11 个常见拦截站点上通过率从 48% 提升至 62%。同步修复 Claude prompt caching 在 OpenRouter、Bedrock 及 ChatOpenAI 路由上的失效问题，消除全量 prompt 重复计费。
+instructor 发布 v1.18.0。本次小版本以内部重构和修复为主，包括缓存键冲突修复、token-budget 策略与重试逻辑分离，以及 Bedrock、GenAI 等提供者模块结构调整。无新增 harness 级能力，仅作为依赖更新影响使用 instructor 的 agent 系统。
 
-github · gregpr07 · 11月26日 22:45
+github · jxnl · 11月26日 21:02
 
-**「设计要点」** 云浏览器通过 browser-use.com 主机上的 CDP 连接识别，IP 轮换走浏览器自有连接，API key 仅作后备。Claude 缓存修复覆盖三层 provider 路由，但 Bedrock 仅经单测验证未做实机测试。
+**「改了什么」** 缓存层修复映射键冲突并强化覆盖契约；核心层将 token-budget 策略从重试执行中分离；Bedrock 与 GenAI 提供者各自收拢 SDK 构造与请求配置策略。流式传输修复 Unicode 控制字符保留与字段别名解析；安全层面将原始响应日志改为显式 opt-in 并忽略磁盘缓存。
 
-**「改了什么」** 新增 rotate\_proxy 接口支持云浏览器出口 IP 轮换，拦截时自动触发，无可用出口时明确失败。修复 Claude prompt caching 在 OpenRouter、Bedrock 及 ChatOpenAI 路由上的缓存失效问题。
-
-**「评论」** 无社区评论。
-
-**标签**: `#sandbox`, `#tools`, `#runtime`, `#prefix-cache`
+**标签**: `#runtime`, `#prefix-cache`
 
 ---
 
@@ -87,108 +86,126 @@ github · gregpr07 · 11月26日 22:45
 <p class="ah-sec-meta"><a class="ah-anchor" href="#sec-agent-engineer" aria-label="链接到本节">#</a><a class="ah-back" href="#ah-toc">↑ 回到目录</a></p>
 
 <a id="item-agent-engineer-1"></a>
-### [Nemotron 3.5 Parse 开源优化](https://huggingface.co/blog/nvidia/building-on-nemotron-35-parse-open-data-fine-tunin) ⭐️ 7.8/10
+### [Nemotron 3.5 Parse 开源微调与推理资源](https://huggingface.co/blog/nvidia/building-on-nemotron-35-parse-open-data-fine-tunin) ⭐️ 7.8/10
 
-2026 年 11 月 26 日 NVIDIA 与 Hugging Face 联合发布 Nemotron 3.5 Parse 文档模型的开源配套资源，包括 3 份合成训练数据集、微调指南、DFlash2 推测解码优化方案，以及 SFT+RLVR 训练流程说明，面向 RAG 与 agent 系统的文档处理场景。关键细节：3 份数据集共约 1890 万样本，分别为 Synthetic Charts V1（998 万）、Synthetic Tables V1（100 万）、OCR Synthetic Multilingual v2（790 万），均包含图像、标注、生成文档与训练格式；架构上 Parse 3.5 采用 NaViT 动态矩形输入、压缩视觉 token 作为因果前缀、GQA-8 注意力降低解码器缓存占用；DFlash2 在单张 H200 BF16 环境下，并发 1 时吞吐较 Parse 3.5 禁用推测解码提升 7.62 倍，并发 512 时提升 1.52 倍，32-token 配置下平均接受 14 个草稿 token；SFT+RLVR 流程可将循环输出页数从 126 降至 29，整体评分从 66.24 提升至 71.38。这些资源可供工程师直接用于定制文档解析能力。
+2026 年 11 月 26 日，NVIDIA 联合 Hugging Face 博客发布文档解析模型 Nemotron 3.5 Parse 的开源配套资源，包括 3 份合成训练数据集、端到端微调食谱、DFlash2 推理加速规范，以及 SFT+RLVR 训练流程说明。关键细节：3 份数据集分别为 990 万示例的 Synthetic Charts V1、100 万示例的 Synthetic Tables V1、790 万示例的 OCR Synthetic Multilingual v2，均含图像、标注与生成文档；模型架构上，Parse 3.5 采用 NaViT 动态矩形输入、压缩视觉 token 作为因果前缀、GQA-8 注意力降低缓存占用；DFlash2 在实测 32 token 配置下平均接受约 14 个草稿 token，单 H200 BF16 环境下，并发 1 时吞吐较关闭推测解码的 Parse 3.5 提升 7.62 倍，并发 512 时提升 1.52 倍，达到 20.44 页/秒，为 Parse 2.0 的 6.86 倍；SFT+RLVR 流程可将循环输出页数从 126 降至 29，9000 token 截断输出从 185 降至 35，整体评分从 66.24 升至 71.38。该资源面向构建 RAG、agent 文档处理工具链的工程师开放。
 
 rss · Hugging Face Blog · 11月26日 05:05
 
-**「为什么重要」** 这些资源首次公开了 Nemotron 3.5 Parse 的可复现训练与优化全链路，降低了 RAG 和 agent 系统集成高精度文档解析能力的门槛；具体性能收益会随部署硬件、文档类型变化，需结合实际场景验证。
+**「为什么重要」** 本次发布首次公开了 Nemotron 3.5 Parse 的完整训练数据、可复现的微调与强化学习流程，以及可落地的推理加速方案，降低了文档解析模型在 RAG 和 agent 场景的定制门槛；目前尚未有公开证据验证这些资源在不同文档类型上的泛化效果，以及是否能完全复现官方公布的性能指标。
 
-**「可关注」** 可关注：DFlash2 推测解码在低并发场景吞吐提升更显著，高并发场景可结合多轮重处理策略平衡速度与提取精度。
+**「可关注」** 可关注：官方公开的 SFT+RLVR 微调食谱、三份开源训练数据集，以及 DFlash2 推理加速方案可直接用于文档解析模型的定制与部署优化；多轮重处理机制可在吞吐和复杂区域提取精度间做权衡。
 
-**标签**: `#coding-agent`, `#harness`, `#memory`
+**标签**: `#coding-agent`, `#fine-tuning`, `#inference-optimization`, `#rag`
 
 ---
 
 <a id="item-agent-engineer-2"></a>
-### [Hugging Face 开源多智能体 swarm 训练教程](https://huggingface.co/blog/training-swarms) ⭐️ 7.8/10
+### [编码智能体视觉推理超视频模型](https://huggingface.co/papers/2611.34813) ⭐️ 7.0/10
 
-2026 年 11 月 26 日，Hugging Face 官方博客发布多智能体 swarm 训练系列技术文章第一部分，提供可在 Hugging Face Jobs 上运行的复现示例，指导开发者构建、训练、评估小模型驱动的多智能体系统。首个示例采用 4 个共享 Qwen3-0.6B 策略的智能体，完成信息共享排序任务，单次运行约 5 小时、占用 2 张 H200、成本约 50 美元，采用集中训练分散执行模式，团队共享奖励、单个智能体有独立上下文和私有输入。当前示例仅验证小团队基础通信的可行性，尚未开展与单智能体同预算的性能对比，通信是否真的提升系统效能而非仅增加算力消耗仍是系列待验证的核心问题。
+2026-11-27 Hugging Face Daily Papers 收录论文报告，在 VBVR-Pro-Bench 基准上，编码智能体通过编写程序渲染答案视频，在相同输入、输出规范和评估条件下，表现优于原生视频生成模型。该研究首次在相同条件下对比符号路径（代码渲染）与原生视觉路径（视频生成）的视觉推理可靠性。论文未公开具体性能数值或统计显著性。
 
-rss · Hugging Face Blog · 11月26日 00:00
+rss · Hugging Face Daily Papers · 11月27日 00:00
 
-**「为什么重要」** 该系列是官方发布的首个面向小模型、低成本多智能体 swarm 的可复现实践指南，填补了此前缺少落地级训练参考的空白。系列明确将“多智能体通信是否带来实际性能增益而非仅增加算力消耗”作为核心验证问题，为从业者提供了可对照的基准实验框架。
+**「为什么重要」** 该研究挑战&quot;视觉推理应在像素空间原生进行&quot;的假设，为 agent 能力评估提供可复现的符号基准路径。对 coding agent 和 harness 开发者而言，代码生成可能比视频生成更适合作为视觉推理的可靠执行媒介。
 
-**「可关注」** 可关注：该系列采用共享单个小模型策略、集中训练分散执行的模式降低多智能体训练成本，当前首示例仅验证基础通信可行性，同预算下的性能对比结果需等待后续文章验证。
+**「可关注」** 可关注：当前视觉推理评估中，代码渲染路径与视频生成模型的对比基准尚未标准化，该研究仅提供概念验证。
 
-**标签**: `#eval`, `#orchestration`, `#multi-agent-system`, `#training`
+**标签**: `#eval`, `#coding-agent`
 
 ---
 
 <a id="item-agent-engineer-3"></a>
-### [llama.cpp AMD 基准看板上线](https://huggingface.co/blog/ggml-org/llamacpp-amd-bench) ⭐️ 6.3/10
+### [llama.cpp AMD 基准测试看板上线](https://huggingface.co/blog/ggml-org/llamacpp-amd-bench) ⭐️ 6.8/10
 
-2026 年 11 月 26 日，Hugging Face 发布 llama.cpp 针对 AMD Ryzen 与 Radeon 硬件的公开基准测试看板，支持按硬件、模型、构建版本对比不同量化的推理性能。当前支持的硬件为 Radeon 8060S（gfx1151）与 Radeon AI Pro R9700S（gfx1201），核心指标为 PP512（512 输入 token 无生成吞吐）与 TG128（128 生成 token 吞吐），均以 tokens per second 为计量单位，同时提供构建历史、上下文扩展两个分析标签页。基准测试使用 llama-bench 工具，开启/关闭 Flash Attention，每个配置重复 10 次取均值，模型集当前覆盖 Inkling 2 Mini、Qwen、Gemma、gpt-oss、LFM 等 dense 与 mixture-of-experts 架构模型，支持 Q4\_K\_M、Q8\_0、BF16、F16 等量化格式。基准流程与原始结果完全公开，面向 AMD 平台本地推理开发者开放，数据存储于 Hugging Face 公共存储桶，支持复现与自定义分析。
+2026 年 11 月 26 日，Hugging Face 发布公开的 llama.cpp AMD Ryzen/Radeon 硬件基准测试看板，支持开发者对比不同构建、模型、量化方式的本地推理性能，基准工作流与底层结果完全公开。当前支持的硬件为 Radeon 8060S（gfx1151）和 Radeon AI Pro R9700S（gfx1201），测试指标包含 PP512（512 输入令牌处理吞吐，无生成）与 TG128（128 令牌生成吞吐，无预存上下文），均从上下文深度 0 开始测量。基准测试使用 llama-bench 工具运行，开启/关闭 Flash Attention，每个配置重复 10 次，每周自动执行，数据存储于公开的 ggml-org/install.sh-benches-data 存储桶，可直接下载复用。该工具面向使用 AMD 平台部署 llama.cpp 做本地推理的开发者，方便其追踪性能变化、评估方案效果。
 
 rss · Hugging Face Blog · 11月26日 11:37
 
-**「为什么重要」** 已发生的变化是填补了 AMD 平台 llama.cpp 本地推理性能的公开可对比基准工具空白，开发者无需自行搭建测试流程即可跟踪不同量化、构建版本的性能变化。尚未证实的影响是当前仅支持两款 AMD 硬件与有限模型集，后续覆盖范围扩展情况暂未明确。
+**「为什么重要」** 此前 AMD 平台 llama.cpp 本地推理性能缺乏公开可复现的跨构建、跨量化对比基准，该看板填补了这块空白，开发者无需自行搭建测试环境即可获取标准化的性能参考数据。
 
-**「可关注」** 可关注：公开基准数据以 .jsonl 格式存储在 Hugging Face 公共存储桶，路径按构建、硬件、模型、量化分层，可直接拉取做自定义对比或复现本地测试。
+**「可关注」** 可关注：看板提供的 jsonl 格式原始数据完全公开，开发者可直接下载用于自行复现测试或对比本地运行结果。
 
-**标签**: `#eval`, `#observability`, `#harness`
+**标签**: `#eval`
 
 ---
 
 <a id="item-agent-engineer-4"></a>
-### [Google 强制 Workspace MCP 使用引争议](https://techstackups.com/articles/google-workspace-ai-agents-mcp/) ⭐️ 6.0/10
+### [sqlite3\_rsync 无额外磁盘复制特性](https://simonwillison.net/2026/Nov/26/sqlite3-rsync/) ⭐️ 6.0/10
 
-2026 年 11 月 26 日二手科技媒体报道称，谷歌要求 AI agent 必须使用其官方 Workspace MCP 服务器，其中 Gmail MCP 服务器不支持发送邮件功能。该信息目前无谷歌官方直接公告佐证，仅来自二手报道与 Hacker News 社区讨论，影响使用谷歌 Workspace 服务的 AI agent 开发者及终端用户。
+2026 年 11 月 26 日从业者 Simon Willison 发布文章，重提 SQLite 官方工具 sqlite3\_rsync 的核心能力，他曾在 2024 年 10 月该工具首次发布时介绍过其基础用法。该工具 2024 年 10 月随 SQLite 3.47.0 以实验性功能上线，2025 年 5 月在 SQLite 3.50.0 中完成增强，支持通过 SSH 远程复制 SQLite 数据库快照，无需先创建完整本地副本，也支持类似 rsync 的增量同步，仅传输差异页内容。对比传统快照方法（backup API、VACUUM INTO）需要额外磁盘空间存储完整副本的限制，sqlite3\_rsync 解决了小磁盘环境下的快照复制痛点；若源端与副本初始差异极大，哈希交换 overhead 会导致总带宽略超数据库大小，最多多出百分之几，对使用 SQLite 存储 agent 状态或记忆的工程师有参考价值。
 
-hackernews · ritzaco · 11月26日 09:44 · [社区讨论](https://news.ycombinator.com/item?id=50653477)
+rss · Simon Willison · 11月26日 06:08
 
-**「为什么重要」** 若该限制落地，将直接改变 AI agent 接入 Workspace 服务的工具链设计逻辑，同时暴露 MCP 生态中厂商通过权限限制实现商业绑定的潜在风险。目前限制的真实动机尚未得到谷歌官方确认，社区普遍认为其更偏向商业决策而非安全考量。
+**「为什么重要」** 该工具填补了 SQLite 小磁盘环境下无额外本地存储完成远程快照同步的能力空白，是当前少有的官方提供的轻量 SQLite 复制方案。目前仅见个人实践提及，尚无公开性能对比数据或大规模应用案例验证其稳定性，影响面仍较窄。
 
-**「可关注」** 可关注：MCP 协议已内置 elicitation 原语支持工具调用前的用户确认，厂商以安全为由限制工具权限时需额外验证其真实动机。
+**「可关注」** 可关注：磁盘资源受限的 SQLite 使用场景中，可优先验证 sqlite3\_rsync 替代传统 backup API 或 VACUUM INTO 的可行性。
 
-**「评论」** 社区普遍认为该限制是商业决策而非安全措施，同时存在两类实际担忧：一是厂商锁定与用量计费成本上升，二是限制可能迫使开发者采用浏览器操作等低效绕行方案，也有用户开始寻求谷歌 Workspace 的替代服务。
-
-**标签**: `#mcp`, `#permissions`, `#orchestration`
+**标签**: `#memory`
 
 ---
 
 <a id="item-agent-engineer-5"></a>
-### [sqlite3\_rsync 轻量快照同步](https://simonwillison.net/2026/Nov/26/sqlite3-rsync/) ⭐️ 6.0/10
+### [Stable Gated DeltaNet-2 论文发布](https://huggingface.co/papers/2611.34051) ⭐️ 6.0/10
 
-SQLite 官方工具 sqlite3\_rsync 于 2024 年 10 月在 SQLite 3.47.0 中作为实验性功能发布，2025 年 5 月随 3.50.0 版本得到增强。2026 年 11 月 26 日 Simon Willison 的博客介绍了其核心特性：无需本地预留完整数据库副本的磁盘空间，即可通过 SSH 将 SQLite 快照复制到远程机器，也支持类似 rsync 的增量同步，仅传输差异页内容，仅当副本与源差异极大时带宽开销最多增加几个百分点。该工具对使用 SQLite 存储 Agent 状态、记忆或评估数据的工程师有实用价值。
+2026-11-27，Hugging Face Daily Papers 收录 arXiv 论文，提出 Stable Gated DeltaNet-2。该工作定位 Gated DeltaNet-2（GDN-2）长上下文训练不稳定的根因：擦除阶段的非对称读写方向产生非正规擦除算子，其方向增益跨 token 累积，即使无新写入也会触发循环状态指数增长。修复方案采用对称擦除保证非扩展状态传播，并引入衰减调节残差写入保持写入灵活性，附带理论稳定性保证。该研究对构建长上下文 agent 记忆系统的工程师有参考价值，但并非立即可用的工具、评估基准或协议更新。
 
-rss · Simon Willison · 11月26日 06:08
+rss · Hugging Face Daily Papers · 11月27日 00:00
 
-**「为什么重要」** 该工具解决了小磁盘环境下 SQLite 快照备份的空间瓶颈，是依赖 SQLite 做存储的 Agent 工具链的可选备份方案；目前暂无公开数据证明其在 Agent 场景的落地效果，整体影响范围相对较窄。
+**「为什么重要」** 论文首次从算子对称性角度解释 GDN-2 的长上下文训练崩溃机制，并给出理论可证的安全修复。对正在评估线性注意力方案的长上下文 agent 记忆系统而言，这提供了状态稳定性设计的参考基线，但实际工程收益仍需等待实现验证。
 
-**「可关注」** 可关注：使用 SQLite 作为 Agent 状态、评估存储时，sqlite3\_rsync 可替代需要完整本地副本的备份 API 或 VACUUM INTO，解决小实例磁盘空间不足的备份问题。
+**「可关注」** 可关注：长上下文线性注意力模型的循环状态稳定性设计，特别是擦除算子对称性对状态传播的影响。
 
-**标签**: `#eval`, `#memory`, `#tooling`
+**标签**: `#memory`
 
 ---
 
 <a id="item-agent-engineer-6"></a>
-### [Play2Evolve 递归框架优化游戏生成](https://huggingface.co/papers/2611.33457) ⭐️ 6.0/10
+### [OS-Omni 跨平台基准发布](https://huggingface.co/papers/2611.34232) ⭐️ 6.0/10
 
-2026 年 11 月 26 日，Hugging Face Daily Papers 预览了一篇研究论文，提出 Play2Evolve 递归 3 阶段智能体框架（Initialization、Refinement、Evolution），用于从自然语言描述生成游戏。该框架让智能体通过试玩自身生成的游戏，将 playfulness 作为反馈，诊断功能、视觉呈现和游戏玩法问题，并据此迭代改进。当前材料仅提供论文摘要片段，未包含性能基准、对比基线或更广泛适用性的证据，且社区暂无评论。
+Hugging Face Daily Papers 于 2026-11-27 介绍 OS-Omni，一个面向通用计算机使用智能体的跨平台长期工作流基准测试。该基准覆盖 Windows、Ubuntu、macOS、iOS、Android 与 Web 六类环境，首版 v1 包含每平台 48 个任务及 12 组桌面-Android 跨平台工作流。现有基准多隔离单一环境，OS-Omni 试图验证单一智能体跨操作系统与持久应用状态执行长期任务的能力。当前材料未披露具体性能数据或实现细节。
 
-rss · Hugging Face Daily Papers · 11月26日 00:00
+rss · Hugging Face Daily Papers · 11月27日 00:00
 
-**「为什么重要」** 该工作把试玩反馈引入智能体迭代循环，为 coding agent 的自我改进和 eval 设计提供了可迁移的思路，但仅针对游戏开发场景，尚未证实通用性。
+**「为什么重要」** 对 coding agent 工程师而言，OS-Omni 提供了首个标准化跨平台长期工作流评估框架，可直接检验智能体在真实多设备场景中的泛化能力与状态管理能力。当前仅发布 v1，后续波浪版本将扩展至 300 任务规模。
 
-**「可关注」** 可关注：递归 3 阶段框架（初始化-细化-演化）结合智能体自反馈的机制，可迁移到其他需要多轮迭代优化的 coding agent 工作流，但需注意当前证据仅限游戏领域。
+**「可关注」** 可关注：OS-Omni v1 的 12 组桌面-Android 跨平台工作流，可作为测试智能体状态保持与跨设备协同能力的首批标准化用例。
 
-**标签**: `#coding-agent`, `#orchestration`, `#eval`
+**标签**: `#eval`, `#coding-agent`
 
 ---
 
 <a id="item-agent-engineer-7"></a>
-### [AIRIS 社会具身智能基准发布](https://huggingface.co/papers/2611.34347) ⭐️ 5.5/10
+### [DRBench Pro 评估深度研究代理](https://huggingface.co/papers/2611.34852) ⭐️ 6.0/10
 
-2026 年 11 月 26 日 Hugging Face Daily Papers 发布社会具身智能评估基准 AIRIS，该基准为因果流式设计，将社会具身智能建模为时间锚定的注意、意图、反应、交互（A-I-R-I）链，包含 8000 个专家 curated 问题，覆盖 357 个第一人称视频剪辑、11 个上下文类别与 36 个能力维度。查询时模型仅能获得当前时间点可用的观测前缀，配套决策感知指标。当前公开内容仅为截断摘要，无技术实现细节、性能对比数据，对主流编码智能体与 harness 工程工作的相关性有限，主要面向具身社交交互智能体方向的研究者。
+Hugging Face Daily Papers 于 2026-11-27 发布论文摘要，介绍 DRBench Pro，一个面向深度研究代理的知识中心基准测试。该基准通过基于维基百科知识树的自动化流水线，构建本地知识树并采样子图生成研究查询和证据 grounded 评分标准，每个评分标准对应知识树中的一个关系以保持知识结构。现有基准测试评估报告质量多维度，但缺乏对结构化知识覆盖的专门评估。材料为截断摘要，缺少实现细节、性能比较和使用指导，仅建议相关团队快速浏览。
 
-rss · Hugging Face Daily Papers · 11月26日 00:00
+rss · Hugging Face Daily Papers · 11月27日 00:00
 
-**「为什么重要」** 它首次将社会具身智能评估锚定在流式第一人称视频的在线决策场景，但当前公开信息不足，对多数智能体工程师的实际参考价值尚未明确。
+**「为什么重要」** 该基准填补了深度研究代理评估在结构化知识覆盖方面的空白，为相关团队提供了新的自动化评估工具。但截断摘要未提供性能数据或使用指南，实际可用性待验证。
 
-**「可关注」** 可关注：现有社会具身智能评估多基于完整视频或单能力维度，AIRIS 的因果流式评估范式可对照参考在线决策场景的基准设计思路。
+**「可关注」** 可关注：该基准基于维基百科知识树子图采样的自动化流水线，为生成研究查询和证据 grounded 评分标准提供了可复现的结构化框架。
 
 **标签**: `#eval`
+
+---
+
+## AI 日报
+{: #sec-ai-daily .ah-section}
+
+<p class="ah-sec-meta"><a class="ah-anchor" href="#sec-ai-daily" aria-label="链接到本节">#</a><a class="ah-back" href="#ah-toc">↑ 回到目录</a></p>
+
+<a id="item-ai-daily-1"></a>
+### [421 期周刊：Anthropic 造富](http://www.ruanyifeng.com/blog/2026/11/weekly-issue-421.html) ⭐️ 5.5/10
+
+阮一峰《科技爱好者周刊》第 421 期发布，涵盖 AI 造富、人形机器人、网站流量、编程模型排名等科技动态。根据@AndrewBenson 的统计，Anthropic 成立于 2021 年，2023 年启动大规模招聘，截至 2026 年 9 月有约 5300 名可分配股票的员工，若市值达 1.4 万亿美元，2023 年入职员工股票获利中位数达 1.51 亿美元，上市一次性造就约 600 名亿万富翁，其中大部分仅二三十岁，数量超过洛杉矶全市现有亿万富翁人数；其 2024 年授予的期权每股 1.30 美元，上市后股价达每股 80 余美元，今年 4 月授予的期权每股 25.91 美元，持有半年后股价翻 3 倍。维基百科 2025 年以来真实人类访问量持续下滑创近年新低，综合 17 个编码基准的编程模型排名发布，前三为 Fable 5.2、Astra 6.2、Neon 4，国产模型最高为 Qwen 4 Max（第 10 位），此外小鹏展示人形机器人、Signal 推出防截图功能、Ladybird 浏览器发布 alpha 版等内容也在本期提及。
+
+rss · 阮一峰 · 11月27日 00:10
+
+**「为什么重要」** Anthropic 的造富案例直观呈现了 AI 行业高估值下的股权红利分配逻辑，同时维基百科访问量下滑、编程模型排名更新也为从业者提供了行业趋势参考。
+
+**「可关注」** 可关注：综合 17 个编码基准的编程模型排名，其中国产模型 Qwen 4 Max、Kimi K3.1 Pro、Deepseek V.1 Flash 分别位列第 10、12、14 位，可作为编码场景的模型选型参考。
+
+**标签**: `#model`, `#lab`, `#industry`, `#product`
 
 ---
